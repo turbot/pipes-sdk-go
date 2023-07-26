@@ -2,7 +2,7 @@
 
 Turbot Pipes is an intelligence, automation & security platform built specifically for DevOps.
 
-For help on getting started with Turbot Pipes, please visit https://turbot.com/pipes.
+For help on getting started with Turbot Pipes, please visit https://turbot.com/pipes/docs/getting-started.
 
 ## Getting Started
 
