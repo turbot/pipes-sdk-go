@@ -1,8 +1,8 @@
-# Go SDK for Steampipe Cloud
+# Go SDK for Turbot Pipes
 
 Turbot Pipes is an intelligence, automation & security platform built specifically for DevOps.
 
-For help on getting started with Steampipe Cloud, please visit https://steampipe.io/docs/cloud/getting-started.
+For help on getting started with Turbot Pipes, please visit https://turbot.com/pipes.
 
 ## Getting Started
 
@@ -16,18 +16,18 @@ import (
     "fmt"
     "os"
 
-    steampipecloud "github.com/turbot/steampipe-cloud-sdk-go"
+    pipes "github.com/turbot/pipes-sdk-go"
 )
 
 func main() {
     // Create a default configuration
-    configuration := steampipecloud.NewConfiguration()
+    configuration := pipes.NewConfiguration()
 
-    // Add your Steampipe Cloud user token as an auth header
-    configuration.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", os.Getenv("STEAMPIPE_CLOUD_TOKEN")))
+    // Add your Turbot Pipes user token as an auth header
+    configuration.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", os.Getenv("PIPES_TOKEN")))
 
     // Create a client
-    client := steampipecloud.NewAPIClient(configuration)
+    client := pipes.NewAPIClient(configuration)
 
     // Find your authenticated user info
     actor, _, err := client.Actors.Get(context.Background()).Execute()
@@ -51,10 +51,10 @@ func main() {
 
 For more detailed examples of using the SDK, please check out the following open source projects:
 
-- https://github.com/turbot/steampipe-plugin-steampipecloud
-  - The official Steampipe plugin for accessing your Steampipe Cloud resources via SQL.
-- https://github.com/turbot/terraform-provider-steampipecloud
-  - The Terraform provider for managing your Steampipe Cloud resources using Terraform.
+- https://github.com/turbot/steampipe-plugin-pipes
+  - The official Steampipe plugin for accessing your Turbot Pipes resources via SQL.
+- https://github.com/turbot/terraform-provider-pipes
+  - The Terraform provider for managing your Turbot Pipes resources using Terraform.
 
 ## Documentation for API Endpoints
 
