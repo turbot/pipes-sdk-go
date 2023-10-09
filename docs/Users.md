@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**ListConstraints**](Users.md#ListConstraints) | **Get** /user/{user_handle}/constraint | List user constraints
 [**ListEmails**](Users.md#ListEmails) | **Get** /user/{user_handle}/email | List user emails
 [**ListFeatures**](Users.md#ListFeatures) | **Get** /user/{user_handle}/feature | User features
+[**ListUsage**](Users.md#ListUsage) | **Get** /user/{user_handle}/usage | List user usage
 [**Update**](Users.md#Update) | **Patch** /user/{user_handle} | Update user
 [**UpdatePreferences**](Users.md#UpdatePreferences) | **Patch** /user/{user_handle}/preferences | Update user preferences
 
@@ -1072,6 +1073,82 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListFeaturesResponse**](ListFeaturesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListUsage
+
+> ListIdentityUsageResponse ListUsage(ctx, userHandle).Where(where).Limit(limit).NextToken(nextToken).Execute()
+
+List user usage
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userHandle := "userHandle_example" // string | The handle of the user to list usage for.
+    where := "where_example" // string | The SQL where filter you wish to apply to this request. The filter will be parsed and sanitised and checked against the supported columns for this API. (optional)
+    limit := int32(56) // int32 | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. (optional) (default to 25)
+    nextToken := "nextToken_example" // string | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.Users.ListUsage(context.Background(), userHandle).Where(where).Limit(limit).NextToken(nextToken).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `Users.ListUsage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListUsage`: ListIdentityUsageResponse
+    fmt.Fprintf(os.Stdout, "Response from `Users.ListUsage`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userHandle** | **string** | The handle of the user to list usage for. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListUsageRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **where** | **string** | The SQL where filter you wish to apply to this request. The filter will be parsed and sanitised and checked against the supported columns for this API. | 
+ **limit** | **int32** | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. | [default to 25]
+ **nextToken** | **string** | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. | 
+
+### Return type
+
+[**ListIdentityUsageResponse**](ListIdentityUsageResponse.md)
 
 ### Authorization
 

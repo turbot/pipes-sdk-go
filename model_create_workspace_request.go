@@ -16,7 +16,8 @@ import (
 
 // CreateWorkspaceRequest struct for CreateWorkspaceRequest
 type CreateWorkspaceRequest struct {
-	Handle string `json:"handle"`
+	Handle       string  `json:"handle"`
+	InstanceType *string `json:"instance_type,omitempty"`
 }
 
 // NewCreateWorkspaceRequest instantiates a new CreateWorkspaceRequest object
@@ -61,10 +62,45 @@ func (o *CreateWorkspaceRequest) SetHandle(v string) {
 	o.Handle = v
 }
 
+// GetInstanceType returns the InstanceType field value if set, zero value otherwise.
+func (o *CreateWorkspaceRequest) GetInstanceType() string {
+	if o == nil || o.InstanceType == nil {
+		var ret string
+		return ret
+	}
+	return *o.InstanceType
+}
+
+// GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateWorkspaceRequest) GetInstanceTypeOk() (*string, bool) {
+	if o == nil || o.InstanceType == nil {
+		return nil, false
+	}
+	return o.InstanceType, true
+}
+
+// HasInstanceType returns a boolean if a field has been set.
+func (o *CreateWorkspaceRequest) HasInstanceType() bool {
+	if o != nil && o.InstanceType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceType gets a reference to the given string and assigns it to the InstanceType field.
+func (o *CreateWorkspaceRequest) SetInstanceType(v string) {
+	o.InstanceType = &v
+}
+
 func (o CreateWorkspaceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["handle"] = o.Handle
+	}
+	if o.InstanceType != nil {
+		toSerialize["instance_type"] = o.InstanceType
 	}
 	return json.Marshal(toSerialize)
 }

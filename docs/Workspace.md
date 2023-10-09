@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Host** | Pointer to **string** |  | [optional] 
 **Id** | **string** | The unique identifier for the workspace. | 
 **IdentityId** | **string** | The unique identifier for an identity where the workspace is created. | 
+**InstanceType** | **string** | The instance type of this workspace. | 
 **Notices** | Pointer to **map[string]interface{}** |  | [optional] 
 **PublicKey** | Pointer to **string** |  | [optional] 
 **State** | Pointer to **string** | The current state of the workspace. | [optional] 
@@ -32,7 +33,7 @@ Name | Type | Description | Notes
 
 ### NewWorkspace
 
-`func NewWorkspace(createdAt string, createdById string, deletedById string, desiredState string, handle string, id string, identityId string, updatedById string, versionId int32, ) *Workspace`
+`func NewWorkspace(createdAt string, createdById string, deletedById string, desiredState string, handle string, id string, identityId string, instanceType string, updatedById string, versionId int32, ) *Workspace`
 
 NewWorkspace instantiates a new Workspace object
 This constructor will assign default values to properties that have it defined,
@@ -385,6 +386,26 @@ and a boolean to check if the value has been set.
 `func (o *Workspace) SetIdentityId(v string)`
 
 SetIdentityId sets IdentityId field to given value.
+
+
+### GetInstanceType
+
+`func (o *Workspace) GetInstanceType() string`
+
+GetInstanceType returns the InstanceType field if non-nil, zero value otherwise.
+
+### GetInstanceTypeOk
+
+`func (o *Workspace) GetInstanceTypeOk() (*string, bool)`
+
+GetInstanceTypeOk returns a tuple with the InstanceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstanceType
+
+`func (o *Workspace) SetInstanceType(v string)`
+
+SetInstanceType sets InstanceType field to given value.
 
 
 ### GetNotices

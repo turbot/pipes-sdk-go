@@ -2,7 +2,7 @@
 
 Turbot Pipes is an intelligence, automation & security platform built specifically for DevOps.
 
-For help on getting started with Turbot Pipes, please visit https://turbot.com/pipes/docs/getting-started.
+For help on getting started with Turbot Pipes, please visit https://turbot.com/pipes.
 
 ## Getting Started
 
@@ -117,6 +117,20 @@ Class | Method | HTTP request | Description
 *OrgWorkspaceConnectionAssociations* | [**Delete**](docs/OrgWorkspaceConnectionAssociations.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/conn/{conn_handle} | Delete org workspace connection association
 *OrgWorkspaceConnectionAssociations* | [**Get**](docs/OrgWorkspaceConnectionAssociations.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/conn/{conn_handle} | Get org workspace connection association
 *OrgWorkspaceConnectionAssociations* | [**List**](docs/OrgWorkspaceConnectionAssociations.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/conn | List org workspace connection associations
+*OrgWorkspaceDatatankParts* | [**Command**](docs/OrgWorkspaceDatatankParts.md#command) | **Post** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/part/{datatank_part_id}/command | Run org workspace Datatank table partition command
+*OrgWorkspaceDatatankParts* | [**Get**](docs/OrgWorkspaceDatatankParts.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/table/{datatank_part_id} | Get org workspace Datatank table partition
+*OrgWorkspaceDatatankParts* | [**List**](docs/OrgWorkspaceDatatankParts.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/part | List org workspace Datatank partitions
+*OrgWorkspaceDatatankParts* | [**Update**](docs/OrgWorkspaceDatatankParts.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/part/{datatank_part_id} | Update org workspace Datatank table partition
+*OrgWorkspaceDatatankTables* | [**Create**](docs/OrgWorkspaceDatatankTables.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table | Create org workspace Datatank table
+*OrgWorkspaceDatatankTables* | [**Delete**](docs/OrgWorkspaceDatatankTables.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name} | Delete org workspace Datatank table
+*OrgWorkspaceDatatankTables* | [**Get**](docs/OrgWorkspaceDatatankTables.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name} | Get org workspace Datatank table
+*OrgWorkspaceDatatankTables* | [**List**](docs/OrgWorkspaceDatatankTables.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table | List org workspace Datatank tables
+*OrgWorkspaceDatatankTables* | [**Update**](docs/OrgWorkspaceDatatankTables.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name} | Update org workspace Datatank table
+*OrgWorkspaceDatatanks* | [**Create**](docs/OrgWorkspaceDatatanks.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/datatank | Create org workspace Datatank
+*OrgWorkspaceDatatanks* | [**Delete**](docs/OrgWorkspaceDatatanks.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle} | Delete org workspace Datatank
+*OrgWorkspaceDatatanks* | [**Get**](docs/OrgWorkspaceDatatanks.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle} | Get org workspace Datatank
+*OrgWorkspaceDatatanks* | [**List**](docs/OrgWorkspaceDatatanks.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/datatank | List org workspace Datatank
+*OrgWorkspaceDatatanks* | [**Update**](docs/OrgWorkspaceDatatanks.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle} | Update org workspace Datatank
 *OrgWorkspaceMembers* | [**Create**](docs/OrgWorkspaceMembers.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/member | Create Org Workspace Member
 *OrgWorkspaceMembers* | [**Delete**](docs/OrgWorkspaceMembers.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/member/{user_handle} | Delete Org Workspace Member
 *OrgWorkspaceMembers* | [**Get**](docs/OrgWorkspaceMembers.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/member/{user_handle} | Get Org Workspace Member
@@ -152,6 +166,7 @@ Class | Method | HTTP request | Description
 *OrgWorkspaceSnapshots* | [**Get**](docs/OrgWorkspaceSnapshots.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/snapshot/{snapshot_id} | Get org workspace snapshot
 *OrgWorkspaceSnapshots* | [**List**](docs/OrgWorkspaceSnapshots.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/snapshot | List org workspace snapshots
 *OrgWorkspaceSnapshots* | [**Update**](docs/OrgWorkspaceSnapshots.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/snapshot/{snapshot_id} | Update org workspace snapshot
+*OrgWorkspaceUsages* | [**List**](docs/OrgWorkspaceUsages.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/usage | List org workspace usage
 *OrgWorkspaces* | [**Command**](docs/OrgWorkspaces.md#command) | **Post** /org/{org_handle}/workspace/{workspace_handle}/command | Run org workspace command
 *OrgWorkspaces* | [**Create**](docs/OrgWorkspaces.md#create) | **Post** /org/{org_handle}/workspace | Create org workspace
 *OrgWorkspaces* | [**Delete**](docs/OrgWorkspaces.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle} | Delete org workspace
@@ -174,6 +189,7 @@ Class | Method | HTTP request | Description
 *Orgs* | [**ListAuditLogs**](docs/Orgs.md#listauditlogs) | **Get** /org/{org_handle}/audit_log | Org audit logs
 *Orgs* | [**ListConstraints**](docs/Orgs.md#listconstraints) | **Get** /org/{org_handle}/constraint | List org constraints
 *Orgs* | [**ListFeatures**](docs/Orgs.md#listfeatures) | **Get** /org/{org_handle}/feature | Org features
+*Orgs* | [**ListUsage**](docs/Orgs.md#listusage) | **Get** /org/{org_handle}/usage | List org usage
 *Orgs* | [**Update**](docs/Orgs.md#update) | **Patch** /org/{org_handle} | Update org
 *UserConnections* | [**Create**](docs/UserConnections.md#create) | **Post** /user/{user_handle}/connection | Create user connection
 *UserConnections* | [**CreateDeprecated**](docs/UserConnections.md#createdeprecated) | **Post** /user/{user_handle}/conn | Create user connection
@@ -208,6 +224,20 @@ Class | Method | HTTP request | Description
 *UserWorkspaceConnectionAssociations* | [**Delete**](docs/UserWorkspaceConnectionAssociations.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/conn/{conn_handle} | Delete user workspace connection association
 *UserWorkspaceConnectionAssociations* | [**Get**](docs/UserWorkspaceConnectionAssociations.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/conn/{conn_handle} | Get user workspace connection association
 *UserWorkspaceConnectionAssociations* | [**List**](docs/UserWorkspaceConnectionAssociations.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/conn | List user workspace connection associations
+*UserWorkspaceDatatankParts* | [**Command**](docs/UserWorkspaceDatatankParts.md#command) | **Post** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/part/{datatank_part_id}/command | Run user workspace Datatank table partition command
+*UserWorkspaceDatatankParts* | [**Get**](docs/UserWorkspaceDatatankParts.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/table/{datatank_part_id} | Get user workspace Datatank table partition
+*UserWorkspaceDatatankParts* | [**List**](docs/UserWorkspaceDatatankParts.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/part | List user workspace Datatank partitions
+*UserWorkspaceDatatankParts* | [**Update**](docs/UserWorkspaceDatatankParts.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/part/{datatank_part_id} | Update user workspace Datatank table partition
+*UserWorkspaceDatatankTables* | [**Create**](docs/UserWorkspaceDatatankTables.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table | Create user workspace Datatank table
+*UserWorkspaceDatatankTables* | [**Delete**](docs/UserWorkspaceDatatankTables.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name} | Delete user workspace Datatank table
+*UserWorkspaceDatatankTables* | [**Get**](docs/UserWorkspaceDatatankTables.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name} | Get user workspace Datatank table
+*UserWorkspaceDatatankTables* | [**List**](docs/UserWorkspaceDatatankTables.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table | List user workspace Datatank tables
+*UserWorkspaceDatatankTables* | [**Update**](docs/UserWorkspaceDatatankTables.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name} | Update user workspace Datatank table
+*UserWorkspaceDatatanks* | [**Create**](docs/UserWorkspaceDatatanks.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/datatank | Create user workspace Datatank
+*UserWorkspaceDatatanks* | [**Delete**](docs/UserWorkspaceDatatanks.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle} | Delete user workspace Datatank table
+*UserWorkspaceDatatanks* | [**Get**](docs/UserWorkspaceDatatanks.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle} | Get user workspace Datatank
+*UserWorkspaceDatatanks* | [**List**](docs/UserWorkspaceDatatanks.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/datatank | List user workspace Datatank
+*UserWorkspaceDatatanks* | [**Update**](docs/UserWorkspaceDatatanks.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle} | Update user workspace Datatank
 *UserWorkspaceModVariables* | [**CreateSetting**](docs/UserWorkspaceModVariables.md#createsetting) | **Post** /user/{user_handle}/workspace/{workspace_handle}/mod/{mod_alias}/variable | Create a setting for a mod variable in a user workspace
 *UserWorkspaceModVariables* | [**DeleteSetting**](docs/UserWorkspaceModVariables.md#deletesetting) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/mod/{mod_alias}/variable/{variable_name} | Delete setting for a mod variable in a user workspace
 *UserWorkspaceModVariables* | [**GetSetting**](docs/UserWorkspaceModVariables.md#getsetting) | **Get** /user/{user_handle}/workspace/{workspace_handle}/mod/{mod_alias}/variable/{variable_name} | Get setting for a mod variable in a user workspace
@@ -238,6 +268,7 @@ Class | Method | HTTP request | Description
 *UserWorkspaceSnapshots* | [**Get**](docs/UserWorkspaceSnapshots.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/snapshot/{snapshot_id} | Get user workspace snapshot
 *UserWorkspaceSnapshots* | [**List**](docs/UserWorkspaceSnapshots.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/snapshot | List user workspace snapshots
 *UserWorkspaceSnapshots* | [**Update**](docs/UserWorkspaceSnapshots.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/snapshot/{snapshot_id} | Update user workspace snapshot
+*UserWorkspaceUsages* | [**List**](docs/UserWorkspaceUsages.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/usage | List user workspace usage
 *UserWorkspaces* | [**Command**](docs/UserWorkspaces.md#command) | **Post** /user/{user_handle}/workspace/{workspace_handle}/command | Run user workspace command
 *UserWorkspaces* | [**Create**](docs/UserWorkspaces.md#create) | **Post** /user/{user_handle}/workspace | Create user workspace
 *UserWorkspaces* | [**Delete**](docs/UserWorkspaces.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle} | Delete user workspace
@@ -265,6 +296,7 @@ Class | Method | HTTP request | Description
 *Users* | [**ListConstraints**](docs/Users.md#listconstraints) | **Get** /user/{user_handle}/constraint | List user constraints
 *Users* | [**ListEmails**](docs/Users.md#listemails) | **Get** /user/{user_handle}/email | List user emails
 *Users* | [**ListFeatures**](docs/Users.md#listfeatures) | **Get** /user/{user_handle}/feature | User features
+*Users* | [**ListUsage**](docs/Users.md#listusage) | **Get** /user/{user_handle}/usage | List user usage
 *Users* | [**Update**](docs/Users.md#update) | **Patch** /user/{user_handle} | Update user
 *Users* | [**UpdatePreferences**](docs/Users.md#updatepreferences) | **Patch** /user/{user_handle}/preferences | Update user preferences
 
@@ -275,11 +307,14 @@ Class | Method | HTTP request | Description
  - [AttachWorkspaceSchemaRequest](docs/AttachWorkspaceSchemaRequest.md)
  - [AuditRecord](docs/AuditRecord.md)
  - [BillingInfo](docs/BillingInfo.md)
+ - [CmdDatatankPartRequest](docs/CmdDatatankPartRequest.md)
  - [Connection](docs/Connection.md)
  - [ConnectionTestResult](docs/ConnectionTestResult.md)
  - [Constraint](docs/Constraint.md)
  - [ConstraintOverrideRequest](docs/ConstraintOverrideRequest.md)
  - [CreateConnectionRequest](docs/CreateConnectionRequest.md)
+ - [CreateDatatankRequest](docs/CreateDatatankRequest.md)
+ - [CreateDatatankTableRequest](docs/CreateDatatankTableRequest.md)
  - [CreateOrgAvatarResponse](docs/CreateOrgAvatarResponse.md)
  - [CreateOrgRequest](docs/CreateOrgRequest.md)
  - [CreateOrgWorkspaceUserRequest](docs/CreateOrgWorkspaceUserRequest.md)
@@ -294,20 +329,28 @@ Class | Method | HTTP request | Description
  - [CreateWorkspaceRequest](docs/CreateWorkspaceRequest.md)
  - [CreateWorkspaceSnapshotRequest](docs/CreateWorkspaceSnapshotRequest.md)
  - [Datatank](docs/Datatank.md)
+ - [DatatankPart](docs/DatatankPart.md)
+ - [DatatankTable](docs/DatatankTable.md)
+ - [DatatankTableFreshness](docs/DatatankTableFreshness.md)
  - [DeleteOrgAvatarResponse](docs/DeleteOrgAvatarResponse.md)
  - [DeleteUserAvatarResponse](docs/DeleteUserAvatarResponse.md)
  - [ErrorDetailModel](docs/ErrorDetailModel.md)
  - [ErrorModel](docs/ErrorModel.md)
  - [Feature](docs/Feature.md)
  - [Identity](docs/Identity.md)
+ - [IdentityUsage](docs/IdentityUsage.md)
  - [InviteOrgUserRequest](docs/InviteOrgUserRequest.md)
  - [JSONTime](docs/JSONTime.md)
  - [ListActorWorkspacesResponse](docs/ListActorWorkspacesResponse.md)
  - [ListAuditLogsResponse](docs/ListAuditLogsResponse.md)
  - [ListConnectionsResponse](docs/ListConnectionsResponse.md)
  - [ListConstraintsResponse](docs/ListConstraintsResponse.md)
+ - [ListDatatankPartResponse](docs/ListDatatankPartResponse.md)
+ - [ListDatatankResponse](docs/ListDatatankResponse.md)
+ - [ListDatatankTableResponse](docs/ListDatatankTableResponse.md)
  - [ListFeaturesResponse](docs/ListFeaturesResponse.md)
  - [ListIdentitiesResponse](docs/ListIdentitiesResponse.md)
+ - [ListIdentityUsageResponse](docs/ListIdentityUsageResponse.md)
  - [ListLogsResponse](docs/ListLogsResponse.md)
  - [ListOrgUsersResponse](docs/ListOrgUsersResponse.md)
  - [ListOrgWorkspaceUsersResponse](docs/ListOrgWorkspaceUsersResponse.md)
@@ -343,6 +386,9 @@ Class | Method | HTTP request | Description
  - [TestConnectionRequest](docs/TestConnectionRequest.md)
  - [Token](docs/Token.md)
  - [UpdateConnectionRequest](docs/UpdateConnectionRequest.md)
+ - [UpdateDatatankPartRequest](docs/UpdateDatatankPartRequest.md)
+ - [UpdateDatatankRequest](docs/UpdateDatatankRequest.md)
+ - [UpdateDatatankTableRequest](docs/UpdateDatatankTableRequest.md)
  - [UpdateOrgRequest](docs/UpdateOrgRequest.md)
  - [UpdateOrgUserRequest](docs/UpdateOrgUserRequest.md)
  - [UpdateOrgWorkspaceUserRequest](docs/UpdateOrgWorkspaceUserRequest.md)

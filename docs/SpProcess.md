@@ -12,10 +12,12 @@ Name | Type | Description | Notes
 **Pipeline** | Pointer to [**Pipeline**](Pipeline.md) |  | [optional] 
 **PipelineId** | Pointer to **string** | The unique identifier of the pipeline for which the process is created. | [optional] 
 **State** | Pointer to **string** | The state of the process. | [optional] 
+**StateReason** | Pointer to **string** | The optional reason why the process is in its current state. | [optional] 
 **Type** | **string** | The type of the process, generally denotes the activity performed e.g. workspace.create, pipeline.execute, pipeline.command.run. | 
 **UpdatedAt** | **string** | The time of the last update in ISO 8601 UTC. | 
 **UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
+**Usage** | Pointer to **map[string]interface{}** | The usage information for this process. | [optional] 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 **WorkspaceId** | Pointer to **string** | The unique identifier of the workspace for which the process is created. | [optional] 
 
@@ -223,6 +225,31 @@ SetState sets State field to given value.
 
 HasState returns a boolean if a field has been set.
 
+### GetStateReason
+
+`func (o *SpProcess) GetStateReason() string`
+
+GetStateReason returns the StateReason field if non-nil, zero value otherwise.
+
+### GetStateReasonOk
+
+`func (o *SpProcess) GetStateReasonOk() (*string, bool)`
+
+GetStateReasonOk returns a tuple with the StateReason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStateReason
+
+`func (o *SpProcess) SetStateReason(v string)`
+
+SetStateReason sets StateReason field to given value.
+
+### HasStateReason
+
+`func (o *SpProcess) HasStateReason() bool`
+
+HasStateReason returns a boolean if a field has been set.
+
 ### GetType
 
 `func (o *SpProcess) GetType() string`
@@ -307,6 +334,31 @@ and a boolean to check if the value has been set.
 
 SetUpdatedById sets UpdatedById field to given value.
 
+
+### GetUsage
+
+`func (o *SpProcess) GetUsage() map[string]interface{}`
+
+GetUsage returns the Usage field if non-nil, zero value otherwise.
+
+### GetUsageOk
+
+`func (o *SpProcess) GetUsageOk() (*map[string]interface{}, bool)`
+
+GetUsageOk returns a tuple with the Usage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsage
+
+`func (o *SpProcess) SetUsage(v map[string]interface{})`
+
+SetUsage sets Usage field to given value.
+
+### HasUsage
+
+`func (o *SpProcess) HasUsage() bool`
+
+HasUsage returns a boolean if a field has been set.
 
 ### GetVersionId
 

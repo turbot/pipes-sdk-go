@@ -33,8 +33,10 @@ type Pipeline struct {
 	// The unique identifier of the pipeline.
 	Id string `json:"id"`
 	// We need the IdentityID to be in the JSON field because I'm sending the pipeline definition across the Temporal Workflow (see Datatank migration workflow)
-	IdentityId  string     `json:"identity_id"`
-	LastProcess *SpProcess `json:"last_process,omitempty"`
+	IdentityId string `json:"identity_id"`
+	// The instance type of this pipeline.
+	InstanceType string     `json:"instance_type"`
+	LastProcess  *SpProcess `json:"last_process,omitempty"`
 	// The id of the last process that was run for the pipeline.
 	LastProcessId *string `json:"last_process_id,omitempty"`
 	// The time when the pipeline is next scheduled to run in ISO 8601 UTC.
@@ -62,7 +64,7 @@ type Pipeline struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPipeline(createdAt string, createdById string, deletedById string, desiredState string, frequency PipelineFrequency, id string, identityId string, pipeline string, state string, updatedById string, versionId int32) *Pipeline {
+func NewPipeline(createdAt string, createdById string, deletedById string, desiredState string, frequency PipelineFrequency, id string, identityId string, instanceType string, pipeline string, state string, updatedById string, versionId int32) *Pipeline {
 	this := Pipeline{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
@@ -71,6 +73,7 @@ func NewPipeline(createdAt string, createdById string, deletedById string, desir
 	this.Frequency = frequency
 	this.Id = id
 	this.IdentityId = identityId
+	this.InstanceType = instanceType
 	this.Pipeline = pipeline
 	this.State = state
 	this.UpdatedById = updatedById
@@ -381,6 +384,30 @@ func (o *Pipeline) GetIdentityIdOk() (*string, bool) {
 // SetIdentityId sets field value
 func (o *Pipeline) SetIdentityId(v string) {
 	o.IdentityId = v
+}
+
+// GetInstanceType returns the InstanceType field value
+func (o *Pipeline) GetInstanceType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.InstanceType
+}
+
+// GetInstanceTypeOk returns a tuple with the InstanceType field value
+// and a boolean to check if the value has been set.
+func (o *Pipeline) GetInstanceTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.InstanceType, true
+}
+
+// SetInstanceType sets field value
+func (o *Pipeline) SetInstanceType(v string) {
+	o.InstanceType = v
 }
 
 // GetLastProcess returns the LastProcess field value if set, zero value otherwise.
@@ -802,6 +829,9 @@ func (o Pipeline) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["identity_id"] = o.IdentityId
+	}
+	if true {
+		toSerialize["instance_type"] = o.InstanceType
 	}
 	if o.LastProcess != nil {
 		toSerialize["last_process"] = o.LastProcess

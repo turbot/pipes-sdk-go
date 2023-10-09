@@ -16,12 +16,20 @@ import (
 
 // BillingInfo struct for BillingInfo
 type BillingInfo struct {
-	// The time when a subscription will be cancelled in stripe.
+	// The time when the org was created in ISO 8601 UTC.
+	CycleAnchor *string `json:"cycle_anchor,omitempty"`
+	// The time when the identity will be deleted from Pipes.
 	DeleteAt *string `json:"delete_at,omitempty"`
-	// The time when the org will be suspended due to failed billing in ISO 8601 UTC.
-	DisableAt *string `json:"disable_at,omitempty"`
-	// The billing status for the org in stripe i.e. whether its pending verification or verified.
+	// The reason for the upcoming deletion.
+	DeleteAtReason *string `json:"delete_at_reason,omitempty"`
+	// The billing status for the org.
 	Status string `json:"status"`
+	// When the billing status for the org was last updated.
+	StatusUpdatedAt *string `json:"status_updated_at,omitempty"`
+	// The time when the org will be suspended due to failed billing in ISO 8601 UTC.
+	SuspendAt *string `json:"suspend_at,omitempty"`
+	// The reason for the upcoming suspension.
+	SuspendAtReason *string `json:"suspend_at_reason,omitempty"`
 }
 
 // NewBillingInfo instantiates a new BillingInfo object
@@ -40,6 +48,38 @@ func NewBillingInfo(status string) *BillingInfo {
 func NewBillingInfoWithDefaults() *BillingInfo {
 	this := BillingInfo{}
 	return &this
+}
+
+// GetCycleAnchor returns the CycleAnchor field value if set, zero value otherwise.
+func (o *BillingInfo) GetCycleAnchor() string {
+	if o == nil || o.CycleAnchor == nil {
+		var ret string
+		return ret
+	}
+	return *o.CycleAnchor
+}
+
+// GetCycleAnchorOk returns a tuple with the CycleAnchor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInfo) GetCycleAnchorOk() (*string, bool) {
+	if o == nil || o.CycleAnchor == nil {
+		return nil, false
+	}
+	return o.CycleAnchor, true
+}
+
+// HasCycleAnchor returns a boolean if a field has been set.
+func (o *BillingInfo) HasCycleAnchor() bool {
+	if o != nil && o.CycleAnchor != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCycleAnchor gets a reference to the given string and assigns it to the CycleAnchor field.
+func (o *BillingInfo) SetCycleAnchor(v string) {
+	o.CycleAnchor = &v
 }
 
 // GetDeleteAt returns the DeleteAt field value if set, zero value otherwise.
@@ -74,36 +114,36 @@ func (o *BillingInfo) SetDeleteAt(v string) {
 	o.DeleteAt = &v
 }
 
-// GetDisableAt returns the DisableAt field value if set, zero value otherwise.
-func (o *BillingInfo) GetDisableAt() string {
-	if o == nil || o.DisableAt == nil {
+// GetDeleteAtReason returns the DeleteAtReason field value if set, zero value otherwise.
+func (o *BillingInfo) GetDeleteAtReason() string {
+	if o == nil || o.DeleteAtReason == nil {
 		var ret string
 		return ret
 	}
-	return *o.DisableAt
+	return *o.DeleteAtReason
 }
 
-// GetDisableAtOk returns a tuple with the DisableAt field value if set, nil otherwise
+// GetDeleteAtReasonOk returns a tuple with the DeleteAtReason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInfo) GetDisableAtOk() (*string, bool) {
-	if o == nil || o.DisableAt == nil {
+func (o *BillingInfo) GetDeleteAtReasonOk() (*string, bool) {
+	if o == nil || o.DeleteAtReason == nil {
 		return nil, false
 	}
-	return o.DisableAt, true
+	return o.DeleteAtReason, true
 }
 
-// HasDisableAt returns a boolean if a field has been set.
-func (o *BillingInfo) HasDisableAt() bool {
-	if o != nil && o.DisableAt != nil {
+// HasDeleteAtReason returns a boolean if a field has been set.
+func (o *BillingInfo) HasDeleteAtReason() bool {
+	if o != nil && o.DeleteAtReason != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDisableAt gets a reference to the given string and assigns it to the DisableAt field.
-func (o *BillingInfo) SetDisableAt(v string) {
-	o.DisableAt = &v
+// SetDeleteAtReason gets a reference to the given string and assigns it to the DeleteAtReason field.
+func (o *BillingInfo) SetDeleteAtReason(v string) {
+	o.DeleteAtReason = &v
 }
 
 // GetStatus returns the Status field value
@@ -130,16 +170,124 @@ func (o *BillingInfo) SetStatus(v string) {
 	o.Status = v
 }
 
+// GetStatusUpdatedAt returns the StatusUpdatedAt field value if set, zero value otherwise.
+func (o *BillingInfo) GetStatusUpdatedAt() string {
+	if o == nil || o.StatusUpdatedAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.StatusUpdatedAt
+}
+
+// GetStatusUpdatedAtOk returns a tuple with the StatusUpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInfo) GetStatusUpdatedAtOk() (*string, bool) {
+	if o == nil || o.StatusUpdatedAt == nil {
+		return nil, false
+	}
+	return o.StatusUpdatedAt, true
+}
+
+// HasStatusUpdatedAt returns a boolean if a field has been set.
+func (o *BillingInfo) HasStatusUpdatedAt() bool {
+	if o != nil && o.StatusUpdatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatusUpdatedAt gets a reference to the given string and assigns it to the StatusUpdatedAt field.
+func (o *BillingInfo) SetStatusUpdatedAt(v string) {
+	o.StatusUpdatedAt = &v
+}
+
+// GetSuspendAt returns the SuspendAt field value if set, zero value otherwise.
+func (o *BillingInfo) GetSuspendAt() string {
+	if o == nil || o.SuspendAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.SuspendAt
+}
+
+// GetSuspendAtOk returns a tuple with the SuspendAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInfo) GetSuspendAtOk() (*string, bool) {
+	if o == nil || o.SuspendAt == nil {
+		return nil, false
+	}
+	return o.SuspendAt, true
+}
+
+// HasSuspendAt returns a boolean if a field has been set.
+func (o *BillingInfo) HasSuspendAt() bool {
+	if o != nil && o.SuspendAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSuspendAt gets a reference to the given string and assigns it to the SuspendAt field.
+func (o *BillingInfo) SetSuspendAt(v string) {
+	o.SuspendAt = &v
+}
+
+// GetSuspendAtReason returns the SuspendAtReason field value if set, zero value otherwise.
+func (o *BillingInfo) GetSuspendAtReason() string {
+	if o == nil || o.SuspendAtReason == nil {
+		var ret string
+		return ret
+	}
+	return *o.SuspendAtReason
+}
+
+// GetSuspendAtReasonOk returns a tuple with the SuspendAtReason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInfo) GetSuspendAtReasonOk() (*string, bool) {
+	if o == nil || o.SuspendAtReason == nil {
+		return nil, false
+	}
+	return o.SuspendAtReason, true
+}
+
+// HasSuspendAtReason returns a boolean if a field has been set.
+func (o *BillingInfo) HasSuspendAtReason() bool {
+	if o != nil && o.SuspendAtReason != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSuspendAtReason gets a reference to the given string and assigns it to the SuspendAtReason field.
+func (o *BillingInfo) SetSuspendAtReason(v string) {
+	o.SuspendAtReason = &v
+}
+
 func (o BillingInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CycleAnchor != nil {
+		toSerialize["cycle_anchor"] = o.CycleAnchor
+	}
 	if o.DeleteAt != nil {
 		toSerialize["delete_at"] = o.DeleteAt
 	}
-	if o.DisableAt != nil {
-		toSerialize["disable_at"] = o.DisableAt
+	if o.DeleteAtReason != nil {
+		toSerialize["delete_at_reason"] = o.DeleteAtReason
 	}
 	if true {
 		toSerialize["status"] = o.Status
+	}
+	if o.StatusUpdatedAt != nil {
+		toSerialize["status_updated_at"] = o.StatusUpdatedAt
+	}
+	if o.SuspendAt != nil {
+		toSerialize["suspend_at"] = o.SuspendAt
+	}
+	if o.SuspendAtReason != nil {
+		toSerialize["suspend_at_reason"] = o.SuspendAtReason
 	}
 	return json.Marshal(toSerialize)
 }

@@ -16,10 +16,16 @@ import (
 
 // UpdateOrgRequest struct for UpdateOrgRequest
 type UpdateOrgRequest struct {
-	DisplayName      *string   `json:"display_name,omitempty"`
-	Handle           *string   `json:"handle,omitempty"`
-	TokenMinIssuedAt *JSONTime `json:"token_min_issued_at,omitempty"`
-	Url              *string   `json:"url,omitempty"`
+	DisplayName           *string   `json:"display_name,omitempty"`
+	Handle                *string   `json:"handle,omitempty"`
+	TokenMinIssuedAt      *JSONTime `json:"token_min_issued_at,omitempty"`
+	Url                   *string   `json:"url,omitempty"`
+	UsageComputeAction    *string   `json:"usage_compute_action,omitempty"`
+	UsageComputeThreshold *int32    `json:"usage_compute_threshold,omitempty"`
+	UsageStorageAction    *string   `json:"usage_storage_action,omitempty"`
+	UsageStorageThreshold *int32    `json:"usage_storage_threshold,omitempty"`
+	UsageUserAction       *string   `json:"usage_user_action,omitempty"`
+	UsageUserThreshold    *int32    `json:"usage_user_threshold,omitempty"`
 }
 
 // NewUpdateOrgRequest instantiates a new UpdateOrgRequest object
@@ -167,6 +173,198 @@ func (o *UpdateOrgRequest) SetUrl(v string) {
 	o.Url = &v
 }
 
+// GetUsageComputeAction returns the UsageComputeAction field value if set, zero value otherwise.
+func (o *UpdateOrgRequest) GetUsageComputeAction() string {
+	if o == nil || o.UsageComputeAction == nil {
+		var ret string
+		return ret
+	}
+	return *o.UsageComputeAction
+}
+
+// GetUsageComputeActionOk returns a tuple with the UsageComputeAction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateOrgRequest) GetUsageComputeActionOk() (*string, bool) {
+	if o == nil || o.UsageComputeAction == nil {
+		return nil, false
+	}
+	return o.UsageComputeAction, true
+}
+
+// HasUsageComputeAction returns a boolean if a field has been set.
+func (o *UpdateOrgRequest) HasUsageComputeAction() bool {
+	if o != nil && o.UsageComputeAction != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageComputeAction gets a reference to the given string and assigns it to the UsageComputeAction field.
+func (o *UpdateOrgRequest) SetUsageComputeAction(v string) {
+	o.UsageComputeAction = &v
+}
+
+// GetUsageComputeThreshold returns the UsageComputeThreshold field value if set, zero value otherwise.
+func (o *UpdateOrgRequest) GetUsageComputeThreshold() int32 {
+	if o == nil || o.UsageComputeThreshold == nil {
+		var ret int32
+		return ret
+	}
+	return *o.UsageComputeThreshold
+}
+
+// GetUsageComputeThresholdOk returns a tuple with the UsageComputeThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateOrgRequest) GetUsageComputeThresholdOk() (*int32, bool) {
+	if o == nil || o.UsageComputeThreshold == nil {
+		return nil, false
+	}
+	return o.UsageComputeThreshold, true
+}
+
+// HasUsageComputeThreshold returns a boolean if a field has been set.
+func (o *UpdateOrgRequest) HasUsageComputeThreshold() bool {
+	if o != nil && o.UsageComputeThreshold != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageComputeThreshold gets a reference to the given int32 and assigns it to the UsageComputeThreshold field.
+func (o *UpdateOrgRequest) SetUsageComputeThreshold(v int32) {
+	o.UsageComputeThreshold = &v
+}
+
+// GetUsageStorageAction returns the UsageStorageAction field value if set, zero value otherwise.
+func (o *UpdateOrgRequest) GetUsageStorageAction() string {
+	if o == nil || o.UsageStorageAction == nil {
+		var ret string
+		return ret
+	}
+	return *o.UsageStorageAction
+}
+
+// GetUsageStorageActionOk returns a tuple with the UsageStorageAction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateOrgRequest) GetUsageStorageActionOk() (*string, bool) {
+	if o == nil || o.UsageStorageAction == nil {
+		return nil, false
+	}
+	return o.UsageStorageAction, true
+}
+
+// HasUsageStorageAction returns a boolean if a field has been set.
+func (o *UpdateOrgRequest) HasUsageStorageAction() bool {
+	if o != nil && o.UsageStorageAction != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageStorageAction gets a reference to the given string and assigns it to the UsageStorageAction field.
+func (o *UpdateOrgRequest) SetUsageStorageAction(v string) {
+	o.UsageStorageAction = &v
+}
+
+// GetUsageStorageThreshold returns the UsageStorageThreshold field value if set, zero value otherwise.
+func (o *UpdateOrgRequest) GetUsageStorageThreshold() int32 {
+	if o == nil || o.UsageStorageThreshold == nil {
+		var ret int32
+		return ret
+	}
+	return *o.UsageStorageThreshold
+}
+
+// GetUsageStorageThresholdOk returns a tuple with the UsageStorageThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateOrgRequest) GetUsageStorageThresholdOk() (*int32, bool) {
+	if o == nil || o.UsageStorageThreshold == nil {
+		return nil, false
+	}
+	return o.UsageStorageThreshold, true
+}
+
+// HasUsageStorageThreshold returns a boolean if a field has been set.
+func (o *UpdateOrgRequest) HasUsageStorageThreshold() bool {
+	if o != nil && o.UsageStorageThreshold != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageStorageThreshold gets a reference to the given int32 and assigns it to the UsageStorageThreshold field.
+func (o *UpdateOrgRequest) SetUsageStorageThreshold(v int32) {
+	o.UsageStorageThreshold = &v
+}
+
+// GetUsageUserAction returns the UsageUserAction field value if set, zero value otherwise.
+func (o *UpdateOrgRequest) GetUsageUserAction() string {
+	if o == nil || o.UsageUserAction == nil {
+		var ret string
+		return ret
+	}
+	return *o.UsageUserAction
+}
+
+// GetUsageUserActionOk returns a tuple with the UsageUserAction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateOrgRequest) GetUsageUserActionOk() (*string, bool) {
+	if o == nil || o.UsageUserAction == nil {
+		return nil, false
+	}
+	return o.UsageUserAction, true
+}
+
+// HasUsageUserAction returns a boolean if a field has been set.
+func (o *UpdateOrgRequest) HasUsageUserAction() bool {
+	if o != nil && o.UsageUserAction != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageUserAction gets a reference to the given string and assigns it to the UsageUserAction field.
+func (o *UpdateOrgRequest) SetUsageUserAction(v string) {
+	o.UsageUserAction = &v
+}
+
+// GetUsageUserThreshold returns the UsageUserThreshold field value if set, zero value otherwise.
+func (o *UpdateOrgRequest) GetUsageUserThreshold() int32 {
+	if o == nil || o.UsageUserThreshold == nil {
+		var ret int32
+		return ret
+	}
+	return *o.UsageUserThreshold
+}
+
+// GetUsageUserThresholdOk returns a tuple with the UsageUserThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateOrgRequest) GetUsageUserThresholdOk() (*int32, bool) {
+	if o == nil || o.UsageUserThreshold == nil {
+		return nil, false
+	}
+	return o.UsageUserThreshold, true
+}
+
+// HasUsageUserThreshold returns a boolean if a field has been set.
+func (o *UpdateOrgRequest) HasUsageUserThreshold() bool {
+	if o != nil && o.UsageUserThreshold != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageUserThreshold gets a reference to the given int32 and assigns it to the UsageUserThreshold field.
+func (o *UpdateOrgRequest) SetUsageUserThreshold(v int32) {
+	o.UsageUserThreshold = &v
+}
+
 func (o UpdateOrgRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DisplayName != nil {
@@ -180,6 +378,24 @@ func (o UpdateOrgRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url
+	}
+	if o.UsageComputeAction != nil {
+		toSerialize["usage_compute_action"] = o.UsageComputeAction
+	}
+	if o.UsageComputeThreshold != nil {
+		toSerialize["usage_compute_threshold"] = o.UsageComputeThreshold
+	}
+	if o.UsageStorageAction != nil {
+		toSerialize["usage_storage_action"] = o.UsageStorageAction
+	}
+	if o.UsageStorageThreshold != nil {
+		toSerialize["usage_storage_threshold"] = o.UsageStorageThreshold
+	}
+	if o.UsageUserAction != nil {
+		toSerialize["usage_user_action"] = o.UsageUserAction
+	}
+	if o.UsageUserThreshold != nil {
+		toSerialize["usage_user_threshold"] = o.UsageUserThreshold
 	}
 	return json.Marshal(toSerialize)
 }

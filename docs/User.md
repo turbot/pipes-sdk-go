@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AvatarUrl** | Pointer to **string** |  | [optional] 
+**Billing** | Pointer to [**BillingInfo**](BillingInfo.md) |  | [optional] 
 **CreatedAt** | **string** | The user created time. | 
 **DisplayName** | Pointer to **string** |  | [optional] 
 **Handle** | **string** | The handle name of a user. | 
@@ -14,6 +15,10 @@ Name | Type | Description | Notes
 **TokenMinIssuedAt** | Pointer to **string** | The time which user and temporary auth tokens must be issued after. | [optional] 
 **UpdatedAt** | Pointer to **string** | The user updated time. | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
+**UsageComputeAction** | Pointer to **string** |  | [optional] 
+**UsageComputeThreshold** | Pointer to **int32** |  | [optional] 
+**UsageStorageAction** | Pointer to **string** |  | [optional] 
+**UsageStorageThreshold** | Pointer to **int32** |  | [optional] 
 **VersionId** | **int32** | The current version of a user. | 
 
 ## Methods
@@ -59,6 +64,31 @@ SetAvatarUrl sets AvatarUrl field to given value.
 `func (o *User) HasAvatarUrl() bool`
 
 HasAvatarUrl returns a boolean if a field has been set.
+
+### GetBilling
+
+`func (o *User) GetBilling() BillingInfo`
+
+GetBilling returns the Billing field if non-nil, zero value otherwise.
+
+### GetBillingOk
+
+`func (o *User) GetBillingOk() (*BillingInfo, bool)`
+
+GetBillingOk returns a tuple with the Billing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBilling
+
+`func (o *User) SetBilling(v BillingInfo)`
+
+SetBilling sets Billing field to given value.
+
+### HasBilling
+
+`func (o *User) HasBilling() bool`
+
+HasBilling returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -264,6 +294,106 @@ SetUrl sets Url field to given value.
 `func (o *User) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
+
+### GetUsageComputeAction
+
+`func (o *User) GetUsageComputeAction() string`
+
+GetUsageComputeAction returns the UsageComputeAction field if non-nil, zero value otherwise.
+
+### GetUsageComputeActionOk
+
+`func (o *User) GetUsageComputeActionOk() (*string, bool)`
+
+GetUsageComputeActionOk returns a tuple with the UsageComputeAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageComputeAction
+
+`func (o *User) SetUsageComputeAction(v string)`
+
+SetUsageComputeAction sets UsageComputeAction field to given value.
+
+### HasUsageComputeAction
+
+`func (o *User) HasUsageComputeAction() bool`
+
+HasUsageComputeAction returns a boolean if a field has been set.
+
+### GetUsageComputeThreshold
+
+`func (o *User) GetUsageComputeThreshold() int32`
+
+GetUsageComputeThreshold returns the UsageComputeThreshold field if non-nil, zero value otherwise.
+
+### GetUsageComputeThresholdOk
+
+`func (o *User) GetUsageComputeThresholdOk() (*int32, bool)`
+
+GetUsageComputeThresholdOk returns a tuple with the UsageComputeThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageComputeThreshold
+
+`func (o *User) SetUsageComputeThreshold(v int32)`
+
+SetUsageComputeThreshold sets UsageComputeThreshold field to given value.
+
+### HasUsageComputeThreshold
+
+`func (o *User) HasUsageComputeThreshold() bool`
+
+HasUsageComputeThreshold returns a boolean if a field has been set.
+
+### GetUsageStorageAction
+
+`func (o *User) GetUsageStorageAction() string`
+
+GetUsageStorageAction returns the UsageStorageAction field if non-nil, zero value otherwise.
+
+### GetUsageStorageActionOk
+
+`func (o *User) GetUsageStorageActionOk() (*string, bool)`
+
+GetUsageStorageActionOk returns a tuple with the UsageStorageAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageStorageAction
+
+`func (o *User) SetUsageStorageAction(v string)`
+
+SetUsageStorageAction sets UsageStorageAction field to given value.
+
+### HasUsageStorageAction
+
+`func (o *User) HasUsageStorageAction() bool`
+
+HasUsageStorageAction returns a boolean if a field has been set.
+
+### GetUsageStorageThreshold
+
+`func (o *User) GetUsageStorageThreshold() int32`
+
+GetUsageStorageThreshold returns the UsageStorageThreshold field if non-nil, zero value otherwise.
+
+### GetUsageStorageThresholdOk
+
+`func (o *User) GetUsageStorageThresholdOk() (*int32, bool)`
+
+GetUsageStorageThresholdOk returns a tuple with the UsageStorageThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageStorageThreshold
+
+`func (o *User) SetUsageStorageThreshold(v int32)`
+
+SetUsageStorageThreshold sets UsageStorageThreshold field to given value.
+
+### HasUsageStorageThreshold
+
+`func (o *User) HasUsageStorageThreshold() bool`
+
+HasUsageStorageThreshold returns a boolean if a field has been set.
 
 ### GetVersionId
 

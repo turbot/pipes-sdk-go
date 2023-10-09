@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
 **UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
+**Usage** | Pointer to **map[string]interface{}** | The usage information for this snapshot. | [optional] 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 **Visibility** | Pointer to **string** | The visibility of the snapshot. | [optional] 
 **WorkspaceId** | **string** | The unique identifier for the workspace that the snapshot belongs to. | 
@@ -422,6 +423,31 @@ and a boolean to check if the value has been set.
 
 SetUpdatedById sets UpdatedById field to given value.
 
+
+### GetUsage
+
+`func (o *WorkspaceSnapshot) GetUsage() map[string]interface{}`
+
+GetUsage returns the Usage field if non-nil, zero value otherwise.
+
+### GetUsageOk
+
+`func (o *WorkspaceSnapshot) GetUsageOk() (*map[string]interface{}, bool)`
+
+GetUsageOk returns a tuple with the Usage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsage
+
+`func (o *WorkspaceSnapshot) SetUsage(v map[string]interface{})`
+
+SetUsage sets Usage field to given value.
+
+### HasUsage
+
+`func (o *WorkspaceSnapshot) HasUsage() bool`
+
+HasUsage returns a boolean if a field has been set.
 
 ### GetVersionId
 

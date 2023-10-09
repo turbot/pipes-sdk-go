@@ -8,6 +8,10 @@ Name | Type | Description | Notes
 **Handle** | Pointer to **string** |  | [optional] 
 **TokenMinIssuedAt** | Pointer to [**JSONTime**](JSONTime.md) |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
+**UsageComputeAction** | Pointer to **string** |  | [optional] 
+**UsageComputeThreshold** | Pointer to **int32** |  | [optional] 
+**UsageStorageAction** | Pointer to **string** |  | [optional] 
+**UsageStorageThreshold** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -127,6 +131,106 @@ SetUrl sets Url field to given value.
 `func (o *UpdateUserRequest) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
+
+### GetUsageComputeAction
+
+`func (o *UpdateUserRequest) GetUsageComputeAction() string`
+
+GetUsageComputeAction returns the UsageComputeAction field if non-nil, zero value otherwise.
+
+### GetUsageComputeActionOk
+
+`func (o *UpdateUserRequest) GetUsageComputeActionOk() (*string, bool)`
+
+GetUsageComputeActionOk returns a tuple with the UsageComputeAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageComputeAction
+
+`func (o *UpdateUserRequest) SetUsageComputeAction(v string)`
+
+SetUsageComputeAction sets UsageComputeAction field to given value.
+
+### HasUsageComputeAction
+
+`func (o *UpdateUserRequest) HasUsageComputeAction() bool`
+
+HasUsageComputeAction returns a boolean if a field has been set.
+
+### GetUsageComputeThreshold
+
+`func (o *UpdateUserRequest) GetUsageComputeThreshold() int32`
+
+GetUsageComputeThreshold returns the UsageComputeThreshold field if non-nil, zero value otherwise.
+
+### GetUsageComputeThresholdOk
+
+`func (o *UpdateUserRequest) GetUsageComputeThresholdOk() (*int32, bool)`
+
+GetUsageComputeThresholdOk returns a tuple with the UsageComputeThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageComputeThreshold
+
+`func (o *UpdateUserRequest) SetUsageComputeThreshold(v int32)`
+
+SetUsageComputeThreshold sets UsageComputeThreshold field to given value.
+
+### HasUsageComputeThreshold
+
+`func (o *UpdateUserRequest) HasUsageComputeThreshold() bool`
+
+HasUsageComputeThreshold returns a boolean if a field has been set.
+
+### GetUsageStorageAction
+
+`func (o *UpdateUserRequest) GetUsageStorageAction() string`
+
+GetUsageStorageAction returns the UsageStorageAction field if non-nil, zero value otherwise.
+
+### GetUsageStorageActionOk
+
+`func (o *UpdateUserRequest) GetUsageStorageActionOk() (*string, bool)`
+
+GetUsageStorageActionOk returns a tuple with the UsageStorageAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageStorageAction
+
+`func (o *UpdateUserRequest) SetUsageStorageAction(v string)`
+
+SetUsageStorageAction sets UsageStorageAction field to given value.
+
+### HasUsageStorageAction
+
+`func (o *UpdateUserRequest) HasUsageStorageAction() bool`
+
+HasUsageStorageAction returns a boolean if a field has been set.
+
+### GetUsageStorageThreshold
+
+`func (o *UpdateUserRequest) GetUsageStorageThreshold() int32`
+
+GetUsageStorageThreshold returns the UsageStorageThreshold field if non-nil, zero value otherwise.
+
+### GetUsageStorageThresholdOk
+
+`func (o *UpdateUserRequest) GetUsageStorageThresholdOk() (*int32, bool)`
+
+GetUsageStorageThresholdOk returns a tuple with the UsageStorageThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageStorageThreshold
+
+`func (o *UpdateUserRequest) SetUsageStorageThreshold(v int32)`
+
+SetUsageStorageThreshold sets UsageStorageThreshold field to given value.
+
+### HasUsageStorageThreshold
+
+`func (o *UpdateUserRequest) HasUsageStorageThreshold() bool`
+
+HasUsageStorageThreshold returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

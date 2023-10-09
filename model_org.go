@@ -35,18 +35,20 @@ type Org struct {
 	Handle string `json:"handle"`
 	// The unique identifier for an org.
 	Id string `json:"id"`
-	// The state of the org.
-	State string `json:"state"`
-	// The reason for the state of the org
-	StateReason *string `json:"state_reason,omitempty"`
 	// The time which user and temporary auth tokens must be issued after.
 	TokenMinIssuedAt *string `json:"token_min_issued_at,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
 	UpdatedBy *User   `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
-	UpdatedById string  `json:"updated_by_id"`
-	Url         *string `json:"url,omitempty"`
+	UpdatedById           string  `json:"updated_by_id"`
+	Url                   *string `json:"url,omitempty"`
+	UsageComputeAction    *string `json:"usage_compute_action,omitempty"`
+	UsageComputeThreshold *int32  `json:"usage_compute_threshold,omitempty"`
+	UsageStorageAction    *string `json:"usage_storage_action,omitempty"`
+	UsageStorageThreshold *int32  `json:"usage_storage_threshold,omitempty"`
+	UsageUserAction       *string `json:"usage_user_action,omitempty"`
+	UsageUserThreshold    *int32  `json:"usage_user_threshold,omitempty"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
 	VersionId int32 `json:"version_id"`
 }
@@ -55,14 +57,13 @@ type Org struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrg(createdAt string, createdById string, deletedById string, handle string, id string, state string, updatedById string, versionId int32) *Org {
+func NewOrg(createdAt string, createdById string, deletedById string, handle string, id string, updatedById string, versionId int32) *Org {
 	this := Org{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
 	this.DeletedById = deletedById
 	this.Handle = handle
 	this.Id = id
-	this.State = state
 	this.UpdatedById = updatedById
 	this.VersionId = versionId
 	return &this
@@ -388,62 +389,6 @@ func (o *Org) SetId(v string) {
 	o.Id = v
 }
 
-// GetState returns the State field value
-func (o *Org) GetState() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.State
-}
-
-// GetStateOk returns a tuple with the State field value
-// and a boolean to check if the value has been set.
-func (o *Org) GetStateOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.State, true
-}
-
-// SetState sets field value
-func (o *Org) SetState(v string) {
-	o.State = v
-}
-
-// GetStateReason returns the StateReason field value if set, zero value otherwise.
-func (o *Org) GetStateReason() string {
-	if o == nil || o.StateReason == nil {
-		var ret string
-		return ret
-	}
-	return *o.StateReason
-}
-
-// GetStateReasonOk returns a tuple with the StateReason field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Org) GetStateReasonOk() (*string, bool) {
-	if o == nil || o.StateReason == nil {
-		return nil, false
-	}
-	return o.StateReason, true
-}
-
-// HasStateReason returns a boolean if a field has been set.
-func (o *Org) HasStateReason() bool {
-	if o != nil && o.StateReason != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStateReason gets a reference to the given string and assigns it to the StateReason field.
-func (o *Org) SetStateReason(v string) {
-	o.StateReason = &v
-}
-
 // GetTokenMinIssuedAt returns the TokenMinIssuedAt field value if set, zero value otherwise.
 func (o *Org) GetTokenMinIssuedAt() string {
 	if o == nil || o.TokenMinIssuedAt == nil {
@@ -596,6 +541,198 @@ func (o *Org) SetUrl(v string) {
 	o.Url = &v
 }
 
+// GetUsageComputeAction returns the UsageComputeAction field value if set, zero value otherwise.
+func (o *Org) GetUsageComputeAction() string {
+	if o == nil || o.UsageComputeAction == nil {
+		var ret string
+		return ret
+	}
+	return *o.UsageComputeAction
+}
+
+// GetUsageComputeActionOk returns a tuple with the UsageComputeAction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Org) GetUsageComputeActionOk() (*string, bool) {
+	if o == nil || o.UsageComputeAction == nil {
+		return nil, false
+	}
+	return o.UsageComputeAction, true
+}
+
+// HasUsageComputeAction returns a boolean if a field has been set.
+func (o *Org) HasUsageComputeAction() bool {
+	if o != nil && o.UsageComputeAction != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageComputeAction gets a reference to the given string and assigns it to the UsageComputeAction field.
+func (o *Org) SetUsageComputeAction(v string) {
+	o.UsageComputeAction = &v
+}
+
+// GetUsageComputeThreshold returns the UsageComputeThreshold field value if set, zero value otherwise.
+func (o *Org) GetUsageComputeThreshold() int32 {
+	if o == nil || o.UsageComputeThreshold == nil {
+		var ret int32
+		return ret
+	}
+	return *o.UsageComputeThreshold
+}
+
+// GetUsageComputeThresholdOk returns a tuple with the UsageComputeThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Org) GetUsageComputeThresholdOk() (*int32, bool) {
+	if o == nil || o.UsageComputeThreshold == nil {
+		return nil, false
+	}
+	return o.UsageComputeThreshold, true
+}
+
+// HasUsageComputeThreshold returns a boolean if a field has been set.
+func (o *Org) HasUsageComputeThreshold() bool {
+	if o != nil && o.UsageComputeThreshold != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageComputeThreshold gets a reference to the given int32 and assigns it to the UsageComputeThreshold field.
+func (o *Org) SetUsageComputeThreshold(v int32) {
+	o.UsageComputeThreshold = &v
+}
+
+// GetUsageStorageAction returns the UsageStorageAction field value if set, zero value otherwise.
+func (o *Org) GetUsageStorageAction() string {
+	if o == nil || o.UsageStorageAction == nil {
+		var ret string
+		return ret
+	}
+	return *o.UsageStorageAction
+}
+
+// GetUsageStorageActionOk returns a tuple with the UsageStorageAction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Org) GetUsageStorageActionOk() (*string, bool) {
+	if o == nil || o.UsageStorageAction == nil {
+		return nil, false
+	}
+	return o.UsageStorageAction, true
+}
+
+// HasUsageStorageAction returns a boolean if a field has been set.
+func (o *Org) HasUsageStorageAction() bool {
+	if o != nil && o.UsageStorageAction != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageStorageAction gets a reference to the given string and assigns it to the UsageStorageAction field.
+func (o *Org) SetUsageStorageAction(v string) {
+	o.UsageStorageAction = &v
+}
+
+// GetUsageStorageThreshold returns the UsageStorageThreshold field value if set, zero value otherwise.
+func (o *Org) GetUsageStorageThreshold() int32 {
+	if o == nil || o.UsageStorageThreshold == nil {
+		var ret int32
+		return ret
+	}
+	return *o.UsageStorageThreshold
+}
+
+// GetUsageStorageThresholdOk returns a tuple with the UsageStorageThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Org) GetUsageStorageThresholdOk() (*int32, bool) {
+	if o == nil || o.UsageStorageThreshold == nil {
+		return nil, false
+	}
+	return o.UsageStorageThreshold, true
+}
+
+// HasUsageStorageThreshold returns a boolean if a field has been set.
+func (o *Org) HasUsageStorageThreshold() bool {
+	if o != nil && o.UsageStorageThreshold != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageStorageThreshold gets a reference to the given int32 and assigns it to the UsageStorageThreshold field.
+func (o *Org) SetUsageStorageThreshold(v int32) {
+	o.UsageStorageThreshold = &v
+}
+
+// GetUsageUserAction returns the UsageUserAction field value if set, zero value otherwise.
+func (o *Org) GetUsageUserAction() string {
+	if o == nil || o.UsageUserAction == nil {
+		var ret string
+		return ret
+	}
+	return *o.UsageUserAction
+}
+
+// GetUsageUserActionOk returns a tuple with the UsageUserAction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Org) GetUsageUserActionOk() (*string, bool) {
+	if o == nil || o.UsageUserAction == nil {
+		return nil, false
+	}
+	return o.UsageUserAction, true
+}
+
+// HasUsageUserAction returns a boolean if a field has been set.
+func (o *Org) HasUsageUserAction() bool {
+	if o != nil && o.UsageUserAction != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageUserAction gets a reference to the given string and assigns it to the UsageUserAction field.
+func (o *Org) SetUsageUserAction(v string) {
+	o.UsageUserAction = &v
+}
+
+// GetUsageUserThreshold returns the UsageUserThreshold field value if set, zero value otherwise.
+func (o *Org) GetUsageUserThreshold() int32 {
+	if o == nil || o.UsageUserThreshold == nil {
+		var ret int32
+		return ret
+	}
+	return *o.UsageUserThreshold
+}
+
+// GetUsageUserThresholdOk returns a tuple with the UsageUserThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Org) GetUsageUserThresholdOk() (*int32, bool) {
+	if o == nil || o.UsageUserThreshold == nil {
+		return nil, false
+	}
+	return o.UsageUserThreshold, true
+}
+
+// HasUsageUserThreshold returns a boolean if a field has been set.
+func (o *Org) HasUsageUserThreshold() bool {
+	if o != nil && o.UsageUserThreshold != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageUserThreshold gets a reference to the given int32 and assigns it to the UsageUserThreshold field.
+func (o *Org) SetUsageUserThreshold(v int32) {
+	o.UsageUserThreshold = &v
+}
+
 // GetVersionId returns the VersionId field value
 func (o *Org) GetVersionId() int32 {
 	if o == nil {
@@ -655,12 +792,6 @@ func (o Org) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["id"] = o.Id
 	}
-	if true {
-		toSerialize["state"] = o.State
-	}
-	if o.StateReason != nil {
-		toSerialize["state_reason"] = o.StateReason
-	}
 	if o.TokenMinIssuedAt != nil {
 		toSerialize["token_min_issued_at"] = o.TokenMinIssuedAt
 	}
@@ -675,6 +806,24 @@ func (o Org) MarshalJSON() ([]byte, error) {
 	}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url
+	}
+	if o.UsageComputeAction != nil {
+		toSerialize["usage_compute_action"] = o.UsageComputeAction
+	}
+	if o.UsageComputeThreshold != nil {
+		toSerialize["usage_compute_threshold"] = o.UsageComputeThreshold
+	}
+	if o.UsageStorageAction != nil {
+		toSerialize["usage_storage_action"] = o.UsageStorageAction
+	}
+	if o.UsageStorageThreshold != nil {
+		toSerialize["usage_storage_threshold"] = o.UsageStorageThreshold
+	}
+	if o.UsageUserAction != nil {
+		toSerialize["usage_user_action"] = o.UsageUserAction
+	}
+	if o.UsageUserThreshold != nil {
+		toSerialize["usage_user_threshold"] = o.UsageUserThreshold
 	}
 	if true {
 		toSerialize["version_id"] = o.VersionId
