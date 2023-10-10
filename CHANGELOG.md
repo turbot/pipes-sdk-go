@@ -1,5 +1,22 @@
 # Turbot Pipes Go SDK
 
+## 0.8.0 [TBD]
+
+_What's new?_
+
+- Identity Datatank APIs.
+- Identity Datatank Table APIs.
+- Identity Datatank Part APIs.
+- Identity Usage APIs.
+- Identity Workspace Usage APIs.
+
+_Enhancements_
+
+- Added attribute `InstanceType` to `CreateWorkspaceRequest` for passing the instance type information of the workspace to be created.
+- Added attribute `InstanceType` to `Workspace` for storing the instance type information of a workspace.
+- Added attribute `InstanceType` to `Pipeline` for storing the instance type information of a pipeline.
+- Added various usage attributes to `user` and `org` structs.
+
 ## 0.7.0 [2023-05-22]
 
 _What's new?_
