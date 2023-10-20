@@ -15,20 +15,24 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** | The display name of an org. | [optional] 
 **Handle** | **string** | The handle name for an org. | 
 **Id** | **string** | The unique identifier for an org. | 
-**State** | **string** | The state of the org. | 
-**StateReason** | Pointer to **string** | The reason for the state of the org | [optional] 
 **TokenMinIssuedAt** | Pointer to **string** | The time which user and temporary auth tokens must be issued after. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
 **UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **Url** | Pointer to **string** |  | [optional] 
+**UsageComputeAction** | Pointer to **string** |  | [optional] 
+**UsageComputeThreshold** | Pointer to **int32** |  | [optional] 
+**UsageStorageAction** | Pointer to **string** |  | [optional] 
+**UsageStorageThreshold** | Pointer to **int32** |  | [optional] 
+**UsageUserAction** | Pointer to **string** |  | [optional] 
+**UsageUserThreshold** | Pointer to **int32** |  | [optional] 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 
 ## Methods
 
 ### NewOrg
 
-`func NewOrg(createdAt string, createdById string, deletedById string, handle string, id string, state string, updatedById string, versionId int32, ) *Org`
+`func NewOrg(createdAt string, createdById string, deletedById string, handle string, id string, updatedById string, versionId int32, ) *Org`
 
 NewOrg instantiates a new Org object
 This constructor will assign default values to properties that have it defined,
@@ -293,51 +297,6 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
-### GetState
-
-`func (o *Org) GetState() string`
-
-GetState returns the State field if non-nil, zero value otherwise.
-
-### GetStateOk
-
-`func (o *Org) GetStateOk() (*string, bool)`
-
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetState
-
-`func (o *Org) SetState(v string)`
-
-SetState sets State field to given value.
-
-
-### GetStateReason
-
-`func (o *Org) GetStateReason() string`
-
-GetStateReason returns the StateReason field if non-nil, zero value otherwise.
-
-### GetStateReasonOk
-
-`func (o *Org) GetStateReasonOk() (*string, bool)`
-
-GetStateReasonOk returns a tuple with the StateReason field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStateReason
-
-`func (o *Org) SetStateReason(v string)`
-
-SetStateReason sets StateReason field to given value.
-
-### HasStateReason
-
-`func (o *Org) HasStateReason() bool`
-
-HasStateReason returns a boolean if a field has been set.
-
 ### GetTokenMinIssuedAt
 
 `func (o *Org) GetTokenMinIssuedAt() string`
@@ -457,6 +416,156 @@ SetUrl sets Url field to given value.
 `func (o *Org) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
+
+### GetUsageComputeAction
+
+`func (o *Org) GetUsageComputeAction() string`
+
+GetUsageComputeAction returns the UsageComputeAction field if non-nil, zero value otherwise.
+
+### GetUsageComputeActionOk
+
+`func (o *Org) GetUsageComputeActionOk() (*string, bool)`
+
+GetUsageComputeActionOk returns a tuple with the UsageComputeAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageComputeAction
+
+`func (o *Org) SetUsageComputeAction(v string)`
+
+SetUsageComputeAction sets UsageComputeAction field to given value.
+
+### HasUsageComputeAction
+
+`func (o *Org) HasUsageComputeAction() bool`
+
+HasUsageComputeAction returns a boolean if a field has been set.
+
+### GetUsageComputeThreshold
+
+`func (o *Org) GetUsageComputeThreshold() int32`
+
+GetUsageComputeThreshold returns the UsageComputeThreshold field if non-nil, zero value otherwise.
+
+### GetUsageComputeThresholdOk
+
+`func (o *Org) GetUsageComputeThresholdOk() (*int32, bool)`
+
+GetUsageComputeThresholdOk returns a tuple with the UsageComputeThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageComputeThreshold
+
+`func (o *Org) SetUsageComputeThreshold(v int32)`
+
+SetUsageComputeThreshold sets UsageComputeThreshold field to given value.
+
+### HasUsageComputeThreshold
+
+`func (o *Org) HasUsageComputeThreshold() bool`
+
+HasUsageComputeThreshold returns a boolean if a field has been set.
+
+### GetUsageStorageAction
+
+`func (o *Org) GetUsageStorageAction() string`
+
+GetUsageStorageAction returns the UsageStorageAction field if non-nil, zero value otherwise.
+
+### GetUsageStorageActionOk
+
+`func (o *Org) GetUsageStorageActionOk() (*string, bool)`
+
+GetUsageStorageActionOk returns a tuple with the UsageStorageAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageStorageAction
+
+`func (o *Org) SetUsageStorageAction(v string)`
+
+SetUsageStorageAction sets UsageStorageAction field to given value.
+
+### HasUsageStorageAction
+
+`func (o *Org) HasUsageStorageAction() bool`
+
+HasUsageStorageAction returns a boolean if a field has been set.
+
+### GetUsageStorageThreshold
+
+`func (o *Org) GetUsageStorageThreshold() int32`
+
+GetUsageStorageThreshold returns the UsageStorageThreshold field if non-nil, zero value otherwise.
+
+### GetUsageStorageThresholdOk
+
+`func (o *Org) GetUsageStorageThresholdOk() (*int32, bool)`
+
+GetUsageStorageThresholdOk returns a tuple with the UsageStorageThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageStorageThreshold
+
+`func (o *Org) SetUsageStorageThreshold(v int32)`
+
+SetUsageStorageThreshold sets UsageStorageThreshold field to given value.
+
+### HasUsageStorageThreshold
+
+`func (o *Org) HasUsageStorageThreshold() bool`
+
+HasUsageStorageThreshold returns a boolean if a field has been set.
+
+### GetUsageUserAction
+
+`func (o *Org) GetUsageUserAction() string`
+
+GetUsageUserAction returns the UsageUserAction field if non-nil, zero value otherwise.
+
+### GetUsageUserActionOk
+
+`func (o *Org) GetUsageUserActionOk() (*string, bool)`
+
+GetUsageUserActionOk returns a tuple with the UsageUserAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageUserAction
+
+`func (o *Org) SetUsageUserAction(v string)`
+
+SetUsageUserAction sets UsageUserAction field to given value.
+
+### HasUsageUserAction
+
+`func (o *Org) HasUsageUserAction() bool`
+
+HasUsageUserAction returns a boolean if a field has been set.
+
+### GetUsageUserThreshold
+
+`func (o *Org) GetUsageUserThreshold() int32`
+
+GetUsageUserThreshold returns the UsageUserThreshold field if non-nil, zero value otherwise.
+
+### GetUsageUserThresholdOk
+
+`func (o *Org) GetUsageUserThresholdOk() (*int32, bool)`
+
+GetUsageUserThresholdOk returns a tuple with the UsageUserThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageUserThreshold
+
+`func (o *Org) SetUsageUserThreshold(v int32)`
+
+SetUsageUserThreshold sets UsageUserThreshold field to given value.
+
+### HasUsageUserThreshold
+
+`func (o *Org) HasUsageUserThreshold() bool`
+
+HasUsageUserThreshold returns a boolean if a field has been set.
 
 ### GetVersionId
 

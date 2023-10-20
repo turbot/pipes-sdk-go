@@ -44,6 +44,8 @@ type WorkspaceSnapshot struct {
 	UpdatedBy *User   `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
+	// The usage information for this snapshot.
+	Usage *map[string]interface{} `json:"usage,omitempty"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
 	VersionId int32 `json:"version_id"`
 	// The visibility of the snapshot.
@@ -529,6 +531,38 @@ func (o *WorkspaceSnapshot) SetUpdatedById(v string) {
 	o.UpdatedById = v
 }
 
+// GetUsage returns the Usage field value if set, zero value otherwise.
+func (o *WorkspaceSnapshot) GetUsage() map[string]interface{} {
+	if o == nil || o.Usage == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Usage
+}
+
+// GetUsageOk returns a tuple with the Usage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceSnapshot) GetUsageOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Usage == nil {
+		return nil, false
+	}
+	return o.Usage, true
+}
+
+// HasUsage returns a boolean if a field has been set.
+func (o *WorkspaceSnapshot) HasUsage() bool {
+	if o != nil && o.Usage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsage gets a reference to the given map[string]interface{} and assigns it to the Usage field.
+func (o *WorkspaceSnapshot) SetUsage(v map[string]interface{}) {
+	o.Usage = &v
+}
+
 // GetVersionId returns the VersionId field value
 func (o *WorkspaceSnapshot) GetVersionId() int32 {
 	if o == nil {
@@ -658,6 +692,9 @@ func (o WorkspaceSnapshot) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["updated_by_id"] = o.UpdatedById
+	}
+	if o.Usage != nil {
+		toSerialize["usage"] = o.Usage
 	}
 	if true {
 		toSerialize["version_id"] = o.VersionId

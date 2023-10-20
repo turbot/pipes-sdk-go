@@ -39,9 +39,11 @@ type Workspace struct {
 	// The unique identifier for the workspace.
 	Id string `json:"id"`
 	// The unique identifier for an identity where the workspace is created.
-	IdentityId string                  `json:"identity_id"`
-	Notices    *map[string]interface{} `json:"notices,omitempty"`
-	PublicKey  *string                 `json:"public_key,omitempty"`
+	IdentityId string `json:"identity_id"`
+	// The instance type of this workspace.
+	InstanceType string                  `json:"instance_type"`
+	Notices      *map[string]interface{} `json:"notices,omitempty"`
+	PublicKey    *string                 `json:"public_key,omitempty"`
 	// The current state of the workspace.
 	State       *string `json:"state,omitempty"`
 	StateReason *string `json:"state_reason,omitempty"`
@@ -58,7 +60,7 @@ type Workspace struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkspace(createdAt string, createdById string, deletedById string, desiredState string, handle string, id string, identityId string, updatedById string, versionId int32) *Workspace {
+func NewWorkspace(createdAt string, createdById string, deletedById string, desiredState string, handle string, id string, identityId string, instanceType string, updatedById string, versionId int32) *Workspace {
 	this := Workspace{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
@@ -67,6 +69,7 @@ func NewWorkspace(createdAt string, createdById string, deletedById string, desi
 	this.Handle = handle
 	this.Id = id
 	this.IdentityId = identityId
+	this.InstanceType = instanceType
 	this.UpdatedById = updatedById
 	this.VersionId = versionId
 	return &this
@@ -504,6 +507,30 @@ func (o *Workspace) SetIdentityId(v string) {
 	o.IdentityId = v
 }
 
+// GetInstanceType returns the InstanceType field value
+func (o *Workspace) GetInstanceType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.InstanceType
+}
+
+// GetInstanceTypeOk returns a tuple with the InstanceType field value
+// and a boolean to check if the value has been set.
+func (o *Workspace) GetInstanceTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.InstanceType, true
+}
+
+// SetInstanceType sets field value
+func (o *Workspace) SetInstanceType(v string) {
+	o.InstanceType = v
+}
+
 // GetNotices returns the Notices field value if set, zero value otherwise.
 func (o *Workspace) GetNotices() map[string]interface{} {
 	if o == nil || o.Notices == nil {
@@ -790,6 +817,9 @@ func (o Workspace) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["identity_id"] = o.IdentityId
+	}
+	if true {
+		toSerialize["instance_type"] = o.InstanceType
 	}
 	if o.Notices != nil {
 		toSerialize["notices"] = o.Notices

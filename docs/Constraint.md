@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Approval** | Pointer to **string** | The status of the setting requested for the constraint at this level. | [optional] 
 **DatatankId** | Pointer to **string** | The datatank id for which the constraint applies to. | [optional] 
+**DatatankTableId** | Pointer to **string** | The datatank table id for which the constraint applies to. | [optional] 
 **Description** | Pointer to **string** | A short description of the constraint. | [optional] 
 **Limit** | Pointer to **interface{}** |  | [optional] 
 **Name** | **string** | The name of the constraint. | 
@@ -19,13 +20,14 @@ Name | Type | Description | Notes
 **UserId** | Pointer to **string** | The user id for which the constraint applies to. | [optional] 
 **Value** | **interface{}** |  | 
 **ValueFrom** | **string** | The id of the item from which the value is inherited. | 
+**Visibility** | **string** | The visibility of the constraint. Can be one of public or private. | 
 **WorkspaceId** | Pointer to **string** | The workspace id for which the constraint applies to. | [optional] 
 
 ## Methods
 
 ### NewConstraint
 
-`func NewConstraint(name string, target string, type_ string, value interface{}, valueFrom string, ) *Constraint`
+`func NewConstraint(name string, target string, type_ string, value interface{}, valueFrom string, visibility string, ) *Constraint`
 
 NewConstraint instantiates a new Constraint object
 This constructor will assign default values to properties that have it defined,
@@ -89,6 +91,31 @@ SetDatatankId sets DatatankId field to given value.
 `func (o *Constraint) HasDatatankId() bool`
 
 HasDatatankId returns a boolean if a field has been set.
+
+### GetDatatankTableId
+
+`func (o *Constraint) GetDatatankTableId() string`
+
+GetDatatankTableId returns the DatatankTableId field if non-nil, zero value otherwise.
+
+### GetDatatankTableIdOk
+
+`func (o *Constraint) GetDatatankTableIdOk() (*string, bool)`
+
+GetDatatankTableIdOk returns a tuple with the DatatankTableId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatatankTableId
+
+`func (o *Constraint) SetDatatankTableId(v string)`
+
+SetDatatankTableId sets DatatankTableId field to given value.
+
+### HasDatatankTableId
+
+`func (o *Constraint) HasDatatankTableId() bool`
+
+HasDatatankTableId returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -428,6 +455,26 @@ and a boolean to check if the value has been set.
 `func (o *Constraint) SetValueFrom(v string)`
 
 SetValueFrom sets ValueFrom field to given value.
+
+
+### GetVisibility
+
+`func (o *Constraint) GetVisibility() string`
+
+GetVisibility returns the Visibility field if non-nil, zero value otherwise.
+
+### GetVisibilityOk
+
+`func (o *Constraint) GetVisibilityOk() (*string, bool)`
+
+GetVisibilityOk returns a tuple with the Visibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVisibility
+
+`func (o *Constraint) SetVisibility(v string)`
+
+SetVisibility sets Visibility field to given value.
 
 
 ### GetWorkspaceId

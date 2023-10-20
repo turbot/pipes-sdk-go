@@ -16,7 +16,8 @@ import (
 
 // User struct for User
 type User struct {
-	AvatarUrl *string `json:"avatar_url,omitempty"`
+	AvatarUrl *string      `json:"avatar_url,omitempty"`
+	Billing   *BillingInfo `json:"billing,omitempty"`
 	// The user created time.
 	CreatedAt   string  `json:"created_at"`
 	DisplayName *string `json:"display_name,omitempty"`
@@ -30,8 +31,12 @@ type User struct {
 	// The time which user and temporary auth tokens must be issued after.
 	TokenMinIssuedAt *string `json:"token_min_issued_at,omitempty"`
 	// The user updated time.
-	UpdatedAt *string `json:"updated_at,omitempty"`
-	Url       *string `json:"url,omitempty"`
+	UpdatedAt             *string `json:"updated_at,omitempty"`
+	Url                   *string `json:"url,omitempty"`
+	UsageComputeAction    *string `json:"usage_compute_action,omitempty"`
+	UsageComputeThreshold *int32  `json:"usage_compute_threshold,omitempty"`
+	UsageStorageAction    *string `json:"usage_storage_action,omitempty"`
+	UsageStorageThreshold *int32  `json:"usage_storage_threshold,omitempty"`
 	// The current version of a user.
 	VersionId int32 `json:"version_id"`
 }
@@ -88,6 +93,38 @@ func (o *User) HasAvatarUrl() bool {
 // SetAvatarUrl gets a reference to the given string and assigns it to the AvatarUrl field.
 func (o *User) SetAvatarUrl(v string) {
 	o.AvatarUrl = &v
+}
+
+// GetBilling returns the Billing field value if set, zero value otherwise.
+func (o *User) GetBilling() BillingInfo {
+	if o == nil || o.Billing == nil {
+		var ret BillingInfo
+		return ret
+	}
+	return *o.Billing
+}
+
+// GetBillingOk returns a tuple with the Billing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *User) GetBillingOk() (*BillingInfo, bool) {
+	if o == nil || o.Billing == nil {
+		return nil, false
+	}
+	return o.Billing, true
+}
+
+// HasBilling returns a boolean if a field has been set.
+func (o *User) HasBilling() bool {
+	if o != nil && o.Billing != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBilling gets a reference to the given BillingInfo and assigns it to the Billing field.
+func (o *User) SetBilling(v BillingInfo) {
+	o.Billing = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -346,6 +383,134 @@ func (o *User) SetUrl(v string) {
 	o.Url = &v
 }
 
+// GetUsageComputeAction returns the UsageComputeAction field value if set, zero value otherwise.
+func (o *User) GetUsageComputeAction() string {
+	if o == nil || o.UsageComputeAction == nil {
+		var ret string
+		return ret
+	}
+	return *o.UsageComputeAction
+}
+
+// GetUsageComputeActionOk returns a tuple with the UsageComputeAction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *User) GetUsageComputeActionOk() (*string, bool) {
+	if o == nil || o.UsageComputeAction == nil {
+		return nil, false
+	}
+	return o.UsageComputeAction, true
+}
+
+// HasUsageComputeAction returns a boolean if a field has been set.
+func (o *User) HasUsageComputeAction() bool {
+	if o != nil && o.UsageComputeAction != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageComputeAction gets a reference to the given string and assigns it to the UsageComputeAction field.
+func (o *User) SetUsageComputeAction(v string) {
+	o.UsageComputeAction = &v
+}
+
+// GetUsageComputeThreshold returns the UsageComputeThreshold field value if set, zero value otherwise.
+func (o *User) GetUsageComputeThreshold() int32 {
+	if o == nil || o.UsageComputeThreshold == nil {
+		var ret int32
+		return ret
+	}
+	return *o.UsageComputeThreshold
+}
+
+// GetUsageComputeThresholdOk returns a tuple with the UsageComputeThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *User) GetUsageComputeThresholdOk() (*int32, bool) {
+	if o == nil || o.UsageComputeThreshold == nil {
+		return nil, false
+	}
+	return o.UsageComputeThreshold, true
+}
+
+// HasUsageComputeThreshold returns a boolean if a field has been set.
+func (o *User) HasUsageComputeThreshold() bool {
+	if o != nil && o.UsageComputeThreshold != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageComputeThreshold gets a reference to the given int32 and assigns it to the UsageComputeThreshold field.
+func (o *User) SetUsageComputeThreshold(v int32) {
+	o.UsageComputeThreshold = &v
+}
+
+// GetUsageStorageAction returns the UsageStorageAction field value if set, zero value otherwise.
+func (o *User) GetUsageStorageAction() string {
+	if o == nil || o.UsageStorageAction == nil {
+		var ret string
+		return ret
+	}
+	return *o.UsageStorageAction
+}
+
+// GetUsageStorageActionOk returns a tuple with the UsageStorageAction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *User) GetUsageStorageActionOk() (*string, bool) {
+	if o == nil || o.UsageStorageAction == nil {
+		return nil, false
+	}
+	return o.UsageStorageAction, true
+}
+
+// HasUsageStorageAction returns a boolean if a field has been set.
+func (o *User) HasUsageStorageAction() bool {
+	if o != nil && o.UsageStorageAction != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageStorageAction gets a reference to the given string and assigns it to the UsageStorageAction field.
+func (o *User) SetUsageStorageAction(v string) {
+	o.UsageStorageAction = &v
+}
+
+// GetUsageStorageThreshold returns the UsageStorageThreshold field value if set, zero value otherwise.
+func (o *User) GetUsageStorageThreshold() int32 {
+	if o == nil || o.UsageStorageThreshold == nil {
+		var ret int32
+		return ret
+	}
+	return *o.UsageStorageThreshold
+}
+
+// GetUsageStorageThresholdOk returns a tuple with the UsageStorageThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *User) GetUsageStorageThresholdOk() (*int32, bool) {
+	if o == nil || o.UsageStorageThreshold == nil {
+		return nil, false
+	}
+	return o.UsageStorageThreshold, true
+}
+
+// HasUsageStorageThreshold returns a boolean if a field has been set.
+func (o *User) HasUsageStorageThreshold() bool {
+	if o != nil && o.UsageStorageThreshold != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageStorageThreshold gets a reference to the given int32 and assigns it to the UsageStorageThreshold field.
+func (o *User) SetUsageStorageThreshold(v int32) {
+	o.UsageStorageThreshold = &v
+}
+
 // GetVersionId returns the VersionId field value
 func (o *User) GetVersionId() int32 {
 	if o == nil {
@@ -375,6 +540,9 @@ func (o User) MarshalJSON() ([]byte, error) {
 	if o.AvatarUrl != nil {
 		toSerialize["avatar_url"] = o.AvatarUrl
 	}
+	if o.Billing != nil {
+		toSerialize["billing"] = o.Billing
+	}
 	if true {
 		toSerialize["created_at"] = o.CreatedAt
 	}
@@ -401,6 +569,18 @@ func (o User) MarshalJSON() ([]byte, error) {
 	}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url
+	}
+	if o.UsageComputeAction != nil {
+		toSerialize["usage_compute_action"] = o.UsageComputeAction
+	}
+	if o.UsageComputeThreshold != nil {
+		toSerialize["usage_compute_threshold"] = o.UsageComputeThreshold
+	}
+	if o.UsageStorageAction != nil {
+		toSerialize["usage_storage_action"] = o.UsageStorageAction
+	}
+	if o.UsageStorageThreshold != nil {
+		toSerialize["usage_storage_threshold"] = o.UsageStorageThreshold
 	}
 	if true {
 		toSerialize["version_id"] = o.VersionId

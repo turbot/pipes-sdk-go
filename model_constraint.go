@@ -20,6 +20,8 @@ type Constraint struct {
 	Approval *string `json:"approval,omitempty"`
 	// The datatank id for which the constraint applies to.
 	DatatankId *string `json:"datatank_id,omitempty"`
+	// The datatank table id for which the constraint applies to.
+	DatatankTableId *string `json:"datatank_table_id,omitempty"`
 	// A short description of the constraint.
 	Description *string     `json:"description,omitempty"`
 	Limit       interface{} `json:"limit,omitempty"`
@@ -42,6 +44,8 @@ type Constraint struct {
 	Value  interface{} `json:"value"`
 	// The id of the item from which the value is inherited.
 	ValueFrom string `json:"value_from"`
+	// The visibility of the constraint. Can be one of public or private.
+	Visibility string `json:"visibility"`
 	// The workspace id for which the constraint applies to.
 	WorkspaceId *string `json:"workspace_id,omitempty"`
 }
@@ -50,13 +54,14 @@ type Constraint struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConstraint(name string, target string, type_ string, value interface{}, valueFrom string) *Constraint {
+func NewConstraint(name string, target string, type_ string, value interface{}, valueFrom string, visibility string) *Constraint {
 	this := Constraint{}
 	this.Name = name
 	this.Target = target
 	this.Type = type_
 	this.Value = value
 	this.ValueFrom = valueFrom
+	this.Visibility = visibility
 	return &this
 }
 
@@ -130,6 +135,38 @@ func (o *Constraint) HasDatatankId() bool {
 // SetDatatankId gets a reference to the given string and assigns it to the DatatankId field.
 func (o *Constraint) SetDatatankId(v string) {
 	o.DatatankId = &v
+}
+
+// GetDatatankTableId returns the DatatankTableId field value if set, zero value otherwise.
+func (o *Constraint) GetDatatankTableId() string {
+	if o == nil || o.DatatankTableId == nil {
+		var ret string
+		return ret
+	}
+	return *o.DatatankTableId
+}
+
+// GetDatatankTableIdOk returns a tuple with the DatatankTableId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Constraint) GetDatatankTableIdOk() (*string, bool) {
+	if o == nil || o.DatatankTableId == nil {
+		return nil, false
+	}
+	return o.DatatankTableId, true
+}
+
+// HasDatatankTableId returns a boolean if a field has been set.
+func (o *Constraint) HasDatatankTableId() bool {
+	if o != nil && o.DatatankTableId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDatatankTableId gets a reference to the given string and assigns it to the DatatankTableId field.
+func (o *Constraint) SetDatatankTableId(v string) {
+	o.DatatankTableId = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -513,6 +550,30 @@ func (o *Constraint) SetValueFrom(v string) {
 	o.ValueFrom = v
 }
 
+// GetVisibility returns the Visibility field value
+func (o *Constraint) GetVisibility() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Visibility
+}
+
+// GetVisibilityOk returns a tuple with the Visibility field value
+// and a boolean to check if the value has been set.
+func (o *Constraint) GetVisibilityOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Visibility, true
+}
+
+// SetVisibility sets field value
+func (o *Constraint) SetVisibility(v string) {
+	o.Visibility = v
+}
+
 // GetWorkspaceId returns the WorkspaceId field value if set, zero value otherwise.
 func (o *Constraint) GetWorkspaceId() string {
 	if o == nil || o.WorkspaceId == nil {
@@ -553,6 +614,9 @@ func (o Constraint) MarshalJSON() ([]byte, error) {
 	if o.DatatankId != nil {
 		toSerialize["datatank_id"] = o.DatatankId
 	}
+	if o.DatatankTableId != nil {
+		toSerialize["datatank_table_id"] = o.DatatankTableId
+	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
@@ -591,6 +655,9 @@ func (o Constraint) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["value_from"] = o.ValueFrom
+	}
+	if true {
+		toSerialize["visibility"] = o.Visibility
 	}
 	if o.WorkspaceId != nil {
 		toSerialize["workspace_id"] = o.WorkspaceId

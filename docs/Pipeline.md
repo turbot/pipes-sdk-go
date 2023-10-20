@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Frequency** | [**PipelineFrequency**](PipelineFrequency.md) |  | 
 **Id** | **string** | The unique identifier of the pipeline. | 
 **IdentityId** | **string** | We need the IdentityID to be in the JSON field because I&#39;m sending the pipeline definition across the Temporal Workflow (see Datatank migration workflow) | 
+**InstanceType** | **string** | The instance type of this pipeline. | 
 **LastProcess** | Pointer to [**SpProcess**](SpProcess.md) |  | [optional] 
 **LastProcessId** | Pointer to **string** | The id of the last process that was run for the pipeline. | [optional] 
 **NextRunAt** | Pointer to **string** | The time when the pipeline is next scheduled to run in ISO 8601 UTC. | [optional] 
@@ -33,7 +34,7 @@ Name | Type | Description | Notes
 
 ### NewPipeline
 
-`func NewPipeline(createdAt string, createdById string, deletedById string, desiredState string, frequency PipelineFrequency, id string, identityId string, pipeline string, state string, updatedById string, versionId int32, ) *Pipeline`
+`func NewPipeline(createdAt string, createdById string, deletedById string, desiredState string, frequency PipelineFrequency, id string, identityId string, instanceType string, pipeline string, state string, updatedById string, versionId int32, ) *Pipeline`
 
 NewPipeline instantiates a new Pipeline object
 This constructor will assign default values to properties that have it defined,
@@ -296,6 +297,26 @@ and a boolean to check if the value has been set.
 `func (o *Pipeline) SetIdentityId(v string)`
 
 SetIdentityId sets IdentityId field to given value.
+
+
+### GetInstanceType
+
+`func (o *Pipeline) GetInstanceType() string`
+
+GetInstanceType returns the InstanceType field if non-nil, zero value otherwise.
+
+### GetInstanceTypeOk
+
+`func (o *Pipeline) GetInstanceTypeOk() (*string, bool)`
+
+GetInstanceTypeOk returns a tuple with the InstanceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstanceType
+
+`func (o *Pipeline) SetInstanceType(v string)`
+
+SetInstanceType sets InstanceType field to given value.
 
 
 ### GetLastProcess

@@ -30,6 +30,8 @@ type SpProcess struct {
 	PipelineId *string `json:"pipeline_id,omitempty"`
 	// The state of the process.
 	State *string `json:"state,omitempty"`
+	// The optional reason why the process is in its current state.
+	StateReason *string `json:"state_reason,omitempty"`
 	// The type of the process, generally denotes the activity performed e.g. workspace.create, pipeline.execute, pipeline.command.run.
 	Type string `json:"type"`
 	// The time of the last update in ISO 8601 UTC.
@@ -37,6 +39,8 @@ type SpProcess struct {
 	UpdatedBy *User  `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
+	// The usage information for this process.
+	Usage *map[string]interface{} `json:"usage,omitempty"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
 	VersionId int32 `json:"version_id"`
 	// The unique identifier of the workspace for which the process is created.
@@ -299,6 +303,38 @@ func (o *SpProcess) SetState(v string) {
 	o.State = &v
 }
 
+// GetStateReason returns the StateReason field value if set, zero value otherwise.
+func (o *SpProcess) GetStateReason() string {
+	if o == nil || o.StateReason == nil {
+		var ret string
+		return ret
+	}
+	return *o.StateReason
+}
+
+// GetStateReasonOk returns a tuple with the StateReason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpProcess) GetStateReasonOk() (*string, bool) {
+	if o == nil || o.StateReason == nil {
+		return nil, false
+	}
+	return o.StateReason, true
+}
+
+// HasStateReason returns a boolean if a field has been set.
+func (o *SpProcess) HasStateReason() bool {
+	if o != nil && o.StateReason != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStateReason gets a reference to the given string and assigns it to the StateReason field.
+func (o *SpProcess) SetStateReason(v string) {
+	o.StateReason = &v
+}
+
 // GetType returns the Type field value
 func (o *SpProcess) GetType() string {
 	if o == nil {
@@ -403,6 +439,38 @@ func (o *SpProcess) SetUpdatedById(v string) {
 	o.UpdatedById = v
 }
 
+// GetUsage returns the Usage field value if set, zero value otherwise.
+func (o *SpProcess) GetUsage() map[string]interface{} {
+	if o == nil || o.Usage == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Usage
+}
+
+// GetUsageOk returns a tuple with the Usage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpProcess) GetUsageOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Usage == nil {
+		return nil, false
+	}
+	return o.Usage, true
+}
+
+// HasUsage returns a boolean if a field has been set.
+func (o *SpProcess) HasUsage() bool {
+	if o != nil && o.Usage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsage gets a reference to the given map[string]interface{} and assigns it to the Usage field.
+func (o *SpProcess) SetUsage(v map[string]interface{}) {
+	o.Usage = &v
+}
+
 // GetVersionId returns the VersionId field value
 func (o *SpProcess) GetVersionId() int32 {
 	if o == nil {
@@ -485,6 +553,9 @@ func (o SpProcess) MarshalJSON() ([]byte, error) {
 	if o.State != nil {
 		toSerialize["state"] = o.State
 	}
+	if o.StateReason != nil {
+		toSerialize["state_reason"] = o.StateReason
+	}
 	if true {
 		toSerialize["type"] = o.Type
 	}
@@ -496,6 +567,9 @@ func (o SpProcess) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["updated_by_id"] = o.UpdatedById
+	}
+	if o.Usage != nil {
+		toSerialize["usage"] = o.Usage
 	}
 	if true {
 		toSerialize["version_id"] = o.VersionId

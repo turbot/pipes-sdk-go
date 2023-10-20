@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**ListAuditLogs**](Orgs.md#ListAuditLogs) | **Get** /org/{org_handle}/audit_log | Org audit logs
 [**ListConstraints**](Orgs.md#ListConstraints) | **Get** /org/{org_handle}/constraint | List org constraints
 [**ListFeatures**](Orgs.md#ListFeatures) | **Get** /org/{org_handle}/feature | Org features
+[**ListUsage**](Orgs.md#ListUsage) | **Get** /org/{org_handle}/usage | List org usage
 [**Update**](Orgs.md#Update) | **Patch** /org/{org_handle} | Update org
 
 
@@ -707,6 +708,82 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListFeaturesResponse**](ListFeaturesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListUsage
+
+> ListIdentityUsageResponse ListUsage(ctx, orgHandle).Where(where).Limit(limit).NextToken(nextToken).Execute()
+
+List org usage
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    orgHandle := "orgHandle_example" // string | Specify the handle of the org whose constraints you want to retrieve.
+    where := "where_example" // string | The SQL where filter you wish to apply to this request. The filter will be parsed and sanitised and checked against the supported columns for this API. (optional)
+    limit := int32(56) // int32 | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. (optional) (default to 25)
+    nextToken := "nextToken_example" // string | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.Orgs.ListUsage(context.Background(), orgHandle).Where(where).Limit(limit).NextToken(nextToken).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `Orgs.ListUsage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListUsage`: ListIdentityUsageResponse
+    fmt.Fprintf(os.Stdout, "Response from `Orgs.ListUsage`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgHandle** | **string** | Specify the handle of the org whose constraints you want to retrieve. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListUsageRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **where** | **string** | The SQL where filter you wish to apply to this request. The filter will be parsed and sanitised and checked against the supported columns for this API. | 
+ **limit** | **int32** | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. | [default to 25]
+ **nextToken** | **string** | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. | 
+
+### Return type
+
+[**ListIdentityUsageResponse**](ListIdentityUsageResponse.md)
 
 ### Authorization
 
