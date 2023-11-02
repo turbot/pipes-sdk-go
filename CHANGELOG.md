@@ -8,6 +8,11 @@ _Enhancements_
 - Modified attribute `Frequency` for `UpdateDatatankTableRequest` to use `PipelineFrequency` type.
 - Modified attribute `Frequency` for `DatatankTable` to use `PipelineFrequency` type.
 - Modified attribute `Frequency` for `DatatankPart` to use `PipelineFrequency` type.
+- Updated `Value`, `ValueRounded` & `ValueWeighted` attributes for `IdentityUsage` struct to use `int64` type.
+- Updated `UsageComputeThreshold`, `UsageStorageThreshold` & `UsageUserThreshold` attributes for `Org` struct to use `int64` type.
+- Updated `UsageComputeThreshold` & `UsageStorageThreshold` attributes for `User` struct to use `int64` type.
+- Updated `UsageComputeThreshold`, `UsageStorageThreshold` & `UsageUserThreshold` attributes for `UpdateOrgRequest` struct to use `int64` type.
+- Updated `UsageComputeThreshold` & `UsageStorageThreshold` attributes for `UpdateUserRequest` struct to use `int64`.
 
 ## 0.8.0 [2023-10-20]
 

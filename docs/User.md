@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **string** | The user updated time. | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
 **UsageComputeAction** | Pointer to **string** |  | [optional] 
-**UsageComputeThreshold** | Pointer to **int32** |  | [optional] 
+**UsageComputeThreshold** | Pointer to **int64** |  | [optional] 
 **UsageStorageAction** | Pointer to **string** |  | [optional] 
-**UsageStorageThreshold** | Pointer to **int32** |  | [optional] 
+**UsageStorageThreshold** | Pointer to **int64** |  | [optional] 
 **VersionId** | **int32** | The current version of a user. | 
 
 ## Methods
@@ -322,20 +322,20 @@ HasUsageComputeAction returns a boolean if a field has been set.
 
 ### GetUsageComputeThreshold
 
-`func (o *User) GetUsageComputeThreshold() int32`
+`func (o *User) GetUsageComputeThreshold() int64`
 
 GetUsageComputeThreshold returns the UsageComputeThreshold field if non-nil, zero value otherwise.
 
 ### GetUsageComputeThresholdOk
 
-`func (o *User) GetUsageComputeThresholdOk() (*int32, bool)`
+`func (o *User) GetUsageComputeThresholdOk() (*int64, bool)`
 
 GetUsageComputeThresholdOk returns a tuple with the UsageComputeThreshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsageComputeThreshold
 
-`func (o *User) SetUsageComputeThreshold(v int32)`
+`func (o *User) SetUsageComputeThreshold(v int64)`
 
 SetUsageComputeThreshold sets UsageComputeThreshold field to given value.
 
@@ -372,20 +372,20 @@ HasUsageStorageAction returns a boolean if a field has been set.
 
 ### GetUsageStorageThreshold
 
-`func (o *User) GetUsageStorageThreshold() int32`
+`func (o *User) GetUsageStorageThreshold() int64`
 
 GetUsageStorageThreshold returns the UsageStorageThreshold field if non-nil, zero value otherwise.
 
 ### GetUsageStorageThresholdOk
 
-`func (o *User) GetUsageStorageThresholdOk() (*int32, bool)`
+`func (o *User) GetUsageStorageThresholdOk() (*int64, bool)`
 
 GetUsageStorageThresholdOk returns a tuple with the UsageStorageThreshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsageStorageThreshold
 
-`func (o *User) SetUsageStorageThreshold(v int32)`
+`func (o *User) SetUsageStorageThreshold(v int64)`
 
 SetUsageStorageThreshold sets UsageStorageThreshold field to given value.
 

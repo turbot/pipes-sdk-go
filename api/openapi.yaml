@@ -22287,14 +22287,17 @@ components:
           type: string
         value:
           description: The value for this usage record.
+          format: int64
           type: integer
         value_rounded:
           description: The rounded value for this usage record to the nearest billable
             unit.
+          format: int64
           type: integer
         value_weighted:
           description: The value for this usage record weighted according to any billing
             rules such as DB instance type.
+          format: int64
           type: integer
         workspace_id:
           description: The workspace ID for this usage record. Only populated if the
@@ -31045,14 +31048,17 @@ components:
         usage_compute_action:
           type: string
         usage_compute_threshold:
+          format: int64
           type: integer
         usage_storage_action:
           type: string
         usage_storage_threshold:
+          format: int64
           type: integer
         usage_user_action:
           type: string
         usage_user_threshold:
+          format: int64
           type: integer
         version_id:
           description: The version ID of this item. Pass this version ID via an If-Match
@@ -32141,6 +32147,7 @@ components:
           - cap_and_warn
           type: string
         usage_compute_threshold:
+          format: int64
           type: integer
         usage_storage_action:
           enum:
@@ -32148,6 +32155,7 @@ components:
           - cap_and_warn
           type: string
         usage_storage_threshold:
+          format: int64
           type: integer
         usage_user_action:
           enum:
@@ -32155,6 +32163,7 @@ components:
           - cap_and_warn
           type: string
         usage_user_threshold:
+          format: int64
           type: integer
       type: object
     UpdateOrgUserRequest:
@@ -32269,6 +32278,7 @@ components:
           - cap_and_warn
           type: string
         usage_compute_threshold:
+          format: int64
           type: integer
         usage_storage_action:
           enum:
@@ -32276,6 +32286,7 @@ components:
           - cap_and_warn
           type: string
         usage_storage_threshold:
+          format: int64
           type: integer
       type: object
     UpdateWorkspaceAggregatorRequest:
@@ -32405,10 +32416,12 @@ components:
         usage_compute_action:
           type: string
         usage_compute_threshold:
+          format: int64
           type: integer
         usage_storage_action:
           type: string
         usage_storage_threshold:
+          format: int64
           type: integer
         version_id:
           description: The current version of a user.

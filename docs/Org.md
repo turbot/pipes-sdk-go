@@ -21,11 +21,11 @@ Name | Type | Description | Notes
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **Url** | Pointer to **string** |  | [optional] 
 **UsageComputeAction** | Pointer to **string** |  | [optional] 
-**UsageComputeThreshold** | Pointer to **int32** |  | [optional] 
+**UsageComputeThreshold** | Pointer to **int64** |  | [optional] 
 **UsageStorageAction** | Pointer to **string** |  | [optional] 
-**UsageStorageThreshold** | Pointer to **int32** |  | [optional] 
+**UsageStorageThreshold** | Pointer to **int64** |  | [optional] 
 **UsageUserAction** | Pointer to **string** |  | [optional] 
-**UsageUserThreshold** | Pointer to **int32** |  | [optional] 
+**UsageUserThreshold** | Pointer to **int64** |  | [optional] 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 
 ## Methods
@@ -444,20 +444,20 @@ HasUsageComputeAction returns a boolean if a field has been set.
 
 ### GetUsageComputeThreshold
 
-`func (o *Org) GetUsageComputeThreshold() int32`
+`func (o *Org) GetUsageComputeThreshold() int64`
 
 GetUsageComputeThreshold returns the UsageComputeThreshold field if non-nil, zero value otherwise.
 
 ### GetUsageComputeThresholdOk
 
-`func (o *Org) GetUsageComputeThresholdOk() (*int32, bool)`
+`func (o *Org) GetUsageComputeThresholdOk() (*int64, bool)`
 
 GetUsageComputeThresholdOk returns a tuple with the UsageComputeThreshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsageComputeThreshold
 
-`func (o *Org) SetUsageComputeThreshold(v int32)`
+`func (o *Org) SetUsageComputeThreshold(v int64)`
 
 SetUsageComputeThreshold sets UsageComputeThreshold field to given value.
 
@@ -494,20 +494,20 @@ HasUsageStorageAction returns a boolean if a field has been set.
 
 ### GetUsageStorageThreshold
 
-`func (o *Org) GetUsageStorageThreshold() int32`
+`func (o *Org) GetUsageStorageThreshold() int64`
 
 GetUsageStorageThreshold returns the UsageStorageThreshold field if non-nil, zero value otherwise.
 
 ### GetUsageStorageThresholdOk
 
-`func (o *Org) GetUsageStorageThresholdOk() (*int32, bool)`
+`func (o *Org) GetUsageStorageThresholdOk() (*int64, bool)`
 
 GetUsageStorageThresholdOk returns a tuple with the UsageStorageThreshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsageStorageThreshold
 
-`func (o *Org) SetUsageStorageThreshold(v int32)`
+`func (o *Org) SetUsageStorageThreshold(v int64)`
 
 SetUsageStorageThreshold sets UsageStorageThreshold field to given value.
 
@@ -544,20 +544,20 @@ HasUsageUserAction returns a boolean if a field has been set.
 
 ### GetUsageUserThreshold
 
-`func (o *Org) GetUsageUserThreshold() int32`
+`func (o *Org) GetUsageUserThreshold() int64`
 
 GetUsageUserThreshold returns the UsageUserThreshold field if non-nil, zero value otherwise.
 
 ### GetUsageUserThresholdOk
 
-`func (o *Org) GetUsageUserThresholdOk() (*int32, bool)`
+`func (o *Org) GetUsageUserThresholdOk() (*int64, bool)`
 
 GetUsageUserThresholdOk returns a tuple with the UsageUserThreshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsageUserThreshold
 
-`func (o *Org) SetUsageUserThreshold(v int32)`
+`func (o *Org) SetUsageUserThreshold(v int64)`
 
 SetUsageUserThreshold sets UsageUserThreshold field to given value.
 
