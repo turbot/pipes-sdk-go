@@ -1,6 +1,6 @@
 # Turbot Pipes Go SDK
 
-## 0.8.0 [TBD]
+## 0.8.0 [2023-10-20]
 
 _What's new?_
 
