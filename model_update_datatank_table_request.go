@@ -16,14 +16,14 @@ import (
 
 // UpdateDatatankTableRequest struct for UpdateDatatankTableRequest
 type UpdateDatatankTableRequest struct {
-	Description  *string                 `json:"description,omitempty"`
-	DesiredState *string                 `json:"desired_state,omitempty"`
-	Frequency    *map[string]interface{} `json:"frequency,omitempty"`
-	Name         *string                 `json:"name,omitempty"`
-	PartPer      *string                 `json:"part_per,omitempty"`
-	SourceQuery  *string                 `json:"source_query,omitempty"`
-	SourceSchema *string                 `json:"source_schema,omitempty"`
-	SourceTable  *string                 `json:"source_table,omitempty"`
+	Description  *string            `json:"description,omitempty"`
+	DesiredState *string            `json:"desired_state,omitempty"`
+	Frequency    *PipelineFrequency `json:"frequency,omitempty"`
+	Name         *string            `json:"name,omitempty"`
+	PartPer      *string            `json:"part_per,omitempty"`
+	SourceQuery  *string            `json:"source_query,omitempty"`
+	SourceSchema *string            `json:"source_schema,omitempty"`
+	SourceTable  *string            `json:"source_table,omitempty"`
 }
 
 // NewUpdateDatatankTableRequest instantiates a new UpdateDatatankTableRequest object
@@ -108,9 +108,9 @@ func (o *UpdateDatatankTableRequest) SetDesiredState(v string) {
 }
 
 // GetFrequency returns the Frequency field value if set, zero value otherwise.
-func (o *UpdateDatatankTableRequest) GetFrequency() map[string]interface{} {
+func (o *UpdateDatatankTableRequest) GetFrequency() PipelineFrequency {
 	if o == nil || o.Frequency == nil {
-		var ret map[string]interface{}
+		var ret PipelineFrequency
 		return ret
 	}
 	return *o.Frequency
@@ -118,7 +118,7 @@ func (o *UpdateDatatankTableRequest) GetFrequency() map[string]interface{} {
 
 // GetFrequencyOk returns a tuple with the Frequency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateDatatankTableRequest) GetFrequencyOk() (*map[string]interface{}, bool) {
+func (o *UpdateDatatankTableRequest) GetFrequencyOk() (*PipelineFrequency, bool) {
 	if o == nil || o.Frequency == nil {
 		return nil, false
 	}
@@ -134,8 +134,8 @@ func (o *UpdateDatatankTableRequest) HasFrequency() bool {
 	return false
 }
 
-// SetFrequency gets a reference to the given map[string]interface{} and assigns it to the Frequency field.
-func (o *UpdateDatatankTableRequest) SetFrequency(v map[string]interface{}) {
+// SetFrequency gets a reference to the given PipelineFrequency and assigns it to the Frequency field.
+func (o *UpdateDatatankTableRequest) SetFrequency(v PipelineFrequency) {
 	o.Frequency = &v
 }
 

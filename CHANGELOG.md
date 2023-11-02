@@ -1,5 +1,14 @@
 # Turbot Pipes Go SDK
 
+## 0.8.1 [2023-11-02]
+
+_Enhancements_
+
+- Modified attribute `Frequency` for `CreateDatatankTableRequest` to use `PipelineFrequency` type.
+- Modified attribute `Frequency` for `UpdateDatatankTableRequest` to use `PipelineFrequency` type.
+- Modified attribute `Frequency` for `DatatankTable` to use `PipelineFrequency` type.
+- Modified attribute `Frequency` for `DatatankPart` to use `PipelineFrequency` type.
+
 ## 0.8.0 [2023-10-20]
 
 _What's new?_

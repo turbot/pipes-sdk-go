@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **Description** | Pointer to **string** |  | [optional] 
 **DesiredState** | **string** |  | 
-**Frequency** | **map[string]interface{}** |  | 
+**Frequency** | [**PipelineFrequency**](PipelineFrequency.md) |  | 
 **Freshness** | Pointer to [**DatatankTableFreshness**](DatatankTableFreshness.md) |  | [optional] 
 **Id** | **string** |  | 
 **MigratingFreshness** | Pointer to [**DatatankTableFreshness**](DatatankTableFreshness.md) |  | [optional] 
@@ -36,7 +36,7 @@ Name | Type | Description | Notes
 
 ### NewDatatankTable
 
-`func NewDatatankTable(createdAt string, createdById string, datatankId string, deletedById string, desiredState string, frequency map[string]interface{}, id string, name string, state string, type_ string, updatedById string, versionId int32, ) *DatatankTable`
+`func NewDatatankTable(createdAt string, createdById string, datatankId string, deletedById string, desiredState string, frequency PipelineFrequency, id string, name string, state string, type_ string, updatedById string, versionId int32, ) *DatatankTable`
 
 NewDatatankTable instantiates a new DatatankTable object
 This constructor will assign default values to properties that have it defined,
@@ -278,20 +278,20 @@ SetDesiredState sets DesiredState field to given value.
 
 ### GetFrequency
 
-`func (o *DatatankTable) GetFrequency() map[string]interface{}`
+`func (o *DatatankTable) GetFrequency() PipelineFrequency`
 
 GetFrequency returns the Frequency field if non-nil, zero value otherwise.
 
 ### GetFrequencyOk
 
-`func (o *DatatankTable) GetFrequencyOk() (*map[string]interface{}, bool)`
+`func (o *DatatankTable) GetFrequencyOk() (*PipelineFrequency, bool)`
 
 GetFrequencyOk returns a tuple with the Frequency field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFrequency
 
-`func (o *DatatankTable) SetFrequency(v map[string]interface{})`
+`func (o *DatatankTable) SetFrequency(v PipelineFrequency)`
 
 SetFrequency sets Frequency field to given value.
 

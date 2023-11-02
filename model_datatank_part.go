@@ -27,37 +27,37 @@ type DatatankPart struct {
 	DeletedAt *string `json:"deleted_at,omitempty"`
 	DeletedBy *User   `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.
-	DeletedById                            string                 `json:"deleted_by_id"`
-	DesiredState                           string                 `json:"desired_state"`
-	Frequency                              map[string]interface{} `json:"frequency"`
-	FreshnessState                         string                 `json:"freshness_state"`
-	Id                                     string                 `json:"id"`
-	LastErrorAt                            *string                `json:"last_error_at,omitempty"`
-	LastErrorProcess                       *SpProcess             `json:"last_error_process,omitempty"`
-	LastErrorProcessId                     *string                `json:"last_error_process_id,omitempty"`
-	LastSuccessfulUpdateAt                 *string                `json:"last_successful_update_at,omitempty"`
-	LastSuccessfulUpdateProcess            *SpProcess             `json:"last_successful_update_process,omitempty"`
-	LastSuccessfulUpdateProcessId          *string                `json:"last_successful_update_process_id,omitempty"`
-	LastUpdateAttemptAt                    *string                `json:"last_update_attempt_at,omitempty"`
-	LastUpdateAttemptProcess               *SpProcess             `json:"last_update_attempt_process,omitempty"`
-	LastUpdateAttemptProcessId             *string                `json:"last_update_attempt_process_id,omitempty"`
-	MigratingFreshnessState                *string                `json:"migrating_freshness_state,omitempty"`
-	MigratingLastErrorAt                   *string                `json:"migrating_last_error_at,omitempty"`
-	MigratingLastErrorProcessId            *string                `json:"migrating_last_error_process_id,omitempty"`
-	MigratingLastSuccessfulUpdateAt        *string                `json:"migrating_last_successful_update_at,omitempty"`
-	MigratingLastSuccessfulUpdateProcess   *SpProcess             `json:"migrating_last_successful_update_process,omitempty"`
-	MigratingLastSuccessfulUpdateProcessId *string                `json:"migrating_last_successful_update_process_id,omitempty"`
-	MigratingLastUpdateAttemptAt           *string                `json:"migrating_last_update_attempt_at,omitempty"`
-	MigratingLastUpdateAttemptProcess      *SpProcess             `json:"migrating_last_update_attempt_process,omitempty"`
-	MigratingLastUpdateAttemptProcessId    *string                `json:"migrating_last_update_attempt_process_id,omitempty"`
-	PartitionCandidate                     *string                `json:"partition_candidate,omitempty"`
-	PartitionCurrent                       string                 `json:"partition_current"`
-	Pipeline                               *Pipeline              `json:"pipeline,omitempty"`
-	PipelineId                             string                 `json:"pipeline_id"`
-	SourceConnection                       *WorkspaceSchema       `json:"source_connection,omitempty"`
-	SourceConnectionId                     *string                `json:"source_connection_id,omitempty"`
-	State                                  string                 `json:"state"`
-	StateReason                            *string                `json:"state_reason,omitempty"`
+	DeletedById                            string            `json:"deleted_by_id"`
+	DesiredState                           string            `json:"desired_state"`
+	Frequency                              PipelineFrequency `json:"frequency"`
+	FreshnessState                         string            `json:"freshness_state"`
+	Id                                     string            `json:"id"`
+	LastErrorAt                            *string           `json:"last_error_at,omitempty"`
+	LastErrorProcess                       *SpProcess        `json:"last_error_process,omitempty"`
+	LastErrorProcessId                     *string           `json:"last_error_process_id,omitempty"`
+	LastSuccessfulUpdateAt                 *string           `json:"last_successful_update_at,omitempty"`
+	LastSuccessfulUpdateProcess            *SpProcess        `json:"last_successful_update_process,omitempty"`
+	LastSuccessfulUpdateProcessId          *string           `json:"last_successful_update_process_id,omitempty"`
+	LastUpdateAttemptAt                    *string           `json:"last_update_attempt_at,omitempty"`
+	LastUpdateAttemptProcess               *SpProcess        `json:"last_update_attempt_process,omitempty"`
+	LastUpdateAttemptProcessId             *string           `json:"last_update_attempt_process_id,omitempty"`
+	MigratingFreshnessState                *string           `json:"migrating_freshness_state,omitempty"`
+	MigratingLastErrorAt                   *string           `json:"migrating_last_error_at,omitempty"`
+	MigratingLastErrorProcessId            *string           `json:"migrating_last_error_process_id,omitempty"`
+	MigratingLastSuccessfulUpdateAt        *string           `json:"migrating_last_successful_update_at,omitempty"`
+	MigratingLastSuccessfulUpdateProcess   *SpProcess        `json:"migrating_last_successful_update_process,omitempty"`
+	MigratingLastSuccessfulUpdateProcessId *string           `json:"migrating_last_successful_update_process_id,omitempty"`
+	MigratingLastUpdateAttemptAt           *string           `json:"migrating_last_update_attempt_at,omitempty"`
+	MigratingLastUpdateAttemptProcess      *SpProcess        `json:"migrating_last_update_attempt_process,omitempty"`
+	MigratingLastUpdateAttemptProcessId    *string           `json:"migrating_last_update_attempt_process_id,omitempty"`
+	PartitionCandidate                     *string           `json:"partition_candidate,omitempty"`
+	PartitionCurrent                       string            `json:"partition_current"`
+	Pipeline                               *Pipeline         `json:"pipeline,omitempty"`
+	PipelineId                             string            `json:"pipeline_id"`
+	SourceConnection                       *WorkspaceSchema  `json:"source_connection,omitempty"`
+	SourceConnectionId                     *string           `json:"source_connection_id,omitempty"`
+	State                                  string            `json:"state"`
+	StateReason                            *string           `json:"state_reason,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
 	UpdatedBy *User   `json:"updated_by,omitempty"`
@@ -71,7 +71,7 @@ type DatatankPart struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDatatankPart(createdAt string, createdById string, datatankTableId string, deletedById string, desiredState string, frequency map[string]interface{}, freshnessState string, id string, partitionCurrent string, pipelineId string, state string, updatedById string, versionId int32) *DatatankPart {
+func NewDatatankPart(createdAt string, createdById string, datatankTableId string, deletedById string, desiredState string, frequency PipelineFrequency, freshnessState string, id string, partitionCurrent string, pipelineId string, state string, updatedById string, versionId int32) *DatatankPart {
 	this := DatatankPart{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
@@ -346,9 +346,9 @@ func (o *DatatankPart) SetDesiredState(v string) {
 }
 
 // GetFrequency returns the Frequency field value
-func (o *DatatankPart) GetFrequency() map[string]interface{} {
+func (o *DatatankPart) GetFrequency() PipelineFrequency {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret PipelineFrequency
 		return ret
 	}
 
@@ -357,7 +357,7 @@ func (o *DatatankPart) GetFrequency() map[string]interface{} {
 
 // GetFrequencyOk returns a tuple with the Frequency field value
 // and a boolean to check if the value has been set.
-func (o *DatatankPart) GetFrequencyOk() (*map[string]interface{}, bool) {
+func (o *DatatankPart) GetFrequencyOk() (*PipelineFrequency, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -365,7 +365,7 @@ func (o *DatatankPart) GetFrequencyOk() (*map[string]interface{}, bool) {
 }
 
 // SetFrequency sets field value
-func (o *DatatankPart) SetFrequency(v map[string]interface{}) {
+func (o *DatatankPart) SetFrequency(v PipelineFrequency) {
 	o.Frequency = v
 }
 

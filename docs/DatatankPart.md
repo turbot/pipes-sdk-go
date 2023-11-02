@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **DesiredState** | **string** |  | 
-**Frequency** | **map[string]interface{}** |  | 
+**Frequency** | [**PipelineFrequency**](PipelineFrequency.md) |  | 
 **FreshnessState** | **string** |  | 
 **Id** | **string** |  | 
 **LastErrorAt** | Pointer to **string** |  | [optional] 
@@ -51,7 +51,7 @@ Name | Type | Description | Notes
 
 ### NewDatatankPart
 
-`func NewDatatankPart(createdAt string, createdById string, datatankTableId string, deletedById string, desiredState string, frequency map[string]interface{}, freshnessState string, id string, partitionCurrent string, pipelineId string, state string, updatedById string, versionId int32, ) *DatatankPart`
+`func NewDatatankPart(createdAt string, createdById string, datatankTableId string, deletedById string, desiredState string, frequency PipelineFrequency, freshnessState string, id string, partitionCurrent string, pipelineId string, state string, updatedById string, versionId int32, ) *DatatankPart`
 
 NewDatatankPart instantiates a new DatatankPart object
 This constructor will assign default values to properties that have it defined,
@@ -268,20 +268,20 @@ SetDesiredState sets DesiredState field to given value.
 
 ### GetFrequency
 
-`func (o *DatatankPart) GetFrequency() map[string]interface{}`
+`func (o *DatatankPart) GetFrequency() PipelineFrequency`
 
 GetFrequency returns the Frequency field if non-nil, zero value otherwise.
 
 ### GetFrequencyOk
 
-`func (o *DatatankPart) GetFrequencyOk() (*map[string]interface{}, bool)`
+`func (o *DatatankPart) GetFrequencyOk() (*PipelineFrequency, bool)`
 
 GetFrequencyOk returns a tuple with the Frequency field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFrequency
 
-`func (o *DatatankPart) SetFrequency(v map[string]interface{})`
+`func (o *DatatankPart) SetFrequency(v PipelineFrequency)`
 
 SetFrequency sets Frequency field to given value.
 

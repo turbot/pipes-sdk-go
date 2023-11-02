@@ -19734,13 +19734,14 @@ components:
         type: table
         source_table: source_table
         source_schema: source_schema
-        frequency: '{}'
+        frequency:
+          schedule: schedule
+          type: interval
       properties:
         description:
           type: string
         frequency:
-          properties: {}
-          type: object
+          $ref: '#/components/schemas/PipelineFrequency'
         name:
           format: ^[A-Za-z_][A-Za-z_0-9$]*$
           type: string
@@ -20175,7 +20176,9 @@ components:
           status: status
           usage_storage_threshold: 6
         last_error_process_id: last_error_process_id
-        frequency: '{}'
+        frequency:
+          schedule: schedule
+          type: interval
         updated_at: updated_at
         pipeline_id: pipeline_id
         id: id
@@ -20420,7 +20423,9 @@ components:
             removing: 2
           migrating_name: migrating_name
           type: table
-          frequency: '{}'
+          frequency:
+            schedule: schedule
+            type: interval
           source_query: source_query
           updated_at: updated_at
           id: id
@@ -21723,8 +21728,7 @@ components:
         desired_state:
           type: string
         frequency:
-          properties: {}
-          type: object
+          $ref: '#/components/schemas/PipelineFrequency'
         freshness_state:
           type: string
         id:
@@ -21856,7 +21860,9 @@ components:
           removing: 2
         migrating_name: migrating_name
         type: table
-        frequency: '{}'
+        frequency:
+          schedule: schedule
+          type: interval
         source_query: source_query
         updated_at: updated_at
         id: id
@@ -22053,8 +22059,7 @@ components:
           - disabled
           type: string
         frequency:
-          properties: {}
-          type: object
+          $ref: '#/components/schemas/PipelineFrequency'
         freshness:
           $ref: '#/components/schemas/DatatankTableFreshness'
         id:
@@ -22856,7 +22861,9 @@ components:
             status: status
             usage_storage_threshold: 6
           last_error_process_id: last_error_process_id
-          frequency: '{}'
+          frequency:
+            schedule: schedule
+            type: interval
           updated_at: updated_at
           pipeline_id: pipeline_id
           id: id
@@ -23101,7 +23108,9 @@ components:
               removing: 2
             migrating_name: migrating_name
             type: table
-            frequency: '{}'
+            frequency:
+              schedule: schedule
+              type: interval
             source_query: source_query
             updated_at: updated_at
             id: id
@@ -24405,7 +24414,9 @@ components:
             status: status
             usage_storage_threshold: 6
           last_error_process_id: last_error_process_id
-          frequency: '{}'
+          frequency:
+            schedule: schedule
+            type: interval
           updated_at: updated_at
           pipeline_id: pipeline_id
           id: id
@@ -24650,7 +24661,9 @@ components:
               removing: 2
             migrating_name: migrating_name
             type: table
-            frequency: '{}'
+            frequency:
+              schedule: schedule
+              type: interval
             source_query: source_query
             updated_at: updated_at
             id: id
@@ -26166,7 +26179,9 @@ components:
             removing: 2
           migrating_name: migrating_name
           type: table
-          frequency: '{}'
+          frequency:
+            schedule: schedule
+            type: interval
           source_query: source_query
           updated_at: updated_at
           id: id
@@ -26373,7 +26388,9 @@ components:
             removing: 2
           migrating_name: migrating_name
           type: table
-          frequency: '{}'
+          frequency:
+            schedule: schedule
+            type: interval
           source_query: source_query
           updated_at: updated_at
           id: id
@@ -32068,7 +32085,9 @@ components:
         desired_state: enabled
         source_table: source_table
         source_schema: source_schema
-        frequency: '{}'
+        frequency:
+          schedule: schedule
+          type: interval
       properties:
         description:
           type: string
@@ -32079,8 +32098,7 @@ components:
           - paused
           type: string
         frequency:
-          properties: {}
-          type: object
+          $ref: '#/components/schemas/PipelineFrequency'
         name:
           type: string
         part_per:
