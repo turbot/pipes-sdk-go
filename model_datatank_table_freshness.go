@@ -23,9 +23,11 @@ type DatatankTableFreshness struct {
 	// The number of parts that did not have a successful refresh within the extended staleness timeframe.
 	Expired *int32 `json:"expired,omitempty"`
 	// The number of parts that had a successful query within the staleness timeframe.
-	Fresh               *int32    `json:"fresh,omitempty"`
-	NewestPartUpdatedAt *JSONTime `json:"newest_part_updated_at,omitempty"`
-	OldestPartUpdatedAt *JSONTime `json:"oldest_part_updated_at,omitempty"`
+	Fresh *int32 `json:"fresh,omitempty"`
+	// The time when any of the parts was successfully refreshed most recently.
+	NewestPartUpdatedAt *string `json:"newest_part_updated_at,omitempty"`
+	// The time when any of the parts was successfully refreshed least recently.
+	OldestPartUpdatedAt *string `json:"oldest_part_updated_at,omitempty"`
 	// The number of parts that are yet to be executed.
 	Pending *int32 `json:"pending,omitempty"`
 	// The number of parts for which the data is in the process of being deleted.
@@ -182,9 +184,9 @@ func (o *DatatankTableFreshness) SetFresh(v int32) {
 }
 
 // GetNewestPartUpdatedAt returns the NewestPartUpdatedAt field value if set, zero value otherwise.
-func (o *DatatankTableFreshness) GetNewestPartUpdatedAt() JSONTime {
+func (o *DatatankTableFreshness) GetNewestPartUpdatedAt() string {
 	if o == nil || o.NewestPartUpdatedAt == nil {
-		var ret JSONTime
+		var ret string
 		return ret
 	}
 	return *o.NewestPartUpdatedAt
@@ -192,7 +194,7 @@ func (o *DatatankTableFreshness) GetNewestPartUpdatedAt() JSONTime {
 
 // GetNewestPartUpdatedAtOk returns a tuple with the NewestPartUpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatatankTableFreshness) GetNewestPartUpdatedAtOk() (*JSONTime, bool) {
+func (o *DatatankTableFreshness) GetNewestPartUpdatedAtOk() (*string, bool) {
 	if o == nil || o.NewestPartUpdatedAt == nil {
 		return nil, false
 	}
@@ -208,15 +210,15 @@ func (o *DatatankTableFreshness) HasNewestPartUpdatedAt() bool {
 	return false
 }
 
-// SetNewestPartUpdatedAt gets a reference to the given JSONTime and assigns it to the NewestPartUpdatedAt field.
-func (o *DatatankTableFreshness) SetNewestPartUpdatedAt(v JSONTime) {
+// SetNewestPartUpdatedAt gets a reference to the given string and assigns it to the NewestPartUpdatedAt field.
+func (o *DatatankTableFreshness) SetNewestPartUpdatedAt(v string) {
 	o.NewestPartUpdatedAt = &v
 }
 
 // GetOldestPartUpdatedAt returns the OldestPartUpdatedAt field value if set, zero value otherwise.
-func (o *DatatankTableFreshness) GetOldestPartUpdatedAt() JSONTime {
+func (o *DatatankTableFreshness) GetOldestPartUpdatedAt() string {
 	if o == nil || o.OldestPartUpdatedAt == nil {
-		var ret JSONTime
+		var ret string
 		return ret
 	}
 	return *o.OldestPartUpdatedAt
@@ -224,7 +226,7 @@ func (o *DatatankTableFreshness) GetOldestPartUpdatedAt() JSONTime {
 
 // GetOldestPartUpdatedAtOk returns a tuple with the OldestPartUpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatatankTableFreshness) GetOldestPartUpdatedAtOk() (*JSONTime, bool) {
+func (o *DatatankTableFreshness) GetOldestPartUpdatedAtOk() (*string, bool) {
 	if o == nil || o.OldestPartUpdatedAt == nil {
 		return nil, false
 	}
@@ -240,8 +242,8 @@ func (o *DatatankTableFreshness) HasOldestPartUpdatedAt() bool {
 	return false
 }
 
-// SetOldestPartUpdatedAt gets a reference to the given JSONTime and assigns it to the OldestPartUpdatedAt field.
-func (o *DatatankTableFreshness) SetOldestPartUpdatedAt(v JSONTime) {
+// SetOldestPartUpdatedAt gets a reference to the given string and assigns it to the OldestPartUpdatedAt field.
+func (o *DatatankTableFreshness) SetOldestPartUpdatedAt(v string) {
 	o.OldestPartUpdatedAt = &v
 }
 

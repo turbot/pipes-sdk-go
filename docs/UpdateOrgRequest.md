@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayName** | Pointer to **string** |  | [optional] 
 **Handle** | Pointer to **string** |  | [optional] 
-**TokenMinIssuedAt** | Pointer to [**JSONTime**](JSONTime.md) |  | [optional] 
+**TokenMinIssuedAt** | Pointer to **string** | The time which user and temporary auth tokens must be issued after. | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
 **UsageComputeAction** | Pointer to **string** |  | [optional] 
 **UsageComputeThreshold** | Pointer to **int64** |  | [optional] 
@@ -86,20 +86,20 @@ HasHandle returns a boolean if a field has been set.
 
 ### GetTokenMinIssuedAt
 
-`func (o *UpdateOrgRequest) GetTokenMinIssuedAt() JSONTime`
+`func (o *UpdateOrgRequest) GetTokenMinIssuedAt() string`
 
 GetTokenMinIssuedAt returns the TokenMinIssuedAt field if non-nil, zero value otherwise.
 
 ### GetTokenMinIssuedAtOk
 
-`func (o *UpdateOrgRequest) GetTokenMinIssuedAtOk() (*JSONTime, bool)`
+`func (o *UpdateOrgRequest) GetTokenMinIssuedAtOk() (*string, bool)`
 
 GetTokenMinIssuedAtOk returns a tuple with the TokenMinIssuedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenMinIssuedAt
 
-`func (o *UpdateOrgRequest) SetTokenMinIssuedAt(v JSONTime)`
+`func (o *UpdateOrgRequest) SetTokenMinIssuedAt(v string)`
 
 SetTokenMinIssuedAt sets TokenMinIssuedAt field to given value.
 

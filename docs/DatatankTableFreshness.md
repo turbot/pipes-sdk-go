@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **Error** | Pointer to **int32** | The number of parts that have never successfully run. | [optional] 
 **Expired** | Pointer to **int32** | The number of parts that did not have a successful refresh within the extended staleness timeframe. | [optional] 
 **Fresh** | Pointer to **int32** | The number of parts that had a successful query within the staleness timeframe. | [optional] 
-**NewestPartUpdatedAt** | Pointer to [**JSONTime**](JSONTime.md) |  | [optional] 
-**OldestPartUpdatedAt** | Pointer to [**JSONTime**](JSONTime.md) |  | [optional] 
+**NewestPartUpdatedAt** | Pointer to **string** | The time when any of the parts was successfully refreshed most recently. | [optional] 
+**OldestPartUpdatedAt** | Pointer to **string** | The time when any of the parts was successfully refreshed least recently. | [optional] 
 **Pending** | Pointer to **int32** | The number of parts that are yet to be executed. | [optional] 
 **Removing** | Pointer to **int32** | The number of parts for which the data is in the process of being deleted. | [optional] 
 **Stale** | Pointer to **int32** | The number of parts that had a successful query but not within the staleness timeframe. | [optional] 
@@ -136,20 +136,20 @@ HasFresh returns a boolean if a field has been set.
 
 ### GetNewestPartUpdatedAt
 
-`func (o *DatatankTableFreshness) GetNewestPartUpdatedAt() JSONTime`
+`func (o *DatatankTableFreshness) GetNewestPartUpdatedAt() string`
 
 GetNewestPartUpdatedAt returns the NewestPartUpdatedAt field if non-nil, zero value otherwise.
 
 ### GetNewestPartUpdatedAtOk
 
-`func (o *DatatankTableFreshness) GetNewestPartUpdatedAtOk() (*JSONTime, bool)`
+`func (o *DatatankTableFreshness) GetNewestPartUpdatedAtOk() (*string, bool)`
 
 GetNewestPartUpdatedAtOk returns a tuple with the NewestPartUpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNewestPartUpdatedAt
 
-`func (o *DatatankTableFreshness) SetNewestPartUpdatedAt(v JSONTime)`
+`func (o *DatatankTableFreshness) SetNewestPartUpdatedAt(v string)`
 
 SetNewestPartUpdatedAt sets NewestPartUpdatedAt field to given value.
 
@@ -161,20 +161,20 @@ HasNewestPartUpdatedAt returns a boolean if a field has been set.
 
 ### GetOldestPartUpdatedAt
 
-`func (o *DatatankTableFreshness) GetOldestPartUpdatedAt() JSONTime`
+`func (o *DatatankTableFreshness) GetOldestPartUpdatedAt() string`
 
 GetOldestPartUpdatedAt returns the OldestPartUpdatedAt field if non-nil, zero value otherwise.
 
 ### GetOldestPartUpdatedAtOk
 
-`func (o *DatatankTableFreshness) GetOldestPartUpdatedAtOk() (*JSONTime, bool)`
+`func (o *DatatankTableFreshness) GetOldestPartUpdatedAtOk() (*string, bool)`
 
 GetOldestPartUpdatedAtOk returns a tuple with the OldestPartUpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOldestPartUpdatedAt
 
-`func (o *DatatankTableFreshness) SetOldestPartUpdatedAt(v JSONTime)`
+`func (o *DatatankTableFreshness) SetOldestPartUpdatedAt(v string)`
 
 SetOldestPartUpdatedAt sets OldestPartUpdatedAt field to given value.
 

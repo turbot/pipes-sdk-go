@@ -16,14 +16,15 @@ import (
 
 // UpdateUserRequest struct for UpdateUserRequest
 type UpdateUserRequest struct {
-	DisplayName           *string   `json:"display_name,omitempty"`
-	Handle                *string   `json:"handle,omitempty"`
-	TokenMinIssuedAt      *JSONTime `json:"token_min_issued_at,omitempty"`
-	Url                   *string   `json:"url,omitempty"`
-	UsageComputeAction    *string   `json:"usage_compute_action,omitempty"`
-	UsageComputeThreshold *int64    `json:"usage_compute_threshold,omitempty"`
-	UsageStorageAction    *string   `json:"usage_storage_action,omitempty"`
-	UsageStorageThreshold *int64    `json:"usage_storage_threshold,omitempty"`
+	DisplayName *string `json:"display_name,omitempty"`
+	Handle      *string `json:"handle,omitempty"`
+	// The time which user and temporary auth tokens must be issued after.
+	TokenMinIssuedAt      *string `json:"token_min_issued_at,omitempty"`
+	Url                   *string `json:"url,omitempty"`
+	UsageComputeAction    *string `json:"usage_compute_action,omitempty"`
+	UsageComputeThreshold *int64  `json:"usage_compute_threshold,omitempty"`
+	UsageStorageAction    *string `json:"usage_storage_action,omitempty"`
+	UsageStorageThreshold *int64  `json:"usage_storage_threshold,omitempty"`
 }
 
 // NewUpdateUserRequest instantiates a new UpdateUserRequest object
@@ -108,9 +109,9 @@ func (o *UpdateUserRequest) SetHandle(v string) {
 }
 
 // GetTokenMinIssuedAt returns the TokenMinIssuedAt field value if set, zero value otherwise.
-func (o *UpdateUserRequest) GetTokenMinIssuedAt() JSONTime {
+func (o *UpdateUserRequest) GetTokenMinIssuedAt() string {
 	if o == nil || o.TokenMinIssuedAt == nil {
-		var ret JSONTime
+		var ret string
 		return ret
 	}
 	return *o.TokenMinIssuedAt
@@ -118,7 +119,7 @@ func (o *UpdateUserRequest) GetTokenMinIssuedAt() JSONTime {
 
 // GetTokenMinIssuedAtOk returns a tuple with the TokenMinIssuedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateUserRequest) GetTokenMinIssuedAtOk() (*JSONTime, bool) {
+func (o *UpdateUserRequest) GetTokenMinIssuedAtOk() (*string, bool) {
 	if o == nil || o.TokenMinIssuedAt == nil {
 		return nil, false
 	}
@@ -134,8 +135,8 @@ func (o *UpdateUserRequest) HasTokenMinIssuedAt() bool {
 	return false
 }
 
-// SetTokenMinIssuedAt gets a reference to the given JSONTime and assigns it to the TokenMinIssuedAt field.
-func (o *UpdateUserRequest) SetTokenMinIssuedAt(v JSONTime) {
+// SetTokenMinIssuedAt gets a reference to the given string and assigns it to the TokenMinIssuedAt field.
+func (o *UpdateUserRequest) SetTokenMinIssuedAt(v string) {
 	o.TokenMinIssuedAt = &v
 }
 

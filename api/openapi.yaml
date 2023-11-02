@@ -20411,15 +20411,13 @@ components:
           freshness:
             expired: 1
             stale: 7
-            oldest_part_updated_at:
-              time.Time: time.Time
+            oldest_part_updated_at: oldest_part_updated_at
             pending: 5
             total_parts: 9
             disabled: 0
             error: 6
             fresh: 5
-            newest_part_updated_at:
-              time.Time: time.Time
+            newest_part_updated_at: newest_part_updated_at
             removing: 2
           migrating_name: migrating_name
           type: table
@@ -20433,15 +20431,13 @@ components:
           migrating_freshness:
             expired: 1
             stale: 7
-            oldest_part_updated_at:
-              time.Time: time.Time
+            oldest_part_updated_at: oldest_part_updated_at
             pending: 5
             total_parts: 9
             disabled: 0
             error: 6
             fresh: 5
-            newest_part_updated_at:
-              time.Time: time.Time
+            newest_part_updated_at: newest_part_updated_at
             removing: 2
           state_reason: state_reason
           datatank:
@@ -21848,15 +21844,13 @@ components:
         freshness:
           expired: 1
           stale: 7
-          oldest_part_updated_at:
-            time.Time: time.Time
+          oldest_part_updated_at: oldest_part_updated_at
           pending: 5
           total_parts: 9
           disabled: 0
           error: 6
           fresh: 5
-          newest_part_updated_at:
-            time.Time: time.Time
+          newest_part_updated_at: newest_part_updated_at
           removing: 2
         migrating_name: migrating_name
         type: table
@@ -21870,15 +21864,13 @@ components:
         migrating_freshness:
           expired: 1
           stale: 7
-          oldest_part_updated_at:
-            time.Time: time.Time
+          oldest_part_updated_at: oldest_part_updated_at
           pending: 5
           total_parts: 9
           disabled: 0
           error: 6
           fresh: 5
-          newest_part_updated_at:
-            time.Time: time.Time
+          newest_part_updated_at: newest_part_updated_at
           removing: 2
         state_reason: state_reason
         datatank:
@@ -22122,15 +22114,13 @@ components:
       example:
         expired: 1
         stale: 7
-        oldest_part_updated_at:
-          time.Time: time.Time
+        oldest_part_updated_at: oldest_part_updated_at
         pending: 5
         total_parts: 9
         disabled: 0
         error: 6
         fresh: 5
-        newest_part_updated_at:
-          time.Time: time.Time
+        newest_part_updated_at: newest_part_updated_at
         removing: 2
       properties:
         disabled:
@@ -22148,9 +22138,13 @@ components:
             staleness timeframe.
           type: integer
         newest_part_updated_at:
-          $ref: '#/components/schemas/JSONTime'
+          description: The time when any of the parts was successfully refreshed most
+            recently.
+          type: string
         oldest_part_updated_at:
-          $ref: '#/components/schemas/JSONTime'
+          description: The time when any of the parts was successfully refreshed least
+            recently.
+          type: string
         pending:
           description: The number of parts that are yet to be executed.
           type: integer
@@ -22326,13 +22320,6 @@ components:
       - role
       type: object
     JSONB:
-      type: object
-    JSONTime:
-      example:
-        time.Time: time.Time
-      properties:
-        time.Time:
-          type: string
       type: object
     ListActorWorkspacesResponse:
       example:
@@ -23099,15 +23086,13 @@ components:
             freshness:
               expired: 1
               stale: 7
-              oldest_part_updated_at:
-                time.Time: time.Time
+              oldest_part_updated_at: oldest_part_updated_at
               pending: 5
               total_parts: 9
               disabled: 0
               error: 6
               fresh: 5
-              newest_part_updated_at:
-                time.Time: time.Time
+              newest_part_updated_at: newest_part_updated_at
               removing: 2
             migrating_name: migrating_name
             type: table
@@ -23121,15 +23106,13 @@ components:
             migrating_freshness:
               expired: 1
               stale: 7
-              oldest_part_updated_at:
-                time.Time: time.Time
+              oldest_part_updated_at: oldest_part_updated_at
               pending: 5
               total_parts: 9
               disabled: 0
               error: 6
               fresh: 5
-              newest_part_updated_at:
-                time.Time: time.Time
+              newest_part_updated_at: newest_part_updated_at
               removing: 2
             state_reason: state_reason
             datatank:
@@ -24652,15 +24635,13 @@ components:
             freshness:
               expired: 1
               stale: 7
-              oldest_part_updated_at:
-                time.Time: time.Time
+              oldest_part_updated_at: oldest_part_updated_at
               pending: 5
               total_parts: 9
               disabled: 0
               error: 6
               fresh: 5
-              newest_part_updated_at:
-                time.Time: time.Time
+              newest_part_updated_at: newest_part_updated_at
               removing: 2
             migrating_name: migrating_name
             type: table
@@ -24674,15 +24655,13 @@ components:
             migrating_freshness:
               expired: 1
               stale: 7
-              oldest_part_updated_at:
-                time.Time: time.Time
+              oldest_part_updated_at: oldest_part_updated_at
               pending: 5
               total_parts: 9
               disabled: 0
               error: 6
               fresh: 5
-              newest_part_updated_at:
-                time.Time: time.Time
+              newest_part_updated_at: newest_part_updated_at
               removing: 2
             state_reason: state_reason
             datatank:
@@ -26170,15 +26149,13 @@ components:
           freshness:
             expired: 1
             stale: 7
-            oldest_part_updated_at:
-              time.Time: time.Time
+            oldest_part_updated_at: oldest_part_updated_at
             pending: 5
             total_parts: 9
             disabled: 0
             error: 6
             fresh: 5
-            newest_part_updated_at:
-              time.Time: time.Time
+            newest_part_updated_at: newest_part_updated_at
             removing: 2
           migrating_name: migrating_name
           type: table
@@ -26192,15 +26169,13 @@ components:
           migrating_freshness:
             expired: 1
             stale: 7
-            oldest_part_updated_at:
-              time.Time: time.Time
+            oldest_part_updated_at: oldest_part_updated_at
             pending: 5
             total_parts: 9
             disabled: 0
             error: 6
             fresh: 5
-            newest_part_updated_at:
-              time.Time: time.Time
+            newest_part_updated_at: newest_part_updated_at
             removing: 2
           state_reason: state_reason
           datatank:
@@ -26379,15 +26354,13 @@ components:
           freshness:
             expired: 1
             stale: 7
-            oldest_part_updated_at:
-              time.Time: time.Time
+            oldest_part_updated_at: oldest_part_updated_at
             pending: 5
             total_parts: 9
             disabled: 0
             error: 6
             fresh: 5
-            newest_part_updated_at:
-              time.Time: time.Time
+            newest_part_updated_at: newest_part_updated_at
             removing: 2
           migrating_name: migrating_name
           type: table
@@ -26401,15 +26374,13 @@ components:
           migrating_freshness:
             expired: 1
             stale: 7
-            oldest_part_updated_at:
-              time.Time: time.Time
+            oldest_part_updated_at: oldest_part_updated_at
             pending: 5
             total_parts: 9
             disabled: 0
             error: 6
             fresh: 5
-            newest_part_updated_at:
-              time.Time: time.Time
+            newest_part_updated_at: newest_part_updated_at
             removing: 2
           state_reason: state_reason
           datatank:
@@ -32125,8 +32096,7 @@ components:
         usage_compute_action: warn
         usage_user_threshold: 1
         handle: handle
-        token_min_issued_at:
-          time.Time: time.Time
+        token_min_issued_at: token_min_issued_at
         usage_compute_threshold: 0
         display_name: display_name
         url: url
@@ -32138,7 +32108,9 @@ components:
           format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]){0,18}[a-z0-9]?$
           type: string
         token_min_issued_at:
-          $ref: '#/components/schemas/JSONTime'
+          description: The time which user and temporary auth tokens must be issued
+            after.
+          type: string
         url:
           type: string
         usage_compute_action:
@@ -32256,8 +32228,7 @@ components:
         usage_storage_action: warn
         usage_compute_action: warn
         handle: handle
-        token_min_issued_at:
-          time.Time: time.Time
+        token_min_issued_at: token_min_issued_at
         usage_compute_threshold: 0
         display_name: display_name
         url: url
@@ -32269,7 +32240,9 @@ components:
           format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]){0,18}[a-z0-9]?$
           type: string
         token_min_issued_at:
-          $ref: '#/components/schemas/JSONTime'
+          description: The time which user and temporary auth tokens must be issued
+            after.
+          type: string
         url:
           type: string
         usage_compute_action:
