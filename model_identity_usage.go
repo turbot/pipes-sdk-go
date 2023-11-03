@@ -29,11 +29,11 @@ type IdentityUsage struct {
 	// The start time for this usage record.
 	UsageDate string `json:"usage_date"`
 	// The value for this usage record.
-	Value *int32 `json:"value,omitempty"`
+	Value *int64 `json:"value,omitempty"`
 	// The rounded value for this usage record to the nearest billable unit.
-	ValueRounded *int32 `json:"value_rounded,omitempty"`
+	ValueRounded *int64 `json:"value_rounded,omitempty"`
 	// The value for this usage record weighted according to any billing rules such as DB instance type.
-	ValueWeighted *int32 `json:"value_weighted,omitempty"`
+	ValueWeighted *int64 `json:"value_weighted,omitempty"`
 	// The workspace ID for this usage record. Only populated if the usage is for a workspace.
 	WorkspaceId *string `json:"workspace_id,omitempty"`
 }
@@ -220,9 +220,9 @@ func (o *IdentityUsage) SetUsageDate(v string) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *IdentityUsage) GetValue() int32 {
+func (o *IdentityUsage) GetValue() int64 {
 	if o == nil || o.Value == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Value
@@ -230,7 +230,7 @@ func (o *IdentityUsage) GetValue() int32 {
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityUsage) GetValueOk() (*int32, bool) {
+func (o *IdentityUsage) GetValueOk() (*int64, bool) {
 	if o == nil || o.Value == nil {
 		return nil, false
 	}
@@ -246,15 +246,15 @@ func (o *IdentityUsage) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given int32 and assigns it to the Value field.
-func (o *IdentityUsage) SetValue(v int32) {
+// SetValue gets a reference to the given int64 and assigns it to the Value field.
+func (o *IdentityUsage) SetValue(v int64) {
 	o.Value = &v
 }
 
 // GetValueRounded returns the ValueRounded field value if set, zero value otherwise.
-func (o *IdentityUsage) GetValueRounded() int32 {
+func (o *IdentityUsage) GetValueRounded() int64 {
 	if o == nil || o.ValueRounded == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ValueRounded
@@ -262,7 +262,7 @@ func (o *IdentityUsage) GetValueRounded() int32 {
 
 // GetValueRoundedOk returns a tuple with the ValueRounded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityUsage) GetValueRoundedOk() (*int32, bool) {
+func (o *IdentityUsage) GetValueRoundedOk() (*int64, bool) {
 	if o == nil || o.ValueRounded == nil {
 		return nil, false
 	}
@@ -278,15 +278,15 @@ func (o *IdentityUsage) HasValueRounded() bool {
 	return false
 }
 
-// SetValueRounded gets a reference to the given int32 and assigns it to the ValueRounded field.
-func (o *IdentityUsage) SetValueRounded(v int32) {
+// SetValueRounded gets a reference to the given int64 and assigns it to the ValueRounded field.
+func (o *IdentityUsage) SetValueRounded(v int64) {
 	o.ValueRounded = &v
 }
 
 // GetValueWeighted returns the ValueWeighted field value if set, zero value otherwise.
-func (o *IdentityUsage) GetValueWeighted() int32 {
+func (o *IdentityUsage) GetValueWeighted() int64 {
 	if o == nil || o.ValueWeighted == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ValueWeighted
@@ -294,7 +294,7 @@ func (o *IdentityUsage) GetValueWeighted() int32 {
 
 // GetValueWeightedOk returns a tuple with the ValueWeighted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityUsage) GetValueWeightedOk() (*int32, bool) {
+func (o *IdentityUsage) GetValueWeightedOk() (*int64, bool) {
 	if o == nil || o.ValueWeighted == nil {
 		return nil, false
 	}
@@ -310,8 +310,8 @@ func (o *IdentityUsage) HasValueWeighted() bool {
 	return false
 }
 
-// SetValueWeighted gets a reference to the given int32 and assigns it to the ValueWeighted field.
-func (o *IdentityUsage) SetValueWeighted(v int32) {
+// SetValueWeighted gets a reference to the given int64 and assigns it to the ValueWeighted field.
+func (o *IdentityUsage) SetValueWeighted(v int64) {
 	o.ValueWeighted = &v
 }
 

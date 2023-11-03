@@ -44,11 +44,11 @@ type Org struct {
 	UpdatedById           string  `json:"updated_by_id"`
 	Url                   *string `json:"url,omitempty"`
 	UsageComputeAction    *string `json:"usage_compute_action,omitempty"`
-	UsageComputeThreshold *int32  `json:"usage_compute_threshold,omitempty"`
+	UsageComputeThreshold *int64  `json:"usage_compute_threshold,omitempty"`
 	UsageStorageAction    *string `json:"usage_storage_action,omitempty"`
-	UsageStorageThreshold *int32  `json:"usage_storage_threshold,omitempty"`
+	UsageStorageThreshold *int64  `json:"usage_storage_threshold,omitempty"`
 	UsageUserAction       *string `json:"usage_user_action,omitempty"`
-	UsageUserThreshold    *int32  `json:"usage_user_threshold,omitempty"`
+	UsageUserThreshold    *int64  `json:"usage_user_threshold,omitempty"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
 	VersionId int32 `json:"version_id"`
 }
@@ -574,9 +574,9 @@ func (o *Org) SetUsageComputeAction(v string) {
 }
 
 // GetUsageComputeThreshold returns the UsageComputeThreshold field value if set, zero value otherwise.
-func (o *Org) GetUsageComputeThreshold() int32 {
+func (o *Org) GetUsageComputeThreshold() int64 {
 	if o == nil || o.UsageComputeThreshold == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.UsageComputeThreshold
@@ -584,7 +584,7 @@ func (o *Org) GetUsageComputeThreshold() int32 {
 
 // GetUsageComputeThresholdOk returns a tuple with the UsageComputeThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Org) GetUsageComputeThresholdOk() (*int32, bool) {
+func (o *Org) GetUsageComputeThresholdOk() (*int64, bool) {
 	if o == nil || o.UsageComputeThreshold == nil {
 		return nil, false
 	}
@@ -600,8 +600,8 @@ func (o *Org) HasUsageComputeThreshold() bool {
 	return false
 }
 
-// SetUsageComputeThreshold gets a reference to the given int32 and assigns it to the UsageComputeThreshold field.
-func (o *Org) SetUsageComputeThreshold(v int32) {
+// SetUsageComputeThreshold gets a reference to the given int64 and assigns it to the UsageComputeThreshold field.
+func (o *Org) SetUsageComputeThreshold(v int64) {
 	o.UsageComputeThreshold = &v
 }
 
@@ -638,9 +638,9 @@ func (o *Org) SetUsageStorageAction(v string) {
 }
 
 // GetUsageStorageThreshold returns the UsageStorageThreshold field value if set, zero value otherwise.
-func (o *Org) GetUsageStorageThreshold() int32 {
+func (o *Org) GetUsageStorageThreshold() int64 {
 	if o == nil || o.UsageStorageThreshold == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.UsageStorageThreshold
@@ -648,7 +648,7 @@ func (o *Org) GetUsageStorageThreshold() int32 {
 
 // GetUsageStorageThresholdOk returns a tuple with the UsageStorageThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Org) GetUsageStorageThresholdOk() (*int32, bool) {
+func (o *Org) GetUsageStorageThresholdOk() (*int64, bool) {
 	if o == nil || o.UsageStorageThreshold == nil {
 		return nil, false
 	}
@@ -664,8 +664,8 @@ func (o *Org) HasUsageStorageThreshold() bool {
 	return false
 }
 
-// SetUsageStorageThreshold gets a reference to the given int32 and assigns it to the UsageStorageThreshold field.
-func (o *Org) SetUsageStorageThreshold(v int32) {
+// SetUsageStorageThreshold gets a reference to the given int64 and assigns it to the UsageStorageThreshold field.
+func (o *Org) SetUsageStorageThreshold(v int64) {
 	o.UsageStorageThreshold = &v
 }
 
@@ -702,9 +702,9 @@ func (o *Org) SetUsageUserAction(v string) {
 }
 
 // GetUsageUserThreshold returns the UsageUserThreshold field value if set, zero value otherwise.
-func (o *Org) GetUsageUserThreshold() int32 {
+func (o *Org) GetUsageUserThreshold() int64 {
 	if o == nil || o.UsageUserThreshold == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.UsageUserThreshold
@@ -712,7 +712,7 @@ func (o *Org) GetUsageUserThreshold() int32 {
 
 // GetUsageUserThresholdOk returns a tuple with the UsageUserThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Org) GetUsageUserThresholdOk() (*int32, bool) {
+func (o *Org) GetUsageUserThresholdOk() (*int64, bool) {
 	if o == nil || o.UsageUserThreshold == nil {
 		return nil, false
 	}
@@ -728,8 +728,8 @@ func (o *Org) HasUsageUserThreshold() bool {
 	return false
 }
 
-// SetUsageUserThreshold gets a reference to the given int32 and assigns it to the UsageUserThreshold field.
-func (o *Org) SetUsageUserThreshold(v int32) {
+// SetUsageUserThreshold gets a reference to the given int64 and assigns it to the UsageUserThreshold field.
+func (o *Org) SetUsageUserThreshold(v int64) {
 	o.UsageUserThreshold = &v
 }
 

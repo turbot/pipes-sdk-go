@@ -30,7 +30,7 @@ type DatatankTable struct {
 	DeletedById        string                  `json:"deleted_by_id"`
 	Description        *string                 `json:"description,omitempty"`
 	DesiredState       string                  `json:"desired_state"`
-	Frequency          map[string]interface{}  `json:"frequency"`
+	Frequency          PipelineFrequency       `json:"frequency"`
 	Freshness          *DatatankTableFreshness `json:"freshness,omitempty"`
 	Id                 string                  `json:"id"`
 	MigratingFreshness *DatatankTableFreshness `json:"migrating_freshness,omitempty"`
@@ -56,7 +56,7 @@ type DatatankTable struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDatatankTable(createdAt string, createdById string, datatankId string, deletedById string, desiredState string, frequency map[string]interface{}, id string, name string, state string, type_ string, updatedById string, versionId int32) *DatatankTable {
+func NewDatatankTable(createdAt string, createdById string, datatankId string, deletedById string, desiredState string, frequency PipelineFrequency, id string, name string, state string, type_ string, updatedById string, versionId int32) *DatatankTable {
 	this := DatatankTable{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
@@ -362,9 +362,9 @@ func (o *DatatankTable) SetDesiredState(v string) {
 }
 
 // GetFrequency returns the Frequency field value
-func (o *DatatankTable) GetFrequency() map[string]interface{} {
+func (o *DatatankTable) GetFrequency() PipelineFrequency {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret PipelineFrequency
 		return ret
 	}
 
@@ -373,7 +373,7 @@ func (o *DatatankTable) GetFrequency() map[string]interface{} {
 
 // GetFrequencyOk returns a tuple with the Frequency field value
 // and a boolean to check if the value has been set.
-func (o *DatatankTable) GetFrequencyOk() (*map[string]interface{}, bool) {
+func (o *DatatankTable) GetFrequencyOk() (*PipelineFrequency, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -381,7 +381,7 @@ func (o *DatatankTable) GetFrequencyOk() (*map[string]interface{}, bool) {
 }
 
 // SetFrequency sets field value
-func (o *DatatankTable) SetFrequency(v map[string]interface{}) {
+func (o *DatatankTable) SetFrequency(v PipelineFrequency) {
 	o.Frequency = v
 }
 

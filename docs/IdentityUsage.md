@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **Metric** | **string** | The metric for this usage record. | 
 **Unit** | **string** | The unit for this usage record. | 
 **UsageDate** | **string** | The start time for this usage record. | 
-**Value** | Pointer to **int32** | The value for this usage record. | [optional] 
-**ValueRounded** | Pointer to **int32** | The rounded value for this usage record to the nearest billable unit. | [optional] 
-**ValueWeighted** | Pointer to **int32** | The value for this usage record weighted according to any billing rules such as DB instance type. | [optional] 
+**Value** | Pointer to **int64** | The value for this usage record. | [optional] 
+**ValueRounded** | Pointer to **int64** | The rounded value for this usage record to the nearest billable unit. | [optional] 
+**ValueWeighted** | Pointer to **int64** | The value for this usage record weighted according to any billing rules such as DB instance type. | [optional] 
 **WorkspaceId** | Pointer to **string** | The workspace ID for this usage record. Only populated if the usage is for a workspace. | [optional] 
 
 ## Methods
@@ -166,20 +166,20 @@ SetUsageDate sets UsageDate field to given value.
 
 ### GetValue
 
-`func (o *IdentityUsage) GetValue() int32`
+`func (o *IdentityUsage) GetValue() int64`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *IdentityUsage) GetValueOk() (*int32, bool)`
+`func (o *IdentityUsage) GetValueOk() (*int64, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *IdentityUsage) SetValue(v int32)`
+`func (o *IdentityUsage) SetValue(v int64)`
 
 SetValue sets Value field to given value.
 
@@ -191,20 +191,20 @@ HasValue returns a boolean if a field has been set.
 
 ### GetValueRounded
 
-`func (o *IdentityUsage) GetValueRounded() int32`
+`func (o *IdentityUsage) GetValueRounded() int64`
 
 GetValueRounded returns the ValueRounded field if non-nil, zero value otherwise.
 
 ### GetValueRoundedOk
 
-`func (o *IdentityUsage) GetValueRoundedOk() (*int32, bool)`
+`func (o *IdentityUsage) GetValueRoundedOk() (*int64, bool)`
 
 GetValueRoundedOk returns a tuple with the ValueRounded field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValueRounded
 
-`func (o *IdentityUsage) SetValueRounded(v int32)`
+`func (o *IdentityUsage) SetValueRounded(v int64)`
 
 SetValueRounded sets ValueRounded field to given value.
 
@@ -216,20 +216,20 @@ HasValueRounded returns a boolean if a field has been set.
 
 ### GetValueWeighted
 
-`func (o *IdentityUsage) GetValueWeighted() int32`
+`func (o *IdentityUsage) GetValueWeighted() int64`
 
 GetValueWeighted returns the ValueWeighted field if non-nil, zero value otherwise.
 
 ### GetValueWeightedOk
 
-`func (o *IdentityUsage) GetValueWeightedOk() (*int32, bool)`
+`func (o *IdentityUsage) GetValueWeightedOk() (*int64, bool)`
 
 GetValueWeightedOk returns a tuple with the ValueWeighted field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValueWeighted
 
-`func (o *IdentityUsage) SetValueWeighted(v int32)`
+`func (o *IdentityUsage) SetValueWeighted(v int64)`
 
 SetValueWeighted sets ValueWeighted field to given value.
 

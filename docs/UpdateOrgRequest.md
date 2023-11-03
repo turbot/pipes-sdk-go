@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayName** | Pointer to **string** |  | [optional] 
 **Handle** | Pointer to **string** |  | [optional] 
-**TokenMinIssuedAt** | Pointer to [**JSONTime**](JSONTime.md) |  | [optional] 
+**TokenMinIssuedAt** | Pointer to **string** | The time which user and temporary auth tokens must be issued after. | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
 **UsageComputeAction** | Pointer to **string** |  | [optional] 
-**UsageComputeThreshold** | Pointer to **int32** |  | [optional] 
+**UsageComputeThreshold** | Pointer to **int64** |  | [optional] 
 **UsageStorageAction** | Pointer to **string** |  | [optional] 
-**UsageStorageThreshold** | Pointer to **int32** |  | [optional] 
+**UsageStorageThreshold** | Pointer to **int64** |  | [optional] 
 **UsageUserAction** | Pointer to **string** |  | [optional] 
-**UsageUserThreshold** | Pointer to **int32** |  | [optional] 
+**UsageUserThreshold** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -86,20 +86,20 @@ HasHandle returns a boolean if a field has been set.
 
 ### GetTokenMinIssuedAt
 
-`func (o *UpdateOrgRequest) GetTokenMinIssuedAt() JSONTime`
+`func (o *UpdateOrgRequest) GetTokenMinIssuedAt() string`
 
 GetTokenMinIssuedAt returns the TokenMinIssuedAt field if non-nil, zero value otherwise.
 
 ### GetTokenMinIssuedAtOk
 
-`func (o *UpdateOrgRequest) GetTokenMinIssuedAtOk() (*JSONTime, bool)`
+`func (o *UpdateOrgRequest) GetTokenMinIssuedAtOk() (*string, bool)`
 
 GetTokenMinIssuedAtOk returns a tuple with the TokenMinIssuedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenMinIssuedAt
 
-`func (o *UpdateOrgRequest) SetTokenMinIssuedAt(v JSONTime)`
+`func (o *UpdateOrgRequest) SetTokenMinIssuedAt(v string)`
 
 SetTokenMinIssuedAt sets TokenMinIssuedAt field to given value.
 
@@ -161,20 +161,20 @@ HasUsageComputeAction returns a boolean if a field has been set.
 
 ### GetUsageComputeThreshold
 
-`func (o *UpdateOrgRequest) GetUsageComputeThreshold() int32`
+`func (o *UpdateOrgRequest) GetUsageComputeThreshold() int64`
 
 GetUsageComputeThreshold returns the UsageComputeThreshold field if non-nil, zero value otherwise.
 
 ### GetUsageComputeThresholdOk
 
-`func (o *UpdateOrgRequest) GetUsageComputeThresholdOk() (*int32, bool)`
+`func (o *UpdateOrgRequest) GetUsageComputeThresholdOk() (*int64, bool)`
 
 GetUsageComputeThresholdOk returns a tuple with the UsageComputeThreshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsageComputeThreshold
 
-`func (o *UpdateOrgRequest) SetUsageComputeThreshold(v int32)`
+`func (o *UpdateOrgRequest) SetUsageComputeThreshold(v int64)`
 
 SetUsageComputeThreshold sets UsageComputeThreshold field to given value.
 
@@ -211,20 +211,20 @@ HasUsageStorageAction returns a boolean if a field has been set.
 
 ### GetUsageStorageThreshold
 
-`func (o *UpdateOrgRequest) GetUsageStorageThreshold() int32`
+`func (o *UpdateOrgRequest) GetUsageStorageThreshold() int64`
 
 GetUsageStorageThreshold returns the UsageStorageThreshold field if non-nil, zero value otherwise.
 
 ### GetUsageStorageThresholdOk
 
-`func (o *UpdateOrgRequest) GetUsageStorageThresholdOk() (*int32, bool)`
+`func (o *UpdateOrgRequest) GetUsageStorageThresholdOk() (*int64, bool)`
 
 GetUsageStorageThresholdOk returns a tuple with the UsageStorageThreshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsageStorageThreshold
 
-`func (o *UpdateOrgRequest) SetUsageStorageThreshold(v int32)`
+`func (o *UpdateOrgRequest) SetUsageStorageThreshold(v int64)`
 
 SetUsageStorageThreshold sets UsageStorageThreshold field to given value.
 
@@ -261,20 +261,20 @@ HasUsageUserAction returns a boolean if a field has been set.
 
 ### GetUsageUserThreshold
 
-`func (o *UpdateOrgRequest) GetUsageUserThreshold() int32`
+`func (o *UpdateOrgRequest) GetUsageUserThreshold() int64`
 
 GetUsageUserThreshold returns the UsageUserThreshold field if non-nil, zero value otherwise.
 
 ### GetUsageUserThresholdOk
 
-`func (o *UpdateOrgRequest) GetUsageUserThresholdOk() (*int32, bool)`
+`func (o *UpdateOrgRequest) GetUsageUserThresholdOk() (*int64, bool)`
 
 GetUsageUserThresholdOk returns a tuple with the UsageUserThreshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsageUserThreshold
 
-`func (o *UpdateOrgRequest) SetUsageUserThreshold(v int32)`
+`func (o *UpdateOrgRequest) SetUsageUserThreshold(v int64)`
 
 SetUsageUserThreshold sets UsageUserThreshold field to given value.
 

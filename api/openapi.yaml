@@ -19734,13 +19734,14 @@ components:
         type: table
         source_table: source_table
         source_schema: source_schema
-        frequency: '{}'
+        frequency:
+          schedule: schedule
+          type: interval
       properties:
         description:
           type: string
         frequency:
-          properties: {}
-          type: object
+          $ref: '#/components/schemas/PipelineFrequency'
         name:
           format: ^[A-Za-z_][A-Za-z_0-9$]*$
           type: string
@@ -20175,7 +20176,9 @@ components:
           status: status
           usage_storage_threshold: 6
         last_error_process_id: last_error_process_id
-        frequency: '{}'
+        frequency:
+          schedule: schedule
+          type: interval
         updated_at: updated_at
         pipeline_id: pipeline_id
         id: id
@@ -20408,19 +20411,19 @@ components:
           freshness:
             expired: 1
             stale: 7
-            oldest_part_updated_at:
-              time.Time: time.Time
+            oldest_part_updated_at: oldest_part_updated_at
             pending: 5
             total_parts: 9
             disabled: 0
             error: 6
             fresh: 5
-            newest_part_updated_at:
-              time.Time: time.Time
+            newest_part_updated_at: newest_part_updated_at
             removing: 2
           migrating_name: migrating_name
           type: table
-          frequency: '{}'
+          frequency:
+            schedule: schedule
+            type: interval
           source_query: source_query
           updated_at: updated_at
           id: id
@@ -20428,15 +20431,13 @@ components:
           migrating_freshness:
             expired: 1
             stale: 7
-            oldest_part_updated_at:
-              time.Time: time.Time
+            oldest_part_updated_at: oldest_part_updated_at
             pending: 5
             total_parts: 9
             disabled: 0
             error: 6
             fresh: 5
-            newest_part_updated_at:
-              time.Time: time.Time
+            newest_part_updated_at: newest_part_updated_at
             removing: 2
           state_reason: state_reason
           datatank:
@@ -21723,8 +21724,7 @@ components:
         desired_state:
           type: string
         frequency:
-          properties: {}
-          type: object
+          $ref: '#/components/schemas/PipelineFrequency'
         freshness_state:
           type: string
         id:
@@ -21844,19 +21844,19 @@ components:
         freshness:
           expired: 1
           stale: 7
-          oldest_part_updated_at:
-            time.Time: time.Time
+          oldest_part_updated_at: oldest_part_updated_at
           pending: 5
           total_parts: 9
           disabled: 0
           error: 6
           fresh: 5
-          newest_part_updated_at:
-            time.Time: time.Time
+          newest_part_updated_at: newest_part_updated_at
           removing: 2
         migrating_name: migrating_name
         type: table
-        frequency: '{}'
+        frequency:
+          schedule: schedule
+          type: interval
         source_query: source_query
         updated_at: updated_at
         id: id
@@ -21864,15 +21864,13 @@ components:
         migrating_freshness:
           expired: 1
           stale: 7
-          oldest_part_updated_at:
-            time.Time: time.Time
+          oldest_part_updated_at: oldest_part_updated_at
           pending: 5
           total_parts: 9
           disabled: 0
           error: 6
           fresh: 5
-          newest_part_updated_at:
-            time.Time: time.Time
+          newest_part_updated_at: newest_part_updated_at
           removing: 2
         state_reason: state_reason
         datatank:
@@ -22053,8 +22051,7 @@ components:
           - disabled
           type: string
         frequency:
-          properties: {}
-          type: object
+          $ref: '#/components/schemas/PipelineFrequency'
         freshness:
           $ref: '#/components/schemas/DatatankTableFreshness'
         id:
@@ -22117,15 +22114,13 @@ components:
       example:
         expired: 1
         stale: 7
-        oldest_part_updated_at:
-          time.Time: time.Time
+        oldest_part_updated_at: oldest_part_updated_at
         pending: 5
         total_parts: 9
         disabled: 0
         error: 6
         fresh: 5
-        newest_part_updated_at:
-          time.Time: time.Time
+        newest_part_updated_at: newest_part_updated_at
         removing: 2
       properties:
         disabled:
@@ -22143,9 +22138,13 @@ components:
             staleness timeframe.
           type: integer
         newest_part_updated_at:
-          $ref: '#/components/schemas/JSONTime'
+          description: The time when any of the parts was successfully refreshed most
+            recently.
+          type: string
         oldest_part_updated_at:
-          $ref: '#/components/schemas/JSONTime'
+          description: The time when any of the parts was successfully refreshed least
+            recently.
+          type: string
         pending:
           description: The number of parts that are yet to be executed.
           type: integer
@@ -22282,14 +22281,17 @@ components:
           type: string
         value:
           description: The value for this usage record.
+          format: int64
           type: integer
         value_rounded:
           description: The rounded value for this usage record to the nearest billable
             unit.
+          format: int64
           type: integer
         value_weighted:
           description: The value for this usage record weighted according to any billing
             rules such as DB instance type.
+          format: int64
           type: integer
         workspace_id:
           description: The workspace ID for this usage record. Only populated if the
@@ -22318,13 +22320,6 @@ components:
       - role
       type: object
     JSONB:
-      type: object
-    JSONTime:
-      example:
-        time.Time: time.Time
-      properties:
-        time.Time:
-          type: string
       type: object
     ListActorWorkspacesResponse:
       example:
@@ -22856,7 +22851,9 @@ components:
             status: status
             usage_storage_threshold: 6
           last_error_process_id: last_error_process_id
-          frequency: '{}'
+          frequency:
+            schedule: schedule
+            type: interval
           updated_at: updated_at
           pipeline_id: pipeline_id
           id: id
@@ -23089,19 +23086,19 @@ components:
             freshness:
               expired: 1
               stale: 7
-              oldest_part_updated_at:
-                time.Time: time.Time
+              oldest_part_updated_at: oldest_part_updated_at
               pending: 5
               total_parts: 9
               disabled: 0
               error: 6
               fresh: 5
-              newest_part_updated_at:
-                time.Time: time.Time
+              newest_part_updated_at: newest_part_updated_at
               removing: 2
             migrating_name: migrating_name
             type: table
-            frequency: '{}'
+            frequency:
+              schedule: schedule
+              type: interval
             source_query: source_query
             updated_at: updated_at
             id: id
@@ -23109,15 +23106,13 @@ components:
             migrating_freshness:
               expired: 1
               stale: 7
-              oldest_part_updated_at:
-                time.Time: time.Time
+              oldest_part_updated_at: oldest_part_updated_at
               pending: 5
               total_parts: 9
               disabled: 0
               error: 6
               fresh: 5
-              newest_part_updated_at:
-                time.Time: time.Time
+              newest_part_updated_at: newest_part_updated_at
               removing: 2
             state_reason: state_reason
             datatank:
@@ -24405,7 +24400,9 @@ components:
             status: status
             usage_storage_threshold: 6
           last_error_process_id: last_error_process_id
-          frequency: '{}'
+          frequency:
+            schedule: schedule
+            type: interval
           updated_at: updated_at
           pipeline_id: pipeline_id
           id: id
@@ -24638,19 +24635,19 @@ components:
             freshness:
               expired: 1
               stale: 7
-              oldest_part_updated_at:
-                time.Time: time.Time
+              oldest_part_updated_at: oldest_part_updated_at
               pending: 5
               total_parts: 9
               disabled: 0
               error: 6
               fresh: 5
-              newest_part_updated_at:
-                time.Time: time.Time
+              newest_part_updated_at: newest_part_updated_at
               removing: 2
             migrating_name: migrating_name
             type: table
-            frequency: '{}'
+            frequency:
+              schedule: schedule
+              type: interval
             source_query: source_query
             updated_at: updated_at
             id: id
@@ -24658,15 +24655,13 @@ components:
             migrating_freshness:
               expired: 1
               stale: 7
-              oldest_part_updated_at:
-                time.Time: time.Time
+              oldest_part_updated_at: oldest_part_updated_at
               pending: 5
               total_parts: 9
               disabled: 0
               error: 6
               fresh: 5
-              newest_part_updated_at:
-                time.Time: time.Time
+              newest_part_updated_at: newest_part_updated_at
               removing: 2
             state_reason: state_reason
             datatank:
@@ -26154,19 +26149,19 @@ components:
           freshness:
             expired: 1
             stale: 7
-            oldest_part_updated_at:
-              time.Time: time.Time
+            oldest_part_updated_at: oldest_part_updated_at
             pending: 5
             total_parts: 9
             disabled: 0
             error: 6
             fresh: 5
-            newest_part_updated_at:
-              time.Time: time.Time
+            newest_part_updated_at: newest_part_updated_at
             removing: 2
           migrating_name: migrating_name
           type: table
-          frequency: '{}'
+          frequency:
+            schedule: schedule
+            type: interval
           source_query: source_query
           updated_at: updated_at
           id: id
@@ -26174,15 +26169,13 @@ components:
           migrating_freshness:
             expired: 1
             stale: 7
-            oldest_part_updated_at:
-              time.Time: time.Time
+            oldest_part_updated_at: oldest_part_updated_at
             pending: 5
             total_parts: 9
             disabled: 0
             error: 6
             fresh: 5
-            newest_part_updated_at:
-              time.Time: time.Time
+            newest_part_updated_at: newest_part_updated_at
             removing: 2
           state_reason: state_reason
           datatank:
@@ -26361,19 +26354,19 @@ components:
           freshness:
             expired: 1
             stale: 7
-            oldest_part_updated_at:
-              time.Time: time.Time
+            oldest_part_updated_at: oldest_part_updated_at
             pending: 5
             total_parts: 9
             disabled: 0
             error: 6
             fresh: 5
-            newest_part_updated_at:
-              time.Time: time.Time
+            newest_part_updated_at: newest_part_updated_at
             removing: 2
           migrating_name: migrating_name
           type: table
-          frequency: '{}'
+          frequency:
+            schedule: schedule
+            type: interval
           source_query: source_query
           updated_at: updated_at
           id: id
@@ -26381,15 +26374,13 @@ components:
           migrating_freshness:
             expired: 1
             stale: 7
-            oldest_part_updated_at:
-              time.Time: time.Time
+            oldest_part_updated_at: oldest_part_updated_at
             pending: 5
             total_parts: 9
             disabled: 0
             error: 6
             fresh: 5
-            newest_part_updated_at:
-              time.Time: time.Time
+            newest_part_updated_at: newest_part_updated_at
             removing: 2
           state_reason: state_reason
           datatank:
@@ -31028,14 +31019,17 @@ components:
         usage_compute_action:
           type: string
         usage_compute_threshold:
+          format: int64
           type: integer
         usage_storage_action:
           type: string
         usage_storage_threshold:
+          format: int64
           type: integer
         usage_user_action:
           type: string
         usage_user_threshold:
+          format: int64
           type: integer
         version_id:
           description: The version ID of this item. Pass this version ID via an If-Match
@@ -32068,7 +32062,9 @@ components:
         desired_state: enabled
         source_table: source_table
         source_schema: source_schema
-        frequency: '{}'
+        frequency:
+          schedule: schedule
+          type: interval
       properties:
         description:
           type: string
@@ -32079,8 +32075,7 @@ components:
           - paused
           type: string
         frequency:
-          properties: {}
-          type: object
+          $ref: '#/components/schemas/PipelineFrequency'
         name:
           type: string
         part_per:
@@ -32101,8 +32096,7 @@ components:
         usage_compute_action: warn
         usage_user_threshold: 1
         handle: handle
-        token_min_issued_at:
-          time.Time: time.Time
+        token_min_issued_at: token_min_issued_at
         usage_compute_threshold: 0
         display_name: display_name
         url: url
@@ -32114,7 +32108,9 @@ components:
           format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]){0,18}[a-z0-9]?$
           type: string
         token_min_issued_at:
-          $ref: '#/components/schemas/JSONTime'
+          description: The time which user and temporary auth tokens must be issued
+            after.
+          type: string
         url:
           type: string
         usage_compute_action:
@@ -32123,6 +32119,7 @@ components:
           - cap_and_warn
           type: string
         usage_compute_threshold:
+          format: int64
           type: integer
         usage_storage_action:
           enum:
@@ -32130,6 +32127,7 @@ components:
           - cap_and_warn
           type: string
         usage_storage_threshold:
+          format: int64
           type: integer
         usage_user_action:
           enum:
@@ -32137,6 +32135,7 @@ components:
           - cap_and_warn
           type: string
         usage_user_threshold:
+          format: int64
           type: integer
       type: object
     UpdateOrgUserRequest:
@@ -32229,8 +32228,7 @@ components:
         usage_storage_action: warn
         usage_compute_action: warn
         handle: handle
-        token_min_issued_at:
-          time.Time: time.Time
+        token_min_issued_at: token_min_issued_at
         usage_compute_threshold: 0
         display_name: display_name
         url: url
@@ -32242,7 +32240,9 @@ components:
           format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]){0,18}[a-z0-9]?$
           type: string
         token_min_issued_at:
-          $ref: '#/components/schemas/JSONTime'
+          description: The time which user and temporary auth tokens must be issued
+            after.
+          type: string
         url:
           type: string
         usage_compute_action:
@@ -32251,6 +32251,7 @@ components:
           - cap_and_warn
           type: string
         usage_compute_threshold:
+          format: int64
           type: integer
         usage_storage_action:
           enum:
@@ -32258,6 +32259,7 @@ components:
           - cap_and_warn
           type: string
         usage_storage_threshold:
+          format: int64
           type: integer
       type: object
     UpdateWorkspaceAggregatorRequest:
@@ -32387,10 +32389,12 @@ components:
         usage_compute_action:
           type: string
         usage_compute_threshold:
+          format: int64
           type: integer
         usage_storage_action:
           type: string
         usage_storage_threshold:
+          format: int64
           type: integer
         version_id:
           description: The current version of a user.

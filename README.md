@@ -340,7 +340,6 @@ Class | Method | HTTP request | Description
  - [Identity](docs/Identity.md)
  - [IdentityUsage](docs/IdentityUsage.md)
  - [InviteOrgUserRequest](docs/InviteOrgUserRequest.md)
- - [JSONTime](docs/JSONTime.md)
  - [ListActorWorkspacesResponse](docs/ListActorWorkspacesResponse.md)
  - [ListAuditLogsResponse](docs/ListAuditLogsResponse.md)
  - [ListConnectionsResponse](docs/ListConnectionsResponse.md)

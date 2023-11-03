@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** |  | [optional] 
-**Frequency** | Pointer to **map[string]interface{}** |  | [optional] 
+**Frequency** | Pointer to [**PipelineFrequency**](PipelineFrequency.md) |  | [optional] 
 **Name** | **string** |  | 
 **PartPer** | Pointer to **string** |  | [optional] 
 **SourceQuery** | Pointer to **string** |  | [optional] 
@@ -59,20 +59,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetFrequency
 
-`func (o *CreateDatatankTableRequest) GetFrequency() map[string]interface{}`
+`func (o *CreateDatatankTableRequest) GetFrequency() PipelineFrequency`
 
 GetFrequency returns the Frequency field if non-nil, zero value otherwise.
 
 ### GetFrequencyOk
 
-`func (o *CreateDatatankTableRequest) GetFrequencyOk() (*map[string]interface{}, bool)`
+`func (o *CreateDatatankTableRequest) GetFrequencyOk() (*PipelineFrequency, bool)`
 
 GetFrequencyOk returns a tuple with the Frequency field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFrequency
 
-`func (o *CreateDatatankTableRequest) SetFrequency(v map[string]interface{})`
+`func (o *CreateDatatankTableRequest) SetFrequency(v PipelineFrequency)`
 
 SetFrequency sets Frequency field to given value.
 
