@@ -1,6 +1,6 @@
 # Turbot Pipes Go SDK
 
-## 0.8.1 [2023-11-02]
+## 0.8.1 [2023-11-03]
 
 _Enhancements_
 
