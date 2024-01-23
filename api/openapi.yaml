@@ -2854,7 +2854,7 @@ paths:
       operationId: orgMember_create
       parameters:
       - description: Specify the handle of the organization where the member need
-          to be invited.
+          to be created.
         explode: false
         in: path
         name: org_handle
@@ -2868,14 +2868,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateOrgUserRequest'
-        description: The request body to invite a member to an organization.
+        description: The request body to create a member in an organization in a custom
+          tenant.
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrgWorkspaceUser'
+                $ref: '#/components/schemas/OrgUser'
           description: Created
         "400":
           content:

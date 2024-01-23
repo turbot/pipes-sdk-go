@@ -196,13 +196,13 @@ type OrgMembersApiCreateRequest struct {
 	request    *CreateOrgUserRequest
 }
 
-// The request body to invite a member to an organization.
+// The request body to create a member in an organization in a custom tenant.
 func (r OrgMembersApiCreateRequest) Request(request CreateOrgUserRequest) OrgMembersApiCreateRequest {
 	r.request = &request
 	return r
 }
 
-func (r OrgMembersApiCreateRequest) Execute() (OrgWorkspaceUser, *_nethttp.Response, error) {
+func (r OrgMembersApiCreateRequest) Execute() (OrgUser, *_nethttp.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -212,7 +212,7 @@ Create Create Org Member
 Add a user as a member of an org in a custom tenant.
 
 	@param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgHandle Specify the handle of the organization where the member need to be invited.
+	@param orgHandle Specify the handle of the organization where the member need to be created.
 	@return OrgMembersApiCreateRequest
 */
 func (a *OrgMembersService) Create(ctx _context.Context, orgHandle string) OrgMembersApiCreateRequest {
@@ -225,13 +225,13 @@ func (a *OrgMembersService) Create(ctx _context.Context, orgHandle string) OrgMe
 
 // Execute executes the request
 //
-//	@return OrgWorkspaceUser
-func (a *OrgMembersService) CreateExecute(r OrgMembersApiCreateRequest) (OrgWorkspaceUser, *_nethttp.Response, error) {
+//	@return OrgUser
+func (a *OrgMembersService) CreateExecute(r OrgMembersApiCreateRequest) (OrgUser, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue OrgWorkspaceUser
+		localVarReturnValue OrgUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgMembersService.Create")

@@ -87,7 +87,7 @@ No authorization required
 
 ## Create
 
-> OrgWorkspaceUser Create(ctx, orgHandle).Request(request).Execute()
+> OrgUser Create(ctx, orgHandle).Request(request).Execute()
 
 Create Org Member
 
@@ -106,8 +106,8 @@ import (
 )
 
 func main() {
-    orgHandle := "orgHandle_example" // string | Specify the handle of the organization where the member need to be invited.
-    request := *openapiclient.NewCreateOrgUserRequest("Handle_example", "Role_example") // CreateOrgUserRequest | The request body to invite a member to an organization.
+    orgHandle := "orgHandle_example" // string | Specify the handle of the organization where the member need to be created.
+    request := *openapiclient.NewCreateOrgUserRequest("Handle_example", "Role_example") // CreateOrgUserRequest | The request body to create a member in an organization in a custom tenant.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -116,7 +116,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgMembers.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `Create`: OrgWorkspaceUser
+    // response from `Create`: OrgUser
     fmt.Fprintf(os.Stdout, "Response from `OrgMembers.Create`: %v\n", resp)
 }
 ```
@@ -127,7 +127,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgHandle** | **string** | Specify the handle of the organization where the member need to be invited. | 
+**orgHandle** | **string** | Specify the handle of the organization where the member need to be created. | 
 
 ### Other Parameters
 
@@ -137,11 +137,11 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **request** | [**CreateOrgUserRequest**](CreateOrgUserRequest.md) | The request body to invite a member to an organization. | 
+ **request** | [**CreateOrgUserRequest**](CreateOrgUserRequest.md) | The request body to create a member in an organization in a custom tenant. | 
 
 ### Return type
 
-[**OrgWorkspaceUser**](OrgWorkspaceUser.md)
+[**OrgUser**](OrgUser.md)
 
 ### Authorization
 
