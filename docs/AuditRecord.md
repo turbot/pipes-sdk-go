@@ -18,12 +18,13 @@ Name | Type | Description | Notes
 **ProcessId** | Pointer to **string** |  | [optional] 
 **TargetHandle** | Pointer to **string** | The handle name of the entity on which the action has been performed. | [optional] 
 **TargetId** | Pointer to **string** | The unique identifier of the entity on which the action has been performed. | [optional] 
+**TenantId** | **string** | The unique identifier for the where the action has been performed. | 
 
 ## Methods
 
 ### NewAuditRecord
 
-`func NewAuditRecord(actionType string, actorAvatarUrl string, actorDisplayName string, actorHandle string, actorId string, actorIp string, createdAt string, data map[string]interface{}, id string, identityHandle string, identityId string, ) *AuditRecord`
+`func NewAuditRecord(actionType string, actorAvatarUrl string, actorDisplayName string, actorHandle string, actorId string, actorIp string, createdAt string, data map[string]interface{}, id string, identityHandle string, identityId string, tenantId string, ) *AuditRecord`
 
 NewAuditRecord instantiates a new AuditRecord object
 This constructor will assign default values to properties that have it defined,
@@ -332,6 +333,26 @@ SetTargetId sets TargetId field to given value.
 `func (o *AuditRecord) HasTargetId() bool`
 
 HasTargetId returns a boolean if a field has been set.
+
+### GetTenantId
+
+`func (o *AuditRecord) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *AuditRecord) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *AuditRecord) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

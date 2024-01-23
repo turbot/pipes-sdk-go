@@ -214,7 +214,7 @@ type UsersApiCreateAvatarRequest struct {
 	userHandle string
 }
 
-func (r UsersApiCreateAvatarRequest) Execute() (CreateUserAvatarResponse, *_nethttp.Response, error) {
+func (r UsersApiCreateAvatarRequest) Execute() (CreateAvatarResponse, *_nethttp.Response, error) {
 	return r.ApiService.CreateAvatarExecute(r)
 }
 
@@ -237,13 +237,13 @@ func (a *UsersService) CreateAvatar(ctx _context.Context, userHandle string) Use
 
 // Execute executes the request
 //
-//	@return CreateUserAvatarResponse
-func (a *UsersService) CreateAvatarExecute(r UsersApiCreateAvatarRequest) (CreateUserAvatarResponse, *_nethttp.Response, error) {
+//	@return CreateAvatarResponse
+func (a *UsersService) CreateAvatarExecute(r UsersApiCreateAvatarRequest) (CreateAvatarResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue CreateUserAvatarResponse
+		localVarReturnValue CreateAvatarResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersService.CreateAvatar")
@@ -725,7 +725,7 @@ type UsersApiDeleteAvatarRequest struct {
 	userHandle string
 }
 
-func (r UsersApiDeleteAvatarRequest) Execute() (DeleteUserAvatarResponse, *_nethttp.Response, error) {
+func (r UsersApiDeleteAvatarRequest) Execute() (DeleteAvatarResponse, *_nethttp.Response, error) {
 	return r.ApiService.DeleteAvatarExecute(r)
 }
 
@@ -748,13 +748,13 @@ func (a *UsersService) DeleteAvatar(ctx _context.Context, userHandle string) Use
 
 // Execute executes the request
 //
-//	@return DeleteUserAvatarResponse
-func (a *UsersService) DeleteAvatarExecute(r UsersApiDeleteAvatarRequest) (DeleteUserAvatarResponse, *_nethttp.Response, error) {
+//	@return DeleteAvatarResponse
+func (a *UsersService) DeleteAvatarExecute(r UsersApiDeleteAvatarRequest) (DeleteAvatarResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue DeleteUserAvatarResponse
+		localVarReturnValue DeleteAvatarResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersService.DeleteAvatar")

@@ -5,6 +5,7 @@ All URIs are relative to *https://pipes.turbot.com/api/v0*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ConfirmInvite**](OrgMembers.md#ConfirmInvite) | **Get** /org/{org_handle}/member/invite/confirm | Confirm org member invite
+[**Create**](OrgMembers.md#Create) | **Post** /org/{org_handle}/member | Create Org Member
 [**Delete**](OrgMembers.md#Delete) | **Delete** /org/{org_handle}/member/{user_handle} | Delete org member
 [**DeleteInvite**](OrgMembers.md#DeleteInvite) | **Delete** /org/{org_handle}/member/invite | Delete org member invite
 [**Get**](OrgMembers.md#Get) | **Get** /org/{org_handle}/member/{user_handle} | Get org member
@@ -77,6 +78,78 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Create
+
+> OrgWorkspaceUser Create(ctx, orgHandle).Request(request).Execute()
+
+Create Org Member
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    orgHandle := "orgHandle_example" // string | Specify the handle of the organization where the member need to be invited.
+    request := *openapiclient.NewCreateOrgUserRequest("Handle_example", "Role_example") // CreateOrgUserRequest | The request body to invite a member to an organization.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.OrgMembers.Create(context.Background(), orgHandle).Request(request).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgMembers.Create``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `Create`: OrgWorkspaceUser
+    fmt.Fprintf(os.Stdout, "Response from `OrgMembers.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgHandle** | **string** | Specify the handle of the organization where the member need to be invited. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **request** | [**CreateOrgUserRequest**](CreateOrgUserRequest.md) | The request body to invite a member to an organization. | 
+
+### Return type
+
+[**OrgWorkspaceUser**](OrgWorkspaceUser.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

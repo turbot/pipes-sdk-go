@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **CreatedById** | **string** | The ID of the user that created this. | 
 **Datatank** | Pointer to [**Datatank**](Datatank.md) |  | [optional] 
 **DatatankId** | **string** |  | 
-**DeletedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
+**DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
 **DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **Description** | Pointer to **string** |  | [optional] 

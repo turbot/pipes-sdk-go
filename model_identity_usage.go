@@ -24,6 +24,8 @@ type IdentityUsage struct {
 	InstanceType *string `json:"instance_type,omitempty"`
 	// The metric for this usage record.
 	Metric string `json:"metric"`
+	// The tenant ID for this usage record
+	TenantId *string `json:"tenant_id,omitempty"`
 	// The unit for this usage record.
 	Unit string `json:"unit"`
 	// The start time for this usage record.
@@ -169,6 +171,38 @@ func (o *IdentityUsage) GetMetricOk() (*string, bool) {
 // SetMetric sets field value
 func (o *IdentityUsage) SetMetric(v string) {
 	o.Metric = v
+}
+
+// GetTenantId returns the TenantId field value if set, zero value otherwise.
+func (o *IdentityUsage) GetTenantId() string {
+	if o == nil || o.TenantId == nil {
+		var ret string
+		return ret
+	}
+	return *o.TenantId
+}
+
+// GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityUsage) GetTenantIdOk() (*string, bool) {
+	if o == nil || o.TenantId == nil {
+		return nil, false
+	}
+	return o.TenantId, true
+}
+
+// HasTenantId returns a boolean if a field has been set.
+func (o *IdentityUsage) HasTenantId() bool {
+	if o != nil && o.TenantId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTenantId gets a reference to the given string and assigns it to the TenantId field.
+func (o *IdentityUsage) SetTenantId(v string) {
+	o.TenantId = &v
 }
 
 // GetUnit returns the Unit field value
@@ -360,6 +394,9 @@ func (o IdentityUsage) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["metric"] = o.Metric
+	}
+	if o.TenantId != nil {
+		toSerialize["tenant_id"] = o.TenantId
 	}
 	if true {
 		toSerialize["unit"] = o.Unit

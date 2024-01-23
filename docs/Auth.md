@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**LoginTokenGet**](Auth.md#LoginTokenGet) | **Get** /login/token/{temporary_token_request_id} | Get temporary token request
 [**LoginTokenUpdate**](Auth.md#LoginTokenUpdate) | **Patch** /login/token/{temporary_token_request_id} | Update temporary token request
 [**Logout**](Auth.md#Logout) | **Get** /logout/{provider} | User logout
+[**PostProviderCallback**](Auth.md#PostProviderCallback) | **Post** /auth/{provider}/callback | Post auth provider callback
 [**Provider**](Auth.md#Provider) | **Get** /auth/{provider} | Auth Provider
 [**ProviderCallback**](Auth.md#ProviderCallback) | **Get** /auth/{provider}/callback | Auth provider callback
 [**Signup**](Auth.md#Signup) | **Post** /signup | User signup
@@ -529,6 +530,74 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiLogoutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostProviderCallback
+
+> PostProviderCallback(ctx, provider).Execute()
+
+Post auth provider callback
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    provider := "provider_example" // string | The authentication provider.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.Auth.PostProviderCallback(context.Background(), provider).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `Auth.PostProviderCallback``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**provider** | **string** | The authentication provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostProviderCallbackRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

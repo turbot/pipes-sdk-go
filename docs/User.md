@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Id** | **string** | The unique identifier of a user. | 
 **PreviewAccessMode** | Pointer to **string** |  | [optional] 
 **Status** | **string** | The status of the user i.e accepted or pending. | 
+**TenantId** | **string** | The unique identifier of the tenant the user belongs to. | 
 **TokenMinIssuedAt** | Pointer to **string** | The time which user and temporary auth tokens must be issued after. | [optional] 
 **UpdatedAt** | Pointer to **string** | The user updated time. | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
@@ -25,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewUser
 
-`func NewUser(createdAt string, handle string, id string, status string, versionId int32, ) *User`
+`func NewUser(createdAt string, handle string, id string, status string, tenantId string, versionId int32, ) *User`
 
 NewUser instantiates a new User object
 This constructor will assign default values to properties that have it defined,
@@ -218,6 +219,26 @@ and a boolean to check if the value has been set.
 `func (o *User) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
+
+
+### GetTenantId
+
+`func (o *User) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *User) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *User) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
 
 
 ### GetTokenMinIssuedAt

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Setting** | Pointer to **interface{}** |  | [optional] 
 **Statistics** | Pointer to **interface{}** |  | [optional] 
 **Target** | **string** | The resource which the constraint targets. | 
+**TenantId** | Pointer to **string** | The tenant id for which the constraint applies to. | [optional] 
 **Type** | **string** | The type of constraint. Can be one of rate, quota, range, feature or constant. | 
 **UserId** | Pointer to **string** | The user id for which the constraint applies to. | [optional] 
 **Value** | **interface{}** |  | 
@@ -361,6 +362,31 @@ and a boolean to check if the value has been set.
 
 SetTarget sets Target field to given value.
 
+
+### GetTenantId
+
+`func (o *Constraint) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *Constraint) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *Constraint) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
+
+### HasTenantId
+
+`func (o *Constraint) HasTenantId() bool`
+
+HasTenantId returns a boolean if a field has been set.
 
 ### GetType
 

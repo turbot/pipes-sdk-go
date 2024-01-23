@@ -24,6 +24,8 @@ type Identity struct {
 	Handle string `json:"handle"`
 	// The unique identifier of the identity.
 	Id string `json:"id"`
+	// The unique identifier of the tenant the identity belongs to.
+	TenantId string `json:"tenant_id"`
 	// The type of identity e.g. user or org.
 	Type string `json:"type"`
 }
@@ -32,10 +34,11 @@ type Identity struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentity(handle string, id string, type_ string) *Identity {
+func NewIdentity(handle string, id string, tenantId string, type_ string) *Identity {
 	this := Identity{}
 	this.Handle = handle
 	this.Id = id
+	this.TenantId = tenantId
 	this.Type = type_
 	return &this
 }
@@ -160,6 +163,30 @@ func (o *Identity) SetId(v string) {
 	o.Id = v
 }
 
+// GetTenantId returns the TenantId field value
+func (o *Identity) GetTenantId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TenantId
+}
+
+// GetTenantIdOk returns a tuple with the TenantId field value
+// and a boolean to check if the value has been set.
+func (o *Identity) GetTenantIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TenantId, true
+}
+
+// SetTenantId sets field value
+func (o *Identity) SetTenantId(v string) {
+	o.TenantId = v
+}
+
 // GetType returns the Type field value
 func (o *Identity) GetType() string {
 	if o == nil {
@@ -197,6 +224,9 @@ func (o Identity) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["tenant_id"] = o.TenantId
 	}
 	if true {
 		toSerialize["type"] = o.Type

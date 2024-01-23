@@ -9,12 +9,13 @@ Name | Type | Description | Notes
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
 **CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
-**DeletedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
+**DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
 **DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **DisplayName** | Pointer to **string** | The display name of an org. | [optional] 
 **Handle** | **string** | The handle name for an org. | 
 **Id** | **string** | The unique identifier for an org. | 
+**TenantId** | **string** | The unique identifier of the tenant the org belongs to. | 
 **TokenMinIssuedAt** | Pointer to **string** | The time which user and temporary auth tokens must be issued after. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
 **UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
@@ -32,7 +33,7 @@ Name | Type | Description | Notes
 
 ### NewOrg
 
-`func NewOrg(createdAt string, createdById string, deletedById string, handle string, id string, updatedById string, versionId int32, ) *Org`
+`func NewOrg(createdAt string, createdById string, deletedById string, handle string, id string, tenantId string, updatedById string, versionId int32, ) *Org`
 
 NewOrg instantiates a new Org object
 This constructor will assign default values to properties that have it defined,
@@ -295,6 +296,26 @@ and a boolean to check if the value has been set.
 `func (o *Org) SetId(v string)`
 
 SetId sets Id field to given value.
+
+
+### GetTenantId
+
+`func (o *Org) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *Org) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *Org) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
 
 
 ### GetTokenMinIssuedAt

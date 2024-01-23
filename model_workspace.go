@@ -25,7 +25,7 @@ type Workspace struct {
 	CreatedById string `json:"created_by_id"`
 	// The name of the database.
 	DatabaseName *string `json:"database_name,omitempty"`
-	// The time of the last update in ISO 8601 UTC.
+	// The time the item was deleted in ISO 8601 UTC.
 	DeletedAt *string `json:"deleted_at,omitempty"`
 	DeletedBy *User   `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.

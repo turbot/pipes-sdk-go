@@ -24,6 +24,8 @@ type UserEmail struct {
 	Id *string `json:"id,omitempty"`
 	// The status of the email id i.e. whether its pending verification or verified.
 	Status string `json:"status"`
+	// The unique identifier of the tenant to which the email record belongs to.
+	TenantId *string `json:"tenant_id,omitempty"`
 	// The time when the user setting was last updated.
 	UpdatedAt *string `json:"updated_at,omitempty"`
 	// The current version of the user setting.
@@ -155,6 +157,38 @@ func (o *UserEmail) SetStatus(v string) {
 	o.Status = v
 }
 
+// GetTenantId returns the TenantId field value if set, zero value otherwise.
+func (o *UserEmail) GetTenantId() string {
+	if o == nil || o.TenantId == nil {
+		var ret string
+		return ret
+	}
+	return *o.TenantId
+}
+
+// GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserEmail) GetTenantIdOk() (*string, bool) {
+	if o == nil || o.TenantId == nil {
+		return nil, false
+	}
+	return o.TenantId, true
+}
+
+// HasTenantId returns a boolean if a field has been set.
+func (o *UserEmail) HasTenantId() bool {
+	if o != nil && o.TenantId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTenantId gets a reference to the given string and assigns it to the TenantId field.
+func (o *UserEmail) SetTenantId(v string) {
+	o.TenantId = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *UserEmail) GetUpdatedAt() string {
 	if o == nil || o.UpdatedAt == nil {
@@ -224,6 +258,9 @@ func (o UserEmail) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["status"] = o.Status
+	}
+	if o.TenantId != nil {
+		toSerialize["tenant_id"] = o.TenantId
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updated_at"] = o.UpdatedAt

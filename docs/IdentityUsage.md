@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **IdentityId** | Pointer to **string** | The identity ID for this usage record | [optional] 
 **InstanceType** | Pointer to **string** | The instance type for the usage record.                                                                                                                                                       // The instance type for this usage record. Only populated if the usage is for a workspace. | [optional] 
 **Metric** | **string** | The metric for this usage record. | 
+**TenantId** | Pointer to **string** | The tenant ID for this usage record | [optional] 
 **Unit** | **string** | The unit for this usage record. | 
 **UsageDate** | **string** | The start time for this usage record. | 
 **Value** | Pointer to **int64** | The value for this usage record. | [optional] 
@@ -123,6 +124,31 @@ and a boolean to check if the value has been set.
 
 SetMetric sets Metric field to given value.
 
+
+### GetTenantId
+
+`func (o *IdentityUsage) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *IdentityUsage) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *IdentityUsage) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
+
+### HasTenantId
+
+`func (o *IdentityUsage) HasTenantId() bool`
+
+HasTenantId returns a boolean if a field has been set.
 
 ### GetUnit
 

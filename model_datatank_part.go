@@ -23,7 +23,7 @@ type DatatankPart struct {
 	CreatedById     string         `json:"created_by_id"`
 	DatatankTable   *DatatankTable `json:"datatank_table,omitempty"`
 	DatatankTableId string         `json:"datatank_table_id"`
-	// The time of the last update in ISO 8601 UTC.
+	// The time the item was deleted in ISO 8601 UTC.
 	DeletedAt *string `json:"deleted_at,omitempty"`
 	DeletedBy *User   `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.

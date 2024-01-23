@@ -214,7 +214,7 @@ type OrgsApiCreateAvatarRequest struct {
 	orgHandle  string
 }
 
-func (r OrgsApiCreateAvatarRequest) Execute() (CreateOrgAvatarResponse, *_nethttp.Response, error) {
+func (r OrgsApiCreateAvatarRequest) Execute() (CreateAvatarResponse, *_nethttp.Response, error) {
 	return r.ApiService.CreateAvatarExecute(r)
 }
 
@@ -237,13 +237,13 @@ func (a *OrgsService) CreateAvatar(ctx _context.Context, orgHandle string) OrgsA
 
 // Execute executes the request
 //
-//	@return CreateOrgAvatarResponse
-func (a *OrgsService) CreateAvatarExecute(r OrgsApiCreateAvatarRequest) (CreateOrgAvatarResponse, *_nethttp.Response, error) {
+//	@return CreateAvatarResponse
+func (a *OrgsService) CreateAvatarExecute(r OrgsApiCreateAvatarRequest) (CreateAvatarResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue CreateOrgAvatarResponse
+		localVarReturnValue CreateAvatarResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgsService.CreateAvatar")
@@ -540,7 +540,7 @@ type OrgsApiDeleteAvatarRequest struct {
 	orgHandle  string
 }
 
-func (r OrgsApiDeleteAvatarRequest) Execute() (DeleteOrgAvatarResponse, *_nethttp.Response, error) {
+func (r OrgsApiDeleteAvatarRequest) Execute() (DeleteAvatarResponse, *_nethttp.Response, error) {
 	return r.ApiService.DeleteAvatarExecute(r)
 }
 
@@ -563,13 +563,13 @@ func (a *OrgsService) DeleteAvatar(ctx _context.Context, orgHandle string) OrgsA
 
 // Execute executes the request
 //
-//	@return DeleteOrgAvatarResponse
-func (a *OrgsService) DeleteAvatarExecute(r OrgsApiDeleteAvatarRequest) (DeleteOrgAvatarResponse, *_nethttp.Response, error) {
+//	@return DeleteAvatarResponse
+func (a *OrgsService) DeleteAvatarExecute(r OrgsApiDeleteAvatarRequest) (DeleteAvatarResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue DeleteOrgAvatarResponse
+		localVarReturnValue DeleteAvatarResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgsService.DeleteAvatar")

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
 **CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
-**Id** | **string** |  | 
+**Id** | Pointer to **string** |  | [optional] 
 **Org** | Pointer to [**Org**](Org.md) |  | [optional] 
 **OrgId** | **string** |  | 
 **Role** | **string** |  | 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewUserOrg
 
-`func NewUserOrg(createdAt string, createdById string, id string, orgId string, role string, status string, updatedById string, userId string, versionId int32, ) *UserOrg`
+`func NewUserOrg(createdAt string, createdById string, orgId string, role string, status string, updatedById string, userId string, versionId int32, ) *UserOrg`
 
 NewUserOrg instantiates a new UserOrg object
 This constructor will assign default values to properties that have it defined,
@@ -121,6 +121,11 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### HasId
+
+`func (o *UserOrg) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetOrg
 

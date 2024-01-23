@@ -91,6 +91,10 @@ type APIClient struct {
 
 	Orgs *OrgsService
 
+	TenantMembers *TenantMembersService
+
+	Tenants *TenantsService
+
 	UserConnections *UserConnectionsService
 
 	UserProcesses *UserProcessesService
@@ -163,6 +167,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OrgWorkspaceUsages = (*OrgWorkspaceUsagesService)(&c.common)
 	c.OrgWorkspaces = (*OrgWorkspacesService)(&c.common)
 	c.Orgs = (*OrgsService)(&c.common)
+	c.TenantMembers = (*TenantMembersService)(&c.common)
+	c.Tenants = (*TenantsService)(&c.common)
 	c.UserConnections = (*UserConnectionsService)(&c.common)
 	c.UserProcesses = (*UserProcessesService)(&c.common)
 	c.UserTokens = (*UserTokensService)(&c.common)

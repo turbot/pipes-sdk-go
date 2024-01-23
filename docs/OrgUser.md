@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Id** | **string** | The unique identifier of the org member. | 
 **OrgId** | **string** | The identifier of an org. | 
 **Role** | Pointer to **string** | The role of the org user. | [optional] 
-**Scope** | Pointer to **string** | The scope of the role. Can be either of org / workspace | [optional] 
+**Scope** | Pointer to **string** | The scope of the role. Can be either of tenant / org / workspace | [optional] 
 **Status** | **string** | The status of the org member i.e invited or accepted. | 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
 **UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 

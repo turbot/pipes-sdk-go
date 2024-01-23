@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **CreatedById** | **string** | The ID of the user that created this. | 
 **Datatank** | Pointer to [**Datatank**](Datatank.md) |  | [optional] 
 **DatatankId** | Pointer to **string** | The id of the datatank if the schema is of type &#39;datatank&#39;. | [optional] 
-**DeletedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
+**DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
 **DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **Id** | **string** | The unique identifier for the schema. | 

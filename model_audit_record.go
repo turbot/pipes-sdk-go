@@ -40,13 +40,15 @@ type AuditRecord struct {
 	TargetHandle *string `json:"target_handle,omitempty"`
 	// The unique identifier of the entity on which the action has been performed.
 	TargetId *string `json:"target_id,omitempty"`
+	// The unique identifier for the where the action has been performed.
+	TenantId string `json:"tenant_id"`
 }
 
 // NewAuditRecord instantiates a new AuditRecord object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuditRecord(actionType string, actorAvatarUrl string, actorDisplayName string, actorHandle string, actorId string, actorIp string, createdAt string, data map[string]interface{}, id string, identityHandle string, identityId string) *AuditRecord {
+func NewAuditRecord(actionType string, actorAvatarUrl string, actorDisplayName string, actorHandle string, actorId string, actorIp string, createdAt string, data map[string]interface{}, id string, identityHandle string, identityId string, tenantId string) *AuditRecord {
 	this := AuditRecord{}
 	this.ActionType = actionType
 	this.ActorAvatarUrl = actorAvatarUrl
@@ -59,6 +61,7 @@ func NewAuditRecord(actionType string, actorAvatarUrl string, actorDisplayName s
 	this.Id = id
 	this.IdentityHandle = identityHandle
 	this.IdentityId = identityId
+	this.TenantId = tenantId
 	return &this
 }
 
@@ -430,6 +433,30 @@ func (o *AuditRecord) SetTargetId(v string) {
 	o.TargetId = &v
 }
 
+// GetTenantId returns the TenantId field value
+func (o *AuditRecord) GetTenantId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TenantId
+}
+
+// GetTenantIdOk returns a tuple with the TenantId field value
+// and a boolean to check if the value has been set.
+func (o *AuditRecord) GetTenantIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TenantId, true
+}
+
+// SetTenantId sets field value
+func (o *AuditRecord) SetTenantId(v string) {
+	o.TenantId = v
+}
+
 func (o AuditRecord) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -473,6 +500,9 @@ func (o AuditRecord) MarshalJSON() ([]byte, error) {
 	}
 	if o.TargetId != nil {
 		toSerialize["target_id"] = o.TargetId
+	}
+	if true {
+		toSerialize["tenant_id"] = o.TenantId
 	}
 	return json.Marshal(toSerialize)
 }
