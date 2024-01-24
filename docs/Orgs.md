@@ -87,7 +87,7 @@ No authorization required
 
 ## CreateAvatar
 
-> CreateOrgAvatarResponse CreateAvatar(ctx, orgHandle).Execute()
+> CreateAvatarResponse CreateAvatar(ctx, orgHandle).Execute()
 
 Create org avatar
 
@@ -115,7 +115,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `Orgs.CreateAvatar``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateAvatar`: CreateOrgAvatarResponse
+    // response from `CreateAvatar`: CreateAvatarResponse
     fmt.Fprintf(os.Stdout, "Response from `Orgs.CreateAvatar`: %v\n", resp)
 }
 ```
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateOrgAvatarResponse**](CreateOrgAvatarResponse.md)
+[**CreateAvatarResponse**](CreateAvatarResponse.md)
 
 ### Authorization
 
@@ -227,7 +227,7 @@ No authorization required
 
 ## DeleteAvatar
 
-> DeleteOrgAvatarResponse DeleteAvatar(ctx, orgHandle).Execute()
+> DeleteAvatarResponse DeleteAvatar(ctx, orgHandle).Execute()
 
 Delete org avatar
 
@@ -255,7 +255,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `Orgs.DeleteAvatar``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteAvatar`: DeleteOrgAvatarResponse
+    // response from `DeleteAvatar`: DeleteAvatarResponse
     fmt.Fprintf(os.Stdout, "Response from `Orgs.DeleteAvatar`: %v\n", resp)
 }
 ```
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteOrgAvatarResponse**](DeleteOrgAvatarResponse.md)
+[**DeleteAvatarResponse**](DeleteAvatarResponse.md)
 
 ### Authorization
 

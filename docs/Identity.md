@@ -8,13 +8,14 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** | The display name of the identity. | [optional] 
 **Handle** | **string** | The handle name of the identity. | 
 **Id** | **string** | The unique identifier of the identity. | 
+**TenantId** | **string** | The unique identifier of the tenant the identity belongs to. | 
 **Type** | **string** | The type of identity e.g. user or org. | 
 
 ## Methods
 
 ### NewIdentity
 
-`func NewIdentity(handle string, id string, type_ string, ) *Identity`
+`func NewIdentity(handle string, id string, tenantId string, type_ string, ) *Identity`
 
 NewIdentity instantiates a new Identity object
 This constructor will assign default values to properties that have it defined,
@@ -117,6 +118,26 @@ and a boolean to check if the value has been set.
 `func (o *Identity) SetId(v string)`
 
 SetId sets Id field to given value.
+
+
+### GetTenantId
+
+`func (o *Identity) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *Identity) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *Identity) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
 
 
 ### GetType

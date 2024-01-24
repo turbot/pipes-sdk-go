@@ -28,6 +28,8 @@ type User struct {
 	PreviewAccessMode *string `json:"preview_access_mode,omitempty"`
 	// The status of the user i.e accepted or pending.
 	Status string `json:"status"`
+	// The unique identifier of the tenant the user belongs to.
+	TenantId string `json:"tenant_id"`
 	// The time which user and temporary auth tokens must be issued after.
 	TokenMinIssuedAt *string `json:"token_min_issued_at,omitempty"`
 	// The user updated time.
@@ -45,12 +47,13 @@ type User struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUser(createdAt string, handle string, id string, status string, versionId int32) *User {
+func NewUser(createdAt string, handle string, id string, status string, tenantId string, versionId int32) *User {
 	this := User{}
 	this.CreatedAt = createdAt
 	this.Handle = handle
 	this.Id = id
 	this.Status = status
+	this.TenantId = tenantId
 	this.VersionId = versionId
 	return &this
 }
@@ -285,6 +288,30 @@ func (o *User) GetStatusOk() (*string, bool) {
 // SetStatus sets field value
 func (o *User) SetStatus(v string) {
 	o.Status = v
+}
+
+// GetTenantId returns the TenantId field value
+func (o *User) GetTenantId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TenantId
+}
+
+// GetTenantIdOk returns a tuple with the TenantId field value
+// and a boolean to check if the value has been set.
+func (o *User) GetTenantIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TenantId, true
+}
+
+// SetTenantId sets field value
+func (o *User) SetTenantId(v string) {
+	o.TenantId = v
 }
 
 // GetTokenMinIssuedAt returns the TokenMinIssuedAt field value if set, zero value otherwise.
@@ -560,6 +587,9 @@ func (o User) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["status"] = o.Status
+	}
+	if true {
+		toSerialize["tenant_id"] = o.TenantId
 	}
 	if o.TokenMinIssuedAt != nil {
 		toSerialize["token_min_issued_at"] = o.TokenMinIssuedAt

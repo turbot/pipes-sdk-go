@@ -23,7 +23,7 @@ type WorkspaceAggregator struct {
 	CreatedBy *User  `json:"created_by,omitempty"`
 	// The ID of the user that created this.
 	CreatedById string `json:"created_by_id"`
-	// The time of the last update in ISO 8601 UTC.
+	// The time the item was deleted in ISO 8601 UTC.
 	DeletedAt *string `json:"deleted_at,omitempty"`
 	DeletedBy *User   `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.

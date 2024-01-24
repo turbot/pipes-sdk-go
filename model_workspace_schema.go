@@ -30,7 +30,7 @@ type WorkspaceSchema struct {
 	Datatank    *Datatank `json:"datatank,omitempty"`
 	// The id of the datatank if the schema is of type 'datatank'.
 	DatatankId *string `json:"datatank_id,omitempty"`
-	// The time of the last update in ISO 8601 UTC.
+	// The time the item was deleted in ISO 8601 UTC.
 	DeletedAt *string `json:"deleted_at,omitempty"`
 	DeletedBy *User   `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.

@@ -76,6 +76,7 @@ Class | Method | HTTP request | Description
 *Auth* | [**LoginTokenGet**](docs/Auth.md#logintokenget) | **Get** /login/token/{temporary_token_request_id} | Get temporary token request
 *Auth* | [**LoginTokenUpdate**](docs/Auth.md#logintokenupdate) | **Patch** /login/token/{temporary_token_request_id} | Update temporary token request
 *Auth* | [**Logout**](docs/Auth.md#logout) | **Get** /logout/{provider} | User logout
+*Auth* | [**PostProviderCallback**](docs/Auth.md#postprovidercallback) | **Post** /auth/{provider}/callback | Post auth provider callback
 *Auth* | [**Provider**](docs/Auth.md#provider) | **Get** /auth/{provider} | Auth Provider
 *Auth* | [**ProviderCallback**](docs/Auth.md#providercallback) | **Get** /auth/{provider}/callback | Auth provider callback
 *Auth* | [**Signup**](docs/Auth.md#signup) | **Post** /signup | User signup
@@ -97,6 +98,7 @@ Class | Method | HTTP request | Description
 *OrgConnections* | [**Update**](docs/OrgConnections.md#update) | **Patch** /org/{org_handle}/connection/{connection_handle} | Update org connection
 *OrgConnections* | [**UpdateDeprecated**](docs/OrgConnections.md#updatedeprecated) | **Patch** /org/{org_handle}/conn/{conn_handle} | Update org connection
 *OrgMembers* | [**ConfirmInvite**](docs/OrgMembers.md#confirminvite) | **Get** /org/{org_handle}/member/invite/confirm | Confirm org member invite
+*OrgMembers* | [**Create**](docs/OrgMembers.md#create) | **Post** /org/{org_handle}/member | Create Org Member
 *OrgMembers* | [**Delete**](docs/OrgMembers.md#delete) | **Delete** /org/{org_handle}/member/{user_handle} | Delete org member
 *OrgMembers* | [**DeleteInvite**](docs/OrgMembers.md#deleteinvite) | **Delete** /org/{org_handle}/member/invite | Delete org member invite
 *OrgMembers* | [**Get**](docs/OrgMembers.md#get) | **Get** /org/{org_handle}/member/{user_handle} | Get org member
@@ -191,6 +193,25 @@ Class | Method | HTTP request | Description
 *Orgs* | [**ListFeatures**](docs/Orgs.md#listfeatures) | **Get** /org/{org_handle}/feature | Org features
 *Orgs* | [**ListUsage**](docs/Orgs.md#listusage) | **Get** /org/{org_handle}/usage | List org usage
 *Orgs* | [**Update**](docs/Orgs.md#update) | **Patch** /org/{org_handle} | Update org
+*TenantMembers* | [**ConfirmInvite**](docs/TenantMembers.md#confirminvite) | **Get** /tenant/{tenant_handle}/member/invite/confirm | Confirm tenant member invite
+*TenantMembers* | [**Delete**](docs/TenantMembers.md#delete) | **Delete** /tenant/{tenant_handle}/member/{user_handle} | Delete tenant member
+*TenantMembers* | [**DeleteInvite**](docs/TenantMembers.md#deleteinvite) | **Delete** /tenant/{tenant_handle}/member/invite | Delete tenant member invite
+*TenantMembers* | [**Get**](docs/TenantMembers.md#get) | **Get** /tenant/{tenant_handle}/member/{user_handle} | Get tenant member
+*TenantMembers* | [**Invite**](docs/TenantMembers.md#invite) | **Post** /tenant/{tenant_handle}/member/invite | Invite tenant member
+*TenantMembers* | [**List**](docs/TenantMembers.md#list) | **Get** /tenant/{tenant_handle}/member | List Tenant Members
+*TenantMembers* | [**Update**](docs/TenantMembers.md#update) | **Patch** /tenant/{tenant_handle}/member/{user_handle} | Update tenant member
+*Tenants* | [**Create**](docs/Tenants.md#create) | **Post** /tenant | Create tenant
+*Tenants* | [**CreateAvatar**](docs/Tenants.md#createavatar) | **Post** /tenant/{tenant_handle}/avatar | Create tenant avatar
+*Tenants* | [**Delete**](docs/Tenants.md#delete) | **Delete** /tenant/{tenant_handle} | Delete tenant
+*Tenants* | [**DeleteAvatar**](docs/Tenants.md#deleteavatar) | **Delete** /tenant/{tenant_handle}/avatar | Delete tenant avatar
+*Tenants* | [**Get**](docs/Tenants.md#get) | **Get** /tenant/{tenant_handle} | Get tenant
+*Tenants* | [**GetAvatar**](docs/Tenants.md#getavatar) | **Get** /tenant/{tenant_handle}/avatar | Get tenant avatar
+*Tenants* | [**GetSettings**](docs/Tenants.md#getsettings) | **Get** /settings | Get tenant settings
+*Tenants* | [**List**](docs/Tenants.md#list) | **Get** /tenant | List tenants
+*Tenants* | [**ListConstraints**](docs/Tenants.md#listconstraints) | **Get** /tenant/{tenant_handle}/constraint | List tenant constraints
+*Tenants* | [**ListUsage**](docs/Tenants.md#listusage) | **Get** /tenant/{tenant_handle}/usage | List tenant usage
+*Tenants* | [**Update**](docs/Tenants.md#update) | **Patch** /tenant/{tenant_handle} | Update tenant
+*Tenants* | [**UpdateSettings**](docs/Tenants.md#updatesettings) | **Patch** /settings | Update tenant settings
 *UserConnections* | [**Create**](docs/UserConnections.md#create) | **Post** /user/{user_handle}/connection | Create user connection
 *UserConnections* | [**CreateDeprecated**](docs/UserConnections.md#createdeprecated) | **Post** /user/{user_handle}/conn | Create user connection
 *UserConnections* | [**Delete**](docs/UserConnections.md#delete) | **Delete** /user/{user_handle}/connection/{connection_handle} | Delete user connection
@@ -312,14 +333,15 @@ Class | Method | HTTP request | Description
  - [ConnectionTestResult](docs/ConnectionTestResult.md)
  - [Constraint](docs/Constraint.md)
  - [ConstraintOverrideRequest](docs/ConstraintOverrideRequest.md)
+ - [CreateAvatarResponse](docs/CreateAvatarResponse.md)
  - [CreateConnectionRequest](docs/CreateConnectionRequest.md)
  - [CreateDatatankRequest](docs/CreateDatatankRequest.md)
  - [CreateDatatankTableRequest](docs/CreateDatatankTableRequest.md)
- - [CreateOrgAvatarResponse](docs/CreateOrgAvatarResponse.md)
  - [CreateOrgRequest](docs/CreateOrgRequest.md)
+ - [CreateOrgUserRequest](docs/CreateOrgUserRequest.md)
  - [CreateOrgWorkspaceUserRequest](docs/CreateOrgWorkspaceUserRequest.md)
  - [CreatePipelineRequest](docs/CreatePipelineRequest.md)
- - [CreateUserAvatarResponse](docs/CreateUserAvatarResponse.md)
+ - [CreateTenantRequest](docs/CreateTenantRequest.md)
  - [CreateUserPasswordRequest](docs/CreateUserPasswordRequest.md)
  - [CreateUserRequest](docs/CreateUserRequest.md)
  - [CreateWorkspaceAggregatorRequest](docs/CreateWorkspaceAggregatorRequest.md)
@@ -332,14 +354,14 @@ Class | Method | HTTP request | Description
  - [DatatankPart](docs/DatatankPart.md)
  - [DatatankTable](docs/DatatankTable.md)
  - [DatatankTableFreshness](docs/DatatankTableFreshness.md)
- - [DeleteOrgAvatarResponse](docs/DeleteOrgAvatarResponse.md)
- - [DeleteUserAvatarResponse](docs/DeleteUserAvatarResponse.md)
+ - [DeleteAvatarResponse](docs/DeleteAvatarResponse.md)
  - [ErrorDetailModel](docs/ErrorDetailModel.md)
  - [ErrorModel](docs/ErrorModel.md)
  - [Feature](docs/Feature.md)
  - [Identity](docs/Identity.md)
  - [IdentityUsage](docs/IdentityUsage.md)
  - [InviteOrgUserRequest](docs/InviteOrgUserRequest.md)
+ - [InviteTenantUserRequest](docs/InviteTenantUserRequest.md)
  - [ListActorWorkspacesResponse](docs/ListActorWorkspacesResponse.md)
  - [ListAuditLogsResponse](docs/ListAuditLogsResponse.md)
  - [ListConnectionsResponse](docs/ListConnectionsResponse.md)
@@ -356,6 +378,8 @@ Class | Method | HTTP request | Description
  - [ListOrgsResponse](docs/ListOrgsResponse.md)
  - [ListPipelinesResponse](docs/ListPipelinesResponse.md)
  - [ListProcessesResponse](docs/ListProcessesResponse.md)
+ - [ListTenantUsersResponse](docs/ListTenantUsersResponse.md)
+ - [ListTenantsResponse](docs/ListTenantsResponse.md)
  - [ListTokensResponse](docs/ListTokensResponse.md)
  - [ListUserEmailsResponse](docs/ListUserEmailsResponse.md)
  - [ListUserOrgsResponse](docs/ListUserOrgsResponse.md)
@@ -382,6 +406,11 @@ Class | Method | HTTP request | Description
  - [Quota](docs/Quota.md)
  - [SpProcess](docs/SpProcess.md)
  - [TemporaryTokenRequest](docs/TemporaryTokenRequest.md)
+ - [Tenant](docs/Tenant.md)
+ - [TenantLoginSettings](docs/TenantLoginSettings.md)
+ - [TenantSamlLoginSettings](docs/TenantSamlLoginSettings.md)
+ - [TenantSettings](docs/TenantSettings.md)
+ - [TenantUser](docs/TenantUser.md)
  - [TestConnectionRequest](docs/TestConnectionRequest.md)
  - [Token](docs/Token.md)
  - [UpdateConnectionRequest](docs/UpdateConnectionRequest.md)
@@ -393,6 +422,11 @@ Class | Method | HTTP request | Description
  - [UpdateOrgWorkspaceUserRequest](docs/UpdateOrgWorkspaceUserRequest.md)
  - [UpdatePipelineRequest](docs/UpdatePipelineRequest.md)
  - [UpdateTemporaryTokenRequest](docs/UpdateTemporaryTokenRequest.md)
+ - [UpdateTenantLoginSettings](docs/UpdateTenantLoginSettings.md)
+ - [UpdateTenantRequest](docs/UpdateTenantRequest.md)
+ - [UpdateTenantSamlLoginSettings](docs/UpdateTenantSamlLoginSettings.md)
+ - [UpdateTenantSettingsRequest](docs/UpdateTenantSettingsRequest.md)
+ - [UpdateTenantUserRequest](docs/UpdateTenantUserRequest.md)
  - [UpdateTokenRequest](docs/UpdateTokenRequest.md)
  - [UpdateUserPreferencesRequest](docs/UpdateUserPreferencesRequest.md)
  - [UpdateUserRequest](docs/UpdateUserRequest.md)

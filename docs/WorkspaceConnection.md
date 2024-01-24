@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
 **CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
-**DeletedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
+**DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
 **DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **Handle** | **string** | The handle name of the  connection. | 

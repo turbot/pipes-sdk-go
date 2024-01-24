@@ -93,7 +93,7 @@ No authorization required
 
 ## CreateAvatar
 
-> CreateUserAvatarResponse CreateAvatar(ctx, userHandle).Execute()
+> CreateAvatarResponse CreateAvatar(ctx, userHandle).Execute()
 
 Create user avatar
 
@@ -121,7 +121,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `Users.CreateAvatar``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateAvatar`: CreateUserAvatarResponse
+    // response from `CreateAvatar`: CreateAvatarResponse
     fmt.Fprintf(os.Stdout, "Response from `Users.CreateAvatar`: %v\n", resp)
 }
 ```
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateUserAvatarResponse**](CreateUserAvatarResponse.md)
+[**CreateAvatarResponse**](CreateAvatarResponse.md)
 
 ### Authorization
 
@@ -305,7 +305,7 @@ No authorization required
 
 ## DeleteAvatar
 
-> DeleteUserAvatarResponse DeleteAvatar(ctx, userHandle).Execute()
+> DeleteAvatarResponse DeleteAvatar(ctx, userHandle).Execute()
 
 Delete user avatar
 
@@ -333,7 +333,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `Users.DeleteAvatar``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteAvatar`: DeleteUserAvatarResponse
+    // response from `DeleteAvatar`: DeleteAvatarResponse
     fmt.Fprintf(os.Stdout, "Response from `Users.DeleteAvatar`: %v\n", resp)
 }
 ```
@@ -357,7 +357,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteUserAvatarResponse**](DeleteUserAvatarResponse.md)
+[**DeleteAvatarResponse**](DeleteAvatarResponse.md)
 
 ### Authorization
 

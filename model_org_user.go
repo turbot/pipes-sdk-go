@@ -27,7 +27,7 @@ type OrgUser struct {
 	OrgId string `json:"org_id"`
 	// The role of the org user.
 	Role *string `json:"role,omitempty"`
-	// The scope of the role. Can be either of org / workspace
+	// The scope of the role. Can be either of tenant / org / workspace
 	Scope *string `json:"scope,omitempty"`
 	// The status of the org member i.e invited or accepted.
 	Status string `json:"status"`

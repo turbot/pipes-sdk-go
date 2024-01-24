@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Email** | **string** | The email address of the user. | 
 **Id** | Pointer to **string** | The unique identifier of the user email record. | [optional] 
 **Status** | **string** | The status of the email id i.e. whether its pending verification or verified. | 
+**TenantId** | Pointer to **string** | The unique identifier of the tenant to which the email record belongs to. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time when the user setting was last updated. | [optional] 
 **VersionId** | **int32** | The current version of the user setting. | 
 
@@ -114,6 +115,31 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
+
+### GetTenantId
+
+`func (o *UserEmail) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *UserEmail) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *UserEmail) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
+
+### HasTenantId
+
+`func (o *UserEmail) HasTenantId() bool`
+
+HasTenantId returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

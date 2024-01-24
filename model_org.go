@@ -24,7 +24,7 @@ type Org struct {
 	CreatedBy *User  `json:"created_by,omitempty"`
 	// The ID of the user that created this.
 	CreatedById string `json:"created_by_id"`
-	// The time of the last update in ISO 8601 UTC.
+	// The time the item was deleted in ISO 8601 UTC.
 	DeletedAt *string `json:"deleted_at,omitempty"`
 	DeletedBy *User   `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.
@@ -35,6 +35,8 @@ type Org struct {
 	Handle string `json:"handle"`
 	// The unique identifier for an org.
 	Id string `json:"id"`
+	// The unique identifier of the tenant the org belongs to.
+	TenantId string `json:"tenant_id"`
 	// The time which user and temporary auth tokens must be issued after.
 	TokenMinIssuedAt *string `json:"token_min_issued_at,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
@@ -57,13 +59,14 @@ type Org struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrg(createdAt string, createdById string, deletedById string, handle string, id string, updatedById string, versionId int32) *Org {
+func NewOrg(createdAt string, createdById string, deletedById string, handle string, id string, tenantId string, updatedById string, versionId int32) *Org {
 	this := Org{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
 	this.DeletedById = deletedById
 	this.Handle = handle
 	this.Id = id
+	this.TenantId = tenantId
 	this.UpdatedById = updatedById
 	this.VersionId = versionId
 	return &this
@@ -387,6 +390,30 @@ func (o *Org) GetIdOk() (*string, bool) {
 // SetId sets field value
 func (o *Org) SetId(v string) {
 	o.Id = v
+}
+
+// GetTenantId returns the TenantId field value
+func (o *Org) GetTenantId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TenantId
+}
+
+// GetTenantIdOk returns a tuple with the TenantId field value
+// and a boolean to check if the value has been set.
+func (o *Org) GetTenantIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TenantId, true
+}
+
+// SetTenantId sets field value
+func (o *Org) SetTenantId(v string) {
+	o.TenantId = v
 }
 
 // GetTokenMinIssuedAt returns the TokenMinIssuedAt field value if set, zero value otherwise.
@@ -791,6 +818,9 @@ func (o Org) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["tenant_id"] = o.TenantId
 	}
 	if o.TokenMinIssuedAt != nil {
 		toSerialize["token_min_issued_at"] = o.TokenMinIssuedAt

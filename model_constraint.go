@@ -37,6 +37,8 @@ type Constraint struct {
 	Statistics interface{} `json:"statistics,omitempty"`
 	// The resource which the constraint targets.
 	Target string `json:"target"`
+	// The tenant id for which the constraint applies to.
+	TenantId *string `json:"tenant_id,omitempty"`
 	// The type of constraint. Can be one of rate, quota, range, feature or constant.
 	Type string `json:"type"`
 	// The user id for which the constraint applies to.
@@ -444,6 +446,38 @@ func (o *Constraint) SetTarget(v string) {
 	o.Target = v
 }
 
+// GetTenantId returns the TenantId field value if set, zero value otherwise.
+func (o *Constraint) GetTenantId() string {
+	if o == nil || o.TenantId == nil {
+		var ret string
+		return ret
+	}
+	return *o.TenantId
+}
+
+// GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Constraint) GetTenantIdOk() (*string, bool) {
+	if o == nil || o.TenantId == nil {
+		return nil, false
+	}
+	return o.TenantId, true
+}
+
+// HasTenantId returns a boolean if a field has been set.
+func (o *Constraint) HasTenantId() bool {
+	if o != nil && o.TenantId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTenantId gets a reference to the given string and assigns it to the TenantId field.
+func (o *Constraint) SetTenantId(v string) {
+	o.TenantId = &v
+}
+
 // GetType returns the Type field value
 func (o *Constraint) GetType() string {
 	if o == nil {
@@ -643,6 +677,9 @@ func (o Constraint) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["target"] = o.Target
+	}
+	if o.TenantId != nil {
+		toSerialize["tenant_id"] = o.TenantId
 	}
 	if true {
 		toSerialize["type"] = o.Type

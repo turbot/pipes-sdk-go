@@ -1,5 +1,13 @@
 # Turbot Pipes Go SDK
 
+## 0.9.0 [2024-01-23]
+
+_What's new?_
+
+- Tenant Management APIs.
+- Tenant Member APIs.
+- Applicable APIs made `tenant aware`.
+
 ## 0.8.1 [2023-11-03]
 
 _Enhancements_
