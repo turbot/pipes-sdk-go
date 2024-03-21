@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** |  | [optional] 
+**DesiredState** | Pointer to **string** |  | [optional] 
 **Handle** | **string** |  | 
 
 ## Methods
@@ -50,6 +51,31 @@ SetDescription sets Description field to given value.
 `func (o *CreateDatatankRequest) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetDesiredState
+
+`func (o *CreateDatatankRequest) GetDesiredState() string`
+
+GetDesiredState returns the DesiredState field if non-nil, zero value otherwise.
+
+### GetDesiredStateOk
+
+`func (o *CreateDatatankRequest) GetDesiredStateOk() (*string, bool)`
+
+GetDesiredStateOk returns a tuple with the DesiredState field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDesiredState
+
+`func (o *CreateDatatankRequest) SetDesiredState(v string)`
+
+SetDesiredState sets DesiredState field to given value.
+
+### HasDesiredState
+
+`func (o *CreateDatatankRequest) HasDesiredState() bool`
+
+HasDesiredState returns a boolean if a field has been set.
 
 ### GetHandle
 

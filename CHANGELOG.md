@@ -1,5 +1,21 @@
 # Turbot Pipes Go SDK
 
+## 0.9.1 [2024-03-21]
+
+_Breaking changes_
+
+- Rename `ListIdentityUsageResponse` to `ListUsageMetricsResponse` to provide a more generic struct to be used across different methods.
+
+_What's new?_
+
+- New struct `UsageMetric` to query and track metrics for either an entity including `tenant`, `identity` or `workspace`.
+
+_Enhancements_
+
+- Added `DesiredState` when creating `Workspace`, `Pipeline`, `Datatank`, `DatatankTable` to allow extra control while setting up the respective resource.
+- Added `DbVolumeSizeBytes` to `Workspace` and allow setting workspace database size during create or update.
+- Added `PoweripeVersion` to `Workspace` allowing users to track the current version of `powerpipe` installed on the workspace.
+
 ## 0.9.0 [2024-01-23]
 
 _What's new?_

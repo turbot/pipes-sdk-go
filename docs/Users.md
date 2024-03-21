@@ -1090,7 +1090,7 @@ No authorization required
 
 ## ListUsage
 
-> ListIdentityUsageResponse ListUsage(ctx, userHandle).Where(where).Limit(limit).NextToken(nextToken).Execute()
+> ListUsageMetricsResponse ListUsage(ctx, userHandle).Where(where).Limit(limit).NextToken(nextToken).Execute()
 
 List user usage
 
@@ -1121,7 +1121,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `Users.ListUsage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListUsage`: ListIdentityUsageResponse
+    // response from `ListUsage`: ListUsageMetricsResponse
     fmt.Fprintf(os.Stdout, "Response from `Users.ListUsage`: %v\n", resp)
 }
 ```
@@ -1148,7 +1148,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListIdentityUsageResponse**](ListIdentityUsageResponse.md)
+[**ListUsageMetricsResponse**](ListUsageMetricsResponse.md)
 
 ### Authorization
 

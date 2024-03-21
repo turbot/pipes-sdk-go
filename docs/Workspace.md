@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **DatabaseName** | Pointer to **string** | The name of the database. | [optional] 
+**DbVolumeSizeBytes** | **int64** | The current size of the database volume in bytes. | 
 **DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
 **DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
@@ -21,6 +22,7 @@ Name | Type | Description | Notes
 **IdentityId** | **string** | The unique identifier for an identity where the workspace is created. | 
 **InstanceType** | **string** | The instance type of this workspace. | 
 **Notices** | Pointer to **map[string]interface{}** |  | [optional] 
+**PowerpipeVersion** | Pointer to **string** |  | [optional] 
 **PublicKey** | Pointer to **string** |  | [optional] 
 **State** | Pointer to **string** | The current state of the workspace. | [optional] 
 **StateReason** | Pointer to **string** |  | [optional] 
@@ -33,7 +35,7 @@ Name | Type | Description | Notes
 
 ### NewWorkspace
 
-`func NewWorkspace(createdAt string, createdById string, deletedById string, desiredState string, handle string, id string, identityId string, instanceType string, updatedById string, versionId int32, ) *Workspace`
+`func NewWorkspace(createdAt string, createdById string, dbVolumeSizeBytes int64, deletedById string, desiredState string, handle string, id string, identityId string, instanceType string, updatedById string, versionId int32, ) *Workspace`
 
 NewWorkspace instantiates a new Workspace object
 This constructor will assign default values to properties that have it defined,
@@ -187,6 +189,26 @@ SetDatabaseName sets DatabaseName field to given value.
 `func (o *Workspace) HasDatabaseName() bool`
 
 HasDatabaseName returns a boolean if a field has been set.
+
+### GetDbVolumeSizeBytes
+
+`func (o *Workspace) GetDbVolumeSizeBytes() int64`
+
+GetDbVolumeSizeBytes returns the DbVolumeSizeBytes field if non-nil, zero value otherwise.
+
+### GetDbVolumeSizeBytesOk
+
+`func (o *Workspace) GetDbVolumeSizeBytesOk() (*int64, bool)`
+
+GetDbVolumeSizeBytesOk returns a tuple with the DbVolumeSizeBytes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbVolumeSizeBytes
+
+`func (o *Workspace) SetDbVolumeSizeBytes(v int64)`
+
+SetDbVolumeSizeBytes sets DbVolumeSizeBytes field to given value.
+
 
 ### GetDeletedAt
 
@@ -432,6 +454,31 @@ SetNotices sets Notices field to given value.
 `func (o *Workspace) HasNotices() bool`
 
 HasNotices returns a boolean if a field has been set.
+
+### GetPowerpipeVersion
+
+`func (o *Workspace) GetPowerpipeVersion() string`
+
+GetPowerpipeVersion returns the PowerpipeVersion field if non-nil, zero value otherwise.
+
+### GetPowerpipeVersionOk
+
+`func (o *Workspace) GetPowerpipeVersionOk() (*string, bool)`
+
+GetPowerpipeVersionOk returns a tuple with the PowerpipeVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPowerpipeVersion
+
+`func (o *Workspace) SetPowerpipeVersion(v string)`
+
+SetPowerpipeVersion sets PowerpipeVersion field to given value.
+
+### HasPowerpipeVersion
+
+`func (o *Workspace) HasPowerpipeVersion() bool`
+
+HasPowerpipeVersion returns a boolean if a field has been set.
 
 ### GetPublicKey
 

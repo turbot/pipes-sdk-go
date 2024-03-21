@@ -25,6 +25,8 @@ type Workspace struct {
 	CreatedById string `json:"created_by_id"`
 	// The name of the database.
 	DatabaseName *string `json:"database_name,omitempty"`
+	// The current size of the database volume in bytes.
+	DbVolumeSizeBytes int64 `json:"db_volume_size_bytes"`
 	// The time the item was deleted in ISO 8601 UTC.
 	DeletedAt *string `json:"deleted_at,omitempty"`
 	DeletedBy *User   `json:"deleted_by,omitempty"`
@@ -41,9 +43,10 @@ type Workspace struct {
 	// The unique identifier for an identity where the workspace is created.
 	IdentityId string `json:"identity_id"`
 	// The instance type of this workspace.
-	InstanceType string                  `json:"instance_type"`
-	Notices      *map[string]interface{} `json:"notices,omitempty"`
-	PublicKey    *string                 `json:"public_key,omitempty"`
+	InstanceType     string                  `json:"instance_type"`
+	Notices          *map[string]interface{} `json:"notices,omitempty"`
+	PowerpipeVersion *string                 `json:"powerpipe_version,omitempty"`
+	PublicKey        *string                 `json:"public_key,omitempty"`
 	// The current state of the workspace.
 	State       *string `json:"state,omitempty"`
 	StateReason *string `json:"state_reason,omitempty"`
@@ -60,10 +63,11 @@ type Workspace struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkspace(createdAt string, createdById string, deletedById string, desiredState string, handle string, id string, identityId string, instanceType string, updatedById string, versionId int32) *Workspace {
+func NewWorkspace(createdAt string, createdById string, dbVolumeSizeBytes int64, deletedById string, desiredState string, handle string, id string, identityId string, instanceType string, updatedById string, versionId int32) *Workspace {
 	this := Workspace{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
+	this.DbVolumeSizeBytes = dbVolumeSizeBytes
 	this.DeletedById = deletedById
 	this.DesiredState = desiredState
 	this.Handle = handle
@@ -257,6 +261,30 @@ func (o *Workspace) HasDatabaseName() bool {
 // SetDatabaseName gets a reference to the given string and assigns it to the DatabaseName field.
 func (o *Workspace) SetDatabaseName(v string) {
 	o.DatabaseName = &v
+}
+
+// GetDbVolumeSizeBytes returns the DbVolumeSizeBytes field value
+func (o *Workspace) GetDbVolumeSizeBytes() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.DbVolumeSizeBytes
+}
+
+// GetDbVolumeSizeBytesOk returns a tuple with the DbVolumeSizeBytes field value
+// and a boolean to check if the value has been set.
+func (o *Workspace) GetDbVolumeSizeBytesOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DbVolumeSizeBytes, true
+}
+
+// SetDbVolumeSizeBytes sets field value
+func (o *Workspace) SetDbVolumeSizeBytes(v int64) {
+	o.DbVolumeSizeBytes = v
 }
 
 // GetDeletedAt returns the DeletedAt field value if set, zero value otherwise.
@@ -563,6 +591,38 @@ func (o *Workspace) SetNotices(v map[string]interface{}) {
 	o.Notices = &v
 }
 
+// GetPowerpipeVersion returns the PowerpipeVersion field value if set, zero value otherwise.
+func (o *Workspace) GetPowerpipeVersion() string {
+	if o == nil || o.PowerpipeVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.PowerpipeVersion
+}
+
+// GetPowerpipeVersionOk returns a tuple with the PowerpipeVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Workspace) GetPowerpipeVersionOk() (*string, bool) {
+	if o == nil || o.PowerpipeVersion == nil {
+		return nil, false
+	}
+	return o.PowerpipeVersion, true
+}
+
+// HasPowerpipeVersion returns a boolean if a field has been set.
+func (o *Workspace) HasPowerpipeVersion() bool {
+	if o != nil && o.PowerpipeVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPowerpipeVersion gets a reference to the given string and assigns it to the PowerpipeVersion field.
+func (o *Workspace) SetPowerpipeVersion(v string) {
+	o.PowerpipeVersion = &v
+}
+
 // GetPublicKey returns the PublicKey field value if set, zero value otherwise.
 func (o *Workspace) GetPublicKey() string {
 	if o == nil || o.PublicKey == nil {
@@ -791,6 +851,9 @@ func (o Workspace) MarshalJSON() ([]byte, error) {
 	if o.DatabaseName != nil {
 		toSerialize["database_name"] = o.DatabaseName
 	}
+	if true {
+		toSerialize["db_volume_size_bytes"] = o.DbVolumeSizeBytes
+	}
 	if o.DeletedAt != nil {
 		toSerialize["deleted_at"] = o.DeletedAt
 	}
@@ -823,6 +886,9 @@ func (o Workspace) MarshalJSON() ([]byte, error) {
 	}
 	if o.Notices != nil {
 		toSerialize["notices"] = o.Notices
+	}
+	if o.PowerpipeVersion != nil {
+		toSerialize["powerpipe_version"] = o.PowerpipeVersion
 	}
 	if o.PublicKey != nil {
 		toSerialize["public_key"] = o.PublicKey

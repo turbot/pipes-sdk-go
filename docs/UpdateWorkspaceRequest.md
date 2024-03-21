@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DbVolumeSizeBytes** | Pointer to **int64** |  | [optional] 
 **DesiredState** | Pointer to **string** | paused is not yet supported for Workspace | [optional] 
 **Handle** | Pointer to **string** |  | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewUpdateWorkspaceRequestWithDefaults instantiates a new UpdateWorkspaceRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDbVolumeSizeBytes
+
+`func (o *UpdateWorkspaceRequest) GetDbVolumeSizeBytes() int64`
+
+GetDbVolumeSizeBytes returns the DbVolumeSizeBytes field if non-nil, zero value otherwise.
+
+### GetDbVolumeSizeBytesOk
+
+`func (o *UpdateWorkspaceRequest) GetDbVolumeSizeBytesOk() (*int64, bool)`
+
+GetDbVolumeSizeBytesOk returns a tuple with the DbVolumeSizeBytes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbVolumeSizeBytes
+
+`func (o *UpdateWorkspaceRequest) SetDbVolumeSizeBytes(v int64)`
+
+SetDbVolumeSizeBytes sets DbVolumeSizeBytes field to given value.
+
+### HasDbVolumeSizeBytes
+
+`func (o *UpdateWorkspaceRequest) HasDbVolumeSizeBytes() bool`
+
+HasDbVolumeSizeBytes returns a boolean if a field has been set.
 
 ### GetDesiredState
 

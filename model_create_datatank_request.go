@@ -16,8 +16,9 @@ import (
 
 // CreateDatatankRequest struct for CreateDatatankRequest
 type CreateDatatankRequest struct {
-	Description *string `json:"description,omitempty"`
-	Handle      string  `json:"handle"`
+	Description  *string `json:"description,omitempty"`
+	DesiredState *string `json:"desired_state,omitempty"`
+	Handle       string  `json:"handle"`
 }
 
 // NewCreateDatatankRequest instantiates a new CreateDatatankRequest object
@@ -70,6 +71,38 @@ func (o *CreateDatatankRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetDesiredState returns the DesiredState field value if set, zero value otherwise.
+func (o *CreateDatatankRequest) GetDesiredState() string {
+	if o == nil || o.DesiredState == nil {
+		var ret string
+		return ret
+	}
+	return *o.DesiredState
+}
+
+// GetDesiredStateOk returns a tuple with the DesiredState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDatatankRequest) GetDesiredStateOk() (*string, bool) {
+	if o == nil || o.DesiredState == nil {
+		return nil, false
+	}
+	return o.DesiredState, true
+}
+
+// HasDesiredState returns a boolean if a field has been set.
+func (o *CreateDatatankRequest) HasDesiredState() bool {
+	if o != nil && o.DesiredState != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDesiredState gets a reference to the given string and assigns it to the DesiredState field.
+func (o *CreateDatatankRequest) SetDesiredState(v string) {
+	o.DesiredState = &v
+}
+
 // GetHandle returns the Handle field value
 func (o *CreateDatatankRequest) GetHandle() string {
 	if o == nil {
@@ -98,6 +131,9 @@ func (o CreateDatatankRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if o.DesiredState != nil {
+		toSerialize["desired_state"] = o.DesiredState
 	}
 	if true {
 		toSerialize["handle"] = o.Handle

@@ -55,7 +55,7 @@ func (r UserWorkspaceUsagesApiListRequest) NextToken(nextToken string) UserWorks
 	return r
 }
 
-func (r UserWorkspaceUsagesApiListRequest) Execute() (ListIdentityUsageResponse, *_nethttp.Response, error) {
+func (r UserWorkspaceUsagesApiListRequest) Execute() (ListUsageMetricsResponse, *_nethttp.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -80,13 +80,13 @@ func (a *UserWorkspaceUsagesService) List(ctx _context.Context, userHandle strin
 
 // Execute executes the request
 //
-//	@return ListIdentityUsageResponse
-func (a *UserWorkspaceUsagesService) ListExecute(r UserWorkspaceUsagesApiListRequest) (ListIdentityUsageResponse, *_nethttp.Response, error) {
+//	@return ListUsageMetricsResponse
+func (a *UserWorkspaceUsagesService) ListExecute(r UserWorkspaceUsagesApiListRequest) (ListUsageMetricsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue ListIdentityUsageResponse
+		localVarReturnValue ListUsageMetricsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserWorkspaceUsagesService.List")

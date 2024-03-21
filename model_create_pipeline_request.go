@@ -16,8 +16,10 @@ import (
 
 // CreatePipelineRequest struct for CreatePipelineRequest
 type CreatePipelineRequest struct {
-	Args      interface{}       `json:"args"`
-	Frequency PipelineFrequency `json:"frequency"`
+	Args interface{} `json:"args"`
+	// The desired state of the pipeline.
+	DesiredState *string           `json:"desired_state,omitempty"`
+	Frequency    PipelineFrequency `json:"frequency"`
 	// The name of the pipeline to be executed.
 	Pipeline string      `json:"pipeline"`
 	Tags     interface{} `json:"tags,omitempty"`
@@ -70,6 +72,38 @@ func (o *CreatePipelineRequest) GetArgsOk() (*interface{}, bool) {
 // SetArgs sets field value
 func (o *CreatePipelineRequest) SetArgs(v interface{}) {
 	o.Args = v
+}
+
+// GetDesiredState returns the DesiredState field value if set, zero value otherwise.
+func (o *CreatePipelineRequest) GetDesiredState() string {
+	if o == nil || o.DesiredState == nil {
+		var ret string
+		return ret
+	}
+	return *o.DesiredState
+}
+
+// GetDesiredStateOk returns a tuple with the DesiredState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePipelineRequest) GetDesiredStateOk() (*string, bool) {
+	if o == nil || o.DesiredState == nil {
+		return nil, false
+	}
+	return o.DesiredState, true
+}
+
+// HasDesiredState returns a boolean if a field has been set.
+func (o *CreatePipelineRequest) HasDesiredState() bool {
+	if o != nil && o.DesiredState != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDesiredState gets a reference to the given string and assigns it to the DesiredState field.
+func (o *CreatePipelineRequest) SetDesiredState(v string) {
+	o.DesiredState = &v
 }
 
 // GetFrequency returns the Frequency field value
@@ -181,6 +215,9 @@ func (o CreatePipelineRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Args != nil {
 		toSerialize["args"] = o.Args
+	}
+	if o.DesiredState != nil {
+		toSerialize["desired_state"] = o.DesiredState
 	}
 	if true {
 		toSerialize["frequency"] = o.Frequency

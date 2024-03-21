@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Args** | **interface{}** |  | 
+**DesiredState** | Pointer to **string** | The desired state of the pipeline. | [optional] 
 **Frequency** | [**PipelineFrequency**](PipelineFrequency.md) |  | 
 **Pipeline** | **string** | The name of the pipeline to be executed. | 
 **Tags** | Pointer to **interface{}** |  | [optional] 
@@ -59,6 +60,31 @@ SetArgs sets Args field to given value.
 `func (o *CreatePipelineRequest) UnsetArgs()`
 
 UnsetArgs ensures that no value is present for Args, not even an explicit nil
+### GetDesiredState
+
+`func (o *CreatePipelineRequest) GetDesiredState() string`
+
+GetDesiredState returns the DesiredState field if non-nil, zero value otherwise.
+
+### GetDesiredStateOk
+
+`func (o *CreatePipelineRequest) GetDesiredStateOk() (*string, bool)`
+
+GetDesiredStateOk returns a tuple with the DesiredState field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDesiredState
+
+`func (o *CreatePipelineRequest) SetDesiredState(v string)`
+
+SetDesiredState sets DesiredState field to given value.
+
+### HasDesiredState
+
+`func (o *CreatePipelineRequest) HasDesiredState() bool`
+
+HasDesiredState returns a boolean if a field has been set.
+
 ### GetFrequency
 
 `func (o *CreatePipelineRequest) GetFrequency() PipelineFrequency`

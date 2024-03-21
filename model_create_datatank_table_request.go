@@ -17,6 +17,7 @@ import (
 // CreateDatatankTableRequest struct for CreateDatatankTableRequest
 type CreateDatatankTableRequest struct {
 	Description  *string            `json:"description,omitempty"`
+	DesiredState *string            `json:"desired_state,omitempty"`
 	Frequency    *PipelineFrequency `json:"frequency,omitempty"`
 	Name         string             `json:"name"`
 	PartPer      *string            `json:"part_per,omitempty"`
@@ -75,6 +76,38 @@ func (o *CreateDatatankTableRequest) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *CreateDatatankTableRequest) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetDesiredState returns the DesiredState field value if set, zero value otherwise.
+func (o *CreateDatatankTableRequest) GetDesiredState() string {
+	if o == nil || o.DesiredState == nil {
+		var ret string
+		return ret
+	}
+	return *o.DesiredState
+}
+
+// GetDesiredStateOk returns a tuple with the DesiredState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDatatankTableRequest) GetDesiredStateOk() (*string, bool) {
+	if o == nil || o.DesiredState == nil {
+		return nil, false
+	}
+	return o.DesiredState, true
+}
+
+// HasDesiredState returns a boolean if a field has been set.
+func (o *CreateDatatankTableRequest) HasDesiredState() bool {
+	if o != nil && o.DesiredState != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDesiredState gets a reference to the given string and assigns it to the DesiredState field.
+func (o *CreateDatatankTableRequest) SetDesiredState(v string) {
+	o.DesiredState = &v
 }
 
 // GetFrequency returns the Frequency field value if set, zero value otherwise.
@@ -289,6 +322,9 @@ func (o CreateDatatankTableRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if o.DesiredState != nil {
+		toSerialize["desired_state"] = o.DesiredState
 	}
 	if o.Frequency != nil {
 		toSerialize["frequency"] = o.Frequency
