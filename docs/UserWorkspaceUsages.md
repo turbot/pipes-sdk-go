@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## List
 
-> ListIdentityUsageResponse List(ctx, userHandle, workspaceHandle).Where(where).Limit(limit).NextToken(nextToken).Execute()
+> ListUsageMetricsResponse List(ctx, userHandle, workspaceHandle).Where(where).Limit(limit).NextToken(nextToken).Execute()
 
 List user workspace usage
 
@@ -42,7 +42,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaceUsages.List``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `List`: ListIdentityUsageResponse
+    // response from `List`: ListUsageMetricsResponse
     fmt.Fprintf(os.Stdout, "Response from `UserWorkspaceUsages.List`: %v\n", resp)
 }
 ```
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListIdentityUsageResponse**](ListIdentityUsageResponse.md)
+[**ListUsageMetricsResponse**](ListUsageMetricsResponse.md)
 
 ### Authorization
 

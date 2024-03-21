@@ -16,6 +16,9 @@ import (
 
 // CreateWorkspaceRequest struct for CreateWorkspaceRequest
 type CreateWorkspaceRequest struct {
+	DbVolumeSizeBytes *int64 `json:"db_volume_size_bytes,omitempty"`
+	// paused is not yet supported for Workspace
+	DesiredState *string `json:"desired_state,omitempty"`
 	Handle       string  `json:"handle"`
 	InstanceType *string `json:"instance_type,omitempty"`
 }
@@ -36,6 +39,70 @@ func NewCreateWorkspaceRequest(handle string) *CreateWorkspaceRequest {
 func NewCreateWorkspaceRequestWithDefaults() *CreateWorkspaceRequest {
 	this := CreateWorkspaceRequest{}
 	return &this
+}
+
+// GetDbVolumeSizeBytes returns the DbVolumeSizeBytes field value if set, zero value otherwise.
+func (o *CreateWorkspaceRequest) GetDbVolumeSizeBytes() int64 {
+	if o == nil || o.DbVolumeSizeBytes == nil {
+		var ret int64
+		return ret
+	}
+	return *o.DbVolumeSizeBytes
+}
+
+// GetDbVolumeSizeBytesOk returns a tuple with the DbVolumeSizeBytes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateWorkspaceRequest) GetDbVolumeSizeBytesOk() (*int64, bool) {
+	if o == nil || o.DbVolumeSizeBytes == nil {
+		return nil, false
+	}
+	return o.DbVolumeSizeBytes, true
+}
+
+// HasDbVolumeSizeBytes returns a boolean if a field has been set.
+func (o *CreateWorkspaceRequest) HasDbVolumeSizeBytes() bool {
+	if o != nil && o.DbVolumeSizeBytes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDbVolumeSizeBytes gets a reference to the given int64 and assigns it to the DbVolumeSizeBytes field.
+func (o *CreateWorkspaceRequest) SetDbVolumeSizeBytes(v int64) {
+	o.DbVolumeSizeBytes = &v
+}
+
+// GetDesiredState returns the DesiredState field value if set, zero value otherwise.
+func (o *CreateWorkspaceRequest) GetDesiredState() string {
+	if o == nil || o.DesiredState == nil {
+		var ret string
+		return ret
+	}
+	return *o.DesiredState
+}
+
+// GetDesiredStateOk returns a tuple with the DesiredState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateWorkspaceRequest) GetDesiredStateOk() (*string, bool) {
+	if o == nil || o.DesiredState == nil {
+		return nil, false
+	}
+	return o.DesiredState, true
+}
+
+// HasDesiredState returns a boolean if a field has been set.
+func (o *CreateWorkspaceRequest) HasDesiredState() bool {
+	if o != nil && o.DesiredState != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDesiredState gets a reference to the given string and assigns it to the DesiredState field.
+func (o *CreateWorkspaceRequest) SetDesiredState(v string) {
+	o.DesiredState = &v
 }
 
 // GetHandle returns the Handle field value
@@ -96,6 +163,12 @@ func (o *CreateWorkspaceRequest) SetInstanceType(v string) {
 
 func (o CreateWorkspaceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DbVolumeSizeBytes != nil {
+		toSerialize["db_volume_size_bytes"] = o.DbVolumeSizeBytes
+	}
+	if o.DesiredState != nil {
+		toSerialize["desired_state"] = o.DesiredState
+	}
 	if true {
 		toSerialize["handle"] = o.Handle
 	}

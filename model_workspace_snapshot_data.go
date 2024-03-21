@@ -17,10 +17,11 @@ import (
 // WorkspaceSnapshotData struct for WorkspaceSnapshotData
 type WorkspaceSnapshotData struct {
 	// The time the dashboard execution ended.
-	EndTime string                      `json:"end_time"`
-	Inputs  *map[string]interface{}     `json:"inputs,omitempty"`
-	Layout  WorkspaceSnapshotDataLayout `json:"layout"`
-	Panels  map[string]interface{}      `json:"panels"`
+	EndTime  string                      `json:"end_time"`
+	Inputs   *map[string]interface{}     `json:"inputs,omitempty"`
+	Layout   WorkspaceSnapshotDataLayout `json:"layout"`
+	Metadata *map[string]interface{}     `json:"metadata,omitempty"`
+	Panels   map[string]interface{}      `json:"panels"`
 	// The schema version of this snapshot.
 	SchemaVersion string `json:"schema_version"`
 	// The time the dashboard execution started.
@@ -128,6 +129,38 @@ func (o *WorkspaceSnapshotData) GetLayoutOk() (*WorkspaceSnapshotDataLayout, boo
 // SetLayout sets field value
 func (o *WorkspaceSnapshotData) SetLayout(v WorkspaceSnapshotDataLayout) {
 	o.Layout = v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *WorkspaceSnapshotData) GetMetadata() map[string]interface{} {
+	if o == nil || o.Metadata == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceSnapshotData) GetMetadataOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *WorkspaceSnapshotData) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *WorkspaceSnapshotData) SetMetadata(v map[string]interface{}) {
+	o.Metadata = &v
 }
 
 // GetPanels returns the Panels field value
@@ -244,6 +277,9 @@ func (o WorkspaceSnapshotData) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["layout"] = o.Layout
+	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
 	}
 	if true {
 		toSerialize["panels"] = o.Panels

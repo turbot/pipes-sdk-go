@@ -676,18 +676,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorModel'
           description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorModel'
-          description: Unauthorized
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorModel'
-          description: Not Found
         "500":
           content:
             application/json:
@@ -3667,7 +3655,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListIdentityUsageResponse'
+                $ref: '#/components/schemas/ListUsageMetricsResponse'
           description: OK
         "400":
           content:
@@ -10131,7 +10119,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListIdentityUsageResponse'
+                $ref: '#/components/schemas/ListUsageMetricsResponse'
           description: OK
         "400":
           content:
@@ -10287,24 +10275,12 @@ paths:
       responses:
         "201":
           content: {}
-        "401":
+        "400":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorModel'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorModel'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorModel'
-          description: Not Found
+          description: Bad Request
         "500":
           content:
             application/json:
@@ -11500,7 +11476,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListIdentityUsageResponse'
+                $ref: '#/components/schemas/ListUsageMetricsResponse'
           description: OK
         "400":
           content:
@@ -14430,7 +14406,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListIdentityUsageResponse'
+                $ref: '#/components/schemas/ListUsageMetricsResponse'
           description: OK
         "400":
           content:
@@ -20501,7 +20477,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListIdentityUsageResponse'
+                $ref: '#/components/schemas/ListUsageMetricsResponse'
           description: OK
         "400":
           content:
@@ -20573,10 +20549,6 @@ components:
         workspace:
           hive: hive
           public_key: public_key
-          state_reason: state_reason
-          database_name: database_name
-          identity_id: identity_id
-          deleted_by_id: deleted_by_id
           created_at: created_at
           deleted_by:
             tenant_id: tenant_id
@@ -20603,9 +20575,19 @@ components:
             id: id
             status: status
             usage_storage_threshold: 6
+          db_volume_size_bytes: 0
+          updated_at: updated_at
+          host: host
+          id: id
+          state: state
+          powerpipe_version: powerpipe_version
+          state_reason: state_reason
+          database_name: database_name
+          identity_id: identity_id
+          deleted_by_id: deleted_by_id
           desired_state: enabled
           handle: aaa
-          version_id: 0
+          version_id: 6
           api_version: api_version
           created_by:
             tenant_id: tenant_id
@@ -20634,8 +20616,6 @@ components:
             usage_storage_threshold: 6
           deleted_at: deleted_at
           notices: '{}'
-          updated_at: updated_at
-          host: host
           updated_by:
             tenant_id: tenant_id
             created_at: created_at
@@ -20664,8 +20644,6 @@ components:
           cli_version: cli_version
           updated_by_id: updated_by_id
           created_by_id: created_by_id
-          id: id
-          state: state
           instance_type: db1.shared
         role: role
         database_name: database_name
@@ -21134,9 +21112,15 @@ components:
     CreateDatatankRequest:
       example:
         description: description
+        desired_state: enabled
         handle: handle
       properties:
         description:
+          type: string
+        desired_state:
+          enum:
+          - enabled
+          - disabled
           type: string
         handle:
           format: ^[A-Za-z_][A-Za-z_0-9$]*$
@@ -21150,6 +21134,7 @@ components:
         name: name
         description: description
         part_per: connection
+        desired_state: enabled
         type: table
         source_table: source_table
         source_schema: source_schema
@@ -21158,6 +21143,11 @@ components:
           type: interval
       properties:
         description:
+          type: string
+        desired_state:
+          enum:
+          - enabled
+          - disabled
           type: string
         frequency:
           $ref: '#/components/schemas/PipelineFrequency'
@@ -21234,6 +21224,7 @@ components:
       example:
         args: ""
         pipeline: pipeline.snapshot_dashboard
+        desired_state: enabled
         title: title
         frequency:
           schedule: schedule
@@ -21242,6 +21233,12 @@ components:
       properties:
         args:
           nullable: true
+        desired_state:
+          description: The desired state of the pipeline.
+          enum:
+          - enabled
+          - disabled
+          type: string
         frequency:
           $ref: '#/components/schemas/PipelineFrequency'
         pipeline:
@@ -21365,9 +21362,20 @@ components:
       type: object
     CreateWorkspaceRequest:
       example:
+        desired_state: enabled
         handle: handle
+        db_volume_size_bytes: 0
         instance_type: db1.shared
       properties:
+        db_volume_size_bytes:
+          format: int64
+          type: integer
+        desired_state:
+          description: paused is not yet supported for Workspace
+          enum:
+          - enabled
+          - disabled
+          type: string
         handle:
           format: ^[a-z0-9]{1,23}$
           type: string
@@ -21390,6 +21398,8 @@ components:
             name: name
           schema_version: schema_version
           start_time: start_time
+          metadata:
+            key: '{}'
           variables:
             key: '{}'
           inputs:
@@ -23724,82 +23734,6 @@ components:
       - tenant_id
       - type
       type: object
-    IdentityUsage:
-      example:
-        tenant_id: tenant_id
-        workspace_id: workspace_id
-        unit: byte
-        value_weighted: 1
-        identity_id: identity_id
-        metric: user_count
-        usage_date: usage_date
-        value_rounded: 6
-        dimension: compute
-        instance_type: instance_type
-        value: 0
-      properties:
-        dimension:
-          description: The dimension for this usage record.
-          enum:
-          - compute
-          - storage
-          - user
-          type: string
-        identity_id:
-          description: The identity ID for this usage record
-          type: string
-        instance_type:
-          description: The instance type for the usage record.                                                                                                                                                       //
-            The instance type for this usage record. Only populated if the usage is
-            for a workspace.
-          type: string
-        metric:
-          description: The metric for this usage record.
-          enum:
-          - user_count
-          - db_execution_ms
-          - db_volume_size_bytes
-          - process_execution_ms
-          - process_log_bytes
-          - snapshot_storage_bytes
-          type: string
-        tenant_id:
-          description: The tenant ID for this usage record
-          type: string
-        unit:
-          description: The unit for this usage record.
-          enum:
-          - byte
-          - count
-          - millisecond
-          type: string
-        usage_date:
-          description: The start time for this usage record.
-          type: string
-        value:
-          description: The value for this usage record.
-          format: int64
-          type: integer
-        value_rounded:
-          description: The rounded value for this usage record to the nearest billable
-            unit.
-          format: int64
-          type: integer
-        value_weighted:
-          description: The value for this usage record weighted according to any billing
-            rules such as DB instance type.
-          format: int64
-          type: integer
-        workspace_id:
-          description: The workspace ID for this usage record. Only populated if the
-            usage is for a workspace.
-          type: string
-      required:
-      - dimension
-      - metric
-      - unit
-      - usage_date
-      type: object
     InviteOrgUserRequest:
       example:
         role: role
@@ -23840,10 +23774,6 @@ components:
           workspace:
             hive: hive
             public_key: public_key
-            state_reason: state_reason
-            database_name: database_name
-            identity_id: identity_id
-            deleted_by_id: deleted_by_id
             created_at: created_at
             deleted_by:
               tenant_id: tenant_id
@@ -23870,9 +23800,19 @@ components:
               id: id
               status: status
               usage_storage_threshold: 6
+            db_volume_size_bytes: 0
+            updated_at: updated_at
+            host: host
+            id: id
+            state: state
+            powerpipe_version: powerpipe_version
+            state_reason: state_reason
+            database_name: database_name
+            identity_id: identity_id
+            deleted_by_id: deleted_by_id
             desired_state: enabled
             handle: aaa
-            version_id: 0
+            version_id: 6
             api_version: api_version
             created_by:
               tenant_id: tenant_id
@@ -23901,8 +23841,6 @@ components:
               usage_storage_threshold: 6
             deleted_at: deleted_at
             notices: '{}'
-            updated_at: updated_at
-            host: host
             updated_by:
               tenant_id: tenant_id
               created_at: created_at
@@ -23931,8 +23869,6 @@ components:
             cli_version: cli_version
             updated_by_id: updated_by_id
             created_by_id: created_by_id
-            id: id
-            state: state
             instance_type: db1.shared
           role: role
           database_name: database_name
@@ -23951,10 +23887,6 @@ components:
           workspace:
             hive: hive
             public_key: public_key
-            state_reason: state_reason
-            database_name: database_name
-            identity_id: identity_id
-            deleted_by_id: deleted_by_id
             created_at: created_at
             deleted_by:
               tenant_id: tenant_id
@@ -23981,9 +23913,19 @@ components:
               id: id
               status: status
               usage_storage_threshold: 6
+            db_volume_size_bytes: 0
+            updated_at: updated_at
+            host: host
+            id: id
+            state: state
+            powerpipe_version: powerpipe_version
+            state_reason: state_reason
+            database_name: database_name
+            identity_id: identity_id
+            deleted_by_id: deleted_by_id
             desired_state: enabled
             handle: aaa
-            version_id: 0
+            version_id: 6
             api_version: api_version
             created_by:
               tenant_id: tenant_id
@@ -24012,8 +23954,6 @@ components:
               usage_storage_threshold: 6
             deleted_at: deleted_at
             notices: '{}'
-            updated_at: updated_at
-            host: host
             updated_by:
               tenant_id: tenant_id
               created_at: created_at
@@ -24042,8 +23982,6 @@ components:
             cli_version: cli_version
             updated_by_id: updated_by_id
             created_by_id: created_by_id
-            id: id
-            state: state
             instance_type: db1.shared
           role: role
           database_name: database_name
@@ -28231,40 +28169,6 @@ components:
         next_token:
           type: string
       type: object
-    ListIdentityUsageResponse:
-      example:
-        next_token: next_token
-        items:
-        - tenant_id: tenant_id
-          workspace_id: workspace_id
-          unit: byte
-          value_weighted: 1
-          identity_id: identity_id
-          metric: user_count
-          usage_date: usage_date
-          value_rounded: 6
-          dimension: compute
-          instance_type: instance_type
-          value: 0
-        - tenant_id: tenant_id
-          workspace_id: workspace_id
-          unit: byte
-          value_weighted: 1
-          identity_id: identity_id
-          metric: user_count
-          usage_date: usage_date
-          value_rounded: 6
-          dimension: compute
-          instance_type: instance_type
-          value: 0
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/IdentityUsage'
-          type: array
-        next_token:
-          type: string
-      type: object
     ListLogsResponse:
       example:
         next_token: next_token
@@ -30061,6 +29965,40 @@ components:
         items:
           items:
             $ref: '#/components/schemas/Token'
+          type: array
+        next_token:
+          type: string
+      type: object
+    ListUsageMetricsResponse:
+      example:
+        next_token: next_token
+        items:
+        - tenant_id: tenant_id
+          workspace_id: workspace_id
+          unit: byte
+          value_weighted: 1
+          identity_id: identity_id
+          metric: user_count
+          usage_date: usage_date
+          value_rounded: 6
+          dimension: compute
+          instance_type: instance_type
+          value: 0
+        - tenant_id: tenant_id
+          workspace_id: workspace_id
+          unit: byte
+          value_weighted: 1
+          identity_id: identity_id
+          metric: user_count
+          usage_date: usage_date
+          value_rounded: 6
+          dimension: compute
+          instance_type: instance_type
+          value: 0
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/UsageMetric'
           type: array
         next_token:
           type: string
@@ -33010,10 +32948,6 @@ components:
         items:
         - hive: hive
           public_key: public_key
-          state_reason: state_reason
-          database_name: database_name
-          identity_id: identity_id
-          deleted_by_id: deleted_by_id
           created_at: created_at
           deleted_by:
             tenant_id: tenant_id
@@ -33040,9 +32974,19 @@ components:
             id: id
             status: status
             usage_storage_threshold: 6
+          db_volume_size_bytes: 0
+          updated_at: updated_at
+          host: host
+          id: id
+          state: state
+          powerpipe_version: powerpipe_version
+          state_reason: state_reason
+          database_name: database_name
+          identity_id: identity_id
+          deleted_by_id: deleted_by_id
           desired_state: enabled
           handle: aaa
-          version_id: 0
+          version_id: 6
           api_version: api_version
           created_by:
             tenant_id: tenant_id
@@ -33071,8 +33015,6 @@ components:
             usage_storage_threshold: 6
           deleted_at: deleted_at
           notices: '{}'
-          updated_at: updated_at
-          host: host
           updated_by:
             tenant_id: tenant_id
             created_at: created_at
@@ -33101,15 +33043,9 @@ components:
           cli_version: cli_version
           updated_by_id: updated_by_id
           created_by_id: created_by_id
-          id: id
-          state: state
           instance_type: db1.shared
         - hive: hive
           public_key: public_key
-          state_reason: state_reason
-          database_name: database_name
-          identity_id: identity_id
-          deleted_by_id: deleted_by_id
           created_at: created_at
           deleted_by:
             tenant_id: tenant_id
@@ -33136,9 +33072,19 @@ components:
             id: id
             status: status
             usage_storage_threshold: 6
+          db_volume_size_bytes: 0
+          updated_at: updated_at
+          host: host
+          id: id
+          state: state
+          powerpipe_version: powerpipe_version
+          state_reason: state_reason
+          database_name: database_name
+          identity_id: identity_id
+          deleted_by_id: deleted_by_id
           desired_state: enabled
           handle: aaa
-          version_id: 0
+          version_id: 6
           api_version: api_version
           created_by:
             tenant_id: tenant_id
@@ -33167,8 +33113,6 @@ components:
             usage_storage_threshold: 6
           deleted_at: deleted_at
           notices: '{}'
-          updated_at: updated_at
-          host: host
           updated_by:
             tenant_id: tenant_id
             created_at: created_at
@@ -33197,8 +33141,6 @@ components:
           cli_version: cli_version
           updated_by_id: updated_by_id
           created_by_id: created_by_id
-          id: id
-          state: state
           instance_type: db1.shared
       properties:
         items:
@@ -35468,7 +35410,11 @@ components:
       example:
         desired_state: enabled
         handle: handle
+        db_volume_size_bytes: 0
       properties:
+        db_volume_size_bytes:
+          format: int64
+          type: integer
         desired_state:
           description: paused is not yet supported for Workspace
           enum:
@@ -35497,6 +35443,82 @@ components:
           - workspace
           - anyone_with_link
           type: string
+      type: object
+    UsageMetric:
+      example:
+        tenant_id: tenant_id
+        workspace_id: workspace_id
+        unit: byte
+        value_weighted: 1
+        identity_id: identity_id
+        metric: user_count
+        usage_date: usage_date
+        value_rounded: 6
+        dimension: compute
+        instance_type: instance_type
+        value: 0
+      properties:
+        dimension:
+          description: The dimension for this usage metric record.
+          enum:
+          - compute
+          - storage
+          - user
+          type: string
+        identity_id:
+          description: The identity ID for this usage metric record
+          type: string
+        instance_type:
+          description: The instance type for the usage record.                                                                                                                                                       //
+            The instance type for this usage metric record. Only populated if the
+            usage is for a workspace.
+          type: string
+        metric:
+          description: The metric for this usage metric record.
+          enum:
+          - user_count
+          - db_execution_ms
+          - db_volume_size_bytes
+          - process_execution_ms
+          - process_log_bytes
+          - snapshot_storage_bytes
+          type: string
+        tenant_id:
+          description: The tenant ID for this usage metric record
+          type: string
+        unit:
+          description: The unit for this usage metric record.
+          enum:
+          - byte
+          - count
+          - millisecond
+          type: string
+        usage_date:
+          description: The start time for this usage metric record.
+          type: string
+        value:
+          description: The value for this usage metric record.
+          format: int64
+          type: integer
+        value_rounded:
+          description: The rounded value for this usage metric record to the nearest
+            billable unit.
+          format: int64
+          type: integer
+        value_weighted:
+          description: The value for this usage metric record weighted according to
+            any billing rules such as DB instance type.
+          format: int64
+          type: integer
+        workspace_id:
+          description: The workspace ID for this usage metric record. Only populated
+            if the usage is for a workspace.
+          type: string
+      required:
+      - dimension
+      - metric
+      - unit
+      - usage_date
       type: object
     User:
       example:
@@ -36011,10 +36033,6 @@ components:
       example:
         hive: hive
         public_key: public_key
-        state_reason: state_reason
-        database_name: database_name
-        identity_id: identity_id
-        deleted_by_id: deleted_by_id
         created_at: created_at
         deleted_by:
           tenant_id: tenant_id
@@ -36041,9 +36059,19 @@ components:
           id: id
           status: status
           usage_storage_threshold: 6
+        db_volume_size_bytes: 0
+        updated_at: updated_at
+        host: host
+        id: id
+        state: state
+        powerpipe_version: powerpipe_version
+        state_reason: state_reason
+        database_name: database_name
+        identity_id: identity_id
+        deleted_by_id: deleted_by_id
         desired_state: enabled
         handle: aaa
-        version_id: 0
+        version_id: 6
         api_version: api_version
         created_by:
           tenant_id: tenant_id
@@ -36072,8 +36100,6 @@ components:
           usage_storage_threshold: 6
         deleted_at: deleted_at
         notices: '{}'
-        updated_at: updated_at
-        host: host
         updated_by:
           tenant_id: tenant_id
           created_at: created_at
@@ -36102,8 +36128,6 @@ components:
         cli_version: cli_version
         updated_by_id: updated_by_id
         created_by_id: created_by_id
-        id: id
-        state: state
         instance_type: db1.shared
       properties:
         api_version:
@@ -36122,6 +36146,10 @@ components:
         database_name:
           description: The name of the database.
           type: string
+        db_volume_size_bytes:
+          description: The current size of the database volume in bytes.
+          format: int64
+          type: integer
         deleted_at:
           description: The time the item was deleted in ISO 8601 UTC.
           type: string
@@ -36164,6 +36192,8 @@ components:
         notices:
           properties: {}
           type: object
+        powerpipe_version:
+          type: string
         public_key:
           type: string
         state:
@@ -36187,6 +36217,7 @@ components:
       required:
       - created_at
       - created_by_id
+      - db_volume_size_bytes
       - deleted_by_id
       - desired_state
       - handle
@@ -38029,6 +38060,8 @@ components:
           name: name
         schema_version: schema_version
         start_time: start_time
+        metadata:
+          key: '{}'
         variables:
           key: '{}'
         inputs:
@@ -38045,6 +38078,9 @@ components:
           type: object
         layout:
           $ref: '#/components/schemas/WorkspaceSnapshotDataLayout'
+        metadata:
+          additionalProperties: true
+          type: object
         panels:
           additionalProperties: true
           type: object

@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DbVolumeSizeBytes** | Pointer to **int64** |  | [optional] 
+**DesiredState** | Pointer to **string** | paused is not yet supported for Workspace | [optional] 
 **Handle** | **string** |  | 
 **InstanceType** | Pointer to **string** |  | [optional] 
 
@@ -25,6 +27,56 @@ will change when the set of required properties is changed
 NewCreateWorkspaceRequestWithDefaults instantiates a new CreateWorkspaceRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDbVolumeSizeBytes
+
+`func (o *CreateWorkspaceRequest) GetDbVolumeSizeBytes() int64`
+
+GetDbVolumeSizeBytes returns the DbVolumeSizeBytes field if non-nil, zero value otherwise.
+
+### GetDbVolumeSizeBytesOk
+
+`func (o *CreateWorkspaceRequest) GetDbVolumeSizeBytesOk() (*int64, bool)`
+
+GetDbVolumeSizeBytesOk returns a tuple with the DbVolumeSizeBytes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbVolumeSizeBytes
+
+`func (o *CreateWorkspaceRequest) SetDbVolumeSizeBytes(v int64)`
+
+SetDbVolumeSizeBytes sets DbVolumeSizeBytes field to given value.
+
+### HasDbVolumeSizeBytes
+
+`func (o *CreateWorkspaceRequest) HasDbVolumeSizeBytes() bool`
+
+HasDbVolumeSizeBytes returns a boolean if a field has been set.
+
+### GetDesiredState
+
+`func (o *CreateWorkspaceRequest) GetDesiredState() string`
+
+GetDesiredState returns the DesiredState field if non-nil, zero value otherwise.
+
+### GetDesiredStateOk
+
+`func (o *CreateWorkspaceRequest) GetDesiredStateOk() (*string, bool)`
+
+GetDesiredStateOk returns a tuple with the DesiredState field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDesiredState
+
+`func (o *CreateWorkspaceRequest) SetDesiredState(v string)`
+
+SetDesiredState sets DesiredState field to given value.
+
+### HasDesiredState
+
+`func (o *CreateWorkspaceRequest) HasDesiredState() bool`
+
+HasDesiredState returns a boolean if a field has been set.
 
 ### GetHandle
 

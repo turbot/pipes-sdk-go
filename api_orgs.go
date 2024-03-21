@@ -1728,7 +1728,7 @@ func (r OrgsApiListUsageRequest) NextToken(nextToken string) OrgsApiListUsageReq
 	return r
 }
 
-func (r OrgsApiListUsageRequest) Execute() (ListIdentityUsageResponse, *_nethttp.Response, error) {
+func (r OrgsApiListUsageRequest) Execute() (ListUsageMetricsResponse, *_nethttp.Response, error) {
 	return r.ApiService.ListUsageExecute(r)
 }
 
@@ -1751,13 +1751,13 @@ func (a *OrgsService) ListUsage(ctx _context.Context, orgHandle string) OrgsApiL
 
 // Execute executes the request
 //
-//	@return ListIdentityUsageResponse
-func (a *OrgsService) ListUsageExecute(r OrgsApiListUsageRequest) (ListIdentityUsageResponse, *_nethttp.Response, error) {
+//	@return ListUsageMetricsResponse
+func (a *OrgsService) ListUsageExecute(r OrgsApiListUsageRequest) (ListUsageMetricsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue ListIdentityUsageResponse
+		localVarReturnValue ListUsageMetricsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgsService.ListUsage")

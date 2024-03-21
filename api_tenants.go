@@ -1551,7 +1551,7 @@ func (r TenantsApiListUsageRequest) NextToken(nextToken string) TenantsApiListUs
 	return r
 }
 
-func (r TenantsApiListUsageRequest) Execute() (ListIdentityUsageResponse, *_nethttp.Response, error) {
+func (r TenantsApiListUsageRequest) Execute() (ListUsageMetricsResponse, *_nethttp.Response, error) {
 	return r.ApiService.ListUsageExecute(r)
 }
 
@@ -1574,13 +1574,13 @@ func (a *TenantsService) ListUsage(ctx _context.Context, tenantHandle string) Te
 
 // Execute executes the request
 //
-//	@return ListIdentityUsageResponse
-func (a *TenantsService) ListUsageExecute(r TenantsApiListUsageRequest) (ListIdentityUsageResponse, *_nethttp.Response, error) {
+//	@return ListUsageMetricsResponse
+func (a *TenantsService) ListUsageExecute(r TenantsApiListUsageRequest) (ListUsageMetricsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue ListIdentityUsageResponse
+		localVarReturnValue ListUsageMetricsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsService.ListUsage")

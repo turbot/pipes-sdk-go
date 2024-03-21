@@ -642,7 +642,7 @@ No authorization required
 
 ## ListUsage
 
-> ListIdentityUsageResponse ListUsage(ctx, tenantHandle).Where(where).Limit(limit).NextToken(nextToken).Execute()
+> ListUsageMetricsResponse ListUsage(ctx, tenantHandle).Where(where).Limit(limit).NextToken(nextToken).Execute()
 
 List tenant usage
 
@@ -673,7 +673,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `Tenants.ListUsage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListUsage`: ListIdentityUsageResponse
+    // response from `ListUsage`: ListUsageMetricsResponse
     fmt.Fprintf(os.Stdout, "Response from `Tenants.ListUsage`: %v\n", resp)
 }
 ```
@@ -700,7 +700,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListIdentityUsageResponse**](ListIdentityUsageResponse.md)
+[**ListUsageMetricsResponse**](ListUsageMetricsResponse.md)
 
 ### Authorization
 
