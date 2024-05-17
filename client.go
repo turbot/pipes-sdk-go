@@ -57,6 +57,8 @@ type APIClient struct {
 
 	OrgConnections *OrgConnectionsService
 
+	OrgIntegrations *OrgIntegrationsService
+
 	OrgMembers *OrgMembersService
 
 	OrgProcesses *OrgProcessesService
@@ -70,6 +72,8 @@ type APIClient struct {
 	OrgWorkspaceDatatankTables *OrgWorkspaceDatatankTablesService
 
 	OrgWorkspaceDatatanks *OrgWorkspaceDatatanksService
+
+	OrgWorkspaceIntegrations *OrgWorkspaceIntegrationsService
 
 	OrgWorkspaceMembers *OrgWorkspaceMembersService
 
@@ -91,11 +95,15 @@ type APIClient struct {
 
 	Orgs *OrgsService
 
+	TenantIntegrations *TenantIntegrationsService
+
 	TenantMembers *TenantMembersService
 
 	Tenants *TenantsService
 
 	UserConnections *UserConnectionsService
+
+	UserIntegrations *UserIntegrationsService
 
 	UserProcesses *UserProcessesService
 
@@ -110,6 +118,8 @@ type APIClient struct {
 	UserWorkspaceDatatankTables *UserWorkspaceDatatankTablesService
 
 	UserWorkspaceDatatanks *UserWorkspaceDatatanksService
+
+	UserWorkspaceIntegrations *UserWorkspaceIntegrationsService
 
 	UserWorkspaceModVariables *UserWorkspaceModVariablesService
 
@@ -150,6 +160,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.Auth = (*AuthService)(&c.common)
 	c.Identities = (*IdentitiesService)(&c.common)
 	c.OrgConnections = (*OrgConnectionsService)(&c.common)
+	c.OrgIntegrations = (*OrgIntegrationsService)(&c.common)
 	c.OrgMembers = (*OrgMembersService)(&c.common)
 	c.OrgProcesses = (*OrgProcessesService)(&c.common)
 	c.OrgWorkspaceAggregators = (*OrgWorkspaceAggregatorsService)(&c.common)
@@ -157,6 +168,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OrgWorkspaceDatatankParts = (*OrgWorkspaceDatatankPartsService)(&c.common)
 	c.OrgWorkspaceDatatankTables = (*OrgWorkspaceDatatankTablesService)(&c.common)
 	c.OrgWorkspaceDatatanks = (*OrgWorkspaceDatatanksService)(&c.common)
+	c.OrgWorkspaceIntegrations = (*OrgWorkspaceIntegrationsService)(&c.common)
 	c.OrgWorkspaceMembers = (*OrgWorkspaceMembersService)(&c.common)
 	c.OrgWorkspaceModVariables = (*OrgWorkspaceModVariablesService)(&c.common)
 	c.OrgWorkspaceMods = (*OrgWorkspaceModsService)(&c.common)
@@ -167,9 +179,11 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OrgWorkspaceUsages = (*OrgWorkspaceUsagesService)(&c.common)
 	c.OrgWorkspaces = (*OrgWorkspacesService)(&c.common)
 	c.Orgs = (*OrgsService)(&c.common)
+	c.TenantIntegrations = (*TenantIntegrationsService)(&c.common)
 	c.TenantMembers = (*TenantMembersService)(&c.common)
 	c.Tenants = (*TenantsService)(&c.common)
 	c.UserConnections = (*UserConnectionsService)(&c.common)
+	c.UserIntegrations = (*UserIntegrationsService)(&c.common)
 	c.UserProcesses = (*UserProcessesService)(&c.common)
 	c.UserTokens = (*UserTokensService)(&c.common)
 	c.UserWorkspaceAggregators = (*UserWorkspaceAggregatorsService)(&c.common)
@@ -177,6 +191,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.UserWorkspaceDatatankParts = (*UserWorkspaceDatatankPartsService)(&c.common)
 	c.UserWorkspaceDatatankTables = (*UserWorkspaceDatatankTablesService)(&c.common)
 	c.UserWorkspaceDatatanks = (*UserWorkspaceDatatanksService)(&c.common)
+	c.UserWorkspaceIntegrations = (*UserWorkspaceIntegrationsService)(&c.common)
 	c.UserWorkspaceModVariables = (*UserWorkspaceModVariablesService)(&c.common)
 	c.UserWorkspaceMods = (*UserWorkspaceModsService)(&c.common)
 	c.UserWorkspacePipelines = (*UserWorkspacePipelinesService)(&c.common)

@@ -90,7 +90,7 @@ No authorization required
 
 ## Install
 
-> WorkspaceMod Install(ctx, orgHandle, workspaceHandle).Request(request).Execute()
+> WorkspaceMod Install(ctx, orgHandle, workspaceHandle).CreateWorkspaceModRequest(createWorkspaceModRequest).Execute()
 
 Install a mod to an organization workspace
 
@@ -111,11 +111,11 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of an organization that owns the workspace.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the mod will be installed.
-    request := *openapiclient.NewCreateWorkspaceModRequest("Path_example") // CreateWorkspaceModRequest | The request body to install a mod in the mentioned workspace for this organization.
+    createWorkspaceModRequest := *openapiclient.NewCreateWorkspaceModRequest("Path_example") // CreateWorkspaceModRequest | The request body to install a mod in the mentioned workspace for this organization.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgWorkspaceMods.Install(context.Background(), orgHandle, workspaceHandle).Request(request).Execute()
+    resp, r, err := api_client.OrgWorkspaceMods.Install(context.Background(), orgHandle, workspaceHandle).CreateWorkspaceModRequest(createWorkspaceModRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceMods.Install``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**CreateWorkspaceModRequest**](CreateWorkspaceModRequest.md) | The request body to install a mod in the mentioned workspace for this organization. | 
+ **createWorkspaceModRequest** | [**CreateWorkspaceModRequest**](CreateWorkspaceModRequest.md) | The request body to install a mod in the mentioned workspace for this organization. | 
 
 ### Return type
 
@@ -318,7 +318,7 @@ No authorization required
 
 ## Update
 
-> WorkspaceMod Update(ctx, orgHandle, workspaceHandle, modAlias).Request(request).Execute()
+> WorkspaceMod Update(ctx, orgHandle, workspaceHandle, modAlias).UpdateWorkspaceModRequest(updateWorkspaceModRequest).Execute()
 
 Update a mod in an organization workspace
 
@@ -340,11 +340,11 @@ func main() {
     orgHandle := "orgHandle_example" // string | The handle of an organization that owns the workspace.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the mod will be updated.
     modAlias := "modAlias_example" // string | The mod alias or mod ID to update.
-    request := *openapiclient.NewUpdateWorkspaceModRequest("Constraint_example") // UpdateWorkspaceModRequest | The request body to update a mod for this workspace.
+    updateWorkspaceModRequest := *openapiclient.NewUpdateWorkspaceModRequest() // UpdateWorkspaceModRequest | The request body to update a mod for this workspace.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgWorkspaceMods.Update(context.Background(), orgHandle, workspaceHandle, modAlias).Request(request).Execute()
+    resp, r, err := api_client.OrgWorkspaceMods.Update(context.Background(), orgHandle, workspaceHandle, modAlias).UpdateWorkspaceModRequest(updateWorkspaceModRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceMods.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 
 
 
- **request** | [**UpdateWorkspaceModRequest**](UpdateWorkspaceModRequest.md) | The request body to update a mod for this workspace. | 
+ **updateWorkspaceModRequest** | [**UpdateWorkspaceModRequest**](UpdateWorkspaceModRequest.md) | The request body to update a mod for this workspace. | 
 
 ### Return type
 

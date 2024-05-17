@@ -302,7 +302,7 @@ No authorization required
 
 ## Invite
 
-> TenantUser Invite(ctx, tenantHandle).Request(request).Execute()
+> TenantUser Invite(ctx, tenantHandle).InviteTenantUserRequest(inviteTenantUserRequest).Execute()
 
 Invite tenant member
 
@@ -322,11 +322,11 @@ import (
 
 func main() {
     tenantHandle := "tenantHandle_example" // string | Specify the handle of an tenant where the member need to be invited.
-    request := *openapiclient.NewInviteTenantUserRequest("Email_example", "Role_example") // InviteTenantUserRequest | The request body to invite a member to a tenant.
+    inviteTenantUserRequest := *openapiclient.NewInviteTenantUserRequest("Email_example", "Role_example") // InviteTenantUserRequest | The request body to invite a member to a tenant.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TenantMembers.Invite(context.Background(), tenantHandle).Request(request).Execute()
+    resp, r, err := api_client.TenantMembers.Invite(context.Background(), tenantHandle).InviteTenantUserRequest(inviteTenantUserRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TenantMembers.Invite``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -352,7 +352,7 @@ Other parameters are passed through a pointer to a apiInviteRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **request** | [**InviteTenantUserRequest**](InviteTenantUserRequest.md) | The request body to invite a member to a tenant. | 
+ **inviteTenantUserRequest** | [**InviteTenantUserRequest**](InviteTenantUserRequest.md) | The request body to invite a member to a tenant. | 
 
 ### Return type
 
@@ -448,7 +448,7 @@ No authorization required
 
 ## Update
 
-> TenantUser Update(ctx, tenantHandle, userHandle).Request(request).Execute()
+> TenantUser Update(ctx, tenantHandle, userHandle).UpdateTenantUserRequest(updateTenantUserRequest).Execute()
 
 Update tenant member
 
@@ -469,11 +469,11 @@ import (
 func main() {
     tenantHandle := "tenantHandle_example" // string | Specify the handle of the tenant where the member exists.
     userHandle := "userHandle_example" // string | Specify the handle of the user whose role need to be updated.
-    request := *openapiclient.NewUpdateTenantUserRequest() // UpdateTenantUserRequest | The request body for the member.
+    updateTenantUserRequest := *openapiclient.NewUpdateTenantUserRequest() // UpdateTenantUserRequest | The request body for the member.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TenantMembers.Update(context.Background(), tenantHandle, userHandle).Request(request).Execute()
+    resp, r, err := api_client.TenantMembers.Update(context.Background(), tenantHandle, userHandle).UpdateTenantUserRequest(updateTenantUserRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TenantMembers.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -501,7 +501,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**UpdateTenantUserRequest**](UpdateTenantUserRequest.md) | The request body for the member. | 
+ **updateTenantUserRequest** | [**UpdateTenantUserRequest**](UpdateTenantUserRequest.md) | The request body for the member. | 
 
 ### Return type
 

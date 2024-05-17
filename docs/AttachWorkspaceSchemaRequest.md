@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConnectionHandle** | **string** |  | 
+**AggregatorHandle** | Pointer to **string** |  | [optional] 
+**ConnectionHandle** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewAttachWorkspaceSchemaRequest
 
-`func NewAttachWorkspaceSchemaRequest(connectionHandle string, ) *AttachWorkspaceSchemaRequest`
+`func NewAttachWorkspaceSchemaRequest() *AttachWorkspaceSchemaRequest`
 
 NewAttachWorkspaceSchemaRequest instantiates a new AttachWorkspaceSchemaRequest object
 This constructor will assign default values to properties that have it defined,
@@ -24,6 +25,31 @@ will change when the set of required properties is changed
 NewAttachWorkspaceSchemaRequestWithDefaults instantiates a new AttachWorkspaceSchemaRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAggregatorHandle
+
+`func (o *AttachWorkspaceSchemaRequest) GetAggregatorHandle() string`
+
+GetAggregatorHandle returns the AggregatorHandle field if non-nil, zero value otherwise.
+
+### GetAggregatorHandleOk
+
+`func (o *AttachWorkspaceSchemaRequest) GetAggregatorHandleOk() (*string, bool)`
+
+GetAggregatorHandleOk returns a tuple with the AggregatorHandle field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregatorHandle
+
+`func (o *AttachWorkspaceSchemaRequest) SetAggregatorHandle(v string)`
+
+SetAggregatorHandle sets AggregatorHandle field to given value.
+
+### HasAggregatorHandle
+
+`func (o *AttachWorkspaceSchemaRequest) HasAggregatorHandle() bool`
+
+HasAggregatorHandle returns a boolean if a field has been set.
 
 ### GetConnectionHandle
 
@@ -44,6 +70,11 @@ and a boolean to check if the value has been set.
 
 SetConnectionHandle sets ConnectionHandle field to given value.
 
+### HasConnectionHandle
+
+`func (o *AttachWorkspaceSchemaRequest) HasConnectionHandle() bool`
+
+HasConnectionHandle returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -209,16 +209,16 @@ func (a *UserWorkspaceModsService) GetExecute(r UserWorkspaceModsApiGetRequest) 
 }
 
 type UserWorkspaceModsApiInstallRequest struct {
-	ctx             _context.Context
-	ApiService      *UserWorkspaceModsService
-	userHandle      string
-	workspaceHandle string
-	request         *CreateWorkspaceModRequest
+	ctx                       _context.Context
+	ApiService                *UserWorkspaceModsService
+	userHandle                string
+	workspaceHandle           string
+	createWorkspaceModRequest *CreateWorkspaceModRequest
 }
 
 // The request body to install a mod in the mentioned workspace for this user.
-func (r UserWorkspaceModsApiInstallRequest) Request(request CreateWorkspaceModRequest) UserWorkspaceModsApiInstallRequest {
-	r.request = &request
+func (r UserWorkspaceModsApiInstallRequest) CreateWorkspaceModRequest(createWorkspaceModRequest CreateWorkspaceModRequest) UserWorkspaceModsApiInstallRequest {
+	r.createWorkspaceModRequest = &createWorkspaceModRequest
 	return r
 }
 
@@ -268,8 +268,8 @@ func (a *UserWorkspaceModsService) InstallExecute(r UserWorkspaceModsApiInstallR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.createWorkspaceModRequest == nil {
+		return localVarReturnValue, nil, reportError("createWorkspaceModRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -290,7 +290,7 @@ func (a *UserWorkspaceModsService) InstallExecute(r UserWorkspaceModsApiInstallR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.createWorkspaceModRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -756,17 +756,17 @@ func (a *UserWorkspaceModsService) UninstallExecute(r UserWorkspaceModsApiUninst
 }
 
 type UserWorkspaceModsApiUpdateRequest struct {
-	ctx             _context.Context
-	ApiService      *UserWorkspaceModsService
-	userHandle      string
-	workspaceHandle string
-	modAlias        string
-	request         *UpdateWorkspaceModRequest
+	ctx                       _context.Context
+	ApiService                *UserWorkspaceModsService
+	userHandle                string
+	workspaceHandle           string
+	modAlias                  string
+	updateWorkspaceModRequest *UpdateWorkspaceModRequest
 }
 
 // The request body to update a mod for this workspace.
-func (r UserWorkspaceModsApiUpdateRequest) Request(request UpdateWorkspaceModRequest) UserWorkspaceModsApiUpdateRequest {
-	r.request = &request
+func (r UserWorkspaceModsApiUpdateRequest) UpdateWorkspaceModRequest(updateWorkspaceModRequest UpdateWorkspaceModRequest) UserWorkspaceModsApiUpdateRequest {
+	r.updateWorkspaceModRequest = &updateWorkspaceModRequest
 	return r
 }
 
@@ -819,8 +819,8 @@ func (a *UserWorkspaceModsService) UpdateExecute(r UserWorkspaceModsApiUpdateReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateWorkspaceModRequest == nil {
+		return localVarReturnValue, nil, reportError("updateWorkspaceModRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -841,7 +841,7 @@ func (a *UserWorkspaceModsService) UpdateExecute(r UserWorkspaceModsApiUpdateReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateWorkspaceModRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> Tenant Create(ctx).Request(request).Execute()
+> Tenant Create(ctx).CreateTenantRequest(createTenantRequest).Execute()
 
 Create tenant
 
@@ -40,11 +40,11 @@ import (
 )
 
 func main() {
-    request := *openapiclient.NewCreateTenantRequest("Handle_example") // CreateTenantRequest | The request body to create the tenant.
+    createTenantRequest := *openapiclient.NewCreateTenantRequest("Handle_example") // CreateTenantRequest | The request body to create the tenant.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Tenants.Create(context.Background()).Request(request).Execute()
+    resp, r, err := api_client.Tenants.Create(context.Background()).CreateTenantRequest(createTenantRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Tenants.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +65,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request** | [**CreateTenantRequest**](CreateTenantRequest.md) | The request body to create the tenant. | 
+ **createTenantRequest** | [**CreateTenantRequest**](CreateTenantRequest.md) | The request body to create the tenant. | 
 
 ### Return type
 
@@ -718,7 +718,7 @@ No authorization required
 
 ## Update
 
-> Tenant Update(ctx, tenantHandle).Request(request).Execute()
+> Tenant Update(ctx, tenantHandle).UpdateTenantRequest(updateTenantRequest).Execute()
 
 Update tenant
 
@@ -738,11 +738,11 @@ import (
 
 func main() {
     tenantHandle := "tenantHandle_example" // string | Specify the handle of the tenant which needs to be updated.
-    request := *openapiclient.NewUpdateTenantRequest() // UpdateTenantRequest | The request body for the tenant update request.
+    updateTenantRequest := *openapiclient.NewUpdateTenantRequest() // UpdateTenantRequest | The request body for the tenant update request.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Tenants.Update(context.Background(), tenantHandle).Request(request).Execute()
+    resp, r, err := api_client.Tenants.Update(context.Background(), tenantHandle).UpdateTenantRequest(updateTenantRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Tenants.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -768,7 +768,7 @@ Other parameters are passed through a pointer to a apiUpdateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **request** | [**UpdateTenantRequest**](UpdateTenantRequest.md) | The request body for the tenant update request. | 
+ **updateTenantRequest** | [**UpdateTenantRequest**](UpdateTenantRequest.md) | The request body for the tenant update request. | 
 
 ### Return type
 
@@ -790,7 +790,7 @@ No authorization required
 
 ## UpdateSettings
 
-> TenantSettings UpdateSettings(ctx).Request(request).Execute()
+> TenantSettings UpdateSettings(ctx).UpdateTenantSettingsRequest(updateTenantSettingsRequest).Execute()
 
 Update tenant settings
 
@@ -809,11 +809,11 @@ import (
 )
 
 func main() {
-    request := *openapiclient.NewUpdateTenantSettingsRequest() // UpdateTenantSettingsRequest | The request body for updating tenant settings.
+    updateTenantSettingsRequest := *openapiclient.NewUpdateTenantSettingsRequest() // UpdateTenantSettingsRequest | The request body for updating tenant settings.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Tenants.UpdateSettings(context.Background()).Request(request).Execute()
+    resp, r, err := api_client.Tenants.UpdateSettings(context.Background()).UpdateTenantSettingsRequest(updateTenantSettingsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Tenants.UpdateSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -834,7 +834,7 @@ Other parameters are passed through a pointer to a apiUpdateSettingsRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request** | [**UpdateTenantSettingsRequest**](UpdateTenantSettingsRequest.md) | The request body for updating tenant settings. | 
+ **updateTenantSettingsRequest** | [**UpdateTenantSettingsRequest**](UpdateTenantSettingsRequest.md) | The request body for updating tenant settings. | 
 
 ### Return type
 

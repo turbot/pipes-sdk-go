@@ -87,7 +87,7 @@ No authorization required
 
 ## Create
 
-> OrgUser Create(ctx, orgHandle).Request(request).Execute()
+> OrgUser Create(ctx, orgHandle).CreateOrgUserRequest(createOrgUserRequest).Execute()
 
 Create Org Member
 
@@ -107,11 +107,11 @@ import (
 
 func main() {
     orgHandle := "orgHandle_example" // string | Specify the handle of the organization where the member need to be created.
-    request := *openapiclient.NewCreateOrgUserRequest("Handle_example", "Role_example") // CreateOrgUserRequest | The request body to create a member in an organization in a custom tenant.
+    createOrgUserRequest := *openapiclient.NewCreateOrgUserRequest("Handle_example", "Role_example") // CreateOrgUserRequest | The request body to create a member in an organization in a custom tenant.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgMembers.Create(context.Background(), orgHandle).Request(request).Execute()
+    resp, r, err := api_client.OrgMembers.Create(context.Background(), orgHandle).CreateOrgUserRequest(createOrgUserRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgMembers.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,7 +137,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **request** | [**CreateOrgUserRequest**](CreateOrgUserRequest.md) | The request body to create a member in an organization in a custom tenant. | 
+ **createOrgUserRequest** | [**CreateOrgUserRequest**](CreateOrgUserRequest.md) | The request body to create a member in an organization in a custom tenant. | 
 
 ### Return type
 
@@ -375,7 +375,7 @@ No authorization required
 
 ## Invite
 
-> OrgUser Invite(ctx, orgHandle).Request(request).Execute()
+> OrgUser Invite(ctx, orgHandle).InviteOrgUserRequest(inviteOrgUserRequest).Execute()
 
 Invite org member
 
@@ -395,11 +395,11 @@ import (
 
 func main() {
     orgHandle := "orgHandle_example" // string | Specify the handle of an organization where the member need to be invited.
-    request := *openapiclient.NewInviteOrgUserRequest("Role_example") // InviteOrgUserRequest | The request body to invite a member to an organization.
+    inviteOrgUserRequest := *openapiclient.NewInviteOrgUserRequest("Role_example") // InviteOrgUserRequest | The request body to invite a member to an organization.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgMembers.Invite(context.Background(), orgHandle).Request(request).Execute()
+    resp, r, err := api_client.OrgMembers.Invite(context.Background(), orgHandle).InviteOrgUserRequest(inviteOrgUserRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgMembers.Invite``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -425,7 +425,7 @@ Other parameters are passed through a pointer to a apiInviteRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **request** | [**InviteOrgUserRequest**](InviteOrgUserRequest.md) | The request body to invite a member to an organization. | 
+ **inviteOrgUserRequest** | [**InviteOrgUserRequest**](InviteOrgUserRequest.md) | The request body to invite a member to an organization. | 
 
 ### Return type
 
@@ -523,7 +523,7 @@ No authorization required
 
 ## Update
 
-> OrgUser Update(ctx, orgHandle, userHandle).Request(request).Execute()
+> OrgUser Update(ctx, orgHandle, userHandle).UpdateOrgUserRequest(updateOrgUserRequest).Execute()
 
 Update org member
 
@@ -544,11 +544,11 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | Specify the handle of the organization where the member exists.
     userHandle := "userHandle_example" // string | Specify the handle of the user whose role need to be updated.
-    request := *openapiclient.NewUpdateOrgUserRequest("Role_example") // UpdateOrgUserRequest | The request body for the member.
+    updateOrgUserRequest := *openapiclient.NewUpdateOrgUserRequest("Role_example") // UpdateOrgUserRequest | The request body for the member.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgMembers.Update(context.Background(), orgHandle, userHandle).Request(request).Execute()
+    resp, r, err := api_client.OrgMembers.Update(context.Background(), orgHandle, userHandle).UpdateOrgUserRequest(updateOrgUserRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgMembers.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -576,7 +576,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**UpdateOrgUserRequest**](UpdateOrgUserRequest.md) | The request body for the member. | 
+ **updateOrgUserRequest** | [**UpdateOrgUserRequest**](UpdateOrgUserRequest.md) | The request body for the member. | 
 
 ### Return type
 

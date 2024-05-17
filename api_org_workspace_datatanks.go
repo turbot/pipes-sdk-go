@@ -28,16 +28,16 @@ var (
 type OrgWorkspaceDatatanksService service
 
 type OrgWorkspaceDatatanksApiCreateRequest struct {
-	ctx             _context.Context
-	ApiService      *OrgWorkspaceDatatanksService
-	orgHandle       string
-	workspaceHandle string
-	request         *CreateDatatankRequest
+	ctx                   _context.Context
+	ApiService            *OrgWorkspaceDatatanksService
+	orgHandle             string
+	workspaceHandle       string
+	createDatatankRequest *CreateDatatankRequest
 }
 
 // The request body for the workspace Datatank to be created.
-func (r OrgWorkspaceDatatanksApiCreateRequest) Request(request CreateDatatankRequest) OrgWorkspaceDatatanksApiCreateRequest {
-	r.request = &request
+func (r OrgWorkspaceDatatanksApiCreateRequest) CreateDatatankRequest(createDatatankRequest CreateDatatankRequest) OrgWorkspaceDatatanksApiCreateRequest {
+	r.createDatatankRequest = &createDatatankRequest
 	return r
 }
 
@@ -87,8 +87,8 @@ func (a *OrgWorkspaceDatatanksService) CreateExecute(r OrgWorkspaceDatatanksApiC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.createDatatankRequest == nil {
+		return localVarReturnValue, nil, reportError("createDatatankRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -109,7 +109,7 @@ func (a *OrgWorkspaceDatatanksService) CreateExecute(r OrgWorkspaceDatatanksApiC
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.createDatatankRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -726,17 +726,17 @@ func (a *OrgWorkspaceDatatanksService) ListExecute(r OrgWorkspaceDatatanksApiLis
 }
 
 type OrgWorkspaceDatatanksApiUpdateRequest struct {
-	ctx             _context.Context
-	ApiService      *OrgWorkspaceDatatanksService
-	orgHandle       string
-	workspaceHandle string
-	datatankHandle  string
-	request         *UpdateDatatankRequest
+	ctx                   _context.Context
+	ApiService            *OrgWorkspaceDatatanksService
+	orgHandle             string
+	workspaceHandle       string
+	datatankHandle        string
+	updateDatatankRequest *UpdateDatatankRequest
 }
 
 // The request body to update workspace Datatank.
-func (r OrgWorkspaceDatatanksApiUpdateRequest) Request(request UpdateDatatankRequest) OrgWorkspaceDatatanksApiUpdateRequest {
-	r.request = &request
+func (r OrgWorkspaceDatatanksApiUpdateRequest) UpdateDatatankRequest(updateDatatankRequest UpdateDatatankRequest) OrgWorkspaceDatatanksApiUpdateRequest {
+	r.updateDatatankRequest = &updateDatatankRequest
 	return r
 }
 
@@ -789,8 +789,8 @@ func (a *OrgWorkspaceDatatanksService) UpdateExecute(r OrgWorkspaceDatatanksApiU
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateDatatankRequest == nil {
+		return localVarReturnValue, nil, reportError("updateDatatankRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -811,7 +811,7 @@ func (a *OrgWorkspaceDatatanksService) UpdateExecute(r OrgWorkspaceDatatanksApiU
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateDatatankRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

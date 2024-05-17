@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 ## Command
 
-> WorkspaceCommandResponse Command(ctx, orgHandle, workspaceHandle).Request(request).Execute()
+> WorkspaceCommandResponse Command(ctx, orgHandle, workspaceHandle).WorkspaceCommandRequest(workspaceCommandRequest).Execute()
 
 Run org workspace command
 
@@ -42,11 +42,11 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the org where we want to run the workspace command.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where command will be executed.
-    request := *openapiclient.NewWorkspaceCommandRequest("Command_example") // WorkspaceCommandRequest | The request body for the workspace command.
+    workspaceCommandRequest := *openapiclient.NewWorkspaceCommandRequest("Command_example") // WorkspaceCommandRequest | The request body for the workspace command.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgWorkspaces.Command(context.Background(), orgHandle, workspaceHandle).Request(request).Execute()
+    resp, r, err := api_client.OrgWorkspaces.Command(context.Background(), orgHandle, workspaceHandle).WorkspaceCommandRequest(workspaceCommandRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaces.Command``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**WorkspaceCommandRequest**](WorkspaceCommandRequest.md) | The request body for the workspace command. | 
+ **workspaceCommandRequest** | [**WorkspaceCommandRequest**](WorkspaceCommandRequest.md) | The request body for the workspace command. | 
 
 ### Return type
 
@@ -96,7 +96,7 @@ No authorization required
 
 ## Create
 
-> Workspace Create(ctx, orgHandle).Request(request).Execute()
+> Workspace Create(ctx, orgHandle).CreateWorkspaceRequest(createWorkspaceRequest).Execute()
 
 Create org workspace
 
@@ -116,11 +116,11 @@ import (
 
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the organization where we want to create the workspace.
-    request := *openapiclient.NewCreateWorkspaceRequest("Handle_example") // CreateWorkspaceRequest | The request body for the workspace to be created.
+    createWorkspaceRequest := *openapiclient.NewCreateWorkspaceRequest("Handle_example") // CreateWorkspaceRequest | The request body for the workspace to be created.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgWorkspaces.Create(context.Background(), orgHandle).Request(request).Execute()
+    resp, r, err := api_client.OrgWorkspaces.Create(context.Background(), orgHandle).CreateWorkspaceRequest(createWorkspaceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaces.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -146,7 +146,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **request** | [**CreateWorkspaceRequest**](CreateWorkspaceRequest.md) | The request body for the workspace to be created. | 
+ **createWorkspaceRequest** | [**CreateWorkspaceRequest**](CreateWorkspaceRequest.md) | The request body for the workspace to be created. | 
 
 ### Return type
 
@@ -699,7 +699,7 @@ No authorization required
 
 ## PostQuery
 
-> WorkspaceQueryResult PostQuery(ctx, orgHandle, workspaceHandle).Sql(sql).ContentType(contentType).Execute()
+> WorkspaceQueryResult PostQuery(ctx, orgHandle, workspaceHandle).Body(body).ContentType(contentType).Execute()
 
 Query org workspace
 
@@ -720,12 +720,12 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the org that the workspace belongs to.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace to query.
-    sql := "sql_example" // string | The sql query to perform against the org workspace.
+    body := "body_example" // string | The sql query to perform against the org workspace.
     contentType := "contentType_example" // string | The required content type for the response. Defaults to application/json. Supported values are json, application/json, csv, text/csv, md and text/markdown. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgWorkspaces.PostQuery(context.Background(), orgHandle, workspaceHandle).Sql(sql).ContentType(contentType).Execute()
+    resp, r, err := api_client.OrgWorkspaces.PostQuery(context.Background(), orgHandle, workspaceHandle).Body(body).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaces.PostQuery``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -753,7 +753,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **sql** | **string** | The sql query to perform against the org workspace. | 
+ **body** | **string** | The sql query to perform against the org workspace. | 
  **contentType** | **string** | The required content type for the response. Defaults to application/json. Supported values are json, application/json, csv, text/csv, md and text/markdown. | 
 
 ### Return type
@@ -856,7 +856,7 @@ No authorization required
 
 ## Update
 
-> Workspace Update(ctx, orgHandle, workspaceHandle).Request(request).Execute()
+> Workspace Update(ctx, orgHandle, workspaceHandle).UpdateWorkspaceRequest(updateWorkspaceRequest).Execute()
 
 Update org workspace
 
@@ -877,11 +877,11 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the organization where the workspace exist.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace which needs to be updated.
-    request := *openapiclient.NewUpdateWorkspaceRequest() // UpdateWorkspaceRequest | The request body of the workspace which needs to be updated.
+    updateWorkspaceRequest := *openapiclient.NewUpdateWorkspaceRequest() // UpdateWorkspaceRequest | The request body of the workspace which needs to be updated.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgWorkspaces.Update(context.Background(), orgHandle, workspaceHandle).Request(request).Execute()
+    resp, r, err := api_client.OrgWorkspaces.Update(context.Background(), orgHandle, workspaceHandle).UpdateWorkspaceRequest(updateWorkspaceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaces.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -909,7 +909,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**UpdateWorkspaceRequest**](UpdateWorkspaceRequest.md) | The request body of the workspace which needs to be updated. | 
+ **updateWorkspaceRequest** | [**UpdateWorkspaceRequest**](UpdateWorkspaceRequest.md) | The request body of the workspace which needs to be updated. | 
 
 ### Return type
 

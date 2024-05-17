@@ -41,7 +41,9 @@ type WorkspaceSchema struct {
 	IdentityId string `json:"identity_id"`
 	// The name of the schema.
 	Name string `json:"name"`
-	// Type of schems can be one of datatank, aggregator or connection.
+	// State of the schema e.g. `granted`, `direct` or `indirect`.
+	State *string `json:"state,omitempty"`
+	// Type of schema can be one of datatank, aggregator or connection.
 	Type *string `json:"type,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
@@ -512,6 +514,38 @@ func (o *WorkspaceSchema) SetName(v string) {
 	o.Name = v
 }
 
+// GetState returns the State field value if set, zero value otherwise.
+func (o *WorkspaceSchema) GetState() string {
+	if o == nil || o.State == nil {
+		var ret string
+		return ret
+	}
+	return *o.State
+}
+
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceSchema) GetStateOk() (*string, bool) {
+	if o == nil || o.State == nil {
+		return nil, false
+	}
+	return o.State, true
+}
+
+// HasState returns a boolean if a field has been set.
+func (o *WorkspaceSchema) HasState() bool {
+	if o != nil && o.State != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given string and assigns it to the State field.
+func (o *WorkspaceSchema) SetState(v string) {
+	o.State = &v
+}
+
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *WorkspaceSchema) GetType() string {
 	if o == nil || o.Type == nil {
@@ -726,6 +760,9 @@ func (o WorkspaceSchema) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.State != nil {
+		toSerialize["state"] = o.State
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type

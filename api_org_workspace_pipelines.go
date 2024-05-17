@@ -28,17 +28,17 @@ var (
 type OrgWorkspacePipelinesService service
 
 type OrgWorkspacePipelinesApiCommandRequest struct {
-	ctx             _context.Context
-	ApiService      *OrgWorkspacePipelinesService
-	orgHandle       string
-	workspaceHandle string
-	pipelineId      string
-	request         *PipelineCommandRequest
+	ctx                    _context.Context
+	ApiService             *OrgWorkspacePipelinesService
+	orgHandle              string
+	workspaceHandle        string
+	pipelineId             string
+	pipelineCommandRequest *PipelineCommandRequest
 }
 
 // The request body of the pipeline command to run.
-func (r OrgWorkspacePipelinesApiCommandRequest) Request(request PipelineCommandRequest) OrgWorkspacePipelinesApiCommandRequest {
-	r.request = &request
+func (r OrgWorkspacePipelinesApiCommandRequest) PipelineCommandRequest(pipelineCommandRequest PipelineCommandRequest) OrgWorkspacePipelinesApiCommandRequest {
+	r.pipelineCommandRequest = &pipelineCommandRequest
 	return r
 }
 
@@ -91,8 +91,8 @@ func (a *OrgWorkspacePipelinesService) CommandExecute(r OrgWorkspacePipelinesApi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.pipelineCommandRequest == nil {
+		return localVarReturnValue, nil, reportError("pipelineCommandRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -113,7 +113,7 @@ func (a *OrgWorkspacePipelinesService) CommandExecute(r OrgWorkspacePipelinesApi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.pipelineCommandRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -221,16 +221,16 @@ func (a *OrgWorkspacePipelinesService) CommandExecute(r OrgWorkspacePipelinesApi
 }
 
 type OrgWorkspacePipelinesApiCreateRequest struct {
-	ctx             _context.Context
-	ApiService      *OrgWorkspacePipelinesService
-	orgHandle       string
-	workspaceHandle string
-	request         *CreatePipelineRequest
+	ctx                   _context.Context
+	ApiService            *OrgWorkspacePipelinesService
+	orgHandle             string
+	workspaceHandle       string
+	createPipelineRequest *CreatePipelineRequest
 }
 
 // The request body for the pipeline to be created.
-func (r OrgWorkspacePipelinesApiCreateRequest) Request(request CreatePipelineRequest) OrgWorkspacePipelinesApiCreateRequest {
-	r.request = &request
+func (r OrgWorkspacePipelinesApiCreateRequest) CreatePipelineRequest(createPipelineRequest CreatePipelineRequest) OrgWorkspacePipelinesApiCreateRequest {
+	r.createPipelineRequest = &createPipelineRequest
 	return r
 }
 
@@ -280,8 +280,8 @@ func (a *OrgWorkspacePipelinesService) CreateExecute(r OrgWorkspacePipelinesApiC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.createPipelineRequest == nil {
+		return localVarReturnValue, nil, reportError("createPipelineRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -302,7 +302,7 @@ func (a *OrgWorkspacePipelinesService) CreateExecute(r OrgWorkspacePipelinesApiC
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.createPipelineRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -929,17 +929,17 @@ func (a *OrgWorkspacePipelinesService) ListExecute(r OrgWorkspacePipelinesApiLis
 }
 
 type OrgWorkspacePipelinesApiUpdateRequest struct {
-	ctx             _context.Context
-	ApiService      *OrgWorkspacePipelinesService
-	orgHandle       string
-	workspaceHandle string
-	pipelineId      string
-	request         *UpdatePipelineRequest
+	ctx                   _context.Context
+	ApiService            *OrgWorkspacePipelinesService
+	orgHandle             string
+	workspaceHandle       string
+	pipelineId            string
+	updatePipelineRequest *UpdatePipelineRequest
 }
 
 // The request body for the pipeline which needs to be updated.
-func (r OrgWorkspacePipelinesApiUpdateRequest) Request(request UpdatePipelineRequest) OrgWorkspacePipelinesApiUpdateRequest {
-	r.request = &request
+func (r OrgWorkspacePipelinesApiUpdateRequest) UpdatePipelineRequest(updatePipelineRequest UpdatePipelineRequest) OrgWorkspacePipelinesApiUpdateRequest {
+	r.updatePipelineRequest = &updatePipelineRequest
 	return r
 }
 
@@ -992,8 +992,8 @@ func (a *OrgWorkspacePipelinesService) UpdateExecute(r OrgWorkspacePipelinesApiU
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updatePipelineRequest == nil {
+		return localVarReturnValue, nil, reportError("updatePipelineRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1014,7 +1014,7 @@ func (a *OrgWorkspacePipelinesService) UpdateExecute(r OrgWorkspacePipelinesApiU
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updatePipelineRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

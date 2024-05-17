@@ -686,15 +686,15 @@ func (a *TenantMembersService) GetExecute(r TenantMembersApiGetRequest) (TenantU
 }
 
 type TenantMembersApiInviteRequest struct {
-	ctx          _context.Context
-	ApiService   *TenantMembersService
-	tenantHandle string
-	request      *InviteTenantUserRequest
+	ctx                     _context.Context
+	ApiService              *TenantMembersService
+	tenantHandle            string
+	inviteTenantUserRequest *InviteTenantUserRequest
 }
 
 // The request body to invite a member to a tenant.
-func (r TenantMembersApiInviteRequest) Request(request InviteTenantUserRequest) TenantMembersApiInviteRequest {
-	r.request = &request
+func (r TenantMembersApiInviteRequest) InviteTenantUserRequest(inviteTenantUserRequest InviteTenantUserRequest) TenantMembersApiInviteRequest {
+	r.inviteTenantUserRequest = &inviteTenantUserRequest
 	return r
 }
 
@@ -741,8 +741,8 @@ func (a *TenantMembersService) InviteExecute(r TenantMembersApiInviteRequest) (T
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.inviteTenantUserRequest == nil {
+		return localVarReturnValue, nil, reportError("inviteTenantUserRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -763,7 +763,7 @@ func (a *TenantMembersService) InviteExecute(r TenantMembersApiInviteRequest) (T
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.inviteTenantUserRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1024,16 +1024,16 @@ func (a *TenantMembersService) ListExecute(r TenantMembersApiListRequest) (ListT
 }
 
 type TenantMembersApiUpdateRequest struct {
-	ctx          _context.Context
-	ApiService   *TenantMembersService
-	tenantHandle string
-	userHandle   string
-	request      *UpdateTenantUserRequest
+	ctx                     _context.Context
+	ApiService              *TenantMembersService
+	tenantHandle            string
+	userHandle              string
+	updateTenantUserRequest *UpdateTenantUserRequest
 }
 
 // The request body for the member.
-func (r TenantMembersApiUpdateRequest) Request(request UpdateTenantUserRequest) TenantMembersApiUpdateRequest {
-	r.request = &request
+func (r TenantMembersApiUpdateRequest) UpdateTenantUserRequest(updateTenantUserRequest UpdateTenantUserRequest) TenantMembersApiUpdateRequest {
+	r.updateTenantUserRequest = &updateTenantUserRequest
 	return r
 }
 
@@ -1083,8 +1083,8 @@ func (a *TenantMembersService) UpdateExecute(r TenantMembersApiUpdateRequest) (T
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateTenantUserRequest == nil {
+		return localVarReturnValue, nil, reportError("updateTenantUserRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1105,7 +1105,7 @@ func (a *TenantMembersService) UpdateExecute(r TenantMembersApiUpdateRequest) (T
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateTenantUserRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

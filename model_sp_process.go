@@ -32,6 +32,8 @@ type SpProcess struct {
 	State *string `json:"state,omitempty"`
 	// The optional reason why the process is in its current state.
 	StateReason *string `json:"state_reason,omitempty"`
+	// The unique identifier of the tenant for which the process is created.
+	TenantId *string `json:"tenant_id,omitempty"`
 	// The type of the process, generally denotes the activity performed e.g. workspace.create, pipeline.execute, pipeline.command.run.
 	Type string `json:"type"`
 	// The time of the last update in ISO 8601 UTC.
@@ -335,6 +337,38 @@ func (o *SpProcess) SetStateReason(v string) {
 	o.StateReason = &v
 }
 
+// GetTenantId returns the TenantId field value if set, zero value otherwise.
+func (o *SpProcess) GetTenantId() string {
+	if o == nil || o.TenantId == nil {
+		var ret string
+		return ret
+	}
+	return *o.TenantId
+}
+
+// GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpProcess) GetTenantIdOk() (*string, bool) {
+	if o == nil || o.TenantId == nil {
+		return nil, false
+	}
+	return o.TenantId, true
+}
+
+// HasTenantId returns a boolean if a field has been set.
+func (o *SpProcess) HasTenantId() bool {
+	if o != nil && o.TenantId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTenantId gets a reference to the given string and assigns it to the TenantId field.
+func (o *SpProcess) SetTenantId(v string) {
+	o.TenantId = &v
+}
+
 // GetType returns the Type field value
 func (o *SpProcess) GetType() string {
 	if o == nil {
@@ -555,6 +589,9 @@ func (o SpProcess) MarshalJSON() ([]byte, error) {
 	}
 	if o.StateReason != nil {
 		toSerialize["state_reason"] = o.StateReason
+	}
+	if o.TenantId != nil {
+		toSerialize["tenant_id"] = o.TenantId
 	}
 	if true {
 		toSerialize["type"] = o.Type

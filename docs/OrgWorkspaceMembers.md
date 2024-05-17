@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> OrgWorkspaceUser Create(ctx, orgHandle, workspaceHandle).Request(request).Execute()
+> OrgWorkspaceUser Create(ctx, orgHandle, workspaceHandle).CreateOrgWorkspaceUserRequest(createOrgWorkspaceUserRequest).Execute()
 
 Create Org Workspace Member
 
@@ -35,11 +35,11 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | Specify the handle of the organization where the member need to be invited.
     workspaceHandle := "workspaceHandle_example" // string | Specify the handle of the workspace where the member need to be invited.
-    request := *openapiclient.NewCreateOrgWorkspaceUserRequest("Handle_example", "Role_example") // CreateOrgWorkspaceUserRequest | The request body to invite a member to an organization.
+    createOrgWorkspaceUserRequest := *openapiclient.NewCreateOrgWorkspaceUserRequest("Handle_example", "Role_example") // CreateOrgWorkspaceUserRequest | The request body to invite a member to an organization.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgWorkspaceMembers.Create(context.Background(), orgHandle, workspaceHandle).Request(request).Execute()
+    resp, r, err := api_client.OrgWorkspaceMembers.Create(context.Background(), orgHandle, workspaceHandle).CreateOrgWorkspaceUserRequest(createOrgWorkspaceUserRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceMembers.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**CreateOrgWorkspaceUserRequest**](CreateOrgWorkspaceUserRequest.md) | The request body to invite a member to an organization. | 
+ **createOrgWorkspaceUserRequest** | [**CreateOrgWorkspaceUserRequest**](CreateOrgWorkspaceUserRequest.md) | The request body to invite a member to an organization. | 
 
 ### Return type
 
@@ -320,7 +320,7 @@ No authorization required
 
 ## Update
 
-> OrgWorkspaceUser Update(ctx, orgHandle, workspaceHandle, userHandle).Request(request).Execute()
+> OrgWorkspaceUser Update(ctx, orgHandle, workspaceHandle, userHandle).UpdateOrgWorkspaceUserRequest(updateOrgWorkspaceUserRequest).Execute()
 
 Update Org Workspace Member
 
@@ -342,11 +342,11 @@ func main() {
     orgHandle := "orgHandle_example" // string | Specify the handle of the organization where the member need to be invited.
     workspaceHandle := "workspaceHandle_example" // string | Specify the handle of the workspace where the member need to be invited.
     userHandle := "userHandle_example" // string | Specify the handle of the user whose information you want to retrive.
-    request := *openapiclient.NewUpdateOrgWorkspaceUserRequest("Role_example") // UpdateOrgWorkspaceUserRequest | The request body for the member.
+    updateOrgWorkspaceUserRequest := *openapiclient.NewUpdateOrgWorkspaceUserRequest("Role_example") // UpdateOrgWorkspaceUserRequest | The request body for the member.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgWorkspaceMembers.Update(context.Background(), orgHandle, workspaceHandle, userHandle).Request(request).Execute()
+    resp, r, err := api_client.OrgWorkspaceMembers.Update(context.Background(), orgHandle, workspaceHandle, userHandle).UpdateOrgWorkspaceUserRequest(updateOrgWorkspaceUserRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceMembers.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -376,7 +376,7 @@ Name | Type | Description  | Notes
 
 
 
- **request** | [**UpdateOrgWorkspaceUserRequest**](UpdateOrgWorkspaceUserRequest.md) | The request body for the member. | 
+ **updateOrgWorkspaceUserRequest** | [**UpdateOrgWorkspaceUserRequest**](UpdateOrgWorkspaceUserRequest.md) | The request body for the member. | 
 
 ### Return type
 

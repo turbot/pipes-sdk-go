@@ -28,16 +28,16 @@ var (
 type UserWorkspacesService service
 
 type UserWorkspacesApiCommandRequest struct {
-	ctx             _context.Context
-	ApiService      *UserWorkspacesService
-	userHandle      string
-	workspaceHandle string
-	request         *WorkspaceCommandRequest
+	ctx                     _context.Context
+	ApiService              *UserWorkspacesService
+	userHandle              string
+	workspaceHandle         string
+	workspaceCommandRequest *WorkspaceCommandRequest
 }
 
 // The request body for the workspace command.
-func (r UserWorkspacesApiCommandRequest) Request(request WorkspaceCommandRequest) UserWorkspacesApiCommandRequest {
-	r.request = &request
+func (r UserWorkspacesApiCommandRequest) WorkspaceCommandRequest(workspaceCommandRequest WorkspaceCommandRequest) UserWorkspacesApiCommandRequest {
+	r.workspaceCommandRequest = &workspaceCommandRequest
 	return r
 }
 
@@ -87,8 +87,8 @@ func (a *UserWorkspacesService) CommandExecute(r UserWorkspacesApiCommandRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.workspaceCommandRequest == nil {
+		return localVarReturnValue, nil, reportError("workspaceCommandRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -109,7 +109,7 @@ func (a *UserWorkspacesService) CommandExecute(r UserWorkspacesApiCommandRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.workspaceCommandRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -217,15 +217,15 @@ func (a *UserWorkspacesService) CommandExecute(r UserWorkspacesApiCommandRequest
 }
 
 type UserWorkspacesApiCreateRequest struct {
-	ctx        _context.Context
-	ApiService *UserWorkspacesService
-	userHandle string
-	request    *CreateWorkspaceRequest
+	ctx                    _context.Context
+	ApiService             *UserWorkspacesService
+	userHandle             string
+	createWorkspaceRequest *CreateWorkspaceRequest
 }
 
 // The request body for the workspace to be created.
-func (r UserWorkspacesApiCreateRequest) Request(request CreateWorkspaceRequest) UserWorkspacesApiCreateRequest {
-	r.request = &request
+func (r UserWorkspacesApiCreateRequest) CreateWorkspaceRequest(createWorkspaceRequest CreateWorkspaceRequest) UserWorkspacesApiCreateRequest {
+	r.createWorkspaceRequest = &createWorkspaceRequest
 	return r
 }
 
@@ -272,8 +272,8 @@ func (a *UserWorkspacesService) CreateExecute(r UserWorkspacesApiCreateRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.createWorkspaceRequest == nil {
+		return localVarReturnValue, nil, reportError("createWorkspaceRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -294,7 +294,7 @@ func (a *UserWorkspacesService) CreateExecute(r UserWorkspacesApiCreateRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.createWorkspaceRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1637,13 +1637,13 @@ type UserWorkspacesApiPostQueryRequest struct {
 	ApiService      *UserWorkspacesService
 	userHandle      string
 	workspaceHandle string
-	sql             *string
+	body            *string
 	contentType     *string
 }
 
 // The sql query to perform against the user workspace.
-func (r UserWorkspacesApiPostQueryRequest) Sql(sql string) UserWorkspacesApiPostQueryRequest {
-	r.sql = &sql
+func (r UserWorkspacesApiPostQueryRequest) Body(body string) UserWorkspacesApiPostQueryRequest {
+	r.body = &body
 	return r
 }
 
@@ -1699,8 +1699,8 @@ func (a *UserWorkspacesService) PostQueryExecute(r UserWorkspacesApiPostQueryReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.sql == nil {
-		return localVarReturnValue, nil, reportError("sql is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	if r.contentType != nil {
@@ -1724,7 +1724,7 @@ func (a *UserWorkspacesService) PostQueryExecute(r UserWorkspacesApiPostQueryReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sql
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2014,16 +2014,16 @@ func (a *UserWorkspacesService) PostQueryWithExtensionsExecute(r UserWorkspacesA
 }
 
 type UserWorkspacesApiUpdateRequest struct {
-	ctx             _context.Context
-	ApiService      *UserWorkspacesService
-	userHandle      string
-	workspaceHandle string
-	request         *UpdateWorkspaceRequest
+	ctx                    _context.Context
+	ApiService             *UserWorkspacesService
+	userHandle             string
+	workspaceHandle        string
+	updateWorkspaceRequest *UpdateWorkspaceRequest
 }
 
 // The request body for the workspace which needs to be updated.
-func (r UserWorkspacesApiUpdateRequest) Request(request UpdateWorkspaceRequest) UserWorkspacesApiUpdateRequest {
-	r.request = &request
+func (r UserWorkspacesApiUpdateRequest) UpdateWorkspaceRequest(updateWorkspaceRequest UpdateWorkspaceRequest) UserWorkspacesApiUpdateRequest {
+	r.updateWorkspaceRequest = &updateWorkspaceRequest
 	return r
 }
 
@@ -2073,8 +2073,8 @@ func (a *UserWorkspacesService) UpdateExecute(r UserWorkspacesApiUpdateRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateWorkspaceRequest == nil {
+		return localVarReturnValue, nil, reportError("updateWorkspaceRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2095,7 +2095,7 @@ func (a *UserWorkspacesService) UpdateExecute(r UserWorkspacesApiUpdateRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateWorkspaceRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

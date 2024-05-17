@@ -28,16 +28,16 @@ var (
 type OrgWorkspaceMembersService service
 
 type OrgWorkspaceMembersApiCreateRequest struct {
-	ctx             _context.Context
-	ApiService      *OrgWorkspaceMembersService
-	orgHandle       string
-	workspaceHandle string
-	request         *CreateOrgWorkspaceUserRequest
+	ctx                           _context.Context
+	ApiService                    *OrgWorkspaceMembersService
+	orgHandle                     string
+	workspaceHandle               string
+	createOrgWorkspaceUserRequest *CreateOrgWorkspaceUserRequest
 }
 
 // The request body to invite a member to an organization.
-func (r OrgWorkspaceMembersApiCreateRequest) Request(request CreateOrgWorkspaceUserRequest) OrgWorkspaceMembersApiCreateRequest {
-	r.request = &request
+func (r OrgWorkspaceMembersApiCreateRequest) CreateOrgWorkspaceUserRequest(createOrgWorkspaceUserRequest CreateOrgWorkspaceUserRequest) OrgWorkspaceMembersApiCreateRequest {
+	r.createOrgWorkspaceUserRequest = &createOrgWorkspaceUserRequest
 	return r
 }
 
@@ -87,8 +87,8 @@ func (a *OrgWorkspaceMembersService) CreateExecute(r OrgWorkspaceMembersApiCreat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.createOrgWorkspaceUserRequest == nil {
+		return localVarReturnValue, nil, reportError("createOrgWorkspaceUserRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -109,7 +109,7 @@ func (a *OrgWorkspaceMembersService) CreateExecute(r OrgWorkspaceMembersApiCreat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.createOrgWorkspaceUserRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -706,17 +706,17 @@ func (a *OrgWorkspaceMembersService) ListExecute(r OrgWorkspaceMembersApiListReq
 }
 
 type OrgWorkspaceMembersApiUpdateRequest struct {
-	ctx             _context.Context
-	ApiService      *OrgWorkspaceMembersService
-	orgHandle       string
-	workspaceHandle string
-	userHandle      string
-	request         *UpdateOrgWorkspaceUserRequest
+	ctx                           _context.Context
+	ApiService                    *OrgWorkspaceMembersService
+	orgHandle                     string
+	workspaceHandle               string
+	userHandle                    string
+	updateOrgWorkspaceUserRequest *UpdateOrgWorkspaceUserRequest
 }
 
 // The request body for the member.
-func (r OrgWorkspaceMembersApiUpdateRequest) Request(request UpdateOrgWorkspaceUserRequest) OrgWorkspaceMembersApiUpdateRequest {
-	r.request = &request
+func (r OrgWorkspaceMembersApiUpdateRequest) UpdateOrgWorkspaceUserRequest(updateOrgWorkspaceUserRequest UpdateOrgWorkspaceUserRequest) OrgWorkspaceMembersApiUpdateRequest {
+	r.updateOrgWorkspaceUserRequest = &updateOrgWorkspaceUserRequest
 	return r
 }
 
@@ -769,8 +769,8 @@ func (a *OrgWorkspaceMembersService) UpdateExecute(r OrgWorkspaceMembersApiUpdat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateOrgWorkspaceUserRequest == nil {
+		return localVarReturnValue, nil, reportError("updateOrgWorkspaceUserRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -791,7 +791,7 @@ func (a *OrgWorkspaceMembersService) UpdateExecute(r OrgWorkspaceMembersApiUpdat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateOrgWorkspaceUserRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

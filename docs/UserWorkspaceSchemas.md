@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## Attach
 
-> WorkspaceSchema Attach(ctx, userHandle, workspaceHandle).Request(request).Execute()
+> WorkspaceSchema Attach(ctx, userHandle, workspaceHandle).AttachWorkspaceSchemaRequest(attachWorkspaceSchemaRequest).Execute()
 
 Attach a schema to a user workspace
 
@@ -35,11 +35,11 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user that the workspace belongs to.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the schema will be attached.
-    request := *openapiclient.NewAttachWorkspaceSchemaRequest("ConnectionHandle_example") // AttachWorkspaceSchemaRequest | The request body for the schema to be attached.
+    attachWorkspaceSchemaRequest := *openapiclient.NewAttachWorkspaceSchemaRequest() // AttachWorkspaceSchemaRequest | The request body for the schema to be attached.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserWorkspaceSchemas.Attach(context.Background(), userHandle, workspaceHandle).Request(request).Execute()
+    resp, r, err := api_client.UserWorkspaceSchemas.Attach(context.Background(), userHandle, workspaceHandle).AttachWorkspaceSchemaRequest(attachWorkspaceSchemaRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaceSchemas.Attach``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**AttachWorkspaceSchemaRequest**](AttachWorkspaceSchemaRequest.md) | The request body for the schema to be attached. | 
+ **attachWorkspaceSchemaRequest** | [**AttachWorkspaceSchemaRequest**](AttachWorkspaceSchemaRequest.md) | The request body for the schema to be attached. | 
 
 ### Return type
 

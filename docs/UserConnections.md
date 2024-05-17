@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> Connection Create(ctx, userHandle).Request(request).Mode(mode).Execute()
+> Connection Create(ctx, userHandle).CreateConnectionRequest(createConnectionRequest).Mode(mode).Execute()
 
 Create user connection
 
@@ -43,12 +43,12 @@ import (
 
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user where we want to create the connection.
-    request := *openapiclient.NewCreateConnectionRequest("Handle_example", "Plugin_example") // CreateConnectionRequest | The request body for the connection to be created.
+    createConnectionRequest := *openapiclient.NewCreateConnectionRequest("Handle_example", "Plugin_example") // CreateConnectionRequest | The request body for the connection to be created.
     mode := "mode_example" // string | The mode of this request (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserConnections.Create(context.Background(), userHandle).Request(request).Mode(mode).Execute()
+    resp, r, err := api_client.UserConnections.Create(context.Background(), userHandle).CreateConnectionRequest(createConnectionRequest).Mode(mode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserConnections.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -74,7 +74,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **request** | [**CreateConnectionRequest**](CreateConnectionRequest.md) | The request body for the connection to be created. | 
+ **createConnectionRequest** | [**CreateConnectionRequest**](CreateConnectionRequest.md) | The request body for the connection to be created. | 
  **mode** | **string** | The mode of this request | 
 
 ### Return type
@@ -97,7 +97,7 @@ No authorization required
 
 ## CreateDeprecated
 
-> Connection CreateDeprecated(ctx, userHandle).Request(request).Mode(mode).Execute()
+> Connection CreateDeprecated(ctx, userHandle).CreateConnectionRequest(createConnectionRequest).Mode(mode).Execute()
 
 Create user connection
 
@@ -117,12 +117,12 @@ import (
 
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user where we want to create the connection.
-    request := *openapiclient.NewCreateConnectionRequest("Handle_example", "Plugin_example") // CreateConnectionRequest | The request body for the connection to be created.
+    createConnectionRequest := *openapiclient.NewCreateConnectionRequest("Handle_example", "Plugin_example") // CreateConnectionRequest | The request body for the connection to be created.
     mode := "mode_example" // string | The mode of this request (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserConnections.CreateDeprecated(context.Background(), userHandle).Request(request).Mode(mode).Execute()
+    resp, r, err := api_client.UserConnections.CreateDeprecated(context.Background(), userHandle).CreateConnectionRequest(createConnectionRequest).Mode(mode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserConnections.CreateDeprecated``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -148,7 +148,7 @@ Other parameters are passed through a pointer to a apiCreateDeprecatedRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **request** | [**CreateConnectionRequest**](CreateConnectionRequest.md) | The request body for the connection to be created. | 
+ **createConnectionRequest** | [**CreateConnectionRequest**](CreateConnectionRequest.md) | The request body for the connection to be created. | 
  **mode** | **string** | The mode of this request | 
 
 ### Return type
@@ -765,7 +765,7 @@ No authorization required
 
 ## Test
 
-> ConnectionTestResult Test(ctx, userHandle, connectionHandle).Request(request).Execute()
+> ConnectionTestResult Test(ctx, userHandle, connectionHandle).TestConnectionRequest(testConnectionRequest).Execute()
 
 Test user connection
 
@@ -786,11 +786,11 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user where the connection exists / intends to be created.
     connectionHandle := "connectionHandle_example" // string | The handle of the connection to be tested. For connections that are not yet created, use underscore `_` as the handle, else pass the handle of the existing connection.
-    request := *openapiclient.NewTestConnectionRequest("Plugin_example") // TestConnectionRequest | The request body for the connection to be tested.
+    testConnectionRequest := *openapiclient.NewTestConnectionRequest("Plugin_example") // TestConnectionRequest | The request body for the connection to be tested.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserConnections.Test(context.Background(), userHandle, connectionHandle).Request(request).Execute()
+    resp, r, err := api_client.UserConnections.Test(context.Background(), userHandle, connectionHandle).TestConnectionRequest(testConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserConnections.Test``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -818,7 +818,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**TestConnectionRequest**](TestConnectionRequest.md) | The request body for the connection to be tested. | 
+ **testConnectionRequest** | [**TestConnectionRequest**](TestConnectionRequest.md) | The request body for the connection to be tested. | 
 
 ### Return type
 
@@ -840,7 +840,7 @@ No authorization required
 
 ## TestDeprecated
 
-> ConnectionTestResult TestDeprecated(ctx, userHandle, connHandle).Request(request).Execute()
+> ConnectionTestResult TestDeprecated(ctx, userHandle, connHandle).TestConnectionRequest(testConnectionRequest).Execute()
 
 Test user connection
 
@@ -861,11 +861,11 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user where the connection exists / intends to be created.
     connHandle := "connHandle_example" // string | The handle of the connection to be tested. For connections that are not yet created, use underscore `_` as the handle, else pass the handle of the existing connection.
-    request := *openapiclient.NewTestConnectionRequest("Plugin_example") // TestConnectionRequest | The request body for the connection to be tested.
+    testConnectionRequest := *openapiclient.NewTestConnectionRequest("Plugin_example") // TestConnectionRequest | The request body for the connection to be tested.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserConnections.TestDeprecated(context.Background(), userHandle, connHandle).Request(request).Execute()
+    resp, r, err := api_client.UserConnections.TestDeprecated(context.Background(), userHandle, connHandle).TestConnectionRequest(testConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserConnections.TestDeprecated``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -893,7 +893,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**TestConnectionRequest**](TestConnectionRequest.md) | The request body for the connection to be tested. | 
+ **testConnectionRequest** | [**TestConnectionRequest**](TestConnectionRequest.md) | The request body for the connection to be tested. | 
 
 ### Return type
 
@@ -915,7 +915,7 @@ No authorization required
 
 ## Update
 
-> Connection Update(ctx, userHandle, connectionHandle).Request(request).Mode(mode).Execute()
+> Connection Update(ctx, userHandle, connectionHandle).UpdateConnectionRequest(updateConnectionRequest).Mode(mode).Execute()
 
 Update user connection
 
@@ -936,12 +936,12 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user where the connection exists.
     connectionHandle := "connectionHandle_example" // string | The handle of the connection which needs to be updated.
-    request := *openapiclient.NewUpdateConnectionRequest() // UpdateConnectionRequest | The request body for the connection which needs to be updated.
+    updateConnectionRequest := *openapiclient.NewUpdateConnectionRequest() // UpdateConnectionRequest | The request body for the connection which needs to be updated.
     mode := "mode_example" // string | The mode of this request (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserConnections.Update(context.Background(), userHandle, connectionHandle).Request(request).Mode(mode).Execute()
+    resp, r, err := api_client.UserConnections.Update(context.Background(), userHandle, connectionHandle).UpdateConnectionRequest(updateConnectionRequest).Mode(mode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserConnections.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -969,7 +969,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**UpdateConnectionRequest**](UpdateConnectionRequest.md) | The request body for the connection which needs to be updated. | 
+ **updateConnectionRequest** | [**UpdateConnectionRequest**](UpdateConnectionRequest.md) | The request body for the connection which needs to be updated. | 
  **mode** | **string** | The mode of this request | 
 
 ### Return type
@@ -992,7 +992,7 @@ No authorization required
 
 ## UpdateDeprecated
 
-> Connection UpdateDeprecated(ctx, userHandle, connHandle).Request(request).Mode(mode).Execute()
+> Connection UpdateDeprecated(ctx, userHandle, connHandle).UpdateConnectionRequest(updateConnectionRequest).Mode(mode).Execute()
 
 Update user connection
 
@@ -1013,12 +1013,12 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user where the connection exist.
     connHandle := "connHandle_example" // string | The handle of the connection which needs to be updated.
-    request := *openapiclient.NewUpdateConnectionRequest() // UpdateConnectionRequest | The request body for the connection which needs to be updated.
+    updateConnectionRequest := *openapiclient.NewUpdateConnectionRequest() // UpdateConnectionRequest | The request body for the connection which needs to be updated.
     mode := "mode_example" // string | The mode of this request (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserConnections.UpdateDeprecated(context.Background(), userHandle, connHandle).Request(request).Mode(mode).Execute()
+    resp, r, err := api_client.UserConnections.UpdateDeprecated(context.Background(), userHandle, connHandle).UpdateConnectionRequest(updateConnectionRequest).Mode(mode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserConnections.UpdateDeprecated``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1046,7 +1046,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**UpdateConnectionRequest**](UpdateConnectionRequest.md) | The request body for the connection which needs to be updated. | 
+ **updateConnectionRequest** | [**UpdateConnectionRequest**](UpdateConnectionRequest.md) | The request body for the connection which needs to be updated. | 
  **mode** | **string** | The mode of this request | 
 
 ### Return type

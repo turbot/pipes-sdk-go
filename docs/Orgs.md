@@ -9,11 +9,9 @@ Method | HTTP request | Description
 [**Delete**](Orgs.md#Delete) | **Delete** /org/{org_handle} | Delete org
 [**DeleteAvatar**](Orgs.md#DeleteAvatar) | **Delete** /org/{org_handle}/avatar | Delete org avatar
 [**Get**](Orgs.md#Get) | **Get** /org/{org_handle} | Get org
-[**GetQuota**](Orgs.md#GetQuota) | **Get** /org/{org_handle}/quota | Org quota
 [**List**](Orgs.md#List) | **Get** /org | List orgs
 [**ListAuditLogs**](Orgs.md#ListAuditLogs) | **Get** /org/{org_handle}/audit_log | Org audit logs
 [**ListConstraints**](Orgs.md#ListConstraints) | **Get** /org/{org_handle}/constraint | List org constraints
-[**ListFeatures**](Orgs.md#ListFeatures) | **Get** /org/{org_handle}/feature | Org features
 [**ListUsage**](Orgs.md#ListUsage) | **Get** /org/{org_handle}/usage | List org usage
 [**Update**](Orgs.md#Update) | **Patch** /org/{org_handle} | Update org
 
@@ -21,7 +19,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> Org Create(ctx).Request(request).Execute()
+> Org Create(ctx).CreateOrgRequest(createOrgRequest).Execute()
 
 Create org
 
@@ -40,11 +38,11 @@ import (
 )
 
 func main() {
-    request := *openapiclient.NewCreateOrgRequest("Handle_example") // CreateOrgRequest | The request body to create the organization.
+    createOrgRequest := *openapiclient.NewCreateOrgRequest("Handle_example") // CreateOrgRequest | The request body to create the organization.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Orgs.Create(context.Background()).Request(request).Execute()
+    resp, r, err := api_client.Orgs.Create(context.Background()).CreateOrgRequest(createOrgRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Orgs.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +63,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request** | [**CreateOrgRequest**](CreateOrgRequest.md) | The request body to create the organization. | 
+ **createOrgRequest** | [**CreateOrgRequest**](CreateOrgRequest.md) | The request body to create the organization. | 
 
 ### Return type
 
@@ -365,76 +363,6 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## GetQuota
-
-> OrgQuota GetQuota(ctx, orgHandle).Execute()
-
-Org quota
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    orgHandle := "orgHandle_example" // string | Specify the org handle to get the quota details.
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Orgs.GetQuota(context.Background(), orgHandle).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `Orgs.GetQuota``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetQuota`: OrgQuota
-    fmt.Fprintf(os.Stdout, "Response from `Orgs.GetQuota`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgHandle** | **string** | Specify the org handle to get the quota details. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetQuotaRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**OrgQuota**](OrgQuota.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## List
 
 > ListOrgsResponse List(ctx).Limit(limit).NextToken(nextToken).Execute()
@@ -653,76 +581,6 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ListFeatures
-
-> ListFeaturesResponse ListFeatures(ctx, orgHandle).Execute()
-
-Org features
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    orgHandle := "orgHandle_example" // string | Specify the org handle to get the feature details.
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Orgs.ListFeatures(context.Background(), orgHandle).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `Orgs.ListFeatures``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListFeatures`: ListFeaturesResponse
-    fmt.Fprintf(os.Stdout, "Response from `Orgs.ListFeatures`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgHandle** | **string** | Specify the org handle to get the feature details. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListFeaturesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**ListFeaturesResponse**](ListFeaturesResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListUsage
 
 > ListUsageMetricsResponse ListUsage(ctx, orgHandle).Where(where).Limit(limit).NextToken(nextToken).Execute()
@@ -801,7 +659,7 @@ No authorization required
 
 ## Update
 
-> Org Update(ctx, orgHandle).Request(request).Execute()
+> Org Update(ctx, orgHandle).UpdateOrgRequest(updateOrgRequest).Execute()
 
 Update org
 
@@ -821,11 +679,11 @@ import (
 
 func main() {
     orgHandle := "orgHandle_example" // string | Specify the handle of the organization which need to be updated.
-    request := *openapiclient.NewUpdateOrgRequest() // UpdateOrgRequest | The request body for the organization.
+    updateOrgRequest := *openapiclient.NewUpdateOrgRequest() // UpdateOrgRequest | The request body for the organization.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Orgs.Update(context.Background(), orgHandle).Request(request).Execute()
+    resp, r, err := api_client.Orgs.Update(context.Background(), orgHandle).UpdateOrgRequest(updateOrgRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Orgs.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -851,7 +709,7 @@ Other parameters are passed through a pointer to a apiUpdateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **request** | [**UpdateOrgRequest**](UpdateOrgRequest.md) | The request body for the organization. | 
+ **updateOrgRequest** | [**UpdateOrgRequest**](UpdateOrgRequest.md) | The request body for the organization. | 
 
 ### Return type
 

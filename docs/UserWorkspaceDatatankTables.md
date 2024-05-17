@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> DatatankTable Create(ctx, userHandle, workspaceHandle, datatankHandle).Request(request).Execute()
+> DatatankTable Create(ctx, userHandle, workspaceHandle, datatankHandle).CreateDatatankTableRequest(createDatatankTableRequest).Execute()
 
 Create user workspace Datatank table
 
@@ -36,11 +36,11 @@ func main() {
     userHandle := "userHandle_example" // string | The handle of the user where we want to create the workspace Datatank table.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace.
     datatankHandle := "datatankHandle_example" // string | The name of the Datatank.
-    request := *openapiclient.NewCreateDatatankTableRequest("Name_example", "Type_example") // CreateDatatankTableRequest | The request body for the workspace Datatank table to be created.
+    createDatatankTableRequest := *openapiclient.NewCreateDatatankTableRequest("Name_example", "Type_example") // CreateDatatankTableRequest | The request body for the workspace Datatank table to be created.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserWorkspaceDatatankTables.Create(context.Background(), userHandle, workspaceHandle, datatankHandle).Request(request).Execute()
+    resp, r, err := api_client.UserWorkspaceDatatankTables.Create(context.Background(), userHandle, workspaceHandle, datatankHandle).CreateDatatankTableRequest(createDatatankTableRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaceDatatankTables.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 
 
- **request** | [**CreateDatatankTableRequest**](CreateDatatankTableRequest.md) | The request body for the workspace Datatank table to be created. | 
+ **createDatatankTableRequest** | [**CreateDatatankTableRequest**](CreateDatatankTableRequest.md) | The request body for the workspace Datatank table to be created. | 
 
 ### Return type
 
@@ -330,7 +330,7 @@ No authorization required
 
 ## Update
 
-> DatatankTable Update(ctx, userHandle, workspaceHandle, datatankHandle, datatankTableName).Request(request).Execute()
+> DatatankTable Update(ctx, userHandle, workspaceHandle, datatankHandle, datatankTableName).UpdateDatatankTableRequest(updateDatatankTableRequest).Execute()
 
 Update user workspace Datatank table
 
@@ -353,11 +353,11 @@ func main() {
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace.
     datatankHandle := "datatankHandle_example" // string | The name of the workspace Datatank.
     datatankTableName := "datatankTableName_example" // string | The name of the workspace Datatank table to be updated.
-    request := *openapiclient.NewUpdateDatatankTableRequest() // UpdateDatatankTableRequest | The request body to update workspace Datatank table.
+    updateDatatankTableRequest := *openapiclient.NewUpdateDatatankTableRequest() // UpdateDatatankTableRequest | The request body to update workspace Datatank table.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserWorkspaceDatatankTables.Update(context.Background(), userHandle, workspaceHandle, datatankHandle, datatankTableName).Request(request).Execute()
+    resp, r, err := api_client.UserWorkspaceDatatankTables.Update(context.Background(), userHandle, workspaceHandle, datatankHandle, datatankTableName).UpdateDatatankTableRequest(updateDatatankTableRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaceDatatankTables.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -389,7 +389,7 @@ Name | Type | Description  | Notes
 
 
 
- **request** | [**UpdateDatatankTableRequest**](UpdateDatatankTableRequest.md) | The request body to update workspace Datatank table. | 
+ **updateDatatankTableRequest** | [**UpdateDatatankTableRequest**](UpdateDatatankTableRequest.md) | The request body to update workspace Datatank table. | 
 
 ### Return type
 

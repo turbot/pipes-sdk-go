@@ -28,17 +28,17 @@ var (
 type OrgWorkspaceDatatankTablesService service
 
 type OrgWorkspaceDatatankTablesApiCreateRequest struct {
-	ctx             _context.Context
-	ApiService      *OrgWorkspaceDatatankTablesService
-	orgHandle       string
-	workspaceHandle string
-	datatankHandle  string
-	request         *CreateDatatankTableRequest
+	ctx                        _context.Context
+	ApiService                 *OrgWorkspaceDatatankTablesService
+	orgHandle                  string
+	workspaceHandle            string
+	datatankHandle             string
+	createDatatankTableRequest *CreateDatatankTableRequest
 }
 
 // The request body for the workspace Datatank table to be created.
-func (r OrgWorkspaceDatatankTablesApiCreateRequest) Request(request CreateDatatankTableRequest) OrgWorkspaceDatatankTablesApiCreateRequest {
-	r.request = &request
+func (r OrgWorkspaceDatatankTablesApiCreateRequest) CreateDatatankTableRequest(createDatatankTableRequest CreateDatatankTableRequest) OrgWorkspaceDatatankTablesApiCreateRequest {
+	r.createDatatankTableRequest = &createDatatankTableRequest
 	return r
 }
 
@@ -91,8 +91,8 @@ func (a *OrgWorkspaceDatatankTablesService) CreateExecute(r OrgWorkspaceDatatank
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.createDatatankTableRequest == nil {
+		return localVarReturnValue, nil, reportError("createDatatankTableRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -113,7 +113,7 @@ func (a *OrgWorkspaceDatatankTablesService) CreateExecute(r OrgWorkspaceDatatank
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.createDatatankTableRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -742,18 +742,18 @@ func (a *OrgWorkspaceDatatankTablesService) ListExecute(r OrgWorkspaceDatatankTa
 }
 
 type OrgWorkspaceDatatankTablesApiUpdateRequest struct {
-	ctx               _context.Context
-	ApiService        *OrgWorkspaceDatatankTablesService
-	orgHandle         string
-	workspaceHandle   string
-	datatankHandle    string
-	datatankTableName string
-	request           *UpdateDatatankTableRequest
+	ctx                        _context.Context
+	ApiService                 *OrgWorkspaceDatatankTablesService
+	orgHandle                  string
+	workspaceHandle            string
+	datatankHandle             string
+	datatankTableName          string
+	updateDatatankTableRequest *UpdateDatatankTableRequest
 }
 
 // The request body to update workspace Datatank table.
-func (r OrgWorkspaceDatatankTablesApiUpdateRequest) Request(request UpdateDatatankTableRequest) OrgWorkspaceDatatankTablesApiUpdateRequest {
-	r.request = &request
+func (r OrgWorkspaceDatatankTablesApiUpdateRequest) UpdateDatatankTableRequest(updateDatatankTableRequest UpdateDatatankTableRequest) OrgWorkspaceDatatankTablesApiUpdateRequest {
+	r.updateDatatankTableRequest = &updateDatatankTableRequest
 	return r
 }
 
@@ -809,8 +809,8 @@ func (a *OrgWorkspaceDatatankTablesService) UpdateExecute(r OrgWorkspaceDatatank
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateDatatankTableRequest == nil {
+		return localVarReturnValue, nil, reportError("updateDatatankTableRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -831,7 +831,7 @@ func (a *OrgWorkspaceDatatankTablesService) UpdateExecute(r OrgWorkspaceDatatank
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateDatatankTableRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

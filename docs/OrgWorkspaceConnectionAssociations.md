@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> WorkspaceConn Create(ctx, orgHandle, workspaceHandle).Request(request).Execute()
+> WorkspaceConn Create(ctx, orgHandle, workspaceHandle).CreateWorkspaceConnRequest(createWorkspaceConnRequest).Execute()
 
 Create org workspace connection association
 
@@ -34,11 +34,11 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the organization where we want to create an association.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the connection will be associated.
-    request := *openapiclient.NewCreateWorkspaceConnRequest("ConnectionHandle_example") // CreateWorkspaceConnRequest | The request body for the association to be created.
+    createWorkspaceConnRequest := *openapiclient.NewCreateWorkspaceConnRequest("ConnectionHandle_example") // CreateWorkspaceConnRequest | The request body for the association to be created.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgWorkspaceConnectionAssociations.Create(context.Background(), orgHandle, workspaceHandle).Request(request).Execute()
+    resp, r, err := api_client.OrgWorkspaceConnectionAssociations.Create(context.Background(), orgHandle, workspaceHandle).CreateWorkspaceConnRequest(createWorkspaceConnRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceConnectionAssociations.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**CreateWorkspaceConnRequest**](CreateWorkspaceConnRequest.md) | The request body for the association to be created. | 
+ **createWorkspaceConnRequest** | [**CreateWorkspaceConnRequest**](CreateWorkspaceConnRequest.md) | The request body for the association to be created. | 
 
 ### Return type
 

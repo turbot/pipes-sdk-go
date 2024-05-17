@@ -16,7 +16,7 @@ import (
 
 // Connection struct for Connection
 type Connection struct {
-	Config *map[string]interface{} `json:"config,omitempty"`
+	Config *map[string]map[string]interface{} `json:"config,omitempty"`
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
 	CreatedBy *User  `json:"created_by,omitempty"`
@@ -29,14 +29,26 @@ type Connection struct {
 	DeletedById string `json:"deleted_by_id"`
 	// The handle name of the  connection.
 	Handle string `json:"handle"`
+	// The dynamically-generated handle for the connection. Only populated if this is a discovered connection.
+	HandleDynamic *string `json:"handle_dynamic,omitempty"`
+	// The handle mode for the connection.
+	HandleMode *string `json:"handle_mode,omitempty"`
 	// The unique identifier for the connection.
 	Id string `json:"id"`
 	// The unique identifier for an identity where the connection has been created.
-	IdentityId string `json:"identity_id"`
+	IdentityId *string `json:"identity_id,omitempty"`
+	// The integration resource ID for the connection.
+	IntegrationResourceId *string `json:"integration_resource_id,omitempty"`
+	// The ID of the aggregator that manages this connection. Only populated if this is a discovered connection.
+	ManagedById *string `json:"managed_by_id,omitempty"`
 	// The plugin name for the connection.
 	Plugin *string `json:"plugin,omitempty"`
 	// The plugin version for the connection.
 	PluginVersion *string `json:"plugin_version,omitempty"`
+	// The source identifier for this connection. Only populated if this is a discovered connection.
+	SourceIdentifier *string `json:"source_identifier,omitempty"`
+	// The unique identifier for the tenant where the connection has been created.
+	TenantId string `json:"tenant_id"`
 	// Type of connection i.e aggregator or connection.
 	Type *string `json:"type,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
@@ -52,14 +64,14 @@ type Connection struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConnection(createdAt string, createdById string, deletedById string, handle string, id string, identityId string, updatedById string, versionId int32) *Connection {
+func NewConnection(createdAt string, createdById string, deletedById string, handle string, id string, tenantId string, updatedById string, versionId int32) *Connection {
 	this := Connection{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
 	this.DeletedById = deletedById
 	this.Handle = handle
 	this.Id = id
-	this.IdentityId = identityId
+	this.TenantId = tenantId
 	this.UpdatedById = updatedById
 	this.VersionId = versionId
 	return &this
@@ -74,9 +86,9 @@ func NewConnectionWithDefaults() *Connection {
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
-func (o *Connection) GetConfig() map[string]interface{} {
+func (o *Connection) GetConfig() map[string]map[string]interface{} {
 	if o == nil || o.Config == nil {
-		var ret map[string]interface{}
+		var ret map[string]map[string]interface{}
 		return ret
 	}
 	return *o.Config
@@ -84,7 +96,7 @@ func (o *Connection) GetConfig() map[string]interface{} {
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Connection) GetConfigOk() (*map[string]interface{}, bool) {
+func (o *Connection) GetConfigOk() (*map[string]map[string]interface{}, bool) {
 	if o == nil || o.Config == nil {
 		return nil, false
 	}
@@ -100,8 +112,8 @@ func (o *Connection) HasConfig() bool {
 	return false
 }
 
-// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
-func (o *Connection) SetConfig(v map[string]interface{}) {
+// SetConfig gets a reference to the given map[string]map[string]interface{} and assigns it to the Config field.
+func (o *Connection) SetConfig(v map[string]map[string]interface{}) {
 	o.Config = &v
 }
 
@@ -297,6 +309,70 @@ func (o *Connection) SetHandle(v string) {
 	o.Handle = v
 }
 
+// GetHandleDynamic returns the HandleDynamic field value if set, zero value otherwise.
+func (o *Connection) GetHandleDynamic() string {
+	if o == nil || o.HandleDynamic == nil {
+		var ret string
+		return ret
+	}
+	return *o.HandleDynamic
+}
+
+// GetHandleDynamicOk returns a tuple with the HandleDynamic field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Connection) GetHandleDynamicOk() (*string, bool) {
+	if o == nil || o.HandleDynamic == nil {
+		return nil, false
+	}
+	return o.HandleDynamic, true
+}
+
+// HasHandleDynamic returns a boolean if a field has been set.
+func (o *Connection) HasHandleDynamic() bool {
+	if o != nil && o.HandleDynamic != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHandleDynamic gets a reference to the given string and assigns it to the HandleDynamic field.
+func (o *Connection) SetHandleDynamic(v string) {
+	o.HandleDynamic = &v
+}
+
+// GetHandleMode returns the HandleMode field value if set, zero value otherwise.
+func (o *Connection) GetHandleMode() string {
+	if o == nil || o.HandleMode == nil {
+		var ret string
+		return ret
+	}
+	return *o.HandleMode
+}
+
+// GetHandleModeOk returns a tuple with the HandleMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Connection) GetHandleModeOk() (*string, bool) {
+	if o == nil || o.HandleMode == nil {
+		return nil, false
+	}
+	return o.HandleMode, true
+}
+
+// HasHandleMode returns a boolean if a field has been set.
+func (o *Connection) HasHandleMode() bool {
+	if o != nil && o.HandleMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHandleMode gets a reference to the given string and assigns it to the HandleMode field.
+func (o *Connection) SetHandleMode(v string) {
+	o.HandleMode = &v
+}
+
 // GetId returns the Id field value
 func (o *Connection) GetId() string {
 	if o == nil {
@@ -321,28 +397,100 @@ func (o *Connection) SetId(v string) {
 	o.Id = v
 }
 
-// GetIdentityId returns the IdentityId field value
+// GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *Connection) GetIdentityId() string {
-	if o == nil {
+	if o == nil || o.IdentityId == nil {
 		var ret string
 		return ret
 	}
-
-	return o.IdentityId
+	return *o.IdentityId
 }
 
-// GetIdentityIdOk returns a tuple with the IdentityId field value
+// GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Connection) GetIdentityIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.IdentityId == nil {
 		return nil, false
 	}
-	return &o.IdentityId, true
+	return o.IdentityId, true
 }
 
-// SetIdentityId sets field value
+// HasIdentityId returns a boolean if a field has been set.
+func (o *Connection) HasIdentityId() bool {
+	if o != nil && o.IdentityId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityId gets a reference to the given string and assigns it to the IdentityId field.
 func (o *Connection) SetIdentityId(v string) {
-	o.IdentityId = v
+	o.IdentityId = &v
+}
+
+// GetIntegrationResourceId returns the IntegrationResourceId field value if set, zero value otherwise.
+func (o *Connection) GetIntegrationResourceId() string {
+	if o == nil || o.IntegrationResourceId == nil {
+		var ret string
+		return ret
+	}
+	return *o.IntegrationResourceId
+}
+
+// GetIntegrationResourceIdOk returns a tuple with the IntegrationResourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Connection) GetIntegrationResourceIdOk() (*string, bool) {
+	if o == nil || o.IntegrationResourceId == nil {
+		return nil, false
+	}
+	return o.IntegrationResourceId, true
+}
+
+// HasIntegrationResourceId returns a boolean if a field has been set.
+func (o *Connection) HasIntegrationResourceId() bool {
+	if o != nil && o.IntegrationResourceId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIntegrationResourceId gets a reference to the given string and assigns it to the IntegrationResourceId field.
+func (o *Connection) SetIntegrationResourceId(v string) {
+	o.IntegrationResourceId = &v
+}
+
+// GetManagedById returns the ManagedById field value if set, zero value otherwise.
+func (o *Connection) GetManagedById() string {
+	if o == nil || o.ManagedById == nil {
+		var ret string
+		return ret
+	}
+	return *o.ManagedById
+}
+
+// GetManagedByIdOk returns a tuple with the ManagedById field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Connection) GetManagedByIdOk() (*string, bool) {
+	if o == nil || o.ManagedById == nil {
+		return nil, false
+	}
+	return o.ManagedById, true
+}
+
+// HasManagedById returns a boolean if a field has been set.
+func (o *Connection) HasManagedById() bool {
+	if o != nil && o.ManagedById != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetManagedById gets a reference to the given string and assigns it to the ManagedById field.
+func (o *Connection) SetManagedById(v string) {
+	o.ManagedById = &v
 }
 
 // GetPlugin returns the Plugin field value if set, zero value otherwise.
@@ -407,6 +555,62 @@ func (o *Connection) HasPluginVersion() bool {
 // SetPluginVersion gets a reference to the given string and assigns it to the PluginVersion field.
 func (o *Connection) SetPluginVersion(v string) {
 	o.PluginVersion = &v
+}
+
+// GetSourceIdentifier returns the SourceIdentifier field value if set, zero value otherwise.
+func (o *Connection) GetSourceIdentifier() string {
+	if o == nil || o.SourceIdentifier == nil {
+		var ret string
+		return ret
+	}
+	return *o.SourceIdentifier
+}
+
+// GetSourceIdentifierOk returns a tuple with the SourceIdentifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Connection) GetSourceIdentifierOk() (*string, bool) {
+	if o == nil || o.SourceIdentifier == nil {
+		return nil, false
+	}
+	return o.SourceIdentifier, true
+}
+
+// HasSourceIdentifier returns a boolean if a field has been set.
+func (o *Connection) HasSourceIdentifier() bool {
+	if o != nil && o.SourceIdentifier != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceIdentifier gets a reference to the given string and assigns it to the SourceIdentifier field.
+func (o *Connection) SetSourceIdentifier(v string) {
+	o.SourceIdentifier = &v
+}
+
+// GetTenantId returns the TenantId field value
+func (o *Connection) GetTenantId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TenantId
+}
+
+// GetTenantIdOk returns a tuple with the TenantId field value
+// and a boolean to check if the value has been set.
+func (o *Connection) GetTenantIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TenantId, true
+}
+
+// SetTenantId sets field value
+func (o *Connection) SetTenantId(v string) {
+	o.TenantId = v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -579,17 +783,35 @@ func (o Connection) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["handle"] = o.Handle
 	}
+	if o.HandleDynamic != nil {
+		toSerialize["handle_dynamic"] = o.HandleDynamic
+	}
+	if o.HandleMode != nil {
+		toSerialize["handle_mode"] = o.HandleMode
+	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
-	if true {
+	if o.IdentityId != nil {
 		toSerialize["identity_id"] = o.IdentityId
+	}
+	if o.IntegrationResourceId != nil {
+		toSerialize["integration_resource_id"] = o.IntegrationResourceId
+	}
+	if o.ManagedById != nil {
+		toSerialize["managed_by_id"] = o.ManagedById
 	}
 	if o.Plugin != nil {
 		toSerialize["plugin"] = o.Plugin
 	}
 	if o.PluginVersion != nil {
 		toSerialize["plugin_version"] = o.PluginVersion
+	}
+	if o.SourceIdentifier != nil {
+		toSerialize["source_identifier"] = o.SourceIdentifier
+	}
+	if true {
+		toSerialize["tenant_id"] = o.TenantId
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type

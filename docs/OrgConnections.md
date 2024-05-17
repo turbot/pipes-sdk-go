@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> Connection Create(ctx, orgHandle).Request(request).Mode(mode).Execute()
+> Connection Create(ctx, orgHandle).CreateConnectionRequest(createConnectionRequest).Mode(mode).Execute()
 
 Create org connection
 
@@ -43,12 +43,12 @@ import (
 
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the organization where we want to create the connection.
-    request := *openapiclient.NewCreateConnectionRequest("Handle_example", "Plugin_example") // CreateConnectionRequest | The request body for the connection to be created.
+    createConnectionRequest := *openapiclient.NewCreateConnectionRequest("Handle_example", "Plugin_example") // CreateConnectionRequest | The request body for the connection to be created.
     mode := "mode_example" // string | The mode of this request (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgConnections.Create(context.Background(), orgHandle).Request(request).Mode(mode).Execute()
+    resp, r, err := api_client.OrgConnections.Create(context.Background(), orgHandle).CreateConnectionRequest(createConnectionRequest).Mode(mode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgConnections.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -74,7 +74,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **request** | [**CreateConnectionRequest**](CreateConnectionRequest.md) | The request body for the connection to be created. | 
+ **createConnectionRequest** | [**CreateConnectionRequest**](CreateConnectionRequest.md) | The request body for the connection to be created. | 
  **mode** | **string** | The mode of this request | 
 
 ### Return type
@@ -97,7 +97,7 @@ No authorization required
 
 ## CreateDeprecated
 
-> Connection CreateDeprecated(ctx, orgHandle).Request(request).Mode(mode).Execute()
+> Connection CreateDeprecated(ctx, orgHandle).CreateConnectionRequest(createConnectionRequest).Mode(mode).Execute()
 
 Create org connection
 
@@ -117,12 +117,12 @@ import (
 
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the organization where we want to create the connection.
-    request := *openapiclient.NewCreateConnectionRequest("Handle_example", "Plugin_example") // CreateConnectionRequest | The request body for the connection to be created.
+    createConnectionRequest := *openapiclient.NewCreateConnectionRequest("Handle_example", "Plugin_example") // CreateConnectionRequest | The request body for the connection to be created.
     mode := "mode_example" // string | The mode of this request (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgConnections.CreateDeprecated(context.Background(), orgHandle).Request(request).Mode(mode).Execute()
+    resp, r, err := api_client.OrgConnections.CreateDeprecated(context.Background(), orgHandle).CreateConnectionRequest(createConnectionRequest).Mode(mode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgConnections.CreateDeprecated``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -148,7 +148,7 @@ Other parameters are passed through a pointer to a apiCreateDeprecatedRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **request** | [**CreateConnectionRequest**](CreateConnectionRequest.md) | The request body for the connection to be created. | 
+ **createConnectionRequest** | [**CreateConnectionRequest**](CreateConnectionRequest.md) | The request body for the connection to be created. | 
  **mode** | **string** | The mode of this request | 
 
 ### Return type
@@ -765,7 +765,7 @@ No authorization required
 
 ## Test
 
-> ConnectionTestResult Test(ctx, orgHandle, connectionHandle).Request(request).Execute()
+> ConnectionTestResult Test(ctx, orgHandle, connectionHandle).TestConnectionRequest(testConnectionRequest).Execute()
 
 Test org connection
 
@@ -786,11 +786,11 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the org performing the action.
     connectionHandle := "connectionHandle_example" // string | The handle of the connection to be tested. For connections that are not yet created, use underscore `_` as the handle, else pass the handle of the existing connection.
-    request := *openapiclient.NewTestConnectionRequest("Plugin_example") // TestConnectionRequest | The request body for the connection to be tested.
+    testConnectionRequest := *openapiclient.NewTestConnectionRequest("Plugin_example") // TestConnectionRequest | The request body for the connection to be tested.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgConnections.Test(context.Background(), orgHandle, connectionHandle).Request(request).Execute()
+    resp, r, err := api_client.OrgConnections.Test(context.Background(), orgHandle, connectionHandle).TestConnectionRequest(testConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgConnections.Test``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -818,7 +818,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**TestConnectionRequest**](TestConnectionRequest.md) | The request body for the connection to be tested. | 
+ **testConnectionRequest** | [**TestConnectionRequest**](TestConnectionRequest.md) | The request body for the connection to be tested. | 
 
 ### Return type
 
@@ -840,7 +840,7 @@ No authorization required
 
 ## TestDeprecated
 
-> ConnectionTestResult TestDeprecated(ctx, orgHandle, connHandle).Request(request).Execute()
+> ConnectionTestResult TestDeprecated(ctx, orgHandle, connHandle).TestConnectionRequest(testConnectionRequest).Execute()
 
 Test org connection
 
@@ -861,11 +861,11 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the org where the connection exists / intends to be created.
     connHandle := "connHandle_example" // string | The handle of the connection to be tested. For connections that are not yet created, use underscore `_` as the handle, else pass the handle of the existing connection.
-    request := *openapiclient.NewTestConnectionRequest("Plugin_example") // TestConnectionRequest | The request body for the connection to be tested.
+    testConnectionRequest := *openapiclient.NewTestConnectionRequest("Plugin_example") // TestConnectionRequest | The request body for the connection to be tested.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgConnections.TestDeprecated(context.Background(), orgHandle, connHandle).Request(request).Execute()
+    resp, r, err := api_client.OrgConnections.TestDeprecated(context.Background(), orgHandle, connHandle).TestConnectionRequest(testConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgConnections.TestDeprecated``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -893,7 +893,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**TestConnectionRequest**](TestConnectionRequest.md) | The request body for the connection to be tested. | 
+ **testConnectionRequest** | [**TestConnectionRequest**](TestConnectionRequest.md) | The request body for the connection to be tested. | 
 
 ### Return type
 
@@ -915,7 +915,7 @@ No authorization required
 
 ## Update
 
-> Connection Update(ctx, orgHandle, connectionHandle).Request(request).Mode(mode).Execute()
+> Connection Update(ctx, orgHandle, connectionHandle).UpdateConnectionRequest(updateConnectionRequest).Mode(mode).Execute()
 
 Update org connection
 
@@ -936,12 +936,12 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the organization where the connection exists.
     connectionHandle := "connectionHandle_example" // string | The handle of the connection which needs to be updated.
-    request := *openapiclient.NewUpdateConnectionRequest() // UpdateConnectionRequest | The request body of the connection which needs to be updated.
+    updateConnectionRequest := *openapiclient.NewUpdateConnectionRequest() // UpdateConnectionRequest | The request body of the connection which needs to be updated.
     mode := "mode_example" // string | The mode of this request (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgConnections.Update(context.Background(), orgHandle, connectionHandle).Request(request).Mode(mode).Execute()
+    resp, r, err := api_client.OrgConnections.Update(context.Background(), orgHandle, connectionHandle).UpdateConnectionRequest(updateConnectionRequest).Mode(mode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgConnections.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -969,7 +969,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**UpdateConnectionRequest**](UpdateConnectionRequest.md) | The request body of the connection which needs to be updated. | 
+ **updateConnectionRequest** | [**UpdateConnectionRequest**](UpdateConnectionRequest.md) | The request body of the connection which needs to be updated. | 
  **mode** | **string** | The mode of this request | 
 
 ### Return type
@@ -992,7 +992,7 @@ No authorization required
 
 ## UpdateDeprecated
 
-> Connection UpdateDeprecated(ctx, orgHandle, connHandle).Request(request).Mode(mode).Execute()
+> Connection UpdateDeprecated(ctx, orgHandle, connHandle).UpdateConnectionRequest(updateConnectionRequest).Mode(mode).Execute()
 
 Update org connection
 
@@ -1013,12 +1013,12 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the organization where the connection exist.
     connHandle := "connHandle_example" // string | The handle of the connection which needs to be updated.
-    request := *openapiclient.NewUpdateConnectionRequest() // UpdateConnectionRequest | The request body for the connection which needs to be updated.
+    updateConnectionRequest := *openapiclient.NewUpdateConnectionRequest() // UpdateConnectionRequest | The request body for the connection which needs to be updated.
     mode := "mode_example" // string | The mode of this request (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgConnections.UpdateDeprecated(context.Background(), orgHandle, connHandle).Request(request).Mode(mode).Execute()
+    resp, r, err := api_client.OrgConnections.UpdateDeprecated(context.Background(), orgHandle, connHandle).UpdateConnectionRequest(updateConnectionRequest).Mode(mode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgConnections.UpdateDeprecated``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1046,7 +1046,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**UpdateConnectionRequest**](UpdateConnectionRequest.md) | The request body for the connection which needs to be updated. | 
+ **updateConnectionRequest** | [**UpdateConnectionRequest**](UpdateConnectionRequest.md) | The request body for the connection which needs to be updated. | 
  **mode** | **string** | The mode of this request | 
 
 ### Return type

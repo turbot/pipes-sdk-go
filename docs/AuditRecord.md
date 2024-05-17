@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ActorId** | **string** | The unique identifier of an actor. | 
 **ActorIp** | **string** |  | 
 **CreatedAt** | **string** | The time when the audit log was recorded. | 
-**Data** | **map[string]interface{}** |  | 
+**Data** | **map[string]map[string]interface{}** |  | 
 **Id** | **string** | The unique identifier for an audit log. | 
 **IdentityHandle** | **string** | The handle name for an identity where the action has been performed. | 
 **IdentityId** | **string** | The unique identifier for an identity where the action has been performed. | 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewAuditRecord
 
-`func NewAuditRecord(actionType string, actorAvatarUrl string, actorDisplayName string, actorHandle string, actorId string, actorIp string, createdAt string, data map[string]interface{}, id string, identityHandle string, identityId string, tenantId string, ) *AuditRecord`
+`func NewAuditRecord(actionType string, actorAvatarUrl string, actorDisplayName string, actorHandle string, actorId string, actorIp string, createdAt string, data map[string]map[string]interface{}, id string, identityHandle string, identityId string, tenantId string, ) *AuditRecord`
 
 NewAuditRecord instantiates a new AuditRecord object
 This constructor will assign default values to properties that have it defined,
@@ -181,20 +181,20 @@ SetCreatedAt sets CreatedAt field to given value.
 
 ### GetData
 
-`func (o *AuditRecord) GetData() map[string]interface{}`
+`func (o *AuditRecord) GetData() map[string]map[string]interface{}`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *AuditRecord) GetDataOk() (*map[string]interface{}, bool)`
+`func (o *AuditRecord) GetDataOk() (*map[string]map[string]interface{}, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *AuditRecord) SetData(v map[string]interface{})`
+`func (o *AuditRecord) SetData(v map[string]map[string]interface{})`
 
 SetData sets Data field to given value.
 

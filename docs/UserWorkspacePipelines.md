@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## Command
 
-> PipelineCommandResponse Command(ctx, userHandle, workspaceHandle, pipelineId).Request(request).Execute()
+> PipelineCommandResponse Command(ctx, userHandle, workspaceHandle, pipelineId).PipelineCommandRequest(pipelineCommandRequest).Execute()
 
 Run user workspace pipeline command
 
@@ -37,11 +37,11 @@ func main() {
     userHandle := "userHandle_example" // string | The handle of the user which contains the workspace.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the pipeline exists.
     pipelineId := "pipelineId_example" // string | Id of the pipeline on which the command will be run.
-    request := *openapiclient.NewPipelineCommandRequest("Command_example") // PipelineCommandRequest | The request body of the pipeline command to run.
+    pipelineCommandRequest := *openapiclient.NewPipelineCommandRequest("Command_example") // PipelineCommandRequest | The request body of the pipeline command to run.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserWorkspacePipelines.Command(context.Background(), userHandle, workspaceHandle, pipelineId).Request(request).Execute()
+    resp, r, err := api_client.UserWorkspacePipelines.Command(context.Background(), userHandle, workspaceHandle, pipelineId).PipelineCommandRequest(pipelineCommandRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspacePipelines.Command``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 
 
- **request** | [**PipelineCommandRequest**](PipelineCommandRequest.md) | The request body of the pipeline command to run. | 
+ **pipelineCommandRequest** | [**PipelineCommandRequest**](PipelineCommandRequest.md) | The request body of the pipeline command to run. | 
 
 ### Return type
 
@@ -93,7 +93,7 @@ No authorization required
 
 ## Create
 
-> Pipeline Create(ctx, userHandle, workspaceHandle).Request(request).Execute()
+> Pipeline Create(ctx, userHandle, workspaceHandle).CreatePipelineRequest(createPipelineRequest).Execute()
 
 Create user workspace pipeline
 
@@ -114,11 +114,11 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user which contains the workspace.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where we want to create the pipeline.
-    request := *openapiclient.NewCreatePipelineRequest(interface{}(123), *openapiclient.NewPipelineFrequency("Type_example"), "Pipeline_example", "Title_example") // CreatePipelineRequest | The request body for the pipeline to be created.
+    createPipelineRequest := *openapiclient.NewCreatePipelineRequest(interface{}(123), *openapiclient.NewPipelineFrequency("Type_example"), "Pipeline_example", "Title_example") // CreatePipelineRequest | The request body for the pipeline to be created.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserWorkspacePipelines.Create(context.Background(), userHandle, workspaceHandle).Request(request).Execute()
+    resp, r, err := api_client.UserWorkspacePipelines.Create(context.Background(), userHandle, workspaceHandle).CreatePipelineRequest(createPipelineRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspacePipelines.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**CreatePipelineRequest**](CreatePipelineRequest.md) | The request body for the pipeline to be created. | 
+ **createPipelineRequest** | [**CreatePipelineRequest**](CreatePipelineRequest.md) | The request body for the pipeline to be created. | 
 
 ### Return type
 
@@ -399,7 +399,7 @@ No authorization required
 
 ## Update
 
-> Pipeline Update(ctx, userHandle, workspaceHandle, pipelineId).Request(request).Execute()
+> Pipeline Update(ctx, userHandle, workspaceHandle, pipelineId).UpdatePipelineRequest(updatePipelineRequest).Execute()
 
 Update user workspace pipeline
 
@@ -421,11 +421,11 @@ func main() {
     userHandle := "userHandle_example" // string | The handle of the user which contains the workspace.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the pipeline exists.
     pipelineId := "pipelineId_example" // string | The id of the pipeline which needs to be updated.
-    request := *openapiclient.NewUpdatePipelineRequest() // UpdatePipelineRequest | The request body for the pipeline which needs to be updated.
+    updatePipelineRequest := *openapiclient.NewUpdatePipelineRequest() // UpdatePipelineRequest | The request body for the pipeline which needs to be updated.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserWorkspacePipelines.Update(context.Background(), userHandle, workspaceHandle, pipelineId).Request(request).Execute()
+    resp, r, err := api_client.UserWorkspacePipelines.Update(context.Background(), userHandle, workspaceHandle, pipelineId).UpdatePipelineRequest(updatePipelineRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspacePipelines.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 
 
 
- **request** | [**UpdatePipelineRequest**](UpdatePipelineRequest.md) | The request body for the pipeline which needs to be updated. | 
+ **updatePipelineRequest** | [**UpdatePipelineRequest**](UpdatePipelineRequest.md) | The request body for the pipeline which needs to be updated. | 
 
 ### Return type
 

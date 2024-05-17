@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Config** | Pointer to **map[string]interface{}** |  | [optional] 
+**Config** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
 **CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
@@ -12,10 +12,16 @@ Name | Type | Description | Notes
 **DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **Handle** | **string** | The handle name of the  connection. | 
+**HandleDynamic** | Pointer to **string** | The dynamically-generated handle for the connection. Only populated if this is a discovered connection. | [optional] 
+**HandleMode** | Pointer to **string** | The handle mode for the connection. | [optional] 
 **Id** | **string** | The unique identifier for the connection. | 
-**IdentityId** | **string** | The unique identifier for an identity where the connection has been created. | 
+**IdentityId** | Pointer to **string** | The unique identifier for an identity where the connection has been created. | [optional] 
+**IntegrationResourceId** | Pointer to **string** | The integration resource ID for the connection. | [optional] 
+**ManagedById** | Pointer to **string** | The ID of the aggregator that manages this connection. Only populated if this is a discovered connection. | [optional] 
 **Plugin** | Pointer to **string** | The plugin name for the connection. | [optional] 
 **PluginVersion** | Pointer to **string** | The plugin version for the connection. | [optional] 
+**SourceIdentifier** | Pointer to **string** | The source identifier for this connection. Only populated if this is a discovered connection. | [optional] 
+**TenantId** | **string** | The unique identifier for the tenant where the connection has been created. | 
 **Type** | Pointer to **string** | Type of connection i.e aggregator or connection. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
 **UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
@@ -26,7 +32,7 @@ Name | Type | Description | Notes
 
 ### NewConnection
 
-`func NewConnection(createdAt string, createdById string, deletedById string, handle string, id string, identityId string, updatedById string, versionId int32, ) *Connection`
+`func NewConnection(createdAt string, createdById string, deletedById string, handle string, id string, tenantId string, updatedById string, versionId int32, ) *Connection`
 
 NewConnection instantiates a new Connection object
 This constructor will assign default values to properties that have it defined,
@@ -43,20 +49,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetConfig
 
-`func (o *Connection) GetConfig() map[string]interface{}`
+`func (o *Connection) GetConfig() map[string]map[string]interface{}`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *Connection) GetConfigOk() (*map[string]interface{}, bool)`
+`func (o *Connection) GetConfigOk() (*map[string]map[string]interface{}, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *Connection) SetConfig(v map[string]interface{})`
+`func (o *Connection) SetConfig(v map[string]map[string]interface{})`
 
 SetConfig sets Config field to given value.
 
@@ -221,6 +227,56 @@ and a boolean to check if the value has been set.
 SetHandle sets Handle field to given value.
 
 
+### GetHandleDynamic
+
+`func (o *Connection) GetHandleDynamic() string`
+
+GetHandleDynamic returns the HandleDynamic field if non-nil, zero value otherwise.
+
+### GetHandleDynamicOk
+
+`func (o *Connection) GetHandleDynamicOk() (*string, bool)`
+
+GetHandleDynamicOk returns a tuple with the HandleDynamic field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHandleDynamic
+
+`func (o *Connection) SetHandleDynamic(v string)`
+
+SetHandleDynamic sets HandleDynamic field to given value.
+
+### HasHandleDynamic
+
+`func (o *Connection) HasHandleDynamic() bool`
+
+HasHandleDynamic returns a boolean if a field has been set.
+
+### GetHandleMode
+
+`func (o *Connection) GetHandleMode() string`
+
+GetHandleMode returns the HandleMode field if non-nil, zero value otherwise.
+
+### GetHandleModeOk
+
+`func (o *Connection) GetHandleModeOk() (*string, bool)`
+
+GetHandleModeOk returns a tuple with the HandleMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHandleMode
+
+`func (o *Connection) SetHandleMode(v string)`
+
+SetHandleMode sets HandleMode field to given value.
+
+### HasHandleMode
+
+`func (o *Connection) HasHandleMode() bool`
+
+HasHandleMode returns a boolean if a field has been set.
+
 ### GetId
 
 `func (o *Connection) GetId() string`
@@ -260,6 +316,61 @@ and a boolean to check if the value has been set.
 
 SetIdentityId sets IdentityId field to given value.
 
+### HasIdentityId
+
+`func (o *Connection) HasIdentityId() bool`
+
+HasIdentityId returns a boolean if a field has been set.
+
+### GetIntegrationResourceId
+
+`func (o *Connection) GetIntegrationResourceId() string`
+
+GetIntegrationResourceId returns the IntegrationResourceId field if non-nil, zero value otherwise.
+
+### GetIntegrationResourceIdOk
+
+`func (o *Connection) GetIntegrationResourceIdOk() (*string, bool)`
+
+GetIntegrationResourceIdOk returns a tuple with the IntegrationResourceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegrationResourceId
+
+`func (o *Connection) SetIntegrationResourceId(v string)`
+
+SetIntegrationResourceId sets IntegrationResourceId field to given value.
+
+### HasIntegrationResourceId
+
+`func (o *Connection) HasIntegrationResourceId() bool`
+
+HasIntegrationResourceId returns a boolean if a field has been set.
+
+### GetManagedById
+
+`func (o *Connection) GetManagedById() string`
+
+GetManagedById returns the ManagedById field if non-nil, zero value otherwise.
+
+### GetManagedByIdOk
+
+`func (o *Connection) GetManagedByIdOk() (*string, bool)`
+
+GetManagedByIdOk returns a tuple with the ManagedById field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagedById
+
+`func (o *Connection) SetManagedById(v string)`
+
+SetManagedById sets ManagedById field to given value.
+
+### HasManagedById
+
+`func (o *Connection) HasManagedById() bool`
+
+HasManagedById returns a boolean if a field has been set.
 
 ### GetPlugin
 
@@ -310,6 +421,51 @@ SetPluginVersion sets PluginVersion field to given value.
 `func (o *Connection) HasPluginVersion() bool`
 
 HasPluginVersion returns a boolean if a field has been set.
+
+### GetSourceIdentifier
+
+`func (o *Connection) GetSourceIdentifier() string`
+
+GetSourceIdentifier returns the SourceIdentifier field if non-nil, zero value otherwise.
+
+### GetSourceIdentifierOk
+
+`func (o *Connection) GetSourceIdentifierOk() (*string, bool)`
+
+GetSourceIdentifierOk returns a tuple with the SourceIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceIdentifier
+
+`func (o *Connection) SetSourceIdentifier(v string)`
+
+SetSourceIdentifier sets SourceIdentifier field to given value.
+
+### HasSourceIdentifier
+
+`func (o *Connection) HasSourceIdentifier() bool`
+
+HasSourceIdentifier returns a boolean if a field has been set.
+
+### GetTenantId
+
+`func (o *Connection) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *Connection) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *Connection) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
+
 
 ### GetType
 

@@ -28,14 +28,14 @@ var (
 type TenantsService service
 
 type TenantsApiCreateRequest struct {
-	ctx        _context.Context
-	ApiService *TenantsService
-	request    *CreateTenantRequest
+	ctx                 _context.Context
+	ApiService          *TenantsService
+	createTenantRequest *CreateTenantRequest
 }
 
 // The request body to create the tenant.
-func (r TenantsApiCreateRequest) Request(request CreateTenantRequest) TenantsApiCreateRequest {
-	r.request = &request
+func (r TenantsApiCreateRequest) CreateTenantRequest(createTenantRequest CreateTenantRequest) TenantsApiCreateRequest {
+	r.createTenantRequest = &createTenantRequest
 	return r
 }
 
@@ -79,8 +79,8 @@ func (a *TenantsService) CreateExecute(r TenantsApiCreateRequest) (Tenant, *_net
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.createTenantRequest == nil {
+		return localVarReturnValue, nil, reportError("createTenantRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -101,7 +101,7 @@ func (a *TenantsService) CreateExecute(r TenantsApiCreateRequest) (Tenant, *_net
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.createTenantRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1708,15 +1708,15 @@ func (a *TenantsService) ListUsageExecute(r TenantsApiListUsageRequest) (ListUsa
 }
 
 type TenantsApiUpdateRequest struct {
-	ctx          _context.Context
-	ApiService   *TenantsService
-	tenantHandle string
-	request      *UpdateTenantRequest
+	ctx                 _context.Context
+	ApiService          *TenantsService
+	tenantHandle        string
+	updateTenantRequest *UpdateTenantRequest
 }
 
 // The request body for the tenant update request.
-func (r TenantsApiUpdateRequest) Request(request UpdateTenantRequest) TenantsApiUpdateRequest {
-	r.request = &request
+func (r TenantsApiUpdateRequest) UpdateTenantRequest(updateTenantRequest UpdateTenantRequest) TenantsApiUpdateRequest {
+	r.updateTenantRequest = &updateTenantRequest
 	return r
 }
 
@@ -1763,8 +1763,8 @@ func (a *TenantsService) UpdateExecute(r TenantsApiUpdateRequest) (Tenant, *_net
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateTenantRequest == nil {
+		return localVarReturnValue, nil, reportError("updateTenantRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1785,7 +1785,7 @@ func (a *TenantsService) UpdateExecute(r TenantsApiUpdateRequest) (Tenant, *_net
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateTenantRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1893,14 +1893,14 @@ func (a *TenantsService) UpdateExecute(r TenantsApiUpdateRequest) (Tenant, *_net
 }
 
 type TenantsApiUpdateSettingsRequest struct {
-	ctx        _context.Context
-	ApiService *TenantsService
-	request    *UpdateTenantSettingsRequest
+	ctx                         _context.Context
+	ApiService                  *TenantsService
+	updateTenantSettingsRequest *UpdateTenantSettingsRequest
 }
 
 // The request body for updating tenant settings.
-func (r TenantsApiUpdateSettingsRequest) Request(request UpdateTenantSettingsRequest) TenantsApiUpdateSettingsRequest {
-	r.request = &request
+func (r TenantsApiUpdateSettingsRequest) UpdateTenantSettingsRequest(updateTenantSettingsRequest UpdateTenantSettingsRequest) TenantsApiUpdateSettingsRequest {
+	r.updateTenantSettingsRequest = &updateTenantSettingsRequest
 	return r
 }
 
@@ -1944,8 +1944,8 @@ func (a *TenantsService) UpdateSettingsExecute(r TenantsApiUpdateSettingsRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateTenantSettingsRequest == nil {
+		return localVarReturnValue, nil, reportError("updateTenantSettingsRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1966,7 +1966,7 @@ func (a *TenantsService) UpdateSettingsExecute(r TenantsApiUpdateSettingsRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateTenantSettingsRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

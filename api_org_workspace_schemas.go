@@ -28,16 +28,16 @@ var (
 type OrgWorkspaceSchemasService service
 
 type OrgWorkspaceSchemasApiAttachRequest struct {
-	ctx             _context.Context
-	ApiService      *OrgWorkspaceSchemasService
-	orgHandle       string
-	workspaceHandle string
-	request         *AttachWorkspaceSchemaRequest
+	ctx                          _context.Context
+	ApiService                   *OrgWorkspaceSchemasService
+	orgHandle                    string
+	workspaceHandle              string
+	attachWorkspaceSchemaRequest *AttachWorkspaceSchemaRequest
 }
 
 // The request body for the schema to be attached.
-func (r OrgWorkspaceSchemasApiAttachRequest) Request(request AttachWorkspaceSchemaRequest) OrgWorkspaceSchemasApiAttachRequest {
-	r.request = &request
+func (r OrgWorkspaceSchemasApiAttachRequest) AttachWorkspaceSchemaRequest(attachWorkspaceSchemaRequest AttachWorkspaceSchemaRequest) OrgWorkspaceSchemasApiAttachRequest {
+	r.attachWorkspaceSchemaRequest = &attachWorkspaceSchemaRequest
 	return r
 }
 
@@ -87,8 +87,8 @@ func (a *OrgWorkspaceSchemasService) AttachExecute(r OrgWorkspaceSchemasApiAttac
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.attachWorkspaceSchemaRequest == nil {
+		return localVarReturnValue, nil, reportError("attachWorkspaceSchemaRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -109,7 +109,7 @@ func (a *OrgWorkspaceSchemasService) AttachExecute(r OrgWorkspaceSchemasApiAttac
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.attachWorkspaceSchemaRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

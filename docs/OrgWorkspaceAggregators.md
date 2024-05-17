@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> WorkspaceAggregator Create(ctx, orgHandle, workspaceHandle).Request(request).Mode(mode).Execute()
+> WorkspaceAggregator Create(ctx, orgHandle, workspaceHandle).CreateWorkspaceAggregatorRequest(createWorkspaceAggregatorRequest).Mode(mode).Execute()
 
 Create an aggregator for an org workspace
 
@@ -37,12 +37,12 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the org to which the workspace belongs to.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the aggregator will be created.
-    request := *openapiclient.NewCreateWorkspaceAggregatorRequest([]string{"Connections_example"}, "Handle_example", "Plugin_example") // CreateWorkspaceAggregatorRequest | The request body for the aggregator to the created.
+    createWorkspaceAggregatorRequest := *openapiclient.NewCreateWorkspaceAggregatorRequest([]string{"Connections_example"}, "Handle_example", "Plugin_example") // CreateWorkspaceAggregatorRequest | The request body for the aggregator to the created.
     mode := "mode_example" // string | The mode of this request (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgWorkspaceAggregators.Create(context.Background(), orgHandle, workspaceHandle).Request(request).Mode(mode).Execute()
+    resp, r, err := api_client.OrgWorkspaceAggregators.Create(context.Background(), orgHandle, workspaceHandle).CreateWorkspaceAggregatorRequest(createWorkspaceAggregatorRequest).Mode(mode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceAggregators.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**CreateWorkspaceAggregatorRequest**](CreateWorkspaceAggregatorRequest.md) | The request body for the aggregator to the created. | 
+ **createWorkspaceAggregatorRequest** | [**CreateWorkspaceAggregatorRequest**](CreateWorkspaceAggregatorRequest.md) | The request body for the aggregator to the created. | 
  **mode** | **string** | The mode of this request | 
 
 ### Return type
@@ -481,7 +481,7 @@ No authorization required
 
 ## Update
 
-> WorkspaceAggregator Update(ctx, orgHandle, workspaceHandle, aggregatorHandle).Request(request).Mode(mode).Execute()
+> WorkspaceAggregator Update(ctx, orgHandle, workspaceHandle, aggregatorHandle).UpdateWorkspaceAggregatorRequest(updateWorkspaceAggregatorRequest).Mode(mode).Execute()
 
 Update an aggregator for a org workspace
 
@@ -503,12 +503,12 @@ func main() {
     orgHandle := "orgHandle_example" // string | The handle of the org to which the workspace belongs to.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the aggregator exists.
     aggregatorHandle := "aggregatorHandle_example" // string | The handle of the aggregator whose details needs to be updated.
-    request := *openapiclient.NewUpdateWorkspaceAggregatorRequest() // UpdateWorkspaceAggregatorRequest | The request body for the aggregator which needs to be updated.
+    updateWorkspaceAggregatorRequest := *openapiclient.NewUpdateWorkspaceAggregatorRequest() // UpdateWorkspaceAggregatorRequest | The request body for the aggregator which needs to be updated.
     mode := "mode_example" // string | The mode of this request (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgWorkspaceAggregators.Update(context.Background(), orgHandle, workspaceHandle, aggregatorHandle).Request(request).Mode(mode).Execute()
+    resp, r, err := api_client.OrgWorkspaceAggregators.Update(context.Background(), orgHandle, workspaceHandle, aggregatorHandle).UpdateWorkspaceAggregatorRequest(updateWorkspaceAggregatorRequest).Mode(mode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceAggregators.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -538,7 +538,7 @@ Name | Type | Description  | Notes
 
 
 
- **request** | [**UpdateWorkspaceAggregatorRequest**](UpdateWorkspaceAggregatorRequest.md) | The request body for the aggregator which needs to be updated. | 
+ **updateWorkspaceAggregatorRequest** | [**UpdateWorkspaceAggregatorRequest**](UpdateWorkspaceAggregatorRequest.md) | The request body for the aggregator which needs to be updated. | 
  **mode** | **string** | The mode of this request | 
 
 ### Return type

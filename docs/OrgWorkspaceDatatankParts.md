@@ -260,7 +260,7 @@ No authorization required
 
 ## Update
 
-> DatatankPart Update(ctx, orgHandle, workspaceHandle, datatankHandle, datatankTableName, datatankPartId).Request(request).Execute()
+> DatatankPart Update(ctx, orgHandle, workspaceHandle, datatankHandle, datatankTableName, datatankPartId).UpdateDatatankPartRequest(updateDatatankPartRequest).Execute()
 
 Update org workspace Datatank table partition
 
@@ -284,11 +284,11 @@ func main() {
     datatankHandle := "datatankHandle_example" // string | The name of the workspace Datatank.
     datatankTableName := "datatankTableName_example" // string | The name of the workspace Datatank table.
     datatankPartId := "datatankPartId_example" // string | The id of the workspace Datatank table partition to be updated.
-    request := *openapiclient.NewUpdateDatatankPartRequest("DesiredState_example") // UpdateDatatankPartRequest | The request body to update workspace Datatank table partition.
+    updateDatatankPartRequest := *openapiclient.NewUpdateDatatankPartRequest("DesiredState_example") // UpdateDatatankPartRequest | The request body to update workspace Datatank table partition.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgWorkspaceDatatankParts.Update(context.Background(), orgHandle, workspaceHandle, datatankHandle, datatankTableName, datatankPartId).Request(request).Execute()
+    resp, r, err := api_client.OrgWorkspaceDatatankParts.Update(context.Background(), orgHandle, workspaceHandle, datatankHandle, datatankTableName, datatankPartId).UpdateDatatankPartRequest(updateDatatankPartRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceDatatankParts.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -322,7 +322,7 @@ Name | Type | Description  | Notes
 
 
 
- **request** | [**UpdateDatatankPartRequest**](UpdateDatatankPartRequest.md) | The request body to update workspace Datatank table partition. | 
+ **updateDatatankPartRequest** | [**UpdateDatatankPartRequest**](UpdateDatatankPartRequest.md) | The request body to update workspace Datatank table partition. | 
 
 ### Return type
 

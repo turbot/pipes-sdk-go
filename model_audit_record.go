@@ -27,8 +27,8 @@ type AuditRecord struct {
 	ActorId string `json:"actor_id"`
 	ActorIp string `json:"actor_ip"`
 	// The time when the audit log was recorded.
-	CreatedAt string                 `json:"created_at"`
-	Data      map[string]interface{} `json:"data"`
+	CreatedAt string                            `json:"created_at"`
+	Data      map[string]map[string]interface{} `json:"data"`
 	// The unique identifier for an audit log.
 	Id string `json:"id"`
 	// The handle name for an identity where the action has been performed.
@@ -48,7 +48,7 @@ type AuditRecord struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuditRecord(actionType string, actorAvatarUrl string, actorDisplayName string, actorHandle string, actorId string, actorIp string, createdAt string, data map[string]interface{}, id string, identityHandle string, identityId string, tenantId string) *AuditRecord {
+func NewAuditRecord(actionType string, actorAvatarUrl string, actorDisplayName string, actorHandle string, actorId string, actorIp string, createdAt string, data map[string]map[string]interface{}, id string, identityHandle string, identityId string, tenantId string) *AuditRecord {
 	this := AuditRecord{}
 	this.ActionType = actionType
 	this.ActorAvatarUrl = actorAvatarUrl
@@ -242,9 +242,9 @@ func (o *AuditRecord) SetCreatedAt(v string) {
 }
 
 // GetData returns the Data field value
-func (o *AuditRecord) GetData() map[string]interface{} {
+func (o *AuditRecord) GetData() map[string]map[string]interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret map[string]map[string]interface{}
 		return ret
 	}
 
@@ -253,7 +253,7 @@ func (o *AuditRecord) GetData() map[string]interface{} {
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *AuditRecord) GetDataOk() (*map[string]interface{}, bool) {
+func (o *AuditRecord) GetDataOk() (*map[string]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -261,7 +261,7 @@ func (o *AuditRecord) GetDataOk() (*map[string]interface{}, bool) {
 }
 
 // SetData sets field value
-func (o *AuditRecord) SetData(v map[string]interface{}) {
+func (o *AuditRecord) SetData(v map[string]map[string]interface{}) {
 	o.Data = v
 }
 

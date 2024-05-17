@@ -28,17 +28,17 @@ var (
 type UserWorkspaceAggregatorsService service
 
 type UserWorkspaceAggregatorsApiCreateRequest struct {
-	ctx             _context.Context
-	ApiService      *UserWorkspaceAggregatorsService
-	userHandle      string
-	workspaceHandle string
-	request         *CreateWorkspaceAggregatorRequest
-	mode            *string
+	ctx                              _context.Context
+	ApiService                       *UserWorkspaceAggregatorsService
+	userHandle                       string
+	workspaceHandle                  string
+	createWorkspaceAggregatorRequest *CreateWorkspaceAggregatorRequest
+	mode                             *string
 }
 
 // The request body for the aggregator to be created.
-func (r UserWorkspaceAggregatorsApiCreateRequest) Request(request CreateWorkspaceAggregatorRequest) UserWorkspaceAggregatorsApiCreateRequest {
-	r.request = &request
+func (r UserWorkspaceAggregatorsApiCreateRequest) CreateWorkspaceAggregatorRequest(createWorkspaceAggregatorRequest CreateWorkspaceAggregatorRequest) UserWorkspaceAggregatorsApiCreateRequest {
+	r.createWorkspaceAggregatorRequest = &createWorkspaceAggregatorRequest
 	return r
 }
 
@@ -94,8 +94,8 @@ func (a *UserWorkspaceAggregatorsService) CreateExecute(r UserWorkspaceAggregato
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.createWorkspaceAggregatorRequest == nil {
+		return localVarReturnValue, nil, reportError("createWorkspaceAggregatorRequest is required and must be specified")
 	}
 
 	if r.mode != nil {
@@ -119,7 +119,7 @@ func (a *UserWorkspaceAggregatorsService) CreateExecute(r UserWorkspaceAggregato
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.createWorkspaceAggregatorRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1082,18 +1082,18 @@ func (a *UserWorkspaceAggregatorsService) ListConnectionsExecute(r UserWorkspace
 }
 
 type UserWorkspaceAggregatorsApiUpdateRequest struct {
-	ctx              _context.Context
-	ApiService       *UserWorkspaceAggregatorsService
-	userHandle       string
-	workspaceHandle  string
-	aggregatorHandle string
-	request          *UpdateWorkspaceAggregatorRequest
-	mode             *string
+	ctx                              _context.Context
+	ApiService                       *UserWorkspaceAggregatorsService
+	userHandle                       string
+	workspaceHandle                  string
+	aggregatorHandle                 string
+	updateWorkspaceAggregatorRequest *UpdateWorkspaceAggregatorRequest
+	mode                             *string
 }
 
 // The request body for the aggregator which needs to be updated.
-func (r UserWorkspaceAggregatorsApiUpdateRequest) Request(request UpdateWorkspaceAggregatorRequest) UserWorkspaceAggregatorsApiUpdateRequest {
-	r.request = &request
+func (r UserWorkspaceAggregatorsApiUpdateRequest) UpdateWorkspaceAggregatorRequest(updateWorkspaceAggregatorRequest UpdateWorkspaceAggregatorRequest) UserWorkspaceAggregatorsApiUpdateRequest {
+	r.updateWorkspaceAggregatorRequest = &updateWorkspaceAggregatorRequest
 	return r
 }
 
@@ -1152,8 +1152,8 @@ func (a *UserWorkspaceAggregatorsService) UpdateExecute(r UserWorkspaceAggregato
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateWorkspaceAggregatorRequest == nil {
+		return localVarReturnValue, nil, reportError("updateWorkspaceAggregatorRequest is required and must be specified")
 	}
 
 	if r.mode != nil {
@@ -1177,7 +1177,7 @@ func (a *UserWorkspaceAggregatorsService) UpdateExecute(r UserWorkspaceAggregato
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateWorkspaceAggregatorRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

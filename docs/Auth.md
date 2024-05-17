@@ -149,7 +149,7 @@ No authorization required
 
 ## Login
 
-> Login(ctx).Request(request).Execute()
+> Login(ctx).UserLoginRequest(userLoginRequest).Execute()
 
 User login
 
@@ -168,11 +168,11 @@ import (
 )
 
 func main() {
-    request := *openapiclient.NewUserLoginRequest("Email_example") // UserLoginRequest | The request body to login.
+    userLoginRequest := *openapiclient.NewUserLoginRequest("Email_example") // UserLoginRequest | The request body to login.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Auth.Login(context.Background()).Request(request).Execute()
+    resp, r, err := api_client.Auth.Login(context.Background()).UserLoginRequest(userLoginRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Auth.Login``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -191,7 +191,7 @@ Other parameters are passed through a pointer to a apiLoginRequest struct via th
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request** | [**UserLoginRequest**](UserLoginRequest.md) | The request body to login. | 
+ **userLoginRequest** | [**UserLoginRequest**](UserLoginRequest.md) | The request body to login. | 
 
 ### Return type
 
@@ -416,7 +416,7 @@ No authorization required
 
 ## LoginTokenUpdate
 
-> TemporaryTokenRequest LoginTokenUpdate(ctx, temporaryTokenRequestId).Request(request).Execute()
+> TemporaryTokenRequest LoginTokenUpdate(ctx, temporaryTokenRequestId).UpdateTemporaryTokenRequest(updateTemporaryTokenRequest).Execute()
 
 Update temporary token request
 
@@ -436,11 +436,11 @@ import (
 
 func main() {
     temporaryTokenRequestId := "temporaryTokenRequestId_example" // string | The ID of the temporary token request to update.
-    request := *openapiclient.NewUpdateTemporaryTokenRequest("State_example") // UpdateTemporaryTokenRequest | The request body containing updates for the temporary token request.
+    updateTemporaryTokenRequest := *openapiclient.NewUpdateTemporaryTokenRequest("State_example") // UpdateTemporaryTokenRequest | The request body containing updates for the temporary token request.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Auth.LoginTokenUpdate(context.Background(), temporaryTokenRequestId).Request(request).Execute()
+    resp, r, err := api_client.Auth.LoginTokenUpdate(context.Background(), temporaryTokenRequestId).UpdateTemporaryTokenRequest(updateTemporaryTokenRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Auth.LoginTokenUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -466,7 +466,7 @@ Other parameters are passed through a pointer to a apiLoginTokenUpdateRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **request** | [**UpdateTemporaryTokenRequest**](UpdateTemporaryTokenRequest.md) | The request body containing updates for the temporary token request. | 
+ **updateTemporaryTokenRequest** | [**UpdateTemporaryTokenRequest**](UpdateTemporaryTokenRequest.md) | The request body containing updates for the temporary token request. | 
 
 ### Return type
 
@@ -760,7 +760,7 @@ No authorization required
 
 ## Signup
 
-> Signup(ctx).Request(request).Execute()
+> Signup(ctx).UserSignupRequest(userSignupRequest).Execute()
 
 User signup
 
@@ -779,11 +779,11 @@ import (
 )
 
 func main() {
-    request := *openapiclient.NewUserSignupRequest("Email_example") // UserSignupRequest | The request body to signup.
+    userSignupRequest := *openapiclient.NewUserSignupRequest("Email_example") // UserSignupRequest | The request body to signup.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Auth.Signup(context.Background()).Request(request).Execute()
+    resp, r, err := api_client.Auth.Signup(context.Background()).UserSignupRequest(userSignupRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Auth.Signup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -802,7 +802,7 @@ Other parameters are passed through a pointer to a apiSignupRequest struct via t
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request** | [**UserSignupRequest**](UserSignupRequest.md) | The request body to signup. | 
+ **userSignupRequest** | [**UserSignupRequest**](UserSignupRequest.md) | The request body to signup. | 
 
 ### Return type
 

@@ -28,16 +28,16 @@ var (
 type OrgWorkspacesService service
 
 type OrgWorkspacesApiCommandRequest struct {
-	ctx             _context.Context
-	ApiService      *OrgWorkspacesService
-	orgHandle       string
-	workspaceHandle string
-	request         *WorkspaceCommandRequest
+	ctx                     _context.Context
+	ApiService              *OrgWorkspacesService
+	orgHandle               string
+	workspaceHandle         string
+	workspaceCommandRequest *WorkspaceCommandRequest
 }
 
 // The request body for the workspace command.
-func (r OrgWorkspacesApiCommandRequest) Request(request WorkspaceCommandRequest) OrgWorkspacesApiCommandRequest {
-	r.request = &request
+func (r OrgWorkspacesApiCommandRequest) WorkspaceCommandRequest(workspaceCommandRequest WorkspaceCommandRequest) OrgWorkspacesApiCommandRequest {
+	r.workspaceCommandRequest = &workspaceCommandRequest
 	return r
 }
 
@@ -87,8 +87,8 @@ func (a *OrgWorkspacesService) CommandExecute(r OrgWorkspacesApiCommandRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.workspaceCommandRequest == nil {
+		return localVarReturnValue, nil, reportError("workspaceCommandRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -109,7 +109,7 @@ func (a *OrgWorkspacesService) CommandExecute(r OrgWorkspacesApiCommandRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.workspaceCommandRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -217,15 +217,15 @@ func (a *OrgWorkspacesService) CommandExecute(r OrgWorkspacesApiCommandRequest) 
 }
 
 type OrgWorkspacesApiCreateRequest struct {
-	ctx        _context.Context
-	ApiService *OrgWorkspacesService
-	orgHandle  string
-	request    *CreateWorkspaceRequest
+	ctx                    _context.Context
+	ApiService             *OrgWorkspacesService
+	orgHandle              string
+	createWorkspaceRequest *CreateWorkspaceRequest
 }
 
 // The request body for the workspace to be created.
-func (r OrgWorkspacesApiCreateRequest) Request(request CreateWorkspaceRequest) OrgWorkspacesApiCreateRequest {
-	r.request = &request
+func (r OrgWorkspacesApiCreateRequest) CreateWorkspaceRequest(createWorkspaceRequest CreateWorkspaceRequest) OrgWorkspacesApiCreateRequest {
+	r.createWorkspaceRequest = &createWorkspaceRequest
 	return r
 }
 
@@ -272,8 +272,8 @@ func (a *OrgWorkspacesService) CreateExecute(r OrgWorkspacesApiCreateRequest) (W
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.createWorkspaceRequest == nil {
+		return localVarReturnValue, nil, reportError("createWorkspaceRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -294,7 +294,7 @@ func (a *OrgWorkspacesService) CreateExecute(r OrgWorkspacesApiCreateRequest) (W
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.createWorkspaceRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1637,13 +1637,13 @@ type OrgWorkspacesApiPostQueryRequest struct {
 	ApiService      *OrgWorkspacesService
 	orgHandle       string
 	workspaceHandle string
-	sql             *string
+	body            *string
 	contentType     *string
 }
 
 // The sql query to perform against the org workspace.
-func (r OrgWorkspacesApiPostQueryRequest) Sql(sql string) OrgWorkspacesApiPostQueryRequest {
-	r.sql = &sql
+func (r OrgWorkspacesApiPostQueryRequest) Body(body string) OrgWorkspacesApiPostQueryRequest {
+	r.body = &body
 	return r
 }
 
@@ -1699,8 +1699,8 @@ func (a *OrgWorkspacesService) PostQueryExecute(r OrgWorkspacesApiPostQueryReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.sql == nil {
-		return localVarReturnValue, nil, reportError("sql is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	if r.contentType != nil {
@@ -1724,7 +1724,7 @@ func (a *OrgWorkspacesService) PostQueryExecute(r OrgWorkspacesApiPostQueryReque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sql
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2014,16 +2014,16 @@ func (a *OrgWorkspacesService) PostQueryWithExtensionsExecute(r OrgWorkspacesApi
 }
 
 type OrgWorkspacesApiUpdateRequest struct {
-	ctx             _context.Context
-	ApiService      *OrgWorkspacesService
-	orgHandle       string
-	workspaceHandle string
-	request         *UpdateWorkspaceRequest
+	ctx                    _context.Context
+	ApiService             *OrgWorkspacesService
+	orgHandle              string
+	workspaceHandle        string
+	updateWorkspaceRequest *UpdateWorkspaceRequest
 }
 
 // The request body of the workspace which needs to be updated.
-func (r OrgWorkspacesApiUpdateRequest) Request(request UpdateWorkspaceRequest) OrgWorkspacesApiUpdateRequest {
-	r.request = &request
+func (r OrgWorkspacesApiUpdateRequest) UpdateWorkspaceRequest(updateWorkspaceRequest UpdateWorkspaceRequest) OrgWorkspacesApiUpdateRequest {
+	r.updateWorkspaceRequest = &updateWorkspaceRequest
 	return r
 }
 
@@ -2073,8 +2073,8 @@ func (a *OrgWorkspacesService) UpdateExecute(r OrgWorkspacesApiUpdateRequest) (W
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateWorkspaceRequest == nil {
+		return localVarReturnValue, nil, reportError("updateWorkspaceRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2095,7 +2095,7 @@ func (a *OrgWorkspacesService) UpdateExecute(r OrgWorkspacesApiUpdateRequest) (W
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateWorkspaceRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

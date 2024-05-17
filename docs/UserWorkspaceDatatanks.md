@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> Datatank Create(ctx, userHandle, workspaceHandle).Request(request).Execute()
+> Datatank Create(ctx, userHandle, workspaceHandle).CreateDatatankRequest(createDatatankRequest).Execute()
 
 Create user workspace Datatank
 
@@ -35,11 +35,11 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user where we want to create the workspace Datatank.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace.
-    request := *openapiclient.NewCreateDatatankRequest("Handle_example") // CreateDatatankRequest | The request body for the workspace Datatank to be created.
+    createDatatankRequest := *openapiclient.NewCreateDatatankRequest("Handle_example") // CreateDatatankRequest | The request body for the workspace Datatank to be created.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserWorkspaceDatatanks.Create(context.Background(), userHandle, workspaceHandle).Request(request).Execute()
+    resp, r, err := api_client.UserWorkspaceDatatanks.Create(context.Background(), userHandle, workspaceHandle).CreateDatatankRequest(createDatatankRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaceDatatanks.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**CreateDatatankRequest**](CreateDatatankRequest.md) | The request body for the workspace Datatank to be created. | 
+ **createDatatankRequest** | [**CreateDatatankRequest**](CreateDatatankRequest.md) | The request body for the workspace Datatank to be created. | 
 
 ### Return type
 
@@ -318,7 +318,7 @@ No authorization required
 
 ## Update
 
-> Datatank Update(ctx, userHandle, workspaceHandle, datatankHandle).Request(request).Execute()
+> Datatank Update(ctx, userHandle, workspaceHandle, datatankHandle).UpdateDatatankRequest(updateDatatankRequest).Execute()
 
 Update user workspace Datatank
 
@@ -340,11 +340,11 @@ func main() {
     userHandle := "userHandle_example" // string | The handle of the user.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace.
     datatankHandle := "datatankHandle_example" // string | The name of the workspace Datatank.
-    request := *openapiclient.NewUpdateDatatankRequest() // UpdateDatatankRequest | The request body to update workspace Datatank.
+    updateDatatankRequest := *openapiclient.NewUpdateDatatankRequest() // UpdateDatatankRequest | The request body to update workspace Datatank.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserWorkspaceDatatanks.Update(context.Background(), userHandle, workspaceHandle, datatankHandle).Request(request).Execute()
+    resp, r, err := api_client.UserWorkspaceDatatanks.Update(context.Background(), userHandle, workspaceHandle, datatankHandle).UpdateDatatankRequest(updateDatatankRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaceDatatanks.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 
 
 
- **request** | [**UpdateDatatankRequest**](UpdateDatatankRequest.md) | The request body to update workspace Datatank. | 
+ **updateDatatankRequest** | [**UpdateDatatankRequest**](UpdateDatatankRequest.md) | The request body to update workspace Datatank. | 
 
 ### Return type
 

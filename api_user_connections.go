@@ -28,16 +28,16 @@ var (
 type UserConnectionsService service
 
 type UserConnectionsApiCreateRequest struct {
-	ctx        _context.Context
-	ApiService *UserConnectionsService
-	userHandle string
-	request    *CreateConnectionRequest
-	mode       *string
+	ctx                     _context.Context
+	ApiService              *UserConnectionsService
+	userHandle              string
+	createConnectionRequest *CreateConnectionRequest
+	mode                    *string
 }
 
 // The request body for the connection to be created.
-func (r UserConnectionsApiCreateRequest) Request(request CreateConnectionRequest) UserConnectionsApiCreateRequest {
-	r.request = &request
+func (r UserConnectionsApiCreateRequest) CreateConnectionRequest(createConnectionRequest CreateConnectionRequest) UserConnectionsApiCreateRequest {
+	r.createConnectionRequest = &createConnectionRequest
 	return r
 }
 
@@ -90,8 +90,8 @@ func (a *UserConnectionsService) CreateExecute(r UserConnectionsApiCreateRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.createConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("createConnectionRequest is required and must be specified")
 	}
 
 	if r.mode != nil {
@@ -115,7 +115,7 @@ func (a *UserConnectionsService) CreateExecute(r UserConnectionsApiCreateRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.createConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -223,16 +223,16 @@ func (a *UserConnectionsService) CreateExecute(r UserConnectionsApiCreateRequest
 }
 
 type UserConnectionsApiCreateDeprecatedRequest struct {
-	ctx        _context.Context
-	ApiService *UserConnectionsService
-	userHandle string
-	request    *CreateConnectionRequest
-	mode       *string
+	ctx                     _context.Context
+	ApiService              *UserConnectionsService
+	userHandle              string
+	createConnectionRequest *CreateConnectionRequest
+	mode                    *string
 }
 
 // The request body for the connection to be created.
-func (r UserConnectionsApiCreateDeprecatedRequest) Request(request CreateConnectionRequest) UserConnectionsApiCreateDeprecatedRequest {
-	r.request = &request
+func (r UserConnectionsApiCreateDeprecatedRequest) CreateConnectionRequest(createConnectionRequest CreateConnectionRequest) UserConnectionsApiCreateDeprecatedRequest {
+	r.createConnectionRequest = &createConnectionRequest
 	return r
 }
 
@@ -289,8 +289,8 @@ func (a *UserConnectionsService) CreateDeprecatedExecute(r UserConnectionsApiCre
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.createConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("createConnectionRequest is required and must be specified")
 	}
 
 	if r.mode != nil {
@@ -314,7 +314,7 @@ func (a *UserConnectionsService) CreateDeprecatedExecute(r UserConnectionsApiCre
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.createConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1826,16 +1826,16 @@ func (a *UserConnectionsService) ListWorkspacesDeprecatedExecute(r UserConnectio
 }
 
 type UserConnectionsApiTestRequest struct {
-	ctx              _context.Context
-	ApiService       *UserConnectionsService
-	userHandle       string
-	connectionHandle string
-	request          *TestConnectionRequest
+	ctx                   _context.Context
+	ApiService            *UserConnectionsService
+	userHandle            string
+	connectionHandle      string
+	testConnectionRequest *TestConnectionRequest
 }
 
 // The request body for the connection to be tested.
-func (r UserConnectionsApiTestRequest) Request(request TestConnectionRequest) UserConnectionsApiTestRequest {
-	r.request = &request
+func (r UserConnectionsApiTestRequest) TestConnectionRequest(testConnectionRequest TestConnectionRequest) UserConnectionsApiTestRequest {
+	r.testConnectionRequest = &testConnectionRequest
 	return r
 }
 
@@ -1885,8 +1885,8 @@ func (a *UserConnectionsService) TestExecute(r UserConnectionsApiTestRequest) (C
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.testConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("testConnectionRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1907,7 +1907,7 @@ func (a *UserConnectionsService) TestExecute(r UserConnectionsApiTestRequest) (C
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.testConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1985,16 +1985,16 @@ func (a *UserConnectionsService) TestExecute(r UserConnectionsApiTestRequest) (C
 }
 
 type UserConnectionsApiTestDeprecatedRequest struct {
-	ctx        _context.Context
-	ApiService *UserConnectionsService
-	userHandle string
-	connHandle string
-	request    *TestConnectionRequest
+	ctx                   _context.Context
+	ApiService            *UserConnectionsService
+	userHandle            string
+	connHandle            string
+	testConnectionRequest *TestConnectionRequest
 }
 
 // The request body for the connection to be tested.
-func (r UserConnectionsApiTestDeprecatedRequest) Request(request TestConnectionRequest) UserConnectionsApiTestDeprecatedRequest {
-	r.request = &request
+func (r UserConnectionsApiTestDeprecatedRequest) TestConnectionRequest(testConnectionRequest TestConnectionRequest) UserConnectionsApiTestDeprecatedRequest {
+	r.testConnectionRequest = &testConnectionRequest
 	return r
 }
 
@@ -2048,8 +2048,8 @@ func (a *UserConnectionsService) TestDeprecatedExecute(r UserConnectionsApiTestD
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.testConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("testConnectionRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2070,7 +2070,7 @@ func (a *UserConnectionsService) TestDeprecatedExecute(r UserConnectionsApiTestD
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.testConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2148,17 +2148,17 @@ func (a *UserConnectionsService) TestDeprecatedExecute(r UserConnectionsApiTestD
 }
 
 type UserConnectionsApiUpdateRequest struct {
-	ctx              _context.Context
-	ApiService       *UserConnectionsService
-	userHandle       string
-	connectionHandle string
-	request          *UpdateConnectionRequest
-	mode             *string
+	ctx                     _context.Context
+	ApiService              *UserConnectionsService
+	userHandle              string
+	connectionHandle        string
+	updateConnectionRequest *UpdateConnectionRequest
+	mode                    *string
 }
 
 // The request body for the connection which needs to be updated.
-func (r UserConnectionsApiUpdateRequest) Request(request UpdateConnectionRequest) UserConnectionsApiUpdateRequest {
-	r.request = &request
+func (r UserConnectionsApiUpdateRequest) UpdateConnectionRequest(updateConnectionRequest UpdateConnectionRequest) UserConnectionsApiUpdateRequest {
+	r.updateConnectionRequest = &updateConnectionRequest
 	return r
 }
 
@@ -2214,8 +2214,8 @@ func (a *UserConnectionsService) UpdateExecute(r UserConnectionsApiUpdateRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("updateConnectionRequest is required and must be specified")
 	}
 
 	if r.mode != nil {
@@ -2239,7 +2239,7 @@ func (a *UserConnectionsService) UpdateExecute(r UserConnectionsApiUpdateRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2337,17 +2337,17 @@ func (a *UserConnectionsService) UpdateExecute(r UserConnectionsApiUpdateRequest
 }
 
 type UserConnectionsApiUpdateDeprecatedRequest struct {
-	ctx        _context.Context
-	ApiService *UserConnectionsService
-	userHandle string
-	connHandle string
-	request    *UpdateConnectionRequest
-	mode       *string
+	ctx                     _context.Context
+	ApiService              *UserConnectionsService
+	userHandle              string
+	connHandle              string
+	updateConnectionRequest *UpdateConnectionRequest
+	mode                    *string
 }
 
 // The request body for the connection which needs to be updated.
-func (r UserConnectionsApiUpdateDeprecatedRequest) Request(request UpdateConnectionRequest) UserConnectionsApiUpdateDeprecatedRequest {
-	r.request = &request
+func (r UserConnectionsApiUpdateDeprecatedRequest) UpdateConnectionRequest(updateConnectionRequest UpdateConnectionRequest) UserConnectionsApiUpdateDeprecatedRequest {
+	r.updateConnectionRequest = &updateConnectionRequest
 	return r
 }
 
@@ -2407,8 +2407,8 @@ func (a *UserConnectionsService) UpdateDeprecatedExecute(r UserConnectionsApiUpd
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("updateConnectionRequest is required and must be specified")
 	}
 
 	if r.mode != nil {
@@ -2432,7 +2432,7 @@ func (a *UserConnectionsService) UpdateDeprecatedExecute(r UserConnectionsApiUpd
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

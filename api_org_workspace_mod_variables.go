@@ -28,17 +28,17 @@ var (
 type OrgWorkspaceModVariablesService service
 
 type OrgWorkspaceModVariablesApiCreateSettingRequest struct {
-	ctx             _context.Context
-	ApiService      *OrgWorkspaceModVariablesService
-	orgHandle       string
-	workspaceHandle string
-	modAlias        string
-	request         *CreateWorkspaceModVariableSettingRequest
+	ctx                                      _context.Context
+	ApiService                               *OrgWorkspaceModVariablesService
+	orgHandle                                string
+	workspaceHandle                          string
+	modAlias                                 string
+	createWorkspaceModVariableSettingRequest *CreateWorkspaceModVariableSettingRequest
 }
 
 // The request body to create setting for mod variable in the organization workspace.
-func (r OrgWorkspaceModVariablesApiCreateSettingRequest) Request(request CreateWorkspaceModVariableSettingRequest) OrgWorkspaceModVariablesApiCreateSettingRequest {
-	r.request = &request
+func (r OrgWorkspaceModVariablesApiCreateSettingRequest) CreateWorkspaceModVariableSettingRequest(createWorkspaceModVariableSettingRequest CreateWorkspaceModVariableSettingRequest) OrgWorkspaceModVariablesApiCreateSettingRequest {
+	r.createWorkspaceModVariableSettingRequest = &createWorkspaceModVariableSettingRequest
 	return r
 }
 
@@ -91,8 +91,8 @@ func (a *OrgWorkspaceModVariablesService) CreateSettingExecute(r OrgWorkspaceMod
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.createWorkspaceModVariableSettingRequest == nil {
+		return localVarReturnValue, nil, reportError("createWorkspaceModVariableSettingRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -113,7 +113,7 @@ func (a *OrgWorkspaceModVariablesService) CreateSettingExecute(r OrgWorkspaceMod
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.createWorkspaceModVariableSettingRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -752,18 +752,18 @@ func (a *OrgWorkspaceModVariablesService) ListExecute(r OrgWorkspaceModVariables
 }
 
 type OrgWorkspaceModVariablesApiUpdateSettingRequest struct {
-	ctx             _context.Context
-	ApiService      *OrgWorkspaceModVariablesService
-	orgHandle       string
-	workspaceHandle string
-	modAlias        string
-	variableName    string
-	request         *UpdateWorkspaceModVariableSettingRequest
+	ctx                                      _context.Context
+	ApiService                               *OrgWorkspaceModVariablesService
+	orgHandle                                string
+	workspaceHandle                          string
+	modAlias                                 string
+	variableName                             string
+	updateWorkspaceModVariableSettingRequest *UpdateWorkspaceModVariableSettingRequest
 }
 
 // The request body to update setting for mod variable in the organization workspace.
-func (r OrgWorkspaceModVariablesApiUpdateSettingRequest) Request(request UpdateWorkspaceModVariableSettingRequest) OrgWorkspaceModVariablesApiUpdateSettingRequest {
-	r.request = &request
+func (r OrgWorkspaceModVariablesApiUpdateSettingRequest) UpdateWorkspaceModVariableSettingRequest(updateWorkspaceModVariableSettingRequest UpdateWorkspaceModVariableSettingRequest) OrgWorkspaceModVariablesApiUpdateSettingRequest {
+	r.updateWorkspaceModVariableSettingRequest = &updateWorkspaceModVariableSettingRequest
 	return r
 }
 
@@ -819,8 +819,8 @@ func (a *OrgWorkspaceModVariablesService) UpdateSettingExecute(r OrgWorkspaceMod
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateWorkspaceModVariableSettingRequest == nil {
+		return localVarReturnValue, nil, reportError("updateWorkspaceModVariableSettingRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -841,7 +841,7 @@ func (a *OrgWorkspaceModVariablesService) UpdateSettingExecute(r OrgWorkspaceMod
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateWorkspaceModVariableSettingRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

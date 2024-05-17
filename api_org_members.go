@@ -190,15 +190,15 @@ func (a *OrgMembersService) ConfirmInviteExecute(r OrgMembersApiConfirmInviteReq
 }
 
 type OrgMembersApiCreateRequest struct {
-	ctx        _context.Context
-	ApiService *OrgMembersService
-	orgHandle  string
-	request    *CreateOrgUserRequest
+	ctx                  _context.Context
+	ApiService           *OrgMembersService
+	orgHandle            string
+	createOrgUserRequest *CreateOrgUserRequest
 }
 
 // The request body to create a member in an organization in a custom tenant.
-func (r OrgMembersApiCreateRequest) Request(request CreateOrgUserRequest) OrgMembersApiCreateRequest {
-	r.request = &request
+func (r OrgMembersApiCreateRequest) CreateOrgUserRequest(createOrgUserRequest CreateOrgUserRequest) OrgMembersApiCreateRequest {
+	r.createOrgUserRequest = &createOrgUserRequest
 	return r
 }
 
@@ -245,8 +245,8 @@ func (a *OrgMembersService) CreateExecute(r OrgMembersApiCreateRequest) (OrgUser
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.createOrgUserRequest == nil {
+		return localVarReturnValue, nil, reportError("createOrgUserRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -267,7 +267,7 @@ func (a *OrgMembersService) CreateExecute(r OrgMembersApiCreateRequest) (OrgUser
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.createOrgUserRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -851,15 +851,15 @@ func (a *OrgMembersService) GetExecute(r OrgMembersApiGetRequest) (OrgUser, *_ne
 }
 
 type OrgMembersApiInviteRequest struct {
-	ctx        _context.Context
-	ApiService *OrgMembersService
-	orgHandle  string
-	request    *InviteOrgUserRequest
+	ctx                  _context.Context
+	ApiService           *OrgMembersService
+	orgHandle            string
+	inviteOrgUserRequest *InviteOrgUserRequest
 }
 
 // The request body to invite a member to an organization.
-func (r OrgMembersApiInviteRequest) Request(request InviteOrgUserRequest) OrgMembersApiInviteRequest {
-	r.request = &request
+func (r OrgMembersApiInviteRequest) InviteOrgUserRequest(inviteOrgUserRequest InviteOrgUserRequest) OrgMembersApiInviteRequest {
+	r.inviteOrgUserRequest = &inviteOrgUserRequest
 	return r
 }
 
@@ -906,8 +906,8 @@ func (a *OrgMembersService) InviteExecute(r OrgMembersApiInviteRequest) (OrgUser
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.inviteOrgUserRequest == nil {
+		return localVarReturnValue, nil, reportError("inviteOrgUserRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -928,7 +928,7 @@ func (a *OrgMembersService) InviteExecute(r OrgMembersApiInviteRequest) (OrgUser
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.inviteOrgUserRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1199,16 +1199,16 @@ func (a *OrgMembersService) ListExecute(r OrgMembersApiListRequest) (ListOrgUser
 }
 
 type OrgMembersApiUpdateRequest struct {
-	ctx        _context.Context
-	ApiService *OrgMembersService
-	orgHandle  string
-	userHandle string
-	request    *UpdateOrgUserRequest
+	ctx                  _context.Context
+	ApiService           *OrgMembersService
+	orgHandle            string
+	userHandle           string
+	updateOrgUserRequest *UpdateOrgUserRequest
 }
 
 // The request body for the member.
-func (r OrgMembersApiUpdateRequest) Request(request UpdateOrgUserRequest) OrgMembersApiUpdateRequest {
-	r.request = &request
+func (r OrgMembersApiUpdateRequest) UpdateOrgUserRequest(updateOrgUserRequest UpdateOrgUserRequest) OrgMembersApiUpdateRequest {
+	r.updateOrgUserRequest = &updateOrgUserRequest
 	return r
 }
 
@@ -1258,8 +1258,8 @@ func (a *OrgMembersService) UpdateExecute(r OrgMembersApiUpdateRequest) (OrgUser
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateOrgUserRequest == nil {
+		return localVarReturnValue, nil, reportError("updateOrgUserRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1280,7 +1280,7 @@ func (a *OrgMembersService) UpdateExecute(r OrgMembersApiUpdateRequest) (OrgUser
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateOrgUserRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

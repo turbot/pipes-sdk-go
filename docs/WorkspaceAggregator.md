@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Config** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 **Connections** | **[]string** | The plugin or connection configuration. | 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
 **CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
@@ -12,21 +13,27 @@ Name | Type | Description | Notes
 **DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **Handle** | **string** | The handle name of the aggregator. | 
+**HandleDynamic** | Pointer to **string** | The dynamically-generated handle for the aggregator. Only populated if this is a discovered aggregator. | [optional] 
+**HandleMode** | Pointer to **string** | The handle mode for the aggregator. | [optional] 
+**HandlePrefix** | Pointer to **string** | The handle prefix to use for aggregators and connections discovered by this aggregator. Only populated if this is a dynamic aggregator. | [optional] 
 **Id** | **string** | The unique identifier for the aggregator. | 
-**IdentityId** | **string** | The unique identifier for an identity where the aggregator has been created. | 
+**IdentityId** | Pointer to **string** | The unique identifier for an identity where the aggregator has been created. | [optional] 
+**ManagedById** | Pointer to **string** | The ID of the aggregator that manages this aggregator. Only populated if this is a discovered aggregator. | [optional] 
 **Plugin** | **string** | The plugin name for the aggregator. | 
+**SourceIdentifier** | Pointer to **string** | The source identifier for this aggregator. Only populated if this is a discovered aggregator. | [optional] 
+**TenantId** | **string** | The unique identifier for the tenant where this aggregator is created. | 
 **Type** | Pointer to **string** | Type of connection i.e aggregator or connection. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
 **UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
-**WorkspaceId** | **string** | The unique identifier for the workspace. | 
+**WorkspaceId** | Pointer to **string** | The unique identifier for the workspace. | [optional] 
 
 ## Methods
 
 ### NewWorkspaceAggregator
 
-`func NewWorkspaceAggregator(connections []string, createdAt string, createdById string, deletedById string, handle string, id string, identityId string, plugin string, updatedById string, versionId int32, workspaceId string, ) *WorkspaceAggregator`
+`func NewWorkspaceAggregator(connections []string, createdAt string, createdById string, deletedById string, handle string, id string, plugin string, tenantId string, updatedById string, versionId int32, ) *WorkspaceAggregator`
 
 NewWorkspaceAggregator instantiates a new WorkspaceAggregator object
 This constructor will assign default values to properties that have it defined,
@@ -40,6 +47,31 @@ will change when the set of required properties is changed
 NewWorkspaceAggregatorWithDefaults instantiates a new WorkspaceAggregator object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetConfig
+
+`func (o *WorkspaceAggregator) GetConfig() map[string]map[string]interface{}`
+
+GetConfig returns the Config field if non-nil, zero value otherwise.
+
+### GetConfigOk
+
+`func (o *WorkspaceAggregator) GetConfigOk() (*map[string]map[string]interface{}, bool)`
+
+GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfig
+
+`func (o *WorkspaceAggregator) SetConfig(v map[string]map[string]interface{})`
+
+SetConfig sets Config field to given value.
+
+### HasConfig
+
+`func (o *WorkspaceAggregator) HasConfig() bool`
+
+HasConfig returns a boolean if a field has been set.
 
 ### GetConnections
 
@@ -216,6 +248,81 @@ and a boolean to check if the value has been set.
 SetHandle sets Handle field to given value.
 
 
+### GetHandleDynamic
+
+`func (o *WorkspaceAggregator) GetHandleDynamic() string`
+
+GetHandleDynamic returns the HandleDynamic field if non-nil, zero value otherwise.
+
+### GetHandleDynamicOk
+
+`func (o *WorkspaceAggregator) GetHandleDynamicOk() (*string, bool)`
+
+GetHandleDynamicOk returns a tuple with the HandleDynamic field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHandleDynamic
+
+`func (o *WorkspaceAggregator) SetHandleDynamic(v string)`
+
+SetHandleDynamic sets HandleDynamic field to given value.
+
+### HasHandleDynamic
+
+`func (o *WorkspaceAggregator) HasHandleDynamic() bool`
+
+HasHandleDynamic returns a boolean if a field has been set.
+
+### GetHandleMode
+
+`func (o *WorkspaceAggregator) GetHandleMode() string`
+
+GetHandleMode returns the HandleMode field if non-nil, zero value otherwise.
+
+### GetHandleModeOk
+
+`func (o *WorkspaceAggregator) GetHandleModeOk() (*string, bool)`
+
+GetHandleModeOk returns a tuple with the HandleMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHandleMode
+
+`func (o *WorkspaceAggregator) SetHandleMode(v string)`
+
+SetHandleMode sets HandleMode field to given value.
+
+### HasHandleMode
+
+`func (o *WorkspaceAggregator) HasHandleMode() bool`
+
+HasHandleMode returns a boolean if a field has been set.
+
+### GetHandlePrefix
+
+`func (o *WorkspaceAggregator) GetHandlePrefix() string`
+
+GetHandlePrefix returns the HandlePrefix field if non-nil, zero value otherwise.
+
+### GetHandlePrefixOk
+
+`func (o *WorkspaceAggregator) GetHandlePrefixOk() (*string, bool)`
+
+GetHandlePrefixOk returns a tuple with the HandlePrefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHandlePrefix
+
+`func (o *WorkspaceAggregator) SetHandlePrefix(v string)`
+
+SetHandlePrefix sets HandlePrefix field to given value.
+
+### HasHandlePrefix
+
+`func (o *WorkspaceAggregator) HasHandlePrefix() bool`
+
+HasHandlePrefix returns a boolean if a field has been set.
+
 ### GetId
 
 `func (o *WorkspaceAggregator) GetId() string`
@@ -255,6 +362,36 @@ and a boolean to check if the value has been set.
 
 SetIdentityId sets IdentityId field to given value.
 
+### HasIdentityId
+
+`func (o *WorkspaceAggregator) HasIdentityId() bool`
+
+HasIdentityId returns a boolean if a field has been set.
+
+### GetManagedById
+
+`func (o *WorkspaceAggregator) GetManagedById() string`
+
+GetManagedById returns the ManagedById field if non-nil, zero value otherwise.
+
+### GetManagedByIdOk
+
+`func (o *WorkspaceAggregator) GetManagedByIdOk() (*string, bool)`
+
+GetManagedByIdOk returns a tuple with the ManagedById field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagedById
+
+`func (o *WorkspaceAggregator) SetManagedById(v string)`
+
+SetManagedById sets ManagedById field to given value.
+
+### HasManagedById
+
+`func (o *WorkspaceAggregator) HasManagedById() bool`
+
+HasManagedById returns a boolean if a field has been set.
 
 ### GetPlugin
 
@@ -274,6 +411,51 @@ and a boolean to check if the value has been set.
 `func (o *WorkspaceAggregator) SetPlugin(v string)`
 
 SetPlugin sets Plugin field to given value.
+
+
+### GetSourceIdentifier
+
+`func (o *WorkspaceAggregator) GetSourceIdentifier() string`
+
+GetSourceIdentifier returns the SourceIdentifier field if non-nil, zero value otherwise.
+
+### GetSourceIdentifierOk
+
+`func (o *WorkspaceAggregator) GetSourceIdentifierOk() (*string, bool)`
+
+GetSourceIdentifierOk returns a tuple with the SourceIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceIdentifier
+
+`func (o *WorkspaceAggregator) SetSourceIdentifier(v string)`
+
+SetSourceIdentifier sets SourceIdentifier field to given value.
+
+### HasSourceIdentifier
+
+`func (o *WorkspaceAggregator) HasSourceIdentifier() bool`
+
+HasSourceIdentifier returns a boolean if a field has been set.
+
+### GetTenantId
+
+`func (o *WorkspaceAggregator) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *WorkspaceAggregator) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *WorkspaceAggregator) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
 
 
 ### GetType
@@ -410,6 +592,11 @@ and a boolean to check if the value has been set.
 
 SetWorkspaceId sets WorkspaceId field to given value.
 
+### HasWorkspaceId
+
+`func (o *WorkspaceAggregator) HasWorkspaceId() bool`
+
+HasWorkspaceId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

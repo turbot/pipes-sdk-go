@@ -28,16 +28,16 @@ var (
 type OrgWorkspaceConnectionAssociationsService service
 
 type OrgWorkspaceConnectionAssociationsApiCreateRequest struct {
-	ctx             _context.Context
-	ApiService      *OrgWorkspaceConnectionAssociationsService
-	orgHandle       string
-	workspaceHandle string
-	request         *CreateWorkspaceConnRequest
+	ctx                        _context.Context
+	ApiService                 *OrgWorkspaceConnectionAssociationsService
+	orgHandle                  string
+	workspaceHandle            string
+	createWorkspaceConnRequest *CreateWorkspaceConnRequest
 }
 
 // The request body for the association to be created.
-func (r OrgWorkspaceConnectionAssociationsApiCreateRequest) Request(request CreateWorkspaceConnRequest) OrgWorkspaceConnectionAssociationsApiCreateRequest {
-	r.request = &request
+func (r OrgWorkspaceConnectionAssociationsApiCreateRequest) CreateWorkspaceConnRequest(createWorkspaceConnRequest CreateWorkspaceConnRequest) OrgWorkspaceConnectionAssociationsApiCreateRequest {
+	r.createWorkspaceConnRequest = &createWorkspaceConnRequest
 	return r
 }
 
@@ -87,8 +87,8 @@ func (a *OrgWorkspaceConnectionAssociationsService) CreateExecute(r OrgWorkspace
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.createWorkspaceConnRequest == nil {
+		return localVarReturnValue, nil, reportError("createWorkspaceConnRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -109,7 +109,7 @@ func (a *OrgWorkspaceConnectionAssociationsService) CreateExecute(r OrgWorkspace
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.createWorkspaceConnRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

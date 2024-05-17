@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **DesiredState** | **string** | DesiredState is user editable state of the pipeline, there are only 3 options: enabled, disabled or paused | 
 **Frequency** | [**PipelineFrequency**](PipelineFrequency.md) |  | 
 **Id** | **string** | The unique identifier of the pipeline. | 
-**IdentityId** | **string** | We need the IdentityID to be in the JSON field because I&#39;m sending the pipeline definition across the Temporal Workflow (see Datatank migration workflow) | 
+**IdentityId** | Pointer to **string** | The unique identifier of the identity for whom the pipeline is created. | [optional] 
 **InstanceType** | **string** | The instance type of this pipeline. | 
 **LastProcess** | Pointer to [**SpProcess**](SpProcess.md) |  | [optional] 
 **LastProcessId** | Pointer to **string** | The id of the last process that was run for the pipeline. | [optional] 
@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **State** | **string** | State is the system state of the pipeline. User should not be able to modify this value | 
 **StateReason** | Pointer to **string** |  | [optional] 
 **Tags** | Pointer to **interface{}** |  | [optional] 
+**TenantId** | **string** | We need the IdentityID to be in the JSON field because I&#39;m sending the pipeline definition across the Temporal Workflow (see Datatank migration workflow) | 
 **Title** | Pointer to **string** | The title of the pipeline. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
 **UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
@@ -34,7 +35,7 @@ Name | Type | Description | Notes
 
 ### NewPipeline
 
-`func NewPipeline(createdAt string, createdById string, deletedById string, desiredState string, frequency PipelineFrequency, id string, identityId string, instanceType string, pipeline string, state string, updatedById string, versionId int32, ) *Pipeline`
+`func NewPipeline(createdAt string, createdById string, deletedById string, desiredState string, frequency PipelineFrequency, id string, instanceType string, pipeline string, state string, tenantId string, updatedById string, versionId int32, ) *Pipeline`
 
 NewPipeline instantiates a new Pipeline object
 This constructor will assign default values to properties that have it defined,
@@ -298,6 +299,11 @@ and a boolean to check if the value has been set.
 
 SetIdentityId sets IdentityId field to given value.
 
+### HasIdentityId
+
+`func (o *Pipeline) HasIdentityId() bool`
+
+HasIdentityId returns a boolean if a field has been set.
 
 ### GetInstanceType
 
@@ -494,6 +500,26 @@ HasTags returns a boolean if a field has been set.
 `func (o *Pipeline) UnsetTags()`
 
 UnsetTags ensures that no value is present for Tags, not even an explicit nil
+### GetTenantId
+
+`func (o *Pipeline) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *Pipeline) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *Pipeline) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
+
+
 ### GetTitle
 
 `func (o *Pipeline) GetTitle() string`

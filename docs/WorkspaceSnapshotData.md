@@ -5,19 +5,19 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EndTime** | **string** | The time the dashboard execution ended. | 
-**Inputs** | Pointer to **map[string]interface{}** |  | [optional] 
+**Inputs** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 **Layout** | [**WorkspaceSnapshotDataLayout**](WorkspaceSnapshotDataLayout.md) |  | 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
-**Panels** | **map[string]interface{}** |  | 
+**Metadata** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**Panels** | **map[string]map[string]interface{}** |  | 
 **SchemaVersion** | **string** | The schema version of this snapshot. | 
 **StartTime** | **string** | The time the dashboard execution started. | 
-**Variables** | Pointer to **map[string]interface{}** |  | [optional] 
+**Variables** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 
 ## Methods
 
 ### NewWorkspaceSnapshotData
 
-`func NewWorkspaceSnapshotData(endTime string, layout WorkspaceSnapshotDataLayout, panels map[string]interface{}, schemaVersion string, startTime string, ) *WorkspaceSnapshotData`
+`func NewWorkspaceSnapshotData(endTime string, layout WorkspaceSnapshotDataLayout, panels map[string]map[string]interface{}, schemaVersion string, startTime string, ) *WorkspaceSnapshotData`
 
 NewWorkspaceSnapshotData instantiates a new WorkspaceSnapshotData object
 This constructor will assign default values to properties that have it defined,
@@ -54,20 +54,20 @@ SetEndTime sets EndTime field to given value.
 
 ### GetInputs
 
-`func (o *WorkspaceSnapshotData) GetInputs() map[string]interface{}`
+`func (o *WorkspaceSnapshotData) GetInputs() map[string]map[string]interface{}`
 
 GetInputs returns the Inputs field if non-nil, zero value otherwise.
 
 ### GetInputsOk
 
-`func (o *WorkspaceSnapshotData) GetInputsOk() (*map[string]interface{}, bool)`
+`func (o *WorkspaceSnapshotData) GetInputsOk() (*map[string]map[string]interface{}, bool)`
 
 GetInputsOk returns a tuple with the Inputs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInputs
 
-`func (o *WorkspaceSnapshotData) SetInputs(v map[string]interface{})`
+`func (o *WorkspaceSnapshotData) SetInputs(v map[string]map[string]interface{})`
 
 SetInputs sets Inputs field to given value.
 
@@ -99,20 +99,20 @@ SetLayout sets Layout field to given value.
 
 ### GetMetadata
 
-`func (o *WorkspaceSnapshotData) GetMetadata() map[string]interface{}`
+`func (o *WorkspaceSnapshotData) GetMetadata() map[string]map[string]interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *WorkspaceSnapshotData) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *WorkspaceSnapshotData) GetMetadataOk() (*map[string]map[string]interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *WorkspaceSnapshotData) SetMetadata(v map[string]interface{})`
+`func (o *WorkspaceSnapshotData) SetMetadata(v map[string]map[string]interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -124,20 +124,20 @@ HasMetadata returns a boolean if a field has been set.
 
 ### GetPanels
 
-`func (o *WorkspaceSnapshotData) GetPanels() map[string]interface{}`
+`func (o *WorkspaceSnapshotData) GetPanels() map[string]map[string]interface{}`
 
 GetPanels returns the Panels field if non-nil, zero value otherwise.
 
 ### GetPanelsOk
 
-`func (o *WorkspaceSnapshotData) GetPanelsOk() (*map[string]interface{}, bool)`
+`func (o *WorkspaceSnapshotData) GetPanelsOk() (*map[string]map[string]interface{}, bool)`
 
 GetPanelsOk returns a tuple with the Panels field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPanels
 
-`func (o *WorkspaceSnapshotData) SetPanels(v map[string]interface{})`
+`func (o *WorkspaceSnapshotData) SetPanels(v map[string]map[string]interface{})`
 
 SetPanels sets Panels field to given value.
 
@@ -184,20 +184,20 @@ SetStartTime sets StartTime field to given value.
 
 ### GetVariables
 
-`func (o *WorkspaceSnapshotData) GetVariables() map[string]interface{}`
+`func (o *WorkspaceSnapshotData) GetVariables() map[string]map[string]interface{}`
 
 GetVariables returns the Variables field if non-nil, zero value otherwise.
 
 ### GetVariablesOk
 
-`func (o *WorkspaceSnapshotData) GetVariablesOk() (*map[string]interface{}, bool)`
+`func (o *WorkspaceSnapshotData) GetVariablesOk() (*map[string]map[string]interface{}, bool)`
 
 GetVariablesOk returns a tuple with the Variables field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVariables
 
-`func (o *WorkspaceSnapshotData) SetVariables(v map[string]interface{})`
+`func (o *WorkspaceSnapshotData) SetVariables(v map[string]map[string]interface{})`
 
 SetVariables sets Variables field to given value.
 

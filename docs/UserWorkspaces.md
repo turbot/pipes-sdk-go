@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 ## Command
 
-> WorkspaceCommandResponse Command(ctx, userHandle, workspaceHandle).Request(request).Execute()
+> WorkspaceCommandResponse Command(ctx, userHandle, workspaceHandle).WorkspaceCommandRequest(workspaceCommandRequest).Execute()
 
 Run user workspace command
 
@@ -42,11 +42,11 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user where we want to run the workspace command.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where command will be executed.
-    request := *openapiclient.NewWorkspaceCommandRequest("Command_example") // WorkspaceCommandRequest | The request body for the workspace command.
+    workspaceCommandRequest := *openapiclient.NewWorkspaceCommandRequest("Command_example") // WorkspaceCommandRequest | The request body for the workspace command.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserWorkspaces.Command(context.Background(), userHandle, workspaceHandle).Request(request).Execute()
+    resp, r, err := api_client.UserWorkspaces.Command(context.Background(), userHandle, workspaceHandle).WorkspaceCommandRequest(workspaceCommandRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaces.Command``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**WorkspaceCommandRequest**](WorkspaceCommandRequest.md) | The request body for the workspace command. | 
+ **workspaceCommandRequest** | [**WorkspaceCommandRequest**](WorkspaceCommandRequest.md) | The request body for the workspace command. | 
 
 ### Return type
 
@@ -96,7 +96,7 @@ No authorization required
 
 ## Create
 
-> Workspace Create(ctx, userHandle).Request(request).Execute()
+> Workspace Create(ctx, userHandle).CreateWorkspaceRequest(createWorkspaceRequest).Execute()
 
 Create user workspace
 
@@ -116,11 +116,11 @@ import (
 
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user where we want to create the workspace.
-    request := *openapiclient.NewCreateWorkspaceRequest("Handle_example") // CreateWorkspaceRequest | The request body for the workspace to be created.
+    createWorkspaceRequest := *openapiclient.NewCreateWorkspaceRequest("Handle_example") // CreateWorkspaceRequest | The request body for the workspace to be created.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserWorkspaces.Create(context.Background(), userHandle).Request(request).Execute()
+    resp, r, err := api_client.UserWorkspaces.Create(context.Background(), userHandle).CreateWorkspaceRequest(createWorkspaceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaces.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -146,7 +146,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **request** | [**CreateWorkspaceRequest**](CreateWorkspaceRequest.md) | The request body for the workspace to be created. | 
+ **createWorkspaceRequest** | [**CreateWorkspaceRequest**](CreateWorkspaceRequest.md) | The request body for the workspace to be created. | 
 
 ### Return type
 
@@ -699,7 +699,7 @@ No authorization required
 
 ## PostQuery
 
-> WorkspaceQueryResult PostQuery(ctx, userHandle, workspaceHandle).Sql(sql).ContentType(contentType).Execute()
+> WorkspaceQueryResult PostQuery(ctx, userHandle, workspaceHandle).Body(body).ContentType(contentType).Execute()
 
 Query user workspace
 
@@ -720,12 +720,12 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user that the workspace belongs to.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace to query.
-    sql := "sql_example" // string | The sql query to perform against the user workspace.
+    body := "body_example" // string | The sql query to perform against the user workspace.
     contentType := "contentType_example" // string | The required content type for the response. Defaults to application/json. Supported values are json, application/json, csv, text/csv, md and text/markdown. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserWorkspaces.PostQuery(context.Background(), userHandle, workspaceHandle).Sql(sql).ContentType(contentType).Execute()
+    resp, r, err := api_client.UserWorkspaces.PostQuery(context.Background(), userHandle, workspaceHandle).Body(body).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaces.PostQuery``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -753,7 +753,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **sql** | **string** | The sql query to perform against the user workspace. | 
+ **body** | **string** | The sql query to perform against the user workspace. | 
  **contentType** | **string** | The required content type for the response. Defaults to application/json. Supported values are json, application/json, csv, text/csv, md and text/markdown. | 
 
 ### Return type
@@ -856,7 +856,7 @@ No authorization required
 
 ## Update
 
-> Workspace Update(ctx, userHandle, workspaceHandle).Request(request).Execute()
+> Workspace Update(ctx, userHandle, workspaceHandle).UpdateWorkspaceRequest(updateWorkspaceRequest).Execute()
 
 Update user workspace
 
@@ -877,11 +877,11 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user where the workspace exist.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace which needs to be updated.
-    request := *openapiclient.NewUpdateWorkspaceRequest() // UpdateWorkspaceRequest | The request body for the workspace which needs to be updated.
+    updateWorkspaceRequest := *openapiclient.NewUpdateWorkspaceRequest() // UpdateWorkspaceRequest | The request body for the workspace which needs to be updated.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserWorkspaces.Update(context.Background(), userHandle, workspaceHandle).Request(request).Execute()
+    resp, r, err := api_client.UserWorkspaces.Update(context.Background(), userHandle, workspaceHandle).UpdateWorkspaceRequest(updateWorkspaceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaces.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -909,7 +909,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**UpdateWorkspaceRequest**](UpdateWorkspaceRequest.md) | The request body for the workspace which needs to be updated. | 
+ **updateWorkspaceRequest** | [**UpdateWorkspaceRequest**](UpdateWorkspaceRequest.md) | The request body for the workspace which needs to be updated. | 
 
 ### Return type
 

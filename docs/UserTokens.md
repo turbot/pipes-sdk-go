@@ -304,7 +304,7 @@ No authorization required
 
 ## Update
 
-> Token Update(ctx, userHandle, tokenId).Request(request).Execute()
+> Token Update(ctx, userHandle, tokenId).UpdateTokenRequest(updateTokenRequest).Execute()
 
 Update token
 
@@ -325,11 +325,11 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user where the token exist.
     tokenId := "tokenId_example" // string | The identifier of the token.
-    request := *openapiclient.NewUpdateTokenRequest("Status_example") // UpdateTokenRequest | The request body for the token which needs to be updated.
+    updateTokenRequest := *openapiclient.NewUpdateTokenRequest("Status_example") // UpdateTokenRequest | The request body for the token which needs to be updated.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserTokens.Update(context.Background(), userHandle, tokenId).Request(request).Execute()
+    resp, r, err := api_client.UserTokens.Update(context.Background(), userHandle, tokenId).UpdateTokenRequest(updateTokenRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserTokens.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -357,7 +357,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**UpdateTokenRequest**](UpdateTokenRequest.md) | The request body for the token which needs to be updated. | 
+ **updateTokenRequest** | [**UpdateTokenRequest**](UpdateTokenRequest.md) | The request body for the token which needs to be updated. | 
 
 ### Return type
 

@@ -16,8 +16,8 @@ import (
 
 // TestConnectionRequest struct for TestConnectionRequest
 type TestConnectionRequest struct {
-	Config *map[string]interface{} `json:"config,omitempty"`
-	Plugin string                  `json:"plugin"`
+	Config *map[string]map[string]interface{} `json:"config,omitempty"`
+	Plugin string                             `json:"plugin"`
 }
 
 // NewTestConnectionRequest instantiates a new TestConnectionRequest object
@@ -39,9 +39,9 @@ func NewTestConnectionRequestWithDefaults() *TestConnectionRequest {
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
-func (o *TestConnectionRequest) GetConfig() map[string]interface{} {
+func (o *TestConnectionRequest) GetConfig() map[string]map[string]interface{} {
 	if o == nil || o.Config == nil {
-		var ret map[string]interface{}
+		var ret map[string]map[string]interface{}
 		return ret
 	}
 	return *o.Config
@@ -49,7 +49,7 @@ func (o *TestConnectionRequest) GetConfig() map[string]interface{} {
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TestConnectionRequest) GetConfigOk() (*map[string]interface{}, bool) {
+func (o *TestConnectionRequest) GetConfigOk() (*map[string]map[string]interface{}, bool) {
 	if o == nil || o.Config == nil {
 		return nil, false
 	}
@@ -65,8 +65,8 @@ func (o *TestConnectionRequest) HasConfig() bool {
 	return false
 }
 
-// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
-func (o *TestConnectionRequest) SetConfig(v map[string]interface{}) {
+// SetConfig gets a reference to the given map[string]map[string]interface{} and assigns it to the Config field.
+func (o *TestConnectionRequest) SetConfig(v map[string]map[string]interface{}) {
 	o.Config = &v
 }
 

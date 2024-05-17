@@ -581,19 +581,19 @@ func (a *OrgWorkspaceDatatankPartsService) ListExecute(r OrgWorkspaceDatatankPar
 }
 
 type OrgWorkspaceDatatankPartsApiUpdateRequest struct {
-	ctx               _context.Context
-	ApiService        *OrgWorkspaceDatatankPartsService
-	orgHandle         string
-	workspaceHandle   string
-	datatankHandle    string
-	datatankTableName string
-	datatankPartId    string
-	request           *UpdateDatatankPartRequest
+	ctx                       _context.Context
+	ApiService                *OrgWorkspaceDatatankPartsService
+	orgHandle                 string
+	workspaceHandle           string
+	datatankHandle            string
+	datatankTableName         string
+	datatankPartId            string
+	updateDatatankPartRequest *UpdateDatatankPartRequest
 }
 
 // The request body to update workspace Datatank table partition.
-func (r OrgWorkspaceDatatankPartsApiUpdateRequest) Request(request UpdateDatatankPartRequest) OrgWorkspaceDatatankPartsApiUpdateRequest {
-	r.request = &request
+func (r OrgWorkspaceDatatankPartsApiUpdateRequest) UpdateDatatankPartRequest(updateDatatankPartRequest UpdateDatatankPartRequest) OrgWorkspaceDatatankPartsApiUpdateRequest {
+	r.updateDatatankPartRequest = &updateDatatankPartRequest
 	return r
 }
 
@@ -652,8 +652,8 @@ func (a *OrgWorkspaceDatatankPartsService) UpdateExecute(r OrgWorkspaceDatatankP
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateDatatankPartRequest == nil {
+		return localVarReturnValue, nil, reportError("updateDatatankPartRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -674,7 +674,7 @@ func (a *OrgWorkspaceDatatankPartsService) UpdateExecute(r OrgWorkspaceDatatankP
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateDatatankPartRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

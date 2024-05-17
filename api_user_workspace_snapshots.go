@@ -28,16 +28,16 @@ var (
 type UserWorkspaceSnapshotsService service
 
 type UserWorkspaceSnapshotsApiCreateRequest struct {
-	ctx             _context.Context
-	ApiService      *UserWorkspaceSnapshotsService
-	userHandle      string
-	workspaceHandle string
-	request         *CreateWorkspaceSnapshotRequest
+	ctx                            _context.Context
+	ApiService                     *UserWorkspaceSnapshotsService
+	userHandle                     string
+	workspaceHandle                string
+	createWorkspaceSnapshotRequest *CreateWorkspaceSnapshotRequest
 }
 
 // The request body for the user workspace snapshot to be created.
-func (r UserWorkspaceSnapshotsApiCreateRequest) Request(request CreateWorkspaceSnapshotRequest) UserWorkspaceSnapshotsApiCreateRequest {
-	r.request = &request
+func (r UserWorkspaceSnapshotsApiCreateRequest) CreateWorkspaceSnapshotRequest(createWorkspaceSnapshotRequest CreateWorkspaceSnapshotRequest) UserWorkspaceSnapshotsApiCreateRequest {
+	r.createWorkspaceSnapshotRequest = &createWorkspaceSnapshotRequest
 	return r
 }
 
@@ -87,8 +87,8 @@ func (a *UserWorkspaceSnapshotsService) CreateExecute(r UserWorkspaceSnapshotsAp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.createWorkspaceSnapshotRequest == nil {
+		return localVarReturnValue, nil, reportError("createWorkspaceSnapshotRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -109,7 +109,7 @@ func (a *UserWorkspaceSnapshotsService) CreateExecute(r UserWorkspaceSnapshotsAp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.createWorkspaceSnapshotRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -911,17 +911,17 @@ func (a *UserWorkspaceSnapshotsService) ListExecute(r UserWorkspaceSnapshotsApiL
 }
 
 type UserWorkspaceSnapshotsApiUpdateRequest struct {
-	ctx             _context.Context
-	ApiService      *UserWorkspaceSnapshotsService
-	userHandle      string
-	workspaceHandle string
-	snapshotId      string
-	request         *UpdateWorkspaceSnapshotRequest
+	ctx                            _context.Context
+	ApiService                     *UserWorkspaceSnapshotsService
+	userHandle                     string
+	workspaceHandle                string
+	snapshotId                     string
+	updateWorkspaceSnapshotRequest *UpdateWorkspaceSnapshotRequest
 }
 
 // The request body for the user workspace snapshot to be updated.
-func (r UserWorkspaceSnapshotsApiUpdateRequest) Request(request UpdateWorkspaceSnapshotRequest) UserWorkspaceSnapshotsApiUpdateRequest {
-	r.request = &request
+func (r UserWorkspaceSnapshotsApiUpdateRequest) UpdateWorkspaceSnapshotRequest(updateWorkspaceSnapshotRequest UpdateWorkspaceSnapshotRequest) UserWorkspaceSnapshotsApiUpdateRequest {
+	r.updateWorkspaceSnapshotRequest = &updateWorkspaceSnapshotRequest
 	return r
 }
 
@@ -974,8 +974,8 @@ func (a *UserWorkspaceSnapshotsService) UpdateExecute(r UserWorkspaceSnapshotsAp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateWorkspaceSnapshotRequest == nil {
+		return localVarReturnValue, nil, reportError("updateWorkspaceSnapshotRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -996,7 +996,7 @@ func (a *UserWorkspaceSnapshotsService) UpdateExecute(r UserWorkspaceSnapshotsAp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateWorkspaceSnapshotRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

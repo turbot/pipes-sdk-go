@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> WorkspaceSnapshot Create(ctx, userHandle, workspaceHandle).Request(request).Execute()
+> WorkspaceSnapshot Create(ctx, userHandle, workspaceHandle).CreateWorkspaceSnapshotRequest(createWorkspaceSnapshotRequest).Execute()
 
 Create user workspace snapshot
 
@@ -36,11 +36,11 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user to create the workspace snapshot for.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the user workspace to create the snapshot for.
-    request := *openapiclient.NewCreateWorkspaceSnapshotRequest(*openapiclient.NewWorkspaceSnapshotData("EndTime_example", *openapiclient.NewWorkspaceSnapshotDataLayout("Name_example", "PanelType_example"), map[string]interface{}{"key": map[string]interface{}(123)}, "SchemaVersion_example", "StartTime_example")) // CreateWorkspaceSnapshotRequest | The request body for the user workspace snapshot to be created.
+    createWorkspaceSnapshotRequest := *openapiclient.NewCreateWorkspaceSnapshotRequest(*openapiclient.NewWorkspaceSnapshotData("EndTime_example", *openapiclient.NewWorkspaceSnapshotDataLayout("Name_example", "PanelType_example"), map[string]map[string]interface{}{"key": map[string]interface{}(123)}, "SchemaVersion_example", "StartTime_example")) // CreateWorkspaceSnapshotRequest | The request body for the user workspace snapshot to be created.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserWorkspaceSnapshots.Create(context.Background(), userHandle, workspaceHandle).Request(request).Execute()
+    resp, r, err := api_client.UserWorkspaceSnapshots.Create(context.Background(), userHandle, workspaceHandle).CreateWorkspaceSnapshotRequest(createWorkspaceSnapshotRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaceSnapshots.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**CreateWorkspaceSnapshotRequest**](CreateWorkspaceSnapshotRequest.md) | The request body for the user workspace snapshot to be created. | 
+ **createWorkspaceSnapshotRequest** | [**CreateWorkspaceSnapshotRequest**](CreateWorkspaceSnapshotRequest.md) | The request body for the user workspace snapshot to be created. | 
 
 ### Return type
 
@@ -400,7 +400,7 @@ No authorization required
 
 ## Update
 
-> WorkspaceSnapshot Update(ctx, userHandle, workspaceHandle, snapshotId).Request(request).Execute()
+> WorkspaceSnapshot Update(ctx, userHandle, workspaceHandle, snapshotId).UpdateWorkspaceSnapshotRequest(updateWorkspaceSnapshotRequest).Execute()
 
 Update user workspace snapshot
 
@@ -422,11 +422,11 @@ func main() {
     userHandle := "userHandle_example" // string | The handle of the user that the workspace snapshot belongs to.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the user workspace that the snapshot belongs to.
     snapshotId := "snapshotId_example" // string | The handle of the snapshot to update.
-    request := *openapiclient.NewUpdateWorkspaceSnapshotRequest() // UpdateWorkspaceSnapshotRequest | The request body for the user workspace snapshot to be updated.
+    updateWorkspaceSnapshotRequest := *openapiclient.NewUpdateWorkspaceSnapshotRequest() // UpdateWorkspaceSnapshotRequest | The request body for the user workspace snapshot to be updated.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserWorkspaceSnapshots.Update(context.Background(), userHandle, workspaceHandle, snapshotId).Request(request).Execute()
+    resp, r, err := api_client.UserWorkspaceSnapshots.Update(context.Background(), userHandle, workspaceHandle, snapshotId).UpdateWorkspaceSnapshotRequest(updateWorkspaceSnapshotRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaceSnapshots.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -456,7 +456,7 @@ Name | Type | Description  | Notes
 
 
 
- **request** | [**UpdateWorkspaceSnapshotRequest**](UpdateWorkspaceSnapshotRequest.md) | The request body for the user workspace snapshot to be updated. | 
+ **updateWorkspaceSnapshotRequest** | [**UpdateWorkspaceSnapshotRequest**](UpdateWorkspaceSnapshotRequest.md) | The request body for the user workspace snapshot to be updated. | 
 
 ### Return type
 

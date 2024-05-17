@@ -324,14 +324,14 @@ func (a *AuthService) ConfirmSignupExecute(r AuthApiConfirmSignupRequest) (*_net
 }
 
 type AuthApiLoginRequest struct {
-	ctx        _context.Context
-	ApiService *AuthService
-	request    *UserLoginRequest
+	ctx              _context.Context
+	ApiService       *AuthService
+	userLoginRequest *UserLoginRequest
 }
 
 // The request body to login.
-func (r AuthApiLoginRequest) Request(request UserLoginRequest) AuthApiLoginRequest {
-	r.request = &request
+func (r AuthApiLoginRequest) UserLoginRequest(userLoginRequest UserLoginRequest) AuthApiLoginRequest {
+	r.userLoginRequest = &userLoginRequest
 	return r
 }
 
@@ -372,8 +372,8 @@ func (a *AuthService) LoginExecute(r AuthApiLoginRequest) (*_nethttp.Response, e
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return nil, reportError("request is required and must be specified")
+	if r.userLoginRequest == nil {
+		return nil, reportError("userLoginRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -394,7 +394,7 @@ func (a *AuthService) LoginExecute(r AuthApiLoginRequest) (*_nethttp.Response, e
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.userLoginRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -888,15 +888,15 @@ func (a *AuthService) LoginTokenGetExecute(r AuthApiLoginTokenGetRequest) (Tempo
 }
 
 type AuthApiLoginTokenUpdateRequest struct {
-	ctx                     _context.Context
-	ApiService              *AuthService
-	temporaryTokenRequestId string
-	request                 *UpdateTemporaryTokenRequest
+	ctx                         _context.Context
+	ApiService                  *AuthService
+	temporaryTokenRequestId     string
+	updateTemporaryTokenRequest *UpdateTemporaryTokenRequest
 }
 
 // The request body containing updates for the temporary token request.
-func (r AuthApiLoginTokenUpdateRequest) Request(request UpdateTemporaryTokenRequest) AuthApiLoginTokenUpdateRequest {
-	r.request = &request
+func (r AuthApiLoginTokenUpdateRequest) UpdateTemporaryTokenRequest(updateTemporaryTokenRequest UpdateTemporaryTokenRequest) AuthApiLoginTokenUpdateRequest {
+	r.updateTemporaryTokenRequest = &updateTemporaryTokenRequest
 	return r
 }
 
@@ -943,8 +943,8 @@ func (a *AuthService) LoginTokenUpdateExecute(r AuthApiLoginTokenUpdateRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.updateTemporaryTokenRequest == nil {
+		return localVarReturnValue, nil, reportError("updateTemporaryTokenRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -965,7 +965,7 @@ func (a *AuthService) LoginTokenUpdateExecute(r AuthApiLoginTokenUpdateRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.updateTemporaryTokenRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1577,14 +1577,14 @@ func (a *AuthService) ProviderCallbackExecute(r AuthApiProviderCallbackRequest) 
 }
 
 type AuthApiSignupRequest struct {
-	ctx        _context.Context
-	ApiService *AuthService
-	request    *UserSignupRequest
+	ctx               _context.Context
+	ApiService        *AuthService
+	userSignupRequest *UserSignupRequest
 }
 
 // The request body to signup.
-func (r AuthApiSignupRequest) Request(request UserSignupRequest) AuthApiSignupRequest {
-	r.request = &request
+func (r AuthApiSignupRequest) UserSignupRequest(userSignupRequest UserSignupRequest) AuthApiSignupRequest {
+	r.userSignupRequest = &userSignupRequest
 	return r
 }
 
@@ -1625,8 +1625,8 @@ func (a *AuthService) SignupExecute(r AuthApiSignupRequest) (*_nethttp.Response,
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.request == nil {
-		return nil, reportError("request is required and must be specified")
+	if r.userSignupRequest == nil {
+		return nil, reportError("userSignupRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1647,7 +1647,7 @@ func (a *AuthService) SignupExecute(r AuthApiSignupRequest) (*_nethttp.Response,
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.userSignupRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

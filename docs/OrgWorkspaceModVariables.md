@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateSetting
 
-> WorkspaceModVariable CreateSetting(ctx, orgHandle, workspaceHandle, modAlias).Request(request).Execute()
+> WorkspaceModVariable CreateSetting(ctx, orgHandle, workspaceHandle, modAlias).CreateWorkspaceModVariableSettingRequest(createWorkspaceModVariableSettingRequest).Execute()
 
 Create a setting for a mod variable in an organization workspace
 
@@ -36,11 +36,11 @@ func main() {
     orgHandle := "orgHandle_example" // string | The handle of the organization that owns the workspace.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the mod was installed.
     modAlias := "modAlias_example" // string | The mod alias or mod ID for which the variable setting is to be created.
-    request := *openapiclient.NewCreateWorkspaceModVariableSettingRequest("Name_example", interface{}(123)) // CreateWorkspaceModVariableSettingRequest | The request body to create setting for mod variable in the organization workspace.
+    createWorkspaceModVariableSettingRequest := *openapiclient.NewCreateWorkspaceModVariableSettingRequest("Name_example", interface{}(123)) // CreateWorkspaceModVariableSettingRequest | The request body to create setting for mod variable in the organization workspace.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgWorkspaceModVariables.CreateSetting(context.Background(), orgHandle, workspaceHandle, modAlias).Request(request).Execute()
+    resp, r, err := api_client.OrgWorkspaceModVariables.CreateSetting(context.Background(), orgHandle, workspaceHandle, modAlias).CreateWorkspaceModVariableSettingRequest(createWorkspaceModVariableSettingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceModVariables.CreateSetting``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 
 
- **request** | [**CreateWorkspaceModVariableSettingRequest**](CreateWorkspaceModVariableSettingRequest.md) | The request body to create setting for mod variable in the organization workspace. | 
+ **createWorkspaceModVariableSettingRequest** | [**CreateWorkspaceModVariableSettingRequest**](CreateWorkspaceModVariableSettingRequest.md) | The request body to create setting for mod variable in the organization workspace. | 
 
 ### Return type
 
@@ -330,7 +330,7 @@ No authorization required
 
 ## UpdateSetting
 
-> WorkspaceModVariable UpdateSetting(ctx, orgHandle, workspaceHandle, modAlias, variableName).Request(request).Execute()
+> WorkspaceModVariable UpdateSetting(ctx, orgHandle, workspaceHandle, modAlias, variableName).UpdateWorkspaceModVariableSettingRequest(updateWorkspaceModVariableSettingRequest).Execute()
 
 Update setting for a mod variable in an organization workspace
 
@@ -353,11 +353,11 @@ func main() {
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the mod was installed.
     modAlias := "modAlias_example" // string | The mod alias or mod ID which contains the variable.
     variableName := "variableName_example" // string | The name of the variable for which setting is to be updated.
-    request := *openapiclient.NewUpdateWorkspaceModVariableSettingRequest(interface{}(123)) // UpdateWorkspaceModVariableSettingRequest | The request body to update setting for mod variable in the organization workspace.
+    updateWorkspaceModVariableSettingRequest := *openapiclient.NewUpdateWorkspaceModVariableSettingRequest(interface{}(123)) // UpdateWorkspaceModVariableSettingRequest | The request body to update setting for mod variable in the organization workspace.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgWorkspaceModVariables.UpdateSetting(context.Background(), orgHandle, workspaceHandle, modAlias, variableName).Request(request).Execute()
+    resp, r, err := api_client.OrgWorkspaceModVariables.UpdateSetting(context.Background(), orgHandle, workspaceHandle, modAlias, variableName).UpdateWorkspaceModVariableSettingRequest(updateWorkspaceModVariableSettingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceModVariables.UpdateSetting``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -389,7 +389,7 @@ Name | Type | Description  | Notes
 
 
 
- **request** | [**UpdateWorkspaceModVariableSettingRequest**](UpdateWorkspaceModVariableSettingRequest.md) | The request body to update setting for mod variable in the organization workspace. | 
+ **updateWorkspaceModVariableSettingRequest** | [**UpdateWorkspaceModVariableSettingRequest**](UpdateWorkspaceModVariableSettingRequest.md) | The request body to update setting for mod variable in the organization workspace. | 
 
 ### Return type
 
