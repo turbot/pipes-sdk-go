@@ -288,7 +288,7 @@ No authorization required
 
 ## Update
 
-> Integration Update(ctx, integrationHandle).Execute()
+> Integration Update(ctx, integrationHandle).UpdateIntegrationRequest(updateIntegrationRequest).Execute()
 
 Update tenant integration
 
@@ -308,10 +308,11 @@ import (
 
 func main() {
     integrationHandle := "integrationHandle_example" // string | The handle of the integration whose details need to be updated.
+    updateIntegrationRequest := *openapiclient.NewUpdateIntegrationRequest() // UpdateIntegrationRequest | The request body for the integration update.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TenantIntegrations.Update(context.Background(), integrationHandle).Execute()
+    resp, r, err := api_client.TenantIntegrations.Update(context.Background(), integrationHandle).UpdateIntegrationRequest(updateIntegrationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TenantIntegrations.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -337,6 +338,7 @@ Other parameters are passed through a pointer to a apiUpdateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **updateIntegrationRequest** | [**UpdateIntegrationRequest**](UpdateIntegrationRequest.md) | The request body for the integration update. | 
 
 ### Return type
 
@@ -348,7 +350,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

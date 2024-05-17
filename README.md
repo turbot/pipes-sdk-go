@@ -438,6 +438,7 @@ Class | Method | HTTP request | Description
  - [UpdateDatatankPartRequest](docs/UpdateDatatankPartRequest.md)
  - [UpdateDatatankRequest](docs/UpdateDatatankRequest.md)
  - [UpdateDatatankTableRequest](docs/UpdateDatatankTableRequest.md)
+ - [UpdateIntegrationRequest](docs/UpdateIntegrationRequest.md)
  - [UpdateOrgRequest](docs/UpdateOrgRequest.md)
  - [UpdateOrgUserRequest](docs/UpdateOrgUserRequest.md)
  - [UpdateOrgWorkspaceUserRequest](docs/UpdateOrgWorkspaceUserRequest.md)

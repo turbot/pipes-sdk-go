@@ -170,6 +170,7 @@ docs/UpdateConnectionRequest.md
 docs/UpdateDatatankPartRequest.md
 docs/UpdateDatatankRequest.md
 docs/UpdateDatatankTableRequest.md
+docs/UpdateIntegrationRequest.md
 docs/UpdateOrgRequest.md
 docs/UpdateOrgUserRequest.md
 docs/UpdateOrgWorkspaceUserRequest.md
@@ -330,6 +331,7 @@ model_update_connection_request.go
 model_update_datatank_part_request.go
 model_update_datatank_request.go
 model_update_datatank_table_request.go
+model_update_integration_request.go
 model_update_org_request.go
 model_update_org_user_request.go
 model_update_org_workspace_user_request.go

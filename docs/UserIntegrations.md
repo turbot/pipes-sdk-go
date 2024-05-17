@@ -306,7 +306,7 @@ No authorization required
 
 ## Update
 
-> Integration Update(ctx, userHandle, integrationHandle).Execute()
+> Integration Update(ctx, userHandle, integrationHandle).UpdateIntegrationRequest(updateIntegrationRequest).Execute()
 
 Update user integration
 
@@ -327,10 +327,11 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user on which the integration is configured.
     integrationHandle := "integrationHandle_example" // string | The handle of the integration whose details need to be updated.
+    updateIntegrationRequest := *openapiclient.NewUpdateIntegrationRequest() // UpdateIntegrationRequest | The request body for the integration update.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserIntegrations.Update(context.Background(), userHandle, integrationHandle).Execute()
+    resp, r, err := api_client.UserIntegrations.Update(context.Background(), userHandle, integrationHandle).UpdateIntegrationRequest(updateIntegrationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserIntegrations.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -358,6 +359,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **updateIntegrationRequest** | [**UpdateIntegrationRequest**](UpdateIntegrationRequest.md) | The request body for the integration update. | 
 
 ### Return type
 
@@ -369,7 +371,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

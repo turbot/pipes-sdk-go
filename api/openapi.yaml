@@ -906,6 +906,8 @@ paths:
           format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
           type: string
         style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateIntegrationRequest'
       responses:
         "200":
           content:
@@ -3247,6 +3249,8 @@ paths:
           format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
           type: string
         style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateIntegrationRequest'
       responses:
         "200":
           content:
@@ -14398,6 +14402,8 @@ paths:
           format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
           type: string
         style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateIntegrationRequest'
       responses:
         "200":
           content:
@@ -21761,6 +21767,13 @@ components:
           schema:
             $ref: '#/components/schemas/CreateDatatankRequest'
       description: The request body for the workspace Datatank to be created.
+      required: true
+    UpdateIntegrationRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateIntegrationRequest'
+      description: The request body for the integration update.
       required: true
     TestConnectionRequest:
       content:
@@ -36072,6 +36085,27 @@ components:
         source_schema:
           type: string
         source_table:
+          type: string
+      type: object
+    UpdateIntegrationRequest:
+      example:
+        handle: handle
+        state: enabled
+        config:
+          key: '{}'
+      properties:
+        config:
+          additionalProperties: true
+          description: The configuration for the integration.
+          type: object
+        handle:
+          description: The handle for the integration.
+          type: string
+        state:
+          description: The state of the integration.
+          enum:
+          - enabled
+          - disabled
           type: string
       type: object
     UpdateOrgRequest:

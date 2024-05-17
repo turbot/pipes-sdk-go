@@ -710,10 +710,17 @@ func (a *UserIntegrationsService) ListExecute(r UserIntegrationsApiListRequest) 
 }
 
 type UserIntegrationsApiUpdateRequest struct {
-	ctx               _context.Context
-	ApiService        *UserIntegrationsService
-	userHandle        string
-	integrationHandle string
+	ctx                      _context.Context
+	ApiService               *UserIntegrationsService
+	userHandle               string
+	integrationHandle        string
+	updateIntegrationRequest *UpdateIntegrationRequest
+}
+
+// The request body for the integration update.
+func (r UserIntegrationsApiUpdateRequest) UpdateIntegrationRequest(updateIntegrationRequest UpdateIntegrationRequest) UserIntegrationsApiUpdateRequest {
+	r.updateIntegrationRequest = &updateIntegrationRequest
+	return r
 }
 
 func (r UserIntegrationsApiUpdateRequest) Execute() (Integration, *_nethttp.Response, error) {
@@ -762,9 +769,12 @@ func (a *UserIntegrationsService) UpdateExecute(r UserIntegrationsApiUpdateReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.updateIntegrationRequest == nil {
+		return localVarReturnValue, nil, reportError("updateIntegrationRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -780,6 +790,8 @@ func (a *UserIntegrationsService) UpdateExecute(r UserIntegrationsApiUpdateReque
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.updateIntegrationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
