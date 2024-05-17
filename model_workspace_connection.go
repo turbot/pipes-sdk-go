@@ -16,8 +16,8 @@ import (
 
 // WorkspaceConnection struct for WorkspaceConnection
 type WorkspaceConnection struct {
-	Association *WorkspaceConnectionAssociation    `json:"association,omitempty"`
-	Config      *map[string]map[string]interface{} `json:"config,omitempty"`
+	Association *WorkspaceConnectionAssociation `json:"association,omitempty"`
+	Config      *map[string]interface{}         `json:"config,omitempty"`
 	// The level at which the connection exists, can be wither 'identity' or 'workspace'.
 	ConnectionLevel string `json:"connection_level"`
 	// The time of creation in ISO 8601 UTC.
@@ -125,9 +125,9 @@ func (o *WorkspaceConnection) SetAssociation(v WorkspaceConnectionAssociation) {
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
-func (o *WorkspaceConnection) GetConfig() map[string]map[string]interface{} {
+func (o *WorkspaceConnection) GetConfig() map[string]interface{} {
 	if o == nil || o.Config == nil {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return *o.Config
@@ -135,7 +135,7 @@ func (o *WorkspaceConnection) GetConfig() map[string]map[string]interface{} {
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkspaceConnection) GetConfigOk() (*map[string]map[string]interface{}, bool) {
+func (o *WorkspaceConnection) GetConfigOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Config == nil {
 		return nil, false
 	}
@@ -151,8 +151,8 @@ func (o *WorkspaceConnection) HasConfig() bool {
 	return false
 }
 
-// SetConfig gets a reference to the given map[string]map[string]interface{} and assigns it to the Config field.
-func (o *WorkspaceConnection) SetConfig(v map[string]map[string]interface{}) {
+// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
+func (o *WorkspaceConnection) SetConfig(v map[string]interface{}) {
 	o.Config = &v
 }
 

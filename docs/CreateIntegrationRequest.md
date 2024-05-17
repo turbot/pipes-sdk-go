@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Config** | Pointer to **map[string]map[string]interface{}** | The configuration for the integration. | [optional] 
+**Config** | Pointer to **map[string]interface{}** | The configuration for the integration. | [optional] 
 **Handle** | **string** | The handle for the integration. | 
 **Type** | **string** | The type of the integration, can be one of &#x60;github&#x60; or &#x60;gcp&#x60;. | 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetConfig
 
-`func (o *CreateIntegrationRequest) GetConfig() map[string]map[string]interface{}`
+`func (o *CreateIntegrationRequest) GetConfig() map[string]interface{}`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *CreateIntegrationRequest) GetConfigOk() (*map[string]map[string]interface{}, bool)`
+`func (o *CreateIntegrationRequest) GetConfigOk() (*map[string]interface{}, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *CreateIntegrationRequest) SetConfig(v map[string]map[string]interface{})`
+`func (o *CreateIntegrationRequest) SetConfig(v map[string]interface{})`
 
 SetConfig sets Config field to given value.
 

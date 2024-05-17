@@ -17,7 +17,7 @@ import (
 // CreateIntegrationRequest struct for CreateIntegrationRequest
 type CreateIntegrationRequest struct {
 	// The configuration for the integration.
-	Config *map[string]map[string]interface{} `json:"config,omitempty"`
+	Config *map[string]interface{} `json:"config,omitempty"`
 	// The handle for the integration.
 	Handle string `json:"handle"`
 	// The type of the integration, can be one of `github` or `gcp`.
@@ -44,9 +44,9 @@ func NewCreateIntegrationRequestWithDefaults() *CreateIntegrationRequest {
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
-func (o *CreateIntegrationRequest) GetConfig() map[string]map[string]interface{} {
+func (o *CreateIntegrationRequest) GetConfig() map[string]interface{} {
 	if o == nil || o.Config == nil {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return *o.Config
@@ -54,7 +54,7 @@ func (o *CreateIntegrationRequest) GetConfig() map[string]map[string]interface{}
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateIntegrationRequest) GetConfigOk() (*map[string]map[string]interface{}, bool) {
+func (o *CreateIntegrationRequest) GetConfigOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Config == nil {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *CreateIntegrationRequest) HasConfig() bool {
 	return false
 }
 
-// SetConfig gets a reference to the given map[string]map[string]interface{} and assigns it to the Config field.
-func (o *CreateIntegrationRequest) SetConfig(v map[string]map[string]interface{}) {
+// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
+func (o *CreateIntegrationRequest) SetConfig(v map[string]interface{}) {
 	o.Config = &v
 }
 

@@ -16,8 +16,8 @@ import (
 
 // UpdateConnectionRequest struct for UpdateConnectionRequest
 type UpdateConnectionRequest struct {
-	Config *map[string]map[string]interface{} `json:"config,omitempty"`
-	Handle *string                            `json:"handle,omitempty"`
+	Config *map[string]interface{} `json:"config,omitempty"`
+	Handle *string                 `json:"handle,omitempty"`
 }
 
 // NewUpdateConnectionRequest instantiates a new UpdateConnectionRequest object
@@ -38,9 +38,9 @@ func NewUpdateConnectionRequestWithDefaults() *UpdateConnectionRequest {
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
-func (o *UpdateConnectionRequest) GetConfig() map[string]map[string]interface{} {
+func (o *UpdateConnectionRequest) GetConfig() map[string]interface{} {
 	if o == nil || o.Config == nil {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return *o.Config
@@ -48,7 +48,7 @@ func (o *UpdateConnectionRequest) GetConfig() map[string]map[string]interface{} 
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateConnectionRequest) GetConfigOk() (*map[string]map[string]interface{}, bool) {
+func (o *UpdateConnectionRequest) GetConfigOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Config == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *UpdateConnectionRequest) HasConfig() bool {
 	return false
 }
 
-// SetConfig gets a reference to the given map[string]map[string]interface{} and assigns it to the Config field.
-func (o *UpdateConnectionRequest) SetConfig(v map[string]map[string]interface{}) {
+// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
+func (o *UpdateConnectionRequest) SetConfig(v map[string]interface{}) {
 	o.Config = &v
 }
 

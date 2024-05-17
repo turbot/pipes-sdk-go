@@ -16,7 +16,7 @@ import (
 
 // WorkspaceAggregator struct for WorkspaceAggregator
 type WorkspaceAggregator struct {
-	Config *map[string]map[string]interface{} `json:"config,omitempty"`
+	Config *map[string]interface{} `json:"config,omitempty"`
 	// The plugin or connection configuration.
 	Connections []string `json:"connections"`
 	// The time of creation in ISO 8601 UTC.
@@ -90,9 +90,9 @@ func NewWorkspaceAggregatorWithDefaults() *WorkspaceAggregator {
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
-func (o *WorkspaceAggregator) GetConfig() map[string]map[string]interface{} {
+func (o *WorkspaceAggregator) GetConfig() map[string]interface{} {
 	if o == nil || o.Config == nil {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return *o.Config
@@ -100,7 +100,7 @@ func (o *WorkspaceAggregator) GetConfig() map[string]map[string]interface{} {
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkspaceAggregator) GetConfigOk() (*map[string]map[string]interface{}, bool) {
+func (o *WorkspaceAggregator) GetConfigOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Config == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *WorkspaceAggregator) HasConfig() bool {
 	return false
 }
 
-// SetConfig gets a reference to the given map[string]map[string]interface{} and assigns it to the Config field.
-func (o *WorkspaceAggregator) SetConfig(v map[string]map[string]interface{}) {
+// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
+func (o *WorkspaceAggregator) SetConfig(v map[string]interface{}) {
 	o.Config = &v
 }
 

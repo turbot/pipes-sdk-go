@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Config** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**Config** | Pointer to **map[string]interface{}** |  | [optional] 
 **Plugin** | **string** |  | 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetConfig
 
-`func (o *TestConnectionRequest) GetConfig() map[string]map[string]interface{}`
+`func (o *TestConnectionRequest) GetConfig() map[string]interface{}`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *TestConnectionRequest) GetConfigOk() (*map[string]map[string]interface{}, bool)`
+`func (o *TestConnectionRequest) GetConfigOk() (*map[string]interface{}, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *TestConnectionRequest) SetConfig(v map[string]map[string]interface{})`
+`func (o *TestConnectionRequest) SetConfig(v map[string]interface{})`
 
 SetConfig sets Config field to given value.
 

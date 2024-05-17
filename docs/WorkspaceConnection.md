@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Association** | Pointer to [**WorkspaceConnectionAssociation**](WorkspaceConnectionAssociation.md) |  | [optional] 
-**Config** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**Config** | Pointer to **map[string]interface{}** |  | [optional] 
 **ConnectionLevel** | **string** | The level at which the connection exists, can be wither &#39;identity&#39; or &#39;workspace&#39;. | 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
 **CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
@@ -77,20 +77,20 @@ HasAssociation returns a boolean if a field has been set.
 
 ### GetConfig
 
-`func (o *WorkspaceConnection) GetConfig() map[string]map[string]interface{}`
+`func (o *WorkspaceConnection) GetConfig() map[string]interface{}`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *WorkspaceConnection) GetConfigOk() (*map[string]map[string]interface{}, bool)`
+`func (o *WorkspaceConnection) GetConfigOk() (*map[string]interface{}, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *WorkspaceConnection) SetConfig(v map[string]map[string]interface{})`
+`func (o *WorkspaceConnection) SetConfig(v map[string]interface{})`
 
 SetConfig sets Config field to given value.
 

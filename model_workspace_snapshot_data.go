@@ -17,23 +17,23 @@ import (
 // WorkspaceSnapshotData struct for WorkspaceSnapshotData
 type WorkspaceSnapshotData struct {
 	// The time the dashboard execution ended.
-	EndTime  string                             `json:"end_time"`
-	Inputs   *map[string]map[string]interface{} `json:"inputs,omitempty"`
-	Layout   WorkspaceSnapshotDataLayout        `json:"layout"`
-	Metadata *map[string]map[string]interface{} `json:"metadata,omitempty"`
-	Panels   map[string]map[string]interface{}  `json:"panels"`
+	EndTime  string                      `json:"end_time"`
+	Inputs   *map[string]interface{}     `json:"inputs,omitempty"`
+	Layout   WorkspaceSnapshotDataLayout `json:"layout"`
+	Metadata *map[string]interface{}     `json:"metadata,omitempty"`
+	Panels   map[string]interface{}      `json:"panels"`
 	// The schema version of this snapshot.
 	SchemaVersion string `json:"schema_version"`
 	// The time the dashboard execution started.
-	StartTime string                             `json:"start_time"`
-	Variables *map[string]map[string]interface{} `json:"variables,omitempty"`
+	StartTime string                  `json:"start_time"`
+	Variables *map[string]interface{} `json:"variables,omitempty"`
 }
 
 // NewWorkspaceSnapshotData instantiates a new WorkspaceSnapshotData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkspaceSnapshotData(endTime string, layout WorkspaceSnapshotDataLayout, panels map[string]map[string]interface{}, schemaVersion string, startTime string) *WorkspaceSnapshotData {
+func NewWorkspaceSnapshotData(endTime string, layout WorkspaceSnapshotDataLayout, panels map[string]interface{}, schemaVersion string, startTime string) *WorkspaceSnapshotData {
 	this := WorkspaceSnapshotData{}
 	this.EndTime = endTime
 	this.Layout = layout
@@ -76,9 +76,9 @@ func (o *WorkspaceSnapshotData) SetEndTime(v string) {
 }
 
 // GetInputs returns the Inputs field value if set, zero value otherwise.
-func (o *WorkspaceSnapshotData) GetInputs() map[string]map[string]interface{} {
+func (o *WorkspaceSnapshotData) GetInputs() map[string]interface{} {
 	if o == nil || o.Inputs == nil {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return *o.Inputs
@@ -86,7 +86,7 @@ func (o *WorkspaceSnapshotData) GetInputs() map[string]map[string]interface{} {
 
 // GetInputsOk returns a tuple with the Inputs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkspaceSnapshotData) GetInputsOk() (*map[string]map[string]interface{}, bool) {
+func (o *WorkspaceSnapshotData) GetInputsOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Inputs == nil {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *WorkspaceSnapshotData) HasInputs() bool {
 	return false
 }
 
-// SetInputs gets a reference to the given map[string]map[string]interface{} and assigns it to the Inputs field.
-func (o *WorkspaceSnapshotData) SetInputs(v map[string]map[string]interface{}) {
+// SetInputs gets a reference to the given map[string]interface{} and assigns it to the Inputs field.
+func (o *WorkspaceSnapshotData) SetInputs(v map[string]interface{}) {
 	o.Inputs = &v
 }
 
@@ -132,9 +132,9 @@ func (o *WorkspaceSnapshotData) SetLayout(v WorkspaceSnapshotDataLayout) {
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *WorkspaceSnapshotData) GetMetadata() map[string]map[string]interface{} {
+func (o *WorkspaceSnapshotData) GetMetadata() map[string]interface{} {
 	if o == nil || o.Metadata == nil {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return *o.Metadata
@@ -142,7 +142,7 @@ func (o *WorkspaceSnapshotData) GetMetadata() map[string]map[string]interface{} 
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkspaceSnapshotData) GetMetadataOk() (*map[string]map[string]interface{}, bool) {
+func (o *WorkspaceSnapshotData) GetMetadataOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Metadata == nil {
 		return nil, false
 	}
@@ -158,15 +158,15 @@ func (o *WorkspaceSnapshotData) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given map[string]map[string]interface{} and assigns it to the Metadata field.
-func (o *WorkspaceSnapshotData) SetMetadata(v map[string]map[string]interface{}) {
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *WorkspaceSnapshotData) SetMetadata(v map[string]interface{}) {
 	o.Metadata = &v
 }
 
 // GetPanels returns the Panels field value
-func (o *WorkspaceSnapshotData) GetPanels() map[string]map[string]interface{} {
+func (o *WorkspaceSnapshotData) GetPanels() map[string]interface{} {
 	if o == nil {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -175,7 +175,7 @@ func (o *WorkspaceSnapshotData) GetPanels() map[string]map[string]interface{} {
 
 // GetPanelsOk returns a tuple with the Panels field value
 // and a boolean to check if the value has been set.
-func (o *WorkspaceSnapshotData) GetPanelsOk() (*map[string]map[string]interface{}, bool) {
+func (o *WorkspaceSnapshotData) GetPanelsOk() (*map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -183,7 +183,7 @@ func (o *WorkspaceSnapshotData) GetPanelsOk() (*map[string]map[string]interface{
 }
 
 // SetPanels sets field value
-func (o *WorkspaceSnapshotData) SetPanels(v map[string]map[string]interface{}) {
+func (o *WorkspaceSnapshotData) SetPanels(v map[string]interface{}) {
 	o.Panels = v
 }
 
@@ -236,9 +236,9 @@ func (o *WorkspaceSnapshotData) SetStartTime(v string) {
 }
 
 // GetVariables returns the Variables field value if set, zero value otherwise.
-func (o *WorkspaceSnapshotData) GetVariables() map[string]map[string]interface{} {
+func (o *WorkspaceSnapshotData) GetVariables() map[string]interface{} {
 	if o == nil || o.Variables == nil {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return *o.Variables
@@ -246,7 +246,7 @@ func (o *WorkspaceSnapshotData) GetVariables() map[string]map[string]interface{}
 
 // GetVariablesOk returns a tuple with the Variables field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkspaceSnapshotData) GetVariablesOk() (*map[string]map[string]interface{}, bool) {
+func (o *WorkspaceSnapshotData) GetVariablesOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Variables == nil {
 		return nil, false
 	}
@@ -262,8 +262,8 @@ func (o *WorkspaceSnapshotData) HasVariables() bool {
 	return false
 }
 
-// SetVariables gets a reference to the given map[string]map[string]interface{} and assigns it to the Variables field.
-func (o *WorkspaceSnapshotData) SetVariables(v map[string]map[string]interface{}) {
+// SetVariables gets a reference to the given map[string]interface{} and assigns it to the Variables field.
+func (o *WorkspaceSnapshotData) SetVariables(v map[string]interface{}) {
 	o.Variables = &v
 }
 
