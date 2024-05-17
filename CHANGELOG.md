@@ -1,5 +1,19 @@
 # Turbot Pipes Go SDK
 
+## 0.10.0 [2024-05-17]
+
+_Breaking changes_
+
+- Rename all `Request` functions to be more specific to the operation it performs and the entity on which the operation is executed. E.g. When creating connections for an organization, rename the method to create the same from `Request` to `CreateConnectionRequest`, similarly for updating the connection the method is renamed from `Request` to `UpdateConnectionRequest` and so on.
+
+_What's new?_
+
+- Intregation Management APIs for `Tenants`, `Users`, `Organizations`, `UserWorkspaces` and `OrgWorkspaces`.
+
+_Enhancements_
+
+- Add support for installing mods that are associated to integrations.
+
 ## 0.9.1 [2024-03-21]
 
 _Breaking changes_
