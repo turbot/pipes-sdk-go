@@ -1,5 +1,23 @@
 # Turbot Pipes Go SDK
 
+## 0.10.0 [2024-07-24]
+
+_What's new?_
+
+- Intregation Management APIs for `Tenants`, `Users`, `Organizations`, `UserWorkspaces` and `OrgWorkspaces`.
+- Tenant Connection Management APIs.
+- Tenant Connection Folder Management APIs.
+- User Connection Folder Management APIs.
+- Organization Connection Management APIs.
+- Organization Connection Folder Management APIs.
+- Workspace Connection Management APIs.
+- Workspace Connection Folder Management APIs.
+- Permission Management APIs for `Connections` and `ConnectionFolders`.
+
+_Enhancements_
+
+- Add support for installing mods that are associated to integrations.
+
 ## 0.9.1 [2024-03-21]
 
 _Breaking changes_
