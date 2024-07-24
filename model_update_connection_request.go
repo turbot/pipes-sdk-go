@@ -16,8 +16,11 @@ import (
 
 // UpdateConnectionRequest struct for UpdateConnectionRequest
 type UpdateConnectionRequest struct {
-	Config *map[string]interface{} `json:"config,omitempty"`
-	Handle *string                 `json:"handle,omitempty"`
+	Config           *map[string]interface{} `json:"config,omitempty"`
+	ConfigSource     *string                            `json:"config_source,omitempty"`
+	CredentialSource *string                            `json:"credential_source,omitempty"`
+	Handle           *string                            `json:"handle,omitempty"`
+	ParentId         *string                            `json:"parent_id,omitempty"`
 }
 
 // NewUpdateConnectionRequest instantiates a new UpdateConnectionRequest object
@@ -69,6 +72,70 @@ func (o *UpdateConnectionRequest) SetConfig(v map[string]interface{}) {
 	o.Config = &v
 }
 
+// GetConfigSource returns the ConfigSource field value if set, zero value otherwise.
+func (o *UpdateConnectionRequest) GetConfigSource() string {
+	if o == nil || o.ConfigSource == nil {
+		var ret string
+		return ret
+	}
+	return *o.ConfigSource
+}
+
+// GetConfigSourceOk returns a tuple with the ConfigSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateConnectionRequest) GetConfigSourceOk() (*string, bool) {
+	if o == nil || o.ConfigSource == nil {
+		return nil, false
+	}
+	return o.ConfigSource, true
+}
+
+// HasConfigSource returns a boolean if a field has been set.
+func (o *UpdateConnectionRequest) HasConfigSource() bool {
+	if o != nil && o.ConfigSource != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigSource gets a reference to the given string and assigns it to the ConfigSource field.
+func (o *UpdateConnectionRequest) SetConfigSource(v string) {
+	o.ConfigSource = &v
+}
+
+// GetCredentialSource returns the CredentialSource field value if set, zero value otherwise.
+func (o *UpdateConnectionRequest) GetCredentialSource() string {
+	if o == nil || o.CredentialSource == nil {
+		var ret string
+		return ret
+	}
+	return *o.CredentialSource
+}
+
+// GetCredentialSourceOk returns a tuple with the CredentialSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateConnectionRequest) GetCredentialSourceOk() (*string, bool) {
+	if o == nil || o.CredentialSource == nil {
+		return nil, false
+	}
+	return o.CredentialSource, true
+}
+
+// HasCredentialSource returns a boolean if a field has been set.
+func (o *UpdateConnectionRequest) HasCredentialSource() bool {
+	if o != nil && o.CredentialSource != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCredentialSource gets a reference to the given string and assigns it to the CredentialSource field.
+func (o *UpdateConnectionRequest) SetCredentialSource(v string) {
+	o.CredentialSource = &v
+}
+
 // GetHandle returns the Handle field value if set, zero value otherwise.
 func (o *UpdateConnectionRequest) GetHandle() string {
 	if o == nil || o.Handle == nil {
@@ -101,13 +168,54 @@ func (o *UpdateConnectionRequest) SetHandle(v string) {
 	o.Handle = &v
 }
 
+// GetParentId returns the ParentId field value if set, zero value otherwise.
+func (o *UpdateConnectionRequest) GetParentId() string {
+	if o == nil || o.ParentId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ParentId
+}
+
+// GetParentIdOk returns a tuple with the ParentId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateConnectionRequest) GetParentIdOk() (*string, bool) {
+	if o == nil || o.ParentId == nil {
+		return nil, false
+	}
+	return o.ParentId, true
+}
+
+// HasParentId returns a boolean if a field has been set.
+func (o *UpdateConnectionRequest) HasParentId() bool {
+	if o != nil && o.ParentId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetParentId gets a reference to the given string and assigns it to the ParentId field.
+func (o *UpdateConnectionRequest) SetParentId(v string) {
+	o.ParentId = &v
+}
+
 func (o UpdateConnectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Config != nil {
 		toSerialize["config"] = o.Config
 	}
+	if o.ConfigSource != nil {
+		toSerialize["config_source"] = o.ConfigSource
+	}
+	if o.CredentialSource != nil {
+		toSerialize["credential_source"] = o.CredentialSource
+	}
 	if o.Handle != nil {
 		toSerialize["handle"] = o.Handle
+	}
+	if o.ParentId != nil {
+		toSerialize["parent_id"] = o.ParentId
 	}
 	return json.Marshal(toSerialize)
 }

@@ -16,8 +16,11 @@ import (
 
 // CreateWorkspaceModRequest struct for CreateWorkspaceModRequest
 type CreateWorkspaceModRequest struct {
-	Constraint *string `json:"constraint,omitempty"`
-	Path       string  `json:"path"`
+	Branch            *string `json:"branch,omitempty"`
+	Constraint        *string `json:"constraint,omitempty"`
+	IntegrationHandle *string `json:"integration_handle,omitempty"`
+	Path              string  `json:"path"`
+	Version           *string `json:"version,omitempty"`
 }
 
 // NewCreateWorkspaceModRequest instantiates a new CreateWorkspaceModRequest object
@@ -36,6 +39,38 @@ func NewCreateWorkspaceModRequest(path string) *CreateWorkspaceModRequest {
 func NewCreateWorkspaceModRequestWithDefaults() *CreateWorkspaceModRequest {
 	this := CreateWorkspaceModRequest{}
 	return &this
+}
+
+// GetBranch returns the Branch field value if set, zero value otherwise.
+func (o *CreateWorkspaceModRequest) GetBranch() string {
+	if o == nil || o.Branch == nil {
+		var ret string
+		return ret
+	}
+	return *o.Branch
+}
+
+// GetBranchOk returns a tuple with the Branch field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateWorkspaceModRequest) GetBranchOk() (*string, bool) {
+	if o == nil || o.Branch == nil {
+		return nil, false
+	}
+	return o.Branch, true
+}
+
+// HasBranch returns a boolean if a field has been set.
+func (o *CreateWorkspaceModRequest) HasBranch() bool {
+	if o != nil && o.Branch != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBranch gets a reference to the given string and assigns it to the Branch field.
+func (o *CreateWorkspaceModRequest) SetBranch(v string) {
+	o.Branch = &v
 }
 
 // GetConstraint returns the Constraint field value if set, zero value otherwise.
@@ -70,6 +105,38 @@ func (o *CreateWorkspaceModRequest) SetConstraint(v string) {
 	o.Constraint = &v
 }
 
+// GetIntegrationHandle returns the IntegrationHandle field value if set, zero value otherwise.
+func (o *CreateWorkspaceModRequest) GetIntegrationHandle() string {
+	if o == nil || o.IntegrationHandle == nil {
+		var ret string
+		return ret
+	}
+	return *o.IntegrationHandle
+}
+
+// GetIntegrationHandleOk returns a tuple with the IntegrationHandle field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateWorkspaceModRequest) GetIntegrationHandleOk() (*string, bool) {
+	if o == nil || o.IntegrationHandle == nil {
+		return nil, false
+	}
+	return o.IntegrationHandle, true
+}
+
+// HasIntegrationHandle returns a boolean if a field has been set.
+func (o *CreateWorkspaceModRequest) HasIntegrationHandle() bool {
+	if o != nil && o.IntegrationHandle != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIntegrationHandle gets a reference to the given string and assigns it to the IntegrationHandle field.
+func (o *CreateWorkspaceModRequest) SetIntegrationHandle(v string) {
+	o.IntegrationHandle = &v
+}
+
 // GetPath returns the Path field value
 func (o *CreateWorkspaceModRequest) GetPath() string {
 	if o == nil {
@@ -94,13 +161,54 @@ func (o *CreateWorkspaceModRequest) SetPath(v string) {
 	o.Path = v
 }
 
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *CreateWorkspaceModRequest) GetVersion() string {
+	if o == nil || o.Version == nil {
+		var ret string
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateWorkspaceModRequest) GetVersionOk() (*string, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *CreateWorkspaceModRequest) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
+func (o *CreateWorkspaceModRequest) SetVersion(v string) {
+	o.Version = &v
+}
+
 func (o CreateWorkspaceModRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Branch != nil {
+		toSerialize["branch"] = o.Branch
+	}
 	if o.Constraint != nil {
 		toSerialize["constraint"] = o.Constraint
 	}
+	if o.IntegrationHandle != nil {
+		toSerialize["integration_handle"] = o.IntegrationHandle
+	}
 	if true {
 		toSerialize["path"] = o.Path
+	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
 	}
 	return json.Marshal(toSerialize)
 }

@@ -16,10 +16,10 @@ import (
 
 // CreateConnectionRequest struct for CreateConnectionRequest
 type CreateConnectionRequest struct {
-	Config *map[string]interface{} `json:"config,omitempty"`
-	Handle string                  `json:"handle"`
-	// Type   string                 `json:\"type\" binding:\"required,steampipe_connection_type\"`
-	Plugin string `json:"plugin"`
+	Config   *map[string]interface{} `json:"config,omitempty"`
+	Handle   string                             `json:"handle"`
+	ParentId *string                            `json:"parent_id,omitempty"`
+	Plugin   string                             `json:"plugin"`
 }
 
 // NewCreateConnectionRequest instantiates a new CreateConnectionRequest object
@@ -97,6 +97,38 @@ func (o *CreateConnectionRequest) SetHandle(v string) {
 	o.Handle = v
 }
 
+// GetParentId returns the ParentId field value if set, zero value otherwise.
+func (o *CreateConnectionRequest) GetParentId() string {
+	if o == nil || o.ParentId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ParentId
+}
+
+// GetParentIdOk returns a tuple with the ParentId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateConnectionRequest) GetParentIdOk() (*string, bool) {
+	if o == nil || o.ParentId == nil {
+		return nil, false
+	}
+	return o.ParentId, true
+}
+
+// HasParentId returns a boolean if a field has been set.
+func (o *CreateConnectionRequest) HasParentId() bool {
+	if o != nil && o.ParentId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetParentId gets a reference to the given string and assigns it to the ParentId field.
+func (o *CreateConnectionRequest) SetParentId(v string) {
+	o.ParentId = &v
+}
+
 // GetPlugin returns the Plugin field value
 func (o *CreateConnectionRequest) GetPlugin() string {
 	if o == nil {
@@ -128,6 +160,9 @@ func (o CreateConnectionRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["handle"] = o.Handle
+	}
+	if o.ParentId != nil {
+		toSerialize["parent_id"] = o.ParentId
 	}
 	if true {
 		toSerialize["plugin"] = o.Plugin

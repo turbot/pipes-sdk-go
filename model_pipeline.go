@@ -32,8 +32,8 @@ type Pipeline struct {
 	Frequency    PipelineFrequency `json:"frequency"`
 	// The unique identifier of the pipeline.
 	Id string `json:"id"`
-	// We need the IdentityID to be in the JSON field because I'm sending the pipeline definition across the Temporal Workflow (see Datatank migration workflow)
-	IdentityId string `json:"identity_id"`
+	// The unique identifier of the identity for whom the pipeline is created.
+	IdentityId *string `json:"identity_id,omitempty"`
 	// The instance type of this pipeline.
 	InstanceType string     `json:"instance_type"`
 	LastProcess  *SpProcess `json:"last_process,omitempty"`
@@ -47,6 +47,8 @@ type Pipeline struct {
 	State       string      `json:"state"`
 	StateReason *string     `json:"state_reason,omitempty"`
 	Tags        interface{} `json:"tags,omitempty"`
+	// We need the IdentityID to be in the JSON field because I'm sending the pipeline definition across the Temporal Workflow (see Datatank migration workflow)
+	TenantId string `json:"tenant_id"`
 	// The title of the pipeline.
 	Title *string `json:"title,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
@@ -64,7 +66,7 @@ type Pipeline struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPipeline(createdAt string, createdById string, deletedById string, desiredState string, frequency PipelineFrequency, id string, identityId string, instanceType string, pipeline string, state string, updatedById string, versionId int32) *Pipeline {
+func NewPipeline(createdAt string, createdById string, deletedById string, desiredState string, frequency PipelineFrequency, id string, instanceType string, pipeline string, state string, tenantId string, updatedById string, versionId int32) *Pipeline {
 	this := Pipeline{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
@@ -72,10 +74,10 @@ func NewPipeline(createdAt string, createdById string, deletedById string, desir
 	this.DesiredState = desiredState
 	this.Frequency = frequency
 	this.Id = id
-	this.IdentityId = identityId
 	this.InstanceType = instanceType
 	this.Pipeline = pipeline
 	this.State = state
+	this.TenantId = tenantId
 	this.UpdatedById = updatedById
 	this.VersionId = versionId
 	return &this
@@ -362,28 +364,36 @@ func (o *Pipeline) SetId(v string) {
 	o.Id = v
 }
 
-// GetIdentityId returns the IdentityId field value
+// GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *Pipeline) GetIdentityId() string {
-	if o == nil {
+	if o == nil || o.IdentityId == nil {
 		var ret string
 		return ret
 	}
-
-	return o.IdentityId
+	return *o.IdentityId
 }
 
-// GetIdentityIdOk returns a tuple with the IdentityId field value
+// GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pipeline) GetIdentityIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.IdentityId == nil {
 		return nil, false
 	}
-	return &o.IdentityId, true
+	return o.IdentityId, true
 }
 
-// SetIdentityId sets field value
+// HasIdentityId returns a boolean if a field has been set.
+func (o *Pipeline) HasIdentityId() bool {
+	if o != nil && o.IdentityId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityId gets a reference to the given string and assigns it to the IdentityId field.
 func (o *Pipeline) SetIdentityId(v string) {
-	o.IdentityId = v
+	o.IdentityId = &v
 }
 
 // GetInstanceType returns the InstanceType field value
@@ -619,6 +629,30 @@ func (o *Pipeline) SetTags(v interface{}) {
 	o.Tags = v
 }
 
+// GetTenantId returns the TenantId field value
+func (o *Pipeline) GetTenantId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TenantId
+}
+
+// GetTenantIdOk returns a tuple with the TenantId field value
+// and a boolean to check if the value has been set.
+func (o *Pipeline) GetTenantIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TenantId, true
+}
+
+// SetTenantId sets field value
+func (o *Pipeline) SetTenantId(v string) {
+	o.TenantId = v
+}
+
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *Pipeline) GetTitle() string {
 	if o == nil || o.Title == nil {
@@ -827,7 +861,7 @@ func (o Pipeline) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["id"] = o.Id
 	}
-	if true {
+	if o.IdentityId != nil {
 		toSerialize["identity_id"] = o.IdentityId
 	}
 	if true {
@@ -853,6 +887,9 @@ func (o Pipeline) MarshalJSON() ([]byte, error) {
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
+	}
+	if true {
+		toSerialize["tenant_id"] = o.TenantId
 	}
 	if o.Title != nil {
 		toSerialize["title"] = o.Title

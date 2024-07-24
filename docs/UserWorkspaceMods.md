@@ -340,7 +340,7 @@ func main() {
     userHandle := "userHandle_example" // string | The handle of the user who owns the workspace.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the mod will be updated.
     modAlias := "modAlias_example" // string | The mod alias or mod ID to update.
-    request := *openapiclient.NewUpdateWorkspaceModRequest("Constraint_example") // UpdateWorkspaceModRequest | The request body to update a mod for this workspace.
+    request := *openapiclient.NewUpdateWorkspaceModRequest() // UpdateWorkspaceModRequest | The request body to update a mod for this workspace.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **PipelineId** | Pointer to **string** | The unique identifier of the pipeline for which the process is created. | [optional] 
 **State** | Pointer to **string** | The state of the process. | [optional] 
 **StateReason** | Pointer to **string** | The optional reason why the process is in its current state. | [optional] 
+**TenantId** | Pointer to **string** | The unique identifier of the tenant for which the process is created. | [optional] 
 **Type** | **string** | The type of the process, generally denotes the activity performed e.g. workspace.create, pipeline.execute, pipeline.command.run. | 
 **UpdatedAt** | **string** | The time of the last update in ISO 8601 UTC. | 
 **UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
@@ -249,6 +250,31 @@ SetStateReason sets StateReason field to given value.
 `func (o *SpProcess) HasStateReason() bool`
 
 HasStateReason returns a boolean if a field has been set.
+
+### GetTenantId
+
+`func (o *SpProcess) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *SpProcess) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *SpProcess) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
+
+### HasTenantId
+
+`func (o *SpProcess) HasTenantId() bool`
+
+HasTenantId returns a boolean if a field has been set.
 
 ### GetType
 

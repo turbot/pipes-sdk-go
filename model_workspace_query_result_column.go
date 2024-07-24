@@ -16,9 +16,10 @@ import (
 
 // WorkspaceQueryResultColumn struct for WorkspaceQueryResultColumn
 type WorkspaceQueryResultColumn struct {
-	DataType      string `json:"data_type"`
-	MaxDataLength *int32 `json:"max_data_length,omitempty"`
-	Name          string `json:"name"`
+	DataType      string  `json:"data_type"`
+	MaxDataLength *int32  `json:"max_data_length,omitempty"`
+	Name          string  `json:"name"`
+	OriginalName  *string `json:"original_name,omitempty"`
 }
 
 // NewWorkspaceQueryResultColumn instantiates a new WorkspaceQueryResultColumn object
@@ -120,6 +121,38 @@ func (o *WorkspaceQueryResultColumn) SetName(v string) {
 	o.Name = v
 }
 
+// GetOriginalName returns the OriginalName field value if set, zero value otherwise.
+func (o *WorkspaceQueryResultColumn) GetOriginalName() string {
+	if o == nil || o.OriginalName == nil {
+		var ret string
+		return ret
+	}
+	return *o.OriginalName
+}
+
+// GetOriginalNameOk returns a tuple with the OriginalName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceQueryResultColumn) GetOriginalNameOk() (*string, bool) {
+	if o == nil || o.OriginalName == nil {
+		return nil, false
+	}
+	return o.OriginalName, true
+}
+
+// HasOriginalName returns a boolean if a field has been set.
+func (o *WorkspaceQueryResultColumn) HasOriginalName() bool {
+	if o != nil && o.OriginalName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOriginalName gets a reference to the given string and assigns it to the OriginalName field.
+func (o *WorkspaceQueryResultColumn) SetOriginalName(v string) {
+	o.OriginalName = &v
+}
+
 func (o WorkspaceQueryResultColumn) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -130,6 +163,9 @@ func (o WorkspaceQueryResultColumn) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.OriginalName != nil {
+		toSerialize["original_name"] = o.OriginalName
 	}
 	return json.Marshal(toSerialize)
 }

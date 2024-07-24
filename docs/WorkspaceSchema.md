@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Aggregator** | Pointer to [**WorkspaceAggregator**](WorkspaceAggregator.md) |  | [optional] 
+**Aggregator** | Pointer to [**Aggregator**](Aggregator.md) |  | [optional] 
 **AggregatorId** | Pointer to **string** | The id of the aggregator if the schema is of type &#39;aggregator&#39;. | [optional] 
 **Connection** | Pointer to [**Connection**](Connection.md) |  | [optional] 
 **ConnectionId** | Pointer to **string** | The id of the connection if the schema is of type &#39;connection&#39;. | [optional] 
@@ -19,7 +19,8 @@ Name | Type | Description | Notes
 **Id** | **string** | The unique identifier for the schema. | 
 **IdentityId** | **string** | The unique identifier for an identity where the schema has been created. | 
 **Name** | **string** | The name of the schema. | 
-**Type** | Pointer to **string** | Type of schems can be one of datatank, aggregator or connection. | [optional] 
+**State** | Pointer to **string** | State of the schema e.g. &#x60;granted&#x60;, &#x60;direct&#x60; or &#x60;indirect&#x60;. | [optional] 
+**Type** | Pointer to **string** | Type of schema can be one of datatank, aggregator or connection. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
 **UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
@@ -47,20 +48,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAggregator
 
-`func (o *WorkspaceSchema) GetAggregator() WorkspaceAggregator`
+`func (o *WorkspaceSchema) GetAggregator() Aggregator`
 
 GetAggregator returns the Aggregator field if non-nil, zero value otherwise.
 
 ### GetAggregatorOk
 
-`func (o *WorkspaceSchema) GetAggregatorOk() (*WorkspaceAggregator, bool)`
+`func (o *WorkspaceSchema) GetAggregatorOk() (*Aggregator, bool)`
 
 GetAggregatorOk returns a tuple with the Aggregator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAggregator
 
-`func (o *WorkspaceSchema) SetAggregator(v WorkspaceAggregator)`
+`func (o *WorkspaceSchema) SetAggregator(v Aggregator)`
 
 SetAggregator sets Aggregator field to given value.
 
@@ -389,6 +390,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetState
+
+`func (o *WorkspaceSchema) GetState() string`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *WorkspaceSchema) GetStateOk() (*string, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *WorkspaceSchema) SetState(v string)`
+
+SetState sets State field to given value.
+
+### HasState
+
+`func (o *WorkspaceSchema) HasState() bool`
+
+HasState returns a boolean if a field has been set.
 
 ### GetType
 

@@ -27,14 +27,14 @@ type AuditRecord struct {
 	ActorId string `json:"actor_id"`
 	ActorIp string `json:"actor_ip"`
 	// The time when the audit log was recorded.
-	CreatedAt string                 `json:"created_at"`
+	CreatedAt string                            `json:"created_at"`
 	Data      map[string]interface{} `json:"data"`
 	// The unique identifier for an audit log.
 	Id string `json:"id"`
 	// The handle name for an identity where the action has been performed.
-	IdentityHandle string `json:"identity_handle"`
+	IdentityHandle *string `json:"identity_handle,omitempty"`
 	// The unique identifier for an identity where the action has been performed.
-	IdentityId string  `json:"identity_id"`
+	IdentityId *string `json:"identity_id,omitempty"`
 	ProcessId  *string `json:"process_id,omitempty"`
 	// The handle name of the entity on which the action has been performed.
 	TargetHandle *string `json:"target_handle,omitempty"`
@@ -48,7 +48,7 @@ type AuditRecord struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuditRecord(actionType string, actorAvatarUrl string, actorDisplayName string, actorHandle string, actorId string, actorIp string, createdAt string, data map[string]interface{}, id string, identityHandle string, identityId string, tenantId string) *AuditRecord {
+func NewAuditRecord(actionType string, actorAvatarUrl string, actorDisplayName string, actorHandle string, actorId string, actorIp string, createdAt string, data map[string]interface{}, id string, tenantId string) *AuditRecord {
 	this := AuditRecord{}
 	this.ActionType = actionType
 	this.ActorAvatarUrl = actorAvatarUrl
@@ -59,8 +59,6 @@ func NewAuditRecord(actionType string, actorAvatarUrl string, actorDisplayName s
 	this.CreatedAt = createdAt
 	this.Data = data
 	this.Id = id
-	this.IdentityHandle = identityHandle
-	this.IdentityId = identityId
 	this.TenantId = tenantId
 	return &this
 }
@@ -289,52 +287,68 @@ func (o *AuditRecord) SetId(v string) {
 	o.Id = v
 }
 
-// GetIdentityHandle returns the IdentityHandle field value
+// GetIdentityHandle returns the IdentityHandle field value if set, zero value otherwise.
 func (o *AuditRecord) GetIdentityHandle() string {
-	if o == nil {
+	if o == nil || o.IdentityHandle == nil {
 		var ret string
 		return ret
 	}
-
-	return o.IdentityHandle
+	return *o.IdentityHandle
 }
 
-// GetIdentityHandleOk returns a tuple with the IdentityHandle field value
+// GetIdentityHandleOk returns a tuple with the IdentityHandle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuditRecord) GetIdentityHandleOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.IdentityHandle == nil {
 		return nil, false
 	}
-	return &o.IdentityHandle, true
+	return o.IdentityHandle, true
 }
 
-// SetIdentityHandle sets field value
+// HasIdentityHandle returns a boolean if a field has been set.
+func (o *AuditRecord) HasIdentityHandle() bool {
+	if o != nil && o.IdentityHandle != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityHandle gets a reference to the given string and assigns it to the IdentityHandle field.
 func (o *AuditRecord) SetIdentityHandle(v string) {
-	o.IdentityHandle = v
+	o.IdentityHandle = &v
 }
 
-// GetIdentityId returns the IdentityId field value
+// GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *AuditRecord) GetIdentityId() string {
-	if o == nil {
+	if o == nil || o.IdentityId == nil {
 		var ret string
 		return ret
 	}
-
-	return o.IdentityId
+	return *o.IdentityId
 }
 
-// GetIdentityIdOk returns a tuple with the IdentityId field value
+// GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuditRecord) GetIdentityIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.IdentityId == nil {
 		return nil, false
 	}
-	return &o.IdentityId, true
+	return o.IdentityId, true
 }
 
-// SetIdentityId sets field value
+// HasIdentityId returns a boolean if a field has been set.
+func (o *AuditRecord) HasIdentityId() bool {
+	if o != nil && o.IdentityId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityId gets a reference to the given string and assigns it to the IdentityId field.
 func (o *AuditRecord) SetIdentityId(v string) {
-	o.IdentityId = v
+	o.IdentityId = &v
 }
 
 // GetProcessId returns the ProcessId field value if set, zero value otherwise.
@@ -486,10 +500,10 @@ func (o AuditRecord) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["id"] = o.Id
 	}
-	if true {
+	if o.IdentityHandle != nil {
 		toSerialize["identity_handle"] = o.IdentityHandle
 	}
-	if true {
+	if o.IdentityId != nil {
 		toSerialize["identity_id"] = o.IdentityId
 	}
 	if o.ProcessId != nil {

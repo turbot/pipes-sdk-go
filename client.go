@@ -55,7 +55,15 @@ type APIClient struct {
 
 	Identities *IdentitiesService
 
+	Integrations *IntegrationsService
+
+	OrgConnectionFolders *OrgConnectionFoldersService
+
+	OrgConnectionTree *OrgConnectionTreeService
+
 	OrgConnections *OrgConnectionsService
+
+	OrgIntegrations *OrgIntegrationsService
 
 	OrgMembers *OrgMembersService
 
@@ -65,17 +73,27 @@ type APIClient struct {
 
 	OrgWorkspaceConnectionAssociations *OrgWorkspaceConnectionAssociationsService
 
+	OrgWorkspaceConnectionFolders *OrgWorkspaceConnectionFoldersService
+
+	OrgWorkspaceConnectionTree *OrgWorkspaceConnectionTreeService
+
+	OrgWorkspaceConnections *OrgWorkspaceConnectionsService
+
 	OrgWorkspaceDatatankParts *OrgWorkspaceDatatankPartsService
 
 	OrgWorkspaceDatatankTables *OrgWorkspaceDatatankTablesService
 
 	OrgWorkspaceDatatanks *OrgWorkspaceDatatanksService
 
+	OrgWorkspaceIntegrations *OrgWorkspaceIntegrationsService
+
 	OrgWorkspaceMembers *OrgWorkspaceMembersService
 
 	OrgWorkspaceModVariables *OrgWorkspaceModVariablesService
 
 	OrgWorkspaceMods *OrgWorkspaceModsService
+
+	OrgWorkspaceNotificationRules *OrgWorkspaceNotificationRulesService
 
 	OrgWorkspacePipelines *OrgWorkspacePipelinesService
 
@@ -91,11 +109,21 @@ type APIClient struct {
 
 	Orgs *OrgsService
 
+	TenantConnectionFolders *TenantConnectionFoldersService
+
+	TenantConnectionTree *TenantConnectionTreeService
+
+	TenantConnections *TenantConnectionsService
+
+	TenantIntegrations *TenantIntegrationsService
+
 	TenantMembers *TenantMembersService
 
 	Tenants *TenantsService
 
 	UserConnections *UserConnectionsService
+
+	UserIntegrations *UserIntegrationsService
 
 	UserProcesses *UserProcessesService
 
@@ -105,15 +133,25 @@ type APIClient struct {
 
 	UserWorkspaceConnectionAssociations *UserWorkspaceConnectionAssociationsService
 
+	UserWorkspaceConnectionFolders *UserWorkspaceConnectionFoldersService
+
+	UserWorkspaceConnectionTree *UserWorkspaceConnectionTreeService
+
+	UserWorkspaceConnections *UserWorkspaceConnectionsService
+
 	UserWorkspaceDatatankParts *UserWorkspaceDatatankPartsService
 
 	UserWorkspaceDatatankTables *UserWorkspaceDatatankTablesService
 
 	UserWorkspaceDatatanks *UserWorkspaceDatatanksService
 
+	UserWorkspaceIntegrations *UserWorkspaceIntegrationsService
+
 	UserWorkspaceModVariables *UserWorkspaceModVariablesService
 
 	UserWorkspaceMods *UserWorkspaceModsService
+
+	UserWorkspaceNotificationRules *UserWorkspaceNotificationRulesService
 
 	UserWorkspacePipelines *UserWorkspacePipelinesService
 
@@ -149,17 +187,26 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.Actors = (*ActorsService)(&c.common)
 	c.Auth = (*AuthService)(&c.common)
 	c.Identities = (*IdentitiesService)(&c.common)
+	c.Integrations = (*IntegrationsService)(&c.common)
+	c.OrgConnectionFolders = (*OrgConnectionFoldersService)(&c.common)
+	c.OrgConnectionTree = (*OrgConnectionTreeService)(&c.common)
 	c.OrgConnections = (*OrgConnectionsService)(&c.common)
+	c.OrgIntegrations = (*OrgIntegrationsService)(&c.common)
 	c.OrgMembers = (*OrgMembersService)(&c.common)
 	c.OrgProcesses = (*OrgProcessesService)(&c.common)
 	c.OrgWorkspaceAggregators = (*OrgWorkspaceAggregatorsService)(&c.common)
 	c.OrgWorkspaceConnectionAssociations = (*OrgWorkspaceConnectionAssociationsService)(&c.common)
+	c.OrgWorkspaceConnectionFolders = (*OrgWorkspaceConnectionFoldersService)(&c.common)
+	c.OrgWorkspaceConnectionTree = (*OrgWorkspaceConnectionTreeService)(&c.common)
+	c.OrgWorkspaceConnections = (*OrgWorkspaceConnectionsService)(&c.common)
 	c.OrgWorkspaceDatatankParts = (*OrgWorkspaceDatatankPartsService)(&c.common)
 	c.OrgWorkspaceDatatankTables = (*OrgWorkspaceDatatankTablesService)(&c.common)
 	c.OrgWorkspaceDatatanks = (*OrgWorkspaceDatatanksService)(&c.common)
+	c.OrgWorkspaceIntegrations = (*OrgWorkspaceIntegrationsService)(&c.common)
 	c.OrgWorkspaceMembers = (*OrgWorkspaceMembersService)(&c.common)
 	c.OrgWorkspaceModVariables = (*OrgWorkspaceModVariablesService)(&c.common)
 	c.OrgWorkspaceMods = (*OrgWorkspaceModsService)(&c.common)
+	c.OrgWorkspaceNotificationRules = (*OrgWorkspaceNotificationRulesService)(&c.common)
 	c.OrgWorkspacePipelines = (*OrgWorkspacePipelinesService)(&c.common)
 	c.OrgWorkspaceProcesses = (*OrgWorkspaceProcessesService)(&c.common)
 	c.OrgWorkspaceSchemas = (*OrgWorkspaceSchemasService)(&c.common)
@@ -167,18 +214,28 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OrgWorkspaceUsages = (*OrgWorkspaceUsagesService)(&c.common)
 	c.OrgWorkspaces = (*OrgWorkspacesService)(&c.common)
 	c.Orgs = (*OrgsService)(&c.common)
+	c.TenantConnectionFolders = (*TenantConnectionFoldersService)(&c.common)
+	c.TenantConnectionTree = (*TenantConnectionTreeService)(&c.common)
+	c.TenantConnections = (*TenantConnectionsService)(&c.common)
+	c.TenantIntegrations = (*TenantIntegrationsService)(&c.common)
 	c.TenantMembers = (*TenantMembersService)(&c.common)
 	c.Tenants = (*TenantsService)(&c.common)
 	c.UserConnections = (*UserConnectionsService)(&c.common)
+	c.UserIntegrations = (*UserIntegrationsService)(&c.common)
 	c.UserProcesses = (*UserProcessesService)(&c.common)
 	c.UserTokens = (*UserTokensService)(&c.common)
 	c.UserWorkspaceAggregators = (*UserWorkspaceAggregatorsService)(&c.common)
 	c.UserWorkspaceConnectionAssociations = (*UserWorkspaceConnectionAssociationsService)(&c.common)
+	c.UserWorkspaceConnectionFolders = (*UserWorkspaceConnectionFoldersService)(&c.common)
+	c.UserWorkspaceConnectionTree = (*UserWorkspaceConnectionTreeService)(&c.common)
+	c.UserWorkspaceConnections = (*UserWorkspaceConnectionsService)(&c.common)
 	c.UserWorkspaceDatatankParts = (*UserWorkspaceDatatankPartsService)(&c.common)
 	c.UserWorkspaceDatatankTables = (*UserWorkspaceDatatankTablesService)(&c.common)
 	c.UserWorkspaceDatatanks = (*UserWorkspaceDatatanksService)(&c.common)
+	c.UserWorkspaceIntegrations = (*UserWorkspaceIntegrationsService)(&c.common)
 	c.UserWorkspaceModVariables = (*UserWorkspaceModVariablesService)(&c.common)
 	c.UserWorkspaceMods = (*UserWorkspaceModsService)(&c.common)
+	c.UserWorkspaceNotificationRules = (*UserWorkspaceNotificationRulesService)(&c.common)
 	c.UserWorkspacePipelines = (*UserWorkspacePipelinesService)(&c.common)
 	c.UserWorkspaceProcesses = (*UserWorkspaceProcessesService)(&c.common)
 	c.UserWorkspaceSchemas = (*UserWorkspaceSchemasService)(&c.common)

@@ -35,7 +35,7 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user that the workspace belongs to.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the schema will be attached.
-    request := *openapiclient.NewAttachWorkspaceSchemaRequest("ConnectionHandle_example") // AttachWorkspaceSchemaRequest | The request body for the schema to be attached.
+    request := *openapiclient.NewAttachWorkspaceSchemaRequest() // AttachWorkspaceSchemaRequest | The request body for the schema to be attached.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

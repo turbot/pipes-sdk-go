@@ -16,25 +16,30 @@ import (
 
 // WorkspaceMod struct for WorkspaceMod
 type WorkspaceMod struct {
-	Alias      *string `json:"alias,omitempty"`
-	Constraint *string `json:"constraint,omitempty"`
+	Alias          *string `json:"alias,omitempty"`
+	Branch         *string `json:"branch,omitempty"`
+	Constraint     *string `json:"constraint,omitempty"`
+	ConstraintMode *string `json:"constraint_mode,omitempty"`
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
 	CreatedBy *User  `json:"created_by,omitempty"`
 	// The ID of the user that created this.
-	CreatedById string  `json:"created_by_id"`
-	Details     *string `json:"details,omitempty"`
-	Id          string  `json:"id"`
+	CreatedById string `json:"created_by_id"`
+	Id          string `json:"id"`
 	// The unique identifier for an identity where the workspace mod has been install.
 	IdentityId       string  `json:"identity_id"`
+	InstalledCommit  *string `json:"installed_commit,omitempty"`
 	InstalledVersion *string `json:"installed_version,omitempty"`
+	IntegrationId    *string `json:"integration_id,omitempty"`
 	Path             *string `json:"path,omitempty"`
 	State            *string `json:"state,omitempty"`
+	StateReason      *string `json:"state_reason,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
 	UpdatedBy *User   `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
-	UpdatedById string `json:"updated_by_id"`
+	UpdatedById string  `json:"updated_by_id"`
+	Version     *string `json:"version,omitempty"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
 	VersionId   int32  `json:"version_id"`
 	WorkspaceId string `json:"workspace_id"`
@@ -96,6 +101,38 @@ func (o *WorkspaceMod) SetAlias(v string) {
 	o.Alias = &v
 }
 
+// GetBranch returns the Branch field value if set, zero value otherwise.
+func (o *WorkspaceMod) GetBranch() string {
+	if o == nil || o.Branch == nil {
+		var ret string
+		return ret
+	}
+	return *o.Branch
+}
+
+// GetBranchOk returns a tuple with the Branch field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceMod) GetBranchOk() (*string, bool) {
+	if o == nil || o.Branch == nil {
+		return nil, false
+	}
+	return o.Branch, true
+}
+
+// HasBranch returns a boolean if a field has been set.
+func (o *WorkspaceMod) HasBranch() bool {
+	if o != nil && o.Branch != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBranch gets a reference to the given string and assigns it to the Branch field.
+func (o *WorkspaceMod) SetBranch(v string) {
+	o.Branch = &v
+}
+
 // GetConstraint returns the Constraint field value if set, zero value otherwise.
 func (o *WorkspaceMod) GetConstraint() string {
 	if o == nil || o.Constraint == nil {
@@ -126,6 +163,38 @@ func (o *WorkspaceMod) HasConstraint() bool {
 // SetConstraint gets a reference to the given string and assigns it to the Constraint field.
 func (o *WorkspaceMod) SetConstraint(v string) {
 	o.Constraint = &v
+}
+
+// GetConstraintMode returns the ConstraintMode field value if set, zero value otherwise.
+func (o *WorkspaceMod) GetConstraintMode() string {
+	if o == nil || o.ConstraintMode == nil {
+		var ret string
+		return ret
+	}
+	return *o.ConstraintMode
+}
+
+// GetConstraintModeOk returns a tuple with the ConstraintMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceMod) GetConstraintModeOk() (*string, bool) {
+	if o == nil || o.ConstraintMode == nil {
+		return nil, false
+	}
+	return o.ConstraintMode, true
+}
+
+// HasConstraintMode returns a boolean if a field has been set.
+func (o *WorkspaceMod) HasConstraintMode() bool {
+	if o != nil && o.ConstraintMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConstraintMode gets a reference to the given string and assigns it to the ConstraintMode field.
+func (o *WorkspaceMod) SetConstraintMode(v string) {
+	o.ConstraintMode = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -208,38 +277,6 @@ func (o *WorkspaceMod) SetCreatedById(v string) {
 	o.CreatedById = v
 }
 
-// GetDetails returns the Details field value if set, zero value otherwise.
-func (o *WorkspaceMod) GetDetails() string {
-	if o == nil || o.Details == nil {
-		var ret string
-		return ret
-	}
-	return *o.Details
-}
-
-// GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WorkspaceMod) GetDetailsOk() (*string, bool) {
-	if o == nil || o.Details == nil {
-		return nil, false
-	}
-	return o.Details, true
-}
-
-// HasDetails returns a boolean if a field has been set.
-func (o *WorkspaceMod) HasDetails() bool {
-	if o != nil && o.Details != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDetails gets a reference to the given string and assigns it to the Details field.
-func (o *WorkspaceMod) SetDetails(v string) {
-	o.Details = &v
-}
-
 // GetId returns the Id field value
 func (o *WorkspaceMod) GetId() string {
 	if o == nil {
@@ -288,6 +325,38 @@ func (o *WorkspaceMod) SetIdentityId(v string) {
 	o.IdentityId = v
 }
 
+// GetInstalledCommit returns the InstalledCommit field value if set, zero value otherwise.
+func (o *WorkspaceMod) GetInstalledCommit() string {
+	if o == nil || o.InstalledCommit == nil {
+		var ret string
+		return ret
+	}
+	return *o.InstalledCommit
+}
+
+// GetInstalledCommitOk returns a tuple with the InstalledCommit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceMod) GetInstalledCommitOk() (*string, bool) {
+	if o == nil || o.InstalledCommit == nil {
+		return nil, false
+	}
+	return o.InstalledCommit, true
+}
+
+// HasInstalledCommit returns a boolean if a field has been set.
+func (o *WorkspaceMod) HasInstalledCommit() bool {
+	if o != nil && o.InstalledCommit != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInstalledCommit gets a reference to the given string and assigns it to the InstalledCommit field.
+func (o *WorkspaceMod) SetInstalledCommit(v string) {
+	o.InstalledCommit = &v
+}
+
 // GetInstalledVersion returns the InstalledVersion field value if set, zero value otherwise.
 func (o *WorkspaceMod) GetInstalledVersion() string {
 	if o == nil || o.InstalledVersion == nil {
@@ -318,6 +387,38 @@ func (o *WorkspaceMod) HasInstalledVersion() bool {
 // SetInstalledVersion gets a reference to the given string and assigns it to the InstalledVersion field.
 func (o *WorkspaceMod) SetInstalledVersion(v string) {
 	o.InstalledVersion = &v
+}
+
+// GetIntegrationId returns the IntegrationId field value if set, zero value otherwise.
+func (o *WorkspaceMod) GetIntegrationId() string {
+	if o == nil || o.IntegrationId == nil {
+		var ret string
+		return ret
+	}
+	return *o.IntegrationId
+}
+
+// GetIntegrationIdOk returns a tuple with the IntegrationId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceMod) GetIntegrationIdOk() (*string, bool) {
+	if o == nil || o.IntegrationId == nil {
+		return nil, false
+	}
+	return o.IntegrationId, true
+}
+
+// HasIntegrationId returns a boolean if a field has been set.
+func (o *WorkspaceMod) HasIntegrationId() bool {
+	if o != nil && o.IntegrationId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIntegrationId gets a reference to the given string and assigns it to the IntegrationId field.
+func (o *WorkspaceMod) SetIntegrationId(v string) {
+	o.IntegrationId = &v
 }
 
 // GetPath returns the Path field value if set, zero value otherwise.
@@ -382,6 +483,38 @@ func (o *WorkspaceMod) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *WorkspaceMod) SetState(v string) {
 	o.State = &v
+}
+
+// GetStateReason returns the StateReason field value if set, zero value otherwise.
+func (o *WorkspaceMod) GetStateReason() string {
+	if o == nil || o.StateReason == nil {
+		var ret string
+		return ret
+	}
+	return *o.StateReason
+}
+
+// GetStateReasonOk returns a tuple with the StateReason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceMod) GetStateReasonOk() (*string, bool) {
+	if o == nil || o.StateReason == nil {
+		return nil, false
+	}
+	return o.StateReason, true
+}
+
+// HasStateReason returns a boolean if a field has been set.
+func (o *WorkspaceMod) HasStateReason() bool {
+	if o != nil && o.StateReason != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStateReason gets a reference to the given string and assigns it to the StateReason field.
+func (o *WorkspaceMod) SetStateReason(v string) {
+	o.StateReason = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -472,6 +605,38 @@ func (o *WorkspaceMod) SetUpdatedById(v string) {
 	o.UpdatedById = v
 }
 
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *WorkspaceMod) GetVersion() string {
+	if o == nil || o.Version == nil {
+		var ret string
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceMod) GetVersionOk() (*string, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *WorkspaceMod) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
+func (o *WorkspaceMod) SetVersion(v string) {
+	o.Version = &v
+}
+
 // GetVersionId returns the VersionId field value
 func (o *WorkspaceMod) GetVersionId() int32 {
 	if o == nil {
@@ -525,8 +690,14 @@ func (o WorkspaceMod) MarshalJSON() ([]byte, error) {
 	if o.Alias != nil {
 		toSerialize["alias"] = o.Alias
 	}
+	if o.Branch != nil {
+		toSerialize["branch"] = o.Branch
+	}
 	if o.Constraint != nil {
 		toSerialize["constraint"] = o.Constraint
+	}
+	if o.ConstraintMode != nil {
+		toSerialize["constraint_mode"] = o.ConstraintMode
 	}
 	if true {
 		toSerialize["created_at"] = o.CreatedAt
@@ -537,23 +708,29 @@ func (o WorkspaceMod) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["created_by_id"] = o.CreatedById
 	}
-	if o.Details != nil {
-		toSerialize["details"] = o.Details
-	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
 	if true {
 		toSerialize["identity_id"] = o.IdentityId
 	}
+	if o.InstalledCommit != nil {
+		toSerialize["installed_commit"] = o.InstalledCommit
+	}
 	if o.InstalledVersion != nil {
 		toSerialize["installed_version"] = o.InstalledVersion
+	}
+	if o.IntegrationId != nil {
+		toSerialize["integration_id"] = o.IntegrationId
 	}
 	if o.Path != nil {
 		toSerialize["path"] = o.Path
 	}
 	if o.State != nil {
 		toSerialize["state"] = o.State
+	}
+	if o.StateReason != nil {
+		toSerialize["state_reason"] = o.StateReason
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updated_at"] = o.UpdatedAt
@@ -563,6 +740,9 @@ func (o WorkspaceMod) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["updated_by_id"] = o.UpdatedById
+	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
 	}
 	if true {
 		toSerialize["version_id"] = o.VersionId

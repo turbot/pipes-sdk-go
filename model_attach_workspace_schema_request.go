@@ -16,16 +16,17 @@ import (
 
 // AttachWorkspaceSchemaRequest struct for AttachWorkspaceSchemaRequest
 type AttachWorkspaceSchemaRequest struct {
-	ConnectionHandle string `json:"connection_handle"`
+	AggregatorHandle *string `json:"aggregator_handle,omitempty"`
+	ConnectionFolder *string `json:"connection_folder,omitempty"`
+	ConnectionHandle *string `json:"connection_handle,omitempty"`
 }
 
 // NewAttachWorkspaceSchemaRequest instantiates a new AttachWorkspaceSchemaRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAttachWorkspaceSchemaRequest(connectionHandle string) *AttachWorkspaceSchemaRequest {
+func NewAttachWorkspaceSchemaRequest() *AttachWorkspaceSchemaRequest {
 	this := AttachWorkspaceSchemaRequest{}
-	this.ConnectionHandle = connectionHandle
 	return &this
 }
 
@@ -37,33 +38,111 @@ func NewAttachWorkspaceSchemaRequestWithDefaults() *AttachWorkspaceSchemaRequest
 	return &this
 }
 
-// GetConnectionHandle returns the ConnectionHandle field value
-func (o *AttachWorkspaceSchemaRequest) GetConnectionHandle() string {
-	if o == nil {
+// GetAggregatorHandle returns the AggregatorHandle field value if set, zero value otherwise.
+func (o *AttachWorkspaceSchemaRequest) GetAggregatorHandle() string {
+	if o == nil || o.AggregatorHandle == nil {
 		var ret string
 		return ret
 	}
-
-	return o.ConnectionHandle
+	return *o.AggregatorHandle
 }
 
-// GetConnectionHandleOk returns a tuple with the ConnectionHandle field value
+// GetAggregatorHandleOk returns a tuple with the AggregatorHandle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AttachWorkspaceSchemaRequest) GetConnectionHandleOk() (*string, bool) {
-	if o == nil {
+func (o *AttachWorkspaceSchemaRequest) GetAggregatorHandleOk() (*string, bool) {
+	if o == nil || o.AggregatorHandle == nil {
 		return nil, false
 	}
-	return &o.ConnectionHandle, true
+	return o.AggregatorHandle, true
 }
 
-// SetConnectionHandle sets field value
+// HasAggregatorHandle returns a boolean if a field has been set.
+func (o *AttachWorkspaceSchemaRequest) HasAggregatorHandle() bool {
+	if o != nil && o.AggregatorHandle != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAggregatorHandle gets a reference to the given string and assigns it to the AggregatorHandle field.
+func (o *AttachWorkspaceSchemaRequest) SetAggregatorHandle(v string) {
+	o.AggregatorHandle = &v
+}
+
+// GetConnectionFolder returns the ConnectionFolder field value if set, zero value otherwise.
+func (o *AttachWorkspaceSchemaRequest) GetConnectionFolder() string {
+	if o == nil || o.ConnectionFolder == nil {
+		var ret string
+		return ret
+	}
+	return *o.ConnectionFolder
+}
+
+// GetConnectionFolderOk returns a tuple with the ConnectionFolder field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AttachWorkspaceSchemaRequest) GetConnectionFolderOk() (*string, bool) {
+	if o == nil || o.ConnectionFolder == nil {
+		return nil, false
+	}
+	return o.ConnectionFolder, true
+}
+
+// HasConnectionFolder returns a boolean if a field has been set.
+func (o *AttachWorkspaceSchemaRequest) HasConnectionFolder() bool {
+	if o != nil && o.ConnectionFolder != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionFolder gets a reference to the given string and assigns it to the ConnectionFolder field.
+func (o *AttachWorkspaceSchemaRequest) SetConnectionFolder(v string) {
+	o.ConnectionFolder = &v
+}
+
+// GetConnectionHandle returns the ConnectionHandle field value if set, zero value otherwise.
+func (o *AttachWorkspaceSchemaRequest) GetConnectionHandle() string {
+	if o == nil || o.ConnectionHandle == nil {
+		var ret string
+		return ret
+	}
+	return *o.ConnectionHandle
+}
+
+// GetConnectionHandleOk returns a tuple with the ConnectionHandle field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AttachWorkspaceSchemaRequest) GetConnectionHandleOk() (*string, bool) {
+	if o == nil || o.ConnectionHandle == nil {
+		return nil, false
+	}
+	return o.ConnectionHandle, true
+}
+
+// HasConnectionHandle returns a boolean if a field has been set.
+func (o *AttachWorkspaceSchemaRequest) HasConnectionHandle() bool {
+	if o != nil && o.ConnectionHandle != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionHandle gets a reference to the given string and assigns it to the ConnectionHandle field.
 func (o *AttachWorkspaceSchemaRequest) SetConnectionHandle(v string) {
-	o.ConnectionHandle = v
+	o.ConnectionHandle = &v
 }
 
 func (o AttachWorkspaceSchemaRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.AggregatorHandle != nil {
+		toSerialize["aggregator_handle"] = o.AggregatorHandle
+	}
+	if o.ConnectionFolder != nil {
+		toSerialize["connection_folder"] = o.ConnectionFolder
+	}
+	if o.ConnectionHandle != nil {
 		toSerialize["connection_handle"] = o.ConnectionHandle
 	}
 	return json.Marshal(toSerialize)

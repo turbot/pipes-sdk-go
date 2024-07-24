@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**GetAvatar**](Tenants.md#GetAvatar) | **Get** /tenant/{tenant_handle}/avatar | Get tenant avatar
 [**GetSettings**](Tenants.md#GetSettings) | **Get** /settings | Get tenant settings
 [**List**](Tenants.md#List) | **Get** /tenant | List tenants
+[**ListAuditLogs**](Tenants.md#ListAuditLogs) | **Get** /audit_log | Tenant audit logs
 [**ListConstraints**](Tenants.md#ListConstraints) | **Get** /tenant/{tenant_handle}/constraint | List tenant constraints
 [**ListUsage**](Tenants.md#ListUsage) | **Get** /tenant/{tenant_handle}/usage | List tenant usage
 [**Update**](Tenants.md#Update) | **Patch** /tenant/{tenant_handle} | Update tenant
@@ -549,6 +550,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListTenantsResponse**](ListTenantsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListAuditLogs
+
+> ListAuditLogsResponse ListAuditLogs(ctx).Limit(limit).NextToken(nextToken).Execute()
+
+Tenant audit logs
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    limit := int32(56) // int32 | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. (optional) (default to 25)
+    nextToken := "nextToken_example" // string | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.Tenants.ListAuditLogs(context.Background()).Limit(limit).NextToken(nextToken).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `Tenants.ListAuditLogs``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAuditLogs`: ListAuditLogsResponse
+    fmt.Fprintf(os.Stdout, "Response from `Tenants.ListAuditLogs`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListAuditLogsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. | [default to 25]
+ **nextToken** | **string** | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. | 
+
+### Return type
+
+[**ListAuditLogsResponse**](ListAuditLogsResponse.md)
 
 ### Authorization
 

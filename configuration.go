@@ -106,20 +106,20 @@ func NewConfiguration() *Configuration {
 		Servers: ServerConfigurations{
 			{
 				URL:         "https://pipes.turbot.com/api/v0",
-				Description: "No description provided",
+				Description: "Pipes API base URL",
 			},
 		},
 		OperationServers: map[string]ServerConfigurations{
 			"OrgWorkspaceSnapshotsService.Download": {
 				{
 					URL:         "https://pipes.turbot.com/download",
-					Description: "No description provided",
+					Description: "Pipes organization workspace snapshot download API",
 				},
 			},
 			"UserWorkspaceSnapshotsService.Download": {
 				{
 					URL:         "https://pipes.turbot.com/download",
-					Description: "No description provided",
+					Description: "Pipes user workspace snapshot download API",
 				},
 			},
 		},
