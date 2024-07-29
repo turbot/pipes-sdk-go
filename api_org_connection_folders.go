@@ -1619,12 +1619,12 @@ type OrgConnectionFoldersApiUpdateRequest struct {
 	ApiService *OrgConnectionFoldersService
 	orgHandle  string
 	folderId   string
-	request    *UpdateConnectionRequest
+	request    *UpdateConnectionFolderRequest
 	mode       *string
 }
 
 // The request body for the connection which needs to be updated.
-func (r OrgConnectionFoldersApiUpdateRequest) Request(request UpdateConnectionRequest) OrgConnectionFoldersApiUpdateRequest {
+func (r OrgConnectionFoldersApiUpdateRequest) Request(request UpdateConnectionFolderRequest) OrgConnectionFoldersApiUpdateRequest {
 	r.request = &request
 	return r
 }

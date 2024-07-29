@@ -24,6 +24,8 @@ Name | Type | Description | Notes
 **Notices** | Pointer to **map[string]interface{}** |  | [optional] 
 **PowerpipeVersion** | Pointer to **string** |  | [optional] 
 **PublicKey** | Pointer to **string** |  | [optional] 
+**SearchPath** | Pointer to **[]string** | The configured Steampipe database search path for the workspace. | [optional] 
+**SearchPathPrefix** | Pointer to **[]string** | The optional Steampipe database search path prefix for the workspace. | [optional] 
 **State** | Pointer to **string** | The current state of the workspace. | [optional] 
 **StateReason** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
@@ -504,6 +506,56 @@ SetPublicKey sets PublicKey field to given value.
 `func (o *Workspace) HasPublicKey() bool`
 
 HasPublicKey returns a boolean if a field has been set.
+
+### GetSearchPath
+
+`func (o *Workspace) GetSearchPath() []string`
+
+GetSearchPath returns the SearchPath field if non-nil, zero value otherwise.
+
+### GetSearchPathOk
+
+`func (o *Workspace) GetSearchPathOk() (*[]string, bool)`
+
+GetSearchPathOk returns a tuple with the SearchPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSearchPath
+
+`func (o *Workspace) SetSearchPath(v []string)`
+
+SetSearchPath sets SearchPath field to given value.
+
+### HasSearchPath
+
+`func (o *Workspace) HasSearchPath() bool`
+
+HasSearchPath returns a boolean if a field has been set.
+
+### GetSearchPathPrefix
+
+`func (o *Workspace) GetSearchPathPrefix() []string`
+
+GetSearchPathPrefix returns the SearchPathPrefix field if non-nil, zero value otherwise.
+
+### GetSearchPathPrefixOk
+
+`func (o *Workspace) GetSearchPathPrefixOk() (*[]string, bool)`
+
+GetSearchPathPrefixOk returns a tuple with the SearchPathPrefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSearchPathPrefix
+
+`func (o *Workspace) SetSearchPathPrefix(v []string)`
+
+SetSearchPathPrefix sets SearchPathPrefix field to given value.
+
+### HasSearchPathPrefix
+
+`func (o *Workspace) HasSearchPathPrefix() bool`
+
+HasSearchPathPrefix returns a boolean if a field has been set.
 
 ### GetState
 

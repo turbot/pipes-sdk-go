@@ -751,12 +751,12 @@ type OrgWorkspaceConnectionFoldersApiUpdateRequest struct {
 	orgHandle       string
 	workspaceHandle string
 	folderId        string
-	request         *UpdateConnectionRequest
+	request         *UpdateConnectionFolderRequest
 	mode            *string
 }
 
 // The request body for the connection which needs to be updated.
-func (r OrgWorkspaceConnectionFoldersApiUpdateRequest) Request(request UpdateConnectionRequest) OrgWorkspaceConnectionFoldersApiUpdateRequest {
+func (r OrgWorkspaceConnectionFoldersApiUpdateRequest) Request(request UpdateConnectionFolderRequest) OrgWorkspaceConnectionFoldersApiUpdateRequest {
 	r.request = &request
 	return r
 }

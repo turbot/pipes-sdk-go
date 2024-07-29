@@ -716,7 +716,7 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the org for which we want to update the connection folder.
     folderId := "folderId_example" // string | The ID of the connection folder which needs to be updated.
-    request := *openapiclient.NewUpdateConnectionRequest() // UpdateConnectionRequest | The request body for the connection which needs to be updated.
+    request := *openapiclient.NewUpdateConnectionFolderRequest() // UpdateConnectionFolderRequest | The request body for the connection which needs to be updated.
     mode := "mode_example" // string | The mode of this request (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -749,7 +749,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | [**UpdateConnectionRequest**](UpdateConnectionRequest.md) | The request body for the connection which needs to be updated. | 
+ **request** | [**UpdateConnectionFolderRequest**](UpdateConnectionFolderRequest.md) | The request body for the connection which needs to be updated. | 
  **mode** | **string** | The mode of this request | 
 
 ### Return type

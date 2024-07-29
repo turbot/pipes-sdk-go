@@ -39,7 +39,7 @@ import (
 )
 
 func main() {
-    request := *openapiclient.NewCreateConnectionRequest("Handle_example", "Plugin_example") // CreateConnectionRequest | The request body for the connection to be created.
+    request := *openapiclient.NewCreateConnectionFolderRequest("Title_example") // CreateConnectionFolderRequest | The request body for the connection to be created.
     mode := "mode_example" // string | The mode of this request (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -65,7 +65,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request** | [**CreateConnectionRequest**](CreateConnectionRequest.md) | The request body for the connection to be created. | 
+ **request** | [**CreateConnectionFolderRequest**](CreateConnectionFolderRequest.md) | The request body for the connection to be created. | 
  **mode** | **string** | The mode of this request | 
 
 ### Return type
@@ -682,7 +682,7 @@ import (
 
 func main() {
     folderId := "folderId_example" // string | The handle of the connection folder which needs to be updated.
-    request := *openapiclient.NewUpdateConnectionRequest() // UpdateConnectionRequest | The request body for the connection which needs to be updated.
+    request := *openapiclient.NewUpdateConnectionFolderRequest() // UpdateConnectionFolderRequest | The request body for the connection which needs to be updated.
     mode := "mode_example" // string | The mode of this request (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -713,7 +713,7 @@ Other parameters are passed through a pointer to a apiUpdateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **request** | [**UpdateConnectionRequest**](UpdateConnectionRequest.md) | The request body for the connection which needs to be updated. | 
+ **request** | [**UpdateConnectionFolderRequest**](UpdateConnectionFolderRequest.md) | The request body for the connection which needs to be updated. | 
  **mode** | **string** | The mode of this request | 
 
 ### Return type

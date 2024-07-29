@@ -17,6 +17,7 @@ _What's new?_
 _Enhancements_
 
 - Add support for installing mods that are associated to integrations.
+- Add support for setting search path prefix for a workspace.
 
 ## 0.9.1 [2024-03-21]
 

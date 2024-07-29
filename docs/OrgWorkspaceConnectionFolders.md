@@ -342,7 +342,7 @@ func main() {
     orgHandle := "orgHandle_example" // string | The handle of the org where the folder to be updated exists.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the folder to be updated exists.
     folderId := "folderId_example" // string | The id of the connection folder to be updated.
-    request := *openapiclient.NewUpdateConnectionRequest() // UpdateConnectionRequest | The request body for the connection which needs to be updated.
+    request := *openapiclient.NewUpdateConnectionFolderRequest() // UpdateConnectionFolderRequest | The request body for the connection which needs to be updated.
     mode := "mode_example" // string | The mode of this request (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -377,7 +377,7 @@ Name | Type | Description  | Notes
 
 
 
- **request** | [**UpdateConnectionRequest**](UpdateConnectionRequest.md) | The request body for the connection which needs to be updated. | 
+ **request** | [**UpdateConnectionFolderRequest**](UpdateConnectionFolderRequest.md) | The request body for the connection which needs to be updated. | 
  **mode** | **string** | The mode of this request | 
 
 ### Return type

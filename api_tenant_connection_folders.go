@@ -30,12 +30,12 @@ type TenantConnectionFoldersService service
 type TenantConnectionFoldersApiCreateRequest struct {
 	ctx        _context.Context
 	ApiService *TenantConnectionFoldersService
-	request    *CreateConnectionRequest
+	request    *CreateConnectionFolderRequest
 	mode       *string
 }
 
 // The request body for the connection to be created.
-func (r TenantConnectionFoldersApiCreateRequest) Request(request CreateConnectionRequest) TenantConnectionFoldersApiCreateRequest {
+func (r TenantConnectionFoldersApiCreateRequest) Request(request CreateConnectionFolderRequest) TenantConnectionFoldersApiCreateRequest {
 	r.request = &request
 	return r
 }
@@ -1582,12 +1582,12 @@ type TenantConnectionFoldersApiUpdateRequest struct {
 	ctx        _context.Context
 	ApiService *TenantConnectionFoldersService
 	folderId   string
-	request    *UpdateConnectionRequest
+	request    *UpdateConnectionFolderRequest
 	mode       *string
 }
 
 // The request body for the connection which needs to be updated.
-func (r TenantConnectionFoldersApiUpdateRequest) Request(request UpdateConnectionRequest) TenantConnectionFoldersApiUpdateRequest {
+func (r TenantConnectionFoldersApiUpdateRequest) Request(request UpdateConnectionFolderRequest) TenantConnectionFoldersApiUpdateRequest {
 	r.request = &request
 	return r
 }
