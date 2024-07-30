@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**Get**](UserWorkspaceConnections.md#Get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Get user workspace connection association
 [**List**](UserWorkspaceConnections.md#List) | **Get** /user/{user_handle}/workspace/{workspace_handle}/connection | List connections for a user workspace
 [**Test**](UserWorkspaceConnections.md#Test) | **Post** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle}/test | Test user workspace connection
+[**Update**](UserWorkspaceConnections.md#Update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Update user workspace connection
 
 
 
@@ -379,6 +380,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConnectionTestResult**](ConnectionTestResult.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Update
+
+> Connection Update(ctx, userHandle, workspaceHandle, connectionHandle).Request(request).Mode(mode).Execute()
+
+Update user workspace connection
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userHandle := "userHandle_example" // string | The handle of the user where the connection to be updated exists.
+    workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the connection to be updated exists.
+    connectionHandle := "connectionHandle_example" // string | The handle of the connection to update.
+    request := *openapiclient.NewUpdateConnectionRequest() // UpdateConnectionRequest | The request body for the connection which needs to be updated.
+    mode := "mode_example" // string | The mode of this request (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.UserWorkspaceConnections.Update(context.Background(), userHandle, workspaceHandle, connectionHandle).Request(request).Mode(mode).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaceConnections.Update``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `Update`: Connection
+    fmt.Fprintf(os.Stdout, "Response from `UserWorkspaceConnections.Update`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userHandle** | **string** | The handle of the user where the connection to be updated exists. | 
+**workspaceHandle** | **string** | The handle of the workspace where the connection to be updated exists. | 
+**connectionHandle** | **string** | The handle of the connection to update. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **request** | [**UpdateConnectionRequest**](UpdateConnectionRequest.md) | The request body for the connection which needs to be updated. | 
+ **mode** | **string** | The mode of this request | 
+
+### Return type
+
+[**Connection**](Connection.md)
 
 ### Authorization
 

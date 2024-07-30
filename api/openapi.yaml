@@ -1495,7 +1495,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateConnectionRequest'
+              $ref: '#/components/schemas/CreateConnectionFolderRequest'
         description: The request body for the connection to be created.
         required: true
       responses:
@@ -1701,7 +1701,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateConnectionRequest'
+              $ref: '#/components/schemas/UpdateConnectionFolderRequest'
         description: The request body for the connection which needs to be updated.
         required: true
       responses:
@@ -5688,7 +5688,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateConnectionRequest'
+              $ref: '#/components/schemas/UpdateConnectionFolderRequest'
         description: The request body for the connection which needs to be updated.
         required: true
       responses:
@@ -9491,7 +9491,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WorkspaceConnection'
+                $ref: '#/components/schemas/Connection'
           description: Created
         "400":
           content:
@@ -9653,7 +9653,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WorkspaceConn'
+                $ref: '#/components/schemas/WorkspaceConnection'
           description: OK
         "400":
           content:
@@ -9694,6 +9694,103 @@ paths:
       summary: Get org workspace connection association
       tags:
       - OrgWorkspaceConnections
+    patch:
+      description: Update the details of a connection belonging to a workspace of
+        an org.
+      operationId: orgWorkspaceConnection_update
+      parameters:
+      - description: The handle of the org where the connection to be updated exists.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]
+          type: string
+        style: simple
+      - description: The handle of the workspace where the connection to be updated
+          exists.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]
+          type: string
+        style: simple
+      - description: The handle of the connection to update.
+        explode: false
+        in: path
+        name: connection_handle
+        required: true
+        schema:
+          format: ^[a-z][a-z0-9_]{0,37}[a-z0-9]?$
+          type: string
+        style: simple
+      - description: The mode of this request
+        explode: true
+        in: query
+        name: mode
+        required: false
+        schema:
+          enum:
+          - available
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateConnectionRequest'
+        description: The request body for the connection which needs to be updated.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update org workspace connection
+      tags:
+      - OrgWorkspaceConnections
+      x-codegen-request-body-name: request
   /org/{org_handle}/workspace/{workspace_handle}/connection/{connection_handle}/test:
     post:
       description: Test the config for a connection configured on an org workspace
@@ -10155,7 +10252,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateConnectionRequest'
+              $ref: '#/components/schemas/UpdateConnectionFolderRequest'
         description: The request body for the connection which needs to be updated.
         required: true
       responses:
@@ -22564,6 +22661,103 @@ paths:
       summary: Get user workspace connection association
       tags:
       - UserWorkspaceConnections
+    patch:
+      description: Update the details of a connection belonging to a workspace of
+        a user.
+      operationId: userWorkspaceConnection_update
+      parameters:
+      - description: The handle of the user where the connection to be updated exists.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]
+          type: string
+        style: simple
+      - description: The handle of the workspace where the connection to be updated
+          exists.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]
+          type: string
+        style: simple
+      - description: The handle of the connection to update.
+        explode: false
+        in: path
+        name: connection_handle
+        required: true
+        schema:
+          format: ^[a-z][a-z0-9_]{0,37}[a-z0-9]?$
+          type: string
+        style: simple
+      - description: The mode of this request
+        explode: true
+        in: query
+        name: mode
+        required: false
+        schema:
+          enum:
+          - available
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateConnectionRequest'
+        description: The request body for the connection which needs to be updated.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update user workspace connection
+      tags:
+      - UserWorkspaceConnections
+      x-codegen-request-body-name: request
   /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle}/test:
     post:
       description: Test the config for a connection configured on a user workspace
@@ -28544,6 +28738,12 @@ components:
         workspace:
           hive: hive
           public_key: public_key
+          search_path_prefix:
+          - search_path_prefix
+          - search_path_prefix
+          search_path:
+          - search_path
+          - search_path
           created_at: created_at
           deleted_by:
             tenant_id: tenant_id
@@ -28570,7 +28770,7 @@ components:
             id: id
             status: status
             usage_storage_threshold: 6
-          db_volume_size_bytes: 0
+          db_volume_size_bytes: 5
           updated_at: updated_at
           host: host
           id: id
@@ -28582,7 +28782,7 @@ components:
           deleted_by_id: deleted_by_id
           desired_state: enabled
           handle: aaa
-          version_id: 6
+          version_id: 2
           api_version: api_version
           created_by:
             tenant_id: tenant_id
@@ -28650,6 +28850,108 @@ components:
           id: id
           display_name: display_name
           type: type
+          tenant:
+            usage_user_action: usage_user_action
+            deleted_by_id: deleted_by_id
+            created_at: created_at
+            deleted_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            handle: handle
+            usage_compute_threshold: 0
+            version_id: 5
+            display_name: display_name
+            created_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            deleted_at: deleted_at
+            billing:
+              cycle_anchor: cycle_anchor
+              suspend_at_reason: suspend_at_reason
+              delete_at_reason: delete_at_reason
+              delete_at: delete_at
+              suspend_at: suspend_at
+              status: preview
+              status_updated_at: status_updated_at
+            usage_storage_action: usage_storage_action
+            avatar_url: avatar_url
+            updated_at: updated_at
+            usage_compute_action: usage_compute_action
+            usage_user_threshold: 1
+            updated_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            updated_by_id: updated_by_id
+            created_by_id: created_by_id
+            id: id
+            state: state
+            usage_storage_threshold: 6
         host: host
         handle: handle
         id: id
@@ -32768,6 +33070,108 @@ components:
         id: id
         display_name: display_name
         type: type
+        tenant:
+          usage_user_action: usage_user_action
+          deleted_by_id: deleted_by_id
+          created_at: created_at
+          deleted_by:
+            tenant_id: tenant_id
+            created_at: created_at
+            handle: handle
+            usage_compute_threshold: 0
+            version_id: 1
+            display_name: display_name
+            preview_access_mode: preview_access_mode
+            url: url
+            billing:
+              cycle_anchor: cycle_anchor
+              suspend_at_reason: suspend_at_reason
+              delete_at_reason: delete_at_reason
+              delete_at: delete_at
+              suspend_at: suspend_at
+              status: preview
+              status_updated_at: status_updated_at
+            usage_storage_action: usage_storage_action
+            avatar_url: avatar_url
+            updated_at: updated_at
+            usage_compute_action: usage_compute_action
+            token_min_issued_at: token_min_issued_at
+            id: id
+            status: status
+            usage_storage_threshold: 6
+          handle: handle
+          usage_compute_threshold: 0
+          version_id: 5
+          display_name: display_name
+          created_by:
+            tenant_id: tenant_id
+            created_at: created_at
+            handle: handle
+            usage_compute_threshold: 0
+            version_id: 1
+            display_name: display_name
+            preview_access_mode: preview_access_mode
+            url: url
+            billing:
+              cycle_anchor: cycle_anchor
+              suspend_at_reason: suspend_at_reason
+              delete_at_reason: delete_at_reason
+              delete_at: delete_at
+              suspend_at: suspend_at
+              status: preview
+              status_updated_at: status_updated_at
+            usage_storage_action: usage_storage_action
+            avatar_url: avatar_url
+            updated_at: updated_at
+            usage_compute_action: usage_compute_action
+            token_min_issued_at: token_min_issued_at
+            id: id
+            status: status
+            usage_storage_threshold: 6
+          deleted_at: deleted_at
+          billing:
+            cycle_anchor: cycle_anchor
+            suspend_at_reason: suspend_at_reason
+            delete_at_reason: delete_at_reason
+            delete_at: delete_at
+            suspend_at: suspend_at
+            status: preview
+            status_updated_at: status_updated_at
+          usage_storage_action: usage_storage_action
+          avatar_url: avatar_url
+          updated_at: updated_at
+          usage_compute_action: usage_compute_action
+          usage_user_threshold: 1
+          updated_by:
+            tenant_id: tenant_id
+            created_at: created_at
+            handle: handle
+            usage_compute_threshold: 0
+            version_id: 1
+            display_name: display_name
+            preview_access_mode: preview_access_mode
+            url: url
+            billing:
+              cycle_anchor: cycle_anchor
+              suspend_at_reason: suspend_at_reason
+              delete_at_reason: delete_at_reason
+              delete_at: delete_at
+              suspend_at: suspend_at
+              status: preview
+              status_updated_at: status_updated_at
+            usage_storage_action: usage_storage_action
+            avatar_url: avatar_url
+            updated_at: updated_at
+            usage_compute_action: usage_compute_action
+            token_min_issued_at: token_min_issued_at
+            id: id
+            status: status
+            usage_storage_threshold: 6
+          updated_by_id: updated_by_id
+          created_by_id: created_by_id
+          id: id
+          state: state
+          usage_storage_threshold: 6
       properties:
         avatar_url:
           description: The avatar URL of the identity.
@@ -32781,6 +33185,8 @@ components:
         id:
           description: The unique identifier of the identity.
           type: string
+        tenant:
+          $ref: '#/components/schemas/Tenant'
         tenant_id:
           description: The unique identifier of the tenant the identity belongs to.
           format: ^t_[0-9a-v]{20}$
@@ -33189,6 +33595,12 @@ components:
           workspace:
             hive: hive
             public_key: public_key
+            search_path_prefix:
+            - search_path_prefix
+            - search_path_prefix
+            search_path:
+            - search_path
+            - search_path
             created_at: created_at
             deleted_by:
               tenant_id: tenant_id
@@ -33215,7 +33627,7 @@ components:
               id: id
               status: status
               usage_storage_threshold: 6
-            db_volume_size_bytes: 0
+            db_volume_size_bytes: 5
             updated_at: updated_at
             host: host
             id: id
@@ -33227,7 +33639,7 @@ components:
             deleted_by_id: deleted_by_id
             desired_state: enabled
             handle: aaa
-            version_id: 6
+            version_id: 2
             api_version: api_version
             created_by:
               tenant_id: tenant_id
@@ -33295,6 +33707,108 @@ components:
             id: id
             display_name: display_name
             type: type
+            tenant:
+              usage_user_action: usage_user_action
+              deleted_by_id: deleted_by_id
+              created_at: created_at
+              deleted_by:
+                tenant_id: tenant_id
+                created_at: created_at
+                handle: handle
+                usage_compute_threshold: 0
+                version_id: 1
+                display_name: display_name
+                preview_access_mode: preview_access_mode
+                url: url
+                billing:
+                  cycle_anchor: cycle_anchor
+                  suspend_at_reason: suspend_at_reason
+                  delete_at_reason: delete_at_reason
+                  delete_at: delete_at
+                  suspend_at: suspend_at
+                  status: preview
+                  status_updated_at: status_updated_at
+                usage_storage_action: usage_storage_action
+                avatar_url: avatar_url
+                updated_at: updated_at
+                usage_compute_action: usage_compute_action
+                token_min_issued_at: token_min_issued_at
+                id: id
+                status: status
+                usage_storage_threshold: 6
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 5
+              display_name: display_name
+              created_by:
+                tenant_id: tenant_id
+                created_at: created_at
+                handle: handle
+                usage_compute_threshold: 0
+                version_id: 1
+                display_name: display_name
+                preview_access_mode: preview_access_mode
+                url: url
+                billing:
+                  cycle_anchor: cycle_anchor
+                  suspend_at_reason: suspend_at_reason
+                  delete_at_reason: delete_at_reason
+                  delete_at: delete_at
+                  suspend_at: suspend_at
+                  status: preview
+                  status_updated_at: status_updated_at
+                usage_storage_action: usage_storage_action
+                avatar_url: avatar_url
+                updated_at: updated_at
+                usage_compute_action: usage_compute_action
+                token_min_issued_at: token_min_issued_at
+                id: id
+                status: status
+                usage_storage_threshold: 6
+              deleted_at: deleted_at
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              usage_user_threshold: 1
+              updated_by:
+                tenant_id: tenant_id
+                created_at: created_at
+                handle: handle
+                usage_compute_threshold: 0
+                version_id: 1
+                display_name: display_name
+                preview_access_mode: preview_access_mode
+                url: url
+                billing:
+                  cycle_anchor: cycle_anchor
+                  suspend_at_reason: suspend_at_reason
+                  delete_at_reason: delete_at_reason
+                  delete_at: delete_at
+                  suspend_at: suspend_at
+                  status: preview
+                  status_updated_at: status_updated_at
+                usage_storage_action: usage_storage_action
+                avatar_url: avatar_url
+                updated_at: updated_at
+                usage_compute_action: usage_compute_action
+                token_min_issued_at: token_min_issued_at
+                id: id
+                status: status
+                usage_storage_threshold: 6
+              updated_by_id: updated_by_id
+              created_by_id: created_by_id
+              id: id
+              state: state
+              usage_storage_threshold: 6
           host: host
           handle: handle
           id: id
@@ -33302,6 +33816,12 @@ components:
           workspace:
             hive: hive
             public_key: public_key
+            search_path_prefix:
+            - search_path_prefix
+            - search_path_prefix
+            search_path:
+            - search_path
+            - search_path
             created_at: created_at
             deleted_by:
               tenant_id: tenant_id
@@ -33328,7 +33848,7 @@ components:
               id: id
               status: status
               usage_storage_threshold: 6
-            db_volume_size_bytes: 0
+            db_volume_size_bytes: 5
             updated_at: updated_at
             host: host
             id: id
@@ -33340,7 +33860,7 @@ components:
             deleted_by_id: deleted_by_id
             desired_state: enabled
             handle: aaa
-            version_id: 6
+            version_id: 2
             api_version: api_version
             created_by:
               tenant_id: tenant_id
@@ -33408,6 +33928,108 @@ components:
             id: id
             display_name: display_name
             type: type
+            tenant:
+              usage_user_action: usage_user_action
+              deleted_by_id: deleted_by_id
+              created_at: created_at
+              deleted_by:
+                tenant_id: tenant_id
+                created_at: created_at
+                handle: handle
+                usage_compute_threshold: 0
+                version_id: 1
+                display_name: display_name
+                preview_access_mode: preview_access_mode
+                url: url
+                billing:
+                  cycle_anchor: cycle_anchor
+                  suspend_at_reason: suspend_at_reason
+                  delete_at_reason: delete_at_reason
+                  delete_at: delete_at
+                  suspend_at: suspend_at
+                  status: preview
+                  status_updated_at: status_updated_at
+                usage_storage_action: usage_storage_action
+                avatar_url: avatar_url
+                updated_at: updated_at
+                usage_compute_action: usage_compute_action
+                token_min_issued_at: token_min_issued_at
+                id: id
+                status: status
+                usage_storage_threshold: 6
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 5
+              display_name: display_name
+              created_by:
+                tenant_id: tenant_id
+                created_at: created_at
+                handle: handle
+                usage_compute_threshold: 0
+                version_id: 1
+                display_name: display_name
+                preview_access_mode: preview_access_mode
+                url: url
+                billing:
+                  cycle_anchor: cycle_anchor
+                  suspend_at_reason: suspend_at_reason
+                  delete_at_reason: delete_at_reason
+                  delete_at: delete_at
+                  suspend_at: suspend_at
+                  status: preview
+                  status_updated_at: status_updated_at
+                usage_storage_action: usage_storage_action
+                avatar_url: avatar_url
+                updated_at: updated_at
+                usage_compute_action: usage_compute_action
+                token_min_issued_at: token_min_issued_at
+                id: id
+                status: status
+                usage_storage_threshold: 6
+              deleted_at: deleted_at
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              usage_user_threshold: 1
+              updated_by:
+                tenant_id: tenant_id
+                created_at: created_at
+                handle: handle
+                usage_compute_threshold: 0
+                version_id: 1
+                display_name: display_name
+                preview_access_mode: preview_access_mode
+                url: url
+                billing:
+                  cycle_anchor: cycle_anchor
+                  suspend_at_reason: suspend_at_reason
+                  delete_at_reason: delete_at_reason
+                  delete_at: delete_at
+                  suspend_at: suspend_at
+                  status: preview
+                  status_updated_at: status_updated_at
+                usage_storage_action: usage_storage_action
+                avatar_url: avatar_url
+                updated_at: updated_at
+                usage_compute_action: usage_compute_action
+                token_min_issued_at: token_min_issued_at
+                id: id
+                status: status
+                usage_storage_threshold: 6
+              updated_by_id: updated_by_id
+              created_by_id: created_by_id
+              id: id
+              state: state
+              usage_storage_threshold: 6
           host: host
           handle: handle
           id: id
@@ -38401,12 +39023,216 @@ components:
           id: id
           display_name: display_name
           type: type
+          tenant:
+            usage_user_action: usage_user_action
+            deleted_by_id: deleted_by_id
+            created_at: created_at
+            deleted_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            handle: handle
+            usage_compute_threshold: 0
+            version_id: 5
+            display_name: display_name
+            created_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            deleted_at: deleted_at
+            billing:
+              cycle_anchor: cycle_anchor
+              suspend_at_reason: suspend_at_reason
+              delete_at_reason: delete_at_reason
+              delete_at: delete_at
+              suspend_at: suspend_at
+              status: preview
+              status_updated_at: status_updated_at
+            usage_storage_action: usage_storage_action
+            avatar_url: avatar_url
+            updated_at: updated_at
+            usage_compute_action: usage_compute_action
+            usage_user_threshold: 1
+            updated_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            updated_by_id: updated_by_id
+            created_by_id: created_by_id
+            id: id
+            state: state
+            usage_storage_threshold: 6
         - tenant_id: tenant_id
           avatar_url: avatar_url
           handle: handle
           id: id
           display_name: display_name
           type: type
+          tenant:
+            usage_user_action: usage_user_action
+            deleted_by_id: deleted_by_id
+            created_at: created_at
+            deleted_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            handle: handle
+            usage_compute_threshold: 0
+            version_id: 5
+            display_name: display_name
+            created_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            deleted_at: deleted_at
+            billing:
+              cycle_anchor: cycle_anchor
+              suspend_at_reason: suspend_at_reason
+              delete_at_reason: delete_at_reason
+              delete_at: delete_at
+              suspend_at: suspend_at
+              status: preview
+              status_updated_at: status_updated_at
+            usage_storage_action: usage_storage_action
+            avatar_url: avatar_url
+            updated_at: updated_at
+            usage_compute_action: usage_compute_action
+            usage_user_threshold: 1
+            updated_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            updated_by_id: updated_by_id
+            created_by_id: created_by_id
+            id: id
+            state: state
+            usage_storage_threshold: 6
       properties:
         items:
           items:
@@ -39641,6 +40467,111 @@ components:
         items:
         - tenant_id: tenant_id
           aggregator_id: aggregator_id
+          workspace:
+            hive: hive
+            public_key: public_key
+            search_path_prefix:
+            - search_path_prefix
+            - search_path_prefix
+            search_path:
+            - search_path
+            - search_path
+            created_at: created_at
+            deleted_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            db_volume_size_bytes: 5
+            updated_at: updated_at
+            host: host
+            id: id
+            state: state
+            powerpipe_version: powerpipe_version
+            state_reason: state_reason
+            database_name: database_name
+            identity_id: identity_id
+            deleted_by_id: deleted_by_id
+            desired_state: enabled
+            handle: aaa
+            version_id: 2
+            api_version: api_version
+            created_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            deleted_at: deleted_at
+            notices: '{}'
+            updated_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            cli_version: cli_version
+            updated_by_id: updated_by_id
+            created_by_id: created_by_id
+            instance_type: db1.shared
           identity_id: identity_id
           created_at: created_at
           version_id: 0
@@ -39672,6 +40603,115 @@ components:
           workspace_id: workspace_id
           updated_at: updated_at
           connection_id: connection_id
+          identity:
+            tenant_id: tenant_id
+            avatar_url: avatar_url
+            handle: handle
+            id: id
+            display_name: display_name
+            type: type
+            tenant:
+              usage_user_action: usage_user_action
+              deleted_by_id: deleted_by_id
+              created_at: created_at
+              deleted_by:
+                tenant_id: tenant_id
+                created_at: created_at
+                handle: handle
+                usage_compute_threshold: 0
+                version_id: 1
+                display_name: display_name
+                preview_access_mode: preview_access_mode
+                url: url
+                billing:
+                  cycle_anchor: cycle_anchor
+                  suspend_at_reason: suspend_at_reason
+                  delete_at_reason: delete_at_reason
+                  delete_at: delete_at
+                  suspend_at: suspend_at
+                  status: preview
+                  status_updated_at: status_updated_at
+                usage_storage_action: usage_storage_action
+                avatar_url: avatar_url
+                updated_at: updated_at
+                usage_compute_action: usage_compute_action
+                token_min_issued_at: token_min_issued_at
+                id: id
+                status: status
+                usage_storage_threshold: 6
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 5
+              display_name: display_name
+              created_by:
+                tenant_id: tenant_id
+                created_at: created_at
+                handle: handle
+                usage_compute_threshold: 0
+                version_id: 1
+                display_name: display_name
+                preview_access_mode: preview_access_mode
+                url: url
+                billing:
+                  cycle_anchor: cycle_anchor
+                  suspend_at_reason: suspend_at_reason
+                  delete_at_reason: delete_at_reason
+                  delete_at: delete_at
+                  suspend_at: suspend_at
+                  status: preview
+                  status_updated_at: status_updated_at
+                usage_storage_action: usage_storage_action
+                avatar_url: avatar_url
+                updated_at: updated_at
+                usage_compute_action: usage_compute_action
+                token_min_issued_at: token_min_issued_at
+                id: id
+                status: status
+                usage_storage_threshold: 6
+              deleted_at: deleted_at
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              usage_user_threshold: 1
+              updated_by:
+                tenant_id: tenant_id
+                created_at: created_at
+                handle: handle
+                usage_compute_threshold: 0
+                version_id: 1
+                display_name: display_name
+                preview_access_mode: preview_access_mode
+                url: url
+                billing:
+                  cycle_anchor: cycle_anchor
+                  suspend_at_reason: suspend_at_reason
+                  delete_at_reason: delete_at_reason
+                  delete_at: delete_at
+                  suspend_at: suspend_at
+                  status: preview
+                  status_updated_at: status_updated_at
+                usage_storage_action: usage_storage_action
+                avatar_url: avatar_url
+                updated_at: updated_at
+                usage_compute_action: usage_compute_action
+                token_min_issued_at: token_min_issued_at
+                id: id
+                status: status
+                usage_storage_threshold: 6
+              updated_by_id: updated_by_id
+              created_by_id: created_by_id
+              id: id
+              state: state
+              usage_storage_threshold: 6
           updated_by:
             tenant_id: tenant_id
             created_at: created_at
@@ -39700,8 +40740,215 @@ components:
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           id: id
+          tenant:
+            usage_user_action: usage_user_action
+            deleted_by_id: deleted_by_id
+            created_at: created_at
+            deleted_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            handle: handle
+            usage_compute_threshold: 0
+            version_id: 5
+            display_name: display_name
+            created_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            deleted_at: deleted_at
+            billing:
+              cycle_anchor: cycle_anchor
+              suspend_at_reason: suspend_at_reason
+              delete_at_reason: delete_at_reason
+              delete_at: delete_at
+              suspend_at: suspend_at
+              status: preview
+              status_updated_at: status_updated_at
+            usage_storage_action: usage_storage_action
+            avatar_url: avatar_url
+            updated_at: updated_at
+            usage_compute_action: usage_compute_action
+            usage_user_threshold: 1
+            updated_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            updated_by_id: updated_by_id
+            created_by_id: created_by_id
+            id: id
+            state: state
+            usage_storage_threshold: 6
         - tenant_id: tenant_id
           aggregator_id: aggregator_id
+          workspace:
+            hive: hive
+            public_key: public_key
+            search_path_prefix:
+            - search_path_prefix
+            - search_path_prefix
+            search_path:
+            - search_path
+            - search_path
+            created_at: created_at
+            deleted_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            db_volume_size_bytes: 5
+            updated_at: updated_at
+            host: host
+            id: id
+            state: state
+            powerpipe_version: powerpipe_version
+            state_reason: state_reason
+            database_name: database_name
+            identity_id: identity_id
+            deleted_by_id: deleted_by_id
+            desired_state: enabled
+            handle: aaa
+            version_id: 2
+            api_version: api_version
+            created_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            deleted_at: deleted_at
+            notices: '{}'
+            updated_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            cli_version: cli_version
+            updated_by_id: updated_by_id
+            created_by_id: created_by_id
+            instance_type: db1.shared
           identity_id: identity_id
           created_at: created_at
           version_id: 0
@@ -39733,6 +40980,115 @@ components:
           workspace_id: workspace_id
           updated_at: updated_at
           connection_id: connection_id
+          identity:
+            tenant_id: tenant_id
+            avatar_url: avatar_url
+            handle: handle
+            id: id
+            display_name: display_name
+            type: type
+            tenant:
+              usage_user_action: usage_user_action
+              deleted_by_id: deleted_by_id
+              created_at: created_at
+              deleted_by:
+                tenant_id: tenant_id
+                created_at: created_at
+                handle: handle
+                usage_compute_threshold: 0
+                version_id: 1
+                display_name: display_name
+                preview_access_mode: preview_access_mode
+                url: url
+                billing:
+                  cycle_anchor: cycle_anchor
+                  suspend_at_reason: suspend_at_reason
+                  delete_at_reason: delete_at_reason
+                  delete_at: delete_at
+                  suspend_at: suspend_at
+                  status: preview
+                  status_updated_at: status_updated_at
+                usage_storage_action: usage_storage_action
+                avatar_url: avatar_url
+                updated_at: updated_at
+                usage_compute_action: usage_compute_action
+                token_min_issued_at: token_min_issued_at
+                id: id
+                status: status
+                usage_storage_threshold: 6
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 5
+              display_name: display_name
+              created_by:
+                tenant_id: tenant_id
+                created_at: created_at
+                handle: handle
+                usage_compute_threshold: 0
+                version_id: 1
+                display_name: display_name
+                preview_access_mode: preview_access_mode
+                url: url
+                billing:
+                  cycle_anchor: cycle_anchor
+                  suspend_at_reason: suspend_at_reason
+                  delete_at_reason: delete_at_reason
+                  delete_at: delete_at
+                  suspend_at: suspend_at
+                  status: preview
+                  status_updated_at: status_updated_at
+                usage_storage_action: usage_storage_action
+                avatar_url: avatar_url
+                updated_at: updated_at
+                usage_compute_action: usage_compute_action
+                token_min_issued_at: token_min_issued_at
+                id: id
+                status: status
+                usage_storage_threshold: 6
+              deleted_at: deleted_at
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              usage_user_threshold: 1
+              updated_by:
+                tenant_id: tenant_id
+                created_at: created_at
+                handle: handle
+                usage_compute_threshold: 0
+                version_id: 1
+                display_name: display_name
+                preview_access_mode: preview_access_mode
+                url: url
+                billing:
+                  cycle_anchor: cycle_anchor
+                  suspend_at_reason: suspend_at_reason
+                  delete_at_reason: delete_at_reason
+                  delete_at: delete_at
+                  suspend_at: suspend_at
+                  status: preview
+                  status_updated_at: status_updated_at
+                usage_storage_action: usage_storage_action
+                avatar_url: avatar_url
+                updated_at: updated_at
+                usage_compute_action: usage_compute_action
+                token_min_issued_at: token_min_issued_at
+                id: id
+                status: status
+                usage_storage_threshold: 6
+              updated_by_id: updated_by_id
+              created_by_id: created_by_id
+              id: id
+              state: state
+              usage_storage_threshold: 6
           updated_by:
             tenant_id: tenant_id
             created_at: created_at
@@ -39761,6 +41117,108 @@ components:
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           id: id
+          tenant:
+            usage_user_action: usage_user_action
+            deleted_by_id: deleted_by_id
+            created_at: created_at
+            deleted_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            handle: handle
+            usage_compute_threshold: 0
+            version_id: 5
+            display_name: display_name
+            created_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            deleted_at: deleted_at
+            billing:
+              cycle_anchor: cycle_anchor
+              suspend_at_reason: suspend_at_reason
+              delete_at_reason: delete_at_reason
+              delete_at: delete_at
+              suspend_at: suspend_at
+              status: preview
+              status_updated_at: status_updated_at
+            usage_storage_action: usage_storage_action
+            avatar_url: avatar_url
+            updated_at: updated_at
+            usage_compute_action: usage_compute_action
+            usage_user_threshold: 1
+            updated_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            updated_by_id: updated_by_id
+            created_by_id: created_by_id
+            id: id
+            state: state
+            usage_storage_threshold: 6
       properties:
         items:
           items:
@@ -48578,6 +50036,12 @@ components:
         items:
         - hive: hive
           public_key: public_key
+          search_path_prefix:
+          - search_path_prefix
+          - search_path_prefix
+          search_path:
+          - search_path
+          - search_path
           created_at: created_at
           deleted_by:
             tenant_id: tenant_id
@@ -48604,7 +50068,7 @@ components:
             id: id
             status: status
             usage_storage_threshold: 6
-          db_volume_size_bytes: 0
+          db_volume_size_bytes: 5
           updated_at: updated_at
           host: host
           id: id
@@ -48616,7 +50080,7 @@ components:
           deleted_by_id: deleted_by_id
           desired_state: enabled
           handle: aaa
-          version_id: 6
+          version_id: 2
           api_version: api_version
           created_by:
             tenant_id: tenant_id
@@ -48676,6 +50140,12 @@ components:
           instance_type: db1.shared
         - hive: hive
           public_key: public_key
+          search_path_prefix:
+          - search_path_prefix
+          - search_path_prefix
+          search_path:
+          - search_path
+          - search_path
           created_at: created_at
           deleted_by:
             tenant_id: tenant_id
@@ -48702,7 +50172,7 @@ components:
             id: id
             status: status
             usage_storage_threshold: 6
-          db_volume_size_bytes: 0
+          db_volume_size_bytes: 5
           updated_at: updated_at
           host: host
           id: id
@@ -48714,7 +50184,7 @@ components:
           deleted_by_id: deleted_by_id
           desired_state: enabled
           handle: aaa
-          version_id: 6
+          version_id: 2
           api_version: api_version
           created_by:
             tenant_id: tenant_id
@@ -49463,6 +50933,111 @@ components:
       example:
         tenant_id: tenant_id
         aggregator_id: aggregator_id
+        workspace:
+          hive: hive
+          public_key: public_key
+          search_path_prefix:
+          - search_path_prefix
+          - search_path_prefix
+          search_path:
+          - search_path
+          - search_path
+          created_at: created_at
+          deleted_by:
+            tenant_id: tenant_id
+            created_at: created_at
+            handle: handle
+            usage_compute_threshold: 0
+            version_id: 1
+            display_name: display_name
+            preview_access_mode: preview_access_mode
+            url: url
+            billing:
+              cycle_anchor: cycle_anchor
+              suspend_at_reason: suspend_at_reason
+              delete_at_reason: delete_at_reason
+              delete_at: delete_at
+              suspend_at: suspend_at
+              status: preview
+              status_updated_at: status_updated_at
+            usage_storage_action: usage_storage_action
+            avatar_url: avatar_url
+            updated_at: updated_at
+            usage_compute_action: usage_compute_action
+            token_min_issued_at: token_min_issued_at
+            id: id
+            status: status
+            usage_storage_threshold: 6
+          db_volume_size_bytes: 5
+          updated_at: updated_at
+          host: host
+          id: id
+          state: state
+          powerpipe_version: powerpipe_version
+          state_reason: state_reason
+          database_name: database_name
+          identity_id: identity_id
+          deleted_by_id: deleted_by_id
+          desired_state: enabled
+          handle: aaa
+          version_id: 2
+          api_version: api_version
+          created_by:
+            tenant_id: tenant_id
+            created_at: created_at
+            handle: handle
+            usage_compute_threshold: 0
+            version_id: 1
+            display_name: display_name
+            preview_access_mode: preview_access_mode
+            url: url
+            billing:
+              cycle_anchor: cycle_anchor
+              suspend_at_reason: suspend_at_reason
+              delete_at_reason: delete_at_reason
+              delete_at: delete_at
+              suspend_at: suspend_at
+              status: preview
+              status_updated_at: status_updated_at
+            usage_storage_action: usage_storage_action
+            avatar_url: avatar_url
+            updated_at: updated_at
+            usage_compute_action: usage_compute_action
+            token_min_issued_at: token_min_issued_at
+            id: id
+            status: status
+            usage_storage_threshold: 6
+          deleted_at: deleted_at
+          notices: '{}'
+          updated_by:
+            tenant_id: tenant_id
+            created_at: created_at
+            handle: handle
+            usage_compute_threshold: 0
+            version_id: 1
+            display_name: display_name
+            preview_access_mode: preview_access_mode
+            url: url
+            billing:
+              cycle_anchor: cycle_anchor
+              suspend_at_reason: suspend_at_reason
+              delete_at_reason: delete_at_reason
+              delete_at: delete_at
+              suspend_at: suspend_at
+              status: preview
+              status_updated_at: status_updated_at
+            usage_storage_action: usage_storage_action
+            avatar_url: avatar_url
+            updated_at: updated_at
+            usage_compute_action: usage_compute_action
+            token_min_issued_at: token_min_issued_at
+            id: id
+            status: status
+            usage_storage_threshold: 6
+          cli_version: cli_version
+          updated_by_id: updated_by_id
+          created_by_id: created_by_id
+          instance_type: db1.shared
         identity_id: identity_id
         created_at: created_at
         version_id: 0
@@ -49494,6 +51069,115 @@ components:
         workspace_id: workspace_id
         updated_at: updated_at
         connection_id: connection_id
+        identity:
+          tenant_id: tenant_id
+          avatar_url: avatar_url
+          handle: handle
+          id: id
+          display_name: display_name
+          type: type
+          tenant:
+            usage_user_action: usage_user_action
+            deleted_by_id: deleted_by_id
+            created_at: created_at
+            deleted_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            handle: handle
+            usage_compute_threshold: 0
+            version_id: 5
+            display_name: display_name
+            created_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            deleted_at: deleted_at
+            billing:
+              cycle_anchor: cycle_anchor
+              suspend_at_reason: suspend_at_reason
+              delete_at_reason: delete_at_reason
+              delete_at: delete_at
+              suspend_at: suspend_at
+              status: preview
+              status_updated_at: status_updated_at
+            usage_storage_action: usage_storage_action
+            avatar_url: avatar_url
+            updated_at: updated_at
+            usage_compute_action: usage_compute_action
+            usage_user_threshold: 1
+            updated_by:
+              tenant_id: tenant_id
+              created_at: created_at
+              handle: handle
+              usage_compute_threshold: 0
+              version_id: 1
+              display_name: display_name
+              preview_access_mode: preview_access_mode
+              url: url
+              billing:
+                cycle_anchor: cycle_anchor
+                suspend_at_reason: suspend_at_reason
+                delete_at_reason: delete_at_reason
+                delete_at: delete_at
+                suspend_at: suspend_at
+                status: preview
+                status_updated_at: status_updated_at
+              usage_storage_action: usage_storage_action
+              avatar_url: avatar_url
+              updated_at: updated_at
+              usage_compute_action: usage_compute_action
+              token_min_issued_at: token_min_issued_at
+              id: id
+              status: status
+              usage_storage_threshold: 6
+            updated_by_id: updated_by_id
+            created_by_id: created_by_id
+            id: id
+            state: state
+            usage_storage_threshold: 6
         updated_by:
           tenant_id: tenant_id
           created_at: created_at
@@ -49522,6 +51206,108 @@ components:
         updated_by_id: updated_by_id
         created_by_id: created_by_id
         id: id
+        tenant:
+          usage_user_action: usage_user_action
+          deleted_by_id: deleted_by_id
+          created_at: created_at
+          deleted_by:
+            tenant_id: tenant_id
+            created_at: created_at
+            handle: handle
+            usage_compute_threshold: 0
+            version_id: 1
+            display_name: display_name
+            preview_access_mode: preview_access_mode
+            url: url
+            billing:
+              cycle_anchor: cycle_anchor
+              suspend_at_reason: suspend_at_reason
+              delete_at_reason: delete_at_reason
+              delete_at: delete_at
+              suspend_at: suspend_at
+              status: preview
+              status_updated_at: status_updated_at
+            usage_storage_action: usage_storage_action
+            avatar_url: avatar_url
+            updated_at: updated_at
+            usage_compute_action: usage_compute_action
+            token_min_issued_at: token_min_issued_at
+            id: id
+            status: status
+            usage_storage_threshold: 6
+          handle: handle
+          usage_compute_threshold: 0
+          version_id: 5
+          display_name: display_name
+          created_by:
+            tenant_id: tenant_id
+            created_at: created_at
+            handle: handle
+            usage_compute_threshold: 0
+            version_id: 1
+            display_name: display_name
+            preview_access_mode: preview_access_mode
+            url: url
+            billing:
+              cycle_anchor: cycle_anchor
+              suspend_at_reason: suspend_at_reason
+              delete_at_reason: delete_at_reason
+              delete_at: delete_at
+              suspend_at: suspend_at
+              status: preview
+              status_updated_at: status_updated_at
+            usage_storage_action: usage_storage_action
+            avatar_url: avatar_url
+            updated_at: updated_at
+            usage_compute_action: usage_compute_action
+            token_min_issued_at: token_min_issued_at
+            id: id
+            status: status
+            usage_storage_threshold: 6
+          deleted_at: deleted_at
+          billing:
+            cycle_anchor: cycle_anchor
+            suspend_at_reason: suspend_at_reason
+            delete_at_reason: delete_at_reason
+            delete_at: delete_at
+            suspend_at: suspend_at
+            status: preview
+            status_updated_at: status_updated_at
+          usage_storage_action: usage_storage_action
+          avatar_url: avatar_url
+          updated_at: updated_at
+          usage_compute_action: usage_compute_action
+          usage_user_threshold: 1
+          updated_by:
+            tenant_id: tenant_id
+            created_at: created_at
+            handle: handle
+            usage_compute_threshold: 0
+            version_id: 1
+            display_name: display_name
+            preview_access_mode: preview_access_mode
+            url: url
+            billing:
+              cycle_anchor: cycle_anchor
+              suspend_at_reason: suspend_at_reason
+              delete_at_reason: delete_at_reason
+              delete_at: delete_at
+              suspend_at: suspend_at
+              status: preview
+              status_updated_at: status_updated_at
+            usage_storage_action: usage_storage_action
+            avatar_url: avatar_url
+            updated_at: updated_at
+            usage_compute_action: usage_compute_action
+            token_min_issued_at: token_min_issued_at
+            id: id
+            status: status
+            usage_storage_threshold: 6
+          updated_by_id: updated_by_id
+          created_by_id: created_by_id
+          id: id
+          state: state
+          usage_storage_threshold: 6
       properties:
         aggregator_id:
           description: The unique identifier for the aggregator that this permission
@@ -49546,11 +51332,15 @@ components:
           description: The unique identifier for the connection permission record.
           format: ^perm_[0-9a-v]{20}$
           type: string
+        identity:
+          $ref: '#/components/schemas/Identity'
         identity_id:
           description: The unique identifier for the identity that this permission
             applies to.
           format: ^[ou]_[0-9a-v]{20}$
           type: string
+        tenant:
+          $ref: '#/components/schemas/Tenant'
         tenant_id:
           description: The unique identifier for the tenant that this permission applies
             to.
@@ -49569,6 +51359,8 @@ components:
           description: The version ID of this item. Pass this version ID via an If-Match
             header when performing mutation operations on the item.
           type: integer
+        workspace:
+          $ref: '#/components/schemas/Workspace'
         workspace_id:
           description: The unique identifier for the workspace that this permission
             applies to.
@@ -51223,6 +53015,9 @@ components:
       type: object
     UpdateWorkspaceRequest:
       example:
+        search_path_prefix:
+        - search_path_prefix
+        - search_path_prefix
         desired_state: enabled
         handle: handle
         db_volume_size_bytes: 0
@@ -51239,6 +53034,12 @@ components:
         handle:
           format: ^[a-z0-9]{1,23}$
           type: string
+        search_path_prefix:
+          description: InstanceType *WorkspaceInstanceType `json:"instance_type,omitempty"
+            binding:"omitempty,oneof=db1.shared db1.small"`
+          items:
+            type: string
+          type: array
       type: object
     UpdateWorkspaceSnapshotRequest:
       example:
@@ -51765,6 +53566,12 @@ components:
       example:
         hive: hive
         public_key: public_key
+        search_path_prefix:
+        - search_path_prefix
+        - search_path_prefix
+        search_path:
+        - search_path
+        - search_path
         created_at: created_at
         deleted_by:
           tenant_id: tenant_id
@@ -51791,7 +53598,7 @@ components:
           id: id
           status: status
           usage_storage_threshold: 6
-        db_volume_size_bytes: 0
+        db_volume_size_bytes: 5
         updated_at: updated_at
         host: host
         id: id
@@ -51803,7 +53610,7 @@ components:
         deleted_by_id: deleted_by_id
         desired_state: enabled
         handle: aaa
-        version_id: 6
+        version_id: 2
         api_version: api_version
         created_by:
           tenant_id: tenant_id
@@ -51928,6 +53735,17 @@ components:
           type: string
         public_key:
           type: string
+        search_path:
+          description: The configured Steampipe database search path for the workspace.
+          items:
+            type: string
+          type: array
+        search_path_prefix:
+          description: The optional Steampipe database search path prefix for the
+            workspace.
+          items:
+            type: string
+          type: array
         state:
           description: The current state of the workspace.
           type: string

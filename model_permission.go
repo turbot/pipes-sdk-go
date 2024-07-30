@@ -26,9 +26,11 @@ type Permission struct {
 	// The ID of the user that created this.
 	CreatedById string `json:"created_by_id"`
 	// The unique identifier for the connection permission record.
-	Id string `json:"id"`
+	Id       string    `json:"id"`
+	Identity *Identity `json:"identity,omitempty"`
 	// The unique identifier for the identity that this permission applies to.
 	IdentityId *string `json:"identity_id,omitempty"`
+	Tenant     *Tenant `json:"tenant,omitempty"`
 	// The unique identifier for the tenant that this permission applies to.
 	TenantId *string `json:"tenant_id,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
@@ -37,7 +39,8 @@ type Permission struct {
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
-	VersionId int32 `json:"version_id"`
+	VersionId int32      `json:"version_id"`
+	Workspace *Workspace `json:"workspace,omitempty"`
 	// The unique identifier for the workspace that this permission applies to.
 	WorkspaceId *string `json:"workspace_id,omitempty"`
 }
@@ -232,6 +235,38 @@ func (o *Permission) SetId(v string) {
 	o.Id = v
 }
 
+// GetIdentity returns the Identity field value if set, zero value otherwise.
+func (o *Permission) GetIdentity() Identity {
+	if o == nil || o.Identity == nil {
+		var ret Identity
+		return ret
+	}
+	return *o.Identity
+}
+
+// GetIdentityOk returns a tuple with the Identity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Permission) GetIdentityOk() (*Identity, bool) {
+	if o == nil || o.Identity == nil {
+		return nil, false
+	}
+	return o.Identity, true
+}
+
+// HasIdentity returns a boolean if a field has been set.
+func (o *Permission) HasIdentity() bool {
+	if o != nil && o.Identity != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentity gets a reference to the given Identity and assigns it to the Identity field.
+func (o *Permission) SetIdentity(v Identity) {
+	o.Identity = &v
+}
+
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *Permission) GetIdentityId() string {
 	if o == nil || o.IdentityId == nil {
@@ -262,6 +297,38 @@ func (o *Permission) HasIdentityId() bool {
 // SetIdentityId gets a reference to the given string and assigns it to the IdentityId field.
 func (o *Permission) SetIdentityId(v string) {
 	o.IdentityId = &v
+}
+
+// GetTenant returns the Tenant field value if set, zero value otherwise.
+func (o *Permission) GetTenant() Tenant {
+	if o == nil || o.Tenant == nil {
+		var ret Tenant
+		return ret
+	}
+	return *o.Tenant
+}
+
+// GetTenantOk returns a tuple with the Tenant field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Permission) GetTenantOk() (*Tenant, bool) {
+	if o == nil || o.Tenant == nil {
+		return nil, false
+	}
+	return o.Tenant, true
+}
+
+// HasTenant returns a boolean if a field has been set.
+func (o *Permission) HasTenant() bool {
+	if o != nil && o.Tenant != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTenant gets a reference to the given Tenant and assigns it to the Tenant field.
+func (o *Permission) SetTenant(v Tenant) {
+	o.Tenant = &v
 }
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
@@ -408,6 +475,38 @@ func (o *Permission) SetVersionId(v int32) {
 	o.VersionId = v
 }
 
+// GetWorkspace returns the Workspace field value if set, zero value otherwise.
+func (o *Permission) GetWorkspace() Workspace {
+	if o == nil || o.Workspace == nil {
+		var ret Workspace
+		return ret
+	}
+	return *o.Workspace
+}
+
+// GetWorkspaceOk returns a tuple with the Workspace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Permission) GetWorkspaceOk() (*Workspace, bool) {
+	if o == nil || o.Workspace == nil {
+		return nil, false
+	}
+	return o.Workspace, true
+}
+
+// HasWorkspace returns a boolean if a field has been set.
+func (o *Permission) HasWorkspace() bool {
+	if o != nil && o.Workspace != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWorkspace gets a reference to the given Workspace and assigns it to the Workspace field.
+func (o *Permission) SetWorkspace(v Workspace) {
+	o.Workspace = &v
+}
+
 // GetWorkspaceId returns the WorkspaceId field value if set, zero value otherwise.
 func (o *Permission) GetWorkspaceId() string {
 	if o == nil || o.WorkspaceId == nil {
@@ -460,8 +559,14 @@ func (o Permission) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["id"] = o.Id
 	}
+	if o.Identity != nil {
+		toSerialize["identity"] = o.Identity
+	}
 	if o.IdentityId != nil {
 		toSerialize["identity_id"] = o.IdentityId
+	}
+	if o.Tenant != nil {
+		toSerialize["tenant"] = o.Tenant
 	}
 	if o.TenantId != nil {
 		toSerialize["tenant_id"] = o.TenantId
@@ -477,6 +582,9 @@ func (o Permission) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["version_id"] = o.VersionId
+	}
+	if o.Workspace != nil {
+		toSerialize["workspace"] = o.Workspace
 	}
 	if o.WorkspaceId != nil {
 		toSerialize["workspace_id"] = o.WorkspaceId

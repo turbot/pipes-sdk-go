@@ -9,12 +9,13 @@ Method | HTTP request | Description
 [**Get**](OrgWorkspaceConnections.md#Get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Get org workspace connection association
 [**List**](OrgWorkspaceConnections.md#List) | **Get** /org/{org_handle}/workspace/{workspace_handle}/connection | List org workspace connection associations
 [**Test**](OrgWorkspaceConnections.md#Test) | **Post** /org/{org_handle}/workspace/{workspace_handle}/connection/{connection_handle}/test | Test org workspace connection
+[**Update**](OrgWorkspaceConnections.md#Update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Update org workspace connection
 
 
 
 ## Create
 
-> WorkspaceConnection Create(ctx, orgHandle, workspaceHandle).Request(request).Execute()
+> Connection Create(ctx, orgHandle, workspaceHandle).Request(request).Execute()
 
 Create a connection for an org workspace or associate an org connection to the workspace
 
@@ -44,7 +45,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceConnections.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `Create`: WorkspaceConnection
+    // response from `Create`: Connection
     fmt.Fprintf(os.Stdout, "Response from `OrgWorkspaceConnections.Create`: %v\n", resp)
 }
 ```
@@ -71,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**WorkspaceConnection**](WorkspaceConnection.md)
+[**Connection**](Connection.md)
 
 ### Authorization
 
@@ -165,7 +166,7 @@ No authorization required
 
 ## Get
 
-> WorkspaceConn Get(ctx, orgHandle, workspaceHandle, connectionHandle).Execute()
+> WorkspaceConnection Get(ctx, orgHandle, workspaceHandle, connectionHandle).Execute()
 
 Get org workspace connection association
 
@@ -195,7 +196,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceConnections.Get``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `Get`: WorkspaceConn
+    // response from `Get`: WorkspaceConnection
     fmt.Fprintf(os.Stdout, "Response from `OrgWorkspaceConnections.Get`: %v\n", resp)
 }
 ```
@@ -223,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**WorkspaceConn**](WorkspaceConn.md)
+[**WorkspaceConnection**](WorkspaceConnection.md)
 
 ### Authorization
 
@@ -379,6 +380,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConnectionTestResult**](ConnectionTestResult.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Update
+
+> Connection Update(ctx, orgHandle, workspaceHandle, connectionHandle).Request(request).Mode(mode).Execute()
+
+Update org workspace connection
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    orgHandle := "orgHandle_example" // string | The handle of the org where the connection to be updated exists.
+    workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the connection to be updated exists.
+    connectionHandle := "connectionHandle_example" // string | The handle of the connection to update.
+    request := *openapiclient.NewUpdateConnectionRequest() // UpdateConnectionRequest | The request body for the connection which needs to be updated.
+    mode := "mode_example" // string | The mode of this request (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.OrgWorkspaceConnections.Update(context.Background(), orgHandle, workspaceHandle, connectionHandle).Request(request).Mode(mode).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceConnections.Update``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `Update`: Connection
+    fmt.Fprintf(os.Stdout, "Response from `OrgWorkspaceConnections.Update`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgHandle** | **string** | The handle of the org where the connection to be updated exists. | 
+**workspaceHandle** | **string** | The handle of the workspace where the connection to be updated exists. | 
+**connectionHandle** | **string** | The handle of the connection to update. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **request** | [**UpdateConnectionRequest**](UpdateConnectionRequest.md) | The request body for the connection which needs to be updated. | 
+ **mode** | **string** | The mode of this request | 
+
+### Return type
+
+[**Connection**](Connection.md)
 
 ### Authorization
 

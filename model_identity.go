@@ -23,7 +23,8 @@ type Identity struct {
 	// The handle name of the identity.
 	Handle string `json:"handle"`
 	// The unique identifier of the identity.
-	Id string `json:"id"`
+	Id     string  `json:"id"`
+	Tenant *Tenant `json:"tenant,omitempty"`
 	// The unique identifier of the tenant the identity belongs to.
 	TenantId string `json:"tenant_id"`
 	// The type of identity e.g. user or org.
@@ -163,6 +164,38 @@ func (o *Identity) SetId(v string) {
 	o.Id = v
 }
 
+// GetTenant returns the Tenant field value if set, zero value otherwise.
+func (o *Identity) GetTenant() Tenant {
+	if o == nil || o.Tenant == nil {
+		var ret Tenant
+		return ret
+	}
+	return *o.Tenant
+}
+
+// GetTenantOk returns a tuple with the Tenant field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Identity) GetTenantOk() (*Tenant, bool) {
+	if o == nil || o.Tenant == nil {
+		return nil, false
+	}
+	return o.Tenant, true
+}
+
+// HasTenant returns a boolean if a field has been set.
+func (o *Identity) HasTenant() bool {
+	if o != nil && o.Tenant != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTenant gets a reference to the given Tenant and assigns it to the Tenant field.
+func (o *Identity) SetTenant(v Tenant) {
+	o.Tenant = &v
+}
+
 // GetTenantId returns the TenantId field value
 func (o *Identity) GetTenantId() string {
 	if o == nil {
@@ -224,6 +257,9 @@ func (o Identity) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["id"] = o.Id
+	}
+	if o.Tenant != nil {
+		toSerialize["tenant"] = o.Tenant
 	}
 	if true {
 		toSerialize["tenant_id"] = o.TenantId
