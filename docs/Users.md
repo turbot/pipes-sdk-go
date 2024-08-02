@@ -13,12 +13,10 @@ Method | HTTP request | Description
 [**GetDBPassword**](Users.md#GetDBPassword) | **Get** /user/{user_handle}/password | Get user password
 [**GetEmail**](Users.md#GetEmail) | **Get** /user/{user_handle}/email/{email_id} | Get user email
 [**GetPreferences**](Users.md#GetPreferences) | **Get** /user/{user_handle}/preferences | Get user preferences
-[**GetQuota**](Users.md#GetQuota) | **Get** /user/{user_handle}/quota | User quota
 [**List**](Users.md#List) | **Get** /user | List users
 [**ListAuditLogs**](Users.md#ListAuditLogs) | **Get** /user/{user_handle}/audit_log | User audit logs
 [**ListConstraints**](Users.md#ListConstraints) | **Get** /user/{user_handle}/constraint | List user constraints
 [**ListEmails**](Users.md#ListEmails) | **Get** /user/{user_handle}/email | List user emails
-[**ListFeatures**](Users.md#ListFeatures) | **Get** /user/{user_handle}/feature | User features
 [**ListUsage**](Users.md#ListUsage) | **Get** /user/{user_handle}/usage | List user usage
 [**Update**](Users.md#Update) | **Patch** /user/{user_handle} | Update user
 [**UpdatePreferences**](Users.md#UpdatePreferences) | **Patch** /user/{user_handle}/preferences | Update user preferences
@@ -656,76 +654,6 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## GetQuota
-
-> UserQuota GetQuota(ctx, userHandle).Execute()
-
-User quota
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    userHandle := "userHandle_example" // string | Specify the user handle to get the quota details.
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Users.GetQuota(context.Background(), userHandle).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `Users.GetQuota``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetQuota`: UserQuota
-    fmt.Fprintf(os.Stdout, "Response from `Users.GetQuota`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userHandle** | **string** | Specify the user handle to get the quota details. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetQuotaRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**UserQuota**](UserQuota.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## List
 
 > ListUsersResponse List(ctx).Limit(limit).NextToken(nextToken).Execute()
@@ -1003,76 +931,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListUserEmailsResponse**](ListUserEmailsResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListFeatures
-
-> ListFeaturesResponse ListFeatures(ctx, userHandle).Execute()
-
-User features
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    userHandle := "userHandle_example" // string | Specify the user handle to get the feature details.
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Users.ListFeatures(context.Background(), userHandle).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `Users.ListFeatures``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListFeatures`: ListFeaturesResponse
-    fmt.Fprintf(os.Stdout, "Response from `Users.ListFeatures`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userHandle** | **string** | Specify the user handle to get the feature details. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListFeaturesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**ListFeaturesResponse**](ListFeaturesResponse.md)
 
 ### Authorization
 

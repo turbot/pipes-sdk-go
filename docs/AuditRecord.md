@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **CreatedAt** | **string** | The time when the audit log was recorded. | 
 **Data** | **map[string]interface{}** |  | 
 **Id** | **string** | The unique identifier for an audit log. | 
-**IdentityHandle** | **string** | The handle name for an identity where the action has been performed. | 
-**IdentityId** | **string** | The unique identifier for an identity where the action has been performed. | 
+**IdentityHandle** | Pointer to **string** | The handle name for an identity where the action has been performed. | [optional] 
+**IdentityId** | Pointer to **string** | The unique identifier for an identity where the action has been performed. | [optional] 
 **ProcessId** | Pointer to **string** |  | [optional] 
 **TargetHandle** | Pointer to **string** | The handle name of the entity on which the action has been performed. | [optional] 
 **TargetId** | Pointer to **string** | The unique identifier of the entity on which the action has been performed. | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewAuditRecord
 
-`func NewAuditRecord(actionType string, actorAvatarUrl string, actorDisplayName string, actorHandle string, actorId string, actorIp string, createdAt string, data map[string]interface{}, id string, identityHandle string, identityId string, tenantId string, ) *AuditRecord`
+`func NewAuditRecord(actionType string, actorAvatarUrl string, actorDisplayName string, actorHandle string, actorId string, actorIp string, createdAt string, data map[string]interface{}, id string, tenantId string, ) *AuditRecord`
 
 NewAuditRecord instantiates a new AuditRecord object
 This constructor will assign default values to properties that have it defined,
@@ -238,6 +238,11 @@ and a boolean to check if the value has been set.
 
 SetIdentityHandle sets IdentityHandle field to given value.
 
+### HasIdentityHandle
+
+`func (o *AuditRecord) HasIdentityHandle() bool`
+
+HasIdentityHandle returns a boolean if a field has been set.
 
 ### GetIdentityId
 
@@ -258,6 +263,11 @@ and a boolean to check if the value has been set.
 
 SetIdentityId sets IdentityId field to given value.
 
+### HasIdentityId
+
+`func (o *AuditRecord) HasIdentityId() bool`
+
+HasIdentityId returns a boolean if a field has been set.
 
 ### GetProcessId
 

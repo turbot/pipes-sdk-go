@@ -6,18 +6,23 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Create**](OrgConnections.md#Create) | **Post** /org/{org_handle}/connection | Create org connection
 [**CreateDeprecated**](OrgConnections.md#CreateDeprecated) | **Post** /org/{org_handle}/conn | Create org connection
+[**CreatePermission**](OrgConnections.md#CreatePermission) | **Post** /org/{org_handle}/connection/{connection_handle}/permission | Create org connection permission
 [**Delete**](OrgConnections.md#Delete) | **Delete** /org/{org_handle}/connection/{connection_handle} | Delete org connection
 [**DeleteDeprecated**](OrgConnections.md#DeleteDeprecated) | **Delete** /org/{org_handle}/conn/{conn_handle} | Delete org connection
+[**DeletePermission**](OrgConnections.md#DeletePermission) | **Delete** /org/{org_handle}/connection/{connection_handle}/permission/{permission_id} | Delete org connection permission
 [**Get**](OrgConnections.md#Get) | **Get** /org/{org_handle}/connection/{connection_handle} | Get org connection
 [**GetDeprecated**](OrgConnections.md#GetDeprecated) | **Get** /org/{org_handle}/conn/{conn_handle} | Get org connection
+[**GetPermission**](OrgConnections.md#GetPermission) | **Get** /org/{org_handle}/connection/{connection_handle}/permission/{permission_id} | Get org connection permission
 [**List**](OrgConnections.md#List) | **Get** /org/{org_handle}/connection | List org connections
 [**ListDeprecated**](OrgConnections.md#ListDeprecated) | **Get** /org/{org_handle}/conn | List org connections
+[**ListPermission**](OrgConnections.md#ListPermission) | **Get** /org/{org_handle}/connection/{connection_handle}/permission | List org connection permissions
 [**ListWorkspaces**](OrgConnections.md#ListWorkspaces) | **Get** /org/{org_handle}/connection/{connection_handle}/workspace | List org connection workspaces
 [**ListWorkspacesDeprecated**](OrgConnections.md#ListWorkspacesDeprecated) | **Get** /org/{org_handle}/conn/{conn_handle}/workspace | List org connection workspaces
 [**Test**](OrgConnections.md#Test) | **Post** /org/{org_handle}/connection/{connection_handle}/test | Test org connection
 [**TestDeprecated**](OrgConnections.md#TestDeprecated) | **Post** /org/{org_handle}/conn/{conn_handle}/test | Test org connection
 [**Update**](OrgConnections.md#Update) | **Patch** /org/{org_handle}/connection/{connection_handle} | Update org connection
 [**UpdateDeprecated**](OrgConnections.md#UpdateDeprecated) | **Patch** /org/{org_handle}/conn/{conn_handle} | Update org connection
+[**UpdatePermission**](OrgConnections.md#UpdatePermission) | **Patch** /org/{org_handle}/connection/{connection_handle}/permission/{permission_id} | Update org connection permission
 
 
 
@@ -154,6 +159,81 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Connection**](Connection.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreatePermission
+
+> Permission CreatePermission(ctx, orgHandle, connectionHandle).Request(request).Execute()
+
+Create org connection permission
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    orgHandle := "orgHandle_example" // string | The handle of the org for which we want to list connection permissions.
+    connectionHandle := "connectionHandle_example" // string | The handle of the connection for which we want to list permissions.
+    request := *openapiclient.NewCreatePermissionRequest() // CreatePermissionRequest | The request body for the connection permission to be created.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.OrgConnections.CreatePermission(context.Background(), orgHandle, connectionHandle).Request(request).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgConnections.CreatePermission``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreatePermission`: Permission
+    fmt.Fprintf(os.Stdout, "Response from `OrgConnections.CreatePermission`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgHandle** | **string** | The handle of the org for which we want to list connection permissions. | 
+**connectionHandle** | **string** | The handle of the connection for which we want to list permissions. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreatePermissionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **request** | [**CreatePermissionRequest**](CreatePermissionRequest.md) | The request body for the connection permission to be created. | 
+
+### Return type
+
+[**Permission**](Permission.md)
 
 ### Authorization
 
@@ -315,6 +395,82 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DeletePermission
+
+> Permission DeletePermission(ctx, orgHandle, connectionHandle, permissionId).Execute()
+
+Delete org connection permission
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    orgHandle := "orgHandle_example" // string | The handle of the org for which we want to delete connection permission for.
+    connectionHandle := "connectionHandle_example" // string | The handle of the connection for which we want to delete permission for.
+    permissionId := "permissionId_example" // string | The id of the permission which we want to delete.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.OrgConnections.DeletePermission(context.Background(), orgHandle, connectionHandle, permissionId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgConnections.DeletePermission``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePermission`: Permission
+    fmt.Fprintf(os.Stdout, "Response from `OrgConnections.DeletePermission`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgHandle** | **string** | The handle of the org for which we want to delete connection permission for. | 
+**connectionHandle** | **string** | The handle of the connection for which we want to delete permission for. | 
+**permissionId** | **string** | The id of the permission which we want to delete. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeletePermissionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**Permission**](Permission.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## Get
 
 > Connection Get(ctx, orgHandle, connectionHandle).Execute()
@@ -446,6 +602,82 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Connection**](Connection.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPermission
+
+> Permission GetPermission(ctx, orgHandle, connectionHandle, permissionId).Execute()
+
+Get org connection permission
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    orgHandle := "orgHandle_example" // string | The handle of the org for which we want to get connection permission for.
+    connectionHandle := "connectionHandle_example" // string | The handle of the connection for which we want to get permission for.
+    permissionId := "permissionId_example" // string | The id of the permission which we want to retrieve.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.OrgConnections.GetPermission(context.Background(), orgHandle, connectionHandle, permissionId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgConnections.GetPermission``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetPermission`: Permission
+    fmt.Fprintf(os.Stdout, "Response from `OrgConnections.GetPermission`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgHandle** | **string** | The handle of the org for which we want to get connection permission for. | 
+**connectionHandle** | **string** | The handle of the connection for which we want to get permission for. | 
+**permissionId** | **string** | The id of the permission which we want to retrieve. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPermissionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**Permission**](Permission.md)
 
 ### Authorization
 
@@ -594,6 +826,83 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListConnectionsResponse**](ListConnectionsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListPermission
+
+> ListPermissionsResponse ListPermission(ctx, orgHandle, connectionHandle).Limit(limit).NextToken(nextToken).Execute()
+
+List org connection permissions
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    orgHandle := "orgHandle_example" // string | The handle of the org for which we want to list connection permissions.
+    connectionHandle := "connectionHandle_example" // string | The handle of the connection for which we want to list permissions.
+    limit := int32(56) // int32 | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. (optional) (default to 25)
+    nextToken := "nextToken_example" // string | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.OrgConnections.ListPermission(context.Background(), orgHandle, connectionHandle).Limit(limit).NextToken(nextToken).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgConnections.ListPermission``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListPermission`: ListPermissionsResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrgConnections.ListPermission`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgHandle** | **string** | The handle of the org for which we want to list connection permissions. | 
+**connectionHandle** | **string** | The handle of the connection for which we want to list permissions. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListPermissionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **limit** | **int32** | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. | [default to 25]
+ **nextToken** | **string** | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. | 
+
+### Return type
+
+[**ListPermissionsResponse**](ListPermissionsResponse.md)
 
 ### Authorization
 
@@ -1052,6 +1361,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Connection**](Connection.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePermission
+
+> Permission UpdatePermission(ctx, orgHandle, connectionHandle, permissionId).Request(request).Execute()
+
+Update org connection permission
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    orgHandle := "orgHandle_example" // string | The handle of the org for which we want to update connection permission for.
+    connectionHandle := "connectionHandle_example" // string | The handle of the connection for which we want to update permission for.
+    permissionId := "permissionId_example" // string | The id of the permission which we want to update.
+    request := *openapiclient.NewUpdatePermissionRequest() // UpdatePermissionRequest | The request body for the connection permission to be update.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.OrgConnections.UpdatePermission(context.Background(), orgHandle, connectionHandle, permissionId).Request(request).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgConnections.UpdatePermission``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePermission`: Permission
+    fmt.Fprintf(os.Stdout, "Response from `OrgConnections.UpdatePermission`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgHandle** | **string** | The handle of the org for which we want to update connection permission for. | 
+**connectionHandle** | **string** | The handle of the connection for which we want to update permission for. | 
+**permissionId** | **string** | The id of the permission which we want to update. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePermissionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **request** | [**UpdatePermissionRequest**](UpdatePermissionRequest.md) | The request body for the connection permission to be update. | 
+
+### Return type
+
+[**Permission**](Permission.md)
 
 ### Authorization
 

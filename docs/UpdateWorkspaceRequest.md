@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **DbVolumeSizeBytes** | Pointer to **int64** |  | [optional] 
 **DesiredState** | Pointer to **string** | paused is not yet supported for Workspace | [optional] 
 **Handle** | Pointer to **string** |  | [optional] 
+**SearchPathPrefix** | Pointer to **[]string** | InstanceType *WorkspaceInstanceType &#x60;json:\&quot;instance_type,omitempty\&quot; binding:\&quot;omitempty,oneof&#x3D;db1.shared db1.small\&quot;&#x60; | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetHandle sets Handle field to given value.
 `func (o *UpdateWorkspaceRequest) HasHandle() bool`
 
 HasHandle returns a boolean if a field has been set.
+
+### GetSearchPathPrefix
+
+`func (o *UpdateWorkspaceRequest) GetSearchPathPrefix() []string`
+
+GetSearchPathPrefix returns the SearchPathPrefix field if non-nil, zero value otherwise.
+
+### GetSearchPathPrefixOk
+
+`func (o *UpdateWorkspaceRequest) GetSearchPathPrefixOk() (*[]string, bool)`
+
+GetSearchPathPrefixOk returns a tuple with the SearchPathPrefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSearchPathPrefix
+
+`func (o *UpdateWorkspaceRequest) SetSearchPathPrefix(v []string)`
+
+SetSearchPathPrefix sets SearchPathPrefix field to given value.
+
+### HasSearchPathPrefix
+
+`func (o *UpdateWorkspaceRequest) HasSearchPathPrefix() bool`
+
+HasSearchPathPrefix returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

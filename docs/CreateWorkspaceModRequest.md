@@ -4,8 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Branch** | Pointer to **string** |  | [optional] 
 **Constraint** | Pointer to **string** |  | [optional] 
+**IntegrationHandle** | Pointer to **string** |  | [optional] 
 **Path** | **string** |  | 
+**Version** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -25,6 +28,31 @@ will change when the set of required properties is changed
 NewCreateWorkspaceModRequestWithDefaults instantiates a new CreateWorkspaceModRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBranch
+
+`func (o *CreateWorkspaceModRequest) GetBranch() string`
+
+GetBranch returns the Branch field if non-nil, zero value otherwise.
+
+### GetBranchOk
+
+`func (o *CreateWorkspaceModRequest) GetBranchOk() (*string, bool)`
+
+GetBranchOk returns a tuple with the Branch field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBranch
+
+`func (o *CreateWorkspaceModRequest) SetBranch(v string)`
+
+SetBranch sets Branch field to given value.
+
+### HasBranch
+
+`func (o *CreateWorkspaceModRequest) HasBranch() bool`
+
+HasBranch returns a boolean if a field has been set.
 
 ### GetConstraint
 
@@ -51,6 +79,31 @@ SetConstraint sets Constraint field to given value.
 
 HasConstraint returns a boolean if a field has been set.
 
+### GetIntegrationHandle
+
+`func (o *CreateWorkspaceModRequest) GetIntegrationHandle() string`
+
+GetIntegrationHandle returns the IntegrationHandle field if non-nil, zero value otherwise.
+
+### GetIntegrationHandleOk
+
+`func (o *CreateWorkspaceModRequest) GetIntegrationHandleOk() (*string, bool)`
+
+GetIntegrationHandleOk returns a tuple with the IntegrationHandle field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegrationHandle
+
+`func (o *CreateWorkspaceModRequest) SetIntegrationHandle(v string)`
+
+SetIntegrationHandle sets IntegrationHandle field to given value.
+
+### HasIntegrationHandle
+
+`func (o *CreateWorkspaceModRequest) HasIntegrationHandle() bool`
+
+HasIntegrationHandle returns a boolean if a field has been set.
+
 ### GetPath
 
 `func (o *CreateWorkspaceModRequest) GetPath() string`
@@ -70,6 +123,31 @@ and a boolean to check if the value has been set.
 
 SetPath sets Path field to given value.
 
+
+### GetVersion
+
+`func (o *CreateWorkspaceModRequest) GetVersion() string`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *CreateWorkspaceModRequest) GetVersionOk() (*string, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *CreateWorkspaceModRequest) SetVersion(v string)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *CreateWorkspaceModRequest) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

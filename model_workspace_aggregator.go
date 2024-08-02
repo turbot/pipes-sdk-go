@@ -16,6 +16,8 @@ import (
 
 // WorkspaceAggregator struct for WorkspaceAggregator
 type WorkspaceAggregator struct {
+	Association *WorkspaceAggregatorAssociation    `json:"association,omitempty"`
+	Config      *map[string]interface{} `json:"config,omitempty"`
 	// The plugin or connection configuration.
 	Connections []string `json:"connections"`
 	// The time of creation in ISO 8601 UTC.
@@ -30,12 +32,31 @@ type WorkspaceAggregator struct {
 	DeletedById string `json:"deleted_by_id"`
 	// The handle name of the aggregator.
 	Handle string `json:"handle"`
+	// The dynamically-generated handle for the aggregator. Only populated if this is a discovered aggregator.
+	HandleDynamic *string `json:"handle_dynamic,omitempty"`
+	// The handle mode for the aggregator.
+	HandleMode *string `json:"handle_mode,omitempty"`
+	// The handle prefix to use for aggregators and connections discovered by this aggregator. Only populated if this is a dynamic aggregator.
+	HandlePrefix *string `json:"handle_prefix,omitempty"`
 	// The unique identifier for the aggregator.
 	Id string `json:"id"`
 	// The unique identifier for an identity where the aggregator has been created.
-	IdentityId string `json:"identity_id"`
+	IdentityId  *string      `json:"identity_id,omitempty"`
+	Integration *Integration `json:"integration,omitempty"`
+	// The source identifier for this aggregator. Only populated if its a aggregator thats been discovered by an integration.
+	IntegrationResourceIdentifier *string `json:"integration_resource_identifier,omitempty"`
+	// A friendly resource name for the aggregator. Only populated if its a aggregator thats been doscovered by an integration.
+	IntegrationResourceName *string `json:"integration_resource_name,omitempty"`
+	// The source path for this aggregator. Only populated if its a aggregator thats been discovered by an integration.
+	IntegrationResourcePath *string `json:"integration_resource_path,omitempty"`
+	// The source type for this aggregator. Only populated if its a aggregator thats been discovered by an integration.
+	IntegrationResourceType *string `json:"integration_resource_type,omitempty"`
+	// The ID of the aggregator that manages this aggregator. Only populated if this is a discovered aggregator.
+	ManagedById *string `json:"managed_by_id,omitempty"`
 	// The plugin name for the aggregator.
 	Plugin string `json:"plugin"`
+	// The unique identifier for the tenant where this aggregator is created.
+	TenantId string `json:"tenant_id"`
 	// Type of connection i.e aggregator or connection.
 	Type *string `json:"type,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
@@ -46,14 +67,14 @@ type WorkspaceAggregator struct {
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
 	VersionId int32 `json:"version_id"`
 	// The unique identifier for the workspace.
-	WorkspaceId string `json:"workspace_id"`
+	WorkspaceId *string `json:"workspace_id,omitempty"`
 }
 
 // NewWorkspaceAggregator instantiates a new WorkspaceAggregator object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkspaceAggregator(connections []string, createdAt string, createdById string, deletedById string, handle string, id string, identityId string, plugin string, updatedById string, versionId int32, workspaceId string) *WorkspaceAggregator {
+func NewWorkspaceAggregator(connections []string, createdAt string, createdById string, deletedById string, handle string, id string, plugin string, tenantId string, updatedById string, versionId int32) *WorkspaceAggregator {
 	this := WorkspaceAggregator{}
 	this.Connections = connections
 	this.CreatedAt = createdAt
@@ -61,11 +82,10 @@ func NewWorkspaceAggregator(connections []string, createdAt string, createdById 
 	this.DeletedById = deletedById
 	this.Handle = handle
 	this.Id = id
-	this.IdentityId = identityId
 	this.Plugin = plugin
+	this.TenantId = tenantId
 	this.UpdatedById = updatedById
 	this.VersionId = versionId
-	this.WorkspaceId = workspaceId
 	return &this
 }
 
@@ -75,6 +95,70 @@ func NewWorkspaceAggregator(connections []string, createdAt string, createdById 
 func NewWorkspaceAggregatorWithDefaults() *WorkspaceAggregator {
 	this := WorkspaceAggregator{}
 	return &this
+}
+
+// GetAssociation returns the Association field value if set, zero value otherwise.
+func (o *WorkspaceAggregator) GetAssociation() WorkspaceAggregatorAssociation {
+	if o == nil || o.Association == nil {
+		var ret WorkspaceAggregatorAssociation
+		return ret
+	}
+	return *o.Association
+}
+
+// GetAssociationOk returns a tuple with the Association field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceAggregator) GetAssociationOk() (*WorkspaceAggregatorAssociation, bool) {
+	if o == nil || o.Association == nil {
+		return nil, false
+	}
+	return o.Association, true
+}
+
+// HasAssociation returns a boolean if a field has been set.
+func (o *WorkspaceAggregator) HasAssociation() bool {
+	if o != nil && o.Association != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAssociation gets a reference to the given WorkspaceAggregatorAssociation and assigns it to the Association field.
+func (o *WorkspaceAggregator) SetAssociation(v WorkspaceAggregatorAssociation) {
+	o.Association = &v
+}
+
+// GetConfig returns the Config field value if set, zero value otherwise.
+func (o *WorkspaceAggregator) GetConfig() map[string]interface{} {
+	if o == nil || o.Config == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Config
+}
+
+// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceAggregator) GetConfigOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Config == nil {
+		return nil, false
+	}
+	return o.Config, true
+}
+
+// HasConfig returns a boolean if a field has been set.
+func (o *WorkspaceAggregator) HasConfig() bool {
+	if o != nil && o.Config != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
+func (o *WorkspaceAggregator) SetConfig(v map[string]interface{}) {
+	o.Config = &v
 }
 
 // GetConnections returns the Connections field value
@@ -293,6 +377,102 @@ func (o *WorkspaceAggregator) SetHandle(v string) {
 	o.Handle = v
 }
 
+// GetHandleDynamic returns the HandleDynamic field value if set, zero value otherwise.
+func (o *WorkspaceAggregator) GetHandleDynamic() string {
+	if o == nil || o.HandleDynamic == nil {
+		var ret string
+		return ret
+	}
+	return *o.HandleDynamic
+}
+
+// GetHandleDynamicOk returns a tuple with the HandleDynamic field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceAggregator) GetHandleDynamicOk() (*string, bool) {
+	if o == nil || o.HandleDynamic == nil {
+		return nil, false
+	}
+	return o.HandleDynamic, true
+}
+
+// HasHandleDynamic returns a boolean if a field has been set.
+func (o *WorkspaceAggregator) HasHandleDynamic() bool {
+	if o != nil && o.HandleDynamic != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHandleDynamic gets a reference to the given string and assigns it to the HandleDynamic field.
+func (o *WorkspaceAggregator) SetHandleDynamic(v string) {
+	o.HandleDynamic = &v
+}
+
+// GetHandleMode returns the HandleMode field value if set, zero value otherwise.
+func (o *WorkspaceAggregator) GetHandleMode() string {
+	if o == nil || o.HandleMode == nil {
+		var ret string
+		return ret
+	}
+	return *o.HandleMode
+}
+
+// GetHandleModeOk returns a tuple with the HandleMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceAggregator) GetHandleModeOk() (*string, bool) {
+	if o == nil || o.HandleMode == nil {
+		return nil, false
+	}
+	return o.HandleMode, true
+}
+
+// HasHandleMode returns a boolean if a field has been set.
+func (o *WorkspaceAggregator) HasHandleMode() bool {
+	if o != nil && o.HandleMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHandleMode gets a reference to the given string and assigns it to the HandleMode field.
+func (o *WorkspaceAggregator) SetHandleMode(v string) {
+	o.HandleMode = &v
+}
+
+// GetHandlePrefix returns the HandlePrefix field value if set, zero value otherwise.
+func (o *WorkspaceAggregator) GetHandlePrefix() string {
+	if o == nil || o.HandlePrefix == nil {
+		var ret string
+		return ret
+	}
+	return *o.HandlePrefix
+}
+
+// GetHandlePrefixOk returns a tuple with the HandlePrefix field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceAggregator) GetHandlePrefixOk() (*string, bool) {
+	if o == nil || o.HandlePrefix == nil {
+		return nil, false
+	}
+	return o.HandlePrefix, true
+}
+
+// HasHandlePrefix returns a boolean if a field has been set.
+func (o *WorkspaceAggregator) HasHandlePrefix() bool {
+	if o != nil && o.HandlePrefix != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHandlePrefix gets a reference to the given string and assigns it to the HandlePrefix field.
+func (o *WorkspaceAggregator) SetHandlePrefix(v string) {
+	o.HandlePrefix = &v
+}
+
 // GetId returns the Id field value
 func (o *WorkspaceAggregator) GetId() string {
 	if o == nil {
@@ -317,28 +497,228 @@ func (o *WorkspaceAggregator) SetId(v string) {
 	o.Id = v
 }
 
-// GetIdentityId returns the IdentityId field value
+// GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *WorkspaceAggregator) GetIdentityId() string {
-	if o == nil {
+	if o == nil || o.IdentityId == nil {
 		var ret string
 		return ret
 	}
-
-	return o.IdentityId
+	return *o.IdentityId
 }
 
-// GetIdentityIdOk returns a tuple with the IdentityId field value
+// GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkspaceAggregator) GetIdentityIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.IdentityId == nil {
 		return nil, false
 	}
-	return &o.IdentityId, true
+	return o.IdentityId, true
 }
 
-// SetIdentityId sets field value
+// HasIdentityId returns a boolean if a field has been set.
+func (o *WorkspaceAggregator) HasIdentityId() bool {
+	if o != nil && o.IdentityId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityId gets a reference to the given string and assigns it to the IdentityId field.
 func (o *WorkspaceAggregator) SetIdentityId(v string) {
-	o.IdentityId = v
+	o.IdentityId = &v
+}
+
+// GetIntegration returns the Integration field value if set, zero value otherwise.
+func (o *WorkspaceAggregator) GetIntegration() Integration {
+	if o == nil || o.Integration == nil {
+		var ret Integration
+		return ret
+	}
+	return *o.Integration
+}
+
+// GetIntegrationOk returns a tuple with the Integration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceAggregator) GetIntegrationOk() (*Integration, bool) {
+	if o == nil || o.Integration == nil {
+		return nil, false
+	}
+	return o.Integration, true
+}
+
+// HasIntegration returns a boolean if a field has been set.
+func (o *WorkspaceAggregator) HasIntegration() bool {
+	if o != nil && o.Integration != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIntegration gets a reference to the given Integration and assigns it to the Integration field.
+func (o *WorkspaceAggregator) SetIntegration(v Integration) {
+	o.Integration = &v
+}
+
+// GetIntegrationResourceIdentifier returns the IntegrationResourceIdentifier field value if set, zero value otherwise.
+func (o *WorkspaceAggregator) GetIntegrationResourceIdentifier() string {
+	if o == nil || o.IntegrationResourceIdentifier == nil {
+		var ret string
+		return ret
+	}
+	return *o.IntegrationResourceIdentifier
+}
+
+// GetIntegrationResourceIdentifierOk returns a tuple with the IntegrationResourceIdentifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceAggregator) GetIntegrationResourceIdentifierOk() (*string, bool) {
+	if o == nil || o.IntegrationResourceIdentifier == nil {
+		return nil, false
+	}
+	return o.IntegrationResourceIdentifier, true
+}
+
+// HasIntegrationResourceIdentifier returns a boolean if a field has been set.
+func (o *WorkspaceAggregator) HasIntegrationResourceIdentifier() bool {
+	if o != nil && o.IntegrationResourceIdentifier != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIntegrationResourceIdentifier gets a reference to the given string and assigns it to the IntegrationResourceIdentifier field.
+func (o *WorkspaceAggregator) SetIntegrationResourceIdentifier(v string) {
+	o.IntegrationResourceIdentifier = &v
+}
+
+// GetIntegrationResourceName returns the IntegrationResourceName field value if set, zero value otherwise.
+func (o *WorkspaceAggregator) GetIntegrationResourceName() string {
+	if o == nil || o.IntegrationResourceName == nil {
+		var ret string
+		return ret
+	}
+	return *o.IntegrationResourceName
+}
+
+// GetIntegrationResourceNameOk returns a tuple with the IntegrationResourceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceAggregator) GetIntegrationResourceNameOk() (*string, bool) {
+	if o == nil || o.IntegrationResourceName == nil {
+		return nil, false
+	}
+	return o.IntegrationResourceName, true
+}
+
+// HasIntegrationResourceName returns a boolean if a field has been set.
+func (o *WorkspaceAggregator) HasIntegrationResourceName() bool {
+	if o != nil && o.IntegrationResourceName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIntegrationResourceName gets a reference to the given string and assigns it to the IntegrationResourceName field.
+func (o *WorkspaceAggregator) SetIntegrationResourceName(v string) {
+	o.IntegrationResourceName = &v
+}
+
+// GetIntegrationResourcePath returns the IntegrationResourcePath field value if set, zero value otherwise.
+func (o *WorkspaceAggregator) GetIntegrationResourcePath() string {
+	if o == nil || o.IntegrationResourcePath == nil {
+		var ret string
+		return ret
+	}
+	return *o.IntegrationResourcePath
+}
+
+// GetIntegrationResourcePathOk returns a tuple with the IntegrationResourcePath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceAggregator) GetIntegrationResourcePathOk() (*string, bool) {
+	if o == nil || o.IntegrationResourcePath == nil {
+		return nil, false
+	}
+	return o.IntegrationResourcePath, true
+}
+
+// HasIntegrationResourcePath returns a boolean if a field has been set.
+func (o *WorkspaceAggregator) HasIntegrationResourcePath() bool {
+	if o != nil && o.IntegrationResourcePath != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIntegrationResourcePath gets a reference to the given string and assigns it to the IntegrationResourcePath field.
+func (o *WorkspaceAggregator) SetIntegrationResourcePath(v string) {
+	o.IntegrationResourcePath = &v
+}
+
+// GetIntegrationResourceType returns the IntegrationResourceType field value if set, zero value otherwise.
+func (o *WorkspaceAggregator) GetIntegrationResourceType() string {
+	if o == nil || o.IntegrationResourceType == nil {
+		var ret string
+		return ret
+	}
+	return *o.IntegrationResourceType
+}
+
+// GetIntegrationResourceTypeOk returns a tuple with the IntegrationResourceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceAggregator) GetIntegrationResourceTypeOk() (*string, bool) {
+	if o == nil || o.IntegrationResourceType == nil {
+		return nil, false
+	}
+	return o.IntegrationResourceType, true
+}
+
+// HasIntegrationResourceType returns a boolean if a field has been set.
+func (o *WorkspaceAggregator) HasIntegrationResourceType() bool {
+	if o != nil && o.IntegrationResourceType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIntegrationResourceType gets a reference to the given string and assigns it to the IntegrationResourceType field.
+func (o *WorkspaceAggregator) SetIntegrationResourceType(v string) {
+	o.IntegrationResourceType = &v
+}
+
+// GetManagedById returns the ManagedById field value if set, zero value otherwise.
+func (o *WorkspaceAggregator) GetManagedById() string {
+	if o == nil || o.ManagedById == nil {
+		var ret string
+		return ret
+	}
+	return *o.ManagedById
+}
+
+// GetManagedByIdOk returns a tuple with the ManagedById field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceAggregator) GetManagedByIdOk() (*string, bool) {
+	if o == nil || o.ManagedById == nil {
+		return nil, false
+	}
+	return o.ManagedById, true
+}
+
+// HasManagedById returns a boolean if a field has been set.
+func (o *WorkspaceAggregator) HasManagedById() bool {
+	if o != nil && o.ManagedById != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetManagedById gets a reference to the given string and assigns it to the ManagedById field.
+func (o *WorkspaceAggregator) SetManagedById(v string) {
+	o.ManagedById = &v
 }
 
 // GetPlugin returns the Plugin field value
@@ -363,6 +743,30 @@ func (o *WorkspaceAggregator) GetPluginOk() (*string, bool) {
 // SetPlugin sets field value
 func (o *WorkspaceAggregator) SetPlugin(v string) {
 	o.Plugin = v
+}
+
+// GetTenantId returns the TenantId field value
+func (o *WorkspaceAggregator) GetTenantId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TenantId
+}
+
+// GetTenantIdOk returns a tuple with the TenantId field value
+// and a boolean to check if the value has been set.
+func (o *WorkspaceAggregator) GetTenantIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TenantId, true
+}
+
+// SetTenantId sets field value
+func (o *WorkspaceAggregator) SetTenantId(v string) {
+	o.TenantId = v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -509,32 +913,46 @@ func (o *WorkspaceAggregator) SetVersionId(v int32) {
 	o.VersionId = v
 }
 
-// GetWorkspaceId returns the WorkspaceId field value
+// GetWorkspaceId returns the WorkspaceId field value if set, zero value otherwise.
 func (o *WorkspaceAggregator) GetWorkspaceId() string {
-	if o == nil {
+	if o == nil || o.WorkspaceId == nil {
 		var ret string
 		return ret
 	}
-
-	return o.WorkspaceId
+	return *o.WorkspaceId
 }
 
-// GetWorkspaceIdOk returns a tuple with the WorkspaceId field value
+// GetWorkspaceIdOk returns a tuple with the WorkspaceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkspaceAggregator) GetWorkspaceIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.WorkspaceId == nil {
 		return nil, false
 	}
-	return &o.WorkspaceId, true
+	return o.WorkspaceId, true
 }
 
-// SetWorkspaceId sets field value
+// HasWorkspaceId returns a boolean if a field has been set.
+func (o *WorkspaceAggregator) HasWorkspaceId() bool {
+	if o != nil && o.WorkspaceId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWorkspaceId gets a reference to the given string and assigns it to the WorkspaceId field.
 func (o *WorkspaceAggregator) SetWorkspaceId(v string) {
-	o.WorkspaceId = v
+	o.WorkspaceId = &v
 }
 
 func (o WorkspaceAggregator) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Association != nil {
+		toSerialize["association"] = o.Association
+	}
+	if o.Config != nil {
+		toSerialize["config"] = o.Config
+	}
 	if true {
 		toSerialize["connections"] = o.Connections
 	}
@@ -559,14 +977,44 @@ func (o WorkspaceAggregator) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["handle"] = o.Handle
 	}
+	if o.HandleDynamic != nil {
+		toSerialize["handle_dynamic"] = o.HandleDynamic
+	}
+	if o.HandleMode != nil {
+		toSerialize["handle_mode"] = o.HandleMode
+	}
+	if o.HandlePrefix != nil {
+		toSerialize["handle_prefix"] = o.HandlePrefix
+	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
-	if true {
+	if o.IdentityId != nil {
 		toSerialize["identity_id"] = o.IdentityId
+	}
+	if o.Integration != nil {
+		toSerialize["integration"] = o.Integration
+	}
+	if o.IntegrationResourceIdentifier != nil {
+		toSerialize["integration_resource_identifier"] = o.IntegrationResourceIdentifier
+	}
+	if o.IntegrationResourceName != nil {
+		toSerialize["integration_resource_name"] = o.IntegrationResourceName
+	}
+	if o.IntegrationResourcePath != nil {
+		toSerialize["integration_resource_path"] = o.IntegrationResourcePath
+	}
+	if o.IntegrationResourceType != nil {
+		toSerialize["integration_resource_type"] = o.IntegrationResourceType
+	}
+	if o.ManagedById != nil {
+		toSerialize["managed_by_id"] = o.ManagedById
 	}
 	if true {
 		toSerialize["plugin"] = o.Plugin
+	}
+	if true {
+		toSerialize["tenant_id"] = o.TenantId
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
@@ -583,7 +1031,7 @@ func (o WorkspaceAggregator) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["version_id"] = o.VersionId
 	}
-	if true {
+	if o.WorkspaceId != nil {
 		toSerialize["workspace_id"] = o.WorkspaceId
 	}
 	return json.Marshal(toSerialize)

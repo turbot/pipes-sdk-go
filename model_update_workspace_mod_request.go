@@ -16,16 +16,17 @@ import (
 
 // UpdateWorkspaceModRequest struct for UpdateWorkspaceModRequest
 type UpdateWorkspaceModRequest struct {
-	Constraint string `json:"constraint"`
+	Branch     *string `json:"branch,omitempty"`
+	Constraint *string `json:"constraint,omitempty"`
+	Version    *string `json:"version,omitempty"`
 }
 
 // NewUpdateWorkspaceModRequest instantiates a new UpdateWorkspaceModRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateWorkspaceModRequest(constraint string) *UpdateWorkspaceModRequest {
+func NewUpdateWorkspaceModRequest() *UpdateWorkspaceModRequest {
 	this := UpdateWorkspaceModRequest{}
-	this.Constraint = constraint
 	return &this
 }
 
@@ -37,34 +38,112 @@ func NewUpdateWorkspaceModRequestWithDefaults() *UpdateWorkspaceModRequest {
 	return &this
 }
 
-// GetConstraint returns the Constraint field value
-func (o *UpdateWorkspaceModRequest) GetConstraint() string {
-	if o == nil {
+// GetBranch returns the Branch field value if set, zero value otherwise.
+func (o *UpdateWorkspaceModRequest) GetBranch() string {
+	if o == nil || o.Branch == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Constraint
+	return *o.Branch
 }
 
-// GetConstraintOk returns a tuple with the Constraint field value
+// GetBranchOk returns a tuple with the Branch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateWorkspaceModRequest) GetConstraintOk() (*string, bool) {
-	if o == nil {
+func (o *UpdateWorkspaceModRequest) GetBranchOk() (*string, bool) {
+	if o == nil || o.Branch == nil {
 		return nil, false
 	}
-	return &o.Constraint, true
+	return o.Branch, true
 }
 
-// SetConstraint sets field value
+// HasBranch returns a boolean if a field has been set.
+func (o *UpdateWorkspaceModRequest) HasBranch() bool {
+	if o != nil && o.Branch != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBranch gets a reference to the given string and assigns it to the Branch field.
+func (o *UpdateWorkspaceModRequest) SetBranch(v string) {
+	o.Branch = &v
+}
+
+// GetConstraint returns the Constraint field value if set, zero value otherwise.
+func (o *UpdateWorkspaceModRequest) GetConstraint() string {
+	if o == nil || o.Constraint == nil {
+		var ret string
+		return ret
+	}
+	return *o.Constraint
+}
+
+// GetConstraintOk returns a tuple with the Constraint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateWorkspaceModRequest) GetConstraintOk() (*string, bool) {
+	if o == nil || o.Constraint == nil {
+		return nil, false
+	}
+	return o.Constraint, true
+}
+
+// HasConstraint returns a boolean if a field has been set.
+func (o *UpdateWorkspaceModRequest) HasConstraint() bool {
+	if o != nil && o.Constraint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConstraint gets a reference to the given string and assigns it to the Constraint field.
 func (o *UpdateWorkspaceModRequest) SetConstraint(v string) {
-	o.Constraint = v
+	o.Constraint = &v
+}
+
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *UpdateWorkspaceModRequest) GetVersion() string {
+	if o == nil || o.Version == nil {
+		var ret string
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateWorkspaceModRequest) GetVersionOk() (*string, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *UpdateWorkspaceModRequest) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
+func (o *UpdateWorkspaceModRequest) SetVersion(v string) {
+	o.Version = &v
 }
 
 func (o UpdateWorkspaceModRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.Branch != nil {
+		toSerialize["branch"] = o.Branch
+	}
+	if o.Constraint != nil {
 		toSerialize["constraint"] = o.Constraint
+	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
 	}
 	return json.Marshal(toSerialize)
 }

@@ -5,7 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Config** | Pointer to **map[string]interface{}** |  | [optional] 
+**ConfigSource** | Pointer to **string** |  | [optional] 
+**CredentialSource** | Pointer to **string** |  | [optional] 
 **Handle** | Pointer to **string** |  | [optional] 
+**ParentId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -51,6 +54,56 @@ SetConfig sets Config field to given value.
 
 HasConfig returns a boolean if a field has been set.
 
+### GetConfigSource
+
+`func (o *UpdateConnectionRequest) GetConfigSource() string`
+
+GetConfigSource returns the ConfigSource field if non-nil, zero value otherwise.
+
+### GetConfigSourceOk
+
+`func (o *UpdateConnectionRequest) GetConfigSourceOk() (*string, bool)`
+
+GetConfigSourceOk returns a tuple with the ConfigSource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigSource
+
+`func (o *UpdateConnectionRequest) SetConfigSource(v string)`
+
+SetConfigSource sets ConfigSource field to given value.
+
+### HasConfigSource
+
+`func (o *UpdateConnectionRequest) HasConfigSource() bool`
+
+HasConfigSource returns a boolean if a field has been set.
+
+### GetCredentialSource
+
+`func (o *UpdateConnectionRequest) GetCredentialSource() string`
+
+GetCredentialSource returns the CredentialSource field if non-nil, zero value otherwise.
+
+### GetCredentialSourceOk
+
+`func (o *UpdateConnectionRequest) GetCredentialSourceOk() (*string, bool)`
+
+GetCredentialSourceOk returns a tuple with the CredentialSource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialSource
+
+`func (o *UpdateConnectionRequest) SetCredentialSource(v string)`
+
+SetCredentialSource sets CredentialSource field to given value.
+
+### HasCredentialSource
+
+`func (o *UpdateConnectionRequest) HasCredentialSource() bool`
+
+HasCredentialSource returns a boolean if a field has been set.
+
 ### GetHandle
 
 `func (o *UpdateConnectionRequest) GetHandle() string`
@@ -75,6 +128,31 @@ SetHandle sets Handle field to given value.
 `func (o *UpdateConnectionRequest) HasHandle() bool`
 
 HasHandle returns a boolean if a field has been set.
+
+### GetParentId
+
+`func (o *UpdateConnectionRequest) GetParentId() string`
+
+GetParentId returns the ParentId field if non-nil, zero value otherwise.
+
+### GetParentIdOk
+
+`func (o *UpdateConnectionRequest) GetParentIdOk() (*string, bool)`
+
+GetParentIdOk returns a tuple with the ParentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParentId
+
+`func (o *UpdateConnectionRequest) SetParentId(v string)`
+
+SetParentId sets ParentId field to given value.
+
+### HasParentId
+
+`func (o *UpdateConnectionRequest) HasParentId() bool`
+
+HasParentId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

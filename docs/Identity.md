@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** | The display name of the identity. | [optional] 
 **Handle** | **string** | The handle name of the identity. | 
 **Id** | **string** | The unique identifier of the identity. | 
+**Tenant** | Pointer to [**Tenant**](Tenant.md) |  | [optional] 
 **TenantId** | **string** | The unique identifier of the tenant the identity belongs to. | 
 **Type** | **string** | The type of identity e.g. user or org. | 
 
@@ -119,6 +120,31 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+
+### GetTenant
+
+`func (o *Identity) GetTenant() Tenant`
+
+GetTenant returns the Tenant field if non-nil, zero value otherwise.
+
+### GetTenantOk
+
+`func (o *Identity) GetTenantOk() (*Tenant, bool)`
+
+GetTenantOk returns a tuple with the Tenant field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenant
+
+`func (o *Identity) SetTenant(v Tenant)`
+
+SetTenant sets Tenant field to given value.
+
+### HasTenant
+
+`func (o *Identity) HasTenant() bool`
+
+HasTenant returns a boolean if a field has been set.
 
 ### GetTenantId
 

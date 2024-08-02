@@ -16,8 +16,8 @@ import (
 
 // WorkspaceQueryResult struct for WorkspaceQueryResult
 type WorkspaceQueryResult struct {
-	Columns []WorkspaceQueryResultColumn `json:"columns"`
-	Rows    []map[string]interface{}     `json:"rows"`
+	Columns []WorkspaceQueryResultColumn        `json:"columns"`
+	Rows    []map[string]interface{} `json:"rows"`
 }
 
 // NewWorkspaceQueryResult instantiates a new WorkspaceQueryResult object

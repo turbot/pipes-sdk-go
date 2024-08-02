@@ -32,12 +32,12 @@ type UserWorkspaceAggregatorsApiCreateRequest struct {
 	ApiService      *UserWorkspaceAggregatorsService
 	userHandle      string
 	workspaceHandle string
-	request         *CreateWorkspaceAggregatorRequest
+	request         *CreateAggregatorRequest
 	mode            *string
 }
 
 // The request body for the aggregator to be created.
-func (r UserWorkspaceAggregatorsApiCreateRequest) Request(request CreateWorkspaceAggregatorRequest) UserWorkspaceAggregatorsApiCreateRequest {
+func (r UserWorkspaceAggregatorsApiCreateRequest) Request(request CreateAggregatorRequest) UserWorkspaceAggregatorsApiCreateRequest {
 	r.request = &request
 	return r
 }
@@ -48,7 +48,7 @@ func (r UserWorkspaceAggregatorsApiCreateRequest) Mode(mode string) UserWorkspac
 	return r
 }
 
-func (r UserWorkspaceAggregatorsApiCreateRequest) Execute() (WorkspaceAggregator, *_nethttp.Response, error) {
+func (r UserWorkspaceAggregatorsApiCreateRequest) Execute() (Aggregator, *_nethttp.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -73,13 +73,13 @@ func (a *UserWorkspaceAggregatorsService) Create(ctx _context.Context, userHandl
 
 // Execute executes the request
 //
-//	@return WorkspaceAggregator
-func (a *UserWorkspaceAggregatorsService) CreateExecute(r UserWorkspaceAggregatorsApiCreateRequest) (WorkspaceAggregator, *_nethttp.Response, error) {
+//	@return Aggregator
+func (a *UserWorkspaceAggregatorsService) CreateExecute(r UserWorkspaceAggregatorsApiCreateRequest) (Aggregator, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue WorkspaceAggregator
+		localVarReturnValue Aggregator
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserWorkspaceAggregatorsService.Create")
@@ -234,7 +234,7 @@ type UserWorkspaceAggregatorsApiDeleteRequest struct {
 	aggregatorHandle string
 }
 
-func (r UserWorkspaceAggregatorsApiDeleteRequest) Execute() (WorkspaceAggregator, *_nethttp.Response, error) {
+func (r UserWorkspaceAggregatorsApiDeleteRequest) Execute() (Aggregator, *_nethttp.Response, error) {
 	return r.ApiService.DeleteExecute(r)
 }
 
@@ -261,13 +261,13 @@ func (a *UserWorkspaceAggregatorsService) Delete(ctx _context.Context, userHandl
 
 // Execute executes the request
 //
-//	@return WorkspaceAggregator
-func (a *UserWorkspaceAggregatorsService) DeleteExecute(r UserWorkspaceAggregatorsApiDeleteRequest) (WorkspaceAggregator, *_nethttp.Response, error) {
+//	@return Aggregator
+func (a *UserWorkspaceAggregatorsService) DeleteExecute(r UserWorkspaceAggregatorsApiDeleteRequest) (Aggregator, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue WorkspaceAggregator
+		localVarReturnValue Aggregator
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserWorkspaceAggregatorsService.Delete")
@@ -395,7 +395,7 @@ type UserWorkspaceAggregatorsApiGetRequest struct {
 	aggregatorHandle string
 }
 
-func (r UserWorkspaceAggregatorsApiGetRequest) Execute() (WorkspaceAggregator, *_nethttp.Response, error) {
+func (r UserWorkspaceAggregatorsApiGetRequest) Execute() (Aggregator, *_nethttp.Response, error) {
 	return r.ApiService.GetExecute(r)
 }
 
@@ -422,13 +422,13 @@ func (a *UserWorkspaceAggregatorsService) Get(ctx _context.Context, userHandle s
 
 // Execute executes the request
 //
-//	@return WorkspaceAggregator
-func (a *UserWorkspaceAggregatorsService) GetExecute(r UserWorkspaceAggregatorsApiGetRequest) (WorkspaceAggregator, *_nethttp.Response, error) {
+//	@return Aggregator
+func (a *UserWorkspaceAggregatorsService) GetExecute(r UserWorkspaceAggregatorsApiGetRequest) (Aggregator, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue WorkspaceAggregator
+		localVarReturnValue Aggregator
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserWorkspaceAggregatorsService.Get")
@@ -1087,12 +1087,12 @@ type UserWorkspaceAggregatorsApiUpdateRequest struct {
 	userHandle       string
 	workspaceHandle  string
 	aggregatorHandle string
-	request          *UpdateWorkspaceAggregatorRequest
+	request          *UpdateAggregatorRequest
 	mode             *string
 }
 
 // The request body for the aggregator which needs to be updated.
-func (r UserWorkspaceAggregatorsApiUpdateRequest) Request(request UpdateWorkspaceAggregatorRequest) UserWorkspaceAggregatorsApiUpdateRequest {
+func (r UserWorkspaceAggregatorsApiUpdateRequest) Request(request UpdateAggregatorRequest) UserWorkspaceAggregatorsApiUpdateRequest {
 	r.request = &request
 	return r
 }
@@ -1103,7 +1103,7 @@ func (r UserWorkspaceAggregatorsApiUpdateRequest) Mode(mode string) UserWorkspac
 	return r
 }
 
-func (r UserWorkspaceAggregatorsApiUpdateRequest) Execute() (WorkspaceAggregator, *_nethttp.Response, error) {
+func (r UserWorkspaceAggregatorsApiUpdateRequest) Execute() (Aggregator, *_nethttp.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -1130,13 +1130,13 @@ func (a *UserWorkspaceAggregatorsService) Update(ctx _context.Context, userHandl
 
 // Execute executes the request
 //
-//	@return WorkspaceAggregator
-func (a *UserWorkspaceAggregatorsService) UpdateExecute(r UserWorkspaceAggregatorsApiUpdateRequest) (WorkspaceAggregator, *_nethttp.Response, error) {
+//	@return Aggregator
+func (a *UserWorkspaceAggregatorsService) UpdateExecute(r UserWorkspaceAggregatorsApiUpdateRequest) (Aggregator, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue WorkspaceAggregator
+		localVarReturnValue Aggregator
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserWorkspaceAggregatorsService.Update")

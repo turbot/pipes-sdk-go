@@ -6,30 +6,43 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Association** | Pointer to [**WorkspaceConnectionAssociation**](WorkspaceConnectionAssociation.md) |  | [optional] 
 **Config** | Pointer to **map[string]interface{}** |  | [optional] 
-**ConnectionLevel** | **string** | The level at which the connection exists, can be wither &#39;identity&#39; or &#39;workspace&#39;. | 
+**ConfigSource** | Pointer to **string** | The source of the configuration that the conection will use. One of &#x60;self&#x60; or &#x60;integration&#x60;. | [optional] 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
 **CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
+**CredentialSource** | Pointer to **string** | The source of the credential that the conection will use. One of &#x60;self&#x60; or &#x60;integration&#x60;. | [optional] 
 **DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
 **DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
-**Handle** | **string** | The handle name of the  connection. | 
+**Handle** | Pointer to **string** | The handle name of the  connection. | [optional] 
+**HandleDynamic** | Pointer to **string** | The dynamically-generated handle for the connection. Only populated if this is a discovered connection. | [optional] 
+**HandleMode** | Pointer to **string** | The handle mode for the connection. | [optional] 
 **Id** | **string** | The unique identifier for the connection. | 
-**IdentityId** | **string** | The unique identifier for an identity where the connection has been created. | 
+**IdentityId** | Pointer to **string** | The unique identifier for an identity where the connection has been created. | [optional] 
+**Integration** | Pointer to [**Integration**](Integration.md) |  | [optional] 
+**IntegrationResourceIdentifier** | Pointer to **string** | The source identifier for this connection. Only populated if its a connection thats been discovered by an integration. | [optional] 
+**IntegrationResourceName** | Pointer to **string** | A friendly resource name for the connection. Only populated if its a connection thats been doscovered by an integration. | [optional] 
+**IntegrationResourcePath** | Pointer to **string** | The source path for this connection. Only populated if its a connection thats been discovered by an integration. | [optional] 
+**IntegrationResourceType** | Pointer to **string** | The source type for this connection. Only populated if its a connection thats been discovered by an integration. | [optional] 
+**ManagedById** | Pointer to **string** | The ID of the aggregator that manages this connection. Only populated if this is a discovered connection. | [optional] 
+**ParentId** | **string** | The id of the entity where the connection is stored. Can be either tenant, identity, workspace or connection-folder. | 
 **Plugin** | Pointer to **string** | The plugin name for the connection. | [optional] 
 **PluginVersion** | Pointer to **string** | The plugin version for the connection. | [optional] 
+**TenantId** | **string** | The unique identifier for the tenant where the connection has been created. | 
+**Title** | Pointer to **string** | The title of the connection. Only populated when the connection is of type connection folder. | [optional] 
+**Trunk** | Pointer to [**[]ConnectionTrunkItem**](ConnectionTrunkItem.md) | The trunk for the connection. | [optional] 
 **Type** | Pointer to **string** | Type of connection i.e aggregator or connection. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
 **UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
-**WorkspaceId** | **string** | The unique identifier for the workspace. | 
+**WorkspaceId** | Pointer to **string** | The unique identifier for the workspace where the connection has been created. | [optional] 
 
 ## Methods
 
 ### NewWorkspaceConnection
 
-`func NewWorkspaceConnection(connectionLevel string, createdAt string, createdById string, deletedById string, handle string, id string, identityId string, updatedById string, versionId int32, workspaceId string, ) *WorkspaceConnection`
+`func NewWorkspaceConnection(createdAt string, createdById string, deletedById string, id string, parentId string, tenantId string, updatedById string, versionId int32, ) *WorkspaceConnection`
 
 NewWorkspaceConnection instantiates a new WorkspaceConnection object
 This constructor will assign default values to properties that have it defined,
@@ -94,25 +107,30 @@ SetConfig sets Config field to given value.
 
 HasConfig returns a boolean if a field has been set.
 
-### GetConnectionLevel
+### GetConfigSource
 
-`func (o *WorkspaceConnection) GetConnectionLevel() string`
+`func (o *WorkspaceConnection) GetConfigSource() string`
 
-GetConnectionLevel returns the ConnectionLevel field if non-nil, zero value otherwise.
+GetConfigSource returns the ConfigSource field if non-nil, zero value otherwise.
 
-### GetConnectionLevelOk
+### GetConfigSourceOk
 
-`func (o *WorkspaceConnection) GetConnectionLevelOk() (*string, bool)`
+`func (o *WorkspaceConnection) GetConfigSourceOk() (*string, bool)`
 
-GetConnectionLevelOk returns a tuple with the ConnectionLevel field if it's non-nil, zero value otherwise
+GetConfigSourceOk returns a tuple with the ConfigSource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetConnectionLevel
+### SetConfigSource
 
-`func (o *WorkspaceConnection) SetConnectionLevel(v string)`
+`func (o *WorkspaceConnection) SetConfigSource(v string)`
 
-SetConnectionLevel sets ConnectionLevel field to given value.
+SetConfigSource sets ConfigSource field to given value.
 
+### HasConfigSource
+
+`func (o *WorkspaceConnection) HasConfigSource() bool`
+
+HasConfigSource returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -178,6 +196,31 @@ and a boolean to check if the value has been set.
 
 SetCreatedById sets CreatedById field to given value.
 
+
+### GetCredentialSource
+
+`func (o *WorkspaceConnection) GetCredentialSource() string`
+
+GetCredentialSource returns the CredentialSource field if non-nil, zero value otherwise.
+
+### GetCredentialSourceOk
+
+`func (o *WorkspaceConnection) GetCredentialSourceOk() (*string, bool)`
+
+GetCredentialSourceOk returns a tuple with the CredentialSource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialSource
+
+`func (o *WorkspaceConnection) SetCredentialSource(v string)`
+
+SetCredentialSource sets CredentialSource field to given value.
+
+### HasCredentialSource
+
+`func (o *WorkspaceConnection) HasCredentialSource() bool`
+
+HasCredentialSource returns a boolean if a field has been set.
 
 ### GetDeletedAt
 
@@ -268,6 +311,61 @@ and a boolean to check if the value has been set.
 
 SetHandle sets Handle field to given value.
 
+### HasHandle
+
+`func (o *WorkspaceConnection) HasHandle() bool`
+
+HasHandle returns a boolean if a field has been set.
+
+### GetHandleDynamic
+
+`func (o *WorkspaceConnection) GetHandleDynamic() string`
+
+GetHandleDynamic returns the HandleDynamic field if non-nil, zero value otherwise.
+
+### GetHandleDynamicOk
+
+`func (o *WorkspaceConnection) GetHandleDynamicOk() (*string, bool)`
+
+GetHandleDynamicOk returns a tuple with the HandleDynamic field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHandleDynamic
+
+`func (o *WorkspaceConnection) SetHandleDynamic(v string)`
+
+SetHandleDynamic sets HandleDynamic field to given value.
+
+### HasHandleDynamic
+
+`func (o *WorkspaceConnection) HasHandleDynamic() bool`
+
+HasHandleDynamic returns a boolean if a field has been set.
+
+### GetHandleMode
+
+`func (o *WorkspaceConnection) GetHandleMode() string`
+
+GetHandleMode returns the HandleMode field if non-nil, zero value otherwise.
+
+### GetHandleModeOk
+
+`func (o *WorkspaceConnection) GetHandleModeOk() (*string, bool)`
+
+GetHandleModeOk returns a tuple with the HandleMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHandleMode
+
+`func (o *WorkspaceConnection) SetHandleMode(v string)`
+
+SetHandleMode sets HandleMode field to given value.
+
+### HasHandleMode
+
+`func (o *WorkspaceConnection) HasHandleMode() bool`
+
+HasHandleMode returns a boolean if a field has been set.
 
 ### GetId
 
@@ -307,6 +405,181 @@ and a boolean to check if the value has been set.
 `func (o *WorkspaceConnection) SetIdentityId(v string)`
 
 SetIdentityId sets IdentityId field to given value.
+
+### HasIdentityId
+
+`func (o *WorkspaceConnection) HasIdentityId() bool`
+
+HasIdentityId returns a boolean if a field has been set.
+
+### GetIntegration
+
+`func (o *WorkspaceConnection) GetIntegration() Integration`
+
+GetIntegration returns the Integration field if non-nil, zero value otherwise.
+
+### GetIntegrationOk
+
+`func (o *WorkspaceConnection) GetIntegrationOk() (*Integration, bool)`
+
+GetIntegrationOk returns a tuple with the Integration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegration
+
+`func (o *WorkspaceConnection) SetIntegration(v Integration)`
+
+SetIntegration sets Integration field to given value.
+
+### HasIntegration
+
+`func (o *WorkspaceConnection) HasIntegration() bool`
+
+HasIntegration returns a boolean if a field has been set.
+
+### GetIntegrationResourceIdentifier
+
+`func (o *WorkspaceConnection) GetIntegrationResourceIdentifier() string`
+
+GetIntegrationResourceIdentifier returns the IntegrationResourceIdentifier field if non-nil, zero value otherwise.
+
+### GetIntegrationResourceIdentifierOk
+
+`func (o *WorkspaceConnection) GetIntegrationResourceIdentifierOk() (*string, bool)`
+
+GetIntegrationResourceIdentifierOk returns a tuple with the IntegrationResourceIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegrationResourceIdentifier
+
+`func (o *WorkspaceConnection) SetIntegrationResourceIdentifier(v string)`
+
+SetIntegrationResourceIdentifier sets IntegrationResourceIdentifier field to given value.
+
+### HasIntegrationResourceIdentifier
+
+`func (o *WorkspaceConnection) HasIntegrationResourceIdentifier() bool`
+
+HasIntegrationResourceIdentifier returns a boolean if a field has been set.
+
+### GetIntegrationResourceName
+
+`func (o *WorkspaceConnection) GetIntegrationResourceName() string`
+
+GetIntegrationResourceName returns the IntegrationResourceName field if non-nil, zero value otherwise.
+
+### GetIntegrationResourceNameOk
+
+`func (o *WorkspaceConnection) GetIntegrationResourceNameOk() (*string, bool)`
+
+GetIntegrationResourceNameOk returns a tuple with the IntegrationResourceName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegrationResourceName
+
+`func (o *WorkspaceConnection) SetIntegrationResourceName(v string)`
+
+SetIntegrationResourceName sets IntegrationResourceName field to given value.
+
+### HasIntegrationResourceName
+
+`func (o *WorkspaceConnection) HasIntegrationResourceName() bool`
+
+HasIntegrationResourceName returns a boolean if a field has been set.
+
+### GetIntegrationResourcePath
+
+`func (o *WorkspaceConnection) GetIntegrationResourcePath() string`
+
+GetIntegrationResourcePath returns the IntegrationResourcePath field if non-nil, zero value otherwise.
+
+### GetIntegrationResourcePathOk
+
+`func (o *WorkspaceConnection) GetIntegrationResourcePathOk() (*string, bool)`
+
+GetIntegrationResourcePathOk returns a tuple with the IntegrationResourcePath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegrationResourcePath
+
+`func (o *WorkspaceConnection) SetIntegrationResourcePath(v string)`
+
+SetIntegrationResourcePath sets IntegrationResourcePath field to given value.
+
+### HasIntegrationResourcePath
+
+`func (o *WorkspaceConnection) HasIntegrationResourcePath() bool`
+
+HasIntegrationResourcePath returns a boolean if a field has been set.
+
+### GetIntegrationResourceType
+
+`func (o *WorkspaceConnection) GetIntegrationResourceType() string`
+
+GetIntegrationResourceType returns the IntegrationResourceType field if non-nil, zero value otherwise.
+
+### GetIntegrationResourceTypeOk
+
+`func (o *WorkspaceConnection) GetIntegrationResourceTypeOk() (*string, bool)`
+
+GetIntegrationResourceTypeOk returns a tuple with the IntegrationResourceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegrationResourceType
+
+`func (o *WorkspaceConnection) SetIntegrationResourceType(v string)`
+
+SetIntegrationResourceType sets IntegrationResourceType field to given value.
+
+### HasIntegrationResourceType
+
+`func (o *WorkspaceConnection) HasIntegrationResourceType() bool`
+
+HasIntegrationResourceType returns a boolean if a field has been set.
+
+### GetManagedById
+
+`func (o *WorkspaceConnection) GetManagedById() string`
+
+GetManagedById returns the ManagedById field if non-nil, zero value otherwise.
+
+### GetManagedByIdOk
+
+`func (o *WorkspaceConnection) GetManagedByIdOk() (*string, bool)`
+
+GetManagedByIdOk returns a tuple with the ManagedById field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagedById
+
+`func (o *WorkspaceConnection) SetManagedById(v string)`
+
+SetManagedById sets ManagedById field to given value.
+
+### HasManagedById
+
+`func (o *WorkspaceConnection) HasManagedById() bool`
+
+HasManagedById returns a boolean if a field has been set.
+
+### GetParentId
+
+`func (o *WorkspaceConnection) GetParentId() string`
+
+GetParentId returns the ParentId field if non-nil, zero value otherwise.
+
+### GetParentIdOk
+
+`func (o *WorkspaceConnection) GetParentIdOk() (*string, bool)`
+
+GetParentIdOk returns a tuple with the ParentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParentId
+
+`func (o *WorkspaceConnection) SetParentId(v string)`
+
+SetParentId sets ParentId field to given value.
 
 
 ### GetPlugin
@@ -358,6 +631,76 @@ SetPluginVersion sets PluginVersion field to given value.
 `func (o *WorkspaceConnection) HasPluginVersion() bool`
 
 HasPluginVersion returns a boolean if a field has been set.
+
+### GetTenantId
+
+`func (o *WorkspaceConnection) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *WorkspaceConnection) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *WorkspaceConnection) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
+
+
+### GetTitle
+
+`func (o *WorkspaceConnection) GetTitle() string`
+
+GetTitle returns the Title field if non-nil, zero value otherwise.
+
+### GetTitleOk
+
+`func (o *WorkspaceConnection) GetTitleOk() (*string, bool)`
+
+GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTitle
+
+`func (o *WorkspaceConnection) SetTitle(v string)`
+
+SetTitle sets Title field to given value.
+
+### HasTitle
+
+`func (o *WorkspaceConnection) HasTitle() bool`
+
+HasTitle returns a boolean if a field has been set.
+
+### GetTrunk
+
+`func (o *WorkspaceConnection) GetTrunk() []ConnectionTrunkItem`
+
+GetTrunk returns the Trunk field if non-nil, zero value otherwise.
+
+### GetTrunkOk
+
+`func (o *WorkspaceConnection) GetTrunkOk() (*[]ConnectionTrunkItem, bool)`
+
+GetTrunkOk returns a tuple with the Trunk field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrunk
+
+`func (o *WorkspaceConnection) SetTrunk(v []ConnectionTrunkItem)`
+
+SetTrunk sets Trunk field to given value.
+
+### HasTrunk
+
+`func (o *WorkspaceConnection) HasTrunk() bool`
+
+HasTrunk returns a boolean if a field has been set.
 
 ### GetType
 
@@ -493,6 +836,11 @@ and a boolean to check if the value has been set.
 
 SetWorkspaceId sets WorkspaceId field to given value.
 
+### HasWorkspaceId
+
+`func (o *WorkspaceConnection) HasWorkspaceId() bool`
+
+HasWorkspaceId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

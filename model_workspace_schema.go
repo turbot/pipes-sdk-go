@@ -16,7 +16,7 @@ import (
 
 // WorkspaceSchema struct for WorkspaceSchema
 type WorkspaceSchema struct {
-	Aggregator *WorkspaceAggregator `json:"aggregator,omitempty"`
+	Aggregator *Aggregator `json:"aggregator,omitempty"`
 	// The id of the aggregator if the schema is of type 'aggregator'.
 	AggregatorId *string     `json:"aggregator_id,omitempty"`
 	Connection   *Connection `json:"connection,omitempty"`
@@ -41,7 +41,9 @@ type WorkspaceSchema struct {
 	IdentityId string `json:"identity_id"`
 	// The name of the schema.
 	Name string `json:"name"`
-	// Type of schems can be one of datatank, aggregator or connection.
+	// State of the schema e.g. `granted`, `direct` or `indirect`.
+	State *string `json:"state,omitempty"`
+	// Type of schema can be one of datatank, aggregator or connection.
 	Type *string `json:"type,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
@@ -81,9 +83,9 @@ func NewWorkspaceSchemaWithDefaults() *WorkspaceSchema {
 }
 
 // GetAggregator returns the Aggregator field value if set, zero value otherwise.
-func (o *WorkspaceSchema) GetAggregator() WorkspaceAggregator {
+func (o *WorkspaceSchema) GetAggregator() Aggregator {
 	if o == nil || o.Aggregator == nil {
-		var ret WorkspaceAggregator
+		var ret Aggregator
 		return ret
 	}
 	return *o.Aggregator
@@ -91,7 +93,7 @@ func (o *WorkspaceSchema) GetAggregator() WorkspaceAggregator {
 
 // GetAggregatorOk returns a tuple with the Aggregator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkspaceSchema) GetAggregatorOk() (*WorkspaceAggregator, bool) {
+func (o *WorkspaceSchema) GetAggregatorOk() (*Aggregator, bool) {
 	if o == nil || o.Aggregator == nil {
 		return nil, false
 	}
@@ -107,8 +109,8 @@ func (o *WorkspaceSchema) HasAggregator() bool {
 	return false
 }
 
-// SetAggregator gets a reference to the given WorkspaceAggregator and assigns it to the Aggregator field.
-func (o *WorkspaceSchema) SetAggregator(v WorkspaceAggregator) {
+// SetAggregator gets a reference to the given Aggregator and assigns it to the Aggregator field.
+func (o *WorkspaceSchema) SetAggregator(v Aggregator) {
 	o.Aggregator = &v
 }
 
@@ -512,6 +514,38 @@ func (o *WorkspaceSchema) SetName(v string) {
 	o.Name = v
 }
 
+// GetState returns the State field value if set, zero value otherwise.
+func (o *WorkspaceSchema) GetState() string {
+	if o == nil || o.State == nil {
+		var ret string
+		return ret
+	}
+	return *o.State
+}
+
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceSchema) GetStateOk() (*string, bool) {
+	if o == nil || o.State == nil {
+		return nil, false
+	}
+	return o.State, true
+}
+
+// HasState returns a boolean if a field has been set.
+func (o *WorkspaceSchema) HasState() bool {
+	if o != nil && o.State != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given string and assigns it to the State field.
+func (o *WorkspaceSchema) SetState(v string) {
+	o.State = &v
+}
+
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *WorkspaceSchema) GetType() string {
 	if o == nil || o.Type == nil {
@@ -726,6 +760,9 @@ func (o WorkspaceSchema) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.State != nil {
+		toSerialize["state"] = o.State
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type

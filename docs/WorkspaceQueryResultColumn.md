@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **DataType** | **string** |  | 
 **MaxDataLength** | Pointer to **int32** |  | [optional] 
 **Name** | **string** |  | 
+**OriginalName** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -91,6 +92,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetOriginalName
+
+`func (o *WorkspaceQueryResultColumn) GetOriginalName() string`
+
+GetOriginalName returns the OriginalName field if non-nil, zero value otherwise.
+
+### GetOriginalNameOk
+
+`func (o *WorkspaceQueryResultColumn) GetOriginalNameOk() (*string, bool)`
+
+GetOriginalNameOk returns a tuple with the OriginalName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOriginalName
+
+`func (o *WorkspaceQueryResultColumn) SetOriginalName(v string)`
+
+SetOriginalName sets OriginalName field to given value.
+
+### HasOriginalName
+
+`func (o *WorkspaceQueryResultColumn) HasOriginalName() bool`
+
+HasOriginalName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

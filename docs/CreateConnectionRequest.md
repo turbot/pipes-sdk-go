@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Config** | Pointer to **map[string]interface{}** |  | [optional] 
 **Handle** | **string** |  | 
-**Plugin** | **string** | Type   string                 &#x60;json:\&quot;type\&quot; binding:\&quot;required,steampipe_connection_type\&quot;&#x60; | 
+**ParentId** | Pointer to **string** |  | [optional] 
+**Plugin** | **string** |  | 
 
 ## Methods
 
@@ -71,6 +72,31 @@ and a boolean to check if the value has been set.
 
 SetHandle sets Handle field to given value.
 
+
+### GetParentId
+
+`func (o *CreateConnectionRequest) GetParentId() string`
+
+GetParentId returns the ParentId field if non-nil, zero value otherwise.
+
+### GetParentIdOk
+
+`func (o *CreateConnectionRequest) GetParentIdOk() (*string, bool)`
+
+GetParentIdOk returns a tuple with the ParentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParentId
+
+`func (o *CreateConnectionRequest) SetParentId(v string)`
+
+SetParentId sets ParentId field to given value.
+
+### HasParentId
+
+`func (o *CreateConnectionRequest) HasParentId() bool`
+
+HasParentId returns a boolean if a field has been set.
 
 ### GetPlugin
 

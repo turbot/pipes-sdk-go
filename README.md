@@ -83,20 +83,46 @@ Class | Method | HTTP request | Description
 *Identities* | [**Get**](docs/Identities.md#get) | **Get** /identity/{identity_handle} | Get identity
 *Identities* | [**GetAvatar**](docs/Identities.md#getavatar) | **Get** /identity/{identity_handle}/avatar | Get identity avatar
 *Identities* | [**List**](docs/Identities.md#list) | **Get** /identity | List identities
+*Integrations* | [**ConfirmGithubIntegration**](docs/Integrations.md#confirmgithubintegration) | **Get** /integration/github/confirm | Confirm GitHub integration installation
+*OrgConnectionFolders* | [**Create**](docs/OrgConnectionFolders.md#create) | **Post** /org/{org_handle}/connection_folder | Create org connection folder
+*OrgConnectionFolders* | [**CreatePermission**](docs/OrgConnectionFolders.md#createpermission) | **Post** /org/{org_handle}/connection_folder/{folder_id}/permission | Create org connection folder permission
+*OrgConnectionFolders* | [**Delete**](docs/OrgConnectionFolders.md#delete) | **Delete** /org/{org_handle}/connection_folder/{folder_id} | Delete org connection folder
+*OrgConnectionFolders* | [**DeletePermission**](docs/OrgConnectionFolders.md#deletepermission) | **Delete** /org/{org_handle}/connection_folder/{folder_id}/permission/{permission_id} | Delete org connection folder permission
+*OrgConnectionFolders* | [**Get**](docs/OrgConnectionFolders.md#get) | **Get** /org/{org_handle}/connection_folder/{folder_id} | Get org connection folder
+*OrgConnectionFolders* | [**GetPermission**](docs/OrgConnectionFolders.md#getpermission) | **Get** /org/{org_handle}/connection_folder/{folder_id}/permission/{permission_id} | Get org connection folder permission
+*OrgConnectionFolders* | [**List**](docs/OrgConnectionFolders.md#list) | **Get** /org/{org_handle}/connection_folder | List org connection folders
+*OrgConnectionFolders* | [**ListPermission**](docs/OrgConnectionFolders.md#listpermission) | **Get** /org/{org_handle}/connection_folder/{folder_id}/permission | List org connection folder permissions
+*OrgConnectionFolders* | [**ListWorkspaces**](docs/OrgConnectionFolders.md#listworkspaces) | **Get** /org/{org_handle}/connection_folder/{folder_id}/workspace | List org connection folder workspaces
+*OrgConnectionFolders* | [**Update**](docs/OrgConnectionFolders.md#update) | **Patch** /org/{org_handle}/connection_folder/{folder_id} | Update org connection folder
+*OrgConnectionFolders* | [**UpdatePermission**](docs/OrgConnectionFolders.md#updatepermission) | **Patch** /org/{org_handle}/connection_folder/{folder_id}/permission/{permission_id} | Update org connection folder permission
+*OrgConnectionTree* | [**List**](docs/OrgConnectionTree.md#list) | **Get** /org/{org_handle}/connection_tree | List tenant connection tree
 *OrgConnections* | [**Create**](docs/OrgConnections.md#create) | **Post** /org/{org_handle}/connection | Create org connection
 *OrgConnections* | [**CreateDeprecated**](docs/OrgConnections.md#createdeprecated) | **Post** /org/{org_handle}/conn | Create org connection
+*OrgConnections* | [**CreatePermission**](docs/OrgConnections.md#createpermission) | **Post** /org/{org_handle}/connection/{connection_handle}/permission | Create org connection permission
 *OrgConnections* | [**Delete**](docs/OrgConnections.md#delete) | **Delete** /org/{org_handle}/connection/{connection_handle} | Delete org connection
 *OrgConnections* | [**DeleteDeprecated**](docs/OrgConnections.md#deletedeprecated) | **Delete** /org/{org_handle}/conn/{conn_handle} | Delete org connection
+*OrgConnections* | [**DeletePermission**](docs/OrgConnections.md#deletepermission) | **Delete** /org/{org_handle}/connection/{connection_handle}/permission/{permission_id} | Delete org connection permission
 *OrgConnections* | [**Get**](docs/OrgConnections.md#get) | **Get** /org/{org_handle}/connection/{connection_handle} | Get org connection
 *OrgConnections* | [**GetDeprecated**](docs/OrgConnections.md#getdeprecated) | **Get** /org/{org_handle}/conn/{conn_handle} | Get org connection
+*OrgConnections* | [**GetPermission**](docs/OrgConnections.md#getpermission) | **Get** /org/{org_handle}/connection/{connection_handle}/permission/{permission_id} | Get org connection permission
 *OrgConnections* | [**List**](docs/OrgConnections.md#list) | **Get** /org/{org_handle}/connection | List org connections
 *OrgConnections* | [**ListDeprecated**](docs/OrgConnections.md#listdeprecated) | **Get** /org/{org_handle}/conn | List org connections
+*OrgConnections* | [**ListPermission**](docs/OrgConnections.md#listpermission) | **Get** /org/{org_handle}/connection/{connection_handle}/permission | List org connection permissions
 *OrgConnections* | [**ListWorkspaces**](docs/OrgConnections.md#listworkspaces) | **Get** /org/{org_handle}/connection/{connection_handle}/workspace | List org connection workspaces
 *OrgConnections* | [**ListWorkspacesDeprecated**](docs/OrgConnections.md#listworkspacesdeprecated) | **Get** /org/{org_handle}/conn/{conn_handle}/workspace | List org connection workspaces
 *OrgConnections* | [**Test**](docs/OrgConnections.md#test) | **Post** /org/{org_handle}/connection/{connection_handle}/test | Test org connection
 *OrgConnections* | [**TestDeprecated**](docs/OrgConnections.md#testdeprecated) | **Post** /org/{org_handle}/conn/{conn_handle}/test | Test org connection
 *OrgConnections* | [**Update**](docs/OrgConnections.md#update) | **Patch** /org/{org_handle}/connection/{connection_handle} | Update org connection
 *OrgConnections* | [**UpdateDeprecated**](docs/OrgConnections.md#updatedeprecated) | **Patch** /org/{org_handle}/conn/{conn_handle} | Update org connection
+*OrgConnections* | [**UpdatePermission**](docs/OrgConnections.md#updatepermission) | **Patch** /org/{org_handle}/connection/{connection_handle}/permission/{permission_id} | Update org connection permission
+*OrgIntegrations* | [**Command**](docs/OrgIntegrations.md#command) | **Post** /org/{org_handle}/integration/{integration_handle}/command | Run org integration command
+*OrgIntegrations* | [**Create**](docs/OrgIntegrations.md#create) | **Post** /org/{org_handle}/integration | Create org integration
+*OrgIntegrations* | [**Delete**](docs/OrgIntegrations.md#delete) | **Delete** /org/{org_handle}/integration/{integration_handle} | Delete org integration
+*OrgIntegrations* | [**Get**](docs/OrgIntegrations.md#get) | **Get** /org/{org_handle}/integration/{integration_handle} | Get org integration
+*OrgIntegrations* | [**InstallGithubIntegration**](docs/OrgIntegrations.md#installgithubintegration) | **Get** /org/{org_handle}/integration/{integration_handle}/github/install | Install GitHub integration for an org
+*OrgIntegrations* | [**List**](docs/OrgIntegrations.md#list) | **Get** /org/{org_handle}/integration | List org integrations
+*OrgIntegrations* | [**Test**](docs/OrgIntegrations.md#test) | **Post** /org/{org_handle}/integration/{integration_handle}/test | Test org integration
+*OrgIntegrations* | [**Update**](docs/OrgIntegrations.md#update) | **Patch** /org/{org_handle}/integration/{integration_handle} | Update org integration
 *OrgMembers* | [**ConfirmInvite**](docs/OrgMembers.md#confirminvite) | **Get** /org/{org_handle}/member/invite/confirm | Confirm org member invite
 *OrgMembers* | [**Create**](docs/OrgMembers.md#create) | **Post** /org/{org_handle}/member | Create Org Member
 *OrgMembers* | [**Delete**](docs/OrgMembers.md#delete) | **Delete** /org/{org_handle}/member/{user_handle} | Delete org member
@@ -119,6 +145,18 @@ Class | Method | HTTP request | Description
 *OrgWorkspaceConnectionAssociations* | [**Delete**](docs/OrgWorkspaceConnectionAssociations.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/conn/{conn_handle} | Delete org workspace connection association
 *OrgWorkspaceConnectionAssociations* | [**Get**](docs/OrgWorkspaceConnectionAssociations.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/conn/{conn_handle} | Get org workspace connection association
 *OrgWorkspaceConnectionAssociations* | [**List**](docs/OrgWorkspaceConnectionAssociations.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/conn | List org workspace connection associations
+*OrgWorkspaceConnectionFolders* | [**Create**](docs/OrgWorkspaceConnectionFolders.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/connection_folder | Create org workspace connection folder
+*OrgWorkspaceConnectionFolders* | [**Delete**](docs/OrgWorkspaceConnectionFolders.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/connection_folder/{folder_id} | Delete org workspace connection folder
+*OrgWorkspaceConnectionFolders* | [**Get**](docs/OrgWorkspaceConnectionFolders.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/connection_folder/{folder_id} | Get org workspace connection folder
+*OrgWorkspaceConnectionFolders* | [**List**](docs/OrgWorkspaceConnectionFolders.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/connection_folder | List org workspace connection folders
+*OrgWorkspaceConnectionFolders* | [**Update**](docs/OrgWorkspaceConnectionFolders.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/connection_folder/{folder_id} | Update org workspace connection folder
+*OrgWorkspaceConnectionTree* | [**List**](docs/OrgWorkspaceConnectionTree.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/connection_tree | List org workspace connection tree
+*OrgWorkspaceConnections* | [**Create**](docs/OrgWorkspaceConnections.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/connection | Create a connection for an org workspace or associate an org connection to the workspace
+*OrgWorkspaceConnections* | [**Delete**](docs/OrgWorkspaceConnections.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Delete org workspace connection association
+*OrgWorkspaceConnections* | [**Get**](docs/OrgWorkspaceConnections.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Get org workspace connection association
+*OrgWorkspaceConnections* | [**List**](docs/OrgWorkspaceConnections.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/connection | List org workspace connection associations
+*OrgWorkspaceConnections* | [**Test**](docs/OrgWorkspaceConnections.md#test) | **Post** /org/{org_handle}/workspace/{workspace_handle}/connection/{connection_handle}/test | Test org workspace connection
+*OrgWorkspaceConnections* | [**Update**](docs/OrgWorkspaceConnections.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Update org workspace connection
 *OrgWorkspaceDatatankParts* | [**Command**](docs/OrgWorkspaceDatatankParts.md#command) | **Post** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/part/{datatank_part_id}/command | Run org workspace Datatank table partition command
 *OrgWorkspaceDatatankParts* | [**Get**](docs/OrgWorkspaceDatatankParts.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/table/{datatank_part_id} | Get org workspace Datatank table partition
 *OrgWorkspaceDatatankParts* | [**List**](docs/OrgWorkspaceDatatankParts.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/part | List org workspace Datatank partitions
@@ -133,6 +171,10 @@ Class | Method | HTTP request | Description
 *OrgWorkspaceDatatanks* | [**Get**](docs/OrgWorkspaceDatatanks.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle} | Get org workspace Datatank
 *OrgWorkspaceDatatanks* | [**List**](docs/OrgWorkspaceDatatanks.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/datatank | List org workspace Datatank
 *OrgWorkspaceDatatanks* | [**Update**](docs/OrgWorkspaceDatatanks.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle} | Update org workspace Datatank
+*OrgWorkspaceIntegrations* | [**Get**](docs/OrgWorkspaceIntegrations.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle} | Get org workspace integration
+*OrgWorkspaceIntegrations* | [**List**](docs/OrgWorkspaceIntegrations.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration | List org workspace integrations
+*OrgWorkspaceIntegrations* | [**ListGithubRepositories**](docs/OrgWorkspaceIntegrations.md#listgithubrepositories) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle}/github/repository | List org workspace integration github respositories
+*OrgWorkspaceIntegrations* | [**ListGithubRepositoryHeads**](docs/OrgWorkspaceIntegrations.md#listgithubrepositoryheads) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle}/github/repository/{repository_owner}/{repository_name}/head | List org workspace integration github respository heads
 *OrgWorkspaceMembers* | [**Create**](docs/OrgWorkspaceMembers.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/member | Create Org Workspace Member
 *OrgWorkspaceMembers* | [**Delete**](docs/OrgWorkspaceMembers.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/member/{user_handle} | Delete Org Workspace Member
 *OrgWorkspaceMembers* | [**Get**](docs/OrgWorkspaceMembers.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/member/{user_handle} | Get Org Workspace Member
@@ -148,6 +190,10 @@ Class | Method | HTTP request | Description
 *OrgWorkspaceMods* | [**List**](docs/OrgWorkspaceMods.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/mod | List organization workspace installed mods
 *OrgWorkspaceMods* | [**Uninstall**](docs/OrgWorkspaceMods.md#uninstall) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/mod/{mod_alias} | Uninstall mod from organization workspace.
 *OrgWorkspaceMods* | [**Update**](docs/OrgWorkspaceMods.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/mod/{mod_alias} | Update a mod in an organization workspace
+*OrgWorkspaceNotificationRules* | [**Create**](docs/OrgWorkspaceNotificationRules.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/notification_rule | Create organization workspace notification rule
+*OrgWorkspaceNotificationRules* | [**Delete**](docs/OrgWorkspaceNotificationRules.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/notification_rule/{notification_rule_id} | Delete organization workspace notification rule
+*OrgWorkspaceNotificationRules* | [**Get**](docs/OrgWorkspaceNotificationRules.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/notification_rule/{notification_rule_id} | Get organization workspace notification rule
+*OrgWorkspaceNotificationRules* | [**List**](docs/OrgWorkspaceNotificationRules.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/notification_rule | List organization workspace notification rules
 *OrgWorkspacePipelines* | [**Command**](docs/OrgWorkspacePipelines.md#command) | **Post** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id}/command | Run org workspace pipeline command
 *OrgWorkspacePipelines* | [**Create**](docs/OrgWorkspacePipelines.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/pipeline | Create org workspace pipeline
 *OrgWorkspacePipelines* | [**Delete**](docs/OrgWorkspacePipelines.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Delete org workspace pipeline
@@ -186,13 +232,43 @@ Class | Method | HTTP request | Description
 *Orgs* | [**Delete**](docs/Orgs.md#delete) | **Delete** /org/{org_handle} | Delete org
 *Orgs* | [**DeleteAvatar**](docs/Orgs.md#deleteavatar) | **Delete** /org/{org_handle}/avatar | Delete org avatar
 *Orgs* | [**Get**](docs/Orgs.md#get) | **Get** /org/{org_handle} | Get org
-*Orgs* | [**GetQuota**](docs/Orgs.md#getquota) | **Get** /org/{org_handle}/quota | Org quota
 *Orgs* | [**List**](docs/Orgs.md#list) | **Get** /org | List orgs
 *Orgs* | [**ListAuditLogs**](docs/Orgs.md#listauditlogs) | **Get** /org/{org_handle}/audit_log | Org audit logs
 *Orgs* | [**ListConstraints**](docs/Orgs.md#listconstraints) | **Get** /org/{org_handle}/constraint | List org constraints
-*Orgs* | [**ListFeatures**](docs/Orgs.md#listfeatures) | **Get** /org/{org_handle}/feature | Org features
 *Orgs* | [**ListUsage**](docs/Orgs.md#listusage) | **Get** /org/{org_handle}/usage | List org usage
 *Orgs* | [**Update**](docs/Orgs.md#update) | **Patch** /org/{org_handle} | Update org
+*TenantConnectionFolders* | [**Create**](docs/TenantConnectionFolders.md#create) | **Post** /connection_folder | Create tenant connection folder
+*TenantConnectionFolders* | [**CreatePermission**](docs/TenantConnectionFolders.md#createpermission) | **Post** /connection_folder/{folder_id}/permission | Create tenant connection folder permission
+*TenantConnectionFolders* | [**Delete**](docs/TenantConnectionFolders.md#delete) | **Delete** /connection_folder/{folder_id} | Delete tenant connection folder
+*TenantConnectionFolders* | [**DeletePermission**](docs/TenantConnectionFolders.md#deletepermission) | **Delete** /connection_folder/{folder_id}/permission/{permission_id} | Delete tenant connection folder permission
+*TenantConnectionFolders* | [**Get**](docs/TenantConnectionFolders.md#get) | **Get** /connection_folder/{folder_id} | Get tenant connection folder
+*TenantConnectionFolders* | [**GetPermission**](docs/TenantConnectionFolders.md#getpermission) | **Get** /connection_folder/{folder_id}/permission/{permission_id} | Get tenant connection folder permission
+*TenantConnectionFolders* | [**List**](docs/TenantConnectionFolders.md#list) | **Get** /connection_folder | List tenant connection folders
+*TenantConnectionFolders* | [**ListPermission**](docs/TenantConnectionFolders.md#listpermission) | **Get** /connection_folder/{folder_id}/permission | List tenant connection folder permissions
+*TenantConnectionFolders* | [**ListWorkspaces**](docs/TenantConnectionFolders.md#listworkspaces) | **Get** /connection_folder/{folder_id}/workspace | List tenant connection folder workspaces
+*TenantConnectionFolders* | [**Update**](docs/TenantConnectionFolders.md#update) | **Patch** /connection_folder/{folder_id} | Update tenant connection folder
+*TenantConnectionFolders* | [**UpdatePermission**](docs/TenantConnectionFolders.md#updatepermission) | **Patch** /connection_folder/{folder_id}/permission/{permission_id} | Update tenant connection folder permission
+*TenantConnectionTree* | [**List**](docs/TenantConnectionTree.md#list) | **Get** /connection_tree | List tenant connection tree
+*TenantConnections* | [**Create**](docs/TenantConnections.md#create) | **Post** /connection | Create tenant connection
+*TenantConnections* | [**CreatePermission**](docs/TenantConnections.md#createpermission) | **Post** /connection/{connection_handle}/permission | Create tenant connection permission
+*TenantConnections* | [**Delete**](docs/TenantConnections.md#delete) | **Delete** /connection/{connection_handle} | Delete tenant connection
+*TenantConnections* | [**DeletePermission**](docs/TenantConnections.md#deletepermission) | **Delete** /connection/{connection_handle}/permission/{permission_id} | Delete tenant connection permission
+*TenantConnections* | [**Get**](docs/TenantConnections.md#get) | **Get** /connection/{connection_handle} | Get tenant connection
+*TenantConnections* | [**GetPermission**](docs/TenantConnections.md#getpermission) | **Get** /connection/{connection_handle}/permission/{permission_id} | Get tenant connection permission
+*TenantConnections* | [**List**](docs/TenantConnections.md#list) | **Get** /connection | List tenant connections
+*TenantConnections* | [**ListPermission**](docs/TenantConnections.md#listpermission) | **Get** /connection/{connection_handle}/permission | List tenant connection permissions
+*TenantConnections* | [**ListWorkspaces**](docs/TenantConnections.md#listworkspaces) | **Get** /connection/{connection_handle}/workspace | List tenant connection workspaces
+*TenantConnections* | [**Test**](docs/TenantConnections.md#test) | **Post** /connection/{connection_handle}/test | Test tenant connection
+*TenantConnections* | [**Update**](docs/TenantConnections.md#update) | **Patch** /connection/{connection_handle} | Update tenant connection
+*TenantConnections* | [**UpdatePermission**](docs/TenantConnections.md#updatepermission) | **Patch** /connection/{connection_handle}/permission/{permission_id} | Update tenant connection permission
+*TenantIntegrations* | [**Command**](docs/TenantIntegrations.md#command) | **Post** /integration/{integration_handle}/command | Run tenant integration command
+*TenantIntegrations* | [**Create**](docs/TenantIntegrations.md#create) | **Post** /integration | Create tenant integration
+*TenantIntegrations* | [**Delete**](docs/TenantIntegrations.md#delete) | **Delete** /integration/{integration_handle} | Delete tenant integration
+*TenantIntegrations* | [**Get**](docs/TenantIntegrations.md#get) | **Get** /integration/{integration_handle} | Get tenant integration
+*TenantIntegrations* | [**InstallGithubIntegration**](docs/TenantIntegrations.md#installgithubintegration) | **Get** /integration/{integration_handle}/github/install | Install GitHub integration on a custom tenant
+*TenantIntegrations* | [**List**](docs/TenantIntegrations.md#list) | **Get** /integration | List tenant integrations
+*TenantIntegrations* | [**Test**](docs/TenantIntegrations.md#test) | **Post** /integration/{integration_handle}/test | Test custom tenant integration
+*TenantIntegrations* | [**Update**](docs/TenantIntegrations.md#update) | **Patch** /integration/{integration_handle} | Update tenant integration
 *TenantMembers* | [**ConfirmInvite**](docs/TenantMembers.md#confirminvite) | **Get** /tenant/{tenant_handle}/member/invite/confirm | Confirm tenant member invite
 *TenantMembers* | [**Delete**](docs/TenantMembers.md#delete) | **Delete** /tenant/{tenant_handle}/member/{user_handle} | Delete tenant member
 *TenantMembers* | [**DeleteInvite**](docs/TenantMembers.md#deleteinvite) | **Delete** /tenant/{tenant_handle}/member/invite | Delete tenant member invite
@@ -208,6 +284,7 @@ Class | Method | HTTP request | Description
 *Tenants* | [**GetAvatar**](docs/Tenants.md#getavatar) | **Get** /tenant/{tenant_handle}/avatar | Get tenant avatar
 *Tenants* | [**GetSettings**](docs/Tenants.md#getsettings) | **Get** /settings | Get tenant settings
 *Tenants* | [**List**](docs/Tenants.md#list) | **Get** /tenant | List tenants
+*Tenants* | [**ListAuditLogs**](docs/Tenants.md#listauditlogs) | **Get** /audit_log | Tenant audit logs
 *Tenants* | [**ListConstraints**](docs/Tenants.md#listconstraints) | **Get** /tenant/{tenant_handle}/constraint | List tenant constraints
 *Tenants* | [**ListUsage**](docs/Tenants.md#listusage) | **Get** /tenant/{tenant_handle}/usage | List tenant usage
 *Tenants* | [**Update**](docs/Tenants.md#update) | **Patch** /tenant/{tenant_handle} | Update tenant
@@ -226,6 +303,14 @@ Class | Method | HTTP request | Description
 *UserConnections* | [**TestDeprecated**](docs/UserConnections.md#testdeprecated) | **Post** /user/{user_handle}/conn/{conn_handle}/test | Test user connection
 *UserConnections* | [**Update**](docs/UserConnections.md#update) | **Patch** /user/{user_handle}/connection/{connection_handle} | Update user connection
 *UserConnections* | [**UpdateDeprecated**](docs/UserConnections.md#updatedeprecated) | **Patch** /user/{user_handle}/conn/{conn_handle} | Update user connection
+*UserIntegrations* | [**Command**](docs/UserIntegrations.md#command) | **Post** /user/{user_handle}/integration/{integration_handle}/command | Run user integration command
+*UserIntegrations* | [**Create**](docs/UserIntegrations.md#create) | **Post** /user/{user_handle}/integration | Create user integration
+*UserIntegrations* | [**Delete**](docs/UserIntegrations.md#delete) | **Delete** /user/{user_handle}/integration/{integration_handle} | Delete user integration
+*UserIntegrations* | [**Get**](docs/UserIntegrations.md#get) | **Get** /user/{user_handle}/integration/{integration_handle} | Get user integration
+*UserIntegrations* | [**InstallGithubIntegration**](docs/UserIntegrations.md#installgithubintegration) | **Get** /user/{user_handle}/integration/{integration_handle}/github/install | Install GitHub integration for a user
+*UserIntegrations* | [**List**](docs/UserIntegrations.md#list) | **Get** /user/{user_handle}/integration | List user integrations
+*UserIntegrations* | [**Test**](docs/UserIntegrations.md#test) | **Post** /user/{user_handle}/integration/{integration_handle}/test | Test user integration
+*UserIntegrations* | [**Update**](docs/UserIntegrations.md#update) | **Patch** /user/{user_handle}/integration/{integration_handle} | Update user integration
 *UserProcesses* | [**Get**](docs/UserProcesses.md#get) | **Get** /user/{user_handle}/process/{process_id} | Get User process
 *UserProcesses* | [**List**](docs/UserProcesses.md#list) | **Get** /user/{user_handle}/process | List User processes
 *UserProcesses* | [**Log**](docs/UserProcesses.md#log) | **Get** /user/{user_handle}/process/{process_id}/log/{log_file}.{content_type} | List user process logs
@@ -245,6 +330,18 @@ Class | Method | HTTP request | Description
 *UserWorkspaceConnectionAssociations* | [**Delete**](docs/UserWorkspaceConnectionAssociations.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/conn/{conn_handle} | Delete user workspace connection association
 *UserWorkspaceConnectionAssociations* | [**Get**](docs/UserWorkspaceConnectionAssociations.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/conn/{conn_handle} | Get user workspace connection association
 *UserWorkspaceConnectionAssociations* | [**List**](docs/UserWorkspaceConnectionAssociations.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/conn | List user workspace connection associations
+*UserWorkspaceConnectionFolders* | [**Create**](docs/UserWorkspaceConnectionFolders.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/connection_folder | Create user workspace connection folder
+*UserWorkspaceConnectionFolders* | [**Delete**](docs/UserWorkspaceConnectionFolders.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/connection_folder/{folder_id} | Delete user workspace connection folder
+*UserWorkspaceConnectionFolders* | [**Get**](docs/UserWorkspaceConnectionFolders.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/connection_folder/{folder_id} | Get user workspace connection folder
+*UserWorkspaceConnectionFolders* | [**List**](docs/UserWorkspaceConnectionFolders.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/connection_folder | List user workspace connections folders
+*UserWorkspaceConnectionFolders* | [**Update**](docs/UserWorkspaceConnectionFolders.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/connection_folder/{folder_id} | Update user workspace connection folder
+*UserWorkspaceConnectionTree* | [**List**](docs/UserWorkspaceConnectionTree.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/connection_tree | List user workspace connection tree
+*UserWorkspaceConnections* | [**Create**](docs/UserWorkspaceConnections.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/connection | Create a connection for a user workspace
+*UserWorkspaceConnections* | [**Delete**](docs/UserWorkspaceConnections.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Delete user workspace connection association
+*UserWorkspaceConnections* | [**Get**](docs/UserWorkspaceConnections.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Get user workspace connection association
+*UserWorkspaceConnections* | [**List**](docs/UserWorkspaceConnections.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/connection | List connections for a user workspace
+*UserWorkspaceConnections* | [**Test**](docs/UserWorkspaceConnections.md#test) | **Post** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle}/test | Test user workspace connection
+*UserWorkspaceConnections* | [**Update**](docs/UserWorkspaceConnections.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Update user workspace connection
 *UserWorkspaceDatatankParts* | [**Command**](docs/UserWorkspaceDatatankParts.md#command) | **Post** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/part/{datatank_part_id}/command | Run user workspace Datatank table partition command
 *UserWorkspaceDatatankParts* | [**Get**](docs/UserWorkspaceDatatankParts.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/table/{datatank_part_id} | Get user workspace Datatank table partition
 *UserWorkspaceDatatankParts* | [**List**](docs/UserWorkspaceDatatankParts.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/part | List user workspace Datatank partitions
@@ -259,6 +356,10 @@ Class | Method | HTTP request | Description
 *UserWorkspaceDatatanks* | [**Get**](docs/UserWorkspaceDatatanks.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle} | Get user workspace Datatank
 *UserWorkspaceDatatanks* | [**List**](docs/UserWorkspaceDatatanks.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/datatank | List user workspace Datatank
 *UserWorkspaceDatatanks* | [**Update**](docs/UserWorkspaceDatatanks.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle} | Update user workspace Datatank
+*UserWorkspaceIntegrations* | [**Get**](docs/UserWorkspaceIntegrations.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/integration/{integration_handle} | Get user workspace integration
+*UserWorkspaceIntegrations* | [**List**](docs/UserWorkspaceIntegrations.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/integration | List user workspace integrations
+*UserWorkspaceIntegrations* | [**ListGithubRepositories**](docs/UserWorkspaceIntegrations.md#listgithubrepositories) | **Get** /user/{user_handle}/workspace/{workspace_handle}/integration/{integration_handle}/github/repository | List user workspace integration github respositories
+*UserWorkspaceIntegrations* | [**ListGithubRepositoryHeads**](docs/UserWorkspaceIntegrations.md#listgithubrepositoryheads) | **Get** /user/{user_handle}/workspace/{workspace_handle}/integration/{integration_handle}/github/repository/{repository_owner}/{repository_name}/head | List user workspace integration github respository heads
 *UserWorkspaceModVariables* | [**CreateSetting**](docs/UserWorkspaceModVariables.md#createsetting) | **Post** /user/{user_handle}/workspace/{workspace_handle}/mod/{mod_alias}/variable | Create a setting for a mod variable in a user workspace
 *UserWorkspaceModVariables* | [**DeleteSetting**](docs/UserWorkspaceModVariables.md#deletesetting) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/mod/{mod_alias}/variable/{variable_name} | Delete setting for a mod variable in a user workspace
 *UserWorkspaceModVariables* | [**GetSetting**](docs/UserWorkspaceModVariables.md#getsetting) | **Get** /user/{user_handle}/workspace/{workspace_handle}/mod/{mod_alias}/variable/{variable_name} | Get setting for a mod variable in a user workspace
@@ -269,6 +370,10 @@ Class | Method | HTTP request | Description
 *UserWorkspaceMods* | [**List**](docs/UserWorkspaceMods.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/mod | List user workspace installed mods
 *UserWorkspaceMods* | [**Uninstall**](docs/UserWorkspaceMods.md#uninstall) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/mod/{mod_alias} | Uninstall mod from a user&#39;s workspace.
 *UserWorkspaceMods* | [**Update**](docs/UserWorkspaceMods.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/mod/{mod_alias} | Update a mod in a user&#39;s workspace
+*UserWorkspaceNotificationRules* | [**Create**](docs/UserWorkspaceNotificationRules.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/notification_rule | Create user workspace notification rule
+*UserWorkspaceNotificationRules* | [**Delete**](docs/UserWorkspaceNotificationRules.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/notification_rule/{notification_rule_id} | Delete user workspace notification rule
+*UserWorkspaceNotificationRules* | [**Get**](docs/UserWorkspaceNotificationRules.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/notification_rule/{notification_rule_id} | Get user workspace notification rule
+*UserWorkspaceNotificationRules* | [**List**](docs/UserWorkspaceNotificationRules.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/notification_rule | List user workspace notification rules
 *UserWorkspacePipelines* | [**Command**](docs/UserWorkspacePipelines.md#command) | **Post** /user/{user_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id}/command | Run user workspace pipeline command
 *UserWorkspacePipelines* | [**Create**](docs/UserWorkspacePipelines.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/pipeline | Create user workspace pipeline
 *UserWorkspacePipelines* | [**Delete**](docs/UserWorkspacePipelines.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Delete user workspace pipeline
@@ -311,12 +416,10 @@ Class | Method | HTTP request | Description
 *Users* | [**GetDBPassword**](docs/Users.md#getdbpassword) | **Get** /user/{user_handle}/password | Get user password
 *Users* | [**GetEmail**](docs/Users.md#getemail) | **Get** /user/{user_handle}/email/{email_id} | Get user email
 *Users* | [**GetPreferences**](docs/Users.md#getpreferences) | **Get** /user/{user_handle}/preferences | Get user preferences
-*Users* | [**GetQuota**](docs/Users.md#getquota) | **Get** /user/{user_handle}/quota | User quota
 *Users* | [**List**](docs/Users.md#list) | **Get** /user | List users
 *Users* | [**ListAuditLogs**](docs/Users.md#listauditlogs) | **Get** /user/{user_handle}/audit_log | User audit logs
 *Users* | [**ListConstraints**](docs/Users.md#listconstraints) | **Get** /user/{user_handle}/constraint | List user constraints
 *Users* | [**ListEmails**](docs/Users.md#listemails) | **Get** /user/{user_handle}/email | List user emails
-*Users* | [**ListFeatures**](docs/Users.md#listfeatures) | **Get** /user/{user_handle}/feature | User features
 *Users* | [**ListUsage**](docs/Users.md#listusage) | **Get** /user/{user_handle}/usage | List user usage
 *Users* | [**Update**](docs/Users.md#update) | **Patch** /user/{user_handle} | Update user
 *Users* | [**UpdatePreferences**](docs/Users.md#updatepreferences) | **Patch** /user/{user_handle}/preferences | Update user preferences
@@ -325,29 +428,36 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ActorWorkspace](docs/ActorWorkspace.md)
+ - [Aggregator](docs/Aggregator.md)
  - [AttachWorkspaceSchemaRequest](docs/AttachWorkspaceSchemaRequest.md)
  - [AuditRecord](docs/AuditRecord.md)
  - [BillingInfo](docs/BillingInfo.md)
  - [CmdDatatankPartRequest](docs/CmdDatatankPartRequest.md)
  - [Connection](docs/Connection.md)
  - [ConnectionTestResult](docs/ConnectionTestResult.md)
+ - [ConnectionTrunkItem](docs/ConnectionTrunkItem.md)
  - [Constraint](docs/Constraint.md)
  - [ConstraintOverrideRequest](docs/ConstraintOverrideRequest.md)
+ - [CreateAggregatorRequest](docs/CreateAggregatorRequest.md)
  - [CreateAvatarResponse](docs/CreateAvatarResponse.md)
+ - [CreateConnectionFolderRequest](docs/CreateConnectionFolderRequest.md)
  - [CreateConnectionRequest](docs/CreateConnectionRequest.md)
  - [CreateDatatankRequest](docs/CreateDatatankRequest.md)
  - [CreateDatatankTableRequest](docs/CreateDatatankTableRequest.md)
+ - [CreateIntegrationRequest](docs/CreateIntegrationRequest.md)
  - [CreateOrgRequest](docs/CreateOrgRequest.md)
  - [CreateOrgUserRequest](docs/CreateOrgUserRequest.md)
  - [CreateOrgWorkspaceUserRequest](docs/CreateOrgWorkspaceUserRequest.md)
+ - [CreatePermissionRequest](docs/CreatePermissionRequest.md)
  - [CreatePipelineRequest](docs/CreatePipelineRequest.md)
  - [CreateTenantRequest](docs/CreateTenantRequest.md)
  - [CreateUserPasswordRequest](docs/CreateUserPasswordRequest.md)
  - [CreateUserRequest](docs/CreateUserRequest.md)
- - [CreateWorkspaceAggregatorRequest](docs/CreateWorkspaceAggregatorRequest.md)
  - [CreateWorkspaceConnRequest](docs/CreateWorkspaceConnRequest.md)
  - [CreateWorkspaceModRequest](docs/CreateWorkspaceModRequest.md)
  - [CreateWorkspaceModVariableSettingRequest](docs/CreateWorkspaceModVariableSettingRequest.md)
+ - [CreateWorkspaceNotificationRequest](docs/CreateWorkspaceNotificationRequest.md)
+ - [CreateWorkspaceNotificationRequestNoSender](docs/CreateWorkspaceNotificationRequestNoSender.md)
  - [CreateWorkspaceRequest](docs/CreateWorkspaceRequest.md)
  - [CreateWorkspaceSnapshotRequest](docs/CreateWorkspaceSnapshotRequest.md)
  - [Datatank](docs/Datatank.md)
@@ -357,8 +467,11 @@ Class | Method | HTTP request | Description
  - [DeleteAvatarResponse](docs/DeleteAvatarResponse.md)
  - [ErrorDetailModel](docs/ErrorDetailModel.md)
  - [ErrorModel](docs/ErrorModel.md)
- - [Feature](docs/Feature.md)
+ - [GithubRepository](docs/GithubRepository.md)
+ - [GithubRepositoryBranch](docs/GithubRepositoryBranch.md)
  - [Identity](docs/Identity.md)
+ - [Integration](docs/Integration.md)
+ - [IntegrationCommandRequest](docs/IntegrationCommandRequest.md)
  - [InviteOrgUserRequest](docs/InviteOrgUserRequest.md)
  - [InviteTenantUserRequest](docs/InviteTenantUserRequest.md)
  - [ListActorWorkspacesResponse](docs/ListActorWorkspacesResponse.md)
@@ -368,12 +481,16 @@ Class | Method | HTTP request | Description
  - [ListDatatankPartResponse](docs/ListDatatankPartResponse.md)
  - [ListDatatankResponse](docs/ListDatatankResponse.md)
  - [ListDatatankTableResponse](docs/ListDatatankTableResponse.md)
- - [ListFeaturesResponse](docs/ListFeaturesResponse.md)
+ - [ListGithubRepositoriesResponse](docs/ListGithubRepositoriesResponse.md)
+ - [ListGithubRepositoryBranchesResponse](docs/ListGithubRepositoryBranchesResponse.md)
  - [ListIdentitiesResponse](docs/ListIdentitiesResponse.md)
+ - [ListIntegrationsResponse](docs/ListIntegrationsResponse.md)
  - [ListLogsResponse](docs/ListLogsResponse.md)
+ - [ListNotificationRulesResponse](docs/ListNotificationRulesResponse.md)
  - [ListOrgUsersResponse](docs/ListOrgUsersResponse.md)
  - [ListOrgWorkspaceUsersResponse](docs/ListOrgWorkspaceUsersResponse.md)
  - [ListOrgsResponse](docs/ListOrgsResponse.md)
+ - [ListPermissionsResponse](docs/ListPermissionsResponse.md)
  - [ListPipelinesResponse](docs/ListPipelinesResponse.md)
  - [ListProcessesResponse](docs/ListProcessesResponse.md)
  - [ListTenantUsersResponse](docs/ListTenantUsersResponse.md)
@@ -394,15 +511,18 @@ Class | Method | HTTP request | Description
  - [ListWorkspaceSnapshotsResponse](docs/ListWorkspaceSnapshotsResponse.md)
  - [ListWorkspacesResponse](docs/ListWorkspacesResponse.md)
  - [LogRecord](docs/LogRecord.md)
+ - [NotificationRecipientRequest](docs/NotificationRecipientRequest.md)
+ - [NotificationRule](docs/NotificationRule.md)
+ - [NotificationRuleEvent](docs/NotificationRuleEvent.md)
+ - [NotificationRuleRecipient](docs/NotificationRuleRecipient.md)
  - [Org](docs/Org.md)
- - [OrgQuota](docs/OrgQuota.md)
  - [OrgUser](docs/OrgUser.md)
  - [OrgWorkspaceUser](docs/OrgWorkspaceUser.md)
+ - [Permission](docs/Permission.md)
  - [Pipeline](docs/Pipeline.md)
  - [PipelineCommandRequest](docs/PipelineCommandRequest.md)
  - [PipelineCommandResponse](docs/PipelineCommandResponse.md)
  - [PipelineFrequency](docs/PipelineFrequency.md)
- - [Quota](docs/Quota.md)
  - [SpProcess](docs/SpProcess.md)
  - [TemporaryTokenRequest](docs/TemporaryTokenRequest.md)
  - [Tenant](docs/Tenant.md)
@@ -412,13 +532,17 @@ Class | Method | HTTP request | Description
  - [TenantUser](docs/TenantUser.md)
  - [TestConnectionRequest](docs/TestConnectionRequest.md)
  - [Token](docs/Token.md)
+ - [UpdateAggregatorRequest](docs/UpdateAggregatorRequest.md)
+ - [UpdateConnectionFolderRequest](docs/UpdateConnectionFolderRequest.md)
  - [UpdateConnectionRequest](docs/UpdateConnectionRequest.md)
  - [UpdateDatatankPartRequest](docs/UpdateDatatankPartRequest.md)
  - [UpdateDatatankRequest](docs/UpdateDatatankRequest.md)
  - [UpdateDatatankTableRequest](docs/UpdateDatatankTableRequest.md)
+ - [UpdateIntegrationRequest](docs/UpdateIntegrationRequest.md)
  - [UpdateOrgRequest](docs/UpdateOrgRequest.md)
  - [UpdateOrgUserRequest](docs/UpdateOrgUserRequest.md)
  - [UpdateOrgWorkspaceUserRequest](docs/UpdateOrgWorkspaceUserRequest.md)
+ - [UpdatePermissionRequest](docs/UpdatePermissionRequest.md)
  - [UpdatePipelineRequest](docs/UpdatePipelineRequest.md)
  - [UpdateTemporaryTokenRequest](docs/UpdateTemporaryTokenRequest.md)
  - [UpdateTenantLoginSettings](docs/UpdateTenantLoginSettings.md)
@@ -429,7 +553,6 @@ Class | Method | HTTP request | Description
  - [UpdateTokenRequest](docs/UpdateTokenRequest.md)
  - [UpdateUserPreferencesRequest](docs/UpdateUserPreferencesRequest.md)
  - [UpdateUserRequest](docs/UpdateUserRequest.md)
- - [UpdateWorkspaceAggregatorRequest](docs/UpdateWorkspaceAggregatorRequest.md)
  - [UpdateWorkspaceModRequest](docs/UpdateWorkspaceModRequest.md)
  - [UpdateWorkspaceModVariableSettingRequest](docs/UpdateWorkspaceModVariableSettingRequest.md)
  - [UpdateWorkspaceRequest](docs/UpdateWorkspaceRequest.md)
@@ -441,10 +564,10 @@ Class | Method | HTTP request | Description
  - [UserLoginRequest](docs/UserLoginRequest.md)
  - [UserOrg](docs/UserOrg.md)
  - [UserPreferences](docs/UserPreferences.md)
- - [UserQuota](docs/UserQuota.md)
  - [UserSignupRequest](docs/UserSignupRequest.md)
  - [Workspace](docs/Workspace.md)
  - [WorkspaceAggregator](docs/WorkspaceAggregator.md)
+ - [WorkspaceAggregatorAssociation](docs/WorkspaceAggregatorAssociation.md)
  - [WorkspaceCommandRequest](docs/WorkspaceCommandRequest.md)
  - [WorkspaceCommandResponse](docs/WorkspaceCommandResponse.md)
  - [WorkspaceConn](docs/WorkspaceConn.md)

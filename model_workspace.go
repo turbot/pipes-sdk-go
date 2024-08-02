@@ -47,6 +47,10 @@ type Workspace struct {
 	Notices          *map[string]interface{} `json:"notices,omitempty"`
 	PowerpipeVersion *string                 `json:"powerpipe_version,omitempty"`
 	PublicKey        *string                 `json:"public_key,omitempty"`
+	// The configured Steampipe database search path for the workspace.
+	SearchPath *[]string `json:"search_path,omitempty"`
+	// The optional Steampipe database search path prefix for the workspace.
+	SearchPathPrefix *[]string `json:"search_path_prefix,omitempty"`
 	// The current state of the workspace.
 	State       *string `json:"state,omitempty"`
 	StateReason *string `json:"state_reason,omitempty"`
@@ -655,6 +659,70 @@ func (o *Workspace) SetPublicKey(v string) {
 	o.PublicKey = &v
 }
 
+// GetSearchPath returns the SearchPath field value if set, zero value otherwise.
+func (o *Workspace) GetSearchPath() []string {
+	if o == nil || o.SearchPath == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SearchPath
+}
+
+// GetSearchPathOk returns a tuple with the SearchPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Workspace) GetSearchPathOk() (*[]string, bool) {
+	if o == nil || o.SearchPath == nil {
+		return nil, false
+	}
+	return o.SearchPath, true
+}
+
+// HasSearchPath returns a boolean if a field has been set.
+func (o *Workspace) HasSearchPath() bool {
+	if o != nil && o.SearchPath != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSearchPath gets a reference to the given []string and assigns it to the SearchPath field.
+func (o *Workspace) SetSearchPath(v []string) {
+	o.SearchPath = &v
+}
+
+// GetSearchPathPrefix returns the SearchPathPrefix field value if set, zero value otherwise.
+func (o *Workspace) GetSearchPathPrefix() []string {
+	if o == nil || o.SearchPathPrefix == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SearchPathPrefix
+}
+
+// GetSearchPathPrefixOk returns a tuple with the SearchPathPrefix field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Workspace) GetSearchPathPrefixOk() (*[]string, bool) {
+	if o == nil || o.SearchPathPrefix == nil {
+		return nil, false
+	}
+	return o.SearchPathPrefix, true
+}
+
+// HasSearchPathPrefix returns a boolean if a field has been set.
+func (o *Workspace) HasSearchPathPrefix() bool {
+	if o != nil && o.SearchPathPrefix != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSearchPathPrefix gets a reference to the given []string and assigns it to the SearchPathPrefix field.
+func (o *Workspace) SetSearchPathPrefix(v []string) {
+	o.SearchPathPrefix = &v
+}
+
 // GetState returns the State field value if set, zero value otherwise.
 func (o *Workspace) GetState() string {
 	if o == nil || o.State == nil {
@@ -892,6 +960,12 @@ func (o Workspace) MarshalJSON() ([]byte, error) {
 	}
 	if o.PublicKey != nil {
 		toSerialize["public_key"] = o.PublicKey
+	}
+	if o.SearchPath != nil {
+		toSerialize["search_path"] = o.SearchPath
+	}
+	if o.SearchPathPrefix != nil {
+		toSerialize["search_path_prefix"] = o.SearchPathPrefix
 	}
 	if o.State != nil {
 		toSerialize["state"] = o.State

@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Association** | Pointer to [**WorkspaceAggregatorAssociation**](WorkspaceAggregatorAssociation.md) |  | [optional] 
+**Config** | Pointer to **map[string]interface{}** |  | [optional] 
 **Connections** | **[]string** | The plugin or connection configuration. | 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
 **CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
@@ -12,21 +14,31 @@ Name | Type | Description | Notes
 **DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **Handle** | **string** | The handle name of the aggregator. | 
+**HandleDynamic** | Pointer to **string** | The dynamically-generated handle for the aggregator. Only populated if this is a discovered aggregator. | [optional] 
+**HandleMode** | Pointer to **string** | The handle mode for the aggregator. | [optional] 
+**HandlePrefix** | Pointer to **string** | The handle prefix to use for aggregators and connections discovered by this aggregator. Only populated if this is a dynamic aggregator. | [optional] 
 **Id** | **string** | The unique identifier for the aggregator. | 
-**IdentityId** | **string** | The unique identifier for an identity where the aggregator has been created. | 
+**IdentityId** | Pointer to **string** | The unique identifier for an identity where the aggregator has been created. | [optional] 
+**Integration** | Pointer to [**Integration**](Integration.md) |  | [optional] 
+**IntegrationResourceIdentifier** | Pointer to **string** | The source identifier for this aggregator. Only populated if its a aggregator thats been discovered by an integration. | [optional] 
+**IntegrationResourceName** | Pointer to **string** | A friendly resource name for the aggregator. Only populated if its a aggregator thats been doscovered by an integration. | [optional] 
+**IntegrationResourcePath** | Pointer to **string** | The source path for this aggregator. Only populated if its a aggregator thats been discovered by an integration. | [optional] 
+**IntegrationResourceType** | Pointer to **string** | The source type for this aggregator. Only populated if its a aggregator thats been discovered by an integration. | [optional] 
+**ManagedById** | Pointer to **string** | The ID of the aggregator that manages this aggregator. Only populated if this is a discovered aggregator. | [optional] 
 **Plugin** | **string** | The plugin name for the aggregator. | 
+**TenantId** | **string** | The unique identifier for the tenant where this aggregator is created. | 
 **Type** | Pointer to **string** | Type of connection i.e aggregator or connection. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
 **UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
-**WorkspaceId** | **string** | The unique identifier for the workspace. | 
+**WorkspaceId** | Pointer to **string** | The unique identifier for the workspace. | [optional] 
 
 ## Methods
 
 ### NewWorkspaceAggregator
 
-`func NewWorkspaceAggregator(connections []string, createdAt string, createdById string, deletedById string, handle string, id string, identityId string, plugin string, updatedById string, versionId int32, workspaceId string, ) *WorkspaceAggregator`
+`func NewWorkspaceAggregator(connections []string, createdAt string, createdById string, deletedById string, handle string, id string, plugin string, tenantId string, updatedById string, versionId int32, ) *WorkspaceAggregator`
 
 NewWorkspaceAggregator instantiates a new WorkspaceAggregator object
 This constructor will assign default values to properties that have it defined,
@@ -40,6 +52,56 @@ will change when the set of required properties is changed
 NewWorkspaceAggregatorWithDefaults instantiates a new WorkspaceAggregator object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAssociation
+
+`func (o *WorkspaceAggregator) GetAssociation() WorkspaceAggregatorAssociation`
+
+GetAssociation returns the Association field if non-nil, zero value otherwise.
+
+### GetAssociationOk
+
+`func (o *WorkspaceAggregator) GetAssociationOk() (*WorkspaceAggregatorAssociation, bool)`
+
+GetAssociationOk returns a tuple with the Association field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssociation
+
+`func (o *WorkspaceAggregator) SetAssociation(v WorkspaceAggregatorAssociation)`
+
+SetAssociation sets Association field to given value.
+
+### HasAssociation
+
+`func (o *WorkspaceAggregator) HasAssociation() bool`
+
+HasAssociation returns a boolean if a field has been set.
+
+### GetConfig
+
+`func (o *WorkspaceAggregator) GetConfig() map[string]interface{}`
+
+GetConfig returns the Config field if non-nil, zero value otherwise.
+
+### GetConfigOk
+
+`func (o *WorkspaceAggregator) GetConfigOk() (*map[string]interface{}, bool)`
+
+GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfig
+
+`func (o *WorkspaceAggregator) SetConfig(v map[string]interface{})`
+
+SetConfig sets Config field to given value.
+
+### HasConfig
+
+`func (o *WorkspaceAggregator) HasConfig() bool`
+
+HasConfig returns a boolean if a field has been set.
 
 ### GetConnections
 
@@ -216,6 +278,81 @@ and a boolean to check if the value has been set.
 SetHandle sets Handle field to given value.
 
 
+### GetHandleDynamic
+
+`func (o *WorkspaceAggregator) GetHandleDynamic() string`
+
+GetHandleDynamic returns the HandleDynamic field if non-nil, zero value otherwise.
+
+### GetHandleDynamicOk
+
+`func (o *WorkspaceAggregator) GetHandleDynamicOk() (*string, bool)`
+
+GetHandleDynamicOk returns a tuple with the HandleDynamic field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHandleDynamic
+
+`func (o *WorkspaceAggregator) SetHandleDynamic(v string)`
+
+SetHandleDynamic sets HandleDynamic field to given value.
+
+### HasHandleDynamic
+
+`func (o *WorkspaceAggregator) HasHandleDynamic() bool`
+
+HasHandleDynamic returns a boolean if a field has been set.
+
+### GetHandleMode
+
+`func (o *WorkspaceAggregator) GetHandleMode() string`
+
+GetHandleMode returns the HandleMode field if non-nil, zero value otherwise.
+
+### GetHandleModeOk
+
+`func (o *WorkspaceAggregator) GetHandleModeOk() (*string, bool)`
+
+GetHandleModeOk returns a tuple with the HandleMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHandleMode
+
+`func (o *WorkspaceAggregator) SetHandleMode(v string)`
+
+SetHandleMode sets HandleMode field to given value.
+
+### HasHandleMode
+
+`func (o *WorkspaceAggregator) HasHandleMode() bool`
+
+HasHandleMode returns a boolean if a field has been set.
+
+### GetHandlePrefix
+
+`func (o *WorkspaceAggregator) GetHandlePrefix() string`
+
+GetHandlePrefix returns the HandlePrefix field if non-nil, zero value otherwise.
+
+### GetHandlePrefixOk
+
+`func (o *WorkspaceAggregator) GetHandlePrefixOk() (*string, bool)`
+
+GetHandlePrefixOk returns a tuple with the HandlePrefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHandlePrefix
+
+`func (o *WorkspaceAggregator) SetHandlePrefix(v string)`
+
+SetHandlePrefix sets HandlePrefix field to given value.
+
+### HasHandlePrefix
+
+`func (o *WorkspaceAggregator) HasHandlePrefix() bool`
+
+HasHandlePrefix returns a boolean if a field has been set.
+
 ### GetId
 
 `func (o *WorkspaceAggregator) GetId() string`
@@ -255,6 +392,161 @@ and a boolean to check if the value has been set.
 
 SetIdentityId sets IdentityId field to given value.
 
+### HasIdentityId
+
+`func (o *WorkspaceAggregator) HasIdentityId() bool`
+
+HasIdentityId returns a boolean if a field has been set.
+
+### GetIntegration
+
+`func (o *WorkspaceAggregator) GetIntegration() Integration`
+
+GetIntegration returns the Integration field if non-nil, zero value otherwise.
+
+### GetIntegrationOk
+
+`func (o *WorkspaceAggregator) GetIntegrationOk() (*Integration, bool)`
+
+GetIntegrationOk returns a tuple with the Integration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegration
+
+`func (o *WorkspaceAggregator) SetIntegration(v Integration)`
+
+SetIntegration sets Integration field to given value.
+
+### HasIntegration
+
+`func (o *WorkspaceAggregator) HasIntegration() bool`
+
+HasIntegration returns a boolean if a field has been set.
+
+### GetIntegrationResourceIdentifier
+
+`func (o *WorkspaceAggregator) GetIntegrationResourceIdentifier() string`
+
+GetIntegrationResourceIdentifier returns the IntegrationResourceIdentifier field if non-nil, zero value otherwise.
+
+### GetIntegrationResourceIdentifierOk
+
+`func (o *WorkspaceAggregator) GetIntegrationResourceIdentifierOk() (*string, bool)`
+
+GetIntegrationResourceIdentifierOk returns a tuple with the IntegrationResourceIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegrationResourceIdentifier
+
+`func (o *WorkspaceAggregator) SetIntegrationResourceIdentifier(v string)`
+
+SetIntegrationResourceIdentifier sets IntegrationResourceIdentifier field to given value.
+
+### HasIntegrationResourceIdentifier
+
+`func (o *WorkspaceAggregator) HasIntegrationResourceIdentifier() bool`
+
+HasIntegrationResourceIdentifier returns a boolean if a field has been set.
+
+### GetIntegrationResourceName
+
+`func (o *WorkspaceAggregator) GetIntegrationResourceName() string`
+
+GetIntegrationResourceName returns the IntegrationResourceName field if non-nil, zero value otherwise.
+
+### GetIntegrationResourceNameOk
+
+`func (o *WorkspaceAggregator) GetIntegrationResourceNameOk() (*string, bool)`
+
+GetIntegrationResourceNameOk returns a tuple with the IntegrationResourceName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegrationResourceName
+
+`func (o *WorkspaceAggregator) SetIntegrationResourceName(v string)`
+
+SetIntegrationResourceName sets IntegrationResourceName field to given value.
+
+### HasIntegrationResourceName
+
+`func (o *WorkspaceAggregator) HasIntegrationResourceName() bool`
+
+HasIntegrationResourceName returns a boolean if a field has been set.
+
+### GetIntegrationResourcePath
+
+`func (o *WorkspaceAggregator) GetIntegrationResourcePath() string`
+
+GetIntegrationResourcePath returns the IntegrationResourcePath field if non-nil, zero value otherwise.
+
+### GetIntegrationResourcePathOk
+
+`func (o *WorkspaceAggregator) GetIntegrationResourcePathOk() (*string, bool)`
+
+GetIntegrationResourcePathOk returns a tuple with the IntegrationResourcePath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegrationResourcePath
+
+`func (o *WorkspaceAggregator) SetIntegrationResourcePath(v string)`
+
+SetIntegrationResourcePath sets IntegrationResourcePath field to given value.
+
+### HasIntegrationResourcePath
+
+`func (o *WorkspaceAggregator) HasIntegrationResourcePath() bool`
+
+HasIntegrationResourcePath returns a boolean if a field has been set.
+
+### GetIntegrationResourceType
+
+`func (o *WorkspaceAggregator) GetIntegrationResourceType() string`
+
+GetIntegrationResourceType returns the IntegrationResourceType field if non-nil, zero value otherwise.
+
+### GetIntegrationResourceTypeOk
+
+`func (o *WorkspaceAggregator) GetIntegrationResourceTypeOk() (*string, bool)`
+
+GetIntegrationResourceTypeOk returns a tuple with the IntegrationResourceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegrationResourceType
+
+`func (o *WorkspaceAggregator) SetIntegrationResourceType(v string)`
+
+SetIntegrationResourceType sets IntegrationResourceType field to given value.
+
+### HasIntegrationResourceType
+
+`func (o *WorkspaceAggregator) HasIntegrationResourceType() bool`
+
+HasIntegrationResourceType returns a boolean if a field has been set.
+
+### GetManagedById
+
+`func (o *WorkspaceAggregator) GetManagedById() string`
+
+GetManagedById returns the ManagedById field if non-nil, zero value otherwise.
+
+### GetManagedByIdOk
+
+`func (o *WorkspaceAggregator) GetManagedByIdOk() (*string, bool)`
+
+GetManagedByIdOk returns a tuple with the ManagedById field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagedById
+
+`func (o *WorkspaceAggregator) SetManagedById(v string)`
+
+SetManagedById sets ManagedById field to given value.
+
+### HasManagedById
+
+`func (o *WorkspaceAggregator) HasManagedById() bool`
+
+HasManagedById returns a boolean if a field has been set.
 
 ### GetPlugin
 
@@ -274,6 +566,26 @@ and a boolean to check if the value has been set.
 `func (o *WorkspaceAggregator) SetPlugin(v string)`
 
 SetPlugin sets Plugin field to given value.
+
+
+### GetTenantId
+
+`func (o *WorkspaceAggregator) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *WorkspaceAggregator) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *WorkspaceAggregator) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
 
 
 ### GetType
@@ -410,6 +722,11 @@ and a boolean to check if the value has been set.
 
 SetWorkspaceId sets WorkspaceId field to given value.
 
+### HasWorkspaceId
+
+`func (o *WorkspaceAggregator) HasWorkspaceId() bool`
+
+HasWorkspaceId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -20,6 +20,8 @@ type UpdateWorkspaceRequest struct {
 	// paused is not yet supported for Workspace
 	DesiredState *string `json:"desired_state,omitempty"`
 	Handle       *string `json:"handle,omitempty"`
+	// InstanceType *WorkspaceInstanceType `json:\"instance_type,omitempty\" binding:\"omitempty,oneof=db1.shared db1.small\"`
+	SearchPathPrefix *[]string `json:"search_path_prefix,omitempty"`
 }
 
 // NewUpdateWorkspaceRequest instantiates a new UpdateWorkspaceRequest object
@@ -135,6 +137,38 @@ func (o *UpdateWorkspaceRequest) SetHandle(v string) {
 	o.Handle = &v
 }
 
+// GetSearchPathPrefix returns the SearchPathPrefix field value if set, zero value otherwise.
+func (o *UpdateWorkspaceRequest) GetSearchPathPrefix() []string {
+	if o == nil || o.SearchPathPrefix == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SearchPathPrefix
+}
+
+// GetSearchPathPrefixOk returns a tuple with the SearchPathPrefix field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateWorkspaceRequest) GetSearchPathPrefixOk() (*[]string, bool) {
+	if o == nil || o.SearchPathPrefix == nil {
+		return nil, false
+	}
+	return o.SearchPathPrefix, true
+}
+
+// HasSearchPathPrefix returns a boolean if a field has been set.
+func (o *UpdateWorkspaceRequest) HasSearchPathPrefix() bool {
+	if o != nil && o.SearchPathPrefix != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSearchPathPrefix gets a reference to the given []string and assigns it to the SearchPathPrefix field.
+func (o *UpdateWorkspaceRequest) SetSearchPathPrefix(v []string) {
+	o.SearchPathPrefix = &v
+}
+
 func (o UpdateWorkspaceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DbVolumeSizeBytes != nil {
@@ -145,6 +179,9 @@ func (o UpdateWorkspaceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Handle != nil {
 		toSerialize["handle"] = o.Handle
+	}
+	if o.SearchPathPrefix != nil {
+		toSerialize["search_path_prefix"] = o.SearchPathPrefix
 	}
 	return json.Marshal(toSerialize)
 }

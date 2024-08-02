@@ -5,19 +5,24 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alias** | Pointer to **string** |  | [optional] 
+**Branch** | Pointer to **string** |  | [optional] 
 **Constraint** | Pointer to **string** |  | [optional] 
+**ConstraintMode** | Pointer to **string** |  | [optional] 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
 **CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
-**Details** | Pointer to **string** |  | [optional] 
 **Id** | **string** |  | 
 **IdentityId** | **string** | The unique identifier for an identity where the workspace mod has been install. | 
+**InstalledCommit** | Pointer to **string** |  | [optional] 
 **InstalledVersion** | Pointer to **string** |  | [optional] 
+**IntegrationId** | Pointer to **string** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
 **State** | Pointer to **string** |  | [optional] 
+**StateReason** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
 **UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
+**Version** | Pointer to **string** |  | [optional] 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 **WorkspaceId** | **string** |  | 
 
@@ -65,6 +70,31 @@ SetAlias sets Alias field to given value.
 
 HasAlias returns a boolean if a field has been set.
 
+### GetBranch
+
+`func (o *WorkspaceMod) GetBranch() string`
+
+GetBranch returns the Branch field if non-nil, zero value otherwise.
+
+### GetBranchOk
+
+`func (o *WorkspaceMod) GetBranchOk() (*string, bool)`
+
+GetBranchOk returns a tuple with the Branch field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBranch
+
+`func (o *WorkspaceMod) SetBranch(v string)`
+
+SetBranch sets Branch field to given value.
+
+### HasBranch
+
+`func (o *WorkspaceMod) HasBranch() bool`
+
+HasBranch returns a boolean if a field has been set.
+
 ### GetConstraint
 
 `func (o *WorkspaceMod) GetConstraint() string`
@@ -89,6 +119,31 @@ SetConstraint sets Constraint field to given value.
 `func (o *WorkspaceMod) HasConstraint() bool`
 
 HasConstraint returns a boolean if a field has been set.
+
+### GetConstraintMode
+
+`func (o *WorkspaceMod) GetConstraintMode() string`
+
+GetConstraintMode returns the ConstraintMode field if non-nil, zero value otherwise.
+
+### GetConstraintModeOk
+
+`func (o *WorkspaceMod) GetConstraintModeOk() (*string, bool)`
+
+GetConstraintModeOk returns a tuple with the ConstraintMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConstraintMode
+
+`func (o *WorkspaceMod) SetConstraintMode(v string)`
+
+SetConstraintMode sets ConstraintMode field to given value.
+
+### HasConstraintMode
+
+`func (o *WorkspaceMod) HasConstraintMode() bool`
+
+HasConstraintMode returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -155,31 +210,6 @@ and a boolean to check if the value has been set.
 SetCreatedById sets CreatedById field to given value.
 
 
-### GetDetails
-
-`func (o *WorkspaceMod) GetDetails() string`
-
-GetDetails returns the Details field if non-nil, zero value otherwise.
-
-### GetDetailsOk
-
-`func (o *WorkspaceMod) GetDetailsOk() (*string, bool)`
-
-GetDetailsOk returns a tuple with the Details field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDetails
-
-`func (o *WorkspaceMod) SetDetails(v string)`
-
-SetDetails sets Details field to given value.
-
-### HasDetails
-
-`func (o *WorkspaceMod) HasDetails() bool`
-
-HasDetails returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *WorkspaceMod) GetId() string`
@@ -220,6 +250,31 @@ and a boolean to check if the value has been set.
 SetIdentityId sets IdentityId field to given value.
 
 
+### GetInstalledCommit
+
+`func (o *WorkspaceMod) GetInstalledCommit() string`
+
+GetInstalledCommit returns the InstalledCommit field if non-nil, zero value otherwise.
+
+### GetInstalledCommitOk
+
+`func (o *WorkspaceMod) GetInstalledCommitOk() (*string, bool)`
+
+GetInstalledCommitOk returns a tuple with the InstalledCommit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstalledCommit
+
+`func (o *WorkspaceMod) SetInstalledCommit(v string)`
+
+SetInstalledCommit sets InstalledCommit field to given value.
+
+### HasInstalledCommit
+
+`func (o *WorkspaceMod) HasInstalledCommit() bool`
+
+HasInstalledCommit returns a boolean if a field has been set.
+
 ### GetInstalledVersion
 
 `func (o *WorkspaceMod) GetInstalledVersion() string`
@@ -244,6 +299,31 @@ SetInstalledVersion sets InstalledVersion field to given value.
 `func (o *WorkspaceMod) HasInstalledVersion() bool`
 
 HasInstalledVersion returns a boolean if a field has been set.
+
+### GetIntegrationId
+
+`func (o *WorkspaceMod) GetIntegrationId() string`
+
+GetIntegrationId returns the IntegrationId field if non-nil, zero value otherwise.
+
+### GetIntegrationIdOk
+
+`func (o *WorkspaceMod) GetIntegrationIdOk() (*string, bool)`
+
+GetIntegrationIdOk returns a tuple with the IntegrationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegrationId
+
+`func (o *WorkspaceMod) SetIntegrationId(v string)`
+
+SetIntegrationId sets IntegrationId field to given value.
+
+### HasIntegrationId
+
+`func (o *WorkspaceMod) HasIntegrationId() bool`
+
+HasIntegrationId returns a boolean if a field has been set.
 
 ### GetPath
 
@@ -294,6 +374,31 @@ SetState sets State field to given value.
 `func (o *WorkspaceMod) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### GetStateReason
+
+`func (o *WorkspaceMod) GetStateReason() string`
+
+GetStateReason returns the StateReason field if non-nil, zero value otherwise.
+
+### GetStateReasonOk
+
+`func (o *WorkspaceMod) GetStateReasonOk() (*string, bool)`
+
+GetStateReasonOk returns a tuple with the StateReason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStateReason
+
+`func (o *WorkspaceMod) SetStateReason(v string)`
+
+SetStateReason sets StateReason field to given value.
+
+### HasStateReason
+
+`func (o *WorkspaceMod) HasStateReason() bool`
+
+HasStateReason returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
@@ -364,6 +469,31 @@ and a boolean to check if the value has been set.
 
 SetUpdatedById sets UpdatedById field to given value.
 
+
+### GetVersion
+
+`func (o *WorkspaceMod) GetVersion() string`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *WorkspaceMod) GetVersionOk() (*string, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *WorkspaceMod) SetVersion(v string)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *WorkspaceMod) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
 
 ### GetVersionId
 
