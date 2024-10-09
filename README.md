@@ -83,7 +83,19 @@ Class | Method | HTTP request | Description
 *Identities* | [**Get**](docs/Identities.md#get) | **Get** /identity/{identity_handle} | Get identity
 *Identities* | [**GetAvatar**](docs/Identities.md#getavatar) | **Get** /identity/{identity_handle}/avatar | Get identity avatar
 *Identities* | [**List**](docs/Identities.md#list) | **Get** /identity | List identities
-*Integrations* | [**ConfirmGithubIntegration**](docs/Integrations.md#confirmgithubintegration) | **Get** /integration/github/confirm | Confirm GitHub integration installation
+*OrgBilling* | [**CreateBillingIntent**](docs/OrgBilling.md#createbillingintent) | **Post** /org/{org_handle}/billing/payment_method/intent | Create Stripe billing intent
+*OrgBilling* | [**CreateOrgSubscription**](docs/OrgBilling.md#createorgsubscription) | **Post** /org/{org_handle}/billing/subscription | Create a new subscription
+*OrgBilling* | [**DeleteOrgBillingPaymentMethod**](docs/OrgBilling.md#deleteorgbillingpaymentmethod) | **Delete** /org/{org_handle}/billing/payment_method/{payment_method_id} | Delete org billing payment method.
+*OrgBilling* | [**DeleteOrgBillingSubscription**](docs/OrgBilling.md#deleteorgbillingsubscription) | **Delete** /org/{org_handle}/billing/subscription/{subscription_id} | Delete org subscription
+*OrgBilling* | [**GetOrgBillingInvoice**](docs/OrgBilling.md#getorgbillinginvoice) | **Get** /org/{org_handle}/billing/invoice/{invoice_id} | Get an organization invoice
+*OrgBilling* | [**GetOrgBillingPaymentMethod**](docs/OrgBilling.md#getorgbillingpaymentmethod) | **Get** /org/{org_handle}/billing/payment_method/{payment_method_id} | Get org billing payment method.
+*OrgBilling* | [**GetOrgBillingSubscription**](docs/OrgBilling.md#getorgbillingsubscription) | **Get** /org/{org_handle}/billing/subscription/{subscription_id} | Get org subscription
+*OrgBilling* | [**GetOrgBillingUpcomingInvoice**](docs/OrgBilling.md#getorgbillingupcominginvoice) | **Get** /org/{org_handle}/billing/stripe/invoice/upcoming | Get upcoming invoice
+*OrgBilling* | [**ListOrgBillingInvoices**](docs/OrgBilling.md#listorgbillinginvoices) | **Get** /org/{org_handle}/billing/invoice | List org invoices
+*OrgBilling* | [**ListOrgBillingPaymentMethod**](docs/OrgBilling.md#listorgbillingpaymentmethod) | **Get** /org/{org_handle}/billing/payment_method | List org billing payment methods.
+*OrgBilling* | [**ListOrgSubscription**](docs/OrgBilling.md#listorgsubscription) | **Get** /org/{org_handle}/billing/subscription | List org subscriptions
+*OrgBilling* | [**UpdateOrgBillingPaymentMethod**](docs/OrgBilling.md#updateorgbillingpaymentmethod) | **Patch** /org/{org_handle}/billing/payment_method/{payment_method_id} | Update org billing payment method.
+*OrgBilling* | [**UpdateOrgBillingSubscription**](docs/OrgBilling.md#updateorgbillingsubscription) | **Patch** /org/{org_handle}/billing/subscription/{subscription_id} | Update org subscription
 *OrgConnectionFolders* | [**Create**](docs/OrgConnectionFolders.md#create) | **Post** /org/{org_handle}/connection_folder | Create org connection folder
 *OrgConnectionFolders* | [**CreatePermission**](docs/OrgConnectionFolders.md#createpermission) | **Post** /org/{org_handle}/connection_folder/{folder_id}/permission | Create org connection folder permission
 *OrgConnectionFolders* | [**Delete**](docs/OrgConnectionFolders.md#delete) | **Delete** /org/{org_handle}/connection_folder/{folder_id} | Delete org connection folder
@@ -120,7 +132,9 @@ Class | Method | HTTP request | Description
 *OrgIntegrations* | [**Delete**](docs/OrgIntegrations.md#delete) | **Delete** /org/{org_handle}/integration/{integration_handle} | Delete org integration
 *OrgIntegrations* | [**Get**](docs/OrgIntegrations.md#get) | **Get** /org/{org_handle}/integration/{integration_handle} | Get org integration
 *OrgIntegrations* | [**InstallGithubIntegration**](docs/OrgIntegrations.md#installgithubintegration) | **Get** /org/{org_handle}/integration/{integration_handle}/github/install | Install GitHub integration for an org
+*OrgIntegrations* | [**InstallSlackIntegration**](docs/OrgIntegrations.md#installslackintegration) | **Get** /org/{org_handle}/integration/{integration_handle}/slack/install | Install Slack integration for an org
 *OrgIntegrations* | [**List**](docs/OrgIntegrations.md#list) | **Get** /org/{org_handle}/integration | List org integrations
+*OrgIntegrations* | [**ListSlackChannels**](docs/OrgIntegrations.md#listslackchannels) | **Get** /org/{org_handle}/integration/{integration_handle}/slack/channel | List org integration Slack channels
 *OrgIntegrations* | [**Test**](docs/OrgIntegrations.md#test) | **Post** /org/{org_handle}/integration/{integration_handle}/test | Test org integration
 *OrgIntegrations* | [**Update**](docs/OrgIntegrations.md#update) | **Patch** /org/{org_handle}/integration/{integration_handle} | Update org integration
 *OrgMembers* | [**ConfirmInvite**](docs/OrgMembers.md#confirminvite) | **Get** /org/{org_handle}/member/invite/confirm | Confirm org member invite
@@ -131,6 +145,10 @@ Class | Method | HTTP request | Description
 *OrgMembers* | [**Invite**](docs/OrgMembers.md#invite) | **Post** /org/{org_handle}/member/invite | Invite org member
 *OrgMembers* | [**List**](docs/OrgMembers.md#list) | **Get** /org/{org_handle}/member | List Organization Members
 *OrgMembers* | [**Update**](docs/OrgMembers.md#update) | **Patch** /org/{org_handle}/member/{user_handle} | Update org member
+*OrgNotifications* | [**CreateOrgNotificationRule**](docs/OrgNotifications.md#createorgnotificationrule) | **Post** /org/{org_handle}/notification_rule | Create organization notification rule
+*OrgNotifications* | [**DeleteOrgNotificationRule**](docs/OrgNotifications.md#deleteorgnotificationrule) | **Delete** /user/{org_handle}/notification_rule/{notification_rule_id} | Delete organization notification rule
+*OrgNotifications* | [**GetOrgNotificationRule**](docs/OrgNotifications.md#getorgnotificationrule) | **Get** /user/{org_handle}/notification_rule/{notification_rule_id} | Get organization notification rule
+*OrgNotifications* | [**ListOrgNotificationRules**](docs/OrgNotifications.md#listorgnotificationrules) | **Get** /user/{org_handle}/notification_rule | List organization notification rules
 *OrgProcesses* | [**Get**](docs/OrgProcesses.md#get) | **Get** /org/{org_handle}/process/{process_id} | Get Org process
 *OrgProcesses* | [**List**](docs/OrgProcesses.md#list) | **Get** /org/{org_handle}/process | List Org processes
 *OrgProcesses* | [**Log**](docs/OrgProcesses.md#log) | **Get** /org/{org_handle}/process/{process_id}/log/{log_file}.{content_type} | List Org process logs
@@ -171,6 +189,26 @@ Class | Method | HTTP request | Description
 *OrgWorkspaceDatatanks* | [**Get**](docs/OrgWorkspaceDatatanks.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle} | Get org workspace Datatank
 *OrgWorkspaceDatatanks* | [**List**](docs/OrgWorkspaceDatatanks.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/datatank | List org workspace Datatank
 *OrgWorkspaceDatatanks* | [**Update**](docs/OrgWorkspaceDatatanks.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle} | Update org workspace Datatank
+*OrgWorkspaceFlowpipeInputs* | [**Create**](docs/OrgWorkspaceFlowpipeInputs.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/input | Create org workspace flowpipe input
+*OrgWorkspaceFlowpipeInputs* | [**Get**](docs/OrgWorkspaceFlowpipeInputs.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/form/{step_execution_id}/{random_id} | Get org workspace flowpipe form
+*OrgWorkspaceFlowpipeInputs* | [**Get_0**](docs/OrgWorkspaceFlowpipeInputs.md#get_0) | **Get** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/input/{input_id} | Get org workspace flowpipe input
+*OrgWorkspaceFlowpipeInputs* | [**List**](docs/OrgWorkspaceFlowpipeInputs.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/input | List org workspace flowpipe inputs
+*OrgWorkspaceFlowpipeInputs* | [**Post**](docs/OrgWorkspaceFlowpipeInputs.md#post) | **Post** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/form/{step_execution_id}/{random_id}/submit | Post org workspace flowpipe form response
+*OrgWorkspaceFlowpipeModVariables* | [**CreateSetting**](docs/OrgWorkspaceFlowpipeModVariables.md#createsetting) | **Post** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias}/variable | Create a setting for a flowpipe mod variable in an organization workspace
+*OrgWorkspaceFlowpipeModVariables* | [**DeleteSetting**](docs/OrgWorkspaceFlowpipeModVariables.md#deletesetting) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias}/variable/{variable_name} | Delete setting for a flowpipe mod variable in an organization workspace
+*OrgWorkspaceFlowpipeModVariables* | [**GetSetting**](docs/OrgWorkspaceFlowpipeModVariables.md#getsetting) | **Get** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias}/variable/{variable_name} | Get setting for a flowpipe mod variable in an organization workspace
+*OrgWorkspaceFlowpipeModVariables* | [**List**](docs/OrgWorkspaceFlowpipeModVariables.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias}/variable | List variables in an organization flowpipe workspace mod
+*OrgWorkspaceFlowpipeModVariables* | [**UpdateSetting**](docs/OrgWorkspaceFlowpipeModVariables.md#updatesetting) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias}/variable/{variable_name} | Update setting for a flowpipe mod variable in an organization workspace
+*OrgWorkspaceFlowpipeMods* | [**Uninstall**](docs/OrgWorkspaceFlowpipeMods.md#uninstall) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias} | Uninstall flowpipe mod from organization workspace.
+*OrgWorkspaceFlowpipeMods* | [**Update**](docs/OrgWorkspaceFlowpipeMods.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias} | Update a flowpipe mod in an organization workspace
+*OrgWorkspaceFlowpipePipelines* | [**Command**](docs/OrgWorkspaceFlowpipePipelines.md#command) | **Post** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/pipeline/{pipeline_name}/command | Run organization workspace Flowpipe pipeline command
+*OrgWorkspaceFlowpipePipelines* | [**Get**](docs/OrgWorkspaceFlowpipePipelines.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/pipeline/{pipeline_id} | Get org workspace pipeline
+*OrgWorkspaceFlowpipePipelines* | [**ListTriggers**](docs/OrgWorkspaceFlowpipePipelines.md#listtriggers) | **Get** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/pipeline/{pipeline_id}/trigger | Get org workspace pipeline triggers
+*OrgWorkspaceFlowpipeTriggers* | [**Command**](docs/OrgWorkspaceFlowpipeTriggers.md#command) | **Post** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name}/command | Run organization workspace Flowpipe trigger command
+*OrgWorkspaceFlowpipeTriggers* | [**Create**](docs/OrgWorkspaceFlowpipeTriggers.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/trigger | Create org workspace trigger
+*OrgWorkspaceFlowpipeTriggers* | [**Delete**](docs/OrgWorkspaceFlowpipeTriggers.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name} | Delete org workspace pipeline
+*OrgWorkspaceFlowpipeTriggers* | [**Get**](docs/OrgWorkspaceFlowpipeTriggers.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name} | Get org workspace flowpipe trigger
+*OrgWorkspaceFlowpipeTriggers* | [**Update**](docs/OrgWorkspaceFlowpipeTriggers.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name} | Update org workspace trigger
 *OrgWorkspaceIntegrations* | [**Get**](docs/OrgWorkspaceIntegrations.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle} | Get org workspace integration
 *OrgWorkspaceIntegrations* | [**List**](docs/OrgWorkspaceIntegrations.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration | List org workspace integrations
 *OrgWorkspaceIntegrations* | [**ListGithubRepositories**](docs/OrgWorkspaceIntegrations.md#listgithubrepositories) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle}/github/repository | List org workspace integration github respositories
@@ -232,11 +270,26 @@ Class | Method | HTTP request | Description
 *Orgs* | [**Delete**](docs/Orgs.md#delete) | **Delete** /org/{org_handle} | Delete org
 *Orgs* | [**DeleteAvatar**](docs/Orgs.md#deleteavatar) | **Delete** /org/{org_handle}/avatar | Delete org avatar
 *Orgs* | [**Get**](docs/Orgs.md#get) | **Get** /org/{org_handle} | Get org
+*Orgs* | [**GetPlan**](docs/Orgs.md#getplan) | **Get** /org/{org_handle}/billing/plan | Get org billing plan.
 *Orgs* | [**List**](docs/Orgs.md#list) | **Get** /org | List orgs
 *Orgs* | [**ListAuditLogs**](docs/Orgs.md#listauditlogs) | **Get** /org/{org_handle}/audit_log | Org audit logs
 *Orgs* | [**ListConstraints**](docs/Orgs.md#listconstraints) | **Get** /org/{org_handle}/constraint | List org constraints
 *Orgs* | [**ListUsage**](docs/Orgs.md#listusage) | **Get** /org/{org_handle}/usage | List org usage
 *Orgs* | [**Update**](docs/Orgs.md#update) | **Patch** /org/{org_handle} | Update org
+*TenantBilling* | [**CreateBillingIntent**](docs/TenantBilling.md#createbillingintent) | **Post** /tenant/{tenant_handle}/billing/payment_method/intent | Create tenant Stripe billing intent
+*TenantBilling* | [**CreateTenantSubscription**](docs/TenantBilling.md#createtenantsubscription) | **Post** /tenant/{tenant_handle}/billing/subscription | Create a new subscription
+*TenantBilling* | [**DeleteTenantBillingPaymentMethod**](docs/TenantBilling.md#deletetenantbillingpaymentmethod) | **Delete** /tenant/{tenant_handle}/billing/payment_method/{payment_method_id} | Delete tenant billing payment method.
+*TenantBilling* | [**DeleteTenantBillingSubscription**](docs/TenantBilling.md#deletetenantbillingsubscription) | **Delete** /tenant/{tenant_handle}/billing/subscription/{subscription_id} | Delete tenant subscription
+*TenantBilling* | [**GetPlan**](docs/TenantBilling.md#getplan) | **Get** /tenant/{tenant_handle}/billing/plan | Get tenant billing plan.
+*TenantBilling* | [**GetTenantBillingInvoice**](docs/TenantBilling.md#gettenantbillinginvoice) | **Get** /tenant/{tenant_handle}/billing/invoice/{invoice_id} | Get a tenant invoice
+*TenantBilling* | [**GetTenantBillingPaymentMethod**](docs/TenantBilling.md#gettenantbillingpaymentmethod) | **Get** /tenant/{tenant_handle}/billing/payment_method/{payment_method_id} | Get tenant billing payment method.
+*TenantBilling* | [**GetTenantBillingSubscription**](docs/TenantBilling.md#gettenantbillingsubscription) | **Get** /tenant/{tenant_handle}/billing/subscription/{subscription_id} | Get tenant subscription
+*TenantBilling* | [**GetTenantBillingUpcomingInvoice**](docs/TenantBilling.md#gettenantbillingupcominginvoice) | **Get** /tenant/{tenant_handle}/billing/stripe/invoice/upcoming | Get upcoming invoice
+*TenantBilling* | [**ListTenantBillingInvoices**](docs/TenantBilling.md#listtenantbillinginvoices) | **Get** /tenant/{tenant_handle}/billing/invoice | List tenant invoices
+*TenantBilling* | [**ListTenantBillingPaymentMethod**](docs/TenantBilling.md#listtenantbillingpaymentmethod) | **Get** /tenant/{tenant_handle}/billing/payment_method | List tenant billing payment methods.
+*TenantBilling* | [**ListTenantSubscription**](docs/TenantBilling.md#listtenantsubscription) | **Get** /tenant/{tenant_handle}/billing/subscription | List tenant subscriptions
+*TenantBilling* | [**UpdateTenantBillingPaymentMethod**](docs/TenantBilling.md#updatetenantbillingpaymentmethod) | **Patch** /tenant/{tenant_handle}/billing/payment_method/{payment_method_id} | Update tenant billing payment method.
+*TenantBilling* | [**UpdateTenantBillingSubscription**](docs/TenantBilling.md#updatetenantbillingsubscription) | **Patch** /tenant/{tenant_handle}/billing/subscription/{subscription_id} | Update tenant subscription
 *TenantConnectionFolders* | [**Create**](docs/TenantConnectionFolders.md#create) | **Post** /connection_folder | Create tenant connection folder
 *TenantConnectionFolders* | [**CreatePermission**](docs/TenantConnectionFolders.md#createpermission) | **Post** /connection_folder/{folder_id}/permission | Create tenant connection folder permission
 *TenantConnectionFolders* | [**Delete**](docs/TenantConnectionFolders.md#delete) | **Delete** /connection_folder/{folder_id} | Delete tenant connection folder
@@ -266,7 +319,9 @@ Class | Method | HTTP request | Description
 *TenantIntegrations* | [**Delete**](docs/TenantIntegrations.md#delete) | **Delete** /integration/{integration_handle} | Delete tenant integration
 *TenantIntegrations* | [**Get**](docs/TenantIntegrations.md#get) | **Get** /integration/{integration_handle} | Get tenant integration
 *TenantIntegrations* | [**InstallGithubIntegration**](docs/TenantIntegrations.md#installgithubintegration) | **Get** /integration/{integration_handle}/github/install | Install GitHub integration on a custom tenant
+*TenantIntegrations* | [**InstallSlackIntegration**](docs/TenantIntegrations.md#installslackintegration) | **Get** /integration/{integration_handle}/slack/install | Install Slack integration on a custom tenant
 *TenantIntegrations* | [**List**](docs/TenantIntegrations.md#list) | **Get** /integration | List tenant integrations
+*TenantIntegrations* | [**ListSlackChannels**](docs/TenantIntegrations.md#listslackchannels) | **Get** /integration/{integration_handle}/slack/channel | List tenant integration Slack channels
 *TenantIntegrations* | [**Test**](docs/TenantIntegrations.md#test) | **Post** /integration/{integration_handle}/test | Test custom tenant integration
 *TenantIntegrations* | [**Update**](docs/TenantIntegrations.md#update) | **Patch** /integration/{integration_handle} | Update tenant integration
 *TenantMembers* | [**ConfirmInvite**](docs/TenantMembers.md#confirminvite) | **Get** /tenant/{tenant_handle}/member/invite/confirm | Confirm tenant member invite
@@ -289,6 +344,18 @@ Class | Method | HTTP request | Description
 *Tenants* | [**ListUsage**](docs/Tenants.md#listusage) | **Get** /tenant/{tenant_handle}/usage | List tenant usage
 *Tenants* | [**Update**](docs/Tenants.md#update) | **Patch** /tenant/{tenant_handle} | Update tenant
 *Tenants* | [**UpdateSettings**](docs/Tenants.md#updatesettings) | **Patch** /settings | Update tenant settings
+*UserBilling* | [**CreateBillingIntent**](docs/UserBilling.md#createbillingintent) | **Post** /user/{user_handle}/billing/payment_method/intent | Create Stripe billing intent
+*UserBilling* | [**CreateUserSubscription**](docs/UserBilling.md#createusersubscription) | **Post** /user/{user_handle}/billing/subscription | Create a new subscription
+*UserBilling* | [**DeleteUserBillingPaymentMethod**](docs/UserBilling.md#deleteuserbillingpaymentmethod) | **Delete** /user/{user_handle}/billing/payment_method/{payment_method_id} | Delete user billing payment method.
+*UserBilling* | [**DeleteUserBillingSubscription**](docs/UserBilling.md#deleteuserbillingsubscription) | **Delete** /user/{user_handle}/billing/subscription/{subscription_id} | Delete user subscription
+*UserBilling* | [**GetUserBillingInvoice**](docs/UserBilling.md#getuserbillinginvoice) | **Get** /user/{user_handle}/billing/invoice/{invoice_id} | Get a user invoice
+*UserBilling* | [**GetUserBillingPaymentMethod**](docs/UserBilling.md#getuserbillingpaymentmethod) | **Get** /user/{user_handle}/billing/payment_method/{payment_method_id} | Get user billing payment method.
+*UserBilling* | [**GetUserBillingSubscription**](docs/UserBilling.md#getuserbillingsubscription) | **Get** /user/{user_handle}/billing/subscription/{subscription_id} | Get user subscription
+*UserBilling* | [**GetUserBillingUpcomingInvoice**](docs/UserBilling.md#getuserbillingupcominginvoice) | **Get** /user/{user_handle}/billing/stripe/invoice/upcoming | Get upcoming user invoice
+*UserBilling* | [**ListUserBillingInvoices**](docs/UserBilling.md#listuserbillinginvoices) | **Get** /user/{user_handle}/billing/invoice | List user invoices
+*UserBilling* | [**ListUserBillingPaymentMethod**](docs/UserBilling.md#listuserbillingpaymentmethod) | **Get** /user/{user_handle}/billing/payment_method | List user billing payment methods.
+*UserBilling* | [**ListUserSubscription**](docs/UserBilling.md#listusersubscription) | **Get** /user/{user_handle}/billing/subscription | List user subscriptions
+*UserBilling* | [**UpdateUserBillingPaymentMethod**](docs/UserBilling.md#updateuserbillingpaymentmethod) | **Patch** /user/{user_handle}/billing/payment_method/{payment_method_id} | Update user billing payment method.
 *UserConnections* | [**Create**](docs/UserConnections.md#create) | **Post** /user/{user_handle}/connection | Create user connection
 *UserConnections* | [**CreateDeprecated**](docs/UserConnections.md#createdeprecated) | **Post** /user/{user_handle}/conn | Create user connection
 *UserConnections* | [**Delete**](docs/UserConnections.md#delete) | **Delete** /user/{user_handle}/connection/{connection_handle} | Delete user connection
@@ -308,9 +375,15 @@ Class | Method | HTTP request | Description
 *UserIntegrations* | [**Delete**](docs/UserIntegrations.md#delete) | **Delete** /user/{user_handle}/integration/{integration_handle} | Delete user integration
 *UserIntegrations* | [**Get**](docs/UserIntegrations.md#get) | **Get** /user/{user_handle}/integration/{integration_handle} | Get user integration
 *UserIntegrations* | [**InstallGithubIntegration**](docs/UserIntegrations.md#installgithubintegration) | **Get** /user/{user_handle}/integration/{integration_handle}/github/install | Install GitHub integration for a user
+*UserIntegrations* | [**InstallSlackIntegration**](docs/UserIntegrations.md#installslackintegration) | **Get** /user/{user_handle}/integration/{integration_handle}/slack/install | Install Slack integration for a user
 *UserIntegrations* | [**List**](docs/UserIntegrations.md#list) | **Get** /user/{user_handle}/integration | List user integrations
+*UserIntegrations* | [**ListSlackChannels**](docs/UserIntegrations.md#listslackchannels) | **Get** /user/{user_handle}/integration/{integration_handle}/slack/channel | List user integration Slack channels
 *UserIntegrations* | [**Test**](docs/UserIntegrations.md#test) | **Post** /user/{user_handle}/integration/{integration_handle}/test | Test user integration
 *UserIntegrations* | [**Update**](docs/UserIntegrations.md#update) | **Patch** /user/{user_handle}/integration/{integration_handle} | Update user integration
+*UserNotifications* | [**CreateUserNotificationRule**](docs/UserNotifications.md#createusernotificationrule) | **Post** /user/{user_handle}/notification_rule | Create user notification rule
+*UserNotifications* | [**DeleteUserNotificationRule**](docs/UserNotifications.md#deleteusernotificationrule) | **Delete** /user/{user_handle}/notification_rule/{notification_rule_id} | Delete user notification rule
+*UserNotifications* | [**GetUserNotificationRule**](docs/UserNotifications.md#getusernotificationrule) | **Get** /user/{user_handle}/notification_rule/{notification_rule_id} | Get user notification rule
+*UserNotifications* | [**ListUserNotificationRules**](docs/UserNotifications.md#listusernotificationrules) | **Get** /user/{user_handle}/notification_rule | List user notification rules
 *UserProcesses* | [**Get**](docs/UserProcesses.md#get) | **Get** /user/{user_handle}/process/{process_id} | Get User process
 *UserProcesses* | [**List**](docs/UserProcesses.md#list) | **Get** /user/{user_handle}/process | List User processes
 *UserProcesses* | [**Log**](docs/UserProcesses.md#log) | **Get** /user/{user_handle}/process/{process_id}/log/{log_file}.{content_type} | List user process logs
@@ -356,6 +429,26 @@ Class | Method | HTTP request | Description
 *UserWorkspaceDatatanks* | [**Get**](docs/UserWorkspaceDatatanks.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle} | Get user workspace Datatank
 *UserWorkspaceDatatanks* | [**List**](docs/UserWorkspaceDatatanks.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/datatank | List user workspace Datatank
 *UserWorkspaceDatatanks* | [**Update**](docs/UserWorkspaceDatatanks.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle} | Update user workspace Datatank
+*UserWorkspaceFlowpipeInputs* | [**Create**](docs/UserWorkspaceFlowpipeInputs.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/input | Create user workspace flowpipe input
+*UserWorkspaceFlowpipeInputs* | [**Get**](docs/UserWorkspaceFlowpipeInputs.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/form/{step_execution_id}/{random_id} | Get user workspace flowpipe form
+*UserWorkspaceFlowpipeInputs* | [**Get_0**](docs/UserWorkspaceFlowpipeInputs.md#get_0) | **Get** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/input/{input_id} | Get user workspace flowpipe input
+*UserWorkspaceFlowpipeInputs* | [**List**](docs/UserWorkspaceFlowpipeInputs.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/input | List user workspace flowpipe inputs
+*UserWorkspaceFlowpipeInputs* | [**Post**](docs/UserWorkspaceFlowpipeInputs.md#post) | **Post** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/form/{step_execution_id}/{random_id}/submit | Post user workspace flowpipe form response
+*UserWorkspaceFlowpipeModVariables* | [**CreateSetting**](docs/UserWorkspaceFlowpipeModVariables.md#createsetting) | **Post** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias}/variable | Create a setting for a flowpipe mod variable in a user workspace
+*UserWorkspaceFlowpipeModVariables* | [**DeleteSetting**](docs/UserWorkspaceFlowpipeModVariables.md#deletesetting) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias}/variable/{variable_name} | Delete setting for a flowpipe mod variable in a user workspace
+*UserWorkspaceFlowpipeModVariables* | [**GetSetting**](docs/UserWorkspaceFlowpipeModVariables.md#getsetting) | **Get** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias}/variable/{variable_name} | Get setting for a flowpipe mod variable in a user workspace
+*UserWorkspaceFlowpipeModVariables* | [**List**](docs/UserWorkspaceFlowpipeModVariables.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias}/variable | List variables for a user workspace flowpipe mod
+*UserWorkspaceFlowpipeModVariables* | [**UpdateSetting**](docs/UserWorkspaceFlowpipeModVariables.md#updatesetting) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias}/variable/{variable_name} | Update setting for a flowpipe mod variable in a user workspace
+*UserWorkspaceFlowpipeMods* | [**Uninstall**](docs/UserWorkspaceFlowpipeMods.md#uninstall) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias} | Uninstall flowpipe mod from a user&#39;s workspace.
+*UserWorkspaceFlowpipeMods* | [**Update**](docs/UserWorkspaceFlowpipeMods.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias} | Update a flowpipe mod in a user&#39;s workspace
+*UserWorkspaceFlowpipePipelines* | [**Command**](docs/UserWorkspaceFlowpipePipelines.md#command) | **Post** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/pipeline/{pipeline_name}/command | Run user workspace Flowpipe pipeline command
+*UserWorkspaceFlowpipePipelines* | [**Get**](docs/UserWorkspaceFlowpipePipelines.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/pipeline/{pipeline_id} | Get user workspace pipeline
+*UserWorkspaceFlowpipePipelines* | [**ListTriggers**](docs/UserWorkspaceFlowpipePipelines.md#listtriggers) | **Get** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/pipeline/{pipeline_id}/trigger | Get user workspace pipeline triggers
+*UserWorkspaceFlowpipeTriggers* | [**Command**](docs/UserWorkspaceFlowpipeTriggers.md#command) | **Post** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name}/command | Run user workspace Flowpipe trigger command
+*UserWorkspaceFlowpipeTriggers* | [**Create**](docs/UserWorkspaceFlowpipeTriggers.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/trigger | Create user workspace trigger
+*UserWorkspaceFlowpipeTriggers* | [**Delete**](docs/UserWorkspaceFlowpipeTriggers.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name} | Delete user workspace pipeline
+*UserWorkspaceFlowpipeTriggers* | [**Get**](docs/UserWorkspaceFlowpipeTriggers.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name} | Get user workspace flowpipe trigger
+*UserWorkspaceFlowpipeTriggers* | [**Update**](docs/UserWorkspaceFlowpipeTriggers.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name} | Update user workspace trigger
 *UserWorkspaceIntegrations* | [**Get**](docs/UserWorkspaceIntegrations.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/integration/{integration_handle} | Get user workspace integration
 *UserWorkspaceIntegrations* | [**List**](docs/UserWorkspaceIntegrations.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/integration | List user workspace integrations
 *UserWorkspaceIntegrations* | [**ListGithubRepositories**](docs/UserWorkspaceIntegrations.md#listgithubrepositories) | **Get** /user/{user_handle}/workspace/{workspace_handle}/integration/{integration_handle}/github/repository | List user workspace integration github respositories
@@ -415,6 +508,7 @@ Class | Method | HTTP request | Description
 *Users* | [**Get**](docs/Users.md#get) | **Get** /user/{user_handle} | Get user
 *Users* | [**GetDBPassword**](docs/Users.md#getdbpassword) | **Get** /user/{user_handle}/password | Get user password
 *Users* | [**GetEmail**](docs/Users.md#getemail) | **Get** /user/{user_handle}/email/{email_id} | Get user email
+*Users* | [**GetPlan**](docs/Users.md#getplan) | **Get** /user/{user_handle}/billing/plan | Get user billing plan.
 *Users* | [**GetPreferences**](docs/Users.md#getpreferences) | **Get** /user/{user_handle}/preferences | Get user preferences
 *Users* | [**List**](docs/Users.md#list) | **Get** /user | List users
 *Users* | [**ListAuditLogs**](docs/Users.md#listauditlogs) | **Get** /user/{user_handle}/audit_log | User audit logs
@@ -432,25 +526,38 @@ Class | Method | HTTP request | Description
  - [AttachWorkspaceSchemaRequest](docs/AttachWorkspaceSchemaRequest.md)
  - [AuditRecord](docs/AuditRecord.md)
  - [BillingInfo](docs/BillingInfo.md)
+ - [BillingInvoice](docs/BillingInvoice.md)
+ - [BillingSetupIntent](docs/BillingSetupIntent.md)
+ - [BillingSubscription](docs/BillingSubscription.md)
+ - [BillingSubscriptionItem](docs/BillingSubscriptionItem.md)
+ - [Card](docs/Card.md)
  - [CmdDatatankPartRequest](docs/CmdDatatankPartRequest.md)
  - [Connection](docs/Connection.md)
+ - [ConnectionConfigSource](docs/ConnectionConfigSource.md)
+ - [ConnectionCredentialSource](docs/ConnectionCredentialSource.md)
+ - [ConnectionHandleMode](docs/ConnectionHandleMode.md)
  - [ConnectionTestResult](docs/ConnectionTestResult.md)
  - [ConnectionTrunkItem](docs/ConnectionTrunkItem.md)
  - [Constraint](docs/Constraint.md)
  - [ConstraintOverrideRequest](docs/ConstraintOverrideRequest.md)
+ - [ConstraintVisibility](docs/ConstraintVisibility.md)
  - [CreateAggregatorRequest](docs/CreateAggregatorRequest.md)
  - [CreateAvatarResponse](docs/CreateAvatarResponse.md)
  - [CreateConnectionFolderRequest](docs/CreateConnectionFolderRequest.md)
  - [CreateConnectionRequest](docs/CreateConnectionRequest.md)
  - [CreateDatatankRequest](docs/CreateDatatankRequest.md)
  - [CreateDatatankTableRequest](docs/CreateDatatankTableRequest.md)
+ - [CreateFlowpipeInputRequest](docs/CreateFlowpipeInputRequest.md)
  - [CreateIntegrationRequest](docs/CreateIntegrationRequest.md)
+ - [CreateOrgNotificationRequest](docs/CreateOrgNotificationRequest.md)
  - [CreateOrgRequest](docs/CreateOrgRequest.md)
  - [CreateOrgUserRequest](docs/CreateOrgUserRequest.md)
  - [CreateOrgWorkspaceUserRequest](docs/CreateOrgWorkspaceUserRequest.md)
  - [CreatePermissionRequest](docs/CreatePermissionRequest.md)
  - [CreatePipelineRequest](docs/CreatePipelineRequest.md)
  - [CreateTenantRequest](docs/CreateTenantRequest.md)
+ - [CreateTriggerRequest](docs/CreateTriggerRequest.md)
+ - [CreateUserNotificationRequestNoSender](docs/CreateUserNotificationRequestNoSender.md)
  - [CreateUserPasswordRequest](docs/CreateUserPasswordRequest.md)
  - [CreateUserRequest](docs/CreateUserRequest.md)
  - [CreateWorkspaceConnRequest](docs/CreateWorkspaceConnRequest.md)
@@ -462,25 +569,43 @@ Class | Method | HTTP request | Description
  - [CreateWorkspaceSnapshotRequest](docs/CreateWorkspaceSnapshotRequest.md)
  - [Datatank](docs/Datatank.md)
  - [DatatankPart](docs/DatatankPart.md)
+ - [DatatankPartCmd](docs/DatatankPartCmd.md)
+ - [DatatankPartFreshnessState](docs/DatatankPartFreshnessState.md)
+ - [DatatankPartState](docs/DatatankPartState.md)
+ - [DatatankState](docs/DatatankState.md)
  - [DatatankTable](docs/DatatankTable.md)
  - [DatatankTableFreshness](docs/DatatankTableFreshness.md)
+ - [DatatankTableState](docs/DatatankTableState.md)
  - [DeleteAvatarResponse](docs/DeleteAvatarResponse.md)
+ - [DesiredState](docs/DesiredState.md)
  - [ErrorDetailModel](docs/ErrorDetailModel.md)
  - [ErrorModel](docs/ErrorModel.md)
+ - [FlowpipeInput](docs/FlowpipeInput.md)
+ - [FlowpipeInputState](docs/FlowpipeInputState.md)
+ - [FlowpipeInputStepType](docs/FlowpipeInputStepType.md)
  - [GithubRepository](docs/GithubRepository.md)
  - [GithubRepositoryBranch](docs/GithubRepositoryBranch.md)
  - [Identity](docs/Identity.md)
+ - [IdentityPlan](docs/IdentityPlan.md)
+ - [IdentityUsageThresholdAction](docs/IdentityUsageThresholdAction.md)
  - [Integration](docs/Integration.md)
+ - [IntegrationCommandAction](docs/IntegrationCommandAction.md)
  - [IntegrationCommandRequest](docs/IntegrationCommandRequest.md)
+ - [IntegrationState](docs/IntegrationState.md)
+ - [IntegrationType](docs/IntegrationType.md)
  - [InviteOrgUserRequest](docs/InviteOrgUserRequest.md)
  - [InviteTenantUserRequest](docs/InviteTenantUserRequest.md)
  - [ListActorWorkspacesResponse](docs/ListActorWorkspacesResponse.md)
  - [ListAuditLogsResponse](docs/ListAuditLogsResponse.md)
+ - [ListBillingInvoicesResponse](docs/ListBillingInvoicesResponse.md)
+ - [ListBillingPaymentMethodsResponse](docs/ListBillingPaymentMethodsResponse.md)
  - [ListConnectionsResponse](docs/ListConnectionsResponse.md)
  - [ListConstraintsResponse](docs/ListConstraintsResponse.md)
  - [ListDatatankPartResponse](docs/ListDatatankPartResponse.md)
  - [ListDatatankResponse](docs/ListDatatankResponse.md)
  - [ListDatatankTableResponse](docs/ListDatatankTableResponse.md)
+ - [ListFlowpipeInputsResponse](docs/ListFlowpipeInputsResponse.md)
+ - [ListFlowpipeTriggersResponse](docs/ListFlowpipeTriggersResponse.md)
  - [ListGithubRepositoriesResponse](docs/ListGithubRepositoriesResponse.md)
  - [ListGithubRepositoryBranchesResponse](docs/ListGithubRepositoryBranchesResponse.md)
  - [ListIdentitiesResponse](docs/ListIdentitiesResponse.md)
@@ -493,6 +618,8 @@ Class | Method | HTTP request | Description
  - [ListPermissionsResponse](docs/ListPermissionsResponse.md)
  - [ListPipelinesResponse](docs/ListPipelinesResponse.md)
  - [ListProcessesResponse](docs/ListProcessesResponse.md)
+ - [ListSlackChannelsResponse](docs/ListSlackChannelsResponse.md)
+ - [ListSubscriptionsResponse](docs/ListSubscriptionsResponse.md)
  - [ListTenantUsersResponse](docs/ListTenantUsersResponse.md)
  - [ListTenantsResponse](docs/ListTenantsResponse.md)
  - [ListTokensResponse](docs/ListTokensResponse.md)
@@ -511,28 +638,53 @@ Class | Method | HTTP request | Description
  - [ListWorkspaceSnapshotsResponse](docs/ListWorkspaceSnapshotsResponse.md)
  - [ListWorkspacesResponse](docs/ListWorkspacesResponse.md)
  - [LogRecord](docs/LogRecord.md)
+ - [ModPipeling](docs/ModPipeling.md)
  - [NotificationRecipientRequest](docs/NotificationRecipientRequest.md)
+ - [NotificationRecipientState](docs/NotificationRecipientState.md)
+ - [NotificationRecipientType](docs/NotificationRecipientType.md)
  - [NotificationRule](docs/NotificationRule.md)
  - [NotificationRuleEvent](docs/NotificationRuleEvent.md)
  - [NotificationRuleRecipient](docs/NotificationRuleRecipient.md)
+ - [Notifier](docs/Notifier.md)
+ - [NotifierPrecedence](docs/NotifierPrecedence.md)
+ - [NotifierState](docs/NotifierState.md)
  - [Org](docs/Org.md)
  - [OrgUser](docs/OrgUser.md)
  - [OrgWorkspaceUser](docs/OrgWorkspaceUser.md)
+ - [PaymentMethod](docs/PaymentMethod.md)
  - [Permission](docs/Permission.md)
  - [Pipeline](docs/Pipeline.md)
+ - [PipelineCommandAction](docs/PipelineCommandAction.md)
  - [PipelineCommandRequest](docs/PipelineCommandRequest.md)
  - [PipelineCommandResponse](docs/PipelineCommandResponse.md)
  - [PipelineFrequency](docs/PipelineFrequency.md)
+ - [PipelineInstanceType](docs/PipelineInstanceType.md)
+ - [PipelineState](docs/PipelineState.md)
+ - [Plan](docs/Plan.md)
+ - [ProcessState](docs/ProcessState.md)
+ - [SlackChannel](docs/SlackChannel.md)
+ - [SnapshotState](docs/SnapshotState.md)
+ - [SnapshotVisibility](docs/SnapshotVisibility.md)
  - [SpProcess](docs/SpProcess.md)
  - [TemporaryTokenRequest](docs/TemporaryTokenRequest.md)
+ - [TemporaryTokenRequestState](docs/TemporaryTokenRequestState.md)
  - [Tenant](docs/Tenant.md)
  - [TenantLoginSettings](docs/TenantLoginSettings.md)
+ - [TenantPlan](docs/TenantPlan.md)
  - [TenantSamlLoginSettings](docs/TenantSamlLoginSettings.md)
  - [TenantSettings](docs/TenantSettings.md)
  - [TenantUser](docs/TenantUser.md)
  - [TestConnectionRequest](docs/TestConnectionRequest.md)
+ - [TestIntegrationRequest](docs/TestIntegrationRequest.md)
  - [Token](docs/Token.md)
+ - [TriggerCommandAction](docs/TriggerCommandAction.md)
+ - [TriggerCommandRequest](docs/TriggerCommandRequest.md)
+ - [TriggerCommandResponse](docs/TriggerCommandResponse.md)
+ - [TriggerState](docs/TriggerState.md)
+ - [USBankAccount](docs/USBankAccount.md)
  - [UpdateAggregatorRequest](docs/UpdateAggregatorRequest.md)
+ - [UpdateBillingPaymentMethodRequest](docs/UpdateBillingPaymentMethodRequest.md)
+ - [UpdateBillingSubscriptionRequest](docs/UpdateBillingSubscriptionRequest.md)
  - [UpdateConnectionFolderRequest](docs/UpdateConnectionFolderRequest.md)
  - [UpdateConnectionRequest](docs/UpdateConnectionRequest.md)
  - [UpdateDatatankPartRequest](docs/UpdateDatatankPartRequest.md)
@@ -551,13 +703,17 @@ Class | Method | HTTP request | Description
  - [UpdateTenantSettingsRequest](docs/UpdateTenantSettingsRequest.md)
  - [UpdateTenantUserRequest](docs/UpdateTenantUserRequest.md)
  - [UpdateTokenRequest](docs/UpdateTokenRequest.md)
+ - [UpdateTriggerRequest](docs/UpdateTriggerRequest.md)
  - [UpdateUserPreferencesRequest](docs/UpdateUserPreferencesRequest.md)
  - [UpdateUserRequest](docs/UpdateUserRequest.md)
  - [UpdateWorkspaceModRequest](docs/UpdateWorkspaceModRequest.md)
  - [UpdateWorkspaceModVariableSettingRequest](docs/UpdateWorkspaceModVariableSettingRequest.md)
  - [UpdateWorkspaceRequest](docs/UpdateWorkspaceRequest.md)
  - [UpdateWorkspaceSnapshotRequest](docs/UpdateWorkspaceSnapshotRequest.md)
+ - [UsageDimensionType](docs/UsageDimensionType.md)
  - [UsageMetric](docs/UsageMetric.md)
+ - [UsageMetricType](docs/UsageMetricType.md)
+ - [UsageUnitType](docs/UsageUnitType.md)
  - [User](docs/User.md)
  - [UserDatabasePassword](docs/UserDatabasePassword.md)
  - [UserEmail](docs/UserEmail.md)
@@ -568,21 +724,27 @@ Class | Method | HTTP request | Description
  - [Workspace](docs/Workspace.md)
  - [WorkspaceAggregator](docs/WorkspaceAggregator.md)
  - [WorkspaceAggregatorAssociation](docs/WorkspaceAggregatorAssociation.md)
+ - [WorkspaceCommandAction](docs/WorkspaceCommandAction.md)
  - [WorkspaceCommandRequest](docs/WorkspaceCommandRequest.md)
  - [WorkspaceCommandResponse](docs/WorkspaceCommandResponse.md)
  - [WorkspaceConn](docs/WorkspaceConn.md)
  - [WorkspaceConnection](docs/WorkspaceConnection.md)
  - [WorkspaceConnectionAssociation](docs/WorkspaceConnectionAssociation.md)
+ - [WorkspaceInstanceType](docs/WorkspaceInstanceType.md)
  - [WorkspaceMod](docs/WorkspaceMod.md)
+ - [WorkspaceModState](docs/WorkspaceModState.md)
+ - [WorkspaceModTrigger](docs/WorkspaceModTrigger.md)
  - [WorkspaceModVariable](docs/WorkspaceModVariable.md)
  - [WorkspaceQueryResult](docs/WorkspaceQueryResult.md)
  - [WorkspaceQueryResultColumn](docs/WorkspaceQueryResultColumn.md)
  - [WorkspaceSchema](docs/WorkspaceSchema.md)
+ - [WorkspaceSchemaState](docs/WorkspaceSchemaState.md)
  - [WorkspaceSchemaTable](docs/WorkspaceSchemaTable.md)
  - [WorkspaceSchemaTableColumn](docs/WorkspaceSchemaTableColumn.md)
  - [WorkspaceSnapshot](docs/WorkspaceSnapshot.md)
  - [WorkspaceSnapshotData](docs/WorkspaceSnapshotData.md)
  - [WorkspaceSnapshotDataLayout](docs/WorkspaceSnapshotDataLayout.md)
+ - [WorkspaceState](docs/WorkspaceState.md)
 
 
 ## Documentation For Authorization

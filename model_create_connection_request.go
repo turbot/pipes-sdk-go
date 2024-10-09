@@ -17,9 +17,9 @@ import (
 // CreateConnectionRequest struct for CreateConnectionRequest
 type CreateConnectionRequest struct {
 	Config   *map[string]interface{} `json:"config,omitempty"`
-	Handle   string                             `json:"handle"`
-	ParentId *string                            `json:"parent_id,omitempty"`
-	Plugin   string                             `json:"plugin"`
+	Handle   string                  `json:"handle"`
+	ParentId *string                 `json:"parent_id,omitempty"`
+	Plugin   string                  `json:"plugin"`
 }
 
 // NewCreateConnectionRequest instantiates a new CreateConnectionRequest object

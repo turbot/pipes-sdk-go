@@ -16,18 +16,18 @@ import (
 
 // NotificationRuleRecipient struct for NotificationRuleRecipient
 type NotificationRuleRecipient struct {
-	Detail             *string `json:"detail,omitempty"`
-	Id                 string  `json:"id"`
-	NotificationRuleId string  `json:"notification_rule_id"`
-	Recipient          string  `json:"recipient"`
-	State              string  `json:"state"`
+	Detail             *string                    `json:"detail,omitempty"`
+	Id                 string                     `json:"id"`
+	NotificationRuleId string                     `json:"notification_rule_id"`
+	Recipient          string                     `json:"recipient"`
+	State              NotificationRecipientState `json:"state"`
 }
 
 // NewNotificationRuleRecipient instantiates a new NotificationRuleRecipient object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationRuleRecipient(id string, notificationRuleId string, recipient string, state string) *NotificationRuleRecipient {
+func NewNotificationRuleRecipient(id string, notificationRuleId string, recipient string, state NotificationRecipientState) *NotificationRuleRecipient {
 	this := NotificationRuleRecipient{}
 	this.Id = id
 	this.NotificationRuleId = notificationRuleId
@@ -149,9 +149,9 @@ func (o *NotificationRuleRecipient) SetRecipient(v string) {
 }
 
 // GetState returns the State field value
-func (o *NotificationRuleRecipient) GetState() string {
+func (o *NotificationRuleRecipient) GetState() NotificationRecipientState {
 	if o == nil {
-		var ret string
+		var ret NotificationRecipientState
 		return ret
 	}
 
@@ -160,7 +160,7 @@ func (o *NotificationRuleRecipient) GetState() string {
 
 // GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *NotificationRuleRecipient) GetStateOk() (*string, bool) {
+func (o *NotificationRuleRecipient) GetStateOk() (*NotificationRecipientState, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -168,7 +168,7 @@ func (o *NotificationRuleRecipient) GetStateOk() (*string, bool) {
 }
 
 // SetState sets field value
-func (o *NotificationRuleRecipient) SetState(v string) {
+func (o *NotificationRuleRecipient) SetState(v NotificationRecipientState) {
 	o.State = v
 }
 

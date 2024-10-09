@@ -5,20 +5,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
-**DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**DeletedBy** | Pointer to [**User**](User.md) | User information for the user that performed the deletion. | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **Description** | **string** |  | 
-**DesiredState** | **string** |  | 
+**DesiredState** | [**DesiredState**](DesiredState.md) |  | 
 **Handle** | **string** |  | 
 **Id** | **string** |  | 
 **IdentityId** | **string** |  | 
-**State** | **string** |  | 
+**State** | [**DatatankState**](DatatankState.md) |  | 
 **StateReason** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 **WorkspaceId** | **string** |  | 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewDatatank
 
-`func NewDatatank(createdAt string, createdById string, deletedById string, description string, desiredState string, handle string, id string, identityId string, state string, updatedById string, versionId int32, workspaceId string, ) *Datatank`
+`func NewDatatank(createdAt string, createdById string, deletedById string, description string, desiredState DesiredState, handle string, id string, identityId string, state DatatankState, updatedById string, versionId int32, workspaceId string, ) *Datatank`
 
 NewDatatank instantiates a new Datatank object
 This constructor will assign default values to properties that have it defined,
@@ -199,20 +199,20 @@ SetDescription sets Description field to given value.
 
 ### GetDesiredState
 
-`func (o *Datatank) GetDesiredState() string`
+`func (o *Datatank) GetDesiredState() DesiredState`
 
 GetDesiredState returns the DesiredState field if non-nil, zero value otherwise.
 
 ### GetDesiredStateOk
 
-`func (o *Datatank) GetDesiredStateOk() (*string, bool)`
+`func (o *Datatank) GetDesiredStateOk() (*DesiredState, bool)`
 
 GetDesiredStateOk returns a tuple with the DesiredState field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDesiredState
 
-`func (o *Datatank) SetDesiredState(v string)`
+`func (o *Datatank) SetDesiredState(v DesiredState)`
 
 SetDesiredState sets DesiredState field to given value.
 
@@ -279,20 +279,20 @@ SetIdentityId sets IdentityId field to given value.
 
 ### GetState
 
-`func (o *Datatank) GetState() string`
+`func (o *Datatank) GetState() DatatankState`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *Datatank) GetStateOk() (*string, bool)`
+`func (o *Datatank) GetStateOk() (*DatatankState, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *Datatank) SetState(v string)`
+`func (o *Datatank) SetState(v DatatankState)`
 
 SetState sets State field to given value.
 

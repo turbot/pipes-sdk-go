@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Aggregator** | Pointer to [**Aggregator**](Aggregator.md) |  | [optional] 
+**Aggregator** | Pointer to [**Aggregator**](Aggregator.md) | Additional information about the aggregator. | [optional] 
 **AggregatorId** | **string** | The unique identifier for the aggregator. | 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **Id** | **string** | The unique identifier for the workspace connection association. | 
 **IdentityId** | **string** | The identity ID where the association exists. | 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 **WorkspaceId** | **string** | The unique identifier for the wokspace. | 

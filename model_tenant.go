@@ -16,16 +16,19 @@ import (
 
 // Tenant struct for Tenant
 type Tenant struct {
-	AvatarUrl *string      `json:"avatar_url,omitempty"`
-	Billing   *BillingInfo `json:"billing,omitempty"`
+	AvatarUrl *string `json:"avatar_url,omitempty"`
+	// Struct to store billing information
+	Billing *BillingInfo `json:"billing,omitempty"`
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
-	CreatedBy *User  `json:"created_by,omitempty"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
 	// The ID of the user that created this.
 	CreatedById string `json:"created_by_id"`
 	// The time the item was deleted in ISO 8601 UTC.
 	DeletedAt *string `json:"deleted_at,omitempty"`
-	DeletedBy *User   `json:"deleted_by,omitempty"`
+	// User information for the user that performed the deletion.
+	DeletedBy *User `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.
 	DeletedById string `json:"deleted_by_id"`
 	// The display name of the tenant.
@@ -38,15 +41,16 @@ type Tenant struct {
 	State *string `json:"state,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	UpdatedBy *User   `json:"updated_by,omitempty"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
-	UpdatedById           string  `json:"updated_by_id"`
-	UsageComputeAction    *string `json:"usage_compute_action,omitempty"`
-	UsageComputeThreshold *int64  `json:"usage_compute_threshold,omitempty"`
-	UsageStorageAction    *string `json:"usage_storage_action,omitempty"`
-	UsageStorageThreshold *int64  `json:"usage_storage_threshold,omitempty"`
-	UsageUserAction       *string `json:"usage_user_action,omitempty"`
-	UsageUserThreshold    *int32  `json:"usage_user_threshold,omitempty"`
+	UpdatedById           string                        `json:"updated_by_id"`
+	UsageComputeAction    *IdentityUsageThresholdAction `json:"usage_compute_action,omitempty"`
+	UsageComputeThreshold *int64                        `json:"usage_compute_threshold,omitempty"`
+	UsageStorageAction    *IdentityUsageThresholdAction `json:"usage_storage_action,omitempty"`
+	UsageStorageThreshold *int64                        `json:"usage_storage_threshold,omitempty"`
+	UsageUserAction       *IdentityUsageThresholdAction `json:"usage_user_action,omitempty"`
+	UsageUserThreshold    *int32                        `json:"usage_user_threshold,omitempty"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
 	VersionId int32 `json:"version_id"`
 }
@@ -508,9 +512,9 @@ func (o *Tenant) SetUpdatedById(v string) {
 }
 
 // GetUsageComputeAction returns the UsageComputeAction field value if set, zero value otherwise.
-func (o *Tenant) GetUsageComputeAction() string {
+func (o *Tenant) GetUsageComputeAction() IdentityUsageThresholdAction {
 	if o == nil || o.UsageComputeAction == nil {
-		var ret string
+		var ret IdentityUsageThresholdAction
 		return ret
 	}
 	return *o.UsageComputeAction
@@ -518,7 +522,7 @@ func (o *Tenant) GetUsageComputeAction() string {
 
 // GetUsageComputeActionOk returns a tuple with the UsageComputeAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Tenant) GetUsageComputeActionOk() (*string, bool) {
+func (o *Tenant) GetUsageComputeActionOk() (*IdentityUsageThresholdAction, bool) {
 	if o == nil || o.UsageComputeAction == nil {
 		return nil, false
 	}
@@ -534,8 +538,8 @@ func (o *Tenant) HasUsageComputeAction() bool {
 	return false
 }
 
-// SetUsageComputeAction gets a reference to the given string and assigns it to the UsageComputeAction field.
-func (o *Tenant) SetUsageComputeAction(v string) {
+// SetUsageComputeAction gets a reference to the given IdentityUsageThresholdAction and assigns it to the UsageComputeAction field.
+func (o *Tenant) SetUsageComputeAction(v IdentityUsageThresholdAction) {
 	o.UsageComputeAction = &v
 }
 
@@ -572,9 +576,9 @@ func (o *Tenant) SetUsageComputeThreshold(v int64) {
 }
 
 // GetUsageStorageAction returns the UsageStorageAction field value if set, zero value otherwise.
-func (o *Tenant) GetUsageStorageAction() string {
+func (o *Tenant) GetUsageStorageAction() IdentityUsageThresholdAction {
 	if o == nil || o.UsageStorageAction == nil {
-		var ret string
+		var ret IdentityUsageThresholdAction
 		return ret
 	}
 	return *o.UsageStorageAction
@@ -582,7 +586,7 @@ func (o *Tenant) GetUsageStorageAction() string {
 
 // GetUsageStorageActionOk returns a tuple with the UsageStorageAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Tenant) GetUsageStorageActionOk() (*string, bool) {
+func (o *Tenant) GetUsageStorageActionOk() (*IdentityUsageThresholdAction, bool) {
 	if o == nil || o.UsageStorageAction == nil {
 		return nil, false
 	}
@@ -598,8 +602,8 @@ func (o *Tenant) HasUsageStorageAction() bool {
 	return false
 }
 
-// SetUsageStorageAction gets a reference to the given string and assigns it to the UsageStorageAction field.
-func (o *Tenant) SetUsageStorageAction(v string) {
+// SetUsageStorageAction gets a reference to the given IdentityUsageThresholdAction and assigns it to the UsageStorageAction field.
+func (o *Tenant) SetUsageStorageAction(v IdentityUsageThresholdAction) {
 	o.UsageStorageAction = &v
 }
 
@@ -636,9 +640,9 @@ func (o *Tenant) SetUsageStorageThreshold(v int64) {
 }
 
 // GetUsageUserAction returns the UsageUserAction field value if set, zero value otherwise.
-func (o *Tenant) GetUsageUserAction() string {
+func (o *Tenant) GetUsageUserAction() IdentityUsageThresholdAction {
 	if o == nil || o.UsageUserAction == nil {
-		var ret string
+		var ret IdentityUsageThresholdAction
 		return ret
 	}
 	return *o.UsageUserAction
@@ -646,7 +650,7 @@ func (o *Tenant) GetUsageUserAction() string {
 
 // GetUsageUserActionOk returns a tuple with the UsageUserAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Tenant) GetUsageUserActionOk() (*string, bool) {
+func (o *Tenant) GetUsageUserActionOk() (*IdentityUsageThresholdAction, bool) {
 	if o == nil || o.UsageUserAction == nil {
 		return nil, false
 	}
@@ -662,8 +666,8 @@ func (o *Tenant) HasUsageUserAction() bool {
 	return false
 }
 
-// SetUsageUserAction gets a reference to the given string and assigns it to the UsageUserAction field.
-func (o *Tenant) SetUsageUserAction(v string) {
+// SetUsageUserAction gets a reference to the given IdentityUsageThresholdAction and assigns it to the UsageUserAction field.
+func (o *Tenant) SetUsageUserAction(v IdentityUsageThresholdAction) {
 	o.UsageUserAction = &v
 }
 

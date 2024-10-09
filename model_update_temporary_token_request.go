@@ -16,14 +16,14 @@ import (
 
 // UpdateTemporaryTokenRequest struct for UpdateTemporaryTokenRequest
 type UpdateTemporaryTokenRequest struct {
-	State string `json:"state"`
+	State TemporaryTokenRequestState `json:"state"`
 }
 
 // NewUpdateTemporaryTokenRequest instantiates a new UpdateTemporaryTokenRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateTemporaryTokenRequest(state string) *UpdateTemporaryTokenRequest {
+func NewUpdateTemporaryTokenRequest(state TemporaryTokenRequestState) *UpdateTemporaryTokenRequest {
 	this := UpdateTemporaryTokenRequest{}
 	this.State = state
 	return &this
@@ -38,9 +38,9 @@ func NewUpdateTemporaryTokenRequestWithDefaults() *UpdateTemporaryTokenRequest {
 }
 
 // GetState returns the State field value
-func (o *UpdateTemporaryTokenRequest) GetState() string {
+func (o *UpdateTemporaryTokenRequest) GetState() TemporaryTokenRequestState {
 	if o == nil {
-		var ret string
+		var ret TemporaryTokenRequestState
 		return ret
 	}
 
@@ -49,7 +49,7 @@ func (o *UpdateTemporaryTokenRequest) GetState() string {
 
 // GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *UpdateTemporaryTokenRequest) GetStateOk() (*string, bool) {
+func (o *UpdateTemporaryTokenRequest) GetStateOk() (*TemporaryTokenRequestState, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -57,7 +57,7 @@ func (o *UpdateTemporaryTokenRequest) GetStateOk() (*string, bool) {
 }
 
 // SetState sets field value
-func (o *UpdateTemporaryTokenRequest) SetState(v string) {
+func (o *UpdateTemporaryTokenRequest) SetState(v TemporaryTokenRequestState) {
 	o.State = v
 }
 

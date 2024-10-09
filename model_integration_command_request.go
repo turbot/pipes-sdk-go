@@ -17,14 +17,14 @@ import (
 // IntegrationCommandRequest struct for IntegrationCommandRequest
 type IntegrationCommandRequest struct {
 	// The command to execute.
-	Command string `json:"command"`
+	Command IntegrationCommandAction `json:"command"`
 }
 
 // NewIntegrationCommandRequest instantiates a new IntegrationCommandRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIntegrationCommandRequest(command string) *IntegrationCommandRequest {
+func NewIntegrationCommandRequest(command IntegrationCommandAction) *IntegrationCommandRequest {
 	this := IntegrationCommandRequest{}
 	this.Command = command
 	return &this
@@ -39,9 +39,9 @@ func NewIntegrationCommandRequestWithDefaults() *IntegrationCommandRequest {
 }
 
 // GetCommand returns the Command field value
-func (o *IntegrationCommandRequest) GetCommand() string {
+func (o *IntegrationCommandRequest) GetCommand() IntegrationCommandAction {
 	if o == nil {
-		var ret string
+		var ret IntegrationCommandAction
 		return ret
 	}
 
@@ -50,7 +50,7 @@ func (o *IntegrationCommandRequest) GetCommand() string {
 
 // GetCommandOk returns a tuple with the Command field value
 // and a boolean to check if the value has been set.
-func (o *IntegrationCommandRequest) GetCommandOk() (*string, bool) {
+func (o *IntegrationCommandRequest) GetCommandOk() (*IntegrationCommandAction, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *IntegrationCommandRequest) GetCommandOk() (*string, bool) {
 }
 
 // SetCommand sets field value
-func (o *IntegrationCommandRequest) SetCommand(v string) {
+func (o *IntegrationCommandRequest) SetCommand(v IntegrationCommandAction) {
 	o.Command = v
 }
 

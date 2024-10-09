@@ -16,33 +16,35 @@ import (
 
 // WorkspaceModVariable struct for WorkspaceModVariable
 type WorkspaceModVariable struct {
-	CreatedAt    string      `json:"created_at"`
-	CreatedBy    *User       `json:"created_by,omitempty"`
-	CreatedById  string      `json:"created_by_id"`
-	Description  *string     `json:"description,omitempty"`
-	Id           string      `json:"id"`
-	ModAlias     *string     `json:"mod_alias,omitempty"`
-	Name         *string     `json:"name,omitempty"`
-	Type         *string     `json:"type,omitempty"`
-	UpdatedAt    *string     `json:"updated_at,omitempty"`
-	UpdatedBy    *User       `json:"updated_by,omitempty"`
-	UpdatedById  string      `json:"updated_by_id"`
-	Value        interface{} `json:"value,omitempty"`
-	ValueDefault interface{} `json:"value_default,omitempty"`
-	ValueSetting interface{} `json:"value_setting,omitempty"`
-	VersionId    int32       `json:"version_id"`
+	CreatedAt    string                  `json:"created_at"`
+	CreatedBy    *User                   `json:"created_by,omitempty"`
+	CreatedById  string                  `json:"created_by_id"`
+	Description  *string                 `json:"description,omitempty"`
+	Enum         *map[string]interface{} `json:"enum,omitempty"`
+	Id           string                  `json:"id"`
+	ModAlias     *string                 `json:"mod_alias,omitempty"`
+	Name         *string                 `json:"name,omitempty"`
+	Pipeling     *string                 `json:"pipeling,omitempty"`
+	Tags         *map[string]interface{} `json:"tags,omitempty"`
+	Type         *string                 `json:"type,omitempty"`
+	UpdatedAt    *string                 `json:"updated_at,omitempty"`
+	UpdatedBy    *User                   `json:"updated_by,omitempty"`
+	UpdatedById  *string                 `json:"updated_by_id,omitempty"`
+	Value        interface{}             `json:"value,omitempty"`
+	ValueDefault interface{}             `json:"value_default,omitempty"`
+	ValueSetting interface{}             `json:"value_setting,omitempty"`
+	VersionId    int32                   `json:"version_id"`
 }
 
 // NewWorkspaceModVariable instantiates a new WorkspaceModVariable object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkspaceModVariable(createdAt string, createdById string, id string, updatedById string, versionId int32) *WorkspaceModVariable {
+func NewWorkspaceModVariable(createdAt string, createdById string, id string, versionId int32) *WorkspaceModVariable {
 	this := WorkspaceModVariable{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
 	this.Id = id
-	this.UpdatedById = updatedById
 	this.VersionId = versionId
 	return &this
 }
@@ -167,6 +169,38 @@ func (o *WorkspaceModVariable) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetEnum returns the Enum field value if set, zero value otherwise.
+func (o *WorkspaceModVariable) GetEnum() map[string]interface{} {
+	if o == nil || o.Enum == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Enum
+}
+
+// GetEnumOk returns a tuple with the Enum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceModVariable) GetEnumOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Enum == nil {
+		return nil, false
+	}
+	return o.Enum, true
+}
+
+// HasEnum returns a boolean if a field has been set.
+func (o *WorkspaceModVariable) HasEnum() bool {
+	if o != nil && o.Enum != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnum gets a reference to the given map[string]interface{} and assigns it to the Enum field.
+func (o *WorkspaceModVariable) SetEnum(v map[string]interface{}) {
+	o.Enum = &v
+}
+
 // GetId returns the Id field value
 func (o *WorkspaceModVariable) GetId() string {
 	if o == nil {
@@ -253,6 +287,70 @@ func (o *WorkspaceModVariable) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *WorkspaceModVariable) SetName(v string) {
 	o.Name = &v
+}
+
+// GetPipeling returns the Pipeling field value if set, zero value otherwise.
+func (o *WorkspaceModVariable) GetPipeling() string {
+	if o == nil || o.Pipeling == nil {
+		var ret string
+		return ret
+	}
+	return *o.Pipeling
+}
+
+// GetPipelingOk returns a tuple with the Pipeling field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceModVariable) GetPipelingOk() (*string, bool) {
+	if o == nil || o.Pipeling == nil {
+		return nil, false
+	}
+	return o.Pipeling, true
+}
+
+// HasPipeling returns a boolean if a field has been set.
+func (o *WorkspaceModVariable) HasPipeling() bool {
+	if o != nil && o.Pipeling != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPipeling gets a reference to the given string and assigns it to the Pipeling field.
+func (o *WorkspaceModVariable) SetPipeling(v string) {
+	o.Pipeling = &v
+}
+
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *WorkspaceModVariable) GetTags() map[string]interface{} {
+	if o == nil || o.Tags == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceModVariable) GetTagsOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Tags == nil {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *WorkspaceModVariable) HasTags() bool {
+	if o != nil && o.Tags != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given map[string]interface{} and assigns it to the Tags field.
+func (o *WorkspaceModVariable) SetTags(v map[string]interface{}) {
+	o.Tags = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -351,28 +449,36 @@ func (o *WorkspaceModVariable) SetUpdatedBy(v User) {
 	o.UpdatedBy = &v
 }
 
-// GetUpdatedById returns the UpdatedById field value
+// GetUpdatedById returns the UpdatedById field value if set, zero value otherwise.
 func (o *WorkspaceModVariable) GetUpdatedById() string {
-	if o == nil {
+	if o == nil || o.UpdatedById == nil {
 		var ret string
 		return ret
 	}
-
-	return o.UpdatedById
+	return *o.UpdatedById
 }
 
-// GetUpdatedByIdOk returns a tuple with the UpdatedById field value
+// GetUpdatedByIdOk returns a tuple with the UpdatedById field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkspaceModVariable) GetUpdatedByIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.UpdatedById == nil {
 		return nil, false
 	}
-	return &o.UpdatedById, true
+	return o.UpdatedById, true
 }
 
-// SetUpdatedById sets field value
+// HasUpdatedById returns a boolean if a field has been set.
+func (o *WorkspaceModVariable) HasUpdatedById() bool {
+	if o != nil && o.UpdatedById != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedById gets a reference to the given string and assigns it to the UpdatedById field.
 func (o *WorkspaceModVariable) SetUpdatedById(v string) {
-	o.UpdatedById = v
+	o.UpdatedById = &v
 }
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -512,6 +618,9 @@ func (o WorkspaceModVariable) MarshalJSON() ([]byte, error) {
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
+	if o.Enum != nil {
+		toSerialize["enum"] = o.Enum
+	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -520,6 +629,12 @@ func (o WorkspaceModVariable) MarshalJSON() ([]byte, error) {
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.Pipeling != nil {
+		toSerialize["pipeling"] = o.Pipeling
+	}
+	if o.Tags != nil {
+		toSerialize["tags"] = o.Tags
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
@@ -530,7 +645,7 @@ func (o WorkspaceModVariable) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy != nil {
 		toSerialize["updated_by"] = o.UpdatedBy
 	}
-	if true {
+	if o.UpdatedById != nil {
 		toSerialize["updated_by_id"] = o.UpdatedById
 	}
 	if o.Value != nil {

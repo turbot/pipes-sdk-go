@@ -23,7 +23,8 @@ type Identity struct {
 	// The handle name of the identity.
 	Handle string `json:"handle"`
 	// The unique identifier of the identity.
-	Id     string  `json:"id"`
+	Id string `json:"id"`
+	// Information about the tenant the identity belongs to.
 	Tenant *Tenant `json:"tenant,omitempty"`
 	// The unique identifier of the tenant the identity belongs to.
 	TenantId string `json:"tenant_id"`

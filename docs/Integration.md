@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Config** | Pointer to **map[string]interface{}** |  | [optional] 
+**Config** | Pointer to **map[string]interface{}** | The configuration for the integration. | [optional] 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
-**DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**DeletedBy** | Pointer to [**User**](User.md) | User information for the user that performed the deletion. | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **GithubInstallationId** | **int32** | The GitHub installation ID for this integration. | 
 **Handle** | **string** | The handle for the integration. | 
 **Id** | **string** | The unique identifier for the integration. | 
 **IdentityId** | Pointer to **string** | The unique identifier for an identity where this integration is created. | [optional] 
-**Pipeline** | Pointer to [**Pipeline**](Pipeline.md) |  | [optional] 
+**Pipeline** | Pointer to [**Pipeline**](Pipeline.md) | Additional information about the pipeline the integration belongs to. | [optional] 
 **PipelineId** | Pointer to **string** | The pipeline ID for this integration. | [optional] 
-**State** | Pointer to **string** | The state of the integration. | [optional] 
+**State** | Pointer to [**IntegrationState**](IntegrationState.md) | The state of the integration. | [optional] 
 **StateReason** | Pointer to **string** | The reason for the state of the integration. | [optional] 
 **TenantId** | **string** | The unique identifier for the tenant where this integration is created. | 
-**Type** | Pointer to **string** | The type of the integration. | [optional] 
+**Type** | Pointer to [**IntegrationType**](IntegrationType.md) | The type of the integration. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 
@@ -342,20 +342,20 @@ HasPipelineId returns a boolean if a field has been set.
 
 ### GetState
 
-`func (o *Integration) GetState() string`
+`func (o *Integration) GetState() IntegrationState`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *Integration) GetStateOk() (*string, bool)`
+`func (o *Integration) GetStateOk() (*IntegrationState, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *Integration) SetState(v string)`
+`func (o *Integration) SetState(v IntegrationState)`
 
 SetState sets State field to given value.
 
@@ -412,20 +412,20 @@ SetTenantId sets TenantId field to given value.
 
 ### GetType
 
-`func (o *Integration) GetType() string`
+`func (o *Integration) GetType() IntegrationType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Integration) GetTypeOk() (*string, bool)`
+`func (o *Integration) GetTypeOk() (*IntegrationType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Integration) SetType(v string)`
+`func (o *Integration) SetType(v IntegrationType)`
 
 SetType sets Type field to given value.
 

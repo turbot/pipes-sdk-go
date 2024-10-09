@@ -18,7 +18,8 @@ import (
 type TenantUser struct {
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
-	CreatedBy *User  `json:"created_by,omitempty"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
 	// The ID of the user that created this.
 	CreatedById string `json:"created_by_id"`
 	// The email of the user.
@@ -28,16 +29,19 @@ type TenantUser struct {
 	// The role of the tenant user.
 	Role string `json:"role"`
 	// The status of the tenant member i.e invited or accepted.
-	Status string  `json:"status"`
+	Status string `json:"status"`
+	// Readonly in DB
 	Tenant *Tenant `json:"tenant,omitempty"`
 	// The identifier of the tenant.
 	TenantId string `json:"tenant_id"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	UpdatedBy *User   `json:"updated_by,omitempty"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
-	User        *User  `json:"user,omitempty"`
+	// Readonly in DB
+	User *User `json:"user,omitempty"`
 	// The identifier of the user that belongs to the tenant.
 	UserId string `json:"user_id"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.

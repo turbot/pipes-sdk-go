@@ -18,8 +18,9 @@ import (
 type CreatePipelineRequest struct {
 	Args interface{} `json:"args"`
 	// The desired state of the pipeline.
-	DesiredState *string           `json:"desired_state,omitempty"`
-	Frequency    PipelineFrequency `json:"frequency"`
+	DesiredState *DesiredState `json:"desired_state,omitempty"`
+	// The frequency at which the pipeline will run.
+	Frequency PipelineFrequency `json:"frequency"`
 	// The name of the pipeline to be executed.
 	Pipeline string      `json:"pipeline"`
 	Tags     interface{} `json:"tags,omitempty"`
@@ -75,9 +76,9 @@ func (o *CreatePipelineRequest) SetArgs(v interface{}) {
 }
 
 // GetDesiredState returns the DesiredState field value if set, zero value otherwise.
-func (o *CreatePipelineRequest) GetDesiredState() string {
+func (o *CreatePipelineRequest) GetDesiredState() DesiredState {
 	if o == nil || o.DesiredState == nil {
-		var ret string
+		var ret DesiredState
 		return ret
 	}
 	return *o.DesiredState
@@ -85,7 +86,7 @@ func (o *CreatePipelineRequest) GetDesiredState() string {
 
 // GetDesiredStateOk returns a tuple with the DesiredState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreatePipelineRequest) GetDesiredStateOk() (*string, bool) {
+func (o *CreatePipelineRequest) GetDesiredStateOk() (*DesiredState, bool) {
 	if o == nil || o.DesiredState == nil {
 		return nil, false
 	}
@@ -101,8 +102,8 @@ func (o *CreatePipelineRequest) HasDesiredState() bool {
 	return false
 }
 
-// SetDesiredState gets a reference to the given string and assigns it to the DesiredState field.
-func (o *CreatePipelineRequest) SetDesiredState(v string) {
+// SetDesiredState gets a reference to the given DesiredState and assigns it to the DesiredState field.
+func (o *CreatePipelineRequest) SetDesiredState(v DesiredState) {
 	o.DesiredState = &v
 }
 

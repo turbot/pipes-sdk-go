@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **Datatank** | Pointer to [**Datatank**](Datatank.md) |  | [optional] 
 **DatatankId** | **string** |  | 
 **DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
-**DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**DeletedBy** | Pointer to [**User**](User.md) | User information for the user that performed the deletion. | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **Description** | Pointer to **string** |  | [optional] 
-**DesiredState** | **string** |  | 
+**DesiredState** | [**DesiredState**](DesiredState.md) |  | 
 **Frequency** | [**PipelineFrequency**](PipelineFrequency.md) |  | 
 **Freshness** | Pointer to [**DatatankTableFreshness**](DatatankTableFreshness.md) |  | [optional] 
 **Id** | **string** |  | 
@@ -24,11 +24,11 @@ Name | Type | Description | Notes
 **SourceQuery** | Pointer to **string** |  | [optional] 
 **SourceSchema** | Pointer to **string** |  | [optional] 
 **SourceTable** | Pointer to **string** |  | [optional] 
-**State** | **string** |  | 
+**State** | [**DatatankTableState**](DatatankTableState.md) |  | 
 **StateReason** | Pointer to **string** |  | [optional] 
 **Type** | **string** |  | 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 
@@ -36,7 +36,7 @@ Name | Type | Description | Notes
 
 ### NewDatatankTable
 
-`func NewDatatankTable(createdAt string, createdById string, datatankId string, deletedById string, desiredState string, frequency PipelineFrequency, id string, name string, state string, type_ string, updatedById string, versionId int32, ) *DatatankTable`
+`func NewDatatankTable(createdAt string, createdById string, datatankId string, deletedById string, desiredState DesiredState, frequency PipelineFrequency, id string, name string, state DatatankTableState, type_ string, updatedById string, versionId int32, ) *DatatankTable`
 
 NewDatatankTable instantiates a new DatatankTable object
 This constructor will assign default values to properties that have it defined,
@@ -258,20 +258,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetDesiredState
 
-`func (o *DatatankTable) GetDesiredState() string`
+`func (o *DatatankTable) GetDesiredState() DesiredState`
 
 GetDesiredState returns the DesiredState field if non-nil, zero value otherwise.
 
 ### GetDesiredStateOk
 
-`func (o *DatatankTable) GetDesiredStateOk() (*string, bool)`
+`func (o *DatatankTable) GetDesiredStateOk() (*DesiredState, bool)`
 
 GetDesiredStateOk returns a tuple with the DesiredState field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDesiredState
 
-`func (o *DatatankTable) SetDesiredState(v string)`
+`func (o *DatatankTable) SetDesiredState(v DesiredState)`
 
 SetDesiredState sets DesiredState field to given value.
 
@@ -513,20 +513,20 @@ HasSourceTable returns a boolean if a field has been set.
 
 ### GetState
 
-`func (o *DatatankTable) GetState() string`
+`func (o *DatatankTable) GetState() DatatankTableState`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *DatatankTable) GetStateOk() (*string, bool)`
+`func (o *DatatankTable) GetStateOk() (*DatatankTableState, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *DatatankTable) SetState(v string)`
+`func (o *DatatankTable) SetState(v DatatankTableState)`
 
 SetState sets State field to given value.
 

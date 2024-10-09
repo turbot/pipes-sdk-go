@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Code** | **string** |  | 
 **CreatedAt** | **string** |  | 
 **Id** | **string** |  | 
-**State** | **string** |  | 
+**State** | [**TemporaryTokenRequestState**](TemporaryTokenRequestState.md) |  | 
 **Token** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewTemporaryTokenRequest
 
-`func NewTemporaryTokenRequest(clientIp string, code string, createdAt string, id string, state string, ) *TemporaryTokenRequest`
+`func NewTemporaryTokenRequest(clientIp string, code string, createdAt string, id string, state TemporaryTokenRequestState, ) *TemporaryTokenRequest`
 
 NewTemporaryTokenRequest instantiates a new TemporaryTokenRequest object
 This constructor will assign default values to properties that have it defined,
@@ -113,20 +113,20 @@ SetId sets Id field to given value.
 
 ### GetState
 
-`func (o *TemporaryTokenRequest) GetState() string`
+`func (o *TemporaryTokenRequest) GetState() TemporaryTokenRequestState`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *TemporaryTokenRequest) GetStateOk() (*string, bool)`
+`func (o *TemporaryTokenRequest) GetStateOk() (*TemporaryTokenRequestState, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *TemporaryTokenRequest) SetState(v string)`
+`func (o *TemporaryTokenRequest) SetState(v TemporaryTokenRequestState)`
 
 SetState sets State field to given value.
 

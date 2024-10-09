@@ -8,11 +8,11 @@ Name | Type | Description | Notes
 **Handle** | Pointer to **string** |  | [optional] 
 **TokenMinIssuedAt** | Pointer to **string** | The time which user and temporary auth tokens must be issued after. | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
-**UsageComputeAction** | Pointer to **string** |  | [optional] 
+**UsageComputeAction** | Pointer to [**IdentityUsageThresholdAction**](IdentityUsageThresholdAction.md) |  | [optional] 
 **UsageComputeThreshold** | Pointer to **int64** |  | [optional] 
-**UsageStorageAction** | Pointer to **string** |  | [optional] 
+**UsageStorageAction** | Pointer to [**IdentityUsageThresholdAction**](IdentityUsageThresholdAction.md) |  | [optional] 
 **UsageStorageThreshold** | Pointer to **int64** |  | [optional] 
-**UsageUserAction** | Pointer to **string** |  | [optional] 
+**UsageUserAction** | Pointer to [**IdentityUsageThresholdAction**](IdentityUsageThresholdAction.md) |  | [optional] 
 **UsageUserThreshold** | Pointer to **int64** |  | [optional] 
 
 ## Methods
@@ -136,20 +136,20 @@ HasUrl returns a boolean if a field has been set.
 
 ### GetUsageComputeAction
 
-`func (o *UpdateOrgRequest) GetUsageComputeAction() string`
+`func (o *UpdateOrgRequest) GetUsageComputeAction() IdentityUsageThresholdAction`
 
 GetUsageComputeAction returns the UsageComputeAction field if non-nil, zero value otherwise.
 
 ### GetUsageComputeActionOk
 
-`func (o *UpdateOrgRequest) GetUsageComputeActionOk() (*string, bool)`
+`func (o *UpdateOrgRequest) GetUsageComputeActionOk() (*IdentityUsageThresholdAction, bool)`
 
 GetUsageComputeActionOk returns a tuple with the UsageComputeAction field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsageComputeAction
 
-`func (o *UpdateOrgRequest) SetUsageComputeAction(v string)`
+`func (o *UpdateOrgRequest) SetUsageComputeAction(v IdentityUsageThresholdAction)`
 
 SetUsageComputeAction sets UsageComputeAction field to given value.
 
@@ -186,20 +186,20 @@ HasUsageComputeThreshold returns a boolean if a field has been set.
 
 ### GetUsageStorageAction
 
-`func (o *UpdateOrgRequest) GetUsageStorageAction() string`
+`func (o *UpdateOrgRequest) GetUsageStorageAction() IdentityUsageThresholdAction`
 
 GetUsageStorageAction returns the UsageStorageAction field if non-nil, zero value otherwise.
 
 ### GetUsageStorageActionOk
 
-`func (o *UpdateOrgRequest) GetUsageStorageActionOk() (*string, bool)`
+`func (o *UpdateOrgRequest) GetUsageStorageActionOk() (*IdentityUsageThresholdAction, bool)`
 
 GetUsageStorageActionOk returns a tuple with the UsageStorageAction field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsageStorageAction
 
-`func (o *UpdateOrgRequest) SetUsageStorageAction(v string)`
+`func (o *UpdateOrgRequest) SetUsageStorageAction(v IdentityUsageThresholdAction)`
 
 SetUsageStorageAction sets UsageStorageAction field to given value.
 
@@ -236,20 +236,20 @@ HasUsageStorageThreshold returns a boolean if a field has been set.
 
 ### GetUsageUserAction
 
-`func (o *UpdateOrgRequest) GetUsageUserAction() string`
+`func (o *UpdateOrgRequest) GetUsageUserAction() IdentityUsageThresholdAction`
 
 GetUsageUserAction returns the UsageUserAction field if non-nil, zero value otherwise.
 
 ### GetUsageUserActionOk
 
-`func (o *UpdateOrgRequest) GetUsageUserActionOk() (*string, bool)`
+`func (o *UpdateOrgRequest) GetUsageUserActionOk() (*IdentityUsageThresholdAction, bool)`
 
 GetUsageUserActionOk returns a tuple with the UsageUserAction field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsageUserAction
 
-`func (o *UpdateOrgRequest) SetUsageUserAction(v string)`
+`func (o *UpdateOrgRequest) SetUsageUserAction(v IdentityUsageThresholdAction)`
 
 SetUsageUserAction sets UsageUserAction field to given value.
 

@@ -7,29 +7,29 @@ Name | Type | Description | Notes
 **ApiVersion** | Pointer to **string** |  | [optional] 
 **CliVersion** | Pointer to **string** |  | [optional] 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **DatabaseName** | Pointer to **string** | The name of the database. | [optional] 
 **DbVolumeSizeBytes** | **int64** | The current size of the database volume in bytes. | 
 **DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
-**DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**DeletedBy** | Pointer to [**User**](User.md) | User information for the user that performed the deletion. | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
-**DesiredState** | **string** |  | 
+**DesiredState** | [**DesiredState**](DesiredState.md) |  | 
 **Handle** | **string** | The handle name for the workspace. | 
 **Hive** | Pointer to **string** | The database hive for this workspace. | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
 **Id** | **string** | The unique identifier for the workspace. | 
 **IdentityId** | **string** | The unique identifier for an identity where the workspace is created. | 
-**InstanceType** | **string** | The instance type of this workspace. | 
+**InstanceType** | [**WorkspaceInstanceType**](WorkspaceInstanceType.md) | The instance type of this workspace. | 
 **Notices** | Pointer to **map[string]interface{}** |  | [optional] 
 **PowerpipeVersion** | Pointer to **string** |  | [optional] 
 **PublicKey** | Pointer to **string** |  | [optional] 
 **SearchPath** | Pointer to **[]string** | The configured Steampipe database search path for the workspace. | [optional] 
 **SearchPathPrefix** | Pointer to **[]string** | The optional Steampipe database search path prefix for the workspace. | [optional] 
-**State** | Pointer to **string** | The current state of the workspace. | [optional] 
+**State** | Pointer to [**WorkspaceState**](WorkspaceState.md) | The current state of the workspace. | [optional] 
 **StateReason** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 
@@ -37,7 +37,7 @@ Name | Type | Description | Notes
 
 ### NewWorkspace
 
-`func NewWorkspace(createdAt string, createdById string, dbVolumeSizeBytes int64, deletedById string, desiredState string, handle string, id string, identityId string, instanceType string, updatedById string, versionId int32, ) *Workspace`
+`func NewWorkspace(createdAt string, createdById string, dbVolumeSizeBytes int64, deletedById string, desiredState DesiredState, handle string, id string, identityId string, instanceType WorkspaceInstanceType, updatedById string, versionId int32, ) *Workspace`
 
 NewWorkspace instantiates a new Workspace object
 This constructor will assign default values to properties that have it defined,
@@ -284,20 +284,20 @@ SetDeletedById sets DeletedById field to given value.
 
 ### GetDesiredState
 
-`func (o *Workspace) GetDesiredState() string`
+`func (o *Workspace) GetDesiredState() DesiredState`
 
 GetDesiredState returns the DesiredState field if non-nil, zero value otherwise.
 
 ### GetDesiredStateOk
 
-`func (o *Workspace) GetDesiredStateOk() (*string, bool)`
+`func (o *Workspace) GetDesiredStateOk() (*DesiredState, bool)`
 
 GetDesiredStateOk returns a tuple with the DesiredState field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDesiredState
 
-`func (o *Workspace) SetDesiredState(v string)`
+`func (o *Workspace) SetDesiredState(v DesiredState)`
 
 SetDesiredState sets DesiredState field to given value.
 
@@ -414,20 +414,20 @@ SetIdentityId sets IdentityId field to given value.
 
 ### GetInstanceType
 
-`func (o *Workspace) GetInstanceType() string`
+`func (o *Workspace) GetInstanceType() WorkspaceInstanceType`
 
 GetInstanceType returns the InstanceType field if non-nil, zero value otherwise.
 
 ### GetInstanceTypeOk
 
-`func (o *Workspace) GetInstanceTypeOk() (*string, bool)`
+`func (o *Workspace) GetInstanceTypeOk() (*WorkspaceInstanceType, bool)`
 
 GetInstanceTypeOk returns a tuple with the InstanceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInstanceType
 
-`func (o *Workspace) SetInstanceType(v string)`
+`func (o *Workspace) SetInstanceType(v WorkspaceInstanceType)`
 
 SetInstanceType sets InstanceType field to given value.
 
@@ -559,20 +559,20 @@ HasSearchPathPrefix returns a boolean if a field has been set.
 
 ### GetState
 
-`func (o *Workspace) GetState() string`
+`func (o *Workspace) GetState() WorkspaceState`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *Workspace) GetStateOk() (*string, bool)`
+`func (o *Workspace) GetStateOk() (*WorkspaceState, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *Workspace) SetState(v string)`
+`func (o *Workspace) SetState(v WorkspaceState)`
 
 SetState sets State field to given value.
 

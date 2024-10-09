@@ -21,14 +21,14 @@ Name | Type | Description | Notes
 **UserId** | Pointer to **string** | The user id for which the constraint applies to. | [optional] 
 **Value** | **interface{}** |  | 
 **ValueFrom** | **string** | The id of the item from which the value is inherited. | 
-**Visibility** | **string** | The visibility of the constraint. Can be one of public or private. | 
+**Visibility** | [**ConstraintVisibility**](ConstraintVisibility.md) | The visibility of the constraint. Can be one of public or private. | 
 **WorkspaceId** | Pointer to **string** | The workspace id for which the constraint applies to. | [optional] 
 
 ## Methods
 
 ### NewConstraint
 
-`func NewConstraint(name string, target string, type_ string, value interface{}, valueFrom string, visibility string, ) *Constraint`
+`func NewConstraint(name string, target string, type_ string, value interface{}, valueFrom string, visibility ConstraintVisibility, ) *Constraint`
 
 NewConstraint instantiates a new Constraint object
 This constructor will assign default values to properties that have it defined,
@@ -485,20 +485,20 @@ SetValueFrom sets ValueFrom field to given value.
 
 ### GetVisibility
 
-`func (o *Constraint) GetVisibility() string`
+`func (o *Constraint) GetVisibility() ConstraintVisibility`
 
 GetVisibility returns the Visibility field if non-nil, zero value otherwise.
 
 ### GetVisibilityOk
 
-`func (o *Constraint) GetVisibilityOk() (*string, bool)`
+`func (o *Constraint) GetVisibilityOk() (*ConstraintVisibility, bool)`
 
 GetVisibilityOk returns a tuple with the Visibility field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVisibility
 
-`func (o *Constraint) SetVisibility(v string)`
+`func (o *Constraint) SetVisibility(v ConstraintVisibility)`
 
 SetVisibility sets Visibility field to given value.
 

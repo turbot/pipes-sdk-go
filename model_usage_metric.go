@@ -17,17 +17,17 @@ import (
 // UsageMetric struct for UsageMetric
 type UsageMetric struct {
 	// The dimension for this usage metric record.
-	Dimension string `json:"dimension"`
+	Dimension UsageDimensionType `json:"dimension"`
 	// The identity ID for this usage metric record
 	IdentityId *string `json:"identity_id,omitempty"`
 	// The instance type for the usage record.                                                                                                                                                       // The instance type for this usage metric record. Only populated if the usage is for a workspace.
 	InstanceType *string `json:"instance_type,omitempty"`
 	// The metric for this usage metric record.
-	Metric string `json:"metric"`
+	Metric UsageMetricType `json:"metric"`
 	// The tenant ID for this usage metric record
 	TenantId *string `json:"tenant_id,omitempty"`
 	// The unit for this usage metric record.
-	Unit string `json:"unit"`
+	Unit UsageUnitType `json:"unit"`
 	// The start time for this usage metric record.
 	UsageDate string `json:"usage_date"`
 	// The value for this usage metric record.
@@ -44,7 +44,7 @@ type UsageMetric struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUsageMetric(dimension string, metric string, unit string, usageDate string) *UsageMetric {
+func NewUsageMetric(dimension UsageDimensionType, metric UsageMetricType, unit UsageUnitType, usageDate string) *UsageMetric {
 	this := UsageMetric{}
 	this.Dimension = dimension
 	this.Metric = metric
@@ -62,9 +62,9 @@ func NewUsageMetricWithDefaults() *UsageMetric {
 }
 
 // GetDimension returns the Dimension field value
-func (o *UsageMetric) GetDimension() string {
+func (o *UsageMetric) GetDimension() UsageDimensionType {
 	if o == nil {
-		var ret string
+		var ret UsageDimensionType
 		return ret
 	}
 
@@ -73,7 +73,7 @@ func (o *UsageMetric) GetDimension() string {
 
 // GetDimensionOk returns a tuple with the Dimension field value
 // and a boolean to check if the value has been set.
-func (o *UsageMetric) GetDimensionOk() (*string, bool) {
+func (o *UsageMetric) GetDimensionOk() (*UsageDimensionType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -81,7 +81,7 @@ func (o *UsageMetric) GetDimensionOk() (*string, bool) {
 }
 
 // SetDimension sets field value
-func (o *UsageMetric) SetDimension(v string) {
+func (o *UsageMetric) SetDimension(v UsageDimensionType) {
 	o.Dimension = v
 }
 
@@ -150,9 +150,9 @@ func (o *UsageMetric) SetInstanceType(v string) {
 }
 
 // GetMetric returns the Metric field value
-func (o *UsageMetric) GetMetric() string {
+func (o *UsageMetric) GetMetric() UsageMetricType {
 	if o == nil {
-		var ret string
+		var ret UsageMetricType
 		return ret
 	}
 
@@ -161,7 +161,7 @@ func (o *UsageMetric) GetMetric() string {
 
 // GetMetricOk returns a tuple with the Metric field value
 // and a boolean to check if the value has been set.
-func (o *UsageMetric) GetMetricOk() (*string, bool) {
+func (o *UsageMetric) GetMetricOk() (*UsageMetricType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -169,7 +169,7 @@ func (o *UsageMetric) GetMetricOk() (*string, bool) {
 }
 
 // SetMetric sets field value
-func (o *UsageMetric) SetMetric(v string) {
+func (o *UsageMetric) SetMetric(v UsageMetricType) {
 	o.Metric = v
 }
 
@@ -206,9 +206,9 @@ func (o *UsageMetric) SetTenantId(v string) {
 }
 
 // GetUnit returns the Unit field value
-func (o *UsageMetric) GetUnit() string {
+func (o *UsageMetric) GetUnit() UsageUnitType {
 	if o == nil {
-		var ret string
+		var ret UsageUnitType
 		return ret
 	}
 
@@ -217,7 +217,7 @@ func (o *UsageMetric) GetUnit() string {
 
 // GetUnitOk returns a tuple with the Unit field value
 // and a boolean to check if the value has been set.
-func (o *UsageMetric) GetUnitOk() (*string, bool) {
+func (o *UsageMetric) GetUnitOk() (*UsageUnitType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -225,7 +225,7 @@ func (o *UsageMetric) GetUnitOk() (*string, bool) {
 }
 
 // SetUnit sets field value
-func (o *UsageMetric) SetUnit(v string) {
+func (o *UsageMetric) SetUnit(v UsageUnitType) {
 	o.Unit = v
 }
 

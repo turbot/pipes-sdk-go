@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EndTime** | **string** | The time the dashboard execution ended. | 
-**Inputs** | Pointer to **map[string]interface{}** |  | [optional] 
-**Layout** | [**WorkspaceSnapshotDataLayout**](WorkspaceSnapshotDataLayout.md) |  | 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
-**Panels** | **map[string]interface{}** |  | 
+**Inputs** | Pointer to **map[string]interface{}** | Any inputs and their values used in this snapshot. | [optional] 
+**Layout** | [**WorkspaceSnapshotDataLayout**](WorkspaceSnapshotDataLayout.md) | The dashboard layout tree for this snapshot. | 
+**Metadata** | Pointer to **map[string]interface{}** | Any additional metadata for this snapshot. | [optional] 
+**Panels** | **map[string]interface{}** | The map of panels and their data for this snapshot. | 
 **SchemaVersion** | **string** | The schema version of this snapshot. | 
 **StartTime** | **string** | The time the dashboard execution started. | 
-**Variables** | Pointer to **map[string]interface{}** |  | [optional] 
+**Variables** | Pointer to **map[string]interface{}** | Any mod variables in scope for this snapshot. | [optional] 
 
 ## Methods
 

@@ -16,6 +16,7 @@ import (
 
 // CreateAggregatorRequest struct for CreateAggregatorRequest
 type CreateAggregatorRequest struct {
+	// The configuration for the aggregator.
 	Config *map[string]interface{} `json:"config,omitempty"`
 	// The connections that are a part of the aggregator.
 	Connections *[]string `json:"connections,omitempty"`

@@ -17,7 +17,7 @@ import (
 // UpdateDatatankTableRequest struct for UpdateDatatankTableRequest
 type UpdateDatatankTableRequest struct {
 	Description  *string            `json:"description,omitempty"`
-	DesiredState *string            `json:"desired_state,omitempty"`
+	DesiredState *DesiredState      `json:"desired_state,omitempty"`
 	Frequency    *PipelineFrequency `json:"frequency,omitempty"`
 	Name         *string            `json:"name,omitempty"`
 	PartPer      *string            `json:"part_per,omitempty"`
@@ -76,9 +76,9 @@ func (o *UpdateDatatankTableRequest) SetDescription(v string) {
 }
 
 // GetDesiredState returns the DesiredState field value if set, zero value otherwise.
-func (o *UpdateDatatankTableRequest) GetDesiredState() string {
+func (o *UpdateDatatankTableRequest) GetDesiredState() DesiredState {
 	if o == nil || o.DesiredState == nil {
-		var ret string
+		var ret DesiredState
 		return ret
 	}
 	return *o.DesiredState
@@ -86,7 +86,7 @@ func (o *UpdateDatatankTableRequest) GetDesiredState() string {
 
 // GetDesiredStateOk returns a tuple with the DesiredState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateDatatankTableRequest) GetDesiredStateOk() (*string, bool) {
+func (o *UpdateDatatankTableRequest) GetDesiredStateOk() (*DesiredState, bool) {
 	if o == nil || o.DesiredState == nil {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *UpdateDatatankTableRequest) HasDesiredState() bool {
 	return false
 }
 
-// SetDesiredState gets a reference to the given string and assigns it to the DesiredState field.
-func (o *UpdateDatatankTableRequest) SetDesiredState(v string) {
+// SetDesiredState gets a reference to the given DesiredState and assigns it to the DesiredState field.
+func (o *UpdateDatatankTableRequest) SetDesiredState(v DesiredState) {
 	o.DesiredState = &v
 }
 

@@ -16,14 +16,14 @@ import (
 
 // CmdDatatankPartRequest struct for CmdDatatankPartRequest
 type CmdDatatankPartRequest struct {
-	Command string `json:"command"`
+	Command DatatankPartCmd `json:"command"`
 }
 
 // NewCmdDatatankPartRequest instantiates a new CmdDatatankPartRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCmdDatatankPartRequest(command string) *CmdDatatankPartRequest {
+func NewCmdDatatankPartRequest(command DatatankPartCmd) *CmdDatatankPartRequest {
 	this := CmdDatatankPartRequest{}
 	this.Command = command
 	return &this
@@ -38,9 +38,9 @@ func NewCmdDatatankPartRequestWithDefaults() *CmdDatatankPartRequest {
 }
 
 // GetCommand returns the Command field value
-func (o *CmdDatatankPartRequest) GetCommand() string {
+func (o *CmdDatatankPartRequest) GetCommand() DatatankPartCmd {
 	if o == nil {
-		var ret string
+		var ret DatatankPartCmd
 		return ret
 	}
 
@@ -49,7 +49,7 @@ func (o *CmdDatatankPartRequest) GetCommand() string {
 
 // GetCommandOk returns a tuple with the Command field value
 // and a boolean to check if the value has been set.
-func (o *CmdDatatankPartRequest) GetCommandOk() (*string, bool) {
+func (o *CmdDatatankPartRequest) GetCommandOk() (*DatatankPartCmd, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -57,7 +57,7 @@ func (o *CmdDatatankPartRequest) GetCommandOk() (*string, bool) {
 }
 
 // SetCommand sets field value
-func (o *CmdDatatankPartRequest) SetCommand(v string) {
+func (o *CmdDatatankPartRequest) SetCommand(v DatatankPartCmd) {
 	o.Command = v
 }
 

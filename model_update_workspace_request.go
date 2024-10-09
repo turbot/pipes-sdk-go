@@ -18,8 +18,8 @@ import (
 type UpdateWorkspaceRequest struct {
 	DbVolumeSizeBytes *int64 `json:"db_volume_size_bytes,omitempty"`
 	// paused is not yet supported for Workspace
-	DesiredState *string `json:"desired_state,omitempty"`
-	Handle       *string `json:"handle,omitempty"`
+	DesiredState *DesiredState `json:"desired_state,omitempty"`
+	Handle       *string       `json:"handle,omitempty"`
 	// InstanceType *WorkspaceInstanceType `json:\"instance_type,omitempty\" binding:\"omitempty,oneof=db1.shared db1.small\"`
 	SearchPathPrefix *[]string `json:"search_path_prefix,omitempty"`
 }
@@ -74,9 +74,9 @@ func (o *UpdateWorkspaceRequest) SetDbVolumeSizeBytes(v int64) {
 }
 
 // GetDesiredState returns the DesiredState field value if set, zero value otherwise.
-func (o *UpdateWorkspaceRequest) GetDesiredState() string {
+func (o *UpdateWorkspaceRequest) GetDesiredState() DesiredState {
 	if o == nil || o.DesiredState == nil {
-		var ret string
+		var ret DesiredState
 		return ret
 	}
 	return *o.DesiredState
@@ -84,7 +84,7 @@ func (o *UpdateWorkspaceRequest) GetDesiredState() string {
 
 // GetDesiredStateOk returns a tuple with the DesiredState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateWorkspaceRequest) GetDesiredStateOk() (*string, bool) {
+func (o *UpdateWorkspaceRequest) GetDesiredStateOk() (*DesiredState, bool) {
 	if o == nil || o.DesiredState == nil {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *UpdateWorkspaceRequest) HasDesiredState() bool {
 	return false
 }
 
-// SetDesiredState gets a reference to the given string and assigns it to the DesiredState field.
-func (o *UpdateWorkspaceRequest) SetDesiredState(v string) {
+// SetDesiredState gets a reference to the given DesiredState and assigns it to the DesiredState field.
+func (o *UpdateWorkspaceRequest) SetDesiredState(v DesiredState) {
 	o.DesiredState = &v
 }
 

@@ -9,7 +9,9 @@ Method | HTTP request | Description
 [**Delete**](OrgIntegrations.md#Delete) | **Delete** /org/{org_handle}/integration/{integration_handle} | Delete org integration
 [**Get**](OrgIntegrations.md#Get) | **Get** /org/{org_handle}/integration/{integration_handle} | Get org integration
 [**InstallGithubIntegration**](OrgIntegrations.md#InstallGithubIntegration) | **Get** /org/{org_handle}/integration/{integration_handle}/github/install | Install GitHub integration for an org
+[**InstallSlackIntegration**](OrgIntegrations.md#InstallSlackIntegration) | **Get** /org/{org_handle}/integration/{integration_handle}/slack/install | Install Slack integration for an org
 [**List**](OrgIntegrations.md#List) | **Get** /org/{org_handle}/integration | List org integrations
+[**ListSlackChannels**](OrgIntegrations.md#ListSlackChannels) | **Get** /org/{org_handle}/integration/{integration_handle}/slack/channel | List org integration Slack channels
 [**Test**](OrgIntegrations.md#Test) | **Post** /org/{org_handle}/integration/{integration_handle}/test | Test org integration
 [**Update**](OrgIntegrations.md#Update) | **Patch** /org/{org_handle}/integration/{integration_handle} | Update org integration
 
@@ -38,7 +40,7 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the organization to which the integration belongs to.
     integrationHandle := "integrationHandle_example" // string | The handle of the integration for which we want to run the command.
-    request := *openapiclient.NewWorkspaceCommandRequest("Command_example") // WorkspaceCommandRequest | The request body for the workspace command.
+    request := *openapiclient.NewWorkspaceCommandRequest(openapiclient.WorkspaceCommandAction("reboot")) // WorkspaceCommandRequest | The request body for the workspace command.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -112,7 +114,7 @@ import (
 
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the org for which you want to create an integration.
-    request := *openapiclient.NewCreateIntegrationRequest("Handle_example", "Type_example") // CreateIntegrationRequest | The request body for the integration to be created.
+    request := *openapiclient.NewCreateIntegrationRequest("Handle_example", map[string][]openapiclient.IntegrationType{"key": "TODO"}) // CreateIntegrationRequest | The request body for the integration to be created.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -330,7 +332,7 @@ import (
 
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the organization to which the integration belongs to.
-    integrationHandle := "integrationHandle_example" // string | The handle of the github integration which needs to be installed.
+    integrationHandle := "integrationHandle_example" // string | The handle of the GitHub integration which needs to be installed.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -349,11 +351,82 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **orgHandle** | **string** | The handle of the organization to which the integration belongs to. | 
-**integrationHandle** | **string** | The handle of the github integration which needs to be installed. | 
+**integrationHandle** | **string** | The handle of the GitHub integration which needs to be installed. | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiInstallGithubIntegrationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## InstallSlackIntegration
+
+> InstallSlackIntegration(ctx, orgHandle, integrationHandle).Execute()
+
+Install Slack integration for an org
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    orgHandle := "orgHandle_example" // string | The handle of the organization to which the integration belongs to.
+    integrationHandle := "integrationHandle_example" // string | The handle of the Slack integration which needs to be installed.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.OrgIntegrations.InstallSlackIntegration(context.Background(), orgHandle, integrationHandle).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgIntegrations.InstallSlackIntegration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgHandle** | **string** | The handle of the organization to which the integration belongs to. | 
+**integrationHandle** | **string** | The handle of the Slack integration which needs to be installed. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiInstallSlackIntegrationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -453,9 +526,86 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## ListSlackChannels
+
+> ListSlackChannelsResponse ListSlackChannels(ctx, orgHandle, integrationHandle).Limit(limit).NextToken(nextToken).Execute()
+
+List org integration Slack channels
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    orgHandle := "orgHandle_example" // string | The handle of the organization to which the integration belongs to.
+    integrationHandle := "integrationHandle_example" // string | The handle of the integration for which Slack channels will be listed.
+    limit := int32(56) // int32 | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. (optional) (default to 25)
+    nextToken := "nextToken_example" // string | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.OrgIntegrations.ListSlackChannels(context.Background(), orgHandle, integrationHandle).Limit(limit).NextToken(nextToken).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgIntegrations.ListSlackChannels``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListSlackChannels`: ListSlackChannelsResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrgIntegrations.ListSlackChannels`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgHandle** | **string** | The handle of the organization to which the integration belongs to. | 
+**integrationHandle** | **string** | The handle of the integration for which Slack channels will be listed. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListSlackChannelsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **limit** | **int32** | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. | [default to 25]
+ **nextToken** | **string** | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. | 
+
+### Return type
+
+[**ListSlackChannelsResponse**](ListSlackChannelsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## Test
 
-> Integration Test(ctx, orgHandle, integrationHandle).Execute()
+> Integration Test(ctx, orgHandle, integrationHandle).Request(request).Execute()
 
 Test org integration
 
@@ -476,10 +626,11 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the org to which the integration belongs to.
     integrationHandle := "integrationHandle_example" // string | The handle of the integration to be tested. For integrations that are not yet created, use underscore `_` as the handle, else pass the handle of the existing integration.
+    request := *openapiclient.NewTestIntegrationRequest() // TestIntegrationRequest | The request body configuration for the integration to be tested.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgIntegrations.Test(context.Background(), orgHandle, integrationHandle).Execute()
+    resp, r, err := api_client.OrgIntegrations.Test(context.Background(), orgHandle, integrationHandle).Request(request).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgIntegrations.Test``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -507,6 +658,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **request** | [**TestIntegrationRequest**](TestIntegrationRequest.md) | The request body configuration for the integration to be tested. | 
 
 ### Return type
 
@@ -518,7 +670,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

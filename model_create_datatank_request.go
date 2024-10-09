@@ -16,9 +16,9 @@ import (
 
 // CreateDatatankRequest struct for CreateDatatankRequest
 type CreateDatatankRequest struct {
-	Description  *string `json:"description,omitempty"`
-	DesiredState *string `json:"desired_state,omitempty"`
-	Handle       string  `json:"handle"`
+	Description  *string       `json:"description,omitempty"`
+	DesiredState *DesiredState `json:"desired_state,omitempty"`
+	Handle       string        `json:"handle"`
 }
 
 // NewCreateDatatankRequest instantiates a new CreateDatatankRequest object
@@ -72,9 +72,9 @@ func (o *CreateDatatankRequest) SetDescription(v string) {
 }
 
 // GetDesiredState returns the DesiredState field value if set, zero value otherwise.
-func (o *CreateDatatankRequest) GetDesiredState() string {
+func (o *CreateDatatankRequest) GetDesiredState() DesiredState {
 	if o == nil || o.DesiredState == nil {
-		var ret string
+		var ret DesiredState
 		return ret
 	}
 	return *o.DesiredState
@@ -82,7 +82,7 @@ func (o *CreateDatatankRequest) GetDesiredState() string {
 
 // GetDesiredStateOk returns a tuple with the DesiredState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDatatankRequest) GetDesiredStateOk() (*string, bool) {
+func (o *CreateDatatankRequest) GetDesiredStateOk() (*DesiredState, bool) {
 	if o == nil || o.DesiredState == nil {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *CreateDatatankRequest) HasDesiredState() bool {
 	return false
 }
 
-// SetDesiredState gets a reference to the given string and assigns it to the DesiredState field.
-func (o *CreateDatatankRequest) SetDesiredState(v string) {
+// SetDesiredState gets a reference to the given DesiredState and assigns it to the DesiredState field.
+func (o *CreateDatatankRequest) SetDesiredState(v DesiredState) {
 	o.DesiredState = &v
 }
 

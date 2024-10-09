@@ -725,7 +725,7 @@ InstallGithubIntegration Install GitHub integration on a custom tenant
 Install a GitHub integration on a custom tenant.
 
 	@param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param integrationHandle The handle of the github integration which needs to be installed.
+	@param integrationHandle The handle of the GitHub integration which needs to be installed.
 	@return TenantIntegrationsApiInstallGithubIntegrationRequest
 */
 func (a *TenantIntegrationsService) InstallGithubIntegration(ctx _context.Context, integrationHandle string) TenantIntegrationsApiInstallGithubIntegrationRequest {
@@ -750,6 +750,157 @@ func (a *TenantIntegrationsService) InstallGithubIntegrationExecute(r TenantInte
 	}
 
 	localVarPath := localBasePath + "/integration/{integration_handle}/github/install"
+	localVarPath = strings.Replace(localVarPath, "{"+"integration_handle"+"}", _neturl.PathEscape(parameterToString(r.integrationHandle, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 307 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type TenantIntegrationsApiInstallSlackIntegrationRequest struct {
+	ctx               _context.Context
+	ApiService        *TenantIntegrationsService
+	integrationHandle string
+}
+
+func (r TenantIntegrationsApiInstallSlackIntegrationRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.InstallSlackIntegrationExecute(r)
+}
+
+/*
+InstallSlackIntegration Install Slack integration on a custom tenant
+
+Install a Slack integration on a custom tenant.
+
+	@param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param integrationHandle The handle of the Slack integration which needs to be installed.
+	@return TenantIntegrationsApiInstallSlackIntegrationRequest
+*/
+func (a *TenantIntegrationsService) InstallSlackIntegration(ctx _context.Context, integrationHandle string) TenantIntegrationsApiInstallSlackIntegrationRequest {
+	return TenantIntegrationsApiInstallSlackIntegrationRequest{
+		ApiService:        a,
+		ctx:               ctx,
+		integrationHandle: integrationHandle,
+	}
+}
+
+// Execute executes the request
+func (a *TenantIntegrationsService) InstallSlackIntegrationExecute(r TenantIntegrationsApiInstallSlackIntegrationRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod = _nethttp.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantIntegrationsService.InstallSlackIntegration")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/integration/{integration_handle}/slack/install"
 	localVarPath = strings.Replace(localVarPath, "{"+"integration_handle"+"}", _neturl.PathEscape(parameterToString(r.integrationHandle, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -915,6 +1066,179 @@ func (a *TenantIntegrationsService) ListExecute(r TenantIntegrationsApiListReque
 	}
 
 	localVarPath := localBasePath + "/integration"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type TenantIntegrationsApiListSlackChannelsRequest struct {
+	ctx               _context.Context
+	ApiService        *TenantIntegrationsService
+	integrationHandle string
+	limit             *int32
+	nextToken         *string
+}
+
+// The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25.
+func (r TenantIntegrationsApiListSlackChannelsRequest) Limit(limit int32) TenantIntegrationsApiListSlackChannelsRequest {
+	r.limit = &limit
+	return r
+}
+
+// When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data.
+func (r TenantIntegrationsApiListSlackChannelsRequest) NextToken(nextToken string) TenantIntegrationsApiListSlackChannelsRequest {
+	r.nextToken = &nextToken
+	return r
+}
+
+func (r TenantIntegrationsApiListSlackChannelsRequest) Execute() (ListSlackChannelsResponse, *_nethttp.Response, error) {
+	return r.ApiService.ListSlackChannelsExecute(r)
+}
+
+/*
+ListSlackChannels List tenant integration Slack channels
+
+List Slack channels that are given access to a tenant Slack integration.
+
+	@param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param integrationHandle The handle of the integration for which Slack channels will be listed.
+	@return TenantIntegrationsApiListSlackChannelsRequest
+*/
+func (a *TenantIntegrationsService) ListSlackChannels(ctx _context.Context, integrationHandle string) TenantIntegrationsApiListSlackChannelsRequest {
+	return TenantIntegrationsApiListSlackChannelsRequest{
+		ApiService:        a,
+		ctx:               ctx,
+		integrationHandle: integrationHandle,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListSlackChannelsResponse
+func (a *TenantIntegrationsService) ListSlackChannelsExecute(r TenantIntegrationsApiListSlackChannelsRequest) (ListSlackChannelsResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ListSlackChannelsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantIntegrationsService.ListSlackChannels")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/integration/{integration_handle}/slack/channel"
+	localVarPath = strings.Replace(localVarPath, "{"+"integration_handle"+"}", _neturl.PathEscape(parameterToString(r.integrationHandle, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

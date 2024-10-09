@@ -21,7 +21,7 @@ type NotificationRule struct {
 	Events        *[]NotificationRuleEvent     `json:"events,omitempty"`
 	Id            string                       `json:"id"`
 	IdentityId    *string                      `json:"identity_id,omitempty"`
-	RecipientType string                       `json:"recipient_type"`
+	RecipientType NotificationRecipientType    `json:"recipient_type"`
 	Recipients    *[]NotificationRuleRecipient `json:"recipients,omitempty"`
 	TargetId      *string                      `json:"target_id,omitempty"`
 	Title         string                       `json:"title"`
@@ -32,7 +32,7 @@ type NotificationRule struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationRule(actorId string, createdAt string, id string, recipientType string, title string) *NotificationRule {
+func NewNotificationRule(actorId string, createdAt string, id string, recipientType NotificationRecipientType, title string) *NotificationRule {
 	this := NotificationRule{}
 	this.ActorId = actorId
 	this.CreatedAt = createdAt
@@ -187,9 +187,9 @@ func (o *NotificationRule) SetIdentityId(v string) {
 }
 
 // GetRecipientType returns the RecipientType field value
-func (o *NotificationRule) GetRecipientType() string {
+func (o *NotificationRule) GetRecipientType() NotificationRecipientType {
 	if o == nil {
-		var ret string
+		var ret NotificationRecipientType
 		return ret
 	}
 
@@ -198,7 +198,7 @@ func (o *NotificationRule) GetRecipientType() string {
 
 // GetRecipientTypeOk returns a tuple with the RecipientType field value
 // and a boolean to check if the value has been set.
-func (o *NotificationRule) GetRecipientTypeOk() (*string, bool) {
+func (o *NotificationRule) GetRecipientTypeOk() (*NotificationRecipientType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -206,7 +206,7 @@ func (o *NotificationRule) GetRecipientTypeOk() (*string, bool) {
 }
 
 // SetRecipientType sets field value
-func (o *NotificationRule) SetRecipientType(v string) {
+func (o *NotificationRule) SetRecipientType(v NotificationRecipientType) {
 	o.RecipientType = v
 }
 

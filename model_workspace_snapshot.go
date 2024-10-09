@@ -18,7 +18,8 @@ import (
 type WorkspaceSnapshot struct {
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
-	CreatedBy *User  `json:"created_by,omitempty"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
 	// The ID of the user that created this.
 	CreatedById string `json:"created_by_id"`
 	// The mod-prefixed name of the dashboard this snapshot belongs to.
@@ -35,13 +36,14 @@ type WorkspaceSnapshot struct {
 	// The schema version of the underlying snapshot.
 	SchemaVersion string `json:"schema_version"`
 	// The current state of the snapshot.
-	State *string     `json:"state,omitempty"`
-	Tags  interface{} `json:"tags,omitempty"`
+	State *SnapshotState `json:"state,omitempty"`
+	Tags  interface{}    `json:"tags,omitempty"`
 	// The title of the snapshot.
 	Title *string `json:"title,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	UpdatedBy *User   `json:"updated_by,omitempty"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
 	// The usage information for this snapshot.
@@ -49,7 +51,7 @@ type WorkspaceSnapshot struct {
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
 	VersionId int32 `json:"version_id"`
 	// The visibility of the snapshot.
-	Visibility *string `json:"visibility,omitempty"`
+	Visibility *SnapshotVisibility `json:"visibility,omitempty"`
 	// The unique identifier for the workspace that the snapshot belongs to.
 	WorkspaceId string `json:"workspace_id"`
 }
@@ -347,9 +349,9 @@ func (o *WorkspaceSnapshot) SetSchemaVersion(v string) {
 }
 
 // GetState returns the State field value if set, zero value otherwise.
-func (o *WorkspaceSnapshot) GetState() string {
+func (o *WorkspaceSnapshot) GetState() SnapshotState {
 	if o == nil || o.State == nil {
-		var ret string
+		var ret SnapshotState
 		return ret
 	}
 	return *o.State
@@ -357,7 +359,7 @@ func (o *WorkspaceSnapshot) GetState() string {
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkspaceSnapshot) GetStateOk() (*string, bool) {
+func (o *WorkspaceSnapshot) GetStateOk() (*SnapshotState, bool) {
 	if o == nil || o.State == nil {
 		return nil, false
 	}
@@ -373,8 +375,8 @@ func (o *WorkspaceSnapshot) HasState() bool {
 	return false
 }
 
-// SetState gets a reference to the given string and assigns it to the State field.
-func (o *WorkspaceSnapshot) SetState(v string) {
+// SetState gets a reference to the given SnapshotState and assigns it to the State field.
+func (o *WorkspaceSnapshot) SetState(v SnapshotState) {
 	o.State = &v
 }
 
@@ -588,9 +590,9 @@ func (o *WorkspaceSnapshot) SetVersionId(v int32) {
 }
 
 // GetVisibility returns the Visibility field value if set, zero value otherwise.
-func (o *WorkspaceSnapshot) GetVisibility() string {
+func (o *WorkspaceSnapshot) GetVisibility() SnapshotVisibility {
 	if o == nil || o.Visibility == nil {
-		var ret string
+		var ret SnapshotVisibility
 		return ret
 	}
 	return *o.Visibility
@@ -598,7 +600,7 @@ func (o *WorkspaceSnapshot) GetVisibility() string {
 
 // GetVisibilityOk returns a tuple with the Visibility field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkspaceSnapshot) GetVisibilityOk() (*string, bool) {
+func (o *WorkspaceSnapshot) GetVisibilityOk() (*SnapshotVisibility, bool) {
 	if o == nil || o.Visibility == nil {
 		return nil, false
 	}
@@ -614,8 +616,8 @@ func (o *WorkspaceSnapshot) HasVisibility() bool {
 	return false
 }
 
-// SetVisibility gets a reference to the given string and assigns it to the Visibility field.
-func (o *WorkspaceSnapshot) SetVisibility(v string) {
+// SetVisibility gets a reference to the given SnapshotVisibility and assigns it to the Visibility field.
+func (o *WorkspaceSnapshot) SetVisibility(v SnapshotVisibility) {
 	o.Visibility = &v
 }
 
