@@ -4,9 +4,85 @@ All URIs are relative to *https://pipes.turbot.com/api/v0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**Install**](OrgWorkspaceFlowpipeMods.md#Install) | **Post** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/mod | Install flowpipe mod to organization workspace.
 [**Uninstall**](OrgWorkspaceFlowpipeMods.md#Uninstall) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias} | Uninstall flowpipe mod from organization workspace.
 [**Update**](OrgWorkspaceFlowpipeMods.md#Update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias} | Update a flowpipe mod in an organization workspace
 
+
+
+## Install
+
+> WorkspaceMod Install(ctx, orgHandle, workspaceHandle).Request(request).Execute()
+
+Install flowpipe mod to organization workspace.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    orgHandle := "orgHandle_example" // string | The handle of an organization that owns the workspace.
+    workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the mod will be installed.
+    request := *openapiclient.NewCreateWorkspaceModRequest("Path_example") // CreateWorkspaceModRequest | The request body to install a mod in the mentioned workspace for this organization.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.OrgWorkspaceFlowpipeMods.Install(context.Background(), orgHandle, workspaceHandle).Request(request).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceFlowpipeMods.Install``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `Install`: WorkspaceMod
+    fmt.Fprintf(os.Stdout, "Response from `OrgWorkspaceFlowpipeMods.Install`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgHandle** | **string** | The handle of an organization that owns the workspace. | 
+**workspaceHandle** | **string** | The handle of the workspace where the mod will be installed. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiInstallRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **request** | [**CreateWorkspaceModRequest**](CreateWorkspaceModRequest.md) | The request body to install a mod in the mentioned workspace for this organization. | 
+
+### Return type
+
+[**WorkspaceMod**](WorkspaceMod.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## Uninstall

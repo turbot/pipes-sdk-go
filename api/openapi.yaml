@@ -13493,6 +13493,90 @@ paths:
       summary: Get org workspace flowpipe input
       tags:
       - OrgWorkspaceFlowpipeInputs
+  /org/{org_handle}/workspace/{workspace_handle}/flowpipe/mod:
+    post:
+      description: Install flowpipe mod to a organization workspace.
+      operationId: orgWorkspaceFlowpipeMod_install
+      parameters:
+      - description: The handle of an organization that owns the workspace.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the workspace where the mod will be installed.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWorkspaceModRequest'
+        description: The request body to install a mod in the mentioned workspace
+          for this organization.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceMod'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Install flowpipe mod to organization workspace.
+      tags:
+      - OrgWorkspaceFlowpipeMods
+      x-codegen-request-body-name: request
   /org/{org_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias}:
     delete:
       description: Uninstall flowpipe mod from organization workspace.
@@ -30749,6 +30833,90 @@ paths:
       summary: Get user workspace flowpipe input
       tags:
       - UserWorkspaceFlowpipeInputs
+  /user/{user_handle}/workspace/{workspace_handle}/flowpipe/mod:
+    post:
+      description: Install flowpipe mod to a user's workspace
+      operationId: userWorkspaceFlowpipeMod_install
+      parameters:
+      - description: The handle of the user who owns the workspace.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the workspace where the mod will be installed.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWorkspaceModRequest'
+        description: The request body to install a mod in the mentioned workspace
+          for this user.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceMod'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Install flowpipe mod to a user's workspace
+      tags:
+      - UserWorkspaceFlowpipeMods
+      x-codegen-request-body-name: request
   /user/{user_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias}:
     delete:
       description: Uninstall flowpipe mod from a user's workspace
