@@ -67,8 +67,6 @@ type APIClient struct {
 
 	OrgMembers *OrgMembersService
 
-	OrgNotifications *OrgNotificationsService
-
 	OrgProcesses *OrgProcessesService
 
 	OrgWorkspaceAggregators *OrgWorkspaceAggregatorsService
@@ -105,8 +103,6 @@ type APIClient struct {
 
 	OrgWorkspaceMods *OrgWorkspaceModsService
 
-	OrgWorkspaceNotificationRules *OrgWorkspaceNotificationRulesService
-
 	OrgWorkspacePipelines *OrgWorkspacePipelinesService
 
 	OrgWorkspaceProcesses *OrgWorkspaceProcessesService
@@ -140,8 +136,6 @@ type APIClient struct {
 	UserConnections *UserConnectionsService
 
 	UserIntegrations *UserIntegrationsService
-
-	UserNotifications *UserNotificationsService
 
 	UserProcesses *UserProcessesService
 
@@ -178,8 +172,6 @@ type APIClient struct {
 	UserWorkspaceModVariables *UserWorkspaceModVariablesService
 
 	UserWorkspaceMods *UserWorkspaceModsService
-
-	UserWorkspaceNotificationRules *UserWorkspaceNotificationRulesService
 
 	UserWorkspacePipelines *UserWorkspacePipelinesService
 
@@ -221,7 +213,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OrgConnections = (*OrgConnectionsService)(&c.common)
 	c.OrgIntegrations = (*OrgIntegrationsService)(&c.common)
 	c.OrgMembers = (*OrgMembersService)(&c.common)
-	c.OrgNotifications = (*OrgNotificationsService)(&c.common)
 	c.OrgProcesses = (*OrgProcessesService)(&c.common)
 	c.OrgWorkspaceAggregators = (*OrgWorkspaceAggregatorsService)(&c.common)
 	c.OrgWorkspaceConnectionAssociations = (*OrgWorkspaceConnectionAssociationsService)(&c.common)
@@ -240,7 +231,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OrgWorkspaceMembers = (*OrgWorkspaceMembersService)(&c.common)
 	c.OrgWorkspaceModVariables = (*OrgWorkspaceModVariablesService)(&c.common)
 	c.OrgWorkspaceMods = (*OrgWorkspaceModsService)(&c.common)
-	c.OrgWorkspaceNotificationRules = (*OrgWorkspaceNotificationRulesService)(&c.common)
 	c.OrgWorkspacePipelines = (*OrgWorkspacePipelinesService)(&c.common)
 	c.OrgWorkspaceProcesses = (*OrgWorkspaceProcessesService)(&c.common)
 	c.OrgWorkspaceSchemas = (*OrgWorkspaceSchemasService)(&c.common)
@@ -258,7 +248,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.UserBilling = (*UserBillingService)(&c.common)
 	c.UserConnections = (*UserConnectionsService)(&c.common)
 	c.UserIntegrations = (*UserIntegrationsService)(&c.common)
-	c.UserNotifications = (*UserNotificationsService)(&c.common)
 	c.UserProcesses = (*UserProcessesService)(&c.common)
 	c.UserTokens = (*UserTokensService)(&c.common)
 	c.UserWorkspaceAggregators = (*UserWorkspaceAggregatorsService)(&c.common)
@@ -277,7 +266,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.UserWorkspaceIntegrations = (*UserWorkspaceIntegrationsService)(&c.common)
 	c.UserWorkspaceModVariables = (*UserWorkspaceModVariablesService)(&c.common)
 	c.UserWorkspaceMods = (*UserWorkspaceModsService)(&c.common)
-	c.UserWorkspaceNotificationRules = (*UserWorkspaceNotificationRulesService)(&c.common)
 	c.UserWorkspacePipelines = (*UserWorkspacePipelinesService)(&c.common)
 	c.UserWorkspaceProcesses = (*UserWorkspaceProcessesService)(&c.common)
 	c.UserWorkspaceSchemas = (*UserWorkspaceSchemasService)(&c.common)

@@ -145,10 +145,6 @@ Class | Method | HTTP request | Description
 *OrgMembers* | [**Invite**](docs/OrgMembers.md#invite) | **Post** /org/{org_handle}/member/invite | Invite org member
 *OrgMembers* | [**List**](docs/OrgMembers.md#list) | **Get** /org/{org_handle}/member | List Organization Members
 *OrgMembers* | [**Update**](docs/OrgMembers.md#update) | **Patch** /org/{org_handle}/member/{user_handle} | Update org member
-*OrgNotifications* | [**CreateOrgNotificationRule**](docs/OrgNotifications.md#createorgnotificationrule) | **Post** /org/{org_handle}/notification_rule | Create organization notification rule
-*OrgNotifications* | [**DeleteOrgNotificationRule**](docs/OrgNotifications.md#deleteorgnotificationrule) | **Delete** /user/{org_handle}/notification_rule/{notification_rule_id} | Delete organization notification rule
-*OrgNotifications* | [**GetOrgNotificationRule**](docs/OrgNotifications.md#getorgnotificationrule) | **Get** /user/{org_handle}/notification_rule/{notification_rule_id} | Get organization notification rule
-*OrgNotifications* | [**ListOrgNotificationRules**](docs/OrgNotifications.md#listorgnotificationrules) | **Get** /user/{org_handle}/notification_rule | List organization notification rules
 *OrgProcesses* | [**Get**](docs/OrgProcesses.md#get) | **Get** /org/{org_handle}/process/{process_id} | Get Org process
 *OrgProcesses* | [**List**](docs/OrgProcesses.md#list) | **Get** /org/{org_handle}/process | List Org processes
 *OrgProcesses* | [**Log**](docs/OrgProcesses.md#log) | **Get** /org/{org_handle}/process/{process_id}/log/{log_file}.{content_type} | List Org process logs
@@ -230,10 +226,6 @@ Class | Method | HTTP request | Description
 *OrgWorkspaceMods* | [**List**](docs/OrgWorkspaceMods.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/mod | List organization workspace installed mods
 *OrgWorkspaceMods* | [**Uninstall**](docs/OrgWorkspaceMods.md#uninstall) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/mod/{mod_alias} | Uninstall mod from organization workspace.
 *OrgWorkspaceMods* | [**Update**](docs/OrgWorkspaceMods.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/mod/{mod_alias} | Update a mod in an organization workspace
-*OrgWorkspaceNotificationRules* | [**Create**](docs/OrgWorkspaceNotificationRules.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/notification_rule | Create organization workspace notification rule
-*OrgWorkspaceNotificationRules* | [**Delete**](docs/OrgWorkspaceNotificationRules.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/notification_rule/{notification_rule_id} | Delete organization workspace notification rule
-*OrgWorkspaceNotificationRules* | [**Get**](docs/OrgWorkspaceNotificationRules.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/notification_rule/{notification_rule_id} | Get organization workspace notification rule
-*OrgWorkspaceNotificationRules* | [**List**](docs/OrgWorkspaceNotificationRules.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/notification_rule | List organization workspace notification rules
 *OrgWorkspacePipelines* | [**Command**](docs/OrgWorkspacePipelines.md#command) | **Post** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id}/command | Run org workspace pipeline command
 *OrgWorkspacePipelines* | [**Create**](docs/OrgWorkspacePipelines.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/pipeline | Create org workspace pipeline
 *OrgWorkspacePipelines* | [**Delete**](docs/OrgWorkspacePipelines.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Delete org workspace pipeline
@@ -382,10 +374,6 @@ Class | Method | HTTP request | Description
 *UserIntegrations* | [**ListSlackChannels**](docs/UserIntegrations.md#listslackchannels) | **Get** /user/{user_handle}/integration/{integration_handle}/slack/channel | List user integration Slack channels
 *UserIntegrations* | [**Test**](docs/UserIntegrations.md#test) | **Post** /user/{user_handle}/integration/{integration_handle}/test | Test user integration
 *UserIntegrations* | [**Update**](docs/UserIntegrations.md#update) | **Patch** /user/{user_handle}/integration/{integration_handle} | Update user integration
-*UserNotifications* | [**CreateUserNotificationRule**](docs/UserNotifications.md#createusernotificationrule) | **Post** /user/{user_handle}/notification_rule | Create user notification rule
-*UserNotifications* | [**DeleteUserNotificationRule**](docs/UserNotifications.md#deleteusernotificationrule) | **Delete** /user/{user_handle}/notification_rule/{notification_rule_id} | Delete user notification rule
-*UserNotifications* | [**GetUserNotificationRule**](docs/UserNotifications.md#getusernotificationrule) | **Get** /user/{user_handle}/notification_rule/{notification_rule_id} | Get user notification rule
-*UserNotifications* | [**ListUserNotificationRules**](docs/UserNotifications.md#listusernotificationrules) | **Get** /user/{user_handle}/notification_rule | List user notification rules
 *UserProcesses* | [**Get**](docs/UserProcesses.md#get) | **Get** /user/{user_handle}/process/{process_id} | Get User process
 *UserProcesses* | [**List**](docs/UserProcesses.md#list) | **Get** /user/{user_handle}/process | List User processes
 *UserProcesses* | [**Log**](docs/UserProcesses.md#log) | **Get** /user/{user_handle}/process/{process_id}/log/{log_file}.{content_type} | List user process logs
@@ -467,10 +455,6 @@ Class | Method | HTTP request | Description
 *UserWorkspaceMods* | [**List**](docs/UserWorkspaceMods.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/mod | List user workspace installed mods
 *UserWorkspaceMods* | [**Uninstall**](docs/UserWorkspaceMods.md#uninstall) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/mod/{mod_alias} | Uninstall mod from a user&#39;s workspace.
 *UserWorkspaceMods* | [**Update**](docs/UserWorkspaceMods.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/mod/{mod_alias} | Update a mod in a user&#39;s workspace
-*UserWorkspaceNotificationRules* | [**Create**](docs/UserWorkspaceNotificationRules.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/notification_rule | Create user workspace notification rule
-*UserWorkspaceNotificationRules* | [**Delete**](docs/UserWorkspaceNotificationRules.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/notification_rule/{notification_rule_id} | Delete user workspace notification rule
-*UserWorkspaceNotificationRules* | [**Get**](docs/UserWorkspaceNotificationRules.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/notification_rule/{notification_rule_id} | Get user workspace notification rule
-*UserWorkspaceNotificationRules* | [**List**](docs/UserWorkspaceNotificationRules.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/notification_rule | List user workspace notification rules
 *UserWorkspacePipelines* | [**Command**](docs/UserWorkspacePipelines.md#command) | **Post** /user/{user_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id}/command | Run user workspace pipeline command
 *UserWorkspacePipelines* | [**Create**](docs/UserWorkspacePipelines.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/pipeline | Create user workspace pipeline
 *UserWorkspacePipelines* | [**Delete**](docs/UserWorkspacePipelines.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Delete user workspace pipeline
@@ -553,7 +537,6 @@ Class | Method | HTTP request | Description
  - [CreateDatatankTableRequest](docs/CreateDatatankTableRequest.md)
  - [CreateFlowpipeInputRequest](docs/CreateFlowpipeInputRequest.md)
  - [CreateIntegrationRequest](docs/CreateIntegrationRequest.md)
- - [CreateOrgNotificationRequest](docs/CreateOrgNotificationRequest.md)
  - [CreateOrgRequest](docs/CreateOrgRequest.md)
  - [CreateOrgUserRequest](docs/CreateOrgUserRequest.md)
  - [CreateOrgWorkspaceUserRequest](docs/CreateOrgWorkspaceUserRequest.md)
@@ -561,14 +544,11 @@ Class | Method | HTTP request | Description
  - [CreatePipelineRequest](docs/CreatePipelineRequest.md)
  - [CreateTenantRequest](docs/CreateTenantRequest.md)
  - [CreateTriggerRequest](docs/CreateTriggerRequest.md)
- - [CreateUserNotificationRequestNoSender](docs/CreateUserNotificationRequestNoSender.md)
  - [CreateUserPasswordRequest](docs/CreateUserPasswordRequest.md)
  - [CreateUserRequest](docs/CreateUserRequest.md)
  - [CreateWorkspaceConnRequest](docs/CreateWorkspaceConnRequest.md)
  - [CreateWorkspaceModRequest](docs/CreateWorkspaceModRequest.md)
  - [CreateWorkspaceModVariableSettingRequest](docs/CreateWorkspaceModVariableSettingRequest.md)
- - [CreateWorkspaceNotificationRequest](docs/CreateWorkspaceNotificationRequest.md)
- - [CreateWorkspaceNotificationRequestNoSender](docs/CreateWorkspaceNotificationRequestNoSender.md)
  - [CreateWorkspaceRequest](docs/CreateWorkspaceRequest.md)
  - [CreateWorkspaceSnapshotRequest](docs/CreateWorkspaceSnapshotRequest.md)
  - [Datatank](docs/Datatank.md)
@@ -615,7 +595,6 @@ Class | Method | HTTP request | Description
  - [ListIdentitiesResponse](docs/ListIdentitiesResponse.md)
  - [ListIntegrationsResponse](docs/ListIntegrationsResponse.md)
  - [ListLogsResponse](docs/ListLogsResponse.md)
- - [ListNotificationRulesResponse](docs/ListNotificationRulesResponse.md)
  - [ListOrgUsersResponse](docs/ListOrgUsersResponse.md)
  - [ListOrgWorkspaceUsersResponse](docs/ListOrgWorkspaceUsersResponse.md)
  - [ListOrgsResponse](docs/ListOrgsResponse.md)
@@ -643,12 +622,6 @@ Class | Method | HTTP request | Description
  - [ListWorkspacesResponse](docs/ListWorkspacesResponse.md)
  - [LogRecord](docs/LogRecord.md)
  - [ModPipeling](docs/ModPipeling.md)
- - [NotificationRecipientRequest](docs/NotificationRecipientRequest.md)
- - [NotificationRecipientState](docs/NotificationRecipientState.md)
- - [NotificationRecipientType](docs/NotificationRecipientType.md)
- - [NotificationRule](docs/NotificationRule.md)
- - [NotificationRuleEvent](docs/NotificationRuleEvent.md)
- - [NotificationRuleRecipient](docs/NotificationRuleRecipient.md)
  - [Notifier](docs/Notifier.md)
  - [NotifierPrecedence](docs/NotifierPrecedence.md)
  - [NotifierState](docs/NotifierState.md)

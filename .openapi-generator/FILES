@@ -11,7 +11,6 @@ api_org_connection_tree.go
 api_org_connections.go
 api_org_integrations.go
 api_org_members.go
-api_org_notifications.go
 api_org_processes.go
 api_org_workspace_aggregators.go
 api_org_workspace_connection_associations.go
@@ -30,7 +29,6 @@ api_org_workspace_integrations.go
 api_org_workspace_members.go
 api_org_workspace_mod_variables.go
 api_org_workspace_mods.go
-api_org_workspace_notification_rules.go
 api_org_workspace_pipelines.go
 api_org_workspace_processes.go
 api_org_workspace_schemas.go
@@ -48,7 +46,6 @@ api_tenants.go
 api_user_billing.go
 api_user_connections.go
 api_user_integrations.go
-api_user_notifications.go
 api_user_processes.go
 api_user_tokens.go
 api_user_workspace_aggregators.go
@@ -67,7 +64,6 @@ api_user_workspace_flowpipe_triggers.go
 api_user_workspace_integrations.go
 api_user_workspace_mod_variables.go
 api_user_workspace_mods.go
-api_user_workspace_notification_rules.go
 api_user_workspace_pipelines.go
 api_user_workspace_processes.go
 api_user_workspace_schemas.go
@@ -107,7 +103,6 @@ docs/CreateDatatankRequest.md
 docs/CreateDatatankTableRequest.md
 docs/CreateFlowpipeInputRequest.md
 docs/CreateIntegrationRequest.md
-docs/CreateOrgNotificationRequest.md
 docs/CreateOrgRequest.md
 docs/CreateOrgUserRequest.md
 docs/CreateOrgWorkspaceUserRequest.md
@@ -115,14 +110,11 @@ docs/CreatePermissionRequest.md
 docs/CreatePipelineRequest.md
 docs/CreateTenantRequest.md
 docs/CreateTriggerRequest.md
-docs/CreateUserNotificationRequestNoSender.md
 docs/CreateUserPasswordRequest.md
 docs/CreateUserRequest.md
 docs/CreateWorkspaceConnRequest.md
 docs/CreateWorkspaceModRequest.md
 docs/CreateWorkspaceModVariableSettingRequest.md
-docs/CreateWorkspaceNotificationRequest.md
-docs/CreateWorkspaceNotificationRequestNoSender.md
 docs/CreateWorkspaceRequest.md
 docs/CreateWorkspaceSnapshotRequest.md
 docs/Datatank.md
@@ -170,7 +162,6 @@ docs/ListGithubRepositoryBranchesResponse.md
 docs/ListIdentitiesResponse.md
 docs/ListIntegrationsResponse.md
 docs/ListLogsResponse.md
-docs/ListNotificationRulesResponse.md
 docs/ListOrgUsersResponse.md
 docs/ListOrgWorkspaceUsersResponse.md
 docs/ListOrgsResponse.md
@@ -198,12 +189,6 @@ docs/ListWorkspaceSnapshotsResponse.md
 docs/ListWorkspacesResponse.md
 docs/LogRecord.md
 docs/ModPipeling.md
-docs/NotificationRecipientRequest.md
-docs/NotificationRecipientState.md
-docs/NotificationRecipientType.md
-docs/NotificationRule.md
-docs/NotificationRuleEvent.md
-docs/NotificationRuleRecipient.md
 docs/Notifier.md
 docs/NotifierPrecedence.md
 docs/NotifierState.md
@@ -214,7 +199,6 @@ docs/OrgConnectionTree.md
 docs/OrgConnections.md
 docs/OrgIntegrations.md
 docs/OrgMembers.md
-docs/OrgNotifications.md
 docs/OrgProcesses.md
 docs/OrgUser.md
 docs/OrgWorkspaceAggregators.md
@@ -234,7 +218,6 @@ docs/OrgWorkspaceIntegrations.md
 docs/OrgWorkspaceMembers.md
 docs/OrgWorkspaceModVariables.md
 docs/OrgWorkspaceMods.md
-docs/OrgWorkspaceNotificationRules.md
 docs/OrgWorkspacePipelines.md
 docs/OrgWorkspaceProcesses.md
 docs/OrgWorkspaceSchemas.md
@@ -320,7 +303,6 @@ docs/UserDatabasePassword.md
 docs/UserEmail.md
 docs/UserIntegrations.md
 docs/UserLoginRequest.md
-docs/UserNotifications.md
 docs/UserOrg.md
 docs/UserPreferences.md
 docs/UserProcesses.md
@@ -342,7 +324,6 @@ docs/UserWorkspaceFlowpipeTriggers.md
 docs/UserWorkspaceIntegrations.md
 docs/UserWorkspaceModVariables.md
 docs/UserWorkspaceMods.md
-docs/UserWorkspaceNotificationRules.md
 docs/UserWorkspacePipelines.md
 docs/UserWorkspaceProcesses.md
 docs/UserWorkspaceSchemas.md
@@ -405,7 +386,6 @@ model_create_datatank_request.go
 model_create_datatank_table_request.go
 model_create_flowpipe_input_request.go
 model_create_integration_request.go
-model_create_org_notification_request.go
 model_create_org_request.go
 model_create_org_user_request.go
 model_create_org_workspace_user_request.go
@@ -413,14 +393,11 @@ model_create_permission_request.go
 model_create_pipeline_request.go
 model_create_tenant_request.go
 model_create_trigger_request.go
-model_create_user_notification_request_no_sender.go
 model_create_user_password_request.go
 model_create_user_request.go
 model_create_workspace_conn_request.go
 model_create_workspace_mod_request.go
 model_create_workspace_mod_variable_setting_request.go
-model_create_workspace_notification_request.go
-model_create_workspace_notification_request_no_sender.go
 model_create_workspace_request.go
 model_create_workspace_snapshot_request.go
 model_datatank.go
@@ -467,7 +444,6 @@ model_list_github_repository_branches_response.go
 model_list_identities_response.go
 model_list_integrations_response.go
 model_list_logs_response.go
-model_list_notification_rules_response.go
 model_list_org_users_response.go
 model_list_org_workspace_users_response.go
 model_list_orgs_response.go
@@ -495,12 +471,6 @@ model_list_workspace_snapshots_response.go
 model_list_workspaces_response.go
 model_log_record.go
 model_mod_pipeling.go
-model_notification_recipient_request.go
-model_notification_recipient_state.go
-model_notification_recipient_type.go
-model_notification_rule.go
-model_notification_rule_event.go
-model_notification_rule_recipient.go
 model_notifier.go
 model_notifier_precedence.go
 model_notifier_state.go
