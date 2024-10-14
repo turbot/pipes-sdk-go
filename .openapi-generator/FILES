@@ -108,6 +108,7 @@ docs/CreateDatatankRequest.md
 docs/CreateDatatankTableRequest.md
 docs/CreateFlowpipeInputRequest.md
 docs/CreateIntegrationRequest.md
+docs/CreateNotifierRequest.md
 docs/CreateOrgRequest.md
 docs/CreateOrgUserRequest.md
 docs/CreateOrgWorkspaceUserRequest.md
@@ -282,6 +283,7 @@ docs/UpdateDatatankPartRequest.md
 docs/UpdateDatatankRequest.md
 docs/UpdateDatatankTableRequest.md
 docs/UpdateIntegrationRequest.md
+docs/UpdateNotifierRequest.md
 docs/UpdateOrgRequest.md
 docs/UpdateOrgUserRequest.md
 docs/UpdateOrgWorkspaceUserRequest.md
@@ -400,6 +402,7 @@ model_create_datatank_request.go
 model_create_datatank_table_request.go
 model_create_flowpipe_input_request.go
 model_create_integration_request.go
+model_create_notifier_request.go
 model_create_org_request.go
 model_create_org_user_request.go
 model_create_org_workspace_user_request.go
@@ -531,6 +534,7 @@ model_update_datatank_part_request.go
 model_update_datatank_request.go
 model_update_datatank_table_request.go
 model_update_integration_request.go
+model_update_notifier_request.go
 model_update_org_request.go
 model_update_org_user_request.go
 model_update_org_workspace_user_request.go

@@ -36,7 +36,7 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the org for which the notifier is to be created.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace for which the notifier is to be created.
-    request := map[string]interface{}{"key": "TODO"} // map[string]interface{} | The request body for the notifier to be created.
+    request := *openapiclient.NewCreateNotifierRequest("Name_example", map[string]interface{}(123)) // CreateNotifierRequest | The request body for the notifier to be created.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **request** | **map[string]interface{}** | The request body for the notifier to be created. | 
+ **request** | [**CreateNotifierRequest**](CreateNotifierRequest.md) | The request body for the notifier to be created. | 
 
 ### Return type
 
@@ -421,7 +421,7 @@ func main() {
     orgHandle := "orgHandle_example" // string | The handle of the org for which the notifier is to be updated.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace for which the notifier is to be updated.
     notifierName := "notifierName_example" // string | The name of the notifier to be updated.
-    request := map[string]interface{}{"key": "TODO"} // map[string]interface{} | The request body for the notifier to be updated.
+    request := *openapiclient.NewUpdateNotifierRequest() // UpdateNotifierRequest | The request body for the notifier to be updated.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 
 
 
- **request** | **map[string]interface{}** | The request body for the notifier to be updated. | 
+ **request** | [**UpdateNotifierRequest**](UpdateNotifierRequest.md) | The request body for the notifier to be updated. | 
 
 ### Return type
 

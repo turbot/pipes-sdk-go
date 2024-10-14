@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    request := map[string]interface{}{"key": "TODO"} // map[string]interface{} | The request body for the notifier to be created.
+    request := *openapiclient.NewCreateNotifierRequest("Name_example", map[string]interface{}(123)) // CreateNotifierRequest | The request body for the notifier to be created.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -58,7 +58,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request** | **map[string]interface{}** | The request body for the notifier to be created. | 
+ **request** | [**CreateNotifierRequest**](CreateNotifierRequest.md) | The request body for the notifier to be created. | 
 
 ### Return type
 
@@ -310,7 +310,7 @@ import (
 
 func main() {
     notifierName := "notifierName_example" // string | The name of the notifier to be updated.
-    request := map[string]interface{}{"key": "TODO"} // map[string]interface{} | The request body for the notifier to be updated.
+    request := *openapiclient.NewUpdateNotifierRequest() // UpdateNotifierRequest | The request body for the notifier to be updated.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -340,7 +340,7 @@ Other parameters are passed through a pointer to a apiUpdateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **request** | **map[string]interface{}** | The request body for the notifier to be updated. | 
+ **request** | [**UpdateNotifierRequest**](UpdateNotifierRequest.md) | The request body for the notifier to be updated. | 
 
 ### Return type
 

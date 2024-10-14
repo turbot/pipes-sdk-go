@@ -30,11 +30,11 @@ type TenantNotifiersService service
 type TenantNotifiersApiCreateRequest struct {
 	ctx        _context.Context
 	ApiService *TenantNotifiersService
-	request    *map[string]interface{}
+	request    *CreateNotifierRequest
 }
 
 // The request body for the notifier to be created.
-func (r TenantNotifiersApiCreateRequest) Request(request map[string]interface{}) TenantNotifiersApiCreateRequest {
+func (r TenantNotifiersApiCreateRequest) Request(request CreateNotifierRequest) TenantNotifiersApiCreateRequest {
 	r.request = &request
 	return r
 }
@@ -737,11 +737,11 @@ type TenantNotifiersApiUpdateRequest struct {
 	ctx          _context.Context
 	ApiService   *TenantNotifiersService
 	notifierName string
-	request      *map[string]interface{}
+	request      *UpdateNotifierRequest
 }
 
 // The request body for the notifier to be updated.
-func (r TenantNotifiersApiUpdateRequest) Request(request map[string]interface{}) TenantNotifiersApiUpdateRequest {
+func (r TenantNotifiersApiUpdateRequest) Request(request UpdateNotifierRequest) TenantNotifiersApiUpdateRequest {
 	r.request = &request
 	return r
 }

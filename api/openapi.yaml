@@ -38169,6 +38169,27 @@ components:
       - type
       type: object
     CreateNotifierRequest:
+      example:
+        name: name
+        notifies: '{}'
+        state: '{}'
+      properties:
+        name:
+          description: The name of the notifier to create
+          format: ^[a-z](?:[a-z0-9]|_(?=[a-z0-9])){0,38}$
+          type: string
+        notifies:
+          description: The notify targets for the notifier to create
+          properties: {}
+          type: object
+        state:
+          allOf:
+          - $ref: '#/components/schemas/NotifierState'
+          description: The state of the notifier to create
+          type: object
+      required:
+      - name
+      - notifies
       type: object
     CreateOrgRequest:
       example:
@@ -44199,6 +44220,24 @@ components:
           type: object
       type: object
     UpdateNotifierRequest:
+      example:
+        name: name
+        notifies: '{}'
+        state: '{}'
+      properties:
+        name:
+          description: The name of the notifier to update
+          format: ^[a-z](?:[a-z0-9]|_(?=[a-z0-9])){0,38}$
+          type: string
+        notifies:
+          description: The notify targets for the notifier to update
+          properties: {}
+          type: object
+        state:
+          allOf:
+          - $ref: '#/components/schemas/NotifierState'
+          description: The state of the notifier to update
+          type: object
       type: object
     UpdateOrgRequest:
       example:

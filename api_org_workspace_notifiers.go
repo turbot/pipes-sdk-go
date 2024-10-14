@@ -32,11 +32,11 @@ type OrgWorkspaceNotifiersApiCreateRequest struct {
 	ApiService      *OrgWorkspaceNotifiersService
 	orgHandle       string
 	workspaceHandle string
-	request         *map[string]interface{}
+	request         *CreateNotifierRequest
 }
 
 // The request body for the notifier to be created.
-func (r OrgWorkspaceNotifiersApiCreateRequest) Request(request map[string]interface{}) OrgWorkspaceNotifiersApiCreateRequest {
+func (r OrgWorkspaceNotifiersApiCreateRequest) Request(request CreateNotifierRequest) OrgWorkspaceNotifiersApiCreateRequest {
 	r.request = &request
 	return r
 }
@@ -964,11 +964,11 @@ type OrgWorkspaceNotifiersApiUpdateRequest struct {
 	orgHandle       string
 	workspaceHandle string
 	notifierName    string
-	request         *map[string]interface{}
+	request         *UpdateNotifierRequest
 }
 
 // The request body for the notifier to be updated.
-func (r OrgWorkspaceNotifiersApiUpdateRequest) Request(request map[string]interface{}) OrgWorkspaceNotifiersApiUpdateRequest {
+func (r OrgWorkspaceNotifiersApiUpdateRequest) Request(request UpdateNotifierRequest) OrgWorkspaceNotifiersApiUpdateRequest {
 	r.request = &request
 	return r
 }

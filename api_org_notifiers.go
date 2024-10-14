@@ -31,11 +31,11 @@ type OrgNotifiersApiCreateRequest struct {
 	ctx        _context.Context
 	ApiService *OrgNotifiersService
 	orgHandle  string
-	request    *map[string]interface{}
+	request    *CreateNotifierRequest
 }
 
 // The request body for the notifier to be created.
-func (r OrgNotifiersApiCreateRequest) Request(request map[string]interface{}) OrgNotifiersApiCreateRequest {
+func (r OrgNotifiersApiCreateRequest) Request(request CreateNotifierRequest) OrgNotifiersApiCreateRequest {
 	r.request = &request
 	return r
 }
@@ -744,11 +744,11 @@ type OrgNotifiersApiUpdateRequest struct {
 	ApiService   *OrgNotifiersService
 	orgHandle    string
 	notifierName string
-	request      *map[string]interface{}
+	request      *UpdateNotifierRequest
 }
 
 // The request body for the notifier to be updated.
-func (r OrgNotifiersApiUpdateRequest) Request(request map[string]interface{}) OrgNotifiersApiUpdateRequest {
+func (r OrgNotifiersApiUpdateRequest) Request(request UpdateNotifierRequest) OrgNotifiersApiUpdateRequest {
 	r.request = &request
 	return r
 }

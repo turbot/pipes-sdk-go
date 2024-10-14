@@ -31,11 +31,11 @@ type UserNotifiersApiCreateRequest struct {
 	ctx        _context.Context
 	ApiService *UserNotifiersService
 	userHandle string
-	request    *map[string]interface{}
+	request    *CreateNotifierRequest
 }
 
 // The request body for the notifier to be created.
-func (r UserNotifiersApiCreateRequest) Request(request map[string]interface{}) UserNotifiersApiCreateRequest {
+func (r UserNotifiersApiCreateRequest) Request(request CreateNotifierRequest) UserNotifiersApiCreateRequest {
 	r.request = &request
 	return r
 }
@@ -744,11 +744,11 @@ type UserNotifiersApiUpdateRequest struct {
 	ApiService   *UserNotifiersService
 	userHandle   string
 	notifierName string
-	request      *map[string]interface{}
+	request      *UpdateNotifierRequest
 }
 
 // The request body for the notifier to be updated.
-func (r UserNotifiersApiUpdateRequest) Request(request map[string]interface{}) UserNotifiersApiUpdateRequest {
+func (r UserNotifiersApiUpdateRequest) Request(request UpdateNotifierRequest) UserNotifiersApiUpdateRequest {
 	r.request = &request
 	return r
 }
