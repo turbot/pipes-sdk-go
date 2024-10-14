@@ -3413,6 +3413,339 @@ paths:
       summary: User logout
       tags:
       - Auth
+  /notifier:
+    get:
+      description: List all notifiers for a custom tenant
+      operationId: tenantNotifier_list
+      parameters:
+      - description: The maximum number of items to return.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The token to retrieve the next page.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The filter to apply to the list.
+        explode: true
+        in: query
+        name: where
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNotifiersResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List tenant notifiers
+      tags:
+      - TenantNotifiers
+    post:
+      description: Create a new notifier for a custom tenant
+      operationId: tenantNotifier_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNotifierRequest'
+        description: The request body for the notifier to be created.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Create tenant notifier
+      tags:
+      - TenantNotifiers
+      x-codegen-request-body-name: request
+  /notifier/{notifier_name}:
+    delete:
+      description: Delete a notifier for a custom tenant
+      operationId: tenantNotifier_delete
+      parameters:
+      - description: The name of the notifier to be deleted.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Delete tenant notifier
+      tags:
+      - TenantNotifiers
+    get:
+      description: Get a notifier for a custom tenant
+      operationId: tenantNotifier_get
+      parameters:
+      - description: The name of the notifier to be retrieved.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get tenant notifier
+      tags:
+      - TenantNotifiers
+    patch:
+      description: Update a notifier for a custom tenant
+      operationId: tenantNotifier_update
+      parameters:
+      - description: The name of the notifier to be updated.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateNotifierRequest'
+        description: The request body for the notifier to be updated.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update tenant notifier
+      tags:
+      - TenantNotifiers
+      x-codegen-request-body-name: request
   /org:
     get:
       description: List all the organizations.
@@ -8762,6 +9095,374 @@ paths:
       summary: Update org member
       tags:
       - OrgMembers
+      x-codegen-request-body-name: request
+  /org/{org_handle}/notifier:
+    get:
+      description: List all notifiers for an org
+      operationId: orgNotifier_list
+      parameters:
+      - description: The handle of the org for which the notifiers are to be listed.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The maximum number of items to return.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The token to retrieve the next page.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The filter to apply to the list.
+        explode: true
+        in: query
+        name: where
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNotifiersResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List org notifiers
+      tags:
+      - OrgNotifiers
+    post:
+      description: Create a new notifier for an org
+      operationId: orgNotifier_create
+      parameters:
+      - description: The handle of the org for which the notifier is to be created.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNotifierRequest'
+        description: The request body for the notifier to be created.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Create org notifier
+      tags:
+      - OrgNotifiers
+      x-codegen-request-body-name: request
+  /org/{org_handle}/notifier/{notifier_name}:
+    delete:
+      description: Delete a notifier for an org
+      operationId: orgNotifier_delete
+      parameters:
+      - description: The handle of the org for which the notifier is to be deleted.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the notifier to be deleted.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Delete org notifier
+      tags:
+      - OrgNotifiers
+    get:
+      description: Get a notifier for an org
+      operationId: orgNotifier_get
+      parameters:
+      - description: The handle of the org for which the notifier is to be retrieved.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the notifier to be retrieved.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get org notifier
+      tags:
+      - OrgNotifiers
+    patch:
+      description: Update a notifier for an org
+      operationId: orgNotifier_update
+      parameters:
+      - description: The handle of the org for which the notifier is to be updated.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the notifier to be updated.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateNotifierRequest'
+        description: The request body for the notifier to be updated.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update org notifier
+      tags:
+      - OrgNotifiers
       x-codegen-request-body-name: request
   /org/{org_handle}/process:
     get:
@@ -16474,6 +17175,510 @@ paths:
       summary: Update setting for a mod variable in an organization workspace
       tags:
       - OrgWorkspaceModVariables
+      x-codegen-request-body-name: request
+  /org/{org_handle}/workspace/{workspace_handle}/notifier:
+    get:
+      description: List all notifiers for an org workspace
+      operationId: orgWorkspaceNotifier_list
+      parameters:
+      - description: The handle of the org for which the notifiers are to be listed.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The handle of the workspace for which the notifiers are to be
+          listed.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The maximum number of items to return.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The token to retrieve the next page.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The filter to apply to the list.
+        explode: true
+        in: query
+        name: where
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNotifiersResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List org workspace notifiers
+      tags:
+      - OrgWorkspaceNotifiers
+    post:
+      description: Create a new notifier for an org workspace
+      operationId: orgWorkspaceNotifier_create
+      parameters:
+      - description: The handle of the org for which the notifier is to be created.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The handle of the workspace for which the notifier is to be created.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNotifierRequest'
+        description: The request body for the notifier to be created.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Create org workspace notifier
+      tags:
+      - OrgWorkspaceNotifiers
+      x-codegen-request-body-name: request
+  /org/{org_handle}/workspace/{workspace_handle}/notifier/{notifier_name}:
+    delete:
+      description: Delete a notifier for an org workspace
+      operationId: orgWorkspaceNotifier_delete
+      parameters:
+      - description: The handle of the org for which the notifier is to be deleted.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The handle of the workspace for which the notifier is to be deleted.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the notifier to be deleted.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Delete org workspace notifier
+      tags:
+      - OrgWorkspaceNotifiers
+    get:
+      description: Get a notifier for an org workspace
+      operationId: orgWorkspaceNotifier_get
+      parameters:
+      - description: The handle of the org for which the notifier is to be retrieved.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The handle of the workspace for which the notifier is to be retrieved.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the notifier to be retrieved.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get org workspace notifier
+      tags:
+      - OrgWorkspaceNotifiers
+    patch:
+      description: Update a notifier for an org workspace
+      operationId: orgWorkspaceNotifier_update
+      parameters:
+      - description: The handle of the org for which the notifier is to be updated.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The handle of the workspace for which the notifier is to be updated.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the notifier to be updated.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateNotifierRequest'
+        description: The request body for the notifier to be updated.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update org workspace notifier
+      tags:
+      - OrgWorkspaceNotifiers
+      x-codegen-request-body-name: request
+  /org/{org_handle}/workspace/{workspace_handle}/notifier/{notifier_name}/command:
+    post:
+      description: Post a command for a notifier for an orgs workspace
+      operationId: orgWorkspaceNotifierCommand_post
+      parameters:
+      - description: The handle of the org for which the notifier is to be updated.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The handle of the workspace for which the notifier is to be updated.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the notifier for which the command is to be posted.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkspaceNotifierCommandRequest'
+        description: The request body for the notifier command to be posted.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceNotifierCommandResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+        "501":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Implemented
+      summary: Post org workspace notifier commands
+      tags:
+      - OrgWorkspaceNotifiers
       x-codegen-request-body-name: request
   /org/{org_handle}/workspace/{workspace_handle}/pipeline:
     get:
@@ -24689,6 +25894,374 @@ paths:
       summary: Test user integration
       tags:
       - UserIntegrations
+  /user/{user_handle}/notifier:
+    get:
+      description: List all notifiers for a user
+      operationId: userNotifier_list
+      parameters:
+      - description: The handle of the user for which the notifiers are to be listed.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The maximum number of items to return.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The token to retrieve the next page.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The filter to apply to the list.
+        explode: true
+        in: query
+        name: where
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNotifiersResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List user notifiers
+      tags:
+      - UserNotifiers
+    post:
+      description: Create a new notifier for a user
+      operationId: userNotifier_create
+      parameters:
+      - description: The handle of the user for which the notifier is to be created.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNotifierRequest'
+        description: The request body for the notifier to be created.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Create user notifier
+      tags:
+      - UserNotifiers
+      x-codegen-request-body-name: request
+  /user/{user_handle}/notifier/{notifier_name}:
+    delete:
+      description: Delete a notifier for a user
+      operationId: userNotifier_delete
+      parameters:
+      - description: The handle of the user for which the notifier is to be deleted.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the notifier to be deleted.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Delete user notifier
+      tags:
+      - UserNotifiers
+    get:
+      description: Get a notifier for a user
+      operationId: userNotifier_get
+      parameters:
+      - description: The handle of the user for which the notifier is to be retrieved.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the notifier to be retrieved.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get user notifier
+      tags:
+      - UserNotifiers
+    patch:
+      description: Update a notifier for a user
+      operationId: userNotifier_update
+      parameters:
+      - description: The handle of the user for which the notifier is to be updated.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the notifier to be updated.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateNotifierRequest'
+        description: The request body for the notifier to be updated.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update user notifier
+      tags:
+      - UserNotifiers
+      x-codegen-request-body-name: request
   /user/{user_handle}/password:
     get:
       description: Get user password.
@@ -32605,6 +34178,510 @@ paths:
       tags:
       - UserWorkspaceModVariables
       x-codegen-request-body-name: request
+  /user/{user_handle}/workspace/{workspace_handle}/notifier:
+    get:
+      description: List all notifiers for a user workspace
+      operationId: userWorkspaceNotifier_list
+      parameters:
+      - description: The handle of the user for which the notifiers are to be listed.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The handle of the workspace for which the notifiers are to be
+          listed.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The maximum number of items to return.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The token to retrieve the next page.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The filter to apply to the list.
+        explode: true
+        in: query
+        name: where
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNotifiersResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List user workspace notifiers
+      tags:
+      - UserWorkspaceNotifiers
+    post:
+      description: Create a new notifier for a user workspace
+      operationId: userWorkspaceNotifier_create
+      parameters:
+      - description: The handle of the user for which the notifier is to be created.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The handle of the workspace for which the notifier is to be created.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNotifierRequest'
+        description: The request body for the notifier to be created.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Create user workspace notifier
+      tags:
+      - UserWorkspaceNotifiers
+      x-codegen-request-body-name: request
+  /user/{user_handle}/workspace/{workspace_handle}/notifier/{notifier_name}:
+    delete:
+      description: Delete a notifier for a user workspace
+      operationId: userWorkspaceNotifier_delete
+      parameters:
+      - description: The handle of the user for which the notifier is to be deleted.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The handle of the workspace for which the notifier is to be deleted.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the notifier to be deleted.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Delete user workspace notifier
+      tags:
+      - UserWorkspaceNotifiers
+    get:
+      description: Get a notifier for a user workspace
+      operationId: userWorkspaceNotifier_get
+      parameters:
+      - description: The handle of the user for which the notifier is to be retrieved.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The handle of the workspace for which the notifier is to be retrieved.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the notifier to be retrieved.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get user workspace notifier
+      tags:
+      - UserWorkspaceNotifiers
+    patch:
+      description: Update a notifier for a user workspace
+      operationId: userWorkspaceNotifier_update
+      parameters:
+      - description: The handle of the user for which the notifier is to be updated.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The handle of the workspace for which the notifier is to be updated.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the notifier to be updated.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateNotifierRequest'
+        description: The request body for the notifier to be updated.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update user workspace notifier
+      tags:
+      - UserWorkspaceNotifiers
+      x-codegen-request-body-name: request
+  /user/{user_handle}/workspace/{workspace_handle}/notifier/{notifier_name}/command:
+    post:
+      description: Post a command for a notifier for a users workspace
+      operationId: userWorkspaceNotifierCommand_post
+      parameters:
+      - description: The handle of the user for which the notifier is to be updated.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The handle of the workspace for which the notifier is to be updated.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the notifier for which the command is to be posted.
+        explode: false
+        in: path
+        name: notifier_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkspaceNotifierCommandRequest'
+        description: The request body for the notifier command to be posted.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceNotifierCommandResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+        "501":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Implemented
+      summary: Post user workspace notifier commands
+      tags:
+      - UserWorkspaceNotifiers
+      x-codegen-request-body-name: request
   /user/{user_handle}/workspace/{workspace_handle}/pipeline:
     get:
       description: Lists the pipelines for a workspace of a user.
@@ -36091,6 +38168,8 @@ components:
       - handle
       - type
       type: object
+    CreateNotifierRequest:
+      type: object
     CreateOrgRequest:
       example:
         handle: handle
@@ -39073,6 +41152,56 @@ components:
         next_token:
           type: string
       type: object
+    ListNotifiersResponse:
+      example:
+        next_token: next_token
+        items:
+        - tenant_id: tenant_id
+          state_reason: state_reason
+          identity_id: identity_id
+          deleted_by_id: deleted_by_id
+          created_at: created_at
+          deleted_by: '{}'
+          version_id: 0
+          created_by: '{}'
+          deleted_at: deleted_at
+          precedence: '{}'
+          workspace_id: workspace_id
+          updated_at: updated_at
+          name: name
+          updated_by: '{}'
+          notifies: '{}'
+          updated_by_id: updated_by_id
+          created_by_id: created_by_id
+          id: id
+          state: '{}'
+        - tenant_id: tenant_id
+          state_reason: state_reason
+          identity_id: identity_id
+          deleted_by_id: deleted_by_id
+          created_at: created_at
+          deleted_by: '{}'
+          version_id: 0
+          created_by: '{}'
+          deleted_at: deleted_at
+          precedence: '{}'
+          workspace_id: workspace_id
+          updated_at: updated_at
+          name: name
+          updated_by: '{}'
+          notifies: '{}'
+          updated_by_id: updated_by_id
+          created_by_id: created_by_id
+          id: id
+          state: '{}'
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Notifier'
+          type: array
+        next_token:
+          type: string
+      type: object
     ListOrgUsersResponse:
       example:
         next_token: next_token
@@ -40384,6 +42513,26 @@ components:
       - ModPipelingFlowpipe
       - ModPipelingPowerpipe
     Notifier:
+      example:
+        tenant_id: tenant_id
+        state_reason: state_reason
+        identity_id: identity_id
+        deleted_by_id: deleted_by_id
+        created_at: created_at
+        deleted_by: '{}'
+        version_id: 0
+        created_by: '{}'
+        deleted_at: deleted_at
+        precedence: '{}'
+        workspace_id: workspace_id
+        updated_at: updated_at
+        name: name
+        updated_by: '{}'
+        notifies: '{}'
+        updated_by_id: updated_by_id
+        created_by_id: created_by_id
+        id: id
+        state: '{}'
       properties:
         created_at:
           description: The time of creation in ISO 8601 UTC.
@@ -42048,6 +44197,8 @@ components:
           - $ref: '#/components/schemas/IntegrationState'
           description: The state of the integration.
           type: object
+      type: object
+    UpdateNotifierRequest:
       type: object
     UpdateOrgRequest:
       example:
@@ -44002,6 +46153,39 @@ components:
       - created_by_id
       - id
       - version_id
+      type: object
+    WorkspaceNotifierCommandAction:
+      enum:
+      - set_default
+      type: string
+      x-enum-varnames:
+      - WorkspaceNotifierCommandSetDefault
+    WorkspaceNotifierCommandRequest:
+      example:
+        command: '{}'
+      properties:
+        command:
+          allOf:
+          - $ref: '#/components/schemas/WorkspaceNotifierCommandAction'
+          type: object
+      required:
+      - command
+      type: object
+    WorkspaceNotifierCommandResponse:
+      example:
+        process_id: process_id
+        command: '{}'
+      properties:
+        command:
+          allOf:
+          - $ref: '#/components/schemas/WorkspaceNotifierCommandAction'
+          type: object
+        process_id:
+          format: ^p_[0-9a-v]{20}$
+          type: string
+      required:
+      - command
+      - process_id
       type: object
     WorkspaceQueryResult:
       example:

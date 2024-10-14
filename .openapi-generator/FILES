@@ -11,6 +11,7 @@ api_org_connection_tree.go
 api_org_connections.go
 api_org_integrations.go
 api_org_members.go
+api_org_notifiers.go
 api_org_processes.go
 api_org_workspace_aggregators.go
 api_org_workspace_connection_associations.go
@@ -29,6 +30,7 @@ api_org_workspace_integrations.go
 api_org_workspace_members.go
 api_org_workspace_mod_variables.go
 api_org_workspace_mods.go
+api_org_workspace_notifiers.go
 api_org_workspace_pipelines.go
 api_org_workspace_processes.go
 api_org_workspace_schemas.go
@@ -42,10 +44,12 @@ api_tenant_connection_tree.go
 api_tenant_connections.go
 api_tenant_integrations.go
 api_tenant_members.go
+api_tenant_notifiers.go
 api_tenants.go
 api_user_billing.go
 api_user_connections.go
 api_user_integrations.go
+api_user_notifiers.go
 api_user_processes.go
 api_user_tokens.go
 api_user_workspace_aggregators.go
@@ -64,6 +68,7 @@ api_user_workspace_flowpipe_triggers.go
 api_user_workspace_integrations.go
 api_user_workspace_mod_variables.go
 api_user_workspace_mods.go
+api_user_workspace_notifiers.go
 api_user_workspace_pipelines.go
 api_user_workspace_processes.go
 api_user_workspace_schemas.go
@@ -162,6 +167,7 @@ docs/ListGithubRepositoryBranchesResponse.md
 docs/ListIdentitiesResponse.md
 docs/ListIntegrationsResponse.md
 docs/ListLogsResponse.md
+docs/ListNotifiersResponse.md
 docs/ListOrgUsersResponse.md
 docs/ListOrgWorkspaceUsersResponse.md
 docs/ListOrgsResponse.md
@@ -199,6 +205,7 @@ docs/OrgConnectionTree.md
 docs/OrgConnections.md
 docs/OrgIntegrations.md
 docs/OrgMembers.md
+docs/OrgNotifiers.md
 docs/OrgProcesses.md
 docs/OrgUser.md
 docs/OrgWorkspaceAggregators.md
@@ -218,6 +225,7 @@ docs/OrgWorkspaceIntegrations.md
 docs/OrgWorkspaceMembers.md
 docs/OrgWorkspaceModVariables.md
 docs/OrgWorkspaceMods.md
+docs/OrgWorkspaceNotifiers.md
 docs/OrgWorkspacePipelines.md
 docs/OrgWorkspaceProcesses.md
 docs/OrgWorkspaceSchemas.md
@@ -251,6 +259,7 @@ docs/TenantConnections.md
 docs/TenantIntegrations.md
 docs/TenantLoginSettings.md
 docs/TenantMembers.md
+docs/TenantNotifiers.md
 docs/TenantPlan.md
 docs/TenantSamlLoginSettings.md
 docs/TenantSettings.md
@@ -303,6 +312,7 @@ docs/UserDatabasePassword.md
 docs/UserEmail.md
 docs/UserIntegrations.md
 docs/UserLoginRequest.md
+docs/UserNotifiers.md
 docs/UserOrg.md
 docs/UserPreferences.md
 docs/UserProcesses.md
@@ -324,6 +334,7 @@ docs/UserWorkspaceFlowpipeTriggers.md
 docs/UserWorkspaceIntegrations.md
 docs/UserWorkspaceModVariables.md
 docs/UserWorkspaceMods.md
+docs/UserWorkspaceNotifiers.md
 docs/UserWorkspacePipelines.md
 docs/UserWorkspaceProcesses.md
 docs/UserWorkspaceSchemas.md
@@ -345,6 +356,9 @@ docs/WorkspaceMod.md
 docs/WorkspaceModState.md
 docs/WorkspaceModTrigger.md
 docs/WorkspaceModVariable.md
+docs/WorkspaceNotifierCommandAction.md
+docs/WorkspaceNotifierCommandRequest.md
+docs/WorkspaceNotifierCommandResponse.md
 docs/WorkspaceQueryResult.md
 docs/WorkspaceQueryResultColumn.md
 docs/WorkspaceSchema.md
@@ -444,6 +458,7 @@ model_list_github_repository_branches_response.go
 model_list_identities_response.go
 model_list_integrations_response.go
 model_list_logs_response.go
+model_list_notifiers_response.go
 model_list_org_users_response.go
 model_list_org_workspace_users_response.go
 model_list_orgs_response.go
@@ -561,6 +576,9 @@ model_workspace_mod.go
 model_workspace_mod_state.go
 model_workspace_mod_trigger.go
 model_workspace_mod_variable.go
+model_workspace_notifier_command_action.go
+model_workspace_notifier_command_request.go
+model_workspace_notifier_command_response.go
 model_workspace_query_result.go
 model_workspace_query_result_column.go
 model_workspace_schema.go

@@ -145,6 +145,11 @@ Class | Method | HTTP request | Description
 *OrgMembers* | [**Invite**](docs/OrgMembers.md#invite) | **Post** /org/{org_handle}/member/invite | Invite org member
 *OrgMembers* | [**List**](docs/OrgMembers.md#list) | **Get** /org/{org_handle}/member | List Organization Members
 *OrgMembers* | [**Update**](docs/OrgMembers.md#update) | **Patch** /org/{org_handle}/member/{user_handle} | Update org member
+*OrgNotifiers* | [**Create**](docs/OrgNotifiers.md#create) | **Post** /org/{org_handle}/notifier | Create org notifier
+*OrgNotifiers* | [**Delete**](docs/OrgNotifiers.md#delete) | **Delete** /org/{org_handle}/notifier/{notifier_name} | Delete org notifier
+*OrgNotifiers* | [**Get**](docs/OrgNotifiers.md#get) | **Get** /org/{org_handle}/notifier/{notifier_name} | Get org notifier
+*OrgNotifiers* | [**List**](docs/OrgNotifiers.md#list) | **Get** /org/{org_handle}/notifier | List org notifiers
+*OrgNotifiers* | [**Update**](docs/OrgNotifiers.md#update) | **Patch** /org/{org_handle}/notifier/{notifier_name} | Update org notifier
 *OrgProcesses* | [**Get**](docs/OrgProcesses.md#get) | **Get** /org/{org_handle}/process/{process_id} | Get Org process
 *OrgProcesses* | [**List**](docs/OrgProcesses.md#list) | **Get** /org/{org_handle}/process | List Org processes
 *OrgProcesses* | [**Log**](docs/OrgProcesses.md#log) | **Get** /org/{org_handle}/process/{process_id}/log/{log_file}.{content_type} | List Org process logs
@@ -226,6 +231,12 @@ Class | Method | HTTP request | Description
 *OrgWorkspaceMods* | [**List**](docs/OrgWorkspaceMods.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/mod | List organization workspace installed mods
 *OrgWorkspaceMods* | [**Uninstall**](docs/OrgWorkspaceMods.md#uninstall) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/mod/{mod_alias} | Uninstall mod from organization workspace.
 *OrgWorkspaceMods* | [**Update**](docs/OrgWorkspaceMods.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/mod/{mod_alias} | Update a mod in an organization workspace
+*OrgWorkspaceNotifiers* | [**Create**](docs/OrgWorkspaceNotifiers.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/notifier | Create org workspace notifier
+*OrgWorkspaceNotifiers* | [**Delete**](docs/OrgWorkspaceNotifiers.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/notifier/{notifier_name} | Delete org workspace notifier
+*OrgWorkspaceNotifiers* | [**Get**](docs/OrgWorkspaceNotifiers.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/notifier/{notifier_name} | Get org workspace notifier
+*OrgWorkspaceNotifiers* | [**List**](docs/OrgWorkspaceNotifiers.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/notifier | List org workspace notifiers
+*OrgWorkspaceNotifiers* | [**Post**](docs/OrgWorkspaceNotifiers.md#post) | **Post** /org/{org_handle}/workspace/{workspace_handle}/notifier/{notifier_name}/command | Post org workspace notifier commands
+*OrgWorkspaceNotifiers* | [**Update**](docs/OrgWorkspaceNotifiers.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/notifier/{notifier_name} | Update org workspace notifier
 *OrgWorkspacePipelines* | [**Command**](docs/OrgWorkspacePipelines.md#command) | **Post** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id}/command | Run org workspace pipeline command
 *OrgWorkspacePipelines* | [**Create**](docs/OrgWorkspacePipelines.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/pipeline | Create org workspace pipeline
 *OrgWorkspacePipelines* | [**Delete**](docs/OrgWorkspacePipelines.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Delete org workspace pipeline
@@ -325,6 +336,11 @@ Class | Method | HTTP request | Description
 *TenantMembers* | [**Invite**](docs/TenantMembers.md#invite) | **Post** /tenant/{tenant_handle}/member/invite | Invite tenant member
 *TenantMembers* | [**List**](docs/TenantMembers.md#list) | **Get** /tenant/{tenant_handle}/member | List Tenant Members
 *TenantMembers* | [**Update**](docs/TenantMembers.md#update) | **Patch** /tenant/{tenant_handle}/member/{user_handle} | Update tenant member
+*TenantNotifiers* | [**Create**](docs/TenantNotifiers.md#create) | **Post** /notifier | Create tenant notifier
+*TenantNotifiers* | [**Delete**](docs/TenantNotifiers.md#delete) | **Delete** /notifier/{notifier_name} | Delete tenant notifier
+*TenantNotifiers* | [**Get**](docs/TenantNotifiers.md#get) | **Get** /notifier/{notifier_name} | Get tenant notifier
+*TenantNotifiers* | [**List**](docs/TenantNotifiers.md#list) | **Get** /notifier | List tenant notifiers
+*TenantNotifiers* | [**Update**](docs/TenantNotifiers.md#update) | **Patch** /notifier/{notifier_name} | Update tenant notifier
 *Tenants* | [**Create**](docs/Tenants.md#create) | **Post** /tenant | Create tenant
 *Tenants* | [**CreateAvatar**](docs/Tenants.md#createavatar) | **Post** /tenant/{tenant_handle}/avatar | Create tenant avatar
 *Tenants* | [**Delete**](docs/Tenants.md#delete) | **Delete** /tenant/{tenant_handle} | Delete tenant
@@ -374,6 +390,11 @@ Class | Method | HTTP request | Description
 *UserIntegrations* | [**ListSlackChannels**](docs/UserIntegrations.md#listslackchannels) | **Get** /user/{user_handle}/integration/{integration_handle}/slack/channel | List user integration Slack channels
 *UserIntegrations* | [**Test**](docs/UserIntegrations.md#test) | **Post** /user/{user_handle}/integration/{integration_handle}/test | Test user integration
 *UserIntegrations* | [**Update**](docs/UserIntegrations.md#update) | **Patch** /user/{user_handle}/integration/{integration_handle} | Update user integration
+*UserNotifiers* | [**Create**](docs/UserNotifiers.md#create) | **Post** /user/{user_handle}/notifier | Create user notifier
+*UserNotifiers* | [**Delete**](docs/UserNotifiers.md#delete) | **Delete** /user/{user_handle}/notifier/{notifier_name} | Delete user notifier
+*UserNotifiers* | [**Get**](docs/UserNotifiers.md#get) | **Get** /user/{user_handle}/notifier/{notifier_name} | Get user notifier
+*UserNotifiers* | [**List**](docs/UserNotifiers.md#list) | **Get** /user/{user_handle}/notifier | List user notifiers
+*UserNotifiers* | [**Update**](docs/UserNotifiers.md#update) | **Patch** /user/{user_handle}/notifier/{notifier_name} | Update user notifier
 *UserProcesses* | [**Get**](docs/UserProcesses.md#get) | **Get** /user/{user_handle}/process/{process_id} | Get User process
 *UserProcesses* | [**List**](docs/UserProcesses.md#list) | **Get** /user/{user_handle}/process | List User processes
 *UserProcesses* | [**Log**](docs/UserProcesses.md#log) | **Get** /user/{user_handle}/process/{process_id}/log/{log_file}.{content_type} | List user process logs
@@ -455,6 +476,12 @@ Class | Method | HTTP request | Description
 *UserWorkspaceMods* | [**List**](docs/UserWorkspaceMods.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/mod | List user workspace installed mods
 *UserWorkspaceMods* | [**Uninstall**](docs/UserWorkspaceMods.md#uninstall) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/mod/{mod_alias} | Uninstall mod from a user&#39;s workspace.
 *UserWorkspaceMods* | [**Update**](docs/UserWorkspaceMods.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/mod/{mod_alias} | Update a mod in a user&#39;s workspace
+*UserWorkspaceNotifiers* | [**Create**](docs/UserWorkspaceNotifiers.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/notifier | Create user workspace notifier
+*UserWorkspaceNotifiers* | [**Delete**](docs/UserWorkspaceNotifiers.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/notifier/{notifier_name} | Delete user workspace notifier
+*UserWorkspaceNotifiers* | [**Get**](docs/UserWorkspaceNotifiers.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/notifier/{notifier_name} | Get user workspace notifier
+*UserWorkspaceNotifiers* | [**List**](docs/UserWorkspaceNotifiers.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/notifier | List user workspace notifiers
+*UserWorkspaceNotifiers* | [**Post**](docs/UserWorkspaceNotifiers.md#post) | **Post** /user/{user_handle}/workspace/{workspace_handle}/notifier/{notifier_name}/command | Post user workspace notifier commands
+*UserWorkspaceNotifiers* | [**Update**](docs/UserWorkspaceNotifiers.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/notifier/{notifier_name} | Update user workspace notifier
 *UserWorkspacePipelines* | [**Command**](docs/UserWorkspacePipelines.md#command) | **Post** /user/{user_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id}/command | Run user workspace pipeline command
 *UserWorkspacePipelines* | [**Create**](docs/UserWorkspacePipelines.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/pipeline | Create user workspace pipeline
 *UserWorkspacePipelines* | [**Delete**](docs/UserWorkspacePipelines.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Delete user workspace pipeline
@@ -595,6 +622,7 @@ Class | Method | HTTP request | Description
  - [ListIdentitiesResponse](docs/ListIdentitiesResponse.md)
  - [ListIntegrationsResponse](docs/ListIntegrationsResponse.md)
  - [ListLogsResponse](docs/ListLogsResponse.md)
+ - [ListNotifiersResponse](docs/ListNotifiersResponse.md)
  - [ListOrgUsersResponse](docs/ListOrgUsersResponse.md)
  - [ListOrgWorkspaceUsersResponse](docs/ListOrgWorkspaceUsersResponse.md)
  - [ListOrgsResponse](docs/ListOrgsResponse.md)
@@ -712,6 +740,9 @@ Class | Method | HTTP request | Description
  - [WorkspaceModState](docs/WorkspaceModState.md)
  - [WorkspaceModTrigger](docs/WorkspaceModTrigger.md)
  - [WorkspaceModVariable](docs/WorkspaceModVariable.md)
+ - [WorkspaceNotifierCommandAction](docs/WorkspaceNotifierCommandAction.md)
+ - [WorkspaceNotifierCommandRequest](docs/WorkspaceNotifierCommandRequest.md)
+ - [WorkspaceNotifierCommandResponse](docs/WorkspaceNotifierCommandResponse.md)
  - [WorkspaceQueryResult](docs/WorkspaceQueryResult.md)
  - [WorkspaceQueryResultColumn](docs/WorkspaceQueryResultColumn.md)
  - [WorkspaceSchema](docs/WorkspaceSchema.md)
