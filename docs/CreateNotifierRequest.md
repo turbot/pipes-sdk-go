@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | The name of the notifier to create | 
-**Notifies** | **map[string]interface{}** | The notify targets for the notifier to create | 
+**Notifies** | **[]map[string]interface{}** | The notify targets for the notifier to create | 
 **State** | Pointer to [**NotifierState**](NotifierState.md) | The state of the notifier to create | [optional] 
 
 ## Methods
 
 ### NewCreateNotifierRequest
 
-`func NewCreateNotifierRequest(name string, notifies map[string]interface{}, ) *CreateNotifierRequest`
+`func NewCreateNotifierRequest(name string, notifies []map[string]interface{}, ) *CreateNotifierRequest`
 
 NewCreateNotifierRequest instantiates a new CreateNotifierRequest object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetName sets Name field to given value.
 
 ### GetNotifies
 
-`func (o *CreateNotifierRequest) GetNotifies() map[string]interface{}`
+`func (o *CreateNotifierRequest) GetNotifies() []map[string]interface{}`
 
 GetNotifies returns the Notifies field if non-nil, zero value otherwise.
 
 ### GetNotifiesOk
 
-`func (o *CreateNotifierRequest) GetNotifiesOk() (*map[string]interface{}, bool)`
+`func (o *CreateNotifierRequest) GetNotifiesOk() (*[]map[string]interface{}, bool)`
 
 GetNotifiesOk returns a tuple with the Notifies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotifies
 
-`func (o *CreateNotifierRequest) SetNotifies(v map[string]interface{})`
+`func (o *CreateNotifierRequest) SetNotifies(v []map[string]interface{})`
 
 SetNotifies sets Notifies field to given value.
 

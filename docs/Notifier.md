@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Id** | **string** | The unique identifier for the notifier. | 
 **IdentityId** | Pointer to **string** | The unique identifier for an identity where the notifier has been created. | [optional] 
 **Name** | **string** | The unique handle of the notifier, unique up and down the resource hierarchy. | 
-**Notifies** | Pointer to **map[string]interface{}** | The configured notify targets for this notifier | [optional] 
+**Notifies** | Pointer to **[]map[string]interface{}** | The configured notify targets for this notifier | [optional] 
 **Precedence** | Pointer to [**NotifierPrecedence**](NotifierPrecedence.md) | The precedence of this notifier | [optional] 
 **State** | Pointer to [**NotifierState**](NotifierState.md) | The state of the notifier | [optional] 
 **StateReason** | Pointer to **string** | The reason for the state of the notifier | [optional] 
@@ -245,20 +245,20 @@ SetName sets Name field to given value.
 
 ### GetNotifies
 
-`func (o *Notifier) GetNotifies() map[string]interface{}`
+`func (o *Notifier) GetNotifies() []map[string]interface{}`
 
 GetNotifies returns the Notifies field if non-nil, zero value otherwise.
 
 ### GetNotifiesOk
 
-`func (o *Notifier) GetNotifiesOk() (*map[string]interface{}, bool)`
+`func (o *Notifier) GetNotifiesOk() (*[]map[string]interface{}, bool)`
 
 GetNotifiesOk returns a tuple with the Notifies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotifies
 
-`func (o *Notifier) SetNotifies(v map[string]interface{})`
+`func (o *Notifier) SetNotifies(v []map[string]interface{})`
 
 SetNotifies sets Notifies field to given value.
 

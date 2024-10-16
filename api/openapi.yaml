@@ -38171,7 +38171,9 @@ components:
     CreateNotifierRequest:
       example:
         name: name
-        notifies: '{}'
+        notifies:
+        - '{}'
+        - '{}'
         state: '{}'
       properties:
         name:
@@ -38180,8 +38182,10 @@ components:
           type: string
         notifies:
           description: The notify targets for the notifier to create
-          properties: {}
-          type: object
+          items:
+            properties: {}
+            type: object
+          type: array
         state:
           allOf:
           - $ref: '#/components/schemas/NotifierState'
@@ -41191,7 +41195,9 @@ components:
           updated_at: updated_at
           name: name
           updated_by: '{}'
-          notifies: '{}'
+          notifies:
+          - '{}'
+          - '{}'
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           id: id
@@ -41210,7 +41216,9 @@ components:
           updated_at: updated_at
           name: name
           updated_by: '{}'
-          notifies: '{}'
+          notifies:
+          - '{}'
+          - '{}'
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           id: id
@@ -42549,7 +42557,9 @@ components:
         updated_at: updated_at
         name: name
         updated_by: '{}'
-        notifies: '{}'
+        notifies:
+        - '{}'
+        - '{}'
         updated_by_id: updated_by_id
         created_by_id: created_by_id
         id: id
@@ -42595,8 +42605,10 @@ components:
           type: string
         notifies:
           description: The configured notify targets for this notifier
-          properties: {}
-          type: object
+          items:
+            properties: {}
+            type: object
+          type: array
         precedence:
           allOf:
           - $ref: '#/components/schemas/NotifierPrecedence'
@@ -44222,7 +44234,9 @@ components:
     UpdateNotifierRequest:
       example:
         name: name
-        notifies: '{}'
+        notifies:
+        - '{}'
+        - '{}'
         state: '{}'
       properties:
         name:
@@ -44231,8 +44245,10 @@ components:
           type: string
         notifies:
           description: The notify targets for the notifier to update
-          properties: {}
-          type: object
+          items:
+            properties: {}
+            type: object
+          type: array
         state:
           allOf:
           - $ref: '#/components/schemas/NotifierState'

@@ -35,7 +35,7 @@ type Notifier struct {
 	// The unique handle of the notifier, unique up and down the resource hierarchy.
 	Name string `json:"name"`
 	// The configured notify targets for this notifier
-	Notifies *map[string]interface{} `json:"notifies,omitempty"`
+	Notifies *[]map[string]interface{} `json:"notifies,omitempty"`
 	// The precedence of this notifier
 	Precedence *NotifierPrecedence `json:"precedence,omitempty"`
 	// The state of the notifier
@@ -330,9 +330,9 @@ func (o *Notifier) SetName(v string) {
 }
 
 // GetNotifies returns the Notifies field value if set, zero value otherwise.
-func (o *Notifier) GetNotifies() map[string]interface{} {
+func (o *Notifier) GetNotifies() []map[string]interface{} {
 	if o == nil || o.Notifies == nil {
-		var ret map[string]interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 	return *o.Notifies
@@ -340,7 +340,7 @@ func (o *Notifier) GetNotifies() map[string]interface{} {
 
 // GetNotifiesOk returns a tuple with the Notifies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Notifier) GetNotifiesOk() (*map[string]interface{}, bool) {
+func (o *Notifier) GetNotifiesOk() (*[]map[string]interface{}, bool) {
 	if o == nil || o.Notifies == nil {
 		return nil, false
 	}
@@ -356,8 +356,8 @@ func (o *Notifier) HasNotifies() bool {
 	return false
 }
 
-// SetNotifies gets a reference to the given map[string]interface{} and assigns it to the Notifies field.
-func (o *Notifier) SetNotifies(v map[string]interface{}) {
+// SetNotifies gets a reference to the given []map[string]interface{} and assigns it to the Notifies field.
+func (o *Notifier) SetNotifies(v []map[string]interface{}) {
 	o.Notifies = &v
 }
 

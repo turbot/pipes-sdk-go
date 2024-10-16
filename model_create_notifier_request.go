@@ -19,7 +19,7 @@ type CreateNotifierRequest struct {
 	// The name of the notifier to create
 	Name string `json:"name"`
 	// The notify targets for the notifier to create
-	Notifies map[string]interface{} `json:"notifies"`
+	Notifies []map[string]interface{} `json:"notifies"`
 	// The state of the notifier to create
 	State *NotifierState `json:"state,omitempty"`
 }
@@ -28,7 +28,7 @@ type CreateNotifierRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateNotifierRequest(name string, notifies map[string]interface{}) *CreateNotifierRequest {
+func NewCreateNotifierRequest(name string, notifies []map[string]interface{}) *CreateNotifierRequest {
 	this := CreateNotifierRequest{}
 	this.Name = name
 	this.Notifies = notifies
@@ -68,9 +68,9 @@ func (o *CreateNotifierRequest) SetName(v string) {
 }
 
 // GetNotifies returns the Notifies field value
-func (o *CreateNotifierRequest) GetNotifies() map[string]interface{} {
+func (o *CreateNotifierRequest) GetNotifies() []map[string]interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -79,7 +79,7 @@ func (o *CreateNotifierRequest) GetNotifies() map[string]interface{} {
 
 // GetNotifiesOk returns a tuple with the Notifies field value
 // and a boolean to check if the value has been set.
-func (o *CreateNotifierRequest) GetNotifiesOk() (*map[string]interface{}, bool) {
+func (o *CreateNotifierRequest) GetNotifiesOk() (*[]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -87,7 +87,7 @@ func (o *CreateNotifierRequest) GetNotifiesOk() (*map[string]interface{}, bool) 
 }
 
 // SetNotifies sets field value
-func (o *CreateNotifierRequest) SetNotifies(v map[string]interface{}) {
+func (o *CreateNotifierRequest) SetNotifies(v []map[string]interface{}) {
 	o.Notifies = v
 }
 

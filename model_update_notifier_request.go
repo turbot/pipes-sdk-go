@@ -19,7 +19,7 @@ type UpdateNotifierRequest struct {
 	// The name of the notifier to update
 	Name *string `json:"name,omitempty"`
 	// The notify targets for the notifier to update
-	Notifies *map[string]interface{} `json:"notifies,omitempty"`
+	Notifies *[]map[string]interface{} `json:"notifies,omitempty"`
 	// The state of the notifier to update
 	State *NotifierState `json:"state,omitempty"`
 }
@@ -74,9 +74,9 @@ func (o *UpdateNotifierRequest) SetName(v string) {
 }
 
 // GetNotifies returns the Notifies field value if set, zero value otherwise.
-func (o *UpdateNotifierRequest) GetNotifies() map[string]interface{} {
+func (o *UpdateNotifierRequest) GetNotifies() []map[string]interface{} {
 	if o == nil || o.Notifies == nil {
-		var ret map[string]interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 	return *o.Notifies
@@ -84,7 +84,7 @@ func (o *UpdateNotifierRequest) GetNotifies() map[string]interface{} {
 
 // GetNotifiesOk returns a tuple with the Notifies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateNotifierRequest) GetNotifiesOk() (*map[string]interface{}, bool) {
+func (o *UpdateNotifierRequest) GetNotifiesOk() (*[]map[string]interface{}, bool) {
 	if o == nil || o.Notifies == nil {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *UpdateNotifierRequest) HasNotifies() bool {
 	return false
 }
 
-// SetNotifies gets a reference to the given map[string]interface{} and assigns it to the Notifies field.
-func (o *UpdateNotifierRequest) SetNotifies(v map[string]interface{}) {
+// SetNotifies gets a reference to the given []map[string]interface{} and assigns it to the Notifies field.
+func (o *UpdateNotifierRequest) SetNotifies(v []map[string]interface{}) {
 	o.Notifies = &v
 }
 

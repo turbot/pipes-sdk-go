@@ -34,7 +34,7 @@ import (
 
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user for which the notifier is to be created.
-    request := *openapiclient.NewCreateNotifierRequest("Name_example", map[string]interface{}(123)) // CreateNotifierRequest | The request body for the notifier to be created.
+    request := *openapiclient.NewCreateNotifierRequest("Name_example", []map[string]interface{}{map[string]interface{}(123)}) // CreateNotifierRequest | The request body for the notifier to be created.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

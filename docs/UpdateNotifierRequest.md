@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | The name of the notifier to update | [optional] 
-**Notifies** | Pointer to **map[string]interface{}** | The notify targets for the notifier to update | [optional] 
+**Notifies** | Pointer to **[]map[string]interface{}** | The notify targets for the notifier to update | [optional] 
 **State** | Pointer to [**NotifierState**](NotifierState.md) | The state of the notifier to update | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetNotifies
 
-`func (o *UpdateNotifierRequest) GetNotifies() map[string]interface{}`
+`func (o *UpdateNotifierRequest) GetNotifies() []map[string]interface{}`
 
 GetNotifies returns the Notifies field if non-nil, zero value otherwise.
 
 ### GetNotifiesOk
 
-`func (o *UpdateNotifierRequest) GetNotifiesOk() (*map[string]interface{}, bool)`
+`func (o *UpdateNotifierRequest) GetNotifiesOk() (*[]map[string]interface{}, bool)`
 
 GetNotifiesOk returns a tuple with the Notifies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotifies
 
-`func (o *UpdateNotifierRequest) SetNotifies(v map[string]interface{})`
+`func (o *UpdateNotifierRequest) SetNotifies(v []map[string]interface{})`
 
 SetNotifies sets Notifies field to given value.
 
