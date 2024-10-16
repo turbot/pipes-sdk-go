@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DesiredState** | **string** |  | 
+**DesiredState** | [**DesiredState**](DesiredState.md) |  | 
 
 ## Methods
 
 ### NewUpdateDatatankPartRequest
 
-`func NewUpdateDatatankPartRequest(desiredState string, ) *UpdateDatatankPartRequest`
+`func NewUpdateDatatankPartRequest(desiredState DesiredState, ) *UpdateDatatankPartRequest`
 
 NewUpdateDatatankPartRequest instantiates a new UpdateDatatankPartRequest object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDesiredState
 
-`func (o *UpdateDatatankPartRequest) GetDesiredState() string`
+`func (o *UpdateDatatankPartRequest) GetDesiredState() DesiredState`
 
 GetDesiredState returns the DesiredState field if non-nil, zero value otherwise.
 
 ### GetDesiredStateOk
 
-`func (o *UpdateDatatankPartRequest) GetDesiredStateOk() (*string, bool)`
+`func (o *UpdateDatatankPartRequest) GetDesiredStateOk() (*DesiredState, bool)`
 
 GetDesiredStateOk returns a tuple with the DesiredState field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDesiredState
 
-`func (o *UpdateDatatankPartRequest) SetDesiredState(v string)`
+`func (o *UpdateDatatankPartRequest) SetDesiredState(v DesiredState)`
 
 SetDesiredState sets DesiredState field to given value.
 

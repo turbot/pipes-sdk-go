@@ -5,18 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **Email** | **string** | The email of the user. | 
 **Id** | **string** | The unique identifier of the tenant member. | 
 **Role** | **string** | The role of the tenant user. | 
 **Status** | **string** | The status of the tenant member i.e invited or accepted. | 
-**Tenant** | Pointer to [**Tenant**](Tenant.md) |  | [optional] 
+**Tenant** | Pointer to [**Tenant**](Tenant.md) | Readonly in DB | [optional] 
 **TenantId** | **string** | The identifier of the tenant. | 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
-**User** | Pointer to [**User**](User.md) |  | [optional] 
+**User** | Pointer to [**User**](User.md) | Readonly in DB | [optional] 
 **UserId** | **string** | The identifier of the user that belongs to the tenant. | 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 

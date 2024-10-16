@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DbVolumeSizeBytes** | Pointer to **int64** |  | [optional] 
-**DesiredState** | Pointer to **string** | paused is not yet supported for Workspace | [optional] 
+**DesiredState** | Pointer to [**DesiredState**](DesiredState.md) | paused is not yet supported for Workspace | [optional] 
 **Handle** | Pointer to **string** |  | [optional] 
 **SearchPathPrefix** | Pointer to **[]string** | InstanceType *WorkspaceInstanceType &#x60;json:\&quot;instance_type,omitempty\&quot; binding:\&quot;omitempty,oneof&#x3D;db1.shared db1.small\&quot;&#x60; | [optional] 
 
@@ -55,20 +55,20 @@ HasDbVolumeSizeBytes returns a boolean if a field has been set.
 
 ### GetDesiredState
 
-`func (o *UpdateWorkspaceRequest) GetDesiredState() string`
+`func (o *UpdateWorkspaceRequest) GetDesiredState() DesiredState`
 
 GetDesiredState returns the DesiredState field if non-nil, zero value otherwise.
 
 ### GetDesiredStateOk
 
-`func (o *UpdateWorkspaceRequest) GetDesiredStateOk() (*string, bool)`
+`func (o *UpdateWorkspaceRequest) GetDesiredStateOk() (*DesiredState, bool)`
 
 GetDesiredStateOk returns a tuple with the DesiredState field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDesiredState
 
-`func (o *UpdateWorkspaceRequest) SetDesiredState(v string)`
+`func (o *UpdateWorkspaceRequest) SetDesiredState(v DesiredState)`
 
 SetDesiredState sets DesiredState field to given value.
 

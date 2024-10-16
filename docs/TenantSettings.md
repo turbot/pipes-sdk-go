@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
-**LoginEmail** | [**TenantLoginSettings**](TenantLoginSettings.md) |  | 
-**LoginGithub** | [**TenantLoginSettings**](TenantLoginSettings.md) |  | 
-**LoginGoogle** | [**TenantLoginSettings**](TenantLoginSettings.md) |  | 
-**LoginSaml** | [**TenantSamlLoginSettings**](TenantSamlLoginSettings.md) |  | 
+**LoginEmail** | [**TenantLoginSettings**](TenantLoginSettings.md) | Settings related to login via Email. | 
+**LoginGithub** | [**TenantLoginSettings**](TenantLoginSettings.md) | Settings related to login via Github. | 
+**LoginGoogle** | [**TenantLoginSettings**](TenantLoginSettings.md) | Settings related to login via Google. | 
+**LoginSaml** | [**TenantSamlLoginSettings**](TenantSamlLoginSettings.md) | Settings related to login via Okta. | 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **UserProvisioning** | **[]string** | The user provisioning settings for the tenant. | 
 **UserProvisioningPermittedDomains** | **[]string** | The domains that new users are permitted to be provisioned from. | 

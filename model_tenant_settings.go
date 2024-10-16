@@ -18,16 +18,22 @@ import (
 type TenantSettings struct {
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
-	CreatedBy *User  `json:"created_by,omitempty"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
 	// The ID of the user that created this.
-	CreatedById string                  `json:"created_by_id"`
-	LoginEmail  TenantLoginSettings     `json:"login_email"`
-	LoginGithub TenantLoginSettings     `json:"login_github"`
-	LoginGoogle TenantLoginSettings     `json:"login_google"`
-	LoginSaml   TenantSamlLoginSettings `json:"login_saml"`
+	CreatedById string `json:"created_by_id"`
+	// Settings related to login via Email.
+	LoginEmail TenantLoginSettings `json:"login_email"`
+	// Settings related to login via Github.
+	LoginGithub TenantLoginSettings `json:"login_github"`
+	// Settings related to login via Google.
+	LoginGoogle TenantLoginSettings `json:"login_google"`
+	// Settings related to login via Okta.
+	LoginSaml TenantSamlLoginSettings `json:"login_saml"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	UpdatedBy *User   `json:"updated_by,omitempty"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
 	// The user provisioning settings for the tenant.

@@ -19,24 +19,28 @@ type Pipeline struct {
 	Args interface{} `json:"args,omitempty"`
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
-	CreatedBy *User  `json:"created_by,omitempty"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
 	// The ID of the user that created this.
 	CreatedById string `json:"created_by_id"`
 	// The time the item was deleted in ISO 8601 UTC.
 	DeletedAt *string `json:"deleted_at,omitempty"`
-	DeletedBy *User   `json:"deleted_by,omitempty"`
+	// User information for the user that performed the deletion.
+	DeletedBy *User `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.
 	DeletedById string `json:"deleted_by_id"`
 	// DesiredState is user editable state of the pipeline, there are only 3 options: enabled, disabled or paused
-	DesiredState string            `json:"desired_state"`
-	Frequency    PipelineFrequency `json:"frequency"`
+	DesiredState DesiredState `json:"desired_state"`
+	// The frequency at which the pipeline will run.
+	Frequency PipelineFrequency `json:"frequency"`
 	// The unique identifier of the pipeline.
 	Id string `json:"id"`
 	// The unique identifier of the identity for whom the pipeline is created.
 	IdentityId *string `json:"identity_id,omitempty"`
 	// The instance type of this pipeline.
-	InstanceType string     `json:"instance_type"`
-	LastProcess  *SpProcess `json:"last_process,omitempty"`
+	InstanceType PipelineInstanceType `json:"instance_type"`
+	// Information for the last process of the pipeline.
+	LastProcess *SpProcess `json:"last_process,omitempty"`
 	// The id of the last process that was run for the pipeline.
 	LastProcessId *string `json:"last_process_id,omitempty"`
 	// The time when the pipeline is next scheduled to run in ISO 8601 UTC.
@@ -44,16 +48,17 @@ type Pipeline struct {
 	// The name of the pipeline to be executed.
 	Pipeline string `json:"pipeline"`
 	// State is the system state of the pipeline. User should not be able to modify this value
-	State       string      `json:"state"`
-	StateReason *string     `json:"state_reason,omitempty"`
-	Tags        interface{} `json:"tags,omitempty"`
+	State       PipelineState `json:"state"`
+	StateReason *string       `json:"state_reason,omitempty"`
+	Tags        interface{}   `json:"tags,omitempty"`
 	// We need the IdentityID to be in the JSON field because I'm sending the pipeline definition across the Temporal Workflow (see Datatank migration workflow)
 	TenantId string `json:"tenant_id"`
 	// The title of the pipeline.
 	Title *string `json:"title,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	UpdatedBy *User   `json:"updated_by,omitempty"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
@@ -66,7 +71,7 @@ type Pipeline struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPipeline(createdAt string, createdById string, deletedById string, desiredState string, frequency PipelineFrequency, id string, instanceType string, pipeline string, state string, tenantId string, updatedById string, versionId int32) *Pipeline {
+func NewPipeline(createdAt string, createdById string, deletedById string, desiredState DesiredState, frequency PipelineFrequency, id string, instanceType PipelineInstanceType, pipeline string, state PipelineState, tenantId string, updatedById string, versionId int32) *Pipeline {
 	this := Pipeline{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
@@ -293,9 +298,9 @@ func (o *Pipeline) SetDeletedById(v string) {
 }
 
 // GetDesiredState returns the DesiredState field value
-func (o *Pipeline) GetDesiredState() string {
+func (o *Pipeline) GetDesiredState() DesiredState {
 	if o == nil {
-		var ret string
+		var ret DesiredState
 		return ret
 	}
 
@@ -304,7 +309,7 @@ func (o *Pipeline) GetDesiredState() string {
 
 // GetDesiredStateOk returns a tuple with the DesiredState field value
 // and a boolean to check if the value has been set.
-func (o *Pipeline) GetDesiredStateOk() (*string, bool) {
+func (o *Pipeline) GetDesiredStateOk() (*DesiredState, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -312,7 +317,7 @@ func (o *Pipeline) GetDesiredStateOk() (*string, bool) {
 }
 
 // SetDesiredState sets field value
-func (o *Pipeline) SetDesiredState(v string) {
+func (o *Pipeline) SetDesiredState(v DesiredState) {
 	o.DesiredState = v
 }
 
@@ -397,9 +402,9 @@ func (o *Pipeline) SetIdentityId(v string) {
 }
 
 // GetInstanceType returns the InstanceType field value
-func (o *Pipeline) GetInstanceType() string {
+func (o *Pipeline) GetInstanceType() PipelineInstanceType {
 	if o == nil {
-		var ret string
+		var ret PipelineInstanceType
 		return ret
 	}
 
@@ -408,7 +413,7 @@ func (o *Pipeline) GetInstanceType() string {
 
 // GetInstanceTypeOk returns a tuple with the InstanceType field value
 // and a boolean to check if the value has been set.
-func (o *Pipeline) GetInstanceTypeOk() (*string, bool) {
+func (o *Pipeline) GetInstanceTypeOk() (*PipelineInstanceType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -416,7 +421,7 @@ func (o *Pipeline) GetInstanceTypeOk() (*string, bool) {
 }
 
 // SetInstanceType sets field value
-func (o *Pipeline) SetInstanceType(v string) {
+func (o *Pipeline) SetInstanceType(v PipelineInstanceType) {
 	o.InstanceType = v
 }
 
@@ -541,9 +546,9 @@ func (o *Pipeline) SetPipeline(v string) {
 }
 
 // GetState returns the State field value
-func (o *Pipeline) GetState() string {
+func (o *Pipeline) GetState() PipelineState {
 	if o == nil {
-		var ret string
+		var ret PipelineState
 		return ret
 	}
 
@@ -552,7 +557,7 @@ func (o *Pipeline) GetState() string {
 
 // GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *Pipeline) GetStateOk() (*string, bool) {
+func (o *Pipeline) GetStateOk() (*PipelineState, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -560,7 +565,7 @@ func (o *Pipeline) GetStateOk() (*string, bool) {
 }
 
 // SetState sets field value
-func (o *Pipeline) SetState(v string) {
+func (o *Pipeline) SetState(v PipelineState) {
 	o.State = v
 }
 

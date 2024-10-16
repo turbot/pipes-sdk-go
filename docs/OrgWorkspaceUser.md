@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **Id** | **string** | The unique identifier of the org member. | 
 **OrgId** | **string** | The identifier of an org. | 
@@ -13,9 +13,9 @@ Name | Type | Description | Notes
 **Scope** | Pointer to **string** | The scope of the role. Can be either of org / workspace | [optional] 
 **Status** | **string** | The status of the org member i.e pending or accepted. | 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
-**User** | Pointer to [**User**](User.md) |  | [optional] 
+**User** | Pointer to [**User**](User.md) | Readonly in DB | [optional] 
 **UserHandle** | **string** | The user handle of the member. | 
 **UserId** | **string** | The identifier of a user. | 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 

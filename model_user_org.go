@@ -18,17 +18,20 @@ import (
 type UserOrg struct {
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
-	CreatedBy *User  `json:"created_by,omitempty"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
 	// The ID of the user that created this.
 	CreatedById string  `json:"created_by_id"`
 	Id          *string `json:"id,omitempty"`
-	Org         *Org    `json:"org,omitempty"`
-	OrgId       string  `json:"org_id"`
-	Role        string  `json:"role"`
-	Status      string  `json:"status"`
+	// Readonly in DB
+	Org    *Org   `json:"org,omitempty"`
+	OrgId  string `json:"org_id"`
+	Role   string `json:"role"`
+	Status string `json:"status"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	UpdatedBy *User   `json:"updated_by,omitempty"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
 	UserId      string `json:"user_id"`

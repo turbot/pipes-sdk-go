@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **DashboardName** | **string** | The mod-prefixed name of the dashboard this snapshot belongs to. | 
 **DashboardTitle** | **string** | The title of the dashboard this snapshot belongs to. | 
@@ -14,15 +14,15 @@ Name | Type | Description | Notes
 **IdentityId** | **string** | The unique identifier for the identity that the snapshot belongs to. | 
 **Inputs** | Pointer to **interface{}** |  | [optional] 
 **SchemaVersion** | **string** | The schema version of the underlying snapshot. | 
-**State** | Pointer to **string** | The current state of the snapshot. | [optional] 
+**State** | Pointer to [**SnapshotState**](SnapshotState.md) | The current state of the snapshot. | [optional] 
 **Tags** | Pointer to **interface{}** |  | [optional] 
 **Title** | Pointer to **string** | The title of the snapshot. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **Usage** | Pointer to **map[string]interface{}** | The usage information for this snapshot. | [optional] 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
-**Visibility** | Pointer to **string** | The visibility of the snapshot. | [optional] 
+**Visibility** | Pointer to [**SnapshotVisibility**](SnapshotVisibility.md) | The visibility of the snapshot. | [optional] 
 **WorkspaceId** | **string** | The unique identifier for the workspace that the snapshot belongs to. | 
 
 ## Methods
@@ -271,20 +271,20 @@ SetSchemaVersion sets SchemaVersion field to given value.
 
 ### GetState
 
-`func (o *WorkspaceSnapshot) GetState() string`
+`func (o *WorkspaceSnapshot) GetState() SnapshotState`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *WorkspaceSnapshot) GetStateOk() (*string, bool)`
+`func (o *WorkspaceSnapshot) GetStateOk() (*SnapshotState, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *WorkspaceSnapshot) SetState(v string)`
+`func (o *WorkspaceSnapshot) SetState(v SnapshotState)`
 
 SetState sets State field to given value.
 
@@ -471,20 +471,20 @@ SetVersionId sets VersionId field to given value.
 
 ### GetVisibility
 
-`func (o *WorkspaceSnapshot) GetVisibility() string`
+`func (o *WorkspaceSnapshot) GetVisibility() SnapshotVisibility`
 
 GetVisibility returns the Visibility field if non-nil, zero value otherwise.
 
 ### GetVisibilityOk
 
-`func (o *WorkspaceSnapshot) GetVisibilityOk() (*string, bool)`
+`func (o *WorkspaceSnapshot) GetVisibilityOk() (*SnapshotVisibility, bool)`
 
 GetVisibilityOk returns a tuple with the Visibility field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVisibility
 
-`func (o *WorkspaceSnapshot) SetVisibility(v string)`
+`func (o *WorkspaceSnapshot) SetVisibility(v SnapshotVisibility)`
 
 SetVisibility sets Visibility field to given value.
 

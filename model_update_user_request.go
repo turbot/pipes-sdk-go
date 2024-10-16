@@ -19,12 +19,12 @@ type UpdateUserRequest struct {
 	DisplayName *string `json:"display_name,omitempty"`
 	Handle      *string `json:"handle,omitempty"`
 	// The time which user and temporary auth tokens must be issued after.
-	TokenMinIssuedAt      *string `json:"token_min_issued_at,omitempty"`
-	Url                   *string `json:"url,omitempty"`
-	UsageComputeAction    *string `json:"usage_compute_action,omitempty"`
-	UsageComputeThreshold *int64  `json:"usage_compute_threshold,omitempty"`
-	UsageStorageAction    *string `json:"usage_storage_action,omitempty"`
-	UsageStorageThreshold *int64  `json:"usage_storage_threshold,omitempty"`
+	TokenMinIssuedAt      *string                       `json:"token_min_issued_at,omitempty"`
+	Url                   *string                       `json:"url,omitempty"`
+	UsageComputeAction    *IdentityUsageThresholdAction `json:"usage_compute_action,omitempty"`
+	UsageComputeThreshold *int64                        `json:"usage_compute_threshold,omitempty"`
+	UsageStorageAction    *IdentityUsageThresholdAction `json:"usage_storage_action,omitempty"`
+	UsageStorageThreshold *int64                        `json:"usage_storage_threshold,omitempty"`
 }
 
 // NewUpdateUserRequest instantiates a new UpdateUserRequest object
@@ -173,9 +173,9 @@ func (o *UpdateUserRequest) SetUrl(v string) {
 }
 
 // GetUsageComputeAction returns the UsageComputeAction field value if set, zero value otherwise.
-func (o *UpdateUserRequest) GetUsageComputeAction() string {
+func (o *UpdateUserRequest) GetUsageComputeAction() IdentityUsageThresholdAction {
 	if o == nil || o.UsageComputeAction == nil {
-		var ret string
+		var ret IdentityUsageThresholdAction
 		return ret
 	}
 	return *o.UsageComputeAction
@@ -183,7 +183,7 @@ func (o *UpdateUserRequest) GetUsageComputeAction() string {
 
 // GetUsageComputeActionOk returns a tuple with the UsageComputeAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateUserRequest) GetUsageComputeActionOk() (*string, bool) {
+func (o *UpdateUserRequest) GetUsageComputeActionOk() (*IdentityUsageThresholdAction, bool) {
 	if o == nil || o.UsageComputeAction == nil {
 		return nil, false
 	}
@@ -199,8 +199,8 @@ func (o *UpdateUserRequest) HasUsageComputeAction() bool {
 	return false
 }
 
-// SetUsageComputeAction gets a reference to the given string and assigns it to the UsageComputeAction field.
-func (o *UpdateUserRequest) SetUsageComputeAction(v string) {
+// SetUsageComputeAction gets a reference to the given IdentityUsageThresholdAction and assigns it to the UsageComputeAction field.
+func (o *UpdateUserRequest) SetUsageComputeAction(v IdentityUsageThresholdAction) {
 	o.UsageComputeAction = &v
 }
 
@@ -237,9 +237,9 @@ func (o *UpdateUserRequest) SetUsageComputeThreshold(v int64) {
 }
 
 // GetUsageStorageAction returns the UsageStorageAction field value if set, zero value otherwise.
-func (o *UpdateUserRequest) GetUsageStorageAction() string {
+func (o *UpdateUserRequest) GetUsageStorageAction() IdentityUsageThresholdAction {
 	if o == nil || o.UsageStorageAction == nil {
-		var ret string
+		var ret IdentityUsageThresholdAction
 		return ret
 	}
 	return *o.UsageStorageAction
@@ -247,7 +247,7 @@ func (o *UpdateUserRequest) GetUsageStorageAction() string {
 
 // GetUsageStorageActionOk returns a tuple with the UsageStorageAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateUserRequest) GetUsageStorageActionOk() (*string, bool) {
+func (o *UpdateUserRequest) GetUsageStorageActionOk() (*IdentityUsageThresholdAction, bool) {
 	if o == nil || o.UsageStorageAction == nil {
 		return nil, false
 	}
@@ -263,8 +263,8 @@ func (o *UpdateUserRequest) HasUsageStorageAction() bool {
 	return false
 }
 
-// SetUsageStorageAction gets a reference to the given string and assigns it to the UsageStorageAction field.
-func (o *UpdateUserRequest) SetUsageStorageAction(v string) {
+// SetUsageStorageAction gets a reference to the given IdentityUsageThresholdAction and assigns it to the UsageStorageAction field.
+func (o *UpdateUserRequest) SetUsageStorageAction(v IdentityUsageThresholdAction) {
 	o.UsageStorageAction = &v
 }
 

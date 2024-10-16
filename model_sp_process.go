@@ -16,29 +16,40 @@ import (
 
 // SpProcess struct for SpProcess
 type SpProcess struct {
+	// Whether the process is billable.
+	Billable string `json:"billable"`
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
-	CreatedBy *User  `json:"created_by,omitempty"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
 	// The ID of the user that created this.
 	CreatedById string `json:"created_by_id"`
+	// The unique identifier of the flowpipe pipeline for which the process is created.
+	FlowpipePipelineId *string `json:"flowpipe_pipeline_id,omitempty"`
 	// The unique identifier of the process.
 	Id string `json:"id"`
 	// The unique identifier of the identity for which the process is created.
-	IdentityId *string   `json:"identity_id,omitempty"`
-	Pipeline   *Pipeline `json:"pipeline,omitempty"`
+	IdentityId *string `json:"identity_id,omitempty"`
+	// The current details of the pipeline for which the process is created.
+	Pipeline *Pipeline `json:"pipeline,omitempty"`
 	// The unique identifier of the pipeline for which the process is created.
 	PipelineId *string `json:"pipeline_id,omitempty"`
 	// The state of the process.
-	State *string `json:"state,omitempty"`
+	State *ProcessState `json:"state,omitempty"`
 	// The optional reason why the process is in its current state.
 	StateReason *string `json:"state_reason,omitempty"`
 	// The unique identifier of the tenant for which the process is created.
 	TenantId *string `json:"tenant_id,omitempty"`
+	// The current details of the trigger for which the process is created.
+	Trigger *WorkspaceModTrigger `json:"trigger,omitempty"`
+	// The unique identifier of the trigger for which the process is created.
+	TriggerId *string `json:"trigger_id,omitempty"`
 	// The type of the process, generally denotes the activity performed e.g. workspace.create, pipeline.execute, pipeline.command.run.
 	Type string `json:"type"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt string `json:"updated_at"`
-	UpdatedBy *User  `json:"updated_by,omitempty"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
 	// The usage information for this process.
@@ -53,8 +64,9 @@ type SpProcess struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSpProcess(createdAt string, createdById string, id string, type_ string, updatedAt string, updatedById string, versionId int32) *SpProcess {
+func NewSpProcess(billable string, createdAt string, createdById string, id string, type_ string, updatedAt string, updatedById string, versionId int32) *SpProcess {
 	this := SpProcess{}
+	this.Billable = billable
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
 	this.Id = id
@@ -71,6 +83,30 @@ func NewSpProcess(createdAt string, createdById string, id string, type_ string,
 func NewSpProcessWithDefaults() *SpProcess {
 	this := SpProcess{}
 	return &this
+}
+
+// GetBillable returns the Billable field value
+func (o *SpProcess) GetBillable() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Billable
+}
+
+// GetBillableOk returns a tuple with the Billable field value
+// and a boolean to check if the value has been set.
+func (o *SpProcess) GetBillableOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Billable, true
+}
+
+// SetBillable sets field value
+func (o *SpProcess) SetBillable(v string) {
+	o.Billable = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -151,6 +187,38 @@ func (o *SpProcess) GetCreatedByIdOk() (*string, bool) {
 // SetCreatedById sets field value
 func (o *SpProcess) SetCreatedById(v string) {
 	o.CreatedById = v
+}
+
+// GetFlowpipePipelineId returns the FlowpipePipelineId field value if set, zero value otherwise.
+func (o *SpProcess) GetFlowpipePipelineId() string {
+	if o == nil || o.FlowpipePipelineId == nil {
+		var ret string
+		return ret
+	}
+	return *o.FlowpipePipelineId
+}
+
+// GetFlowpipePipelineIdOk returns a tuple with the FlowpipePipelineId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpProcess) GetFlowpipePipelineIdOk() (*string, bool) {
+	if o == nil || o.FlowpipePipelineId == nil {
+		return nil, false
+	}
+	return o.FlowpipePipelineId, true
+}
+
+// HasFlowpipePipelineId returns a boolean if a field has been set.
+func (o *SpProcess) HasFlowpipePipelineId() bool {
+	if o != nil && o.FlowpipePipelineId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowpipePipelineId gets a reference to the given string and assigns it to the FlowpipePipelineId field.
+func (o *SpProcess) SetFlowpipePipelineId(v string) {
+	o.FlowpipePipelineId = &v
 }
 
 // GetId returns the Id field value
@@ -274,9 +342,9 @@ func (o *SpProcess) SetPipelineId(v string) {
 }
 
 // GetState returns the State field value if set, zero value otherwise.
-func (o *SpProcess) GetState() string {
+func (o *SpProcess) GetState() ProcessState {
 	if o == nil || o.State == nil {
-		var ret string
+		var ret ProcessState
 		return ret
 	}
 	return *o.State
@@ -284,7 +352,7 @@ func (o *SpProcess) GetState() string {
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SpProcess) GetStateOk() (*string, bool) {
+func (o *SpProcess) GetStateOk() (*ProcessState, bool) {
 	if o == nil || o.State == nil {
 		return nil, false
 	}
@@ -300,8 +368,8 @@ func (o *SpProcess) HasState() bool {
 	return false
 }
 
-// SetState gets a reference to the given string and assigns it to the State field.
-func (o *SpProcess) SetState(v string) {
+// SetState gets a reference to the given ProcessState and assigns it to the State field.
+func (o *SpProcess) SetState(v ProcessState) {
 	o.State = &v
 }
 
@@ -367,6 +435,70 @@ func (o *SpProcess) HasTenantId() bool {
 // SetTenantId gets a reference to the given string and assigns it to the TenantId field.
 func (o *SpProcess) SetTenantId(v string) {
 	o.TenantId = &v
+}
+
+// GetTrigger returns the Trigger field value if set, zero value otherwise.
+func (o *SpProcess) GetTrigger() WorkspaceModTrigger {
+	if o == nil || o.Trigger == nil {
+		var ret WorkspaceModTrigger
+		return ret
+	}
+	return *o.Trigger
+}
+
+// GetTriggerOk returns a tuple with the Trigger field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpProcess) GetTriggerOk() (*WorkspaceModTrigger, bool) {
+	if o == nil || o.Trigger == nil {
+		return nil, false
+	}
+	return o.Trigger, true
+}
+
+// HasTrigger returns a boolean if a field has been set.
+func (o *SpProcess) HasTrigger() bool {
+	if o != nil && o.Trigger != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTrigger gets a reference to the given WorkspaceModTrigger and assigns it to the Trigger field.
+func (o *SpProcess) SetTrigger(v WorkspaceModTrigger) {
+	o.Trigger = &v
+}
+
+// GetTriggerId returns the TriggerId field value if set, zero value otherwise.
+func (o *SpProcess) GetTriggerId() string {
+	if o == nil || o.TriggerId == nil {
+		var ret string
+		return ret
+	}
+	return *o.TriggerId
+}
+
+// GetTriggerIdOk returns a tuple with the TriggerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpProcess) GetTriggerIdOk() (*string, bool) {
+	if o == nil || o.TriggerId == nil {
+		return nil, false
+	}
+	return o.TriggerId, true
+}
+
+// HasTriggerId returns a boolean if a field has been set.
+func (o *SpProcess) HasTriggerId() bool {
+	if o != nil && o.TriggerId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTriggerId gets a reference to the given string and assigns it to the TriggerId field.
+func (o *SpProcess) SetTriggerId(v string) {
+	o.TriggerId = &v
 }
 
 // GetType returns the Type field value
@@ -564,6 +696,9 @@ func (o *SpProcess) SetWorkspaceId(v string) {
 func (o SpProcess) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
+		toSerialize["billable"] = o.Billable
+	}
+	if true {
 		toSerialize["created_at"] = o.CreatedAt
 	}
 	if o.CreatedBy != nil {
@@ -571,6 +706,9 @@ func (o SpProcess) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["created_by_id"] = o.CreatedById
+	}
+	if o.FlowpipePipelineId != nil {
+		toSerialize["flowpipe_pipeline_id"] = o.FlowpipePipelineId
 	}
 	if true {
 		toSerialize["id"] = o.Id
@@ -592,6 +730,12 @@ func (o SpProcess) MarshalJSON() ([]byte, error) {
 	}
 	if o.TenantId != nil {
 		toSerialize["tenant_id"] = o.TenantId
+	}
+	if o.Trigger != nil {
+		toSerialize["trigger"] = o.Trigger
+	}
+	if o.TriggerId != nil {
+		toSerialize["trigger_id"] = o.TriggerId
 	}
 	if true {
 		toSerialize["type"] = o.Type

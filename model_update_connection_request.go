@@ -16,11 +16,11 @@ import (
 
 // UpdateConnectionRequest struct for UpdateConnectionRequest
 type UpdateConnectionRequest struct {
-	Config           *map[string]interface{} `json:"config,omitempty"`
-	ConfigSource     *string                            `json:"config_source,omitempty"`
-	CredentialSource *string                            `json:"credential_source,omitempty"`
-	Handle           *string                            `json:"handle,omitempty"`
-	ParentId         *string                            `json:"parent_id,omitempty"`
+	Config           *map[string]interface{}     `json:"config,omitempty"`
+	ConfigSource     *ConnectionConfigSource     `json:"config_source,omitempty"`
+	CredentialSource *ConnectionCredentialSource `json:"credential_source,omitempty"`
+	Handle           *string                     `json:"handle,omitempty"`
+	ParentId         *string                     `json:"parent_id,omitempty"`
 }
 
 // NewUpdateConnectionRequest instantiates a new UpdateConnectionRequest object
@@ -73,9 +73,9 @@ func (o *UpdateConnectionRequest) SetConfig(v map[string]interface{}) {
 }
 
 // GetConfigSource returns the ConfigSource field value if set, zero value otherwise.
-func (o *UpdateConnectionRequest) GetConfigSource() string {
+func (o *UpdateConnectionRequest) GetConfigSource() ConnectionConfigSource {
 	if o == nil || o.ConfigSource == nil {
-		var ret string
+		var ret ConnectionConfigSource
 		return ret
 	}
 	return *o.ConfigSource
@@ -83,7 +83,7 @@ func (o *UpdateConnectionRequest) GetConfigSource() string {
 
 // GetConfigSourceOk returns a tuple with the ConfigSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateConnectionRequest) GetConfigSourceOk() (*string, bool) {
+func (o *UpdateConnectionRequest) GetConfigSourceOk() (*ConnectionConfigSource, bool) {
 	if o == nil || o.ConfigSource == nil {
 		return nil, false
 	}
@@ -99,15 +99,15 @@ func (o *UpdateConnectionRequest) HasConfigSource() bool {
 	return false
 }
 
-// SetConfigSource gets a reference to the given string and assigns it to the ConfigSource field.
-func (o *UpdateConnectionRequest) SetConfigSource(v string) {
+// SetConfigSource gets a reference to the given ConnectionConfigSource and assigns it to the ConfigSource field.
+func (o *UpdateConnectionRequest) SetConfigSource(v ConnectionConfigSource) {
 	o.ConfigSource = &v
 }
 
 // GetCredentialSource returns the CredentialSource field value if set, zero value otherwise.
-func (o *UpdateConnectionRequest) GetCredentialSource() string {
+func (o *UpdateConnectionRequest) GetCredentialSource() ConnectionCredentialSource {
 	if o == nil || o.CredentialSource == nil {
-		var ret string
+		var ret ConnectionCredentialSource
 		return ret
 	}
 	return *o.CredentialSource
@@ -115,7 +115,7 @@ func (o *UpdateConnectionRequest) GetCredentialSource() string {
 
 // GetCredentialSourceOk returns a tuple with the CredentialSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateConnectionRequest) GetCredentialSourceOk() (*string, bool) {
+func (o *UpdateConnectionRequest) GetCredentialSourceOk() (*ConnectionCredentialSource, bool) {
 	if o == nil || o.CredentialSource == nil {
 		return nil, false
 	}
@@ -131,8 +131,8 @@ func (o *UpdateConnectionRequest) HasCredentialSource() bool {
 	return false
 }
 
-// SetCredentialSource gets a reference to the given string and assigns it to the CredentialSource field.
-func (o *UpdateConnectionRequest) SetCredentialSource(v string) {
+// SetCredentialSource gets a reference to the given ConnectionCredentialSource and assigns it to the CredentialSource field.
+func (o *UpdateConnectionRequest) SetCredentialSource(v ConnectionCredentialSource) {
 	o.CredentialSource = &v
 }
 

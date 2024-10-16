@@ -284,7 +284,7 @@ func main() {
     datatankHandle := "datatankHandle_example" // string | The name of the workspace Datatank.
     datatankTableName := "datatankTableName_example" // string | The name of the workspace Datatank table.
     datatankPartId := "datatankPartId_example" // string | The id of the workspace Datatank table partition to be updated.
-    request := *openapiclient.NewUpdateDatatankPartRequest("DesiredState_example") // UpdateDatatankPartRequest | The request body to update workspace Datatank table partition.
+    request := *openapiclient.NewUpdateDatatankPartRequest(map[string][]openapiclient.DesiredState{"key": "TODO"}) // UpdateDatatankPartRequest | The request body to update workspace Datatank table partition.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

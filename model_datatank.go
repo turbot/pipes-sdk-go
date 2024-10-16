@@ -18,24 +18,27 @@ import (
 type Datatank struct {
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
-	CreatedBy *User  `json:"created_by,omitempty"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
 	// The ID of the user that created this.
 	CreatedById string `json:"created_by_id"`
 	// The time the item was deleted in ISO 8601 UTC.
 	DeletedAt *string `json:"deleted_at,omitempty"`
-	DeletedBy *User   `json:"deleted_by,omitempty"`
+	// User information for the user that performed the deletion.
+	DeletedBy *User `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.
-	DeletedById  string  `json:"deleted_by_id"`
-	Description  string  `json:"description"`
-	DesiredState string  `json:"desired_state"`
-	Handle       string  `json:"handle"`
-	Id           string  `json:"id"`
-	IdentityId   string  `json:"identity_id"`
-	State        string  `json:"state"`
-	StateReason  *string `json:"state_reason,omitempty"`
+	DeletedById  string        `json:"deleted_by_id"`
+	Description  string        `json:"description"`
+	DesiredState DesiredState  `json:"desired_state"`
+	Handle       string        `json:"handle"`
+	Id           string        `json:"id"`
+	IdentityId   string        `json:"identity_id"`
+	State        DatatankState `json:"state"`
+	StateReason  *string       `json:"state_reason,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	UpdatedBy *User   `json:"updated_by,omitempty"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
@@ -47,7 +50,7 @@ type Datatank struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDatatank(createdAt string, createdById string, deletedById string, description string, desiredState string, handle string, id string, identityId string, state string, updatedById string, versionId int32, workspaceId string) *Datatank {
+func NewDatatank(createdAt string, createdById string, deletedById string, description string, desiredState DesiredState, handle string, id string, identityId string, state DatatankState, updatedById string, versionId int32, workspaceId string) *Datatank {
 	this := Datatank{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
@@ -265,9 +268,9 @@ func (o *Datatank) SetDescription(v string) {
 }
 
 // GetDesiredState returns the DesiredState field value
-func (o *Datatank) GetDesiredState() string {
+func (o *Datatank) GetDesiredState() DesiredState {
 	if o == nil {
-		var ret string
+		var ret DesiredState
 		return ret
 	}
 
@@ -276,7 +279,7 @@ func (o *Datatank) GetDesiredState() string {
 
 // GetDesiredStateOk returns a tuple with the DesiredState field value
 // and a boolean to check if the value has been set.
-func (o *Datatank) GetDesiredStateOk() (*string, bool) {
+func (o *Datatank) GetDesiredStateOk() (*DesiredState, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -284,7 +287,7 @@ func (o *Datatank) GetDesiredStateOk() (*string, bool) {
 }
 
 // SetDesiredState sets field value
-func (o *Datatank) SetDesiredState(v string) {
+func (o *Datatank) SetDesiredState(v DesiredState) {
 	o.DesiredState = v
 }
 
@@ -361,9 +364,9 @@ func (o *Datatank) SetIdentityId(v string) {
 }
 
 // GetState returns the State field value
-func (o *Datatank) GetState() string {
+func (o *Datatank) GetState() DatatankState {
 	if o == nil {
-		var ret string
+		var ret DatatankState
 		return ret
 	}
 
@@ -372,7 +375,7 @@ func (o *Datatank) GetState() string {
 
 // GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *Datatank) GetStateOk() (*string, bool) {
+func (o *Datatank) GetStateOk() (*DatatankState, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -380,7 +383,7 @@ func (o *Datatank) GetStateOk() (*string, bool) {
 }
 
 // SetState sets field value
-func (o *Datatank) SetState(v string) {
+func (o *Datatank) SetState(v DatatankState) {
 	o.State = v
 }
 

@@ -21,7 +21,7 @@ type UpdateIntegrationRequest struct {
 	// The handle for the integration.
 	Handle *string `json:"handle,omitempty"`
 	// The state of the integration.
-	State *string `json:"state,omitempty"`
+	State *IntegrationState `json:"state,omitempty"`
 }
 
 // NewUpdateIntegrationRequest instantiates a new UpdateIntegrationRequest object
@@ -106,9 +106,9 @@ func (o *UpdateIntegrationRequest) SetHandle(v string) {
 }
 
 // GetState returns the State field value if set, zero value otherwise.
-func (o *UpdateIntegrationRequest) GetState() string {
+func (o *UpdateIntegrationRequest) GetState() IntegrationState {
 	if o == nil || o.State == nil {
-		var ret string
+		var ret IntegrationState
 		return ret
 	}
 	return *o.State
@@ -116,7 +116,7 @@ func (o *UpdateIntegrationRequest) GetState() string {
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateIntegrationRequest) GetStateOk() (*string, bool) {
+func (o *UpdateIntegrationRequest) GetStateOk() (*IntegrationState, bool) {
 	if o == nil || o.State == nil {
 		return nil, false
 	}
@@ -132,8 +132,8 @@ func (o *UpdateIntegrationRequest) HasState() bool {
 	return false
 }
 
-// SetState gets a reference to the given string and assigns it to the State field.
-func (o *UpdateIntegrationRequest) SetState(v string) {
+// SetState gets a reference to the given IntegrationState and assigns it to the State field.
+func (o *UpdateIntegrationRequest) SetState(v IntegrationState) {
 	o.State = &v
 }
 

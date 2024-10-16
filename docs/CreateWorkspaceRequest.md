@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DbVolumeSizeBytes** | Pointer to **int64** |  | [optional] 
-**DesiredState** | Pointer to **string** | paused is not yet supported for Workspace | [optional] 
+**DesiredState** | Pointer to [**DesiredState**](DesiredState.md) | paused is not yet supported for Workspace | [optional] 
 **Handle** | **string** |  | 
-**InstanceType** | Pointer to **string** |  | [optional] 
+**InstanceType** | Pointer to [**WorkspaceInstanceType**](WorkspaceInstanceType.md) |  | [optional] 
 
 ## Methods
 
@@ -55,20 +55,20 @@ HasDbVolumeSizeBytes returns a boolean if a field has been set.
 
 ### GetDesiredState
 
-`func (o *CreateWorkspaceRequest) GetDesiredState() string`
+`func (o *CreateWorkspaceRequest) GetDesiredState() DesiredState`
 
 GetDesiredState returns the DesiredState field if non-nil, zero value otherwise.
 
 ### GetDesiredStateOk
 
-`func (o *CreateWorkspaceRequest) GetDesiredStateOk() (*string, bool)`
+`func (o *CreateWorkspaceRequest) GetDesiredStateOk() (*DesiredState, bool)`
 
 GetDesiredStateOk returns a tuple with the DesiredState field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDesiredState
 
-`func (o *CreateWorkspaceRequest) SetDesiredState(v string)`
+`func (o *CreateWorkspaceRequest) SetDesiredState(v DesiredState)`
 
 SetDesiredState sets DesiredState field to given value.
 
@@ -100,20 +100,20 @@ SetHandle sets Handle field to given value.
 
 ### GetInstanceType
 
-`func (o *CreateWorkspaceRequest) GetInstanceType() string`
+`func (o *CreateWorkspaceRequest) GetInstanceType() WorkspaceInstanceType`
 
 GetInstanceType returns the InstanceType field if non-nil, zero value otherwise.
 
 ### GetInstanceTypeOk
 
-`func (o *CreateWorkspaceRequest) GetInstanceTypeOk() (*string, bool)`
+`func (o *CreateWorkspaceRequest) GetInstanceTypeOk() (*WorkspaceInstanceType, bool)`
 
 GetInstanceTypeOk returns a tuple with the InstanceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInstanceType
 
-`func (o *CreateWorkspaceRequest) SetInstanceType(v string)`
+`func (o *CreateWorkspaceRequest) SetInstanceType(v WorkspaceInstanceType)`
 
 SetInstanceType sets InstanceType field to given value.
 

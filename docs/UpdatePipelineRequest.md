@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Args** | Pointer to **interface{}** |  | [optional] 
-**DesiredState** | Pointer to **string** | The desired state of the pipeline. | [optional] 
-**Frequency** | Pointer to [**PipelineFrequency**](PipelineFrequency.md) |  | [optional] 
+**DesiredState** | Pointer to [**DesiredState**](DesiredState.md) | The desired state of the pipeline. | [optional] 
+**Frequency** | Pointer to [**PipelineFrequency**](PipelineFrequency.md) | The frequency at which the pipeline will run. | [optional] 
 **Tags** | Pointer to **interface{}** |  | [optional] 
 **Title** | Pointer to **string** | The title of the pipeline. | [optional] 
 
@@ -66,20 +66,20 @@ HasArgs returns a boolean if a field has been set.
 UnsetArgs ensures that no value is present for Args, not even an explicit nil
 ### GetDesiredState
 
-`func (o *UpdatePipelineRequest) GetDesiredState() string`
+`func (o *UpdatePipelineRequest) GetDesiredState() DesiredState`
 
 GetDesiredState returns the DesiredState field if non-nil, zero value otherwise.
 
 ### GetDesiredStateOk
 
-`func (o *UpdatePipelineRequest) GetDesiredStateOk() (*string, bool)`
+`func (o *UpdatePipelineRequest) GetDesiredStateOk() (*DesiredState, bool)`
 
 GetDesiredStateOk returns a tuple with the DesiredState field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDesiredState
 
-`func (o *UpdatePipelineRequest) SetDesiredState(v string)`
+`func (o *UpdatePipelineRequest) SetDesiredState(v DesiredState)`
 
 SetDesiredState sets DesiredState field to given value.
 

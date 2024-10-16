@@ -436,7 +436,7 @@ import (
 
 func main() {
     temporaryTokenRequestId := "temporaryTokenRequestId_example" // string | The ID of the temporary token request to update.
-    request := *openapiclient.NewUpdateTemporaryTokenRequest("State_example") // UpdateTemporaryTokenRequest | The request body containing updates for the temporary token request.
+    request := *openapiclient.NewUpdateTemporaryTokenRequest(openapiclient.TemporaryTokenRequestState("pending")) // UpdateTemporaryTokenRequest | The request body containing updates for the temporary token request.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

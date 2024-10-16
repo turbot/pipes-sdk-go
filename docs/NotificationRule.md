@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Events** | Pointer to [**[]NotificationRuleEvent**](NotificationRuleEvent.md) |  | [optional] 
 **Id** | **string** |  | 
 **IdentityId** | Pointer to **string** |  | [optional] 
-**RecipientType** | **string** |  | 
+**RecipientType** | [**NotificationRecipientType**](NotificationRecipientType.md) |  | 
 **Recipients** | Pointer to [**[]NotificationRuleRecipient**](NotificationRuleRecipient.md) |  | [optional] 
 **TargetId** | Pointer to **string** |  | [optional] 
 **Title** | **string** |  | 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewNotificationRule
 
-`func NewNotificationRule(actorId string, createdAt string, id string, recipientType string, title string, ) *NotificationRule`
+`func NewNotificationRule(actorId string, createdAt string, id string, recipientType NotificationRecipientType, title string, ) *NotificationRule`
 
 NewNotificationRule instantiates a new NotificationRule object
 This constructor will assign default values to properties that have it defined,
@@ -146,20 +146,20 @@ HasIdentityId returns a boolean if a field has been set.
 
 ### GetRecipientType
 
-`func (o *NotificationRule) GetRecipientType() string`
+`func (o *NotificationRule) GetRecipientType() NotificationRecipientType`
 
 GetRecipientType returns the RecipientType field if non-nil, zero value otherwise.
 
 ### GetRecipientTypeOk
 
-`func (o *NotificationRule) GetRecipientTypeOk() (*string, bool)`
+`func (o *NotificationRule) GetRecipientTypeOk() (*NotificationRecipientType, bool)`
 
 GetRecipientTypeOk returns a tuple with the RecipientType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRecipientType
 
-`func (o *NotificationRule) SetRecipientType(v string)`
+`func (o *NotificationRule) SetRecipientType(v NotificationRecipientType)`
 
 SetRecipientType sets RecipientType field to given value.
 

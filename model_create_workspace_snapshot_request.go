@@ -16,12 +16,13 @@ import (
 
 // CreateWorkspaceSnapshotRequest struct for CreateWorkspaceSnapshotRequest
 type CreateWorkspaceSnapshotRequest struct {
+	// The snapshot data to save.
 	Data WorkspaceSnapshotData `json:"data"`
 	Tags interface{}           `json:"tags,omitempty"`
 	// The title of the snapshot.
 	Title *string `json:"title,omitempty"`
 	// The visibility of the snapshot to create.
-	Visibility *string `json:"visibility,omitempty"`
+	Visibility *SnapshotVisibility `json:"visibility,omitempty"`
 }
 
 // NewCreateWorkspaceSnapshotRequest instantiates a new CreateWorkspaceSnapshotRequest object
@@ -132,9 +133,9 @@ func (o *CreateWorkspaceSnapshotRequest) SetTitle(v string) {
 }
 
 // GetVisibility returns the Visibility field value if set, zero value otherwise.
-func (o *CreateWorkspaceSnapshotRequest) GetVisibility() string {
+func (o *CreateWorkspaceSnapshotRequest) GetVisibility() SnapshotVisibility {
 	if o == nil || o.Visibility == nil {
-		var ret string
+		var ret SnapshotVisibility
 		return ret
 	}
 	return *o.Visibility
@@ -142,7 +143,7 @@ func (o *CreateWorkspaceSnapshotRequest) GetVisibility() string {
 
 // GetVisibilityOk returns a tuple with the Visibility field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateWorkspaceSnapshotRequest) GetVisibilityOk() (*string, bool) {
+func (o *CreateWorkspaceSnapshotRequest) GetVisibilityOk() (*SnapshotVisibility, bool) {
 	if o == nil || o.Visibility == nil {
 		return nil, false
 	}
@@ -158,8 +159,8 @@ func (o *CreateWorkspaceSnapshotRequest) HasVisibility() bool {
 	return false
 }
 
-// SetVisibility gets a reference to the given string and assigns it to the Visibility field.
-func (o *CreateWorkspaceSnapshotRequest) SetVisibility(v string) {
+// SetVisibility gets a reference to the given SnapshotVisibility and assigns it to the Visibility field.
+func (o *CreateWorkspaceSnapshotRequest) SetVisibility(v SnapshotVisibility) {
 	o.Visibility = &v
 }
 

@@ -21,14 +21,14 @@ type CreateIntegrationRequest struct {
 	// The handle for the integration.
 	Handle string `json:"handle"`
 	// The type of the integration, can be one of `aws`, `azure`, `gcp` or `github`.
-	Type string `json:"type"`
+	Type IntegrationType `json:"type"`
 }
 
 // NewCreateIntegrationRequest instantiates a new CreateIntegrationRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateIntegrationRequest(handle string, type_ string) *CreateIntegrationRequest {
+func NewCreateIntegrationRequest(handle string, type_ IntegrationType) *CreateIntegrationRequest {
 	this := CreateIntegrationRequest{}
 	this.Handle = handle
 	this.Type = type_
@@ -100,9 +100,9 @@ func (o *CreateIntegrationRequest) SetHandle(v string) {
 }
 
 // GetType returns the Type field value
-func (o *CreateIntegrationRequest) GetType() string {
+func (o *CreateIntegrationRequest) GetType() IntegrationType {
 	if o == nil {
-		var ret string
+		var ret IntegrationType
 		return ret
 	}
 
@@ -111,7 +111,7 @@ func (o *CreateIntegrationRequest) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *CreateIntegrationRequest) GetTypeOk() (*string, bool) {
+func (o *CreateIntegrationRequest) GetTypeOk() (*IntegrationType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -119,7 +119,7 @@ func (o *CreateIntegrationRequest) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *CreateIntegrationRequest) SetType(v string) {
+func (o *CreateIntegrationRequest) SetType(v IntegrationType) {
 	o.Type = v
 }
 
