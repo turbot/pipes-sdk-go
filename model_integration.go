@@ -16,15 +16,18 @@ import (
 
 // Integration struct for Integration
 type Integration struct {
+	// The configuration for the integration.
 	Config *map[string]interface{} `json:"config,omitempty"`
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
-	CreatedBy *User  `json:"created_by,omitempty"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
 	// The ID of the user that created this.
 	CreatedById string `json:"created_by_id"`
 	// The time the item was deleted in ISO 8601 UTC.
 	DeletedAt *string `json:"deleted_at,omitempty"`
-	DeletedBy *User   `json:"deleted_by,omitempty"`
+	// User information for the user that performed the deletion.
+	DeletedBy *User `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.
 	DeletedById string `json:"deleted_by_id"`
 	// The GitHub installation ID for this integration.
@@ -34,21 +37,23 @@ type Integration struct {
 	// The unique identifier for the integration.
 	Id string `json:"id"`
 	// The unique identifier for an identity where this integration is created.
-	IdentityId *string   `json:"identity_id,omitempty"`
-	Pipeline   *Pipeline `json:"pipeline,omitempty"`
+	IdentityId *string `json:"identity_id,omitempty"`
+	// Additional information about the pipeline the integration belongs to.
+	Pipeline *Pipeline `json:"pipeline,omitempty"`
 	// The pipeline ID for this integration.
 	PipelineId *string `json:"pipeline_id,omitempty"`
 	// The state of the integration.
-	State *string `json:"state,omitempty"`
+	State *IntegrationState `json:"state,omitempty"`
 	// The reason for the state of the integration.
 	StateReason *string `json:"state_reason,omitempty"`
 	// The unique identifier for the tenant where this integration is created.
 	TenantId string `json:"tenant_id"`
 	// The type of the integration.
-	Type *string `json:"type,omitempty"`
+	Type *IntegrationType `json:"type,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	UpdatedBy *User   `json:"updated_by,omitempty"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
@@ -450,9 +455,9 @@ func (o *Integration) SetPipelineId(v string) {
 }
 
 // GetState returns the State field value if set, zero value otherwise.
-func (o *Integration) GetState() string {
+func (o *Integration) GetState() IntegrationState {
 	if o == nil || o.State == nil {
-		var ret string
+		var ret IntegrationState
 		return ret
 	}
 	return *o.State
@@ -460,7 +465,7 @@ func (o *Integration) GetState() string {
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Integration) GetStateOk() (*string, bool) {
+func (o *Integration) GetStateOk() (*IntegrationState, bool) {
 	if o == nil || o.State == nil {
 		return nil, false
 	}
@@ -476,8 +481,8 @@ func (o *Integration) HasState() bool {
 	return false
 }
 
-// SetState gets a reference to the given string and assigns it to the State field.
-func (o *Integration) SetState(v string) {
+// SetState gets a reference to the given IntegrationState and assigns it to the State field.
+func (o *Integration) SetState(v IntegrationState) {
 	o.State = &v
 }
 
@@ -538,9 +543,9 @@ func (o *Integration) SetTenantId(v string) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *Integration) GetType() string {
+func (o *Integration) GetType() IntegrationType {
 	if o == nil || o.Type == nil {
-		var ret string
+		var ret IntegrationType
 		return ret
 	}
 	return *o.Type
@@ -548,7 +553,7 @@ func (o *Integration) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Integration) GetTypeOk() (*string, bool) {
+func (o *Integration) GetTypeOk() (*IntegrationType, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -564,8 +569,8 @@ func (o *Integration) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *Integration) SetType(v string) {
+// SetType gets a reference to the given IntegrationType and assigns it to the Type field.
+func (o *Integration) SetType(v IntegrationType) {
 	o.Type = &v
 }
 

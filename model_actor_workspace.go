@@ -16,15 +16,17 @@ import (
 
 // ActorWorkspace struct for ActorWorkspace
 type ActorWorkspace struct {
-	DatabaseName *string    `json:"database_name,omitempty"`
-	Handle       *string    `json:"handle,omitempty"`
-	Host         *string    `json:"host,omitempty"`
-	Id           *string    `json:"id,omitempty"`
-	Identity     *Identity  `json:"identity,omitempty"`
-	IdentityId   *string    `json:"identity_id,omitempty"`
-	Role         *string    `json:"role,omitempty"`
-	Workspace    *Workspace `json:"workspace,omitempty"`
-	WorkspaceId  *string    `json:"workspace_id,omitempty"`
+	DatabaseName *string `json:"database_name,omitempty"`
+	Handle       *string `json:"handle,omitempty"`
+	Host         *string `json:"host,omitempty"`
+	Id           *string `json:"id,omitempty"`
+	// Readonly in DB
+	Identity   *Identity `json:"identity,omitempty"`
+	IdentityId *string   `json:"identity_id,omitempty"`
+	Role       *string   `json:"role,omitempty"`
+	// Readonly in DB
+	Workspace   *Workspace `json:"workspace,omitempty"`
+	WorkspaceId *string    `json:"workspace_id,omitempty"`
 }
 
 // NewActorWorkspace instantiates a new ActorWorkspace object

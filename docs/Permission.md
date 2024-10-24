@@ -7,18 +7,18 @@ Name | Type | Description | Notes
 **AggregatorId** | Pointer to **string** | The unique identifier for the aggregator that this permission applies to. | [optional] 
 **ConnectionId** | Pointer to **string** | The unique identifier for the connection that this permission applies to. | [optional] 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **Id** | **string** | The unique identifier for the connection permission record. | 
-**Identity** | Pointer to [**Identity**](Identity.md) |  | [optional] 
+**Identity** | Pointer to [**Identity**](Identity.md) | Information about the tenant the permission belongs to. | [optional] 
 **IdentityId** | Pointer to **string** | The unique identifier for the identity that this permission applies to. | [optional] 
-**Tenant** | Pointer to [**Tenant**](Tenant.md) |  | [optional] 
+**Tenant** | Pointer to [**Tenant**](Tenant.md) | Information about the tenant the permission belongs to. | [optional] 
 **TenantId** | Pointer to **string** | The unique identifier for the tenant that this permission applies to. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
-**Workspace** | Pointer to [**Workspace**](Workspace.md) |  | [optional] 
+**Workspace** | Pointer to [**Workspace**](Workspace.md) | Information about the tenant the permission belongs to. | [optional] 
 **WorkspaceId** | Pointer to **string** | The unique identifier for the workspace that this permission applies to. | [optional] 
 
 ## Methods

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** | The display name of the identity. | [optional] 
 **Handle** | **string** | The handle name of the identity. | 
 **Id** | **string** | The unique identifier of the identity. | 
-**Tenant** | Pointer to [**Tenant**](Tenant.md) |  | [optional] 
+**Tenant** | Pointer to [**Tenant**](Tenant.md) | Information about the tenant the identity belongs to. | [optional] 
 **TenantId** | **string** | The unique identifier of the tenant the identity belongs to. | 
 **Type** | **string** | The type of identity e.g. user or org. | 
 

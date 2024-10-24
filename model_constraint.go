@@ -47,7 +47,7 @@ type Constraint struct {
 	// The id of the item from which the value is inherited.
 	ValueFrom string `json:"value_from"`
 	// The visibility of the constraint. Can be one of public or private.
-	Visibility string `json:"visibility"`
+	Visibility ConstraintVisibility `json:"visibility"`
 	// The workspace id for which the constraint applies to.
 	WorkspaceId *string `json:"workspace_id,omitempty"`
 }
@@ -56,7 +56,7 @@ type Constraint struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConstraint(name string, target string, type_ string, value interface{}, valueFrom string, visibility string) *Constraint {
+func NewConstraint(name string, target string, type_ string, value interface{}, valueFrom string, visibility ConstraintVisibility) *Constraint {
 	this := Constraint{}
 	this.Name = name
 	this.Target = target
@@ -585,9 +585,9 @@ func (o *Constraint) SetValueFrom(v string) {
 }
 
 // GetVisibility returns the Visibility field value
-func (o *Constraint) GetVisibility() string {
+func (o *Constraint) GetVisibility() ConstraintVisibility {
 	if o == nil {
-		var ret string
+		var ret ConstraintVisibility
 		return ret
 	}
 
@@ -596,7 +596,7 @@ func (o *Constraint) GetVisibility() string {
 
 // GetVisibilityOk returns a tuple with the Visibility field value
 // and a boolean to check if the value has been set.
-func (o *Constraint) GetVisibilityOk() (*string, bool) {
+func (o *Constraint) GetVisibilityOk() (*ConstraintVisibility, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -604,7 +604,7 @@ func (o *Constraint) GetVisibilityOk() (*string, bool) {
 }
 
 // SetVisibility sets field value
-func (o *Constraint) SetVisibility(v string) {
+func (o *Constraint) SetVisibility(v ConstraintVisibility) {
 	o.Visibility = v
 }
 

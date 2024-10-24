@@ -16,10 +16,14 @@ import (
 
 // UpdateTenantSettingsRequest struct for UpdateTenantSettingsRequest
 type UpdateTenantSettingsRequest struct {
-	LoginEmail  *UpdateTenantLoginSettings     `json:"login_email,omitempty"`
-	LoginGithub *UpdateTenantLoginSettings     `json:"login_github,omitempty"`
-	LoginGoogle *UpdateTenantLoginSettings     `json:"login_google,omitempty"`
-	LoginSaml   *UpdateTenantSamlLoginSettings `json:"login_saml,omitempty"`
+	// Settings related to login via Email.
+	LoginEmail *UpdateTenantLoginSettings `json:"login_email,omitempty"`
+	// Settings related to login via Github.
+	LoginGithub *UpdateTenantLoginSettings `json:"login_github,omitempty"`
+	// Settings related to login via Google.
+	LoginGoogle *UpdateTenantLoginSettings `json:"login_google,omitempty"`
+	// LoginMicrosoft      *TenantLoginSettings     `json:\"login_microsoft\" binding:\"omitempty\"`                                  // Settings related to login via Microsoft.
+	LoginSaml *UpdateTenantSamlLoginSettings `json:"login_saml,omitempty"`
 	// The user provisioning settings for the tenant.
 	UserProvisioning *[]string `json:"user_provisioning,omitempty"`
 	// The domains that new users are permitted to be provisioned from.

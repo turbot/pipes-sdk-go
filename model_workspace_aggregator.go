@@ -16,18 +16,22 @@ import (
 
 // WorkspaceAggregator struct for WorkspaceAggregator
 type WorkspaceAggregator struct {
-	Association *WorkspaceAggregatorAssociation    `json:"association,omitempty"`
-	Config      *map[string]interface{} `json:"config,omitempty"`
+	// The identity workspace connection association record. Only populated when the level is 'identity'.
+	Association *WorkspaceAggregatorAssociation `json:"association,omitempty"`
+	// The aggregator configuration.
+	Config *map[string]interface{} `json:"config,omitempty"`
 	// The plugin or connection configuration.
 	Connections []string `json:"connections"`
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
-	CreatedBy *User  `json:"created_by,omitempty"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
 	// The ID of the user that created this.
 	CreatedById string `json:"created_by_id"`
 	// The time the item was deleted in ISO 8601 UTC.
 	DeletedAt *string `json:"deleted_at,omitempty"`
-	DeletedBy *User   `json:"deleted_by,omitempty"`
+	// User information for the user that performed the deletion.
+	DeletedBy *User `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.
 	DeletedById string `json:"deleted_by_id"`
 	// The handle name of the aggregator.
@@ -35,13 +39,14 @@ type WorkspaceAggregator struct {
 	// The dynamically-generated handle for the aggregator. Only populated if this is a discovered aggregator.
 	HandleDynamic *string `json:"handle_dynamic,omitempty"`
 	// The handle mode for the aggregator.
-	HandleMode *string `json:"handle_mode,omitempty"`
+	HandleMode *ConnectionHandleMode `json:"handle_mode,omitempty"`
 	// The handle prefix to use for aggregators and connections discovered by this aggregator. Only populated if this is a dynamic aggregator.
 	HandlePrefix *string `json:"handle_prefix,omitempty"`
 	// The unique identifier for the aggregator.
 	Id string `json:"id"`
 	// The unique identifier for an identity where the aggregator has been created.
-	IdentityId  *string      `json:"identity_id,omitempty"`
+	IdentityId *string `json:"identity_id,omitempty"`
+	// Details of the integration that manages this aggregator.
 	Integration *Integration `json:"integration,omitempty"`
 	// The source identifier for this aggregator. Only populated if its a aggregator thats been discovered by an integration.
 	IntegrationResourceIdentifier *string `json:"integration_resource_identifier,omitempty"`
@@ -61,7 +66,8 @@ type WorkspaceAggregator struct {
 	Type *string `json:"type,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	UpdatedBy *User   `json:"updated_by,omitempty"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
@@ -410,9 +416,9 @@ func (o *WorkspaceAggregator) SetHandleDynamic(v string) {
 }
 
 // GetHandleMode returns the HandleMode field value if set, zero value otherwise.
-func (o *WorkspaceAggregator) GetHandleMode() string {
+func (o *WorkspaceAggregator) GetHandleMode() ConnectionHandleMode {
 	if o == nil || o.HandleMode == nil {
-		var ret string
+		var ret ConnectionHandleMode
 		return ret
 	}
 	return *o.HandleMode
@@ -420,7 +426,7 @@ func (o *WorkspaceAggregator) GetHandleMode() string {
 
 // GetHandleModeOk returns a tuple with the HandleMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkspaceAggregator) GetHandleModeOk() (*string, bool) {
+func (o *WorkspaceAggregator) GetHandleModeOk() (*ConnectionHandleMode, bool) {
 	if o == nil || o.HandleMode == nil {
 		return nil, false
 	}
@@ -436,8 +442,8 @@ func (o *WorkspaceAggregator) HasHandleMode() bool {
 	return false
 }
 
-// SetHandleMode gets a reference to the given string and assigns it to the HandleMode field.
-func (o *WorkspaceAggregator) SetHandleMode(v string) {
+// SetHandleMode gets a reference to the given ConnectionHandleMode and assigns it to the HandleMode field.
+func (o *WorkspaceAggregator) SetHandleMode(v ConnectionHandleMode) {
 	o.HandleMode = &v
 }
 

@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Association** | Pointer to [**WorkspaceAggregatorAssociation**](WorkspaceAggregatorAssociation.md) |  | [optional] 
-**Config** | Pointer to **map[string]interface{}** |  | [optional] 
+**Association** | Pointer to [**WorkspaceAggregatorAssociation**](WorkspaceAggregatorAssociation.md) | The identity workspace connection association record. Only populated when the level is &#39;identity&#39;. | [optional] 
+**Config** | Pointer to **map[string]interface{}** | The aggregator configuration. | [optional] 
 **Connections** | **[]string** | The plugin or connection configuration. | 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
-**DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**DeletedBy** | Pointer to [**User**](User.md) | User information for the user that performed the deletion. | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **Handle** | **string** | The handle name of the aggregator. | 
 **HandleDynamic** | Pointer to **string** | The dynamically-generated handle for the aggregator. Only populated if this is a discovered aggregator. | [optional] 
-**HandleMode** | Pointer to **string** | The handle mode for the aggregator. | [optional] 
+**HandleMode** | Pointer to [**ConnectionHandleMode**](ConnectionHandleMode.md) | The handle mode for the aggregator. | [optional] 
 **HandlePrefix** | Pointer to **string** | The handle prefix to use for aggregators and connections discovered by this aggregator. Only populated if this is a dynamic aggregator. | [optional] 
 **Id** | **string** | The unique identifier for the aggregator. | 
 **IdentityId** | Pointer to **string** | The unique identifier for an identity where the aggregator has been created. | [optional] 
-**Integration** | Pointer to [**Integration**](Integration.md) |  | [optional] 
+**Integration** | Pointer to [**Integration**](Integration.md) | Details of the integration that manages this aggregator. | [optional] 
 **IntegrationResourceIdentifier** | Pointer to **string** | The source identifier for this aggregator. Only populated if its a aggregator thats been discovered by an integration. | [optional] 
 **IntegrationResourceName** | Pointer to **string** | A friendly resource name for the aggregator. Only populated if its a aggregator thats been doscovered by an integration. | [optional] 
 **IntegrationResourcePath** | Pointer to **string** | The source path for this aggregator. Only populated if its a aggregator thats been discovered by an integration. | [optional] 
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **TenantId** | **string** | The unique identifier for the tenant where this aggregator is created. | 
 **Type** | Pointer to **string** | Type of connection i.e aggregator or connection. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 **WorkspaceId** | Pointer to **string** | The unique identifier for the workspace. | [optional] 
@@ -305,20 +305,20 @@ HasHandleDynamic returns a boolean if a field has been set.
 
 ### GetHandleMode
 
-`func (o *WorkspaceAggregator) GetHandleMode() string`
+`func (o *WorkspaceAggregator) GetHandleMode() ConnectionHandleMode`
 
 GetHandleMode returns the HandleMode field if non-nil, zero value otherwise.
 
 ### GetHandleModeOk
 
-`func (o *WorkspaceAggregator) GetHandleModeOk() (*string, bool)`
+`func (o *WorkspaceAggregator) GetHandleModeOk() (*ConnectionHandleMode, bool)`
 
 GetHandleModeOk returns a tuple with the HandleMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHandleMode
 
-`func (o *WorkspaceAggregator) SetHandleMode(v string)`
+`func (o *WorkspaceAggregator) SetHandleMode(v ConnectionHandleMode)`
 
 SetHandleMode sets HandleMode field to given value.
 

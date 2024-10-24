@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**Delete**](Orgs.md#Delete) | **Delete** /org/{org_handle} | Delete org
 [**DeleteAvatar**](Orgs.md#DeleteAvatar) | **Delete** /org/{org_handle}/avatar | Delete org avatar
 [**Get**](Orgs.md#Get) | **Get** /org/{org_handle} | Get org
+[**GetPlan**](Orgs.md#GetPlan) | **Get** /org/{org_handle}/billing/plan | Get org billing plan.
 [**List**](Orgs.md#List) | **Get** /org | List orgs
 [**ListAuditLogs**](Orgs.md#ListAuditLogs) | **Get** /org/{org_handle}/audit_log | Org audit logs
 [**ListConstraints**](Orgs.md#ListConstraints) | **Get** /org/{org_handle}/constraint | List org constraints
@@ -348,6 +349,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Org**](Org.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPlan
+
+> IdentityPlan GetPlan(ctx, orgHandle).Execute()
+
+Get org billing plan.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    orgHandle := "orgHandle_example" // string | Specify the handle of the organization to retrieve the billing plan for.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.Orgs.GetPlan(context.Background(), orgHandle).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `Orgs.GetPlan``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetPlan`: IdentityPlan
+    fmt.Fprintf(os.Stdout, "Response from `Orgs.GetPlan`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgHandle** | **string** | Specify the handle of the organization to retrieve the billing plan for. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPlanRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**IdentityPlan**](IdentityPlan.md)
 
 ### Authorization
 

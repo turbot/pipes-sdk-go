@@ -18,18 +18,20 @@ import (
 type DatatankTable struct {
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
-	CreatedBy *User  `json:"created_by,omitempty"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
 	// The ID of the user that created this.
 	CreatedById string    `json:"created_by_id"`
 	Datatank    *Datatank `json:"datatank,omitempty"`
 	DatatankId  string    `json:"datatank_id"`
 	// The time the item was deleted in ISO 8601 UTC.
 	DeletedAt *string `json:"deleted_at,omitempty"`
-	DeletedBy *User   `json:"deleted_by,omitempty"`
+	// User information for the user that performed the deletion.
+	DeletedBy *User `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.
 	DeletedById        string                  `json:"deleted_by_id"`
 	Description        *string                 `json:"description,omitempty"`
-	DesiredState       string                  `json:"desired_state"`
+	DesiredState       DesiredState            `json:"desired_state"`
 	Frequency          PipelineFrequency       `json:"frequency"`
 	Freshness          *DatatankTableFreshness `json:"freshness,omitempty"`
 	Id                 string                  `json:"id"`
@@ -40,12 +42,13 @@ type DatatankTable struct {
 	SourceQuery        *string                 `json:"source_query,omitempty"`
 	SourceSchema       *string                 `json:"source_schema,omitempty"`
 	SourceTable        *string                 `json:"source_table,omitempty"`
-	State              string                  `json:"state"`
+	State              DatatankTableState      `json:"state"`
 	StateReason        *string                 `json:"state_reason,omitempty"`
 	Type               string                  `json:"type"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	UpdatedBy *User   `json:"updated_by,omitempty"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
@@ -56,7 +59,7 @@ type DatatankTable struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDatatankTable(createdAt string, createdById string, datatankId string, deletedById string, desiredState string, frequency PipelineFrequency, id string, name string, state string, type_ string, updatedById string, versionId int32) *DatatankTable {
+func NewDatatankTable(createdAt string, createdById string, datatankId string, deletedById string, desiredState DesiredState, frequency PipelineFrequency, id string, name string, state DatatankTableState, type_ string, updatedById string, versionId int32) *DatatankTable {
 	this := DatatankTable{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
@@ -338,9 +341,9 @@ func (o *DatatankTable) SetDescription(v string) {
 }
 
 // GetDesiredState returns the DesiredState field value
-func (o *DatatankTable) GetDesiredState() string {
+func (o *DatatankTable) GetDesiredState() DesiredState {
 	if o == nil {
-		var ret string
+		var ret DesiredState
 		return ret
 	}
 
@@ -349,7 +352,7 @@ func (o *DatatankTable) GetDesiredState() string {
 
 // GetDesiredStateOk returns a tuple with the DesiredState field value
 // and a boolean to check if the value has been set.
-func (o *DatatankTable) GetDesiredStateOk() (*string, bool) {
+func (o *DatatankTable) GetDesiredStateOk() (*DesiredState, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -357,7 +360,7 @@ func (o *DatatankTable) GetDesiredStateOk() (*string, bool) {
 }
 
 // SetDesiredState sets field value
-func (o *DatatankTable) SetDesiredState(v string) {
+func (o *DatatankTable) SetDesiredState(v DesiredState) {
 	o.DesiredState = v
 }
 
@@ -658,9 +661,9 @@ func (o *DatatankTable) SetSourceTable(v string) {
 }
 
 // GetState returns the State field value
-func (o *DatatankTable) GetState() string {
+func (o *DatatankTable) GetState() DatatankTableState {
 	if o == nil {
-		var ret string
+		var ret DatatankTableState
 		return ret
 	}
 
@@ -669,7 +672,7 @@ func (o *DatatankTable) GetState() string {
 
 // GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *DatatankTable) GetStateOk() (*string, bool) {
+func (o *DatatankTable) GetStateOk() (*DatatankTableState, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -677,7 +680,7 @@ func (o *DatatankTable) GetStateOk() (*string, bool) {
 }
 
 // SetState sets field value
-func (o *DatatankTable) SetState(v string) {
+func (o *DatatankTable) SetState(v DatatankTableState) {
 	o.State = v
 }
 

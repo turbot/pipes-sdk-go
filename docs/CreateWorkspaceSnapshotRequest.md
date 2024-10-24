@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | [**WorkspaceSnapshotData**](WorkspaceSnapshotData.md) |  | 
+**Data** | [**WorkspaceSnapshotData**](WorkspaceSnapshotData.md) | The snapshot data to save. | 
 **Tags** | Pointer to **interface{}** |  | [optional] 
 **Title** | Pointer to **string** | The title of the snapshot. | [optional] 
-**Visibility** | Pointer to **string** | The visibility of the snapshot to create. | [optional] 
+**Visibility** | Pointer to [**SnapshotVisibility**](SnapshotVisibility.md) | The visibility of the snapshot to create. | [optional] 
 
 ## Methods
 
@@ -110,20 +110,20 @@ HasTitle returns a boolean if a field has been set.
 
 ### GetVisibility
 
-`func (o *CreateWorkspaceSnapshotRequest) GetVisibility() string`
+`func (o *CreateWorkspaceSnapshotRequest) GetVisibility() SnapshotVisibility`
 
 GetVisibility returns the Visibility field if non-nil, zero value otherwise.
 
 ### GetVisibilityOk
 
-`func (o *CreateWorkspaceSnapshotRequest) GetVisibilityOk() (*string, bool)`
+`func (o *CreateWorkspaceSnapshotRequest) GetVisibilityOk() (*SnapshotVisibility, bool)`
 
 GetVisibilityOk returns a tuple with the Visibility field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVisibility
 
-`func (o *CreateWorkspaceSnapshotRequest) SetVisibility(v string)`
+`func (o *CreateWorkspaceSnapshotRequest) SetVisibility(v SnapshotVisibility)`
 
 SetVisibility sets Visibility field to given value.
 

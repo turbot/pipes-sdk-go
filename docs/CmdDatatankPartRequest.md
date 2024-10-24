@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Command** | **string** |  | 
+**Command** | [**DatatankPartCmd**](DatatankPartCmd.md) |  | 
 
 ## Methods
 
 ### NewCmdDatatankPartRequest
 
-`func NewCmdDatatankPartRequest(command string, ) *CmdDatatankPartRequest`
+`func NewCmdDatatankPartRequest(command DatatankPartCmd, ) *CmdDatatankPartRequest`
 
 NewCmdDatatankPartRequest instantiates a new CmdDatatankPartRequest object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCommand
 
-`func (o *CmdDatatankPartRequest) GetCommand() string`
+`func (o *CmdDatatankPartRequest) GetCommand() DatatankPartCmd`
 
 GetCommand returns the Command field if non-nil, zero value otherwise.
 
 ### GetCommandOk
 
-`func (o *CmdDatatankPartRequest) GetCommandOk() (*string, bool)`
+`func (o *CmdDatatankPartRequest) GetCommandOk() (*DatatankPartCmd, bool)`
 
 GetCommandOk returns a tuple with the Command field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCommand
 
-`func (o *CmdDatatankPartRequest) SetCommand(v string)`
+`func (o *CmdDatatankPartRequest) SetCommand(v DatatankPartCmd)`
 
 SetCommand sets Command field to given value.
 

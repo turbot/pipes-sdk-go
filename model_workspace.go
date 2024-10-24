@@ -20,7 +20,8 @@ type Workspace struct {
 	CliVersion *string `json:"cli_version,omitempty"`
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
-	CreatedBy *User  `json:"created_by,omitempty"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
 	// The ID of the user that created this.
 	CreatedById string `json:"created_by_id"`
 	// The name of the database.
@@ -29,10 +30,11 @@ type Workspace struct {
 	DbVolumeSizeBytes int64 `json:"db_volume_size_bytes"`
 	// The time the item was deleted in ISO 8601 UTC.
 	DeletedAt *string `json:"deleted_at,omitempty"`
-	DeletedBy *User   `json:"deleted_by,omitempty"`
+	// User information for the user that performed the deletion.
+	DeletedBy *User `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.
-	DeletedById  string `json:"deleted_by_id"`
-	DesiredState string `json:"desired_state"`
+	DeletedById  string       `json:"deleted_by_id"`
+	DesiredState DesiredState `json:"desired_state"`
 	// The handle name for the workspace.
 	Handle string `json:"handle"`
 	// The database hive for this workspace.
@@ -43,7 +45,7 @@ type Workspace struct {
 	// The unique identifier for an identity where the workspace is created.
 	IdentityId string `json:"identity_id"`
 	// The instance type of this workspace.
-	InstanceType     string                  `json:"instance_type"`
+	InstanceType     WorkspaceInstanceType   `json:"instance_type"`
 	Notices          *map[string]interface{} `json:"notices,omitempty"`
 	PowerpipeVersion *string                 `json:"powerpipe_version,omitempty"`
 	PublicKey        *string                 `json:"public_key,omitempty"`
@@ -52,11 +54,12 @@ type Workspace struct {
 	// The optional Steampipe database search path prefix for the workspace.
 	SearchPathPrefix *[]string `json:"search_path_prefix,omitempty"`
 	// The current state of the workspace.
-	State       *string `json:"state,omitempty"`
-	StateReason *string `json:"state_reason,omitempty"`
+	State       *WorkspaceState `json:"state,omitempty"`
+	StateReason *string         `json:"state_reason,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	UpdatedBy *User   `json:"updated_by,omitempty"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
@@ -67,7 +70,7 @@ type Workspace struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkspace(createdAt string, createdById string, dbVolumeSizeBytes int64, deletedById string, desiredState string, handle string, id string, identityId string, instanceType string, updatedById string, versionId int32) *Workspace {
+func NewWorkspace(createdAt string, createdById string, dbVolumeSizeBytes int64, deletedById string, desiredState DesiredState, handle string, id string, identityId string, instanceType WorkspaceInstanceType, updatedById string, versionId int32) *Workspace {
 	this := Workspace{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
@@ -380,9 +383,9 @@ func (o *Workspace) SetDeletedById(v string) {
 }
 
 // GetDesiredState returns the DesiredState field value
-func (o *Workspace) GetDesiredState() string {
+func (o *Workspace) GetDesiredState() DesiredState {
 	if o == nil {
-		var ret string
+		var ret DesiredState
 		return ret
 	}
 
@@ -391,7 +394,7 @@ func (o *Workspace) GetDesiredState() string {
 
 // GetDesiredStateOk returns a tuple with the DesiredState field value
 // and a boolean to check if the value has been set.
-func (o *Workspace) GetDesiredStateOk() (*string, bool) {
+func (o *Workspace) GetDesiredStateOk() (*DesiredState, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -399,7 +402,7 @@ func (o *Workspace) GetDesiredStateOk() (*string, bool) {
 }
 
 // SetDesiredState sets field value
-func (o *Workspace) SetDesiredState(v string) {
+func (o *Workspace) SetDesiredState(v DesiredState) {
 	o.DesiredState = v
 }
 
@@ -540,9 +543,9 @@ func (o *Workspace) SetIdentityId(v string) {
 }
 
 // GetInstanceType returns the InstanceType field value
-func (o *Workspace) GetInstanceType() string {
+func (o *Workspace) GetInstanceType() WorkspaceInstanceType {
 	if o == nil {
-		var ret string
+		var ret WorkspaceInstanceType
 		return ret
 	}
 
@@ -551,7 +554,7 @@ func (o *Workspace) GetInstanceType() string {
 
 // GetInstanceTypeOk returns a tuple with the InstanceType field value
 // and a boolean to check if the value has been set.
-func (o *Workspace) GetInstanceTypeOk() (*string, bool) {
+func (o *Workspace) GetInstanceTypeOk() (*WorkspaceInstanceType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -559,7 +562,7 @@ func (o *Workspace) GetInstanceTypeOk() (*string, bool) {
 }
 
 // SetInstanceType sets field value
-func (o *Workspace) SetInstanceType(v string) {
+func (o *Workspace) SetInstanceType(v WorkspaceInstanceType) {
 	o.InstanceType = v
 }
 
@@ -724,9 +727,9 @@ func (o *Workspace) SetSearchPathPrefix(v []string) {
 }
 
 // GetState returns the State field value if set, zero value otherwise.
-func (o *Workspace) GetState() string {
+func (o *Workspace) GetState() WorkspaceState {
 	if o == nil || o.State == nil {
-		var ret string
+		var ret WorkspaceState
 		return ret
 	}
 	return *o.State
@@ -734,7 +737,7 @@ func (o *Workspace) GetState() string {
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Workspace) GetStateOk() (*string, bool) {
+func (o *Workspace) GetStateOk() (*WorkspaceState, bool) {
 	if o == nil || o.State == nil {
 		return nil, false
 	}
@@ -750,8 +753,8 @@ func (o *Workspace) HasState() bool {
 	return false
 }
 
-// SetState gets a reference to the given string and assigns it to the State field.
-func (o *Workspace) SetState(v string) {
+// SetState gets a reference to the given WorkspaceState and assigns it to the State field.
+func (o *Workspace) SetState(v WorkspaceState) {
 	o.State = &v
 }
 

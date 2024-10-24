@@ -16,19 +16,22 @@ import (
 
 // Connection struct for Connection
 type Connection struct {
+	// The plugin or connection configuration.
 	Config *map[string]interface{} `json:"config,omitempty"`
 	// The source of the configuration that the conection will use. One of `self` or `integration`.
-	ConfigSource *string `json:"config_source,omitempty"`
+	ConfigSource *ConnectionConfigSource `json:"config_source,omitempty"`
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
-	CreatedBy *User  `json:"created_by,omitempty"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
 	// The ID of the user that created this.
 	CreatedById string `json:"created_by_id"`
 	// The source of the credential that the conection will use. One of `self` or `integration`.
-	CredentialSource *string `json:"credential_source,omitempty"`
+	CredentialSource *ConnectionCredentialSource `json:"credential_source,omitempty"`
 	// The time the item was deleted in ISO 8601 UTC.
 	DeletedAt *string `json:"deleted_at,omitempty"`
-	DeletedBy *User   `json:"deleted_by,omitempty"`
+	// User information for the user that performed the deletion.
+	DeletedBy *User `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.
 	DeletedById string `json:"deleted_by_id"`
 	// The handle name of the  connection.
@@ -36,11 +39,12 @@ type Connection struct {
 	// The dynamically-generated handle for the connection. Only populated if this is a discovered connection.
 	HandleDynamic *string `json:"handle_dynamic,omitempty"`
 	// The handle mode for the connection.
-	HandleMode *string `json:"handle_mode,omitempty"`
+	HandleMode *ConnectionHandleMode `json:"handle_mode,omitempty"`
 	// The unique identifier for the connection.
 	Id string `json:"id"`
 	// The unique identifier for an identity where the connection has been created.
-	IdentityId  *string      `json:"identity_id,omitempty"`
+	IdentityId *string `json:"identity_id,omitempty"`
+	// Details of the integration that manages this connection.
 	Integration *Integration `json:"integration,omitempty"`
 	// The source identifier for this connection. Only populated if its a connection thats been discovered by an integration.
 	IntegrationResourceIdentifier *string `json:"integration_resource_identifier,omitempty"`
@@ -68,7 +72,8 @@ type Connection struct {
 	Type *string `json:"type,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	UpdatedBy *User   `json:"updated_by,omitempty"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
@@ -135,9 +140,9 @@ func (o *Connection) SetConfig(v map[string]interface{}) {
 }
 
 // GetConfigSource returns the ConfigSource field value if set, zero value otherwise.
-func (o *Connection) GetConfigSource() string {
+func (o *Connection) GetConfigSource() ConnectionConfigSource {
 	if o == nil || o.ConfigSource == nil {
-		var ret string
+		var ret ConnectionConfigSource
 		return ret
 	}
 	return *o.ConfigSource
@@ -145,7 +150,7 @@ func (o *Connection) GetConfigSource() string {
 
 // GetConfigSourceOk returns a tuple with the ConfigSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Connection) GetConfigSourceOk() (*string, bool) {
+func (o *Connection) GetConfigSourceOk() (*ConnectionConfigSource, bool) {
 	if o == nil || o.ConfigSource == nil {
 		return nil, false
 	}
@@ -161,8 +166,8 @@ func (o *Connection) HasConfigSource() bool {
 	return false
 }
 
-// SetConfigSource gets a reference to the given string and assigns it to the ConfigSource field.
-func (o *Connection) SetConfigSource(v string) {
+// SetConfigSource gets a reference to the given ConnectionConfigSource and assigns it to the ConfigSource field.
+func (o *Connection) SetConfigSource(v ConnectionConfigSource) {
 	o.ConfigSource = &v
 }
 
@@ -247,9 +252,9 @@ func (o *Connection) SetCreatedById(v string) {
 }
 
 // GetCredentialSource returns the CredentialSource field value if set, zero value otherwise.
-func (o *Connection) GetCredentialSource() string {
+func (o *Connection) GetCredentialSource() ConnectionCredentialSource {
 	if o == nil || o.CredentialSource == nil {
-		var ret string
+		var ret ConnectionCredentialSource
 		return ret
 	}
 	return *o.CredentialSource
@@ -257,7 +262,7 @@ func (o *Connection) GetCredentialSource() string {
 
 // GetCredentialSourceOk returns a tuple with the CredentialSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Connection) GetCredentialSourceOk() (*string, bool) {
+func (o *Connection) GetCredentialSourceOk() (*ConnectionCredentialSource, bool) {
 	if o == nil || o.CredentialSource == nil {
 		return nil, false
 	}
@@ -273,8 +278,8 @@ func (o *Connection) HasCredentialSource() bool {
 	return false
 }
 
-// SetCredentialSource gets a reference to the given string and assigns it to the CredentialSource field.
-func (o *Connection) SetCredentialSource(v string) {
+// SetCredentialSource gets a reference to the given ConnectionCredentialSource and assigns it to the CredentialSource field.
+func (o *Connection) SetCredentialSource(v ConnectionCredentialSource) {
 	o.CredentialSource = &v
 }
 
@@ -431,9 +436,9 @@ func (o *Connection) SetHandleDynamic(v string) {
 }
 
 // GetHandleMode returns the HandleMode field value if set, zero value otherwise.
-func (o *Connection) GetHandleMode() string {
+func (o *Connection) GetHandleMode() ConnectionHandleMode {
 	if o == nil || o.HandleMode == nil {
-		var ret string
+		var ret ConnectionHandleMode
 		return ret
 	}
 	return *o.HandleMode
@@ -441,7 +446,7 @@ func (o *Connection) GetHandleMode() string {
 
 // GetHandleModeOk returns a tuple with the HandleMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Connection) GetHandleModeOk() (*string, bool) {
+func (o *Connection) GetHandleModeOk() (*ConnectionHandleMode, bool) {
 	if o == nil || o.HandleMode == nil {
 		return nil, false
 	}
@@ -457,8 +462,8 @@ func (o *Connection) HasHandleMode() bool {
 	return false
 }
 
-// SetHandleMode gets a reference to the given string and assigns it to the HandleMode field.
-func (o *Connection) SetHandleMode(v string) {
+// SetHandleMode gets a reference to the given ConnectionHandleMode and assigns it to the HandleMode field.
+func (o *Connection) SetHandleMode(v ConnectionHandleMode) {
 	o.HandleMode = &v
 }
 

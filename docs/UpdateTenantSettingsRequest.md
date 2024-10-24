@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LoginEmail** | Pointer to [**UpdateTenantLoginSettings**](UpdateTenantLoginSettings.md) |  | [optional] 
-**LoginGithub** | Pointer to [**UpdateTenantLoginSettings**](UpdateTenantLoginSettings.md) |  | [optional] 
-**LoginGoogle** | Pointer to [**UpdateTenantLoginSettings**](UpdateTenantLoginSettings.md) |  | [optional] 
-**LoginSaml** | Pointer to [**UpdateTenantSamlLoginSettings**](UpdateTenantSamlLoginSettings.md) |  | [optional] 
+**LoginEmail** | Pointer to [**UpdateTenantLoginSettings**](UpdateTenantLoginSettings.md) | Settings related to login via Email. | [optional] 
+**LoginGithub** | Pointer to [**UpdateTenantLoginSettings**](UpdateTenantLoginSettings.md) | Settings related to login via Github. | [optional] 
+**LoginGoogle** | Pointer to [**UpdateTenantLoginSettings**](UpdateTenantLoginSettings.md) | Settings related to login via Google. | [optional] 
+**LoginSaml** | Pointer to [**UpdateTenantSamlLoginSettings**](UpdateTenantSamlLoginSettings.md) | LoginMicrosoft      *TenantLoginSettings     &#x60;json:\&quot;login_microsoft\&quot; binding:\&quot;omitempty\&quot;&#x60;                                  // Settings related to login via Microsoft. | [optional] 
 **UserProvisioning** | Pointer to **[]string** | The user provisioning settings for the tenant. | [optional] 
 **UserProvisioningPermittedDomains** | Pointer to **[]string** | The domains that new users are permitted to be provisioned from. | [optional] 
 

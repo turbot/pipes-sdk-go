@@ -5,25 +5,25 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AvatarUrl** | Pointer to **string** |  | [optional] 
-**Billing** | Pointer to [**BillingInfo**](BillingInfo.md) |  | [optional] 
+**Billing** | Pointer to [**BillingInfo**](BillingInfo.md) | Struct to store billing information | [optional] 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
-**DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**DeletedBy** | Pointer to [**User**](User.md) | User information for the user that performed the deletion. | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **DisplayName** | Pointer to **string** | The display name of the tenant. | [optional] 
 **Handle** | **string** | The handle name of the tenant. | 
 **Id** | **string** | The unique identifier of the tenant. | 
 **State** | Pointer to **string** | The state of the tenant. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
-**UsageComputeAction** | Pointer to **string** |  | [optional] 
+**UsageComputeAction** | Pointer to [**IdentityUsageThresholdAction**](IdentityUsageThresholdAction.md) |  | [optional] 
 **UsageComputeThreshold** | Pointer to **int64** |  | [optional] 
-**UsageStorageAction** | Pointer to **string** |  | [optional] 
+**UsageStorageAction** | Pointer to [**IdentityUsageThresholdAction**](IdentityUsageThresholdAction.md) |  | [optional] 
 **UsageStorageThreshold** | Pointer to **int64** |  | [optional] 
-**UsageUserAction** | Pointer to **string** |  | [optional] 
+**UsageUserAction** | Pointer to [**IdentityUsageThresholdAction**](IdentityUsageThresholdAction.md) |  | [optional] 
 **UsageUserThreshold** | Pointer to **int32** |  | [optional] 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 
@@ -393,20 +393,20 @@ SetUpdatedById sets UpdatedById field to given value.
 
 ### GetUsageComputeAction
 
-`func (o *Tenant) GetUsageComputeAction() string`
+`func (o *Tenant) GetUsageComputeAction() IdentityUsageThresholdAction`
 
 GetUsageComputeAction returns the UsageComputeAction field if non-nil, zero value otherwise.
 
 ### GetUsageComputeActionOk
 
-`func (o *Tenant) GetUsageComputeActionOk() (*string, bool)`
+`func (o *Tenant) GetUsageComputeActionOk() (*IdentityUsageThresholdAction, bool)`
 
 GetUsageComputeActionOk returns a tuple with the UsageComputeAction field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsageComputeAction
 
-`func (o *Tenant) SetUsageComputeAction(v string)`
+`func (o *Tenant) SetUsageComputeAction(v IdentityUsageThresholdAction)`
 
 SetUsageComputeAction sets UsageComputeAction field to given value.
 
@@ -443,20 +443,20 @@ HasUsageComputeThreshold returns a boolean if a field has been set.
 
 ### GetUsageStorageAction
 
-`func (o *Tenant) GetUsageStorageAction() string`
+`func (o *Tenant) GetUsageStorageAction() IdentityUsageThresholdAction`
 
 GetUsageStorageAction returns the UsageStorageAction field if non-nil, zero value otherwise.
 
 ### GetUsageStorageActionOk
 
-`func (o *Tenant) GetUsageStorageActionOk() (*string, bool)`
+`func (o *Tenant) GetUsageStorageActionOk() (*IdentityUsageThresholdAction, bool)`
 
 GetUsageStorageActionOk returns a tuple with the UsageStorageAction field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsageStorageAction
 
-`func (o *Tenant) SetUsageStorageAction(v string)`
+`func (o *Tenant) SetUsageStorageAction(v IdentityUsageThresholdAction)`
 
 SetUsageStorageAction sets UsageStorageAction field to given value.
 
@@ -493,20 +493,20 @@ HasUsageStorageThreshold returns a boolean if a field has been set.
 
 ### GetUsageUserAction
 
-`func (o *Tenant) GetUsageUserAction() string`
+`func (o *Tenant) GetUsageUserAction() IdentityUsageThresholdAction`
 
 GetUsageUserAction returns the UsageUserAction field if non-nil, zero value otherwise.
 
 ### GetUsageUserActionOk
 
-`func (o *Tenant) GetUsageUserActionOk() (*string, bool)`
+`func (o *Tenant) GetUsageUserActionOk() (*IdentityUsageThresholdAction, bool)`
 
 GetUsageUserActionOk returns a tuple with the UsageUserAction field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsageUserAction
 
-`func (o *Tenant) SetUsageUserAction(v string)`
+`func (o *Tenant) SetUsageUserAction(v IdentityUsageThresholdAction)`
 
 SetUsageUserAction sets UsageUserAction field to given value.
 

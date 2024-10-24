@@ -16,15 +16,15 @@ import (
 
 // PipelineCommandResponse struct for PipelineCommandResponse
 type PipelineCommandResponse struct {
-	Command   string `json:"command"`
-	ProcessId string `json:"process_id"`
+	Command   PipelineCommandAction `json:"command"`
+	ProcessId string                `json:"process_id"`
 }
 
 // NewPipelineCommandResponse instantiates a new PipelineCommandResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPipelineCommandResponse(command string, processId string) *PipelineCommandResponse {
+func NewPipelineCommandResponse(command PipelineCommandAction, processId string) *PipelineCommandResponse {
 	this := PipelineCommandResponse{}
 	this.Command = command
 	this.ProcessId = processId
@@ -40,9 +40,9 @@ func NewPipelineCommandResponseWithDefaults() *PipelineCommandResponse {
 }
 
 // GetCommand returns the Command field value
-func (o *PipelineCommandResponse) GetCommand() string {
+func (o *PipelineCommandResponse) GetCommand() PipelineCommandAction {
 	if o == nil {
-		var ret string
+		var ret PipelineCommandAction
 		return ret
 	}
 
@@ -51,7 +51,7 @@ func (o *PipelineCommandResponse) GetCommand() string {
 
 // GetCommandOk returns a tuple with the Command field value
 // and a boolean to check if the value has been set.
-func (o *PipelineCommandResponse) GetCommandOk() (*string, bool) {
+func (o *PipelineCommandResponse) GetCommandOk() (*PipelineCommandAction, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *PipelineCommandResponse) GetCommandOk() (*string, bool) {
 }
 
 // SetCommand sets field value
-func (o *PipelineCommandResponse) SetCommand(v string) {
+func (o *PipelineCommandResponse) SetCommand(v PipelineCommandAction) {
 	o.Command = v
 }
 

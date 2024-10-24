@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Command** | **string** |  | 
+**Command** | [**WorkspaceCommandAction**](WorkspaceCommandAction.md) |  | 
 **ProcessId** | **string** |  | 
 
 ## Methods
 
 ### NewWorkspaceCommandResponse
 
-`func NewWorkspaceCommandResponse(command string, processId string, ) *WorkspaceCommandResponse`
+`func NewWorkspaceCommandResponse(command WorkspaceCommandAction, processId string, ) *WorkspaceCommandResponse`
 
 NewWorkspaceCommandResponse instantiates a new WorkspaceCommandResponse object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCommand
 
-`func (o *WorkspaceCommandResponse) GetCommand() string`
+`func (o *WorkspaceCommandResponse) GetCommand() WorkspaceCommandAction`
 
 GetCommand returns the Command field if non-nil, zero value otherwise.
 
 ### GetCommandOk
 
-`func (o *WorkspaceCommandResponse) GetCommandOk() (*string, bool)`
+`func (o *WorkspaceCommandResponse) GetCommandOk() (*WorkspaceCommandAction, bool)`
 
 GetCommandOk returns a tuple with the Command field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCommand
 
-`func (o *WorkspaceCommandResponse) SetCommand(v string)`
+`func (o *WorkspaceCommandResponse) SetCommand(v WorkspaceCommandAction)`
 
 SetCommand sets Command field to given value.
 

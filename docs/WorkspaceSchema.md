@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Aggregator** | Pointer to [**Aggregator**](Aggregator.md) |  | [optional] 
+**Aggregator** | Pointer to [**Aggregator**](Aggregator.md) | The details of the aggregator if the schema is of type &#39;aggregator&#39;. | [optional] 
 **AggregatorId** | Pointer to **string** | The id of the aggregator if the schema is of type &#39;aggregator&#39;. | [optional] 
-**Connection** | Pointer to [**Connection**](Connection.md) |  | [optional] 
+**Connection** | Pointer to [**Connection**](Connection.md) | The details of the connection if the schema is of type &#39;connection&#39;. | [optional] 
 **ConnectionId** | Pointer to **string** | The id of the connection if the schema is of type &#39;connection&#39;. | [optional] 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
-**Datatank** | Pointer to [**Datatank**](Datatank.md) |  | [optional] 
+**Datatank** | Pointer to [**Datatank**](Datatank.md) | The details of the datatank if the schema is of type &#39;datatank&#39;. | [optional] 
 **DatatankId** | Pointer to **string** | The id of the datatank if the schema is of type &#39;datatank&#39;. | [optional] 
 **DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
-**DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**DeletedBy** | Pointer to [**User**](User.md) | User information for the user that performed the deletion. | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **Id** | **string** | The unique identifier for the schema. | 
 **IdentityId** | **string** | The unique identifier for an identity where the schema has been created. | 
 **Name** | **string** | The name of the schema. | 
-**State** | Pointer to **string** | State of the schema e.g. &#x60;granted&#x60;, &#x60;direct&#x60; or &#x60;indirect&#x60;. | [optional] 
+**State** | Pointer to [**WorkspaceSchemaState**](WorkspaceSchemaState.md) | State of the schema e.g. &#x60;granted&#x60;, &#x60;direct&#x60; or &#x60;indirect&#x60;. | [optional] 
 **Type** | Pointer to **string** | Type of schema can be one of datatank, aggregator or connection. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 **WorkspaceId** | **string** | The unique identifier for the workspace where the schema exists. | 
@@ -393,20 +393,20 @@ SetName sets Name field to given value.
 
 ### GetState
 
-`func (o *WorkspaceSchema) GetState() string`
+`func (o *WorkspaceSchema) GetState() WorkspaceSchemaState`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *WorkspaceSchema) GetStateOk() (*string, bool)`
+`func (o *WorkspaceSchema) GetStateOk() (*WorkspaceSchemaState, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *WorkspaceSchema) SetState(v string)`
+`func (o *WorkspaceSchema) SetState(v WorkspaceSchemaState)`
 
 SetState sets State field to given value.
 

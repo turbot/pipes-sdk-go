@@ -18,9 +18,9 @@ import (
 type CreateWorkspaceRequest struct {
 	DbVolumeSizeBytes *int64 `json:"db_volume_size_bytes,omitempty"`
 	// paused is not yet supported for Workspace
-	DesiredState *string `json:"desired_state,omitempty"`
-	Handle       string  `json:"handle"`
-	InstanceType *string `json:"instance_type,omitempty"`
+	DesiredState *DesiredState          `json:"desired_state,omitempty"`
+	Handle       string                 `json:"handle"`
+	InstanceType *WorkspaceInstanceType `json:"instance_type,omitempty"`
 }
 
 // NewCreateWorkspaceRequest instantiates a new CreateWorkspaceRequest object
@@ -74,9 +74,9 @@ func (o *CreateWorkspaceRequest) SetDbVolumeSizeBytes(v int64) {
 }
 
 // GetDesiredState returns the DesiredState field value if set, zero value otherwise.
-func (o *CreateWorkspaceRequest) GetDesiredState() string {
+func (o *CreateWorkspaceRequest) GetDesiredState() DesiredState {
 	if o == nil || o.DesiredState == nil {
-		var ret string
+		var ret DesiredState
 		return ret
 	}
 	return *o.DesiredState
@@ -84,7 +84,7 @@ func (o *CreateWorkspaceRequest) GetDesiredState() string {
 
 // GetDesiredStateOk returns a tuple with the DesiredState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateWorkspaceRequest) GetDesiredStateOk() (*string, bool) {
+func (o *CreateWorkspaceRequest) GetDesiredStateOk() (*DesiredState, bool) {
 	if o == nil || o.DesiredState == nil {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *CreateWorkspaceRequest) HasDesiredState() bool {
 	return false
 }
 
-// SetDesiredState gets a reference to the given string and assigns it to the DesiredState field.
-func (o *CreateWorkspaceRequest) SetDesiredState(v string) {
+// SetDesiredState gets a reference to the given DesiredState and assigns it to the DesiredState field.
+func (o *CreateWorkspaceRequest) SetDesiredState(v DesiredState) {
 	o.DesiredState = &v
 }
 
@@ -130,9 +130,9 @@ func (o *CreateWorkspaceRequest) SetHandle(v string) {
 }
 
 // GetInstanceType returns the InstanceType field value if set, zero value otherwise.
-func (o *CreateWorkspaceRequest) GetInstanceType() string {
+func (o *CreateWorkspaceRequest) GetInstanceType() WorkspaceInstanceType {
 	if o == nil || o.InstanceType == nil {
-		var ret string
+		var ret WorkspaceInstanceType
 		return ret
 	}
 	return *o.InstanceType
@@ -140,7 +140,7 @@ func (o *CreateWorkspaceRequest) GetInstanceType() string {
 
 // GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateWorkspaceRequest) GetInstanceTypeOk() (*string, bool) {
+func (o *CreateWorkspaceRequest) GetInstanceTypeOk() (*WorkspaceInstanceType, bool) {
 	if o == nil || o.InstanceType == nil {
 		return nil, false
 	}
@@ -156,8 +156,8 @@ func (o *CreateWorkspaceRequest) HasInstanceType() bool {
 	return false
 }
 
-// SetInstanceType gets a reference to the given string and assigns it to the InstanceType field.
-func (o *CreateWorkspaceRequest) SetInstanceType(v string) {
+// SetInstanceType gets a reference to the given WorkspaceInstanceType and assigns it to the InstanceType field.
+func (o *CreateWorkspaceRequest) SetInstanceType(v WorkspaceInstanceType) {
 	o.InstanceType = &v
 }
 

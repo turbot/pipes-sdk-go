@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **Handle** | Pointer to **string** |  | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
-**Identity** | Pointer to [**Identity**](Identity.md) |  | [optional] 
+**Identity** | Pointer to [**Identity**](Identity.md) | Readonly in DB | [optional] 
 **IdentityId** | Pointer to **string** |  | [optional] 
 **Role** | Pointer to **string** |  | [optional] 
-**Workspace** | Pointer to [**Workspace**](Workspace.md) |  | [optional] 
+**Workspace** | Pointer to [**Workspace**](Workspace.md) | Readonly in DB | [optional] 
 **WorkspaceId** | Pointer to **string** |  | [optional] 
 
 ## Methods

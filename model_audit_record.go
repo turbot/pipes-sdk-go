@@ -27,8 +27,9 @@ type AuditRecord struct {
 	ActorId string `json:"actor_id"`
 	ActorIp string `json:"actor_ip"`
 	// The time when the audit log was recorded.
-	CreatedAt string                            `json:"created_at"`
-	Data      map[string]interface{} `json:"data"`
+	CreatedAt string `json:"created_at"`
+	// The data which has been modified on the entity.
+	Data map[string]interface{} `json:"data"`
 	// The unique identifier for an audit log.
 	Id string `json:"id"`
 	// The handle name for an identity where the action has been performed.

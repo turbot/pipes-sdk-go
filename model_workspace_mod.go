@@ -22,21 +22,25 @@ type WorkspaceMod struct {
 	ConstraintMode *string `json:"constraint_mode,omitempty"`
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
-	CreatedBy *User  `json:"created_by,omitempty"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
 	// The ID of the user that created this.
 	CreatedById string `json:"created_by_id"`
 	Id          string `json:"id"`
 	// The unique identifier for an identity where the workspace mod has been install.
-	IdentityId       string  `json:"identity_id"`
-	InstalledCommit  *string `json:"installed_commit,omitempty"`
-	InstalledVersion *string `json:"installed_version,omitempty"`
-	IntegrationId    *string `json:"integration_id,omitempty"`
-	Path             *string `json:"path,omitempty"`
-	State            *string `json:"state,omitempty"`
-	StateReason      *string `json:"state_reason,omitempty"`
+	IdentityId       string             `json:"identity_id"`
+	InstalledCommit  *string            `json:"installed_commit,omitempty"`
+	InstalledVersion *string            `json:"installed_version,omitempty"`
+	IntegrationId    *string            `json:"integration_id,omitempty"`
+	ModId            *string            `json:"mod_id,omitempty"`
+	Path             *string            `json:"path,omitempty"`
+	Pipe             *ModPipe           `json:"pipe,omitempty"`
+	State            *WorkspaceModState `json:"state,omitempty"`
+	StateReason      *string            `json:"state_reason,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	UpdatedBy *User   `json:"updated_by,omitempty"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string  `json:"updated_by_id"`
 	Version     *string `json:"version,omitempty"`
@@ -421,6 +425,38 @@ func (o *WorkspaceMod) SetIntegrationId(v string) {
 	o.IntegrationId = &v
 }
 
+// GetModId returns the ModId field value if set, zero value otherwise.
+func (o *WorkspaceMod) GetModId() string {
+	if o == nil || o.ModId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ModId
+}
+
+// GetModIdOk returns a tuple with the ModId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceMod) GetModIdOk() (*string, bool) {
+	if o == nil || o.ModId == nil {
+		return nil, false
+	}
+	return o.ModId, true
+}
+
+// HasModId returns a boolean if a field has been set.
+func (o *WorkspaceMod) HasModId() bool {
+	if o != nil && o.ModId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetModId gets a reference to the given string and assigns it to the ModId field.
+func (o *WorkspaceMod) SetModId(v string) {
+	o.ModId = &v
+}
+
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *WorkspaceMod) GetPath() string {
 	if o == nil || o.Path == nil {
@@ -453,10 +489,42 @@ func (o *WorkspaceMod) SetPath(v string) {
 	o.Path = &v
 }
 
+// GetPipe returns the Pipe field value if set, zero value otherwise.
+func (o *WorkspaceMod) GetPipe() ModPipe {
+	if o == nil || o.Pipe == nil {
+		var ret ModPipe
+		return ret
+	}
+	return *o.Pipe
+}
+
+// GetPipeOk returns a tuple with the Pipe field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceMod) GetPipeOk() (*ModPipe, bool) {
+	if o == nil || o.Pipe == nil {
+		return nil, false
+	}
+	return o.Pipe, true
+}
+
+// HasPipe returns a boolean if a field has been set.
+func (o *WorkspaceMod) HasPipe() bool {
+	if o != nil && o.Pipe != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPipe gets a reference to the given ModPipe and assigns it to the Pipe field.
+func (o *WorkspaceMod) SetPipe(v ModPipe) {
+	o.Pipe = &v
+}
+
 // GetState returns the State field value if set, zero value otherwise.
-func (o *WorkspaceMod) GetState() string {
+func (o *WorkspaceMod) GetState() WorkspaceModState {
 	if o == nil || o.State == nil {
-		var ret string
+		var ret WorkspaceModState
 		return ret
 	}
 	return *o.State
@@ -464,7 +532,7 @@ func (o *WorkspaceMod) GetState() string {
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkspaceMod) GetStateOk() (*string, bool) {
+func (o *WorkspaceMod) GetStateOk() (*WorkspaceModState, bool) {
 	if o == nil || o.State == nil {
 		return nil, false
 	}
@@ -480,8 +548,8 @@ func (o *WorkspaceMod) HasState() bool {
 	return false
 }
 
-// SetState gets a reference to the given string and assigns it to the State field.
-func (o *WorkspaceMod) SetState(v string) {
+// SetState gets a reference to the given WorkspaceModState and assigns it to the State field.
+func (o *WorkspaceMod) SetState(v WorkspaceModState) {
 	o.State = &v
 }
 
@@ -723,8 +791,14 @@ func (o WorkspaceMod) MarshalJSON() ([]byte, error) {
 	if o.IntegrationId != nil {
 		toSerialize["integration_id"] = o.IntegrationId
 	}
+	if o.ModId != nil {
+		toSerialize["mod_id"] = o.ModId
+	}
 	if o.Path != nil {
 		toSerialize["path"] = o.Path
+	}
+	if o.Pipe != nil {
+		toSerialize["pipe"] = o.Pipe
 	}
 	if o.State != nil {
 		toSerialize["state"] = o.State

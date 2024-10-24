@@ -16,14 +16,14 @@ import (
 
 // WorkspaceCommandRequest struct for WorkspaceCommandRequest
 type WorkspaceCommandRequest struct {
-	Command string `json:"command"`
+	Command WorkspaceCommandAction `json:"command"`
 }
 
 // NewWorkspaceCommandRequest instantiates a new WorkspaceCommandRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkspaceCommandRequest(command string) *WorkspaceCommandRequest {
+func NewWorkspaceCommandRequest(command WorkspaceCommandAction) *WorkspaceCommandRequest {
 	this := WorkspaceCommandRequest{}
 	this.Command = command
 	return &this
@@ -38,9 +38,9 @@ func NewWorkspaceCommandRequestWithDefaults() *WorkspaceCommandRequest {
 }
 
 // GetCommand returns the Command field value
-func (o *WorkspaceCommandRequest) GetCommand() string {
+func (o *WorkspaceCommandRequest) GetCommand() WorkspaceCommandAction {
 	if o == nil {
-		var ret string
+		var ret WorkspaceCommandAction
 		return ret
 	}
 
@@ -49,7 +49,7 @@ func (o *WorkspaceCommandRequest) GetCommand() string {
 
 // GetCommandOk returns a tuple with the Command field value
 // and a boolean to check if the value has been set.
-func (o *WorkspaceCommandRequest) GetCommandOk() (*string, bool) {
+func (o *WorkspaceCommandRequest) GetCommandOk() (*WorkspaceCommandAction, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -57,7 +57,7 @@ func (o *WorkspaceCommandRequest) GetCommandOk() (*string, bool) {
 }
 
 // SetCommand sets field value
-func (o *WorkspaceCommandRequest) SetCommand(v string) {
+func (o *WorkspaceCommandRequest) SetCommand(v WorkspaceCommandAction) {
 	o.Command = v
 }
 

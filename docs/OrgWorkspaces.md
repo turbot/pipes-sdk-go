@@ -42,7 +42,7 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the org where we want to run the workspace command.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where command will be executed.
-    request := *openapiclient.NewWorkspaceCommandRequest("Command_example") // WorkspaceCommandRequest | The request body for the workspace command.
+    request := *openapiclient.NewWorkspaceCommandRequest(openapiclient.WorkspaceCommandAction("reboot")) // WorkspaceCommandRequest | The request body for the workspace command.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

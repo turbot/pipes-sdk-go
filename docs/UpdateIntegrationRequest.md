@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Config** | Pointer to **map[string]interface{}** | The configuration for the integration. | [optional] 
 **Handle** | Pointer to **string** | The handle for the integration. | [optional] 
-**State** | Pointer to **string** | The state of the integration. | [optional] 
+**State** | Pointer to [**IntegrationState**](IntegrationState.md) | The state of the integration. | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasHandle returns a boolean if a field has been set.
 
 ### GetState
 
-`func (o *UpdateIntegrationRequest) GetState() string`
+`func (o *UpdateIntegrationRequest) GetState() IntegrationState`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *UpdateIntegrationRequest) GetStateOk() (*string, bool)`
+`func (o *UpdateIntegrationRequest) GetStateOk() (*IntegrationState, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *UpdateIntegrationRequest) SetState(v string)`
+`func (o *UpdateIntegrationRequest) SetState(v IntegrationState)`
 
 SetState sets State field to given value.
 
