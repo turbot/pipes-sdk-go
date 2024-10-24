@@ -9,10 +9,11 @@ Name | Type | Description | Notes
 **CreatedById** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Enum** | Pointer to **map[string]interface{}** |  | [optional] 
+**Format** | Pointer to **string** |  | [optional] 
 **Id** | **string** |  | 
 **ModAlias** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Pipeling** | Pointer to **string** |  | [optional] 
+**Pipe** | Pointer to **string** |  | [optional] 
 **Tags** | Pointer to **map[string]interface{}** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** |  | [optional] 
@@ -157,6 +158,31 @@ SetEnum sets Enum field to given value.
 
 HasEnum returns a boolean if a field has been set.
 
+### GetFormat
+
+`func (o *WorkspaceModVariable) GetFormat() string`
+
+GetFormat returns the Format field if non-nil, zero value otherwise.
+
+### GetFormatOk
+
+`func (o *WorkspaceModVariable) GetFormatOk() (*string, bool)`
+
+GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormat
+
+`func (o *WorkspaceModVariable) SetFormat(v string)`
+
+SetFormat sets Format field to given value.
+
+### HasFormat
+
+`func (o *WorkspaceModVariable) HasFormat() bool`
+
+HasFormat returns a boolean if a field has been set.
+
 ### GetId
 
 `func (o *WorkspaceModVariable) GetId() string`
@@ -227,30 +253,30 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### GetPipeling
+### GetPipe
 
-`func (o *WorkspaceModVariable) GetPipeling() string`
+`func (o *WorkspaceModVariable) GetPipe() string`
 
-GetPipeling returns the Pipeling field if non-nil, zero value otherwise.
+GetPipe returns the Pipe field if non-nil, zero value otherwise.
 
-### GetPipelingOk
+### GetPipeOk
 
-`func (o *WorkspaceModVariable) GetPipelingOk() (*string, bool)`
+`func (o *WorkspaceModVariable) GetPipeOk() (*string, bool)`
 
-GetPipelingOk returns a tuple with the Pipeling field if it's non-nil, zero value otherwise
+GetPipeOk returns a tuple with the Pipe field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPipeling
+### SetPipe
 
-`func (o *WorkspaceModVariable) SetPipeling(v string)`
+`func (o *WorkspaceModVariable) SetPipe(v string)`
 
-SetPipeling sets Pipeling field to given value.
+SetPipe sets Pipe field to given value.
 
-### HasPipeling
+### HasPipe
 
-`func (o *WorkspaceModVariable) HasPipeling() bool`
+`func (o *WorkspaceModVariable) HasPipe() bool`
 
-HasPipeling returns a boolean if a field has been set.
+HasPipe returns a boolean if a field has been set.
 
 ### GetTags
 

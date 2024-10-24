@@ -34,7 +34,7 @@ type WorkspaceMod struct {
 	IntegrationId    *string            `json:"integration_id,omitempty"`
 	ModId            *string            `json:"mod_id,omitempty"`
 	Path             *string            `json:"path,omitempty"`
-	Pipeling         *ModPipeling       `json:"pipeling,omitempty"`
+	Pipe             *ModPipe           `json:"pipe,omitempty"`
 	State            *WorkspaceModState `json:"state,omitempty"`
 	StateReason      *string            `json:"state_reason,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
@@ -489,36 +489,36 @@ func (o *WorkspaceMod) SetPath(v string) {
 	o.Path = &v
 }
 
-// GetPipeling returns the Pipeling field value if set, zero value otherwise.
-func (o *WorkspaceMod) GetPipeling() ModPipeling {
-	if o == nil || o.Pipeling == nil {
-		var ret ModPipeling
+// GetPipe returns the Pipe field value if set, zero value otherwise.
+func (o *WorkspaceMod) GetPipe() ModPipe {
+	if o == nil || o.Pipe == nil {
+		var ret ModPipe
 		return ret
 	}
-	return *o.Pipeling
+	return *o.Pipe
 }
 
-// GetPipelingOk returns a tuple with the Pipeling field value if set, nil otherwise
+// GetPipeOk returns a tuple with the Pipe field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkspaceMod) GetPipelingOk() (*ModPipeling, bool) {
-	if o == nil || o.Pipeling == nil {
+func (o *WorkspaceMod) GetPipeOk() (*ModPipe, bool) {
+	if o == nil || o.Pipe == nil {
 		return nil, false
 	}
-	return o.Pipeling, true
+	return o.Pipe, true
 }
 
-// HasPipeling returns a boolean if a field has been set.
-func (o *WorkspaceMod) HasPipeling() bool {
-	if o != nil && o.Pipeling != nil {
+// HasPipe returns a boolean if a field has been set.
+func (o *WorkspaceMod) HasPipe() bool {
+	if o != nil && o.Pipe != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPipeling gets a reference to the given ModPipeling and assigns it to the Pipeling field.
-func (o *WorkspaceMod) SetPipeling(v ModPipeling) {
-	o.Pipeling = &v
+// SetPipe gets a reference to the given ModPipe and assigns it to the Pipe field.
+func (o *WorkspaceMod) SetPipe(v ModPipe) {
+	o.Pipe = &v
 }
 
 // GetState returns the State field value if set, zero value otherwise.
@@ -797,8 +797,8 @@ func (o WorkspaceMod) MarshalJSON() ([]byte, error) {
 	if o.Path != nil {
 		toSerialize["path"] = o.Path
 	}
-	if o.Pipeling != nil {
-		toSerialize["pipeling"] = o.Pipeling
+	if o.Pipe != nil {
+		toSerialize["pipe"] = o.Pipe
 	}
 	if o.State != nil {
 		toSerialize["state"] = o.State

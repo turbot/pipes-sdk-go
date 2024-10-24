@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **IntegrationId** | Pointer to **string** |  | [optional] 
 **ModId** | Pointer to **string** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
-**Pipeling** | Pointer to [**ModPipeling**](ModPipeling.md) |  | [optional] 
+**Pipe** | Pointer to [**ModPipe**](ModPipe.md) |  | [optional] 
 **State** | Pointer to [**WorkspaceModState**](WorkspaceModState.md) |  | [optional] 
 **StateReason** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
@@ -377,30 +377,30 @@ SetPath sets Path field to given value.
 
 HasPath returns a boolean if a field has been set.
 
-### GetPipeling
+### GetPipe
 
-`func (o *WorkspaceMod) GetPipeling() ModPipeling`
+`func (o *WorkspaceMod) GetPipe() ModPipe`
 
-GetPipeling returns the Pipeling field if non-nil, zero value otherwise.
+GetPipe returns the Pipe field if non-nil, zero value otherwise.
 
-### GetPipelingOk
+### GetPipeOk
 
-`func (o *WorkspaceMod) GetPipelingOk() (*ModPipeling, bool)`
+`func (o *WorkspaceMod) GetPipeOk() (*ModPipe, bool)`
 
-GetPipelingOk returns a tuple with the Pipeling field if it's non-nil, zero value otherwise
+GetPipeOk returns a tuple with the Pipe field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPipeling
+### SetPipe
 
-`func (o *WorkspaceMod) SetPipeling(v ModPipeling)`
+`func (o *WorkspaceMod) SetPipe(v ModPipe)`
 
-SetPipeling sets Pipeling field to given value.
+SetPipe sets Pipe field to given value.
 
-### HasPipeling
+### HasPipe
 
-`func (o *WorkspaceMod) HasPipeling() bool`
+`func (o *WorkspaceMod) HasPipe() bool`
 
-HasPipeling returns a boolean if a field has been set.
+HasPipe returns a boolean if a field has been set.
 
 ### GetState
 

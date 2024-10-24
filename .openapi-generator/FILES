@@ -195,7 +195,7 @@ docs/ListWorkspaceSchemaTableResponse.md
 docs/ListWorkspaceSnapshotsResponse.md
 docs/ListWorkspacesResponse.md
 docs/LogRecord.md
-docs/ModPipeling.md
+docs/ModPipe.md
 docs/Notifier.md
 docs/NotifierPrecedence.md
 docs/NotifierState.md
@@ -361,6 +361,9 @@ docs/WorkspaceModVariable.md
 docs/WorkspaceNotifierCommandAction.md
 docs/WorkspaceNotifierCommandRequest.md
 docs/WorkspaceNotifierCommandResponse.md
+docs/WorkspaceProcessCommandAction.md
+docs/WorkspaceProcessCommandRequest.md
+docs/WorkspaceProcessCommandResponse.md
 docs/WorkspaceQueryResult.md
 docs/WorkspaceQueryResultColumn.md
 docs/WorkspaceSchema.md
@@ -488,7 +491,7 @@ model_list_workspace_schema_table_response.go
 model_list_workspace_snapshots_response.go
 model_list_workspaces_response.go
 model_log_record.go
-model_mod_pipeling.go
+model_mod_pipe.go
 model_notifier.go
 model_notifier_precedence.go
 model_notifier_state.go
@@ -583,6 +586,9 @@ model_workspace_mod_variable.go
 model_workspace_notifier_command_action.go
 model_workspace_notifier_command_request.go
 model_workspace_notifier_command_response.go
+model_workspace_process_command_action.go
+model_workspace_process_command_request.go
+model_workspace_process_command_response.go
 model_workspace_query_result.go
 model_workspace_query_result_column.go
 model_workspace_schema.go

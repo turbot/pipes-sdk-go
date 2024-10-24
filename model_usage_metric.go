@@ -24,6 +24,8 @@ type UsageMetric struct {
 	InstanceType *string `json:"instance_type,omitempty"`
 	// The metric for this usage metric record.
 	Metric UsageMetricType `json:"metric"`
+	// The pipe for which the metric is recorded.
+	Pipe *string `json:"pipe,omitempty"`
 	// The tenant ID for this usage metric record
 	TenantId *string `json:"tenant_id,omitempty"`
 	// The unit for this usage metric record.
@@ -171,6 +173,38 @@ func (o *UsageMetric) GetMetricOk() (*UsageMetricType, bool) {
 // SetMetric sets field value
 func (o *UsageMetric) SetMetric(v UsageMetricType) {
 	o.Metric = v
+}
+
+// GetPipe returns the Pipe field value if set, zero value otherwise.
+func (o *UsageMetric) GetPipe() string {
+	if o == nil || o.Pipe == nil {
+		var ret string
+		return ret
+	}
+	return *o.Pipe
+}
+
+// GetPipeOk returns a tuple with the Pipe field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UsageMetric) GetPipeOk() (*string, bool) {
+	if o == nil || o.Pipe == nil {
+		return nil, false
+	}
+	return o.Pipe, true
+}
+
+// HasPipe returns a boolean if a field has been set.
+func (o *UsageMetric) HasPipe() bool {
+	if o != nil && o.Pipe != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPipe gets a reference to the given string and assigns it to the Pipe field.
+func (o *UsageMetric) SetPipe(v string) {
+	o.Pipe = &v
 }
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
@@ -394,6 +428,9 @@ func (o UsageMetric) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["metric"] = o.Metric
+	}
+	if o.Pipe != nil {
+		toSerialize["pipe"] = o.Pipe
 	}
 	if o.TenantId != nil {
 		toSerialize["tenant_id"] = o.TenantId

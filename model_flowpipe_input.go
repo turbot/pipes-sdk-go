@@ -40,6 +40,8 @@ type FlowpipeInput struct {
 	Notifier *Notifier `json:"notifier,omitempty"`
 	// The name of the Flowpipe notifier to use for this input.
 	NotifierId *string `json:"notifier_id,omitempty"`
+	// The overrides for the Flowpipe input notification targets.
+	Overrides *map[string]interface{} `json:"overrides,omitempty"`
 	// The details of the process associated with this flowpipe input.
 	Process *SpProcess `json:"process,omitempty"`
 	// The unique ID of the Pipes process for the Flowpipe run that owns this input.
@@ -442,6 +444,38 @@ func (o *FlowpipeInput) HasNotifierId() bool {
 // SetNotifierId gets a reference to the given string and assigns it to the NotifierId field.
 func (o *FlowpipeInput) SetNotifierId(v string) {
 	o.NotifierId = &v
+}
+
+// GetOverrides returns the Overrides field value if set, zero value otherwise.
+func (o *FlowpipeInput) GetOverrides() map[string]interface{} {
+	if o == nil || o.Overrides == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Overrides
+}
+
+// GetOverridesOk returns a tuple with the Overrides field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FlowpipeInput) GetOverridesOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Overrides == nil {
+		return nil, false
+	}
+	return o.Overrides, true
+}
+
+// HasOverrides returns a boolean if a field has been set.
+func (o *FlowpipeInput) HasOverrides() bool {
+	if o != nil && o.Overrides != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOverrides gets a reference to the given map[string]interface{} and assigns it to the Overrides field.
+func (o *FlowpipeInput) SetOverrides(v map[string]interface{}) {
+	o.Overrides = &v
 }
 
 // GetProcess returns the Process field value if set, zero value otherwise.
@@ -873,6 +907,9 @@ func (o FlowpipeInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.NotifierId != nil {
 		toSerialize["notifier_id"] = o.NotifierId
+	}
+	if o.Overrides != nil {
+		toSerialize["overrides"] = o.Overrides
 	}
 	if o.Process != nil {
 		toSerialize["process"] = o.Process

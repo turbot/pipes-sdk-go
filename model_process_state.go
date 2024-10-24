@@ -20,12 +20,13 @@ type ProcessState string
 
 // List of ProcessState
 const (
-	ProcessPending   ProcessState = "pending"
-	ProcessPaused    ProcessState = "paused"
-	ProcessRunning   ProcessState = "running"
-	ProcessFailed    ProcessState = "failed"
-	ProcessCompleted ProcessState = "completed"
-	ProcessCanceled  ProcessState = "canceled"
+	ProcessPending    ProcessState = "pending"
+	ProcessPaused     ProcessState = "paused"
+	ProcessRunning    ProcessState = "running"
+	ProcessFailed     ProcessState = "failed"
+	ProcessCompleted  ProcessState = "completed"
+	ProcessCanceled   ProcessState = "canceled"
+	ProcessTerminated ProcessState = "terminated"
 )
 
 // All allowed values of ProcessState enum
@@ -36,6 +37,7 @@ var AllowedProcessStateEnumValues = []ProcessState{
 	"failed",
 	"completed",
 	"canceled",
+	"terminated",
 }
 
 func (v *ProcessState) UnmarshalJSON(src []byte) error {

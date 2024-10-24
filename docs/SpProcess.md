@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Billable** | **string** | Whether the process is billable. | 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
 **CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **FlowpipePipelineId** | Pointer to **string** | The unique identifier of the flowpipe pipeline for which the process is created. | [optional] 
 **Id** | **string** | The unique identifier of the process. | 
 **IdentityId** | Pointer to **string** | The unique identifier of the identity for which the process is created. | [optional] 
+**Pipe** | **string** | The pipe for which the process has been created. | 
 **Pipeline** | Pointer to [**Pipeline**](Pipeline.md) | The current details of the pipeline for which the process is created. | [optional] 
 **PipelineId** | Pointer to **string** | The unique identifier of the pipeline for which the process is created. | [optional] 
 **State** | Pointer to [**ProcessState**](ProcessState.md) | The state of the process. | [optional] 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewSpProcess
 
-`func NewSpProcess(billable string, createdAt string, createdById string, id string, type_ string, updatedAt string, updatedById string, versionId int32, ) *SpProcess`
+`func NewSpProcess(createdAt string, createdById string, id string, pipe string, type_ string, updatedAt string, updatedById string, versionId int32, ) *SpProcess`
 
 NewSpProcess instantiates a new SpProcess object
 This constructor will assign default values to properties that have it defined,
@@ -44,26 +44,6 @@ will change when the set of required properties is changed
 NewSpProcessWithDefaults instantiates a new SpProcess object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetBillable
-
-`func (o *SpProcess) GetBillable() string`
-
-GetBillable returns the Billable field if non-nil, zero value otherwise.
-
-### GetBillableOk
-
-`func (o *SpProcess) GetBillableOk() (*string, bool)`
-
-GetBillableOk returns a tuple with the Billable field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBillable
-
-`func (o *SpProcess) SetBillable(v string)`
-
-SetBillable sets Billable field to given value.
-
 
 ### GetCreatedAt
 
@@ -199,6 +179,26 @@ SetIdentityId sets IdentityId field to given value.
 `func (o *SpProcess) HasIdentityId() bool`
 
 HasIdentityId returns a boolean if a field has been set.
+
+### GetPipe
+
+`func (o *SpProcess) GetPipe() string`
+
+GetPipe returns the Pipe field if non-nil, zero value otherwise.
+
+### GetPipeOk
+
+`func (o *SpProcess) GetPipeOk() (*string, bool)`
+
+GetPipeOk returns a tuple with the Pipe field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPipe
+
+`func (o *SpProcess) SetPipe(v string)`
+
+SetPipe sets Pipe field to given value.
+
 
 ### GetPipeline
 

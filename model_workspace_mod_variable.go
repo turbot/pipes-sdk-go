@@ -21,10 +21,11 @@ type WorkspaceModVariable struct {
 	CreatedById  string                  `json:"created_by_id"`
 	Description  *string                 `json:"description,omitempty"`
 	Enum         *map[string]interface{} `json:"enum,omitempty"`
+	Format       *string                 `json:"format,omitempty"`
 	Id           string                  `json:"id"`
 	ModAlias     *string                 `json:"mod_alias,omitempty"`
 	Name         *string                 `json:"name,omitempty"`
-	Pipeling     *string                 `json:"pipeling,omitempty"`
+	Pipe         *string                 `json:"pipe,omitempty"`
 	Tags         *map[string]interface{} `json:"tags,omitempty"`
 	Type         *string                 `json:"type,omitempty"`
 	UpdatedAt    *string                 `json:"updated_at,omitempty"`
@@ -201,6 +202,38 @@ func (o *WorkspaceModVariable) SetEnum(v map[string]interface{}) {
 	o.Enum = &v
 }
 
+// GetFormat returns the Format field value if set, zero value otherwise.
+func (o *WorkspaceModVariable) GetFormat() string {
+	if o == nil || o.Format == nil {
+		var ret string
+		return ret
+	}
+	return *o.Format
+}
+
+// GetFormatOk returns a tuple with the Format field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceModVariable) GetFormatOk() (*string, bool) {
+	if o == nil || o.Format == nil {
+		return nil, false
+	}
+	return o.Format, true
+}
+
+// HasFormat returns a boolean if a field has been set.
+func (o *WorkspaceModVariable) HasFormat() bool {
+	if o != nil && o.Format != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFormat gets a reference to the given string and assigns it to the Format field.
+func (o *WorkspaceModVariable) SetFormat(v string) {
+	o.Format = &v
+}
+
 // GetId returns the Id field value
 func (o *WorkspaceModVariable) GetId() string {
 	if o == nil {
@@ -289,36 +322,36 @@ func (o *WorkspaceModVariable) SetName(v string) {
 	o.Name = &v
 }
 
-// GetPipeling returns the Pipeling field value if set, zero value otherwise.
-func (o *WorkspaceModVariable) GetPipeling() string {
-	if o == nil || o.Pipeling == nil {
+// GetPipe returns the Pipe field value if set, zero value otherwise.
+func (o *WorkspaceModVariable) GetPipe() string {
+	if o == nil || o.Pipe == nil {
 		var ret string
 		return ret
 	}
-	return *o.Pipeling
+	return *o.Pipe
 }
 
-// GetPipelingOk returns a tuple with the Pipeling field value if set, nil otherwise
+// GetPipeOk returns a tuple with the Pipe field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkspaceModVariable) GetPipelingOk() (*string, bool) {
-	if o == nil || o.Pipeling == nil {
+func (o *WorkspaceModVariable) GetPipeOk() (*string, bool) {
+	if o == nil || o.Pipe == nil {
 		return nil, false
 	}
-	return o.Pipeling, true
+	return o.Pipe, true
 }
 
-// HasPipeling returns a boolean if a field has been set.
-func (o *WorkspaceModVariable) HasPipeling() bool {
-	if o != nil && o.Pipeling != nil {
+// HasPipe returns a boolean if a field has been set.
+func (o *WorkspaceModVariable) HasPipe() bool {
+	if o != nil && o.Pipe != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPipeling gets a reference to the given string and assigns it to the Pipeling field.
-func (o *WorkspaceModVariable) SetPipeling(v string) {
-	o.Pipeling = &v
+// SetPipe gets a reference to the given string and assigns it to the Pipe field.
+func (o *WorkspaceModVariable) SetPipe(v string) {
+	o.Pipe = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -621,6 +654,9 @@ func (o WorkspaceModVariable) MarshalJSON() ([]byte, error) {
 	if o.Enum != nil {
 		toSerialize["enum"] = o.Enum
 	}
+	if o.Format != nil {
+		toSerialize["format"] = o.Format
+	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -630,8 +666,8 @@ func (o WorkspaceModVariable) MarshalJSON() ([]byte, error) {
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.Pipeling != nil {
-		toSerialize["pipeling"] = o.Pipeling
+	if o.Pipe != nil {
+		toSerialize["pipe"] = o.Pipe
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags

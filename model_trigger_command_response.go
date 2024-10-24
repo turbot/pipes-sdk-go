@@ -17,17 +17,16 @@ import (
 // TriggerCommandResponse struct for TriggerCommandResponse
 type TriggerCommandResponse struct {
 	Command   TriggerCommandAction `json:"command"`
-	ProcessId string               `json:"process_id"`
+	ProcessId *string              `json:"process_id,omitempty"`
 }
 
 // NewTriggerCommandResponse instantiates a new TriggerCommandResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTriggerCommandResponse(command TriggerCommandAction, processId string) *TriggerCommandResponse {
+func NewTriggerCommandResponse(command TriggerCommandAction) *TriggerCommandResponse {
 	this := TriggerCommandResponse{}
 	this.Command = command
-	this.ProcessId = processId
 	return &this
 }
 
@@ -63,28 +62,36 @@ func (o *TriggerCommandResponse) SetCommand(v TriggerCommandAction) {
 	o.Command = v
 }
 
-// GetProcessId returns the ProcessId field value
+// GetProcessId returns the ProcessId field value if set, zero value otherwise.
 func (o *TriggerCommandResponse) GetProcessId() string {
-	if o == nil {
+	if o == nil || o.ProcessId == nil {
 		var ret string
 		return ret
 	}
-
-	return o.ProcessId
+	return *o.ProcessId
 }
 
-// GetProcessIdOk returns a tuple with the ProcessId field value
+// GetProcessIdOk returns a tuple with the ProcessId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TriggerCommandResponse) GetProcessIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.ProcessId == nil {
 		return nil, false
 	}
-	return &o.ProcessId, true
+	return o.ProcessId, true
 }
 
-// SetProcessId sets field value
+// HasProcessId returns a boolean if a field has been set.
+func (o *TriggerCommandResponse) HasProcessId() bool {
+	if o != nil && o.ProcessId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessId gets a reference to the given string and assigns it to the ProcessId field.
 func (o *TriggerCommandResponse) SetProcessId(v string) {
-	o.ProcessId = v
+	o.ProcessId = &v
 }
 
 func (o TriggerCommandResponse) MarshalJSON() ([]byte, error) {
@@ -92,7 +99,7 @@ func (o TriggerCommandResponse) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["command"] = o.Command
 	}
-	if true {
+	if o.ProcessId != nil {
 		toSerialize["process_id"] = o.ProcessId
 	}
 	return json.Marshal(toSerialize)

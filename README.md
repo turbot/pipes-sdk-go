@@ -243,6 +243,7 @@ Class | Method | HTTP request | Description
 *OrgWorkspacePipelines* | [**Get**](docs/OrgWorkspacePipelines.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Get org workspace pipeline
 *OrgWorkspacePipelines* | [**List**](docs/OrgWorkspacePipelines.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/pipeline | List org workspace pipelines
 *OrgWorkspacePipelines* | [**Update**](docs/OrgWorkspacePipelines.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Update org workspace pipeline
+*OrgWorkspaceProcesses* | [**Command**](docs/OrgWorkspaceProcesses.md#command) | **Post** /org/{org_handle}/workspace/{workspace_handle}/process/{process_id}/command | Run org workspace process command
 *OrgWorkspaceProcesses* | [**Get**](docs/OrgWorkspaceProcesses.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/process/{process_id} | Get org workspace process
 *OrgWorkspaceProcesses* | [**List**](docs/OrgWorkspaceProcesses.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/process | List org workspace processes
 *OrgWorkspaceProcesses* | [**Log**](docs/OrgWorkspaceProcesses.md#log) | **Get** /org/{org_handle}/workspace/{workspace_handle}/process/{process_id}/log/{log_file}.{content_type} | List org workspace process logs
@@ -488,6 +489,7 @@ Class | Method | HTTP request | Description
 *UserWorkspacePipelines* | [**Get**](docs/UserWorkspacePipelines.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Get user workspace pipeline
 *UserWorkspacePipelines* | [**List**](docs/UserWorkspacePipelines.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/pipeline | List user workspace pipelines
 *UserWorkspacePipelines* | [**Update**](docs/UserWorkspacePipelines.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Update user workspace pipeline
+*UserWorkspaceProcesses* | [**Command**](docs/UserWorkspaceProcesses.md#command) | **Post** /user/{user_handle}/workspace/{workspace_handle}/process/{process_id}/command | Run user workspace process command
 *UserWorkspaceProcesses* | [**Get**](docs/UserWorkspaceProcesses.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/process/{process_id} | Get user workspace process
 *UserWorkspaceProcesses* | [**List**](docs/UserWorkspaceProcesses.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/process | List user workspace processes
 *UserWorkspaceProcesses* | [**Log**](docs/UserWorkspaceProcesses.md#log) | **Get** /user/{user_handle}/workspace/{workspace_handle}/process/{process_id}/log/{log_file}.{content_type} | List user workspace process logs
@@ -650,7 +652,7 @@ Class | Method | HTTP request | Description
  - [ListWorkspaceSnapshotsResponse](docs/ListWorkspaceSnapshotsResponse.md)
  - [ListWorkspacesResponse](docs/ListWorkspacesResponse.md)
  - [LogRecord](docs/LogRecord.md)
- - [ModPipeling](docs/ModPipeling.md)
+ - [ModPipe](docs/ModPipe.md)
  - [Notifier](docs/Notifier.md)
  - [NotifierPrecedence](docs/NotifierPrecedence.md)
  - [NotifierState](docs/NotifierState.md)
@@ -745,6 +747,9 @@ Class | Method | HTTP request | Description
  - [WorkspaceNotifierCommandAction](docs/WorkspaceNotifierCommandAction.md)
  - [WorkspaceNotifierCommandRequest](docs/WorkspaceNotifierCommandRequest.md)
  - [WorkspaceNotifierCommandResponse](docs/WorkspaceNotifierCommandResponse.md)
+ - [WorkspaceProcessCommandAction](docs/WorkspaceProcessCommandAction.md)
+ - [WorkspaceProcessCommandRequest](docs/WorkspaceProcessCommandRequest.md)
+ - [WorkspaceProcessCommandResponse](docs/WorkspaceProcessCommandResponse.md)
  - [WorkspaceQueryResult](docs/WorkspaceQueryResult.md)
  - [WorkspaceQueryResultColumn](docs/WorkspaceQueryResultColumn.md)
  - [WorkspaceSchema](docs/WorkspaceSchema.md)

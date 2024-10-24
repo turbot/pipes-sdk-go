@@ -20,6 +20,7 @@ type CreateFlowpipeInputRequest struct {
 	Inputs              *map[string]interface{} `json:"inputs,omitempty"`
 	Message             *string                 `json:"message,omitempty"`
 	NotifierName        string                  `json:"notifier_name"`
+	Overrides           *map[string]interface{} `json:"overrides,omitempty"`
 	PipelineExecutionId *string                 `json:"pipeline_execution_id,omitempty"`
 	StepExecutionId     string                  `json:"step_execution_id"`
 	StepType            FlowpipeInputStepType   `json:"step_type"`
@@ -158,6 +159,38 @@ func (o *CreateFlowpipeInputRequest) SetNotifierName(v string) {
 	o.NotifierName = v
 }
 
+// GetOverrides returns the Overrides field value if set, zero value otherwise.
+func (o *CreateFlowpipeInputRequest) GetOverrides() map[string]interface{} {
+	if o == nil || o.Overrides == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Overrides
+}
+
+// GetOverridesOk returns a tuple with the Overrides field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateFlowpipeInputRequest) GetOverridesOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Overrides == nil {
+		return nil, false
+	}
+	return o.Overrides, true
+}
+
+// HasOverrides returns a boolean if a field has been set.
+func (o *CreateFlowpipeInputRequest) HasOverrides() bool {
+	if o != nil && o.Overrides != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOverrides gets a reference to the given map[string]interface{} and assigns it to the Overrides field.
+func (o *CreateFlowpipeInputRequest) SetOverrides(v map[string]interface{}) {
+	o.Overrides = &v
+}
+
 // GetPipelineExecutionId returns the PipelineExecutionId field value if set, zero value otherwise.
 func (o *CreateFlowpipeInputRequest) GetPipelineExecutionId() string {
 	if o == nil || o.PipelineExecutionId == nil {
@@ -251,6 +284,9 @@ func (o CreateFlowpipeInputRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["notifier_name"] = o.NotifierName
+	}
+	if o.Overrides != nil {
+		toSerialize["overrides"] = o.Overrides
 	}
 	if o.PipelineExecutionId != nil {
 		toSerialize["pipeline_execution_id"] = o.PipelineExecutionId

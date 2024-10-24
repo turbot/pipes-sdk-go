@@ -20,12 +20,14 @@ type TriggerCommandAction string
 
 // List of TriggerCommandAction
 const (
-	TriggerCommandRun TriggerCommandAction = "run"
+	TriggerCommandRun   TriggerCommandAction = "run"
+	TriggerCommandReset TriggerCommandAction = "reset"
 )
 
 // All allowed values of TriggerCommandAction enum
 var AllowedTriggerCommandActionEnumValues = []TriggerCommandAction{
 	"run",
+	"reset",
 }
 
 func (v *TriggerCommandAction) UnmarshalJSON(src []byte) error {

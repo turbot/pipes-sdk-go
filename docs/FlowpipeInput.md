@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Message** | Pointer to **string** | The message for the Flowpipe message step. | [optional] 
 **Notifier** | Pointer to [**Notifier**](Notifier.md) | The details of the notifier this flowpipe input uses. | [optional] 
 **NotifierId** | Pointer to **string** | The name of the Flowpipe notifier to use for this input. | [optional] 
+**Overrides** | Pointer to **map[string]interface{}** | The overrides for the Flowpipe input notification targets. | [optional] 
 **Process** | Pointer to [**SpProcess**](SpProcess.md) | The details of the process associated with this flowpipe input. | [optional] 
 **ProcessId** | Pointer to **string** | The unique ID of the Pipes process for the Flowpipe run that owns this input. | [optional] 
 **RandomId** | Pointer to **string** | The Flowpipe execution ID for this Flowpipe input. | [optional] 
@@ -328,6 +329,31 @@ SetNotifierId sets NotifierId field to given value.
 `func (o *FlowpipeInput) HasNotifierId() bool`
 
 HasNotifierId returns a boolean if a field has been set.
+
+### GetOverrides
+
+`func (o *FlowpipeInput) GetOverrides() map[string]interface{}`
+
+GetOverrides returns the Overrides field if non-nil, zero value otherwise.
+
+### GetOverridesOk
+
+`func (o *FlowpipeInput) GetOverridesOk() (*map[string]interface{}, bool)`
+
+GetOverridesOk returns a tuple with the Overrides field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverrides
+
+`func (o *FlowpipeInput) SetOverrides(v map[string]interface{})`
+
+SetOverrides sets Overrides field to given value.
+
+### HasOverrides
+
+`func (o *FlowpipeInput) HasOverrides() bool`
+
+HasOverrides returns a boolean if a field has been set.
 
 ### GetProcess
 

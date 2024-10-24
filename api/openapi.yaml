@@ -18369,6 +18369,106 @@ paths:
       summary: Get org workspace process
       tags:
       - OrgWorkspaceProcesses
+  /org/{org_handle}/workspace/{workspace_handle}/process/{process_id}/command:
+    post:
+      description: Run a command against an org workspace process.
+      operationId: orgWorkspaceProcess_command
+      parameters:
+      - description: The handle of the org where we want to run the workspace process
+          command.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the workspace where the process command will be
+          executed.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The id of the process where the command will be executed against.
+        explode: false
+        in: path
+        name: process_id
+        required: true
+        schema:
+          format: ^[a-z]{1,3}_[0-9a-v]{20}$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkspaceProcessCommandRequest'
+        description: The request body for the workspace process command.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceProcessCommandResponse'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+        "501":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Implemented
+      summary: Run org workspace process command
+      tags:
+      - OrgWorkspaceProcesses
+      x-codegen-request-body-name: request
   /org/{org_handle}/workspace/{workspace_handle}/process/{process_id}/log/{log_file}.{content_type}:
     get:
       description: List the process logs associated with a workspace process.
@@ -35376,6 +35476,106 @@ paths:
       summary: Get user workspace process
       tags:
       - UserWorkspaceProcesses
+  /user/{user_handle}/workspace/{workspace_handle}/process/{process_id}/command:
+    post:
+      description: Run a command against a users workspace process.
+      operationId: userWorkspaceProcess_command
+      parameters:
+      - description: The handle of the user where we want to run the workspace process
+          command.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the workspace where the process command will be
+          executed.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The id of the process where the command will be executed against.
+        explode: false
+        in: path
+        name: process_id
+        required: true
+        schema:
+          format: ^[a-z]{1,3}_[0-9a-v]{20}$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkspaceProcessCommandRequest'
+        description: The request body for the workspace process command.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceProcessCommandResponse'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+        "501":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Implemented
+      summary: Run user workspace process command
+      tags:
+      - UserWorkspaceProcesses
+      x-codegen-request-body-name: request
   /user/{user_handle}/workspace/{workspace_handle}/process/{process_id}/log/{log_file}.{content_type}:
     get:
       description: List the process logs associated with a workspace process.
@@ -38117,6 +38317,7 @@ components:
         step_execution_id: step_execution_id
         step_type: '{}'
         notifier_name: notifier_name
+        overrides: '{}'
         message: message
       properties:
         execution_id:
@@ -38129,6 +38330,9 @@ components:
           type: string
         notifier_name:
           type: string
+        overrides:
+          properties: {}
+          type: object
         pipeline_execution_id:
           format: ^pexec_[0-9a-v]{20}$
           type: string
@@ -38599,13 +38803,13 @@ components:
           trigger: '{}'
           version_id: 0
           type: type
-          billable: "yes"
           created_by: '{}'
           pipeline: '{}'
           workspace_id: workspace_id
           updated_at: updated_at
           pipeline_id: pipeline_id
           updated_by: '{}'
+          pipe: steampipe
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           id: id
@@ -38722,13 +38926,13 @@ components:
           trigger: '{}'
           version_id: 0
           type: type
-          billable: "yes"
           created_by: '{}'
           pipeline: '{}'
           workspace_id: workspace_id
           updated_at: updated_at
           pipeline_id: pipeline_id
           updated_by: '{}'
+          pipe: steampipe
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           id: id
@@ -38744,13 +38948,13 @@ components:
           trigger: '{}'
           version_id: 0
           type: type
-          billable: "yes"
           created_by: '{}'
           pipeline: '{}'
           workspace_id: workspace_id
           updated_at: updated_at
           pipeline_id: pipeline_id
           updated_by: '{}'
+          pipe: steampipe
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           id: id
@@ -38770,13 +38974,13 @@ components:
           trigger: '{}'
           version_id: 0
           type: type
-          billable: "yes"
           created_by: '{}'
           pipeline: '{}'
           workspace_id: workspace_id
           updated_at: updated_at
           pipeline_id: pipeline_id
           updated_by: '{}'
+          pipe: steampipe
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           id: id
@@ -38795,13 +38999,13 @@ components:
           trigger: '{}'
           version_id: 0
           type: type
-          billable: "yes"
           created_by: '{}'
           pipeline: '{}'
           workspace_id: workspace_id
           updated_at: updated_at
           pipeline_id: pipeline_id
           updated_by: '{}'
+          pipe: steampipe
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           id: id
@@ -39274,6 +39478,7 @@ components:
         deleted_by_id: deleted_by_id
         step_execution_id: step_execution_id
         step_type: '{}'
+        overrides: '{}'
         version_id: 0
         message: message
         created_by: '{}'
@@ -39332,6 +39537,10 @@ components:
           description: The name of the Flowpipe notifier to use for this input.
           format: ^notifier_[0-9a-v]{20}$
           type: string
+        overrides:
+          description: The overrides for the Flowpipe input notification targets.
+          properties: {}
+          type: object
         process:
           allOf:
           - $ref: '#/components/schemas/SpProcess'
@@ -40073,13 +40282,13 @@ components:
             trigger: '{}'
             version_id: 0
             type: type
-            billable: "yes"
             created_by: '{}'
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
             pipeline_id: pipeline_id
             updated_by: '{}'
+            pipe: steampipe
             updated_by_id: updated_by_id
             created_by_id: created_by_id
             id: id
@@ -40196,13 +40405,13 @@ components:
             trigger: '{}'
             version_id: 0
             type: type
-            billable: "yes"
             created_by: '{}'
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
             pipeline_id: pipeline_id
             updated_by: '{}'
+            pipe: steampipe
             updated_by_id: updated_by_id
             created_by_id: created_by_id
             id: id
@@ -40218,13 +40427,13 @@ components:
             trigger: '{}'
             version_id: 0
             type: type
-            billable: "yes"
             created_by: '{}'
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
             pipeline_id: pipeline_id
             updated_by: '{}'
+            pipe: steampipe
             updated_by_id: updated_by_id
             created_by_id: created_by_id
             id: id
@@ -40244,13 +40453,13 @@ components:
             trigger: '{}'
             version_id: 0
             type: type
-            billable: "yes"
             created_by: '{}'
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
             pipeline_id: pipeline_id
             updated_by: '{}'
+            pipe: steampipe
             updated_by_id: updated_by_id
             created_by_id: created_by_id
             id: id
@@ -40269,13 +40478,13 @@ components:
             trigger: '{}'
             version_id: 0
             type: type
-            billable: "yes"
             created_by: '{}'
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
             pipeline_id: pipeline_id
             updated_by: '{}'
+            pipe: steampipe
             updated_by_id: updated_by_id
             created_by_id: created_by_id
             id: id
@@ -40332,13 +40541,13 @@ components:
             trigger: '{}'
             version_id: 0
             type: type
-            billable: "yes"
             created_by: '{}'
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
             pipeline_id: pipeline_id
             updated_by: '{}'
+            pipe: steampipe
             updated_by_id: updated_by_id
             created_by_id: created_by_id
             id: id
@@ -40455,13 +40664,13 @@ components:
             trigger: '{}'
             version_id: 0
             type: type
-            billable: "yes"
             created_by: '{}'
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
             pipeline_id: pipeline_id
             updated_by: '{}'
+            pipe: steampipe
             updated_by_id: updated_by_id
             created_by_id: created_by_id
             id: id
@@ -40477,13 +40686,13 @@ components:
             trigger: '{}'
             version_id: 0
             type: type
-            billable: "yes"
             created_by: '{}'
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
             pipeline_id: pipeline_id
             updated_by: '{}'
+            pipe: steampipe
             updated_by_id: updated_by_id
             created_by_id: created_by_id
             id: id
@@ -40503,13 +40712,13 @@ components:
             trigger: '{}'
             version_id: 0
             type: type
-            billable: "yes"
             created_by: '{}'
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
             pipeline_id: pipeline_id
             updated_by: '{}'
+            pipe: steampipe
             updated_by_id: updated_by_id
             created_by_id: created_by_id
             id: id
@@ -40528,13 +40737,13 @@ components:
             trigger: '{}'
             version_id: 0
             type: type
-            billable: "yes"
             created_by: '{}'
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
             pipeline_id: pipeline_id
             updated_by: '{}'
+            pipe: steampipe
             updated_by_id: updated_by_id
             created_by_id: created_by_id
             id: id
@@ -40783,6 +40992,7 @@ components:
           deleted_by_id: deleted_by_id
           step_execution_id: step_execution_id
           step_type: '{}'
+          overrides: '{}'
           version_id: 0
           message: message
           created_by: '{}'
@@ -40808,6 +41018,7 @@ components:
           deleted_by_id: deleted_by_id
           step_execution_id: step_execution_id
           step_type: '{}'
+          overrides: '{}'
           version_id: 0
           message: message
           created_by: '{}'
@@ -41494,13 +41705,13 @@ components:
           trigger: '{}'
           version_id: 0
           type: type
-          billable: "yes"
           created_by: '{}'
           pipeline: '{}'
           workspace_id: workspace_id
           updated_at: updated_at
           pipeline_id: pipeline_id
           updated_by: '{}'
+          pipe: steampipe
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           id: id
@@ -41515,13 +41726,13 @@ components:
           trigger: '{}'
           version_id: 0
           type: type
-          billable: "yes"
           created_by: '{}'
           pipeline: '{}'
           workspace_id: workspace_id
           updated_at: updated_at
           pipeline_id: pipeline_id
           updated_by: '{}'
+          pipe: steampipe
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           id: id
@@ -41734,6 +41945,7 @@ components:
           identity_id: identity_id
           metric: '{}'
           usage_date: usage_date
+          pipe: pipe
           value_rounded: 6
           dimension: '{}'
           instance_type: instance_type
@@ -41745,6 +41957,7 @@ components:
           identity_id: identity_id
           metric: '{}'
           usage_date: usage_date
+          pipe: pipe
           value_rounded: 6
           dimension: '{}'
           instance_type: instance_type
@@ -42103,7 +42316,8 @@ components:
       example:
         next_token: next_token
         items:
-        - created_at: created_at
+        - format: format
+          created_at: created_at
           description: description
           mod_alias: mod_alias
           version_id: 0
@@ -42128,7 +42342,6 @@ components:
           enum: '{}'
           tags: '{}'
           updated_at: updated_at
-          pipeling: pipeling
           value_default: ""
           name: name
           updated_by:
@@ -42147,11 +42360,13 @@ components:
             id: id
             status: status
             usage_storage_threshold: 6
+          pipe: pipe
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           id: id
           value: ""
-        - created_at: created_at
+        - format: format
+          created_at: created_at
           description: description
           mod_alias: mod_alias
           version_id: 0
@@ -42176,7 +42391,6 @@ components:
           enum: '{}'
           tags: '{}'
           updated_at: updated_at
-          pipeling: pipeling
           value_default: ""
           name: name
           updated_by:
@@ -42195,6 +42409,7 @@ components:
             id: id
             status: status
             usage_storage_threshold: 6
+          pipe: pipe
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           id: id
@@ -42533,14 +42748,14 @@ components:
       - workspace_handle
       - workspace_id
       type: object
-    ModPipeling:
+    ModPipe:
       enum:
       - flowpipe
       - powerpipe
       type: string
       x-enum-varnames:
-      - ModPipelingFlowpipe
-      - ModPipelingPowerpipe
+      - ModPipeFlowpipe
+      - ModPipePowerpipe
     Notifier:
       example:
         tenant_id: tenant_id
@@ -43373,6 +43588,7 @@ components:
       - failed
       - completed
       - canceled
+      - terminated
       type: string
       x-enum-comments:
         ProcessCanceled: note use American canceled
@@ -43383,6 +43599,7 @@ components:
       - ProcessFailed
       - ProcessCompleted
       - ProcessCanceled
+      - ProcessTerminated
     SlackChannel:
       example:
         name: name
@@ -43420,25 +43637,19 @@ components:
         trigger: '{}'
         version_id: 0
         type: type
-        billable: "yes"
         created_by: '{}'
         pipeline: '{}'
         workspace_id: workspace_id
         updated_at: updated_at
         pipeline_id: pipeline_id
         updated_by: '{}'
+        pipe: steampipe
         updated_by_id: updated_by_id
         created_by_id: created_by_id
         id: id
         state: '{}'
         flowpipe_pipeline_id: flowpipe_pipeline_id
       properties:
-        billable:
-          description: Whether the process is billable.
-          enum:
-          - "yes"
-          - "no"
-          type: string
         created_at:
           description: The time of creation in ISO 8601 UTC.
           type: string
@@ -43464,6 +43675,13 @@ components:
           description: The unique identifier of the identity for which the process
             is created.
           format: ^[o|u]_[0-9a-v]{20}$
+          type: string
+        pipe:
+          description: The pipe for which the process has been created.
+          enum:
+          - steampipe
+          - powerpipe
+          - flowpipe
           type: string
         pipeline:
           allOf:
@@ -43529,10 +43747,10 @@ components:
           format: ^w_[0-9a-v]{20}$
           type: string
       required:
-      - billable
       - created_at
       - created_by_id
       - id
+      - pipe
       - type
       - updated_at
       - updated_by_id
@@ -44031,9 +44249,11 @@ components:
     TriggerCommandAction:
       enum:
       - run
+      - reset
       type: string
       x-enum-varnames:
       - TriggerCommandRun
+      - TriggerCommandReset
     TriggerCommandRequest:
       example:
         args: '{}'
@@ -44063,7 +44283,6 @@ components:
           type: string
       required:
       - command
-      - process_id
       type: object
     TriggerState:
       enum:
@@ -44677,6 +44896,7 @@ components:
         identity_id: identity_id
         metric: '{}'
         usage_date: usage_date
+        pipe: pipe
         value_rounded: 6
         dimension: '{}'
         instance_type: instance_type
@@ -44700,6 +44920,9 @@ components:
           - $ref: '#/components/schemas/UsageMetricType'
           description: The metric for this usage metric record.
           type: object
+        pipe:
+          description: The pipe for which the metric is recorded.
+          type: string
         tenant_id:
           description: The tenant ID for this usage metric record
           type: string
@@ -45865,8 +46088,8 @@ components:
           type: string
         path:
           type: string
-        pipeling:
-          $ref: '#/components/schemas/ModPipeling'
+        pipe:
+          $ref: '#/components/schemas/ModPipe'
         state:
           $ref: '#/components/schemas/WorkspaceModState'
         state_reason:
@@ -46113,6 +46336,7 @@ components:
       type: object
     WorkspaceModVariable:
       example:
+        format: format
         created_at: created_at
         description: description
         mod_alias: mod_alias
@@ -46138,7 +46362,6 @@ components:
         enum: '{}'
         tags: '{}'
         updated_at: updated_at
-        pipeling: pipeling
         value_default: ""
         name: name
         updated_by:
@@ -46157,6 +46380,7 @@ components:
           id: id
           status: status
           usage_storage_threshold: 6
+        pipe: pipe
         updated_by_id: updated_by_id
         created_by_id: created_by_id
         id: id
@@ -46174,6 +46398,8 @@ components:
         enum:
           properties: {}
           type: object
+        format:
+          type: string
         id:
           format: ^[a-z]_[0-9a-v]{20}$
           type: string
@@ -46181,7 +46407,7 @@ components:
           type: string
         name:
           type: string
-        pipeling:
+        pipe:
           type: string
         tags:
           properties: {}
@@ -46241,6 +46467,28 @@ components:
       required:
       - command
       - process_id
+      type: object
+    WorkspaceProcessCommandAction:
+      enum:
+      - terminate
+      type: string
+      x-enum-varnames:
+      - WorkspaceProcessCommandTerminate
+    WorkspaceProcessCommandRequest:
+      example: {}
+      properties:
+        command:
+          $ref: '#/components/schemas/WorkspaceProcessCommandAction'
+      required:
+      - command
+      type: object
+    WorkspaceProcessCommandResponse:
+      example: {}
+      properties:
+        command:
+          $ref: '#/components/schemas/WorkspaceProcessCommandAction'
+      required:
+      - command
       type: object
     WorkspaceQueryResult:
       example:

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **IdentityId** | Pointer to **string** | The identity ID for this usage metric record | [optional] 
 **InstanceType** | Pointer to **string** | The instance type for the usage record.                                                                                                                                                       // The instance type for this usage metric record. Only populated if the usage is for a workspace. | [optional] 
 **Metric** | [**UsageMetricType**](UsageMetricType.md) | The metric for this usage metric record. | 
+**Pipe** | Pointer to **string** | The pipe for which the metric is recorded. | [optional] 
 **TenantId** | Pointer to **string** | The tenant ID for this usage metric record | [optional] 
 **Unit** | [**UsageUnitType**](UsageUnitType.md) | The unit for this usage metric record. | 
 **UsageDate** | **string** | The start time for this usage metric record. | 
@@ -124,6 +125,31 @@ and a boolean to check if the value has been set.
 
 SetMetric sets Metric field to given value.
 
+
+### GetPipe
+
+`func (o *UsageMetric) GetPipe() string`
+
+GetPipe returns the Pipe field if non-nil, zero value otherwise.
+
+### GetPipeOk
+
+`func (o *UsageMetric) GetPipeOk() (*string, bool)`
+
+GetPipeOk returns a tuple with the Pipe field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPipe
+
+`func (o *UsageMetric) SetPipe(v string)`
+
+SetPipe sets Pipe field to given value.
+
+### HasPipe
+
+`func (o *UsageMetric) HasPipe() bool`
+
+HasPipe returns a boolean if a field has been set.
 
 ### GetTenantId
 

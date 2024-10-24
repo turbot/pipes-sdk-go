@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Inputs** | Pointer to **map[string]interface{}** |  | [optional] 
 **Message** | Pointer to **string** |  | [optional] 
 **NotifierName** | **string** |  | 
+**Overrides** | Pointer to **map[string]interface{}** |  | [optional] 
 **PipelineExecutionId** | Pointer to **string** |  | [optional] 
 **StepExecutionId** | **string** |  | 
 **StepType** | [**FlowpipeInputStepType**](FlowpipeInputStepType.md) |  | 
@@ -120,6 +121,31 @@ and a boolean to check if the value has been set.
 
 SetNotifierName sets NotifierName field to given value.
 
+
+### GetOverrides
+
+`func (o *CreateFlowpipeInputRequest) GetOverrides() map[string]interface{}`
+
+GetOverrides returns the Overrides field if non-nil, zero value otherwise.
+
+### GetOverridesOk
+
+`func (o *CreateFlowpipeInputRequest) GetOverridesOk() (*map[string]interface{}, bool)`
+
+GetOverridesOk returns a tuple with the Overrides field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverrides
+
+`func (o *CreateFlowpipeInputRequest) SetOverrides(v map[string]interface{})`
+
+SetOverrides sets Overrides field to given value.
+
+### HasOverrides
+
+`func (o *CreateFlowpipeInputRequest) HasOverrides() bool`
+
+HasOverrides returns a boolean if a field has been set.
 
 ### GetPipelineExecutionId
 

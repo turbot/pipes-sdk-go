@@ -16,8 +16,6 @@ import (
 
 // SpProcess struct for SpProcess
 type SpProcess struct {
-	// Whether the process is billable.
-	Billable string `json:"billable"`
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
 	// User information for the user who created this.
@@ -30,6 +28,8 @@ type SpProcess struct {
 	Id string `json:"id"`
 	// The unique identifier of the identity for which the process is created.
 	IdentityId *string `json:"identity_id,omitempty"`
+	// The pipe for which the process has been created.
+	Pipe string `json:"pipe"`
 	// The current details of the pipeline for which the process is created.
 	Pipeline *Pipeline `json:"pipeline,omitempty"`
 	// The unique identifier of the pipeline for which the process is created.
@@ -64,12 +64,12 @@ type SpProcess struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSpProcess(billable string, createdAt string, createdById string, id string, type_ string, updatedAt string, updatedById string, versionId int32) *SpProcess {
+func NewSpProcess(createdAt string, createdById string, id string, pipe string, type_ string, updatedAt string, updatedById string, versionId int32) *SpProcess {
 	this := SpProcess{}
-	this.Billable = billable
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
 	this.Id = id
+	this.Pipe = pipe
 	this.Type = type_
 	this.UpdatedAt = updatedAt
 	this.UpdatedById = updatedById
@@ -83,30 +83,6 @@ func NewSpProcess(billable string, createdAt string, createdById string, id stri
 func NewSpProcessWithDefaults() *SpProcess {
 	this := SpProcess{}
 	return &this
-}
-
-// GetBillable returns the Billable field value
-func (o *SpProcess) GetBillable() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Billable
-}
-
-// GetBillableOk returns a tuple with the Billable field value
-// and a boolean to check if the value has been set.
-func (o *SpProcess) GetBillableOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Billable, true
-}
-
-// SetBillable sets field value
-func (o *SpProcess) SetBillable(v string) {
-	o.Billable = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -275,6 +251,30 @@ func (o *SpProcess) HasIdentityId() bool {
 // SetIdentityId gets a reference to the given string and assigns it to the IdentityId field.
 func (o *SpProcess) SetIdentityId(v string) {
 	o.IdentityId = &v
+}
+
+// GetPipe returns the Pipe field value
+func (o *SpProcess) GetPipe() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Pipe
+}
+
+// GetPipeOk returns a tuple with the Pipe field value
+// and a boolean to check if the value has been set.
+func (o *SpProcess) GetPipeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Pipe, true
+}
+
+// SetPipe sets field value
+func (o *SpProcess) SetPipe(v string) {
+	o.Pipe = v
 }
 
 // GetPipeline returns the Pipeline field value if set, zero value otherwise.
@@ -696,9 +696,6 @@ func (o *SpProcess) SetWorkspaceId(v string) {
 func (o SpProcess) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["billable"] = o.Billable
-	}
-	if true {
 		toSerialize["created_at"] = o.CreatedAt
 	}
 	if o.CreatedBy != nil {
@@ -715,6 +712,9 @@ func (o SpProcess) MarshalJSON() ([]byte, error) {
 	}
 	if o.IdentityId != nil {
 		toSerialize["identity_id"] = o.IdentityId
+	}
+	if true {
+		toSerialize["pipe"] = o.Pipe
 	}
 	if o.Pipeline != nil {
 		toSerialize["pipeline"] = o.Pipeline

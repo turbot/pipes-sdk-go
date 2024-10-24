@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Command** | [**TriggerCommandAction**](TriggerCommandAction.md) |  | 
-**ProcessId** | **string** |  | 
+**ProcessId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewTriggerCommandResponse
 
-`func NewTriggerCommandResponse(command TriggerCommandAction, processId string, ) *TriggerCommandResponse`
+`func NewTriggerCommandResponse(command TriggerCommandAction, ) *TriggerCommandResponse`
 
 NewTriggerCommandResponse instantiates a new TriggerCommandResponse object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +65,11 @@ and a boolean to check if the value has been set.
 
 SetProcessId sets ProcessId field to given value.
 
+### HasProcessId
+
+`func (o *TriggerCommandResponse) HasProcessId() bool`
+
+HasProcessId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
