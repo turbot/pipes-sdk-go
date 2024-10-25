@@ -14989,7 +14989,7 @@ paths:
           description: Internal Server Error
       summary: List organization workspace pipelines
       tags:
-      - OrgWorkspacePipelines
+      - OrgWorkspaceFlowpipePipelines
   /org/{org_handle}/workspace/{workspace_handle}/flowpipe/pipeline/{pipeline_id}:
     get:
       description: Get the details of a pipeline for a workspace of an organization.

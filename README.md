@@ -206,6 +206,7 @@ Class | Method | HTTP request | Description
 *OrgWorkspaceFlowpipeMods* | [**Update**](docs/OrgWorkspaceFlowpipeMods.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias} | Update a flowpipe mod in an organization workspace
 *OrgWorkspaceFlowpipePipelines* | [**Command**](docs/OrgWorkspaceFlowpipePipelines.md#command) | **Post** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/pipeline/{pipeline_name}/command | Run organization workspace Flowpipe pipeline command
 *OrgWorkspaceFlowpipePipelines* | [**Get**](docs/OrgWorkspaceFlowpipePipelines.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/pipeline/{pipeline_id} | Get org workspace pipeline
+*OrgWorkspaceFlowpipePipelines* | [**List**](docs/OrgWorkspaceFlowpipePipelines.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/pipeline | List organization workspace pipelines
 *OrgWorkspaceFlowpipePipelines* | [**ListTriggers**](docs/OrgWorkspaceFlowpipePipelines.md#listtriggers) | **Get** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/pipeline/{pipeline_id}/trigger | Get org workspace pipeline triggers
 *OrgWorkspaceFlowpipeTriggers* | [**Command**](docs/OrgWorkspaceFlowpipeTriggers.md#command) | **Post** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name}/command | Run organization workspace Flowpipe trigger command
 *OrgWorkspaceFlowpipeTriggers* | [**Create**](docs/OrgWorkspaceFlowpipeTriggers.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/trigger | Create org workspace trigger
@@ -242,8 +243,7 @@ Class | Method | HTTP request | Description
 *OrgWorkspacePipelines* | [**Create**](docs/OrgWorkspacePipelines.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/pipeline | Create org workspace pipeline
 *OrgWorkspacePipelines* | [**Delete**](docs/OrgWorkspacePipelines.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Delete org workspace pipeline
 *OrgWorkspacePipelines* | [**Get**](docs/OrgWorkspacePipelines.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Get org workspace pipeline
-*OrgWorkspacePipelines* | [**List**](docs/OrgWorkspacePipelines.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/pipeline | List organization workspace pipelines
-*OrgWorkspacePipelines* | [**List_0**](docs/OrgWorkspacePipelines.md#list_0) | **Get** /org/{org_handle}/workspace/{workspace_handle}/pipeline | List org workspace pipelines
+*OrgWorkspacePipelines* | [**List**](docs/OrgWorkspacePipelines.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/pipeline | List org workspace pipelines
 *OrgWorkspacePipelines* | [**Update**](docs/OrgWorkspacePipelines.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Update org workspace pipeline
 *OrgWorkspaceProcesses* | [**Command**](docs/OrgWorkspaceProcesses.md#command) | **Post** /org/{org_handle}/workspace/{workspace_handle}/process/{process_id}/command | Run org workspace process command
 *OrgWorkspaceProcesses* | [**Get**](docs/OrgWorkspaceProcesses.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/process/{process_id} | Get org workspace process

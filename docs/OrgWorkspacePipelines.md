@@ -8,8 +8,7 @@ Method | HTTP request | Description
 [**Create**](OrgWorkspacePipelines.md#Create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/pipeline | Create org workspace pipeline
 [**Delete**](OrgWorkspacePipelines.md#Delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Delete org workspace pipeline
 [**Get**](OrgWorkspacePipelines.md#Get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Get org workspace pipeline
-[**List**](OrgWorkspacePipelines.md#List) | **Get** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/pipeline | List organization workspace pipelines
-[**List_0**](OrgWorkspacePipelines.md#List_0) | **Get** /org/{org_handle}/workspace/{workspace_handle}/pipeline | List org workspace pipelines
+[**List**](OrgWorkspacePipelines.md#List) | **Get** /org/{org_handle}/workspace/{workspace_handle}/pipeline | List org workspace pipelines
 [**Update**](OrgWorkspacePipelines.md#Update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Update org workspace pipeline
 
 
@@ -321,9 +320,9 @@ No authorization required
 
 ## List
 
-> ListFlowpipePipelinesResponse List(ctx, orgHandle, workspaceHandle).Where(where).Limit(limit).NextToken(nextToken).Execute()
+> ListPipelinesResponse List(ctx, orgHandle, workspaceHandle).Where(where).Limit(limit).NextToken(nextToken).Execute()
 
-List organization workspace pipelines
+List org workspace pipelines
 
 
 
@@ -353,7 +352,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspacePipelines.List``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `List`: ListFlowpipePipelinesResponse
+    // response from `List`: ListPipelinesResponse
     fmt.Fprintf(os.Stdout, "Response from `OrgWorkspacePipelines.List`: %v\n", resp)
 }
 ```
@@ -370,85 +369,6 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **where** | **string** | The SQL where filter you wish to apply to this request. The filter will be parsed and sanitised and checked against the supported columns for this API. | 
- **limit** | **int32** | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. | [default to 25]
- **nextToken** | **string** | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. | 
-
-### Return type
-
-[**ListFlowpipePipelinesResponse**](ListFlowpipePipelinesResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## List_0
-
-> ListPipelinesResponse List_0(ctx, orgHandle, workspaceHandle).Where(where).Limit(limit).NextToken(nextToken).Execute()
-
-List org workspace pipelines
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    orgHandle := "orgHandle_example" // string | The handle of the organization which contains the workspace.
-    workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace for which we want to list the pipelines.
-    where := "where_example" // string | The SQL where filter you wish to apply to this request. The filter will be parsed and sanitised and checked against the supported columns for this API. (optional)
-    limit := int32(56) // int32 | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. (optional) (default to 25)
-    nextToken := "nextToken_example" // string | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrgWorkspacePipelines.List_0(context.Background(), orgHandle, workspaceHandle).Where(where).Limit(limit).NextToken(nextToken).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspacePipelines.List_0``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `List_0`: ListPipelinesResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrgWorkspacePipelines.List_0`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgHandle** | **string** | The handle of the organization which contains the workspace. | 
-**workspaceHandle** | **string** | The handle of the workspace for which we want to list the pipelines. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiList_1Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes
