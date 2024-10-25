@@ -211,6 +211,7 @@ Class | Method | HTTP request | Description
 *OrgWorkspaceFlowpipeTriggers* | [**Create**](docs/OrgWorkspaceFlowpipeTriggers.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/trigger | Create org workspace trigger
 *OrgWorkspaceFlowpipeTriggers* | [**Delete**](docs/OrgWorkspaceFlowpipeTriggers.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name} | Delete org workspace pipeline
 *OrgWorkspaceFlowpipeTriggers* | [**Get**](docs/OrgWorkspaceFlowpipeTriggers.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name} | Get org workspace flowpipe trigger
+*OrgWorkspaceFlowpipeTriggers* | [**List**](docs/OrgWorkspaceFlowpipeTriggers.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/trigger | List organization workspace triggers
 *OrgWorkspaceFlowpipeTriggers* | [**Update**](docs/OrgWorkspaceFlowpipeTriggers.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name} | Update org workspace trigger
 *OrgWorkspaceIntegrations* | [**Get**](docs/OrgWorkspaceIntegrations.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle} | Get org workspace integration
 *OrgWorkspaceIntegrations* | [**List**](docs/OrgWorkspaceIntegrations.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration | List org workspace integrations
@@ -241,7 +242,8 @@ Class | Method | HTTP request | Description
 *OrgWorkspacePipelines* | [**Create**](docs/OrgWorkspacePipelines.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/pipeline | Create org workspace pipeline
 *OrgWorkspacePipelines* | [**Delete**](docs/OrgWorkspacePipelines.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Delete org workspace pipeline
 *OrgWorkspacePipelines* | [**Get**](docs/OrgWorkspacePipelines.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Get org workspace pipeline
-*OrgWorkspacePipelines* | [**List**](docs/OrgWorkspacePipelines.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/pipeline | List org workspace pipelines
+*OrgWorkspacePipelines* | [**List**](docs/OrgWorkspacePipelines.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/flowpipe/pipeline | List organization workspace pipelines
+*OrgWorkspacePipelines* | [**List_0**](docs/OrgWorkspacePipelines.md#list_0) | **Get** /org/{org_handle}/workspace/{workspace_handle}/pipeline | List org workspace pipelines
 *OrgWorkspacePipelines* | [**Update**](docs/OrgWorkspacePipelines.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/pipeline/{pipeline_id} | Update org workspace pipeline
 *OrgWorkspaceProcesses* | [**Command**](docs/OrgWorkspaceProcesses.md#command) | **Post** /org/{org_handle}/workspace/{workspace_handle}/process/{process_id}/command | Run org workspace process command
 *OrgWorkspaceProcesses* | [**Get**](docs/OrgWorkspaceProcesses.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/process/{process_id} | Get org workspace process
@@ -457,11 +459,13 @@ Class | Method | HTTP request | Description
 *UserWorkspaceFlowpipeMods* | [**Update**](docs/UserWorkspaceFlowpipeMods.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/mod/{mod_alias} | Update a flowpipe mod in a user&#39;s workspace
 *UserWorkspaceFlowpipePipelines* | [**Command**](docs/UserWorkspaceFlowpipePipelines.md#command) | **Post** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/pipeline/{pipeline_name}/command | Run user workspace Flowpipe pipeline command
 *UserWorkspaceFlowpipePipelines* | [**Get**](docs/UserWorkspaceFlowpipePipelines.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/pipeline/{pipeline_id} | Get user workspace pipeline
+*UserWorkspaceFlowpipePipelines* | [**List**](docs/UserWorkspaceFlowpipePipelines.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/pipeline | List user workspace pipelines
 *UserWorkspaceFlowpipePipelines* | [**ListTriggers**](docs/UserWorkspaceFlowpipePipelines.md#listtriggers) | **Get** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/pipeline/{pipeline_id}/trigger | Get user workspace pipeline triggers
 *UserWorkspaceFlowpipeTriggers* | [**Command**](docs/UserWorkspaceFlowpipeTriggers.md#command) | **Post** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name}/command | Run user workspace Flowpipe trigger command
 *UserWorkspaceFlowpipeTriggers* | [**Create**](docs/UserWorkspaceFlowpipeTriggers.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/trigger | Create user workspace trigger
 *UserWorkspaceFlowpipeTriggers* | [**Delete**](docs/UserWorkspaceFlowpipeTriggers.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name} | Delete user workspace pipeline
 *UserWorkspaceFlowpipeTriggers* | [**Get**](docs/UserWorkspaceFlowpipeTriggers.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name} | Get user workspace flowpipe trigger
+*UserWorkspaceFlowpipeTriggers* | [**List**](docs/UserWorkspaceFlowpipeTriggers.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/trigger | List user workspace triggers
 *UserWorkspaceFlowpipeTriggers* | [**Update**](docs/UserWorkspaceFlowpipeTriggers.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/flowpipe/trigger/{trigger_name} | Update user workspace trigger
 *UserWorkspaceIntegrations* | [**Get**](docs/UserWorkspaceIntegrations.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/integration/{integration_handle} | Get user workspace integration
 *UserWorkspaceIntegrations* | [**List**](docs/UserWorkspaceIntegrations.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/integration | List user workspace integrations
@@ -619,6 +623,7 @@ Class | Method | HTTP request | Description
  - [ListDatatankResponse](docs/ListDatatankResponse.md)
  - [ListDatatankTableResponse](docs/ListDatatankTableResponse.md)
  - [ListFlowpipeInputsResponse](docs/ListFlowpipeInputsResponse.md)
+ - [ListFlowpipePipelinesResponse](docs/ListFlowpipePipelinesResponse.md)
  - [ListFlowpipeTriggersResponse](docs/ListFlowpipeTriggersResponse.md)
  - [ListGithubRepositoriesResponse](docs/ListGithubRepositoriesResponse.md)
  - [ListGithubRepositoryBranchesResponse](docs/ListGithubRepositoryBranchesResponse.md)
@@ -637,6 +642,7 @@ Class | Method | HTTP request | Description
  - [ListTenantUsersResponse](docs/ListTenantUsersResponse.md)
  - [ListTenantsResponse](docs/ListTenantsResponse.md)
  - [ListTokensResponse](docs/ListTokensResponse.md)
+ - [ListTriggersResponse](docs/ListTriggersResponse.md)
  - [ListUsageMetricsResponse](docs/ListUsageMetricsResponse.md)
  - [ListUserEmailsResponse](docs/ListUserEmailsResponse.md)
  - [ListUserOrgsResponse](docs/ListUserOrgsResponse.md)
@@ -653,6 +659,8 @@ Class | Method | HTTP request | Description
  - [ListWorkspacesResponse](docs/ListWorkspacesResponse.md)
  - [LogRecord](docs/LogRecord.md)
  - [ModPipe](docs/ModPipe.md)
+ - [ModTriggerInfo](docs/ModTriggerInfo.md)
+ - [ModTriggerState](docs/ModTriggerState.md)
  - [Notifier](docs/Notifier.md)
  - [NotifierPrecedence](docs/NotifierPrecedence.md)
  - [NotifierState](docs/NotifierState.md)
@@ -741,6 +749,7 @@ Class | Method | HTTP request | Description
  - [WorkspaceConnectionAssociation](docs/WorkspaceConnectionAssociation.md)
  - [WorkspaceInstanceType](docs/WorkspaceInstanceType.md)
  - [WorkspaceMod](docs/WorkspaceMod.md)
+ - [WorkspaceModPipeline](docs/WorkspaceModPipeline.md)
  - [WorkspaceModState](docs/WorkspaceModState.md)
  - [WorkspaceModTrigger](docs/WorkspaceModTrigger.md)
  - [WorkspaceModVariable](docs/WorkspaceModVariable.md)

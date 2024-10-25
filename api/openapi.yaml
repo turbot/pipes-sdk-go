@@ -14894,6 +14894,102 @@ paths:
       tags:
       - OrgWorkspaceFlowpipeModVariables
       x-codegen-request-body-name: request
+  /org/{org_handle}/workspace/{workspace_handle}/flowpipe/pipeline:
+    get:
+      description: Lists the pipelines for an organization workspace.
+      operationId: orgWorkspaceFlowpipePipeline_list
+      parameters:
+      - description: The handle of the organization which contains the workspace.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]
+          type: string
+        style: simple
+      - description: The handle of the workspace for which we want to list the pipelines.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]
+          type: string
+        style: simple
+      - description: The SQL where filter you wish to apply to this request. The filter
+          will be parsed and sanitised and checked against the supported columns for
+          this API.
+        explode: true
+        in: query
+        name: where
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned,
+          which is a cursor to fetch the next page of data. Pass next_token to the
+          subsequent list request to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFlowpipePipelinesResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List organization workspace pipelines
+      tags:
+      - OrgWorkspacePipelines
   /org/{org_handle}/workspace/{workspace_handle}/flowpipe/pipeline/{pipeline_id}:
     get:
       description: Get the details of a pipeline for a workspace of an organization.
@@ -20022,6 +20118,101 @@ paths:
     - description: Pipes organization workspace snapshot download API
       url: https://pipes.turbot.com/download
   /org/{org_handle}/workspace/{workspace_handle}/trigger:
+    get:
+      description: Lists the pipelines for an organization workspace.
+      operationId: orgWorkspaceFlowpipeTrigger_list
+      parameters:
+      - description: The handle of the organization which contains the workspace.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]
+          type: string
+        style: simple
+      - description: The handle of the workspace for which we want to list the triggers.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]
+          type: string
+        style: simple
+      - description: The SQL where filter you wish to apply to this request. The filter
+          will be parsed and sanitised and checked against the supported columns for
+          this API.
+        explode: true
+        in: query
+        name: where
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned,
+          which is a cursor to fetch the next page of data. Pass next_token to the
+          subsequent list request to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTriggersResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List organization workspace triggers
+      tags:
+      - OrgWorkspaceFlowpipeTriggers
     post:
       description: Creates a new trigger for an org workspace.
       operationId: orgWorkspaceFlowpipeTrigger_create
@@ -32399,6 +32590,102 @@ paths:
       tags:
       - UserWorkspaceFlowpipeModVariables
       x-codegen-request-body-name: request
+  /user/{user_handle}/workspace/{workspace_handle}/flowpipe/pipeline:
+    get:
+      description: Lists the pipelines for a user workspace.
+      operationId: userWorkspaceFlowpipePipeline_list
+      parameters:
+      - description: The handle of the user for which contains the workspace.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]
+          type: string
+        style: simple
+      - description: The handle of the workspace for which we want to list the pipelines.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]
+          type: string
+        style: simple
+      - description: The SQL where filter you wish to apply to this request. The filter
+          will be parsed and sanitised and checked against the supported columns for
+          this API.
+        explode: true
+        in: query
+        name: where
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned,
+          which is a cursor to fetch the next page of data. Pass next_token to the
+          subsequent list request to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFlowpipePipelinesResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List user workspace pipelines
+      tags:
+      - UserWorkspaceFlowpipePipelines
   /user/{user_handle}/workspace/{workspace_handle}/flowpipe/pipeline/{pipeline_id}:
     get:
       description: Get the details of a pipeline for a workspace of a user.
@@ -37129,6 +37416,101 @@ paths:
     - description: Pipes user workspace snapshot download API
       url: https://pipes.turbot.com/download
   /user/{user_handle}/workspace/{workspace_handle}/trigger:
+    get:
+      description: Lists the triggers for a user workspace.
+      operationId: userWorkspaceFlowpipeTrigger_list
+      parameters:
+      - description: The handle of the user for which contains the workspace.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]
+          type: string
+        style: simple
+      - description: The handle of the workspace for which we want to list the triggers.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]
+          type: string
+        style: simple
+      - description: The SQL where filter you wish to apply to this request. The filter
+          will be parsed and sanitised and checked against the supported columns for
+          this API.
+        explode: true
+        in: query
+        name: where
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned,
+          which is a cursor to fetch the next page of data. Pass next_token to the
+          subsequent list request to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTriggersResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List user workspace triggers
+      tags:
+      - UserWorkspaceFlowpipeTriggers
     post:
       description: Creates a new trigger for a user workspace.
       operationId: userWorkspaceFlowpipeTrigger_create
@@ -41036,6 +41418,98 @@ components:
         next_token:
           type: string
       type: object
+    ListFlowpipePipelinesResponse:
+      example:
+        next_token: next_token
+        items:
+        - created_at: created_at
+          description: description
+          last_process_id: last_process_id
+          version_id: 0
+          params: '{}'
+          title: title
+          triggers: '{}'
+          created_by: '{}'
+          steps: '{}'
+          tags: '{}'
+          last_process: '{}'
+          workspace_mod_id: workspace_mod_id
+          updated_at: updated_at
+          name: name
+          updated_by: '{}'
+          updated_by_id: updated_by_id
+          workspace_mod:
+            state_reason: state_reason
+            integration_id: integration_id
+            identity_id: identity_id
+            installed_version: installed_version
+            created_at: created_at
+            version_id: 0
+            branch: branch
+            created_by: '{}'
+            version: version
+            constraint_mode: constraint_mode
+            workspace_id: workspace_id
+            path: path
+            mod_id: mod_id
+            updated_at: updated_at
+            updated_by: '{}'
+            alias: alias
+            constraint: constraint
+            updated_by_id: updated_by_id
+            created_by_id: created_by_id
+            id: id
+            installed_commit: installed_commit
+          created_by_id: created_by_id
+          id: id
+        - created_at: created_at
+          description: description
+          last_process_id: last_process_id
+          version_id: 0
+          params: '{}'
+          title: title
+          triggers: '{}'
+          created_by: '{}'
+          steps: '{}'
+          tags: '{}'
+          last_process: '{}'
+          workspace_mod_id: workspace_mod_id
+          updated_at: updated_at
+          name: name
+          updated_by: '{}'
+          updated_by_id: updated_by_id
+          workspace_mod:
+            state_reason: state_reason
+            integration_id: integration_id
+            identity_id: identity_id
+            installed_version: installed_version
+            created_at: created_at
+            version_id: 0
+            branch: branch
+            created_by: '{}'
+            version: version
+            constraint_mode: constraint_mode
+            workspace_id: workspace_id
+            path: path
+            mod_id: mod_id
+            updated_at: updated_at
+            updated_by: '{}'
+            alias: alias
+            constraint: constraint
+            updated_by_id: updated_by_id
+            created_by_id: created_by_id
+            id: id
+            installed_commit: installed_commit
+          created_by_id: created_by_id
+          id: id
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/WorkspaceModPipeline'
+          type: array
+        next_token:
+          type: string
+      type: object
     ListFlowpipeTriggersResponse:
       example:
         next_token: next_token
@@ -41934,6 +42408,52 @@ components:
         next_token:
           type: string
       type: object
+    ListTriggersResponse:
+      example:
+        next_token: next_token
+        items:
+        - query: query
+          created_at: created_at
+          description: description
+          version_id: 0
+          title: title
+          type: type
+          created_by: '{}'
+          tags: '{}'
+          schedule: schedule
+          mod_id: mod_id
+          pipelines: '{}'
+          updated_at: updated_at
+          name: name
+          updated_by: '{}'
+          updated_by_id: updated_by_id
+          created_by_id: created_by_id
+          id: id
+        - query: query
+          created_at: created_at
+          description: description
+          version_id: 0
+          title: title
+          type: type
+          created_by: '{}'
+          tags: '{}'
+          schedule: schedule
+          mod_id: mod_id
+          pipelines: '{}'
+          updated_at: updated_at
+          name: name
+          updated_by: '{}'
+          updated_by_id: updated_by_id
+          created_by_id: created_by_id
+          id: id
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/ModTriggerInfo'
+          type: array
+        next_token:
+          type: string
+      type: object
     ListUsageMetricsResponse:
       example:
         next_token: next_token
@@ -42756,6 +43276,92 @@ components:
       x-enum-varnames:
       - ModPipeFlowpipe
       - ModPipePowerpipe
+    ModTriggerInfo:
+      example:
+        query: query
+        created_at: created_at
+        description: description
+        version_id: 0
+        title: title
+        type: type
+        created_by: '{}'
+        tags: '{}'
+        schedule: schedule
+        mod_id: mod_id
+        pipelines: '{}'
+        updated_at: updated_at
+        name: name
+        updated_by: '{}'
+        updated_by_id: updated_by_id
+        created_by_id: created_by_id
+        id: id
+      properties:
+        created_at:
+          description: The time of creation in ISO 8601 UTC.
+          type: string
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          description: User information for the user who created this.
+          type: object
+        created_by_id:
+          description: The ID of the user that created this.
+          format: ^u_[0-9a-v]{20}$
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+        mod_id:
+          type: string
+        name:
+          type: string
+        pipelines:
+          properties: {}
+          type: object
+        query:
+          type: string
+        schedule:
+          type: string
+        state:
+          $ref: '#/components/schemas/ModTriggerState'
+        tags:
+          properties: {}
+          type: object
+        title:
+          type: string
+        type:
+          type: string
+        updated_at:
+          description: The time of the last update in ISO 8601 UTC.
+          type: string
+        updated_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          description: User information for the last user to update this.
+          type: object
+        updated_by_id:
+          description: The ID of the user that performed the last update.
+          format: ^u_[0-9a-v]{20}$
+          type: string
+        version_id:
+          description: The version ID of this item. Pass this version ID via an If-Match
+            header when performing mutation operations on the item.
+          type: integer
+      required:
+      - created_at
+      - created_by_id
+      - updated_by_id
+      - version_id
+      type: object
+    ModTriggerState:
+      enum:
+      - enabled
+      - disabled
+      type: string
+      x-enum-varnames:
+      - ModTriggerStateEnabled
+      - ModTriggerStateDisabled
     Notifier:
       example:
         tenant_id: tenant_id
@@ -46123,6 +46729,116 @@ components:
       - updated_by_id
       - version_id
       - workspace_id
+      type: object
+    WorkspaceModPipeline:
+      example:
+        created_at: created_at
+        description: description
+        last_process_id: last_process_id
+        version_id: 0
+        params: '{}'
+        title: title
+        triggers: '{}'
+        created_by: '{}'
+        steps: '{}'
+        tags: '{}'
+        last_process: '{}'
+        workspace_mod_id: workspace_mod_id
+        updated_at: updated_at
+        name: name
+        updated_by: '{}'
+        updated_by_id: updated_by_id
+        workspace_mod:
+          state_reason: state_reason
+          integration_id: integration_id
+          identity_id: identity_id
+          installed_version: installed_version
+          created_at: created_at
+          version_id: 0
+          branch: branch
+          created_by: '{}'
+          version: version
+          constraint_mode: constraint_mode
+          workspace_id: workspace_id
+          path: path
+          mod_id: mod_id
+          updated_at: updated_at
+          updated_by: '{}'
+          alias: alias
+          constraint: constraint
+          updated_by_id: updated_by_id
+          created_by_id: created_by_id
+          id: id
+          installed_commit: installed_commit
+        created_by_id: created_by_id
+        id: id
+      properties:
+        created_at:
+          description: The time of creation in ISO 8601 UTC.
+          type: string
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          description: User information for the user who created this.
+          type: object
+        created_by_id:
+          description: The ID of the user that created this.
+          format: ^u_[0-9a-v]{20}$
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+        last_process:
+          allOf:
+          - $ref: '#/components/schemas/SpProcess'
+          description: Information for the last process of the pipeline.
+          type: object
+        last_process_id:
+          description: The id of the last process that was run for the pipeline.
+          type: string
+        name:
+          type: string
+        params:
+          properties: {}
+          type: object
+        steps:
+          properties: {}
+          type: object
+        tags:
+          properties: {}
+          type: object
+        title:
+          type: string
+        triggers:
+          description: The list of triggers which the pipeline is associated with.
+          properties: {}
+          type: object
+        updated_at:
+          description: The time of the last update in ISO 8601 UTC.
+          type: string
+        updated_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          description: User information for the last user to update this.
+          type: object
+        updated_by_id:
+          description: The ID of the user that performed the last update.
+          format: ^u_[0-9a-v]{20}$
+          type: string
+        version_id:
+          description: The version ID of this item. Pass this version ID via an If-Match
+            header when performing mutation operations on the item.
+          type: integer
+        workspace_mod:
+          $ref: '#/components/schemas/WorkspaceMod'
+        workspace_mod_id:
+          type: string
+      required:
+      - created_at
+      - created_by_id
+      - updated_by_id
+      - version_id
       type: object
     WorkspaceModState:
       enum:
