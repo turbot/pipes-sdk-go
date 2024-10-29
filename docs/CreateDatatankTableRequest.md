@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** |  | [optional] 
-**DesiredState** | Pointer to **string** |  | [optional] 
+**DesiredState** | Pointer to [**DesiredState**](DesiredState.md) |  | [optional] 
 **Frequency** | Pointer to [**PipelineFrequency**](PipelineFrequency.md) |  | [optional] 
 **Name** | **string** |  | 
 **PartPer** | Pointer to **string** |  | [optional] 
@@ -60,20 +60,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetDesiredState
 
-`func (o *CreateDatatankTableRequest) GetDesiredState() string`
+`func (o *CreateDatatankTableRequest) GetDesiredState() DesiredState`
 
 GetDesiredState returns the DesiredState field if non-nil, zero value otherwise.
 
 ### GetDesiredStateOk
 
-`func (o *CreateDatatankTableRequest) GetDesiredStateOk() (*string, bool)`
+`func (o *CreateDatatankTableRequest) GetDesiredStateOk() (*DesiredState, bool)`
 
 GetDesiredStateOk returns a tuple with the DesiredState field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDesiredState
 
-`func (o *CreateDatatankTableRequest) SetDesiredState(v string)`
+`func (o *CreateDatatankTableRequest) SetDesiredState(v DesiredState)`
 
 SetDesiredState sets DesiredState field to given value.
 

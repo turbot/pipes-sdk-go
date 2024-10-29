@@ -4,10 +4,89 @@ All URIs are relative to *https://pipes.turbot.com/api/v0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**Command**](UserWorkspaceProcesses.md#Command) | **Post** /user/{user_handle}/workspace/{workspace_handle}/process/{process_id}/command | Run user workspace process command
 [**Get**](UserWorkspaceProcesses.md#Get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/process/{process_id} | Get user workspace process
 [**List**](UserWorkspaceProcesses.md#List) | **Get** /user/{user_handle}/workspace/{workspace_handle}/process | List user workspace processes
 [**Log**](UserWorkspaceProcesses.md#Log) | **Get** /user/{user_handle}/workspace/{workspace_handle}/process/{process_id}/log/{log_file}.{content_type} | List user workspace process logs
 
+
+
+## Command
+
+> WorkspaceProcessCommandResponse Command(ctx, userHandle, workspaceHandle, processId).Request(request).Execute()
+
+Run user workspace process command
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userHandle := "userHandle_example" // string | The handle of the user where we want to run the workspace process command.
+    workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the process command will be executed.
+    processId := "processId_example" // string | The id of the process where the command will be executed against.
+    request := *openapiclient.NewWorkspaceProcessCommandRequest(openapiclient.WorkspaceProcessCommandAction("terminate")) // WorkspaceProcessCommandRequest | The request body for the workspace process command.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.UserWorkspaceProcesses.Command(context.Background(), userHandle, workspaceHandle, processId).Request(request).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaceProcesses.Command``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `Command`: WorkspaceProcessCommandResponse
+    fmt.Fprintf(os.Stdout, "Response from `UserWorkspaceProcesses.Command`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userHandle** | **string** | The handle of the user where we want to run the workspace process command. | 
+**workspaceHandle** | **string** | The handle of the workspace where the process command will be executed. | 
+**processId** | **string** | The id of the process where the command will be executed against. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCommandRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **request** | [**WorkspaceProcessCommandRequest**](WorkspaceProcessCommandRequest.md) | The request body for the workspace process command. | 
+
+### Return type
+
+[**WorkspaceProcessCommandResponse**](WorkspaceProcessCommandResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## Get

@@ -17,7 +17,7 @@ import (
 // TestConnectionRequest struct for TestConnectionRequest
 type TestConnectionRequest struct {
 	Config *map[string]interface{} `json:"config,omitempty"`
-	Plugin string                             `json:"plugin"`
+	Plugin string                  `json:"plugin"`
 }
 
 // NewTestConnectionRequest instantiates a new TestConnectionRequest object

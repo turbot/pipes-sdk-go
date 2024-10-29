@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Config** | Pointer to **map[string]interface{}** |  | [optional] 
-**ConfigSource** | Pointer to **string** |  | [optional] 
-**CredentialSource** | Pointer to **string** |  | [optional] 
+**ConfigSource** | Pointer to [**ConnectionConfigSource**](ConnectionConfigSource.md) |  | [optional] 
+**CredentialSource** | Pointer to [**ConnectionCredentialSource**](ConnectionCredentialSource.md) |  | [optional] 
 **Handle** | Pointer to **string** |  | [optional] 
 **ParentId** | Pointer to **string** |  | [optional] 
 
@@ -56,20 +56,20 @@ HasConfig returns a boolean if a field has been set.
 
 ### GetConfigSource
 
-`func (o *UpdateConnectionRequest) GetConfigSource() string`
+`func (o *UpdateConnectionRequest) GetConfigSource() ConnectionConfigSource`
 
 GetConfigSource returns the ConfigSource field if non-nil, zero value otherwise.
 
 ### GetConfigSourceOk
 
-`func (o *UpdateConnectionRequest) GetConfigSourceOk() (*string, bool)`
+`func (o *UpdateConnectionRequest) GetConfigSourceOk() (*ConnectionConfigSource, bool)`
 
 GetConfigSourceOk returns a tuple with the ConfigSource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfigSource
 
-`func (o *UpdateConnectionRequest) SetConfigSource(v string)`
+`func (o *UpdateConnectionRequest) SetConfigSource(v ConnectionConfigSource)`
 
 SetConfigSource sets ConfigSource field to given value.
 
@@ -81,20 +81,20 @@ HasConfigSource returns a boolean if a field has been set.
 
 ### GetCredentialSource
 
-`func (o *UpdateConnectionRequest) GetCredentialSource() string`
+`func (o *UpdateConnectionRequest) GetCredentialSource() ConnectionCredentialSource`
 
 GetCredentialSource returns the CredentialSource field if non-nil, zero value otherwise.
 
 ### GetCredentialSourceOk
 
-`func (o *UpdateConnectionRequest) GetCredentialSourceOk() (*string, bool)`
+`func (o *UpdateConnectionRequest) GetCredentialSourceOk() (*ConnectionCredentialSource, bool)`
 
 GetCredentialSourceOk returns a tuple with the CredentialSource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCredentialSource
 
-`func (o *UpdateConnectionRequest) SetCredentialSource(v string)`
+`func (o *UpdateConnectionRequest) SetCredentialSource(v ConnectionCredentialSource)`
 
 SetCredentialSource sets CredentialSource field to given value.
 

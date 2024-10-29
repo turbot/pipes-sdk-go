@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Config** | Pointer to **map[string]interface{}** | The configuration for the integration. | [optional] 
 **Handle** | **string** | The handle for the integration. | 
-**Type** | **string** | The type of the integration, can be one of &#x60;aws&#x60;, &#x60;azure&#x60;, &#x60;gcp&#x60; or &#x60;github&#x60;. | 
+**Type** | [**IntegrationType**](IntegrationType.md) | The type of the integration, can be one of &#x60;aws&#x60;, &#x60;azure&#x60;, &#x60;gcp&#x60; or &#x60;github&#x60;. | 
 
 ## Methods
 
 ### NewCreateIntegrationRequest
 
-`func NewCreateIntegrationRequest(handle string, type_ string, ) *CreateIntegrationRequest`
+`func NewCreateIntegrationRequest(handle string, type_ IntegrationType, ) *CreateIntegrationRequest`
 
 NewCreateIntegrationRequest instantiates a new CreateIntegrationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -74,20 +74,20 @@ SetHandle sets Handle field to given value.
 
 ### GetType
 
-`func (o *CreateIntegrationRequest) GetType() string`
+`func (o *CreateIntegrationRequest) GetType() IntegrationType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *CreateIntegrationRequest) GetTypeOk() (*string, bool)`
+`func (o *CreateIntegrationRequest) GetTypeOk() (*IntegrationType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *CreateIntegrationRequest) SetType(v string)`
+`func (o *CreateIntegrationRequest) SetType(v IntegrationType)`
 
 SetType sets Type field to given value.
 

@@ -17,15 +17,20 @@ import (
 // WorkspaceSnapshotData struct for WorkspaceSnapshotData
 type WorkspaceSnapshotData struct {
 	// The time the dashboard execution ended.
-	EndTime  string                             `json:"end_time"`
-	Inputs   *map[string]interface{} `json:"inputs,omitempty"`
-	Layout   WorkspaceSnapshotDataLayout        `json:"layout"`
+	EndTime string `json:"end_time"`
+	// Any inputs and their values used in this snapshot.
+	Inputs *map[string]interface{} `json:"inputs,omitempty"`
+	// The dashboard layout tree for this snapshot.
+	Layout WorkspaceSnapshotDataLayout `json:"layout"`
+	// Any additional metadata for this snapshot.
 	Metadata *map[string]interface{} `json:"metadata,omitempty"`
-	Panels   map[string]interface{}  `json:"panels"`
+	// The map of panels and their data for this snapshot.
+	Panels map[string]interface{} `json:"panels"`
 	// The schema version of this snapshot.
 	SchemaVersion string `json:"schema_version"`
 	// The time the dashboard execution started.
-	StartTime string                             `json:"start_time"`
+	StartTime string `json:"start_time"`
+	// Any mod variables in scope for this snapshot.
 	Variables *map[string]interface{} `json:"variables,omitempty"`
 }
 

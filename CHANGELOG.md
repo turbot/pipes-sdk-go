@@ -1,10 +1,29 @@
 # Turbot Pipes Go SDK
 
+## 0.11.0 [2024-10-29]
+
+_Breaking changes_
+
+- Removed support for `NotificationRules` and `NotificationRule` APIs from the SDK, replaced by `Notifiers`.
+
+_What's new?_
+
+- Flowpipe `Mod`, `Mod Variable`, `Pipeline`, `Trigger` and `Input` APIs for `UserWorkspaces` and `OrgWorkspaces`.
+- Notifier Management APIs for `Tenants`, `Users`, `Organizations`, `UserWorkspaces` and `OrgWorkspaces`.
+- Billing, Subscription and Payment APIs for `Tenants`, `Users` and `Organizations`.
+- Slack Integration APIs have been added to Integration Management APIs for `Tenants`, `Users` and `Organizations`.
+
+_Enhancements_
+
+- Add support to `GetPlan` for `Users` and `Organizations`.
+- Add support for executing Process Commands for `UserWorkspaces` and `OrgWorkspaces`.
+- Improved validation of some previously `string` fields by migrating to a typed enum.
+
 ## 0.10.0 [2024-08-02]
 
 _What's new?_
 
-- Intregation Management APIs for `Tenants`, `Users`, `Organizations`, `UserWorkspaces` and `OrgWorkspaces`.
+- Integration Management APIs for `Tenants`, `Users`, `Organizations`, `UserWorkspaces` and `OrgWorkspaces`.
 - Tenant Connection Management APIs.
 - Tenant Connection Folder Management APIs.
 - User Connection Folder Management APIs.

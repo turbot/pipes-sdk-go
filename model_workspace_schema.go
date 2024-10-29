@@ -16,23 +16,28 @@ import (
 
 // WorkspaceSchema struct for WorkspaceSchema
 type WorkspaceSchema struct {
+	// The details of the aggregator if the schema is of type 'aggregator'.
 	Aggregator *Aggregator `json:"aggregator,omitempty"`
 	// The id of the aggregator if the schema is of type 'aggregator'.
-	AggregatorId *string     `json:"aggregator_id,omitempty"`
-	Connection   *Connection `json:"connection,omitempty"`
+	AggregatorId *string `json:"aggregator_id,omitempty"`
+	// The details of the connection if the schema is of type 'connection'.
+	Connection *Connection `json:"connection,omitempty"`
 	// The id of the connection if the schema is of type 'connection'.
 	ConnectionId *string `json:"connection_id,omitempty"`
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
-	CreatedBy *User  `json:"created_by,omitempty"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
 	// The ID of the user that created this.
-	CreatedById string    `json:"created_by_id"`
-	Datatank    *Datatank `json:"datatank,omitempty"`
+	CreatedById string `json:"created_by_id"`
+	// The details of the datatank if the schema is of type 'datatank'.
+	Datatank *Datatank `json:"datatank,omitempty"`
 	// The id of the datatank if the schema is of type 'datatank'.
 	DatatankId *string `json:"datatank_id,omitempty"`
 	// The time the item was deleted in ISO 8601 UTC.
 	DeletedAt *string `json:"deleted_at,omitempty"`
-	DeletedBy *User   `json:"deleted_by,omitempty"`
+	// User information for the user that performed the deletion.
+	DeletedBy *User `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.
 	DeletedById string `json:"deleted_by_id"`
 	// The unique identifier for the schema.
@@ -42,12 +47,13 @@ type WorkspaceSchema struct {
 	// The name of the schema.
 	Name string `json:"name"`
 	// State of the schema e.g. `granted`, `direct` or `indirect`.
-	State *string `json:"state,omitempty"`
+	State *WorkspaceSchemaState `json:"state,omitempty"`
 	// Type of schema can be one of datatank, aggregator or connection.
 	Type *string `json:"type,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	UpdatedBy *User   `json:"updated_by,omitempty"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
 	// The ID of the user that performed the last update.
 	UpdatedById string `json:"updated_by_id"`
 	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
@@ -515,9 +521,9 @@ func (o *WorkspaceSchema) SetName(v string) {
 }
 
 // GetState returns the State field value if set, zero value otherwise.
-func (o *WorkspaceSchema) GetState() string {
+func (o *WorkspaceSchema) GetState() WorkspaceSchemaState {
 	if o == nil || o.State == nil {
-		var ret string
+		var ret WorkspaceSchemaState
 		return ret
 	}
 	return *o.State
@@ -525,7 +531,7 @@ func (o *WorkspaceSchema) GetState() string {
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkspaceSchema) GetStateOk() (*string, bool) {
+func (o *WorkspaceSchema) GetStateOk() (*WorkspaceSchemaState, bool) {
 	if o == nil || o.State == nil {
 		return nil, false
 	}
@@ -541,8 +547,8 @@ func (o *WorkspaceSchema) HasState() bool {
 	return false
 }
 
-// SetState gets a reference to the given string and assigns it to the State field.
-func (o *WorkspaceSchema) SetState(v string) {
+// SetState gets a reference to the given WorkspaceSchemaState and assigns it to the State field.
+func (o *WorkspaceSchema) SetState(v WorkspaceSchemaState) {
 	o.State = &v
 }
 

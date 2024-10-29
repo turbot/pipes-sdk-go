@@ -9,18 +9,20 @@ Name | Type | Description | Notes
 **Constraint** | Pointer to **string** |  | [optional] 
 **ConstraintMode** | Pointer to **string** |  | [optional] 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **Id** | **string** |  | 
 **IdentityId** | **string** | The unique identifier for an identity where the workspace mod has been install. | 
 **InstalledCommit** | Pointer to **string** |  | [optional] 
 **InstalledVersion** | Pointer to **string** |  | [optional] 
 **IntegrationId** | Pointer to **string** |  | [optional] 
+**ModId** | Pointer to **string** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
-**State** | Pointer to **string** |  | [optional] 
+**Pipe** | Pointer to [**ModPipe**](ModPipe.md) |  | [optional] 
+**State** | Pointer to [**WorkspaceModState**](WorkspaceModState.md) |  | [optional] 
 **StateReason** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **Version** | Pointer to **string** |  | [optional] 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
@@ -325,6 +327,31 @@ SetIntegrationId sets IntegrationId field to given value.
 
 HasIntegrationId returns a boolean if a field has been set.
 
+### GetModId
+
+`func (o *WorkspaceMod) GetModId() string`
+
+GetModId returns the ModId field if non-nil, zero value otherwise.
+
+### GetModIdOk
+
+`func (o *WorkspaceMod) GetModIdOk() (*string, bool)`
+
+GetModIdOk returns a tuple with the ModId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModId
+
+`func (o *WorkspaceMod) SetModId(v string)`
+
+SetModId sets ModId field to given value.
+
+### HasModId
+
+`func (o *WorkspaceMod) HasModId() bool`
+
+HasModId returns a boolean if a field has been set.
+
 ### GetPath
 
 `func (o *WorkspaceMod) GetPath() string`
@@ -350,22 +377,47 @@ SetPath sets Path field to given value.
 
 HasPath returns a boolean if a field has been set.
 
+### GetPipe
+
+`func (o *WorkspaceMod) GetPipe() ModPipe`
+
+GetPipe returns the Pipe field if non-nil, zero value otherwise.
+
+### GetPipeOk
+
+`func (o *WorkspaceMod) GetPipeOk() (*ModPipe, bool)`
+
+GetPipeOk returns a tuple with the Pipe field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPipe
+
+`func (o *WorkspaceMod) SetPipe(v ModPipe)`
+
+SetPipe sets Pipe field to given value.
+
+### HasPipe
+
+`func (o *WorkspaceMod) HasPipe() bool`
+
+HasPipe returns a boolean if a field has been set.
+
 ### GetState
 
-`func (o *WorkspaceMod) GetState() string`
+`func (o *WorkspaceMod) GetState() WorkspaceModState`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *WorkspaceMod) GetStateOk() (*string, bool)`
+`func (o *WorkspaceMod) GetStateOk() (*WorkspaceModState, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *WorkspaceMod) SetState(v string)`
+`func (o *WorkspaceMod) SetState(v WorkspaceModState)`
 
 SetState sets State field to given value.
 

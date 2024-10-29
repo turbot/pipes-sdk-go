@@ -37,7 +37,7 @@ func main() {
     orgHandle := "orgHandle_example" // string | The handle of the organization which contains the workspace.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the pipeline exists.
     pipelineId := "pipelineId_example" // string | Id of the pipeline on which the command will be run.
-    request := *openapiclient.NewPipelineCommandRequest("Command_example") // PipelineCommandRequest | The request body of the pipeline command to run.
+    request := *openapiclient.NewPipelineCommandRequest(map[string][]openapiclient.PipelineCommandAction{"key": "TODO"}) // PipelineCommandRequest | The request body of the pipeline command to run.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -114,7 +114,7 @@ import (
 func main() {
     orgHandle := "orgHandle_example" // string | The handle of the organization which contains the workspace.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where we want to create the pipeline.
-    request := *openapiclient.NewCreatePipelineRequest(interface{}(123), *openapiclient.NewPipelineFrequency("Type_example"), "Pipeline_example", "Title_example") // CreatePipelineRequest | The request body for the pipeline to be created.
+    request := *openapiclient.NewCreatePipelineRequest(interface{}(123), map[string][]openapiclient.PipelineFrequency{"key": "TODO"}, "Pipeline_example", "Title_example") // CreatePipelineRequest | The request body for the pipeline to be created.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

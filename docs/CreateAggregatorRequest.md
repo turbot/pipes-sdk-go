@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Config** | Pointer to **map[string]interface{}** |  | [optional] 
+**Config** | Pointer to **map[string]interface{}** | The configuration for the aggregator. | [optional] 
 **Connections** | Pointer to **[]string** | The connections that are a part of the aggregator. | [optional] 
 **Handle** | **string** | The handle of the aggregator. | 
 **Plugin** | **string** |  | 

@@ -743,7 +743,7 @@ Install a GitHub integration for an org identity.
 
 	@param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgHandle The handle of the organization to which the integration belongs to.
-	@param integrationHandle The handle of the github integration which needs to be installed.
+	@param integrationHandle The handle of the GitHub integration which needs to be installed.
 	@return OrgIntegrationsApiInstallGithubIntegrationRequest
 */
 func (a *OrgIntegrationsService) InstallGithubIntegration(ctx _context.Context, orgHandle string, integrationHandle string) OrgIntegrationsApiInstallGithubIntegrationRequest {
@@ -769,6 +769,161 @@ func (a *OrgIntegrationsService) InstallGithubIntegrationExecute(r OrgIntegratio
 	}
 
 	localVarPath := localBasePath + "/org/{org_handle}/integration/{integration_handle}/github/install"
+	localVarPath = strings.Replace(localVarPath, "{"+"org_handle"+"}", _neturl.PathEscape(parameterToString(r.orgHandle, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integration_handle"+"}", _neturl.PathEscape(parameterToString(r.integrationHandle, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 307 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type OrgIntegrationsApiInstallSlackIntegrationRequest struct {
+	ctx               _context.Context
+	ApiService        *OrgIntegrationsService
+	orgHandle         string
+	integrationHandle string
+}
+
+func (r OrgIntegrationsApiInstallSlackIntegrationRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.InstallSlackIntegrationExecute(r)
+}
+
+/*
+InstallSlackIntegration Install Slack integration for an org
+
+Install a Slack integration for an org identity.
+
+	@param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgHandle The handle of the organization to which the integration belongs to.
+	@param integrationHandle The handle of the Slack integration which needs to be installed.
+	@return OrgIntegrationsApiInstallSlackIntegrationRequest
+*/
+func (a *OrgIntegrationsService) InstallSlackIntegration(ctx _context.Context, orgHandle string, integrationHandle string) OrgIntegrationsApiInstallSlackIntegrationRequest {
+	return OrgIntegrationsApiInstallSlackIntegrationRequest{
+		ApiService:        a,
+		ctx:               ctx,
+		orgHandle:         orgHandle,
+		integrationHandle: integrationHandle,
+	}
+}
+
+// Execute executes the request
+func (a *OrgIntegrationsService) InstallSlackIntegrationExecute(r OrgIntegrationsApiInstallSlackIntegrationRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod = _nethttp.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgIntegrationsService.InstallSlackIntegration")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{org_handle}/integration/{integration_handle}/slack/install"
 	localVarPath = strings.Replace(localVarPath, "{"+"org_handle"+"}", _neturl.PathEscape(parameterToString(r.orgHandle, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"integration_handle"+"}", _neturl.PathEscape(parameterToString(r.integrationHandle, "")), -1)
 
@@ -1053,11 +1208,195 @@ func (a *OrgIntegrationsService) ListExecute(r OrgIntegrationsApiListRequest) (L
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type OrgIntegrationsApiListSlackChannelsRequest struct {
+	ctx               _context.Context
+	ApiService        *OrgIntegrationsService
+	orgHandle         string
+	integrationHandle string
+	limit             *int32
+	nextToken         *string
+}
+
+// The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25.
+func (r OrgIntegrationsApiListSlackChannelsRequest) Limit(limit int32) OrgIntegrationsApiListSlackChannelsRequest {
+	r.limit = &limit
+	return r
+}
+
+// When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data.
+func (r OrgIntegrationsApiListSlackChannelsRequest) NextToken(nextToken string) OrgIntegrationsApiListSlackChannelsRequest {
+	r.nextToken = &nextToken
+	return r
+}
+
+func (r OrgIntegrationsApiListSlackChannelsRequest) Execute() (ListSlackChannelsResponse, *_nethttp.Response, error) {
+	return r.ApiService.ListSlackChannelsExecute(r)
+}
+
+/*
+ListSlackChannels List org integration Slack channels
+
+List Slack channels that are given access to a user Slack integration.
+
+	@param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgHandle The handle of the organization to which the integration belongs to.
+	@param integrationHandle The handle of the integration for which Slack channels will be listed.
+	@return OrgIntegrationsApiListSlackChannelsRequest
+*/
+func (a *OrgIntegrationsService) ListSlackChannels(ctx _context.Context, orgHandle string, integrationHandle string) OrgIntegrationsApiListSlackChannelsRequest {
+	return OrgIntegrationsApiListSlackChannelsRequest{
+		ApiService:        a,
+		ctx:               ctx,
+		orgHandle:         orgHandle,
+		integrationHandle: integrationHandle,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListSlackChannelsResponse
+func (a *OrgIntegrationsService) ListSlackChannelsExecute(r OrgIntegrationsApiListSlackChannelsRequest) (ListSlackChannelsResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ListSlackChannelsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgIntegrationsService.ListSlackChannels")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{org_handle}/integration/{integration_handle}/slack/channel"
+	localVarPath = strings.Replace(localVarPath, "{"+"org_handle"+"}", _neturl.PathEscape(parameterToString(r.orgHandle, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integration_handle"+"}", _neturl.PathEscape(parameterToString(r.integrationHandle, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type OrgIntegrationsApiTestRequest struct {
 	ctx               _context.Context
 	ApiService        *OrgIntegrationsService
 	orgHandle         string
 	integrationHandle string
+	request           *TestIntegrationRequest
+}
+
+// The request body configuration for the integration to be tested.
+func (r OrgIntegrationsApiTestRequest) Request(request TestIntegrationRequest) OrgIntegrationsApiTestRequest {
+	r.request = &request
+	return r
 }
 
 func (r OrgIntegrationsApiTestRequest) Execute() (Integration, *_nethttp.Response, error) {
@@ -1106,9 +1445,12 @@ func (a *OrgIntegrationsService) TestExecute(r OrgIntegrationsApiTestRequest) (I
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.request == nil {
+		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1124,6 +1466,8 @@ func (a *OrgIntegrationsService) TestExecute(r OrgIntegrationsApiTestRequest) (I
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.request
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

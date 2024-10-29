@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ActorId** | **string** | The unique identifier of an actor. | 
 **ActorIp** | **string** |  | 
 **CreatedAt** | **string** | The time when the audit log was recorded. | 
-**Data** | **map[string]interface{}** |  | 
+**Data** | **map[string]interface{}** | The data which has been modified on the entity. | 
 **Id** | **string** | The unique identifier for an audit log. | 
 **IdentityHandle** | Pointer to **string** | The handle name for an identity where the action has been performed. | [optional] 
 **IdentityId** | Pointer to **string** | The unique identifier for an identity where the action has been performed. | [optional] 

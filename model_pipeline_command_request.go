@@ -16,14 +16,15 @@ import (
 
 // PipelineCommandRequest struct for PipelineCommandRequest
 type PipelineCommandRequest struct {
-	Command string `json:"command"`
+	Args    *map[string]interface{} `json:"args,omitempty"`
+	Command PipelineCommandAction   `json:"command"`
 }
 
 // NewPipelineCommandRequest instantiates a new PipelineCommandRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPipelineCommandRequest(command string) *PipelineCommandRequest {
+func NewPipelineCommandRequest(command PipelineCommandAction) *PipelineCommandRequest {
 	this := PipelineCommandRequest{}
 	this.Command = command
 	return &this
@@ -37,10 +38,42 @@ func NewPipelineCommandRequestWithDefaults() *PipelineCommandRequest {
 	return &this
 }
 
+// GetArgs returns the Args field value if set, zero value otherwise.
+func (o *PipelineCommandRequest) GetArgs() map[string]interface{} {
+	if o == nil || o.Args == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Args
+}
+
+// GetArgsOk returns a tuple with the Args field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PipelineCommandRequest) GetArgsOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Args == nil {
+		return nil, false
+	}
+	return o.Args, true
+}
+
+// HasArgs returns a boolean if a field has been set.
+func (o *PipelineCommandRequest) HasArgs() bool {
+	if o != nil && o.Args != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetArgs gets a reference to the given map[string]interface{} and assigns it to the Args field.
+func (o *PipelineCommandRequest) SetArgs(v map[string]interface{}) {
+	o.Args = &v
+}
+
 // GetCommand returns the Command field value
-func (o *PipelineCommandRequest) GetCommand() string {
+func (o *PipelineCommandRequest) GetCommand() PipelineCommandAction {
 	if o == nil {
-		var ret string
+		var ret PipelineCommandAction
 		return ret
 	}
 
@@ -49,7 +82,7 @@ func (o *PipelineCommandRequest) GetCommand() string {
 
 // GetCommandOk returns a tuple with the Command field value
 // and a boolean to check if the value has been set.
-func (o *PipelineCommandRequest) GetCommandOk() (*string, bool) {
+func (o *PipelineCommandRequest) GetCommandOk() (*PipelineCommandAction, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -57,12 +90,15 @@ func (o *PipelineCommandRequest) GetCommandOk() (*string, bool) {
 }
 
 // SetCommand sets field value
-func (o *PipelineCommandRequest) SetCommand(v string) {
+func (o *PipelineCommandRequest) SetCommand(v PipelineCommandAction) {
 	o.Command = v
 }
 
 func (o PipelineCommandRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Args != nil {
+		toSerialize["args"] = o.Args
+	}
 	if true {
 		toSerialize["command"] = o.Command
 	}

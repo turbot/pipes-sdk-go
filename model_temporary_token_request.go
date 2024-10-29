@@ -16,12 +16,12 @@ import (
 
 // TemporaryTokenRequest struct for TemporaryTokenRequest
 type TemporaryTokenRequest struct {
-	ClientIp  string  `json:"client_ip"`
-	Code      string  `json:"code"`
-	CreatedAt string  `json:"created_at"`
-	Id        string  `json:"id"`
-	State     string  `json:"state"`
-	Token     *string `json:"token,omitempty"`
+	ClientIp  string                     `json:"client_ip"`
+	Code      string                     `json:"code"`
+	CreatedAt string                     `json:"created_at"`
+	Id        string                     `json:"id"`
+	State     TemporaryTokenRequestState `json:"state"`
+	Token     *string                    `json:"token,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
 }
@@ -30,7 +30,7 @@ type TemporaryTokenRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTemporaryTokenRequest(clientIp string, code string, createdAt string, id string, state string) *TemporaryTokenRequest {
+func NewTemporaryTokenRequest(clientIp string, code string, createdAt string, id string, state TemporaryTokenRequestState) *TemporaryTokenRequest {
 	this := TemporaryTokenRequest{}
 	this.ClientIp = clientIp
 	this.Code = code
@@ -145,9 +145,9 @@ func (o *TemporaryTokenRequest) SetId(v string) {
 }
 
 // GetState returns the State field value
-func (o *TemporaryTokenRequest) GetState() string {
+func (o *TemporaryTokenRequest) GetState() TemporaryTokenRequestState {
 	if o == nil {
-		var ret string
+		var ret TemporaryTokenRequestState
 		return ret
 	}
 
@@ -156,7 +156,7 @@ func (o *TemporaryTokenRequest) GetState() string {
 
 // GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *TemporaryTokenRequest) GetStateOk() (*string, bool) {
+func (o *TemporaryTokenRequest) GetStateOk() (*TemporaryTokenRequestState, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -164,7 +164,7 @@ func (o *TemporaryTokenRequest) GetStateOk() (*string, bool) {
 }
 
 // SetState sets field value
-func (o *TemporaryTokenRequest) SetState(v string) {
+func (o *TemporaryTokenRequest) SetState(v TemporaryTokenRequestState) {
 	o.State = v
 }
 

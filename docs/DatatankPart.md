@@ -5,16 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **DatatankTable** | Pointer to [**DatatankTable**](DatatankTable.md) |  | [optional] 
 **DatatankTableId** | **string** |  | 
 **DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
-**DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**DeletedBy** | Pointer to [**User**](User.md) | User information for the user that performed the deletion. | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
-**DesiredState** | **string** |  | 
+**DesiredState** | [**DesiredState**](DesiredState.md) |  | 
 **Frequency** | [**PipelineFrequency**](PipelineFrequency.md) |  | 
-**FreshnessState** | **string** |  | 
+**FreshnessState** | [**DatatankPartFreshnessState**](DatatankPartFreshnessState.md) |  | 
 **Id** | **string** |  | 
 **LastErrorAt** | Pointer to **string** |  | [optional] 
 **LastErrorProcess** | Pointer to [**SpProcess**](SpProcess.md) |  | [optional] 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **LastUpdateAttemptAt** | Pointer to **string** |  | [optional] 
 **LastUpdateAttemptProcess** | Pointer to [**SpProcess**](SpProcess.md) |  | [optional] 
 **LastUpdateAttemptProcessId** | Pointer to **string** |  | [optional] 
-**MigratingFreshnessState** | Pointer to **string** |  | [optional] 
+**MigratingFreshnessState** | Pointer to [**DatatankPartFreshnessState**](DatatankPartFreshnessState.md) |  | [optional] 
 **MigratingLastErrorAt** | Pointer to **string** |  | [optional] 
 **MigratingLastErrorProcessId** | Pointer to **string** |  | [optional] 
 **MigratingLastSuccessfulUpdateAt** | Pointer to **string** |  | [optional] 
@@ -40,10 +40,10 @@ Name | Type | Description | Notes
 **PipelineId** | **string** |  | 
 **SourceConnection** | Pointer to [**WorkspaceSchema**](WorkspaceSchema.md) |  | [optional] 
 **SourceConnectionId** | Pointer to **string** |  | [optional] 
-**State** | **string** |  | 
+**State** | [**DatatankPartState**](DatatankPartState.md) |  | 
 **StateReason** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 
@@ -51,7 +51,7 @@ Name | Type | Description | Notes
 
 ### NewDatatankPart
 
-`func NewDatatankPart(createdAt string, createdById string, datatankTableId string, deletedById string, desiredState string, frequency PipelineFrequency, freshnessState string, id string, partitionCurrent string, pipelineId string, state string, updatedById string, versionId int32, ) *DatatankPart`
+`func NewDatatankPart(createdAt string, createdById string, datatankTableId string, deletedById string, desiredState DesiredState, frequency PipelineFrequency, freshnessState DatatankPartFreshnessState, id string, partitionCurrent string, pipelineId string, state DatatankPartState, updatedById string, versionId int32, ) *DatatankPart`
 
 NewDatatankPart instantiates a new DatatankPart object
 This constructor will assign default values to properties that have it defined,
@@ -248,20 +248,20 @@ SetDeletedById sets DeletedById field to given value.
 
 ### GetDesiredState
 
-`func (o *DatatankPart) GetDesiredState() string`
+`func (o *DatatankPart) GetDesiredState() DesiredState`
 
 GetDesiredState returns the DesiredState field if non-nil, zero value otherwise.
 
 ### GetDesiredStateOk
 
-`func (o *DatatankPart) GetDesiredStateOk() (*string, bool)`
+`func (o *DatatankPart) GetDesiredStateOk() (*DesiredState, bool)`
 
 GetDesiredStateOk returns a tuple with the DesiredState field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDesiredState
 
-`func (o *DatatankPart) SetDesiredState(v string)`
+`func (o *DatatankPart) SetDesiredState(v DesiredState)`
 
 SetDesiredState sets DesiredState field to given value.
 
@@ -288,20 +288,20 @@ SetFrequency sets Frequency field to given value.
 
 ### GetFreshnessState
 
-`func (o *DatatankPart) GetFreshnessState() string`
+`func (o *DatatankPart) GetFreshnessState() DatatankPartFreshnessState`
 
 GetFreshnessState returns the FreshnessState field if non-nil, zero value otherwise.
 
 ### GetFreshnessStateOk
 
-`func (o *DatatankPart) GetFreshnessStateOk() (*string, bool)`
+`func (o *DatatankPart) GetFreshnessStateOk() (*DatatankPartFreshnessState, bool)`
 
 GetFreshnessStateOk returns a tuple with the FreshnessState field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFreshnessState
 
-`func (o *DatatankPart) SetFreshnessState(v string)`
+`func (o *DatatankPart) SetFreshnessState(v DatatankPartFreshnessState)`
 
 SetFreshnessState sets FreshnessState field to given value.
 
@@ -553,20 +553,20 @@ HasLastUpdateAttemptProcessId returns a boolean if a field has been set.
 
 ### GetMigratingFreshnessState
 
-`func (o *DatatankPart) GetMigratingFreshnessState() string`
+`func (o *DatatankPart) GetMigratingFreshnessState() DatatankPartFreshnessState`
 
 GetMigratingFreshnessState returns the MigratingFreshnessState field if non-nil, zero value otherwise.
 
 ### GetMigratingFreshnessStateOk
 
-`func (o *DatatankPart) GetMigratingFreshnessStateOk() (*string, bool)`
+`func (o *DatatankPart) GetMigratingFreshnessStateOk() (*DatatankPartFreshnessState, bool)`
 
 GetMigratingFreshnessStateOk returns a tuple with the MigratingFreshnessState field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMigratingFreshnessState
 
-`func (o *DatatankPart) SetMigratingFreshnessState(v string)`
+`func (o *DatatankPart) SetMigratingFreshnessState(v DatatankPartFreshnessState)`
 
 SetMigratingFreshnessState sets MigratingFreshnessState field to given value.
 
@@ -918,20 +918,20 @@ HasSourceConnectionId returns a boolean if a field has been set.
 
 ### GetState
 
-`func (o *DatatankPart) GetState() string`
+`func (o *DatatankPart) GetState() DatatankPartState`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *DatatankPart) GetStateOk() (*string, bool)`
+`func (o *DatatankPart) GetStateOk() (*DatatankPartState, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *DatatankPart) SetState(v string)`
+`func (o *DatatankPart) SetState(v DatatankPartState)`
 
 SetState sets State field to given value.
 

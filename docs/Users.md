@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**Get**](Users.md#Get) | **Get** /user/{user_handle} | Get user
 [**GetDBPassword**](Users.md#GetDBPassword) | **Get** /user/{user_handle}/password | Get user password
 [**GetEmail**](Users.md#GetEmail) | **Get** /user/{user_handle}/email/{email_id} | Get user email
+[**GetPlan**](Users.md#GetPlan) | **Get** /user/{user_handle}/billing/plan | Get user billing plan.
 [**GetPreferences**](Users.md#GetPreferences) | **Get** /user/{user_handle}/preferences | Get user preferences
 [**List**](Users.md#List) | **Get** /user | List users
 [**ListAuditLogs**](Users.md#ListAuditLogs) | **Get** /user/{user_handle}/audit_log | User audit logs
@@ -569,6 +570,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UserEmail**](UserEmail.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPlan
+
+> IdentityPlan GetPlan(ctx, userHandle).Execute()
+
+Get user billing plan.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userHandle := "userHandle_example" // string | Specify the handle of the user to retrieve the billing plan for.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.Users.GetPlan(context.Background(), userHandle).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `Users.GetPlan``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetPlan`: IdentityPlan
+    fmt.Fprintf(os.Stdout, "Response from `Users.GetPlan`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userHandle** | **string** | Specify the handle of the user to retrieve the billing plan for. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPlanRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**IdentityPlan**](IdentityPlan.md)
 
 ### Authorization
 

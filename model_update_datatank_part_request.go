@@ -16,14 +16,14 @@ import (
 
 // UpdateDatatankPartRequest struct for UpdateDatatankPartRequest
 type UpdateDatatankPartRequest struct {
-	DesiredState string `json:"desired_state"`
+	DesiredState DesiredState `json:"desired_state"`
 }
 
 // NewUpdateDatatankPartRequest instantiates a new UpdateDatatankPartRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateDatatankPartRequest(desiredState string) *UpdateDatatankPartRequest {
+func NewUpdateDatatankPartRequest(desiredState DesiredState) *UpdateDatatankPartRequest {
 	this := UpdateDatatankPartRequest{}
 	this.DesiredState = desiredState
 	return &this
@@ -38,9 +38,9 @@ func NewUpdateDatatankPartRequestWithDefaults() *UpdateDatatankPartRequest {
 }
 
 // GetDesiredState returns the DesiredState field value
-func (o *UpdateDatatankPartRequest) GetDesiredState() string {
+func (o *UpdateDatatankPartRequest) GetDesiredState() DesiredState {
 	if o == nil {
-		var ret string
+		var ret DesiredState
 		return ret
 	}
 
@@ -49,7 +49,7 @@ func (o *UpdateDatatankPartRequest) GetDesiredState() string {
 
 // GetDesiredStateOk returns a tuple with the DesiredState field value
 // and a boolean to check if the value has been set.
-func (o *UpdateDatatankPartRequest) GetDesiredStateOk() (*string, bool) {
+func (o *UpdateDatatankPartRequest) GetDesiredStateOk() (*DesiredState, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -57,7 +57,7 @@ func (o *UpdateDatatankPartRequest) GetDesiredStateOk() (*string, bool) {
 }
 
 // SetDesiredState sets field value
-func (o *UpdateDatatankPartRequest) SetDesiredState(v string) {
+func (o *UpdateDatatankPartRequest) SetDesiredState(v DesiredState) {
 	o.DesiredState = v
 }
 

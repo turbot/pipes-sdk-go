@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **NotificationRuleId** | **string** |  | 
 **Recipient** | **string** |  | 
-**State** | **string** |  | 
+**State** | [**NotificationRecipientState**](NotificationRecipientState.md) |  | 
 
 ## Methods
 
 ### NewNotificationRuleRecipient
 
-`func NewNotificationRuleRecipient(id string, notificationRuleId string, recipient string, state string, ) *NotificationRuleRecipient`
+`func NewNotificationRuleRecipient(id string, notificationRuleId string, recipient string, state NotificationRecipientState, ) *NotificationRuleRecipient`
 
 NewNotificationRuleRecipient instantiates a new NotificationRuleRecipient object
 This constructor will assign default values to properties that have it defined,
@@ -116,20 +116,20 @@ SetRecipient sets Recipient field to given value.
 
 ### GetState
 
-`func (o *NotificationRuleRecipient) GetState() string`
+`func (o *NotificationRuleRecipient) GetState() NotificationRecipientState`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *NotificationRuleRecipient) GetStateOk() (*string, bool)`
+`func (o *NotificationRuleRecipient) GetStateOk() (*NotificationRecipientState, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *NotificationRuleRecipient) SetState(v string)`
+`func (o *NotificationRuleRecipient) SetState(v NotificationRecipientState)`
 
 SetState sets State field to given value.
 

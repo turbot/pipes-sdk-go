@@ -16,8 +16,9 @@ import (
 
 // User struct for User
 type User struct {
-	AvatarUrl *string      `json:"avatar_url,omitempty"`
-	Billing   *BillingInfo `json:"billing,omitempty"`
+	AvatarUrl *string `json:"avatar_url,omitempty"`
+	// Struct to store billing information
+	Billing *BillingInfo `json:"billing,omitempty"`
 	// The user created time.
 	CreatedAt   string  `json:"created_at"`
 	DisplayName *string `json:"display_name,omitempty"`
@@ -33,12 +34,12 @@ type User struct {
 	// The time which user and temporary auth tokens must be issued after.
 	TokenMinIssuedAt *string `json:"token_min_issued_at,omitempty"`
 	// The user updated time.
-	UpdatedAt             *string `json:"updated_at,omitempty"`
-	Url                   *string `json:"url,omitempty"`
-	UsageComputeAction    *string `json:"usage_compute_action,omitempty"`
-	UsageComputeThreshold *int64  `json:"usage_compute_threshold,omitempty"`
-	UsageStorageAction    *string `json:"usage_storage_action,omitempty"`
-	UsageStorageThreshold *int64  `json:"usage_storage_threshold,omitempty"`
+	UpdatedAt             *string                       `json:"updated_at,omitempty"`
+	Url                   *string                       `json:"url,omitempty"`
+	UsageComputeAction    *IdentityUsageThresholdAction `json:"usage_compute_action,omitempty"`
+	UsageComputeThreshold *int64                        `json:"usage_compute_threshold,omitempty"`
+	UsageStorageAction    *IdentityUsageThresholdAction `json:"usage_storage_action,omitempty"`
+	UsageStorageThreshold *int64                        `json:"usage_storage_threshold,omitempty"`
 	// The current version of a user.
 	VersionId int32 `json:"version_id"`
 }
@@ -411,9 +412,9 @@ func (o *User) SetUrl(v string) {
 }
 
 // GetUsageComputeAction returns the UsageComputeAction field value if set, zero value otherwise.
-func (o *User) GetUsageComputeAction() string {
+func (o *User) GetUsageComputeAction() IdentityUsageThresholdAction {
 	if o == nil || o.UsageComputeAction == nil {
-		var ret string
+		var ret IdentityUsageThresholdAction
 		return ret
 	}
 	return *o.UsageComputeAction
@@ -421,7 +422,7 @@ func (o *User) GetUsageComputeAction() string {
 
 // GetUsageComputeActionOk returns a tuple with the UsageComputeAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *User) GetUsageComputeActionOk() (*string, bool) {
+func (o *User) GetUsageComputeActionOk() (*IdentityUsageThresholdAction, bool) {
 	if o == nil || o.UsageComputeAction == nil {
 		return nil, false
 	}
@@ -437,8 +438,8 @@ func (o *User) HasUsageComputeAction() bool {
 	return false
 }
 
-// SetUsageComputeAction gets a reference to the given string and assigns it to the UsageComputeAction field.
-func (o *User) SetUsageComputeAction(v string) {
+// SetUsageComputeAction gets a reference to the given IdentityUsageThresholdAction and assigns it to the UsageComputeAction field.
+func (o *User) SetUsageComputeAction(v IdentityUsageThresholdAction) {
 	o.UsageComputeAction = &v
 }
 
@@ -475,9 +476,9 @@ func (o *User) SetUsageComputeThreshold(v int64) {
 }
 
 // GetUsageStorageAction returns the UsageStorageAction field value if set, zero value otherwise.
-func (o *User) GetUsageStorageAction() string {
+func (o *User) GetUsageStorageAction() IdentityUsageThresholdAction {
 	if o == nil || o.UsageStorageAction == nil {
-		var ret string
+		var ret IdentityUsageThresholdAction
 		return ret
 	}
 	return *o.UsageStorageAction
@@ -485,7 +486,7 @@ func (o *User) GetUsageStorageAction() string {
 
 // GetUsageStorageActionOk returns a tuple with the UsageStorageAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *User) GetUsageStorageActionOk() (*string, bool) {
+func (o *User) GetUsageStorageActionOk() (*IdentityUsageThresholdAction, bool) {
 	if o == nil || o.UsageStorageAction == nil {
 		return nil, false
 	}
@@ -501,8 +502,8 @@ func (o *User) HasUsageStorageAction() bool {
 	return false
 }
 
-// SetUsageStorageAction gets a reference to the given string and assigns it to the UsageStorageAction field.
-func (o *User) SetUsageStorageAction(v string) {
+// SetUsageStorageAction gets a reference to the given IdentityUsageThresholdAction and assigns it to the UsageStorageAction field.
+func (o *User) SetUsageStorageAction(v IdentityUsageThresholdAction) {
 	o.UsageStorageAction = &v
 }
 

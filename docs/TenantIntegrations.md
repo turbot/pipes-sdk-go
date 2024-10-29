@@ -9,7 +9,9 @@ Method | HTTP request | Description
 [**Delete**](TenantIntegrations.md#Delete) | **Delete** /integration/{integration_handle} | Delete tenant integration
 [**Get**](TenantIntegrations.md#Get) | **Get** /integration/{integration_handle} | Get tenant integration
 [**InstallGithubIntegration**](TenantIntegrations.md#InstallGithubIntegration) | **Get** /integration/{integration_handle}/github/install | Install GitHub integration on a custom tenant
+[**InstallSlackIntegration**](TenantIntegrations.md#InstallSlackIntegration) | **Get** /integration/{integration_handle}/slack/install | Install Slack integration on a custom tenant
 [**List**](TenantIntegrations.md#List) | **Get** /integration | List tenant integrations
+[**ListSlackChannels**](TenantIntegrations.md#ListSlackChannels) | **Get** /integration/{integration_handle}/slack/channel | List tenant integration Slack channels
 [**Test**](TenantIntegrations.md#Test) | **Post** /integration/{integration_handle}/test | Test custom tenant integration
 [**Update**](TenantIntegrations.md#Update) | **Patch** /integration/{integration_handle} | Update tenant integration
 
@@ -37,7 +39,7 @@ import (
 
 func main() {
     integrationHandle := "integrationHandle_example" // string | The handle of the integration for which we want to run the command.
-    request := *openapiclient.NewWorkspaceCommandRequest("Command_example") // WorkspaceCommandRequest | The request body for the workspace command.
+    request := *openapiclient.NewWorkspaceCommandRequest(openapiclient.WorkspaceCommandAction("reboot")) // WorkspaceCommandRequest | The request body for the workspace command.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -108,7 +110,7 @@ import (
 )
 
 func main() {
-    request := *openapiclient.NewCreateIntegrationRequest("Handle_example", "Type_example") // CreateIntegrationRequest | The request body for the integration to be created.
+    request := *openapiclient.NewCreateIntegrationRequest("Handle_example", map[string][]openapiclient.IntegrationType{"key": "TODO"}) // CreateIntegrationRequest | The request body for the integration to be created.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -314,7 +316,7 @@ import (
 )
 
 func main() {
-    integrationHandle := "integrationHandle_example" // string | The handle of the github integration which needs to be installed.
+    integrationHandle := "integrationHandle_example" // string | The handle of the GitHub integration which needs to be installed.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -332,11 +334,79 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**integrationHandle** | **string** | The handle of the github integration which needs to be installed. | 
+**integrationHandle** | **string** | The handle of the GitHub integration which needs to be installed. | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiInstallGithubIntegrationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## InstallSlackIntegration
+
+> InstallSlackIntegration(ctx, integrationHandle).Execute()
+
+Install Slack integration on a custom tenant
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    integrationHandle := "integrationHandle_example" // string | The handle of the Slack integration which needs to be installed.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.TenantIntegrations.InstallSlackIntegration(context.Background(), integrationHandle).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TenantIntegrations.InstallSlackIntegration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**integrationHandle** | **string** | The handle of the Slack integration which needs to be installed. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiInstallSlackIntegrationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -414,6 +484,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListIntegrationsResponse**](ListIntegrationsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListSlackChannels
+
+> ListSlackChannelsResponse ListSlackChannels(ctx, integrationHandle).Limit(limit).NextToken(nextToken).Execute()
+
+List tenant integration Slack channels
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    integrationHandle := "integrationHandle_example" // string | The handle of the integration for which Slack channels will be listed.
+    limit := int32(56) // int32 | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. (optional) (default to 25)
+    nextToken := "nextToken_example" // string | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.TenantIntegrations.ListSlackChannels(context.Background(), integrationHandle).Limit(limit).NextToken(nextToken).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TenantIntegrations.ListSlackChannels``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListSlackChannels`: ListSlackChannelsResponse
+    fmt.Fprintf(os.Stdout, "Response from `TenantIntegrations.ListSlackChannels`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**integrationHandle** | **string** | The handle of the integration for which Slack channels will be listed. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListSlackChannelsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. | [default to 25]
+ **nextToken** | **string** | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. | 
+
+### Return type
+
+[**ListSlackChannelsResponse**](ListSlackChannelsResponse.md)
 
 ### Authorization
 

@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Association** | Pointer to [**WorkspaceConnectionAssociation**](WorkspaceConnectionAssociation.md) |  | [optional] 
-**Config** | Pointer to **map[string]interface{}** |  | [optional] 
-**ConfigSource** | Pointer to **string** | The source of the configuration that the conection will use. One of &#x60;self&#x60; or &#x60;integration&#x60;. | [optional] 
+**Association** | Pointer to [**WorkspaceConnectionAssociation**](WorkspaceConnectionAssociation.md) | The identity workspace connection association record. Only populated when the level is &#39;identity&#39;. | [optional] 
+**Config** | Pointer to **map[string]interface{}** | The plugin or connection configuration. | [optional] 
+**ConfigSource** | Pointer to [**ConnectionConfigSource**](ConnectionConfigSource.md) | The source of the configuration that the conection will use. One of &#x60;self&#x60; or &#x60;integration&#x60;. | [optional] 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
-**CredentialSource** | Pointer to **string** | The source of the credential that the conection will use. One of &#x60;self&#x60; or &#x60;integration&#x60;. | [optional] 
+**CredentialSource** | Pointer to [**ConnectionCredentialSource**](ConnectionCredentialSource.md) | The source of the credential that the conection will use. One of &#x60;self&#x60; or &#x60;integration&#x60;. | [optional] 
 **DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
-**DeletedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**DeletedBy** | Pointer to [**User**](User.md) | User information for the user that performed the deletion. | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
 **Handle** | Pointer to **string** | The handle name of the  connection. | [optional] 
 **HandleDynamic** | Pointer to **string** | The dynamically-generated handle for the connection. Only populated if this is a discovered connection. | [optional] 
-**HandleMode** | Pointer to **string** | The handle mode for the connection. | [optional] 
+**HandleMode** | Pointer to [**ConnectionHandleMode**](ConnectionHandleMode.md) | The handle mode for the connection. | [optional] 
 **Id** | **string** | The unique identifier for the connection. | 
 **IdentityId** | Pointer to **string** | The unique identifier for an identity where the connection has been created. | [optional] 
-**Integration** | Pointer to [**Integration**](Integration.md) |  | [optional] 
+**Integration** | Pointer to [**Integration**](Integration.md) | Details of the integration that manages this connection. | [optional] 
 **IntegrationResourceIdentifier** | Pointer to **string** | The source identifier for this connection. Only populated if its a connection thats been discovered by an integration. | [optional] 
 **IntegrationResourceName** | Pointer to **string** | A friendly resource name for the connection. Only populated if its a connection thats been doscovered by an integration. | [optional] 
 **IntegrationResourcePath** | Pointer to **string** | The source path for this connection. Only populated if its a connection thats been discovered by an integration. | [optional] 
@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **Trunk** | Pointer to [**[]ConnectionTrunkItem**](ConnectionTrunkItem.md) | The trunk for the connection. | [optional] 
 **Type** | Pointer to **string** | Type of connection i.e aggregator or connection. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
 **WorkspaceId** | Pointer to **string** | The unique identifier for the workspace where the connection has been created. | [optional] 
@@ -109,20 +109,20 @@ HasConfig returns a boolean if a field has been set.
 
 ### GetConfigSource
 
-`func (o *WorkspaceConnection) GetConfigSource() string`
+`func (o *WorkspaceConnection) GetConfigSource() ConnectionConfigSource`
 
 GetConfigSource returns the ConfigSource field if non-nil, zero value otherwise.
 
 ### GetConfigSourceOk
 
-`func (o *WorkspaceConnection) GetConfigSourceOk() (*string, bool)`
+`func (o *WorkspaceConnection) GetConfigSourceOk() (*ConnectionConfigSource, bool)`
 
 GetConfigSourceOk returns a tuple with the ConfigSource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfigSource
 
-`func (o *WorkspaceConnection) SetConfigSource(v string)`
+`func (o *WorkspaceConnection) SetConfigSource(v ConnectionConfigSource)`
 
 SetConfigSource sets ConfigSource field to given value.
 
@@ -199,20 +199,20 @@ SetCreatedById sets CreatedById field to given value.
 
 ### GetCredentialSource
 
-`func (o *WorkspaceConnection) GetCredentialSource() string`
+`func (o *WorkspaceConnection) GetCredentialSource() ConnectionCredentialSource`
 
 GetCredentialSource returns the CredentialSource field if non-nil, zero value otherwise.
 
 ### GetCredentialSourceOk
 
-`func (o *WorkspaceConnection) GetCredentialSourceOk() (*string, bool)`
+`func (o *WorkspaceConnection) GetCredentialSourceOk() (*ConnectionCredentialSource, bool)`
 
 GetCredentialSourceOk returns a tuple with the CredentialSource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCredentialSource
 
-`func (o *WorkspaceConnection) SetCredentialSource(v string)`
+`func (o *WorkspaceConnection) SetCredentialSource(v ConnectionCredentialSource)`
 
 SetCredentialSource sets CredentialSource field to given value.
 
@@ -344,20 +344,20 @@ HasHandleDynamic returns a boolean if a field has been set.
 
 ### GetHandleMode
 
-`func (o *WorkspaceConnection) GetHandleMode() string`
+`func (o *WorkspaceConnection) GetHandleMode() ConnectionHandleMode`
 
 GetHandleMode returns the HandleMode field if non-nil, zero value otherwise.
 
 ### GetHandleModeOk
 
-`func (o *WorkspaceConnection) GetHandleModeOk() (*string, bool)`
+`func (o *WorkspaceConnection) GetHandleModeOk() (*ConnectionHandleMode, bool)`
 
 GetHandleModeOk returns a tuple with the HandleMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHandleMode
 
-`func (o *WorkspaceConnection) SetHandleMode(v string)`
+`func (o *WorkspaceConnection) SetHandleMode(v ConnectionHandleMode)`
 
 SetHandleMode sets HandleMode field to given value.
 

@@ -4,12 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Dimension** | **string** | The dimension for this usage metric record. | 
+**Dimension** | [**UsageDimensionType**](UsageDimensionType.md) | The dimension for this usage metric record. | 
 **IdentityId** | Pointer to **string** | The identity ID for this usage metric record | [optional] 
 **InstanceType** | Pointer to **string** | The instance type for the usage record.                                                                                                                                                       // The instance type for this usage metric record. Only populated if the usage is for a workspace. | [optional] 
-**Metric** | **string** | The metric for this usage metric record. | 
+**Metric** | [**UsageMetricType**](UsageMetricType.md) | The metric for this usage metric record. | 
+**Pipe** | Pointer to **string** | The pipe for which the metric is recorded. | [optional] 
 **TenantId** | Pointer to **string** | The tenant ID for this usage metric record | [optional] 
-**Unit** | **string** | The unit for this usage metric record. | 
+**Unit** | [**UsageUnitType**](UsageUnitType.md) | The unit for this usage metric record. | 
 **UsageDate** | **string** | The start time for this usage metric record. | 
 **Value** | Pointer to **int64** | The value for this usage metric record. | [optional] 
 **ValueRounded** | Pointer to **int64** | The rounded value for this usage metric record to the nearest billable unit. | [optional] 
@@ -20,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewUsageMetric
 
-`func NewUsageMetric(dimension string, metric string, unit string, usageDate string, ) *UsageMetric`
+`func NewUsageMetric(dimension UsageDimensionType, metric UsageMetricType, unit UsageUnitType, usageDate string, ) *UsageMetric`
 
 NewUsageMetric instantiates a new UsageMetric object
 This constructor will assign default values to properties that have it defined,
@@ -37,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDimension
 
-`func (o *UsageMetric) GetDimension() string`
+`func (o *UsageMetric) GetDimension() UsageDimensionType`
 
 GetDimension returns the Dimension field if non-nil, zero value otherwise.
 
 ### GetDimensionOk
 
-`func (o *UsageMetric) GetDimensionOk() (*string, bool)`
+`func (o *UsageMetric) GetDimensionOk() (*UsageDimensionType, bool)`
 
 GetDimensionOk returns a tuple with the Dimension field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDimension
 
-`func (o *UsageMetric) SetDimension(v string)`
+`func (o *UsageMetric) SetDimension(v UsageDimensionType)`
 
 SetDimension sets Dimension field to given value.
 
@@ -107,23 +108,48 @@ HasInstanceType returns a boolean if a field has been set.
 
 ### GetMetric
 
-`func (o *UsageMetric) GetMetric() string`
+`func (o *UsageMetric) GetMetric() UsageMetricType`
 
 GetMetric returns the Metric field if non-nil, zero value otherwise.
 
 ### GetMetricOk
 
-`func (o *UsageMetric) GetMetricOk() (*string, bool)`
+`func (o *UsageMetric) GetMetricOk() (*UsageMetricType, bool)`
 
 GetMetricOk returns a tuple with the Metric field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetric
 
-`func (o *UsageMetric) SetMetric(v string)`
+`func (o *UsageMetric) SetMetric(v UsageMetricType)`
 
 SetMetric sets Metric field to given value.
 
+
+### GetPipe
+
+`func (o *UsageMetric) GetPipe() string`
+
+GetPipe returns the Pipe field if non-nil, zero value otherwise.
+
+### GetPipeOk
+
+`func (o *UsageMetric) GetPipeOk() (*string, bool)`
+
+GetPipeOk returns a tuple with the Pipe field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPipe
+
+`func (o *UsageMetric) SetPipe(v string)`
+
+SetPipe sets Pipe field to given value.
+
+### HasPipe
+
+`func (o *UsageMetric) HasPipe() bool`
+
+HasPipe returns a boolean if a field has been set.
 
 ### GetTenantId
 
@@ -152,20 +178,20 @@ HasTenantId returns a boolean if a field has been set.
 
 ### GetUnit
 
-`func (o *UsageMetric) GetUnit() string`
+`func (o *UsageMetric) GetUnit() UsageUnitType`
 
 GetUnit returns the Unit field if non-nil, zero value otherwise.
 
 ### GetUnitOk
 
-`func (o *UsageMetric) GetUnitOk() (*string, bool)`
+`func (o *UsageMetric) GetUnitOk() (*UsageUnitType, bool)`
 
 GetUnitOk returns a tuple with the Unit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnit
 
-`func (o *UsageMetric) SetUnit(v string)`
+`func (o *UsageMetric) SetUnit(v UsageUnitType)`
 
 SetUnit sets Unit field to given value.
 

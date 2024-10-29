@@ -9,7 +9,9 @@ Method | HTTP request | Description
 [**Delete**](UserIntegrations.md#Delete) | **Delete** /user/{user_handle}/integration/{integration_handle} | Delete user integration
 [**Get**](UserIntegrations.md#Get) | **Get** /user/{user_handle}/integration/{integration_handle} | Get user integration
 [**InstallGithubIntegration**](UserIntegrations.md#InstallGithubIntegration) | **Get** /user/{user_handle}/integration/{integration_handle}/github/install | Install GitHub integration for a user
+[**InstallSlackIntegration**](UserIntegrations.md#InstallSlackIntegration) | **Get** /user/{user_handle}/integration/{integration_handle}/slack/install | Install Slack integration for a user
 [**List**](UserIntegrations.md#List) | **Get** /user/{user_handle}/integration | List user integrations
+[**ListSlackChannels**](UserIntegrations.md#ListSlackChannels) | **Get** /user/{user_handle}/integration/{integration_handle}/slack/channel | List user integration Slack channels
 [**Test**](UserIntegrations.md#Test) | **Post** /user/{user_handle}/integration/{integration_handle}/test | Test user integration
 [**Update**](UserIntegrations.md#Update) | **Patch** /user/{user_handle}/integration/{integration_handle} | Update user integration
 
@@ -38,7 +40,7 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user to which the integration belongs to.
     integrationHandle := "integrationHandle_example" // string | The handle of the integration for which we want to run the command.
-    request := *openapiclient.NewWorkspaceCommandRequest("Command_example") // WorkspaceCommandRequest | The request body for the workspace command.
+    request := *openapiclient.NewWorkspaceCommandRequest(openapiclient.WorkspaceCommandAction("reboot")) // WorkspaceCommandRequest | The request body for the workspace command.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -112,7 +114,7 @@ import (
 
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user for which you want to create an integration.
-    request := *openapiclient.NewCreateIntegrationRequest("Handle_example", "Type_example") // CreateIntegrationRequest | The request body for the integration to be created.
+    request := *openapiclient.NewCreateIntegrationRequest("Handle_example", map[string][]openapiclient.IntegrationType{"key": "TODO"}) // CreateIntegrationRequest | The request body for the integration to be created.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -330,7 +332,7 @@ import (
 
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user to which the integration belongs to.
-    integrationHandle := "integrationHandle_example" // string | The handle of the github integration which needs to be installed.
+    integrationHandle := "integrationHandle_example" // string | The handle of the GitHub integration which needs to be installed.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -349,11 +351,82 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **userHandle** | **string** | The handle of the user to which the integration belongs to. | 
-**integrationHandle** | **string** | The handle of the github integration which needs to be installed. | 
+**integrationHandle** | **string** | The handle of the GitHub integration which needs to be installed. | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiInstallGithubIntegrationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## InstallSlackIntegration
+
+> InstallSlackIntegration(ctx, userHandle, integrationHandle).Execute()
+
+Install Slack integration for a user
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userHandle := "userHandle_example" // string | The handle of the user to which the integration belongs to.
+    integrationHandle := "integrationHandle_example" // string | The handle of the Slack integration which needs to be installed.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.UserIntegrations.InstallSlackIntegration(context.Background(), userHandle, integrationHandle).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UserIntegrations.InstallSlackIntegration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userHandle** | **string** | The handle of the user to which the integration belongs to. | 
+**integrationHandle** | **string** | The handle of the Slack integration which needs to be installed. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiInstallSlackIntegrationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -438,6 +511,83 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListIntegrationsResponse**](ListIntegrationsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListSlackChannels
+
+> ListSlackChannelsResponse ListSlackChannels(ctx, userHandle, integrationHandle).Limit(limit).NextToken(nextToken).Execute()
+
+List user integration Slack channels
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userHandle := "userHandle_example" // string | The handle of the user to which the integration belongs.
+    integrationHandle := "integrationHandle_example" // string | The handle of the integration for which Slack channels will be listed.
+    limit := int32(56) // int32 | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. (optional) (default to 25)
+    nextToken := "nextToken_example" // string | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.UserIntegrations.ListSlackChannels(context.Background(), userHandle, integrationHandle).Limit(limit).NextToken(nextToken).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UserIntegrations.ListSlackChannels``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListSlackChannels`: ListSlackChannelsResponse
+    fmt.Fprintf(os.Stdout, "Response from `UserIntegrations.ListSlackChannels`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userHandle** | **string** | The handle of the user to which the integration belongs. | 
+**integrationHandle** | **string** | The handle of the integration for which Slack channels will be listed. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListSlackChannelsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **limit** | **int32** | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. | [default to 25]
+ **nextToken** | **string** | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. | 
+
+### Return type
+
+[**ListSlackChannelsResponse**](ListSlackChannelsResponse.md)
 
 ### Authorization
 

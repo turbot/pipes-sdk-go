@@ -5,18 +5,22 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
-**CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
+**FlowpipePipelineId** | Pointer to **string** | The unique identifier of the flowpipe pipeline for which the process is created. | [optional] 
 **Id** | **string** | The unique identifier of the process. | 
 **IdentityId** | Pointer to **string** | The unique identifier of the identity for which the process is created. | [optional] 
-**Pipeline** | Pointer to [**Pipeline**](Pipeline.md) |  | [optional] 
+**Pipe** | **string** | The pipe for which the process has been created. | 
+**Pipeline** | Pointer to [**Pipeline**](Pipeline.md) | The current details of the pipeline for which the process is created. | [optional] 
 **PipelineId** | Pointer to **string** | The unique identifier of the pipeline for which the process is created. | [optional] 
-**State** | Pointer to **string** | The state of the process. | [optional] 
+**State** | Pointer to [**ProcessState**](ProcessState.md) | The state of the process. | [optional] 
 **StateReason** | Pointer to **string** | The optional reason why the process is in its current state. | [optional] 
 **TenantId** | Pointer to **string** | The unique identifier of the tenant for which the process is created. | [optional] 
+**Trigger** | Pointer to [**WorkspaceModTrigger**](WorkspaceModTrigger.md) | The current details of the trigger for which the process is created. | [optional] 
+**TriggerId** | Pointer to **string** | The unique identifier of the trigger for which the process is created. | [optional] 
 **Type** | **string** | The type of the process, generally denotes the activity performed e.g. workspace.create, pipeline.execute, pipeline.command.run. | 
 **UpdatedAt** | **string** | The time of the last update in ISO 8601 UTC. | 
-**UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
+**UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
 **Usage** | Pointer to **map[string]interface{}** | The usage information for this process. | [optional] 
 **VersionId** | **int32** | The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item. | 
@@ -26,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewSpProcess
 
-`func NewSpProcess(createdAt string, createdById string, id string, type_ string, updatedAt string, updatedById string, versionId int32, ) *SpProcess`
+`func NewSpProcess(createdAt string, createdById string, id string, pipe string, type_ string, updatedAt string, updatedById string, versionId int32, ) *SpProcess`
 
 NewSpProcess instantiates a new SpProcess object
 This constructor will assign default values to properties that have it defined,
@@ -106,6 +110,31 @@ and a boolean to check if the value has been set.
 SetCreatedById sets CreatedById field to given value.
 
 
+### GetFlowpipePipelineId
+
+`func (o *SpProcess) GetFlowpipePipelineId() string`
+
+GetFlowpipePipelineId returns the FlowpipePipelineId field if non-nil, zero value otherwise.
+
+### GetFlowpipePipelineIdOk
+
+`func (o *SpProcess) GetFlowpipePipelineIdOk() (*string, bool)`
+
+GetFlowpipePipelineIdOk returns a tuple with the FlowpipePipelineId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowpipePipelineId
+
+`func (o *SpProcess) SetFlowpipePipelineId(v string)`
+
+SetFlowpipePipelineId sets FlowpipePipelineId field to given value.
+
+### HasFlowpipePipelineId
+
+`func (o *SpProcess) HasFlowpipePipelineId() bool`
+
+HasFlowpipePipelineId returns a boolean if a field has been set.
+
 ### GetId
 
 `func (o *SpProcess) GetId() string`
@@ -150,6 +179,26 @@ SetIdentityId sets IdentityId field to given value.
 `func (o *SpProcess) HasIdentityId() bool`
 
 HasIdentityId returns a boolean if a field has been set.
+
+### GetPipe
+
+`func (o *SpProcess) GetPipe() string`
+
+GetPipe returns the Pipe field if non-nil, zero value otherwise.
+
+### GetPipeOk
+
+`func (o *SpProcess) GetPipeOk() (*string, bool)`
+
+GetPipeOk returns a tuple with the Pipe field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPipe
+
+`func (o *SpProcess) SetPipe(v string)`
+
+SetPipe sets Pipe field to given value.
+
 
 ### GetPipeline
 
@@ -203,20 +252,20 @@ HasPipelineId returns a boolean if a field has been set.
 
 ### GetState
 
-`func (o *SpProcess) GetState() string`
+`func (o *SpProcess) GetState() ProcessState`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *SpProcess) GetStateOk() (*string, bool)`
+`func (o *SpProcess) GetStateOk() (*ProcessState, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *SpProcess) SetState(v string)`
+`func (o *SpProcess) SetState(v ProcessState)`
 
 SetState sets State field to given value.
 
@@ -275,6 +324,56 @@ SetTenantId sets TenantId field to given value.
 `func (o *SpProcess) HasTenantId() bool`
 
 HasTenantId returns a boolean if a field has been set.
+
+### GetTrigger
+
+`func (o *SpProcess) GetTrigger() WorkspaceModTrigger`
+
+GetTrigger returns the Trigger field if non-nil, zero value otherwise.
+
+### GetTriggerOk
+
+`func (o *SpProcess) GetTriggerOk() (*WorkspaceModTrigger, bool)`
+
+GetTriggerOk returns a tuple with the Trigger field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrigger
+
+`func (o *SpProcess) SetTrigger(v WorkspaceModTrigger)`
+
+SetTrigger sets Trigger field to given value.
+
+### HasTrigger
+
+`func (o *SpProcess) HasTrigger() bool`
+
+HasTrigger returns a boolean if a field has been set.
+
+### GetTriggerId
+
+`func (o *SpProcess) GetTriggerId() string`
+
+GetTriggerId returns the TriggerId field if non-nil, zero value otherwise.
+
+### GetTriggerIdOk
+
+`func (o *SpProcess) GetTriggerIdOk() (*string, bool)`
+
+GetTriggerIdOk returns a tuple with the TriggerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTriggerId
+
+`func (o *SpProcess) SetTriggerId(v string)`
+
+SetTriggerId sets TriggerId field to given value.
+
+### HasTriggerId
+
+`func (o *SpProcess) HasTriggerId() bool`
+
+HasTriggerId returns a boolean if a field has been set.
 
 ### GetType
 

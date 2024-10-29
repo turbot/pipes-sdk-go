@@ -8,13 +8,17 @@ Name | Type | Description | Notes
 **CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 
 **CreatedById** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
+**Enum** | Pointer to **map[string]interface{}** |  | [optional] 
+**Format** | Pointer to **string** |  | [optional] 
 **Id** | **string** |  | 
 **ModAlias** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
+**Pipe** | Pointer to **string** |  | [optional] 
+**Tags** | Pointer to **map[string]interface{}** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** |  | [optional] 
 **UpdatedBy** | Pointer to [**User**](User.md) |  | [optional] 
-**UpdatedById** | **string** |  | 
+**UpdatedById** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **interface{}** |  | [optional] 
 **ValueDefault** | Pointer to **interface{}** |  | [optional] 
 **ValueSetting** | Pointer to **interface{}** |  | [optional] 
@@ -24,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewWorkspaceModVariable
 
-`func NewWorkspaceModVariable(createdAt string, createdById string, id string, updatedById string, versionId int32, ) *WorkspaceModVariable`
+`func NewWorkspaceModVariable(createdAt string, createdById string, id string, versionId int32, ) *WorkspaceModVariable`
 
 NewWorkspaceModVariable instantiates a new WorkspaceModVariable object
 This constructor will assign default values to properties that have it defined,
@@ -129,6 +133,56 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetEnum
+
+`func (o *WorkspaceModVariable) GetEnum() map[string]interface{}`
+
+GetEnum returns the Enum field if non-nil, zero value otherwise.
+
+### GetEnumOk
+
+`func (o *WorkspaceModVariable) GetEnumOk() (*map[string]interface{}, bool)`
+
+GetEnumOk returns a tuple with the Enum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnum
+
+`func (o *WorkspaceModVariable) SetEnum(v map[string]interface{})`
+
+SetEnum sets Enum field to given value.
+
+### HasEnum
+
+`func (o *WorkspaceModVariable) HasEnum() bool`
+
+HasEnum returns a boolean if a field has been set.
+
+### GetFormat
+
+`func (o *WorkspaceModVariable) GetFormat() string`
+
+GetFormat returns the Format field if non-nil, zero value otherwise.
+
+### GetFormatOk
+
+`func (o *WorkspaceModVariable) GetFormatOk() (*string, bool)`
+
+GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormat
+
+`func (o *WorkspaceModVariable) SetFormat(v string)`
+
+SetFormat sets Format field to given value.
+
+### HasFormat
+
+`func (o *WorkspaceModVariable) HasFormat() bool`
+
+HasFormat returns a boolean if a field has been set.
+
 ### GetId
 
 `func (o *WorkspaceModVariable) GetId() string`
@@ -198,6 +252,56 @@ SetName sets Name field to given value.
 `func (o *WorkspaceModVariable) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetPipe
+
+`func (o *WorkspaceModVariable) GetPipe() string`
+
+GetPipe returns the Pipe field if non-nil, zero value otherwise.
+
+### GetPipeOk
+
+`func (o *WorkspaceModVariable) GetPipeOk() (*string, bool)`
+
+GetPipeOk returns a tuple with the Pipe field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPipe
+
+`func (o *WorkspaceModVariable) SetPipe(v string)`
+
+SetPipe sets Pipe field to given value.
+
+### HasPipe
+
+`func (o *WorkspaceModVariable) HasPipe() bool`
+
+HasPipe returns a boolean if a field has been set.
+
+### GetTags
+
+`func (o *WorkspaceModVariable) GetTags() map[string]interface{}`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *WorkspaceModVariable) GetTagsOk() (*map[string]interface{}, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *WorkspaceModVariable) SetTags(v map[string]interface{})`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *WorkspaceModVariable) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 ### GetType
 
@@ -293,6 +397,11 @@ and a boolean to check if the value has been set.
 
 SetUpdatedById sets UpdatedById field to given value.
 
+### HasUpdatedById
+
+`func (o *WorkspaceModVariable) HasUpdatedById() bool`
+
+HasUpdatedById returns a boolean if a field has been set.
 
 ### GetValue
 
