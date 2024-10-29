@@ -41573,6 +41573,7 @@ components:
           deleted_by_id: deleted_by_id
           query: query
           version_id: 0
+          params: '{}'
           created_by: '{}'
           deleted_at: deleted_at
           tags: '{}'
@@ -41666,6 +41667,7 @@ components:
           deleted_by_id: deleted_by_id
           query: query
           version_id: 0
+          params: '{}'
           created_by: '{}'
           deleted_at: deleted_at
           tags: '{}'
@@ -42416,6 +42418,7 @@ components:
           created_at: created_at
           description: description
           version_id: 0
+          params: '{}'
           title: title
           type: type
           created_by: '{}'
@@ -42433,6 +42436,7 @@ components:
           created_at: created_at
           description: description
           version_id: 0
+          params: '{}'
           title: title
           type: type
           created_by: '{}'
@@ -43282,6 +43286,7 @@ components:
         created_at: created_at
         description: description
         version_id: 0
+        params: '{}'
         title: title
         type: type
         created_by: '{}'
@@ -43316,6 +43321,9 @@ components:
           type: string
         name:
           type: string
+        params:
+          properties: {}
+          type: object
         pipelines:
           properties: {}
           type: object
@@ -46913,6 +46921,7 @@ components:
         deleted_by_id: deleted_by_id
         query: query
         version_id: 0
+        params: '{}'
         created_by: '{}'
         deleted_at: deleted_at
         tags: '{}'
@@ -47001,6 +47010,9 @@ components:
           description: The time when the trigger is next scheduled to run in ISO 8601
             UTC.
           type: string
+        params:
+          properties: {}
+          type: object
         pipelines:
           properties: {}
           type: object

@@ -26,6 +26,7 @@ type ModTriggerInfo struct {
 	Id          *string                 `json:"id,omitempty"`
 	ModId       *string                 `json:"mod_id,omitempty"`
 	Name        *string                 `json:"name,omitempty"`
+	Params      *map[string]interface{} `json:"params,omitempty"`
 	Pipelines   *map[string]interface{} `json:"pipelines,omitempty"`
 	Query       *string                 `json:"query,omitempty"`
 	Schedule    *string                 `json:"schedule,omitempty"`
@@ -270,6 +271,38 @@ func (o *ModTriggerInfo) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ModTriggerInfo) SetName(v string) {
 	o.Name = &v
+}
+
+// GetParams returns the Params field value if set, zero value otherwise.
+func (o *ModTriggerInfo) GetParams() map[string]interface{} {
+	if o == nil || o.Params == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Params
+}
+
+// GetParamsOk returns a tuple with the Params field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModTriggerInfo) GetParamsOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Params == nil {
+		return nil, false
+	}
+	return o.Params, true
+}
+
+// HasParams returns a boolean if a field has been set.
+func (o *ModTriggerInfo) HasParams() bool {
+	if o != nil && o.Params != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetParams gets a reference to the given map[string]interface{} and assigns it to the Params field.
+func (o *ModTriggerInfo) SetParams(v map[string]interface{}) {
+	o.Params = &v
 }
 
 // GetPipelines returns the Pipelines field value if set, zero value otherwise.
@@ -630,6 +663,9 @@ func (o ModTriggerInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.Params != nil {
+		toSerialize["params"] = o.Params
 	}
 	if o.Pipelines != nil {
 		toSerialize["pipelines"] = o.Pipelines

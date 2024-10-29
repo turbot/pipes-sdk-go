@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **ModId** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
+**Params** | Pointer to **map[string]interface{}** |  | [optional] 
 **Pipelines** | Pointer to **map[string]interface{}** |  | [optional] 
 **Query** | Pointer to **string** |  | [optional] 
 **Schedule** | Pointer to **string** |  | [optional] 
@@ -206,6 +207,31 @@ SetName sets Name field to given value.
 `func (o *ModTriggerInfo) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetParams
+
+`func (o *ModTriggerInfo) GetParams() map[string]interface{}`
+
+GetParams returns the Params field if non-nil, zero value otherwise.
+
+### GetParamsOk
+
+`func (o *ModTriggerInfo) GetParamsOk() (*map[string]interface{}, bool)`
+
+GetParamsOk returns a tuple with the Params field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParams
+
+`func (o *ModTriggerInfo) SetParams(v map[string]interface{})`
+
+SetParams sets Params field to given value.
+
+### HasParams
+
+`func (o *ModTriggerInfo) HasParams() bool`
+
+HasParams returns a boolean if a field has been set.
 
 ### GetPipelines
 

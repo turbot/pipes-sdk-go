@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **LastProcessId** | Pointer to **string** | The id of the last process that was run for the pipeline. | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **NextRunAt** | Pointer to **string** | The time when the trigger is next scheduled to run in ISO 8601 UTC. | [optional] 
+**Params** | Pointer to **map[string]interface{}** |  | [optional] 
 **Pipelines** | Pointer to **map[string]interface{}** |  | [optional] 
 **Query** | Pointer to **string** |  | [optional] 
 **Schedule** | Pointer to [**PipelineFrequency**](PipelineFrequency.md) |  | [optional] 
@@ -466,6 +467,31 @@ SetNextRunAt sets NextRunAt field to given value.
 `func (o *WorkspaceModTrigger) HasNextRunAt() bool`
 
 HasNextRunAt returns a boolean if a field has been set.
+
+### GetParams
+
+`func (o *WorkspaceModTrigger) GetParams() map[string]interface{}`
+
+GetParams returns the Params field if non-nil, zero value otherwise.
+
+### GetParamsOk
+
+`func (o *WorkspaceModTrigger) GetParamsOk() (*map[string]interface{}, bool)`
+
+GetParamsOk returns a tuple with the Params field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParams
+
+`func (o *WorkspaceModTrigger) SetParams(v map[string]interface{})`
+
+SetParams sets Params field to given value.
+
+### HasParams
+
+`func (o *WorkspaceModTrigger) HasParams() bool`
+
+HasParams returns a boolean if a field has been set.
 
 ### GetPipelines
 

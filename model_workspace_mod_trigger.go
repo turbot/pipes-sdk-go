@@ -42,6 +42,7 @@ type WorkspaceModTrigger struct {
 	Name          *string `json:"name,omitempty"`
 	// The time when the trigger is next scheduled to run in ISO 8601 UTC.
 	NextRunAt   *string                 `json:"next_run_at,omitempty"`
+	Params      *map[string]interface{} `json:"params,omitempty"`
 	Pipelines   *map[string]interface{} `json:"pipelines,omitempty"`
 	Query       *string                 `json:"query,omitempty"`
 	Schedule    *PipelineFrequency      `json:"schedule,omitempty"`
@@ -606,6 +607,38 @@ func (o *WorkspaceModTrigger) SetNextRunAt(v string) {
 	o.NextRunAt = &v
 }
 
+// GetParams returns the Params field value if set, zero value otherwise.
+func (o *WorkspaceModTrigger) GetParams() map[string]interface{} {
+	if o == nil || o.Params == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Params
+}
+
+// GetParamsOk returns a tuple with the Params field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceModTrigger) GetParamsOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Params == nil {
+		return nil, false
+	}
+	return o.Params, true
+}
+
+// HasParams returns a boolean if a field has been set.
+func (o *WorkspaceModTrigger) HasParams() bool {
+	if o != nil && o.Params != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetParams gets a reference to the given map[string]interface{} and assigns it to the Params field.
+func (o *WorkspaceModTrigger) SetParams(v map[string]interface{}) {
+	o.Params = &v
+}
+
 // GetPipelines returns the Pipelines field value if set, zero value otherwise.
 func (o *WorkspaceModTrigger) GetPipelines() map[string]interface{} {
 	if o == nil || o.Pipelines == nil {
@@ -1154,6 +1187,9 @@ func (o WorkspaceModTrigger) MarshalJSON() ([]byte, error) {
 	}
 	if o.NextRunAt != nil {
 		toSerialize["next_run_at"] = o.NextRunAt
+	}
+	if o.Params != nil {
+		toSerialize["params"] = o.Params
 	}
 	if o.Pipelines != nil {
 		toSerialize["pipelines"] = o.Pipelines
