@@ -28,6 +28,8 @@ type UpdateTenantSettingsRequest struct {
 	UserProvisioning *[]string `json:"user_provisioning,omitempty"`
 	// The domains that new users are permitted to be provisioned from.
 	UserProvisioningPermittedDomains *[]string `json:"user_provisioning_permitted_domains,omitempty"`
+	// Settings related to visibility of snapshots in the tenant.
+	WorkspaceSnapshotPermittedVisibility *[]string `json:"workspace_snapshot_permitted_visibility,omitempty"`
 }
 
 // NewUpdateTenantSettingsRequest instantiates a new UpdateTenantSettingsRequest object
@@ -239,6 +241,38 @@ func (o *UpdateTenantSettingsRequest) SetUserProvisioningPermittedDomains(v []st
 	o.UserProvisioningPermittedDomains = &v
 }
 
+// GetWorkspaceSnapshotPermittedVisibility returns the WorkspaceSnapshotPermittedVisibility field value if set, zero value otherwise.
+func (o *UpdateTenantSettingsRequest) GetWorkspaceSnapshotPermittedVisibility() []string {
+	if o == nil || o.WorkspaceSnapshotPermittedVisibility == nil {
+		var ret []string
+		return ret
+	}
+	return *o.WorkspaceSnapshotPermittedVisibility
+}
+
+// GetWorkspaceSnapshotPermittedVisibilityOk returns a tuple with the WorkspaceSnapshotPermittedVisibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateTenantSettingsRequest) GetWorkspaceSnapshotPermittedVisibilityOk() (*[]string, bool) {
+	if o == nil || o.WorkspaceSnapshotPermittedVisibility == nil {
+		return nil, false
+	}
+	return o.WorkspaceSnapshotPermittedVisibility, true
+}
+
+// HasWorkspaceSnapshotPermittedVisibility returns a boolean if a field has been set.
+func (o *UpdateTenantSettingsRequest) HasWorkspaceSnapshotPermittedVisibility() bool {
+	if o != nil && o.WorkspaceSnapshotPermittedVisibility != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWorkspaceSnapshotPermittedVisibility gets a reference to the given []string and assigns it to the WorkspaceSnapshotPermittedVisibility field.
+func (o *UpdateTenantSettingsRequest) SetWorkspaceSnapshotPermittedVisibility(v []string) {
+	o.WorkspaceSnapshotPermittedVisibility = &v
+}
+
 func (o UpdateTenantSettingsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.LoginEmail != nil {
@@ -258,6 +292,9 @@ func (o UpdateTenantSettingsRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserProvisioningPermittedDomains != nil {
 		toSerialize["user_provisioning_permitted_domains"] = o.UserProvisioningPermittedDomains
+	}
+	if o.WorkspaceSnapshotPermittedVisibility != nil {
+		toSerialize["workspace_snapshot_permitted_visibility"] = o.WorkspaceSnapshotPermittedVisibility
 	}
 	return json.Marshal(toSerialize)
 }

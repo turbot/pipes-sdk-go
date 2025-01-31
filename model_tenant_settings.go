@@ -42,13 +42,15 @@ type TenantSettings struct {
 	UserProvisioningPermittedDomains []string `json:"user_provisioning_permitted_domains"`
 	// The current version of the user setting.
 	VersionId int32 `json:"version_id"`
+	// List of allowed visibility settings for snapshots.
+	WorkspaceSnapshotPermittedVisibility []string `json:"workspace_snapshot_permitted_visibility"`
 }
 
 // NewTenantSettings instantiates a new TenantSettings object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTenantSettings(createdAt string, createdById string, loginEmail TenantLoginSettings, loginGithub TenantLoginSettings, loginGoogle TenantLoginSettings, loginSaml TenantSamlLoginSettings, updatedById string, userProvisioning []string, userProvisioningPermittedDomains []string, versionId int32) *TenantSettings {
+func NewTenantSettings(createdAt string, createdById string, loginEmail TenantLoginSettings, loginGithub TenantLoginSettings, loginGoogle TenantLoginSettings, loginSaml TenantSamlLoginSettings, updatedById string, userProvisioning []string, userProvisioningPermittedDomains []string, versionId int32, workspaceSnapshotPermittedVisibility []string) *TenantSettings {
 	this := TenantSettings{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
@@ -60,6 +62,7 @@ func NewTenantSettings(createdAt string, createdById string, loginEmail TenantLo
 	this.UserProvisioning = userProvisioning
 	this.UserProvisioningPermittedDomains = userProvisioningPermittedDomains
 	this.VersionId = versionId
+	this.WorkspaceSnapshotPermittedVisibility = workspaceSnapshotPermittedVisibility
 	return &this
 }
 
@@ -407,6 +410,30 @@ func (o *TenantSettings) SetVersionId(v int32) {
 	o.VersionId = v
 }
 
+// GetWorkspaceSnapshotPermittedVisibility returns the WorkspaceSnapshotPermittedVisibility field value
+func (o *TenantSettings) GetWorkspaceSnapshotPermittedVisibility() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.WorkspaceSnapshotPermittedVisibility
+}
+
+// GetWorkspaceSnapshotPermittedVisibilityOk returns a tuple with the WorkspaceSnapshotPermittedVisibility field value
+// and a boolean to check if the value has been set.
+func (o *TenantSettings) GetWorkspaceSnapshotPermittedVisibilityOk() (*[]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.WorkspaceSnapshotPermittedVisibility, true
+}
+
+// SetWorkspaceSnapshotPermittedVisibility sets field value
+func (o *TenantSettings) SetWorkspaceSnapshotPermittedVisibility(v []string) {
+	o.WorkspaceSnapshotPermittedVisibility = v
+}
+
 func (o TenantSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -447,6 +474,9 @@ func (o TenantSettings) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["version_id"] = o.VersionId
+	}
+	if true {
+		toSerialize["workspace_snapshot_permitted_visibility"] = o.WorkspaceSnapshotPermittedVisibility
 	}
 	return json.Marshal(toSerialize)
 }

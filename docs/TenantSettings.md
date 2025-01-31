@@ -17,12 +17,13 @@ Name | Type | Description | Notes
 **UserProvisioning** | **[]string** | The user provisioning settings for the tenant. | 
 **UserProvisioningPermittedDomains** | **[]string** | The domains that new users are permitted to be provisioned from. | 
 **VersionId** | **int32** | The current version of the user setting. | 
+**WorkspaceSnapshotPermittedVisibility** | **[]string** | List of allowed visibility settings for snapshots. | 
 
 ## Methods
 
 ### NewTenantSettings
 
-`func NewTenantSettings(createdAt string, createdById string, loginEmail TenantLoginSettings, loginGithub TenantLoginSettings, loginGoogle TenantLoginSettings, loginSaml TenantSamlLoginSettings, updatedById string, userProvisioning []string, userProvisioningPermittedDomains []string, versionId int32, ) *TenantSettings`
+`func NewTenantSettings(createdAt string, createdById string, loginEmail TenantLoginSettings, loginGithub TenantLoginSettings, loginGoogle TenantLoginSettings, loginSaml TenantSamlLoginSettings, updatedById string, userProvisioning []string, userProvisioningPermittedDomains []string, versionId int32, workspaceSnapshotPermittedVisibility []string, ) *TenantSettings`
 
 NewTenantSettings instantiates a new TenantSettings object
 This constructor will assign default values to properties that have it defined,
@@ -310,6 +311,26 @@ and a boolean to check if the value has been set.
 `func (o *TenantSettings) SetVersionId(v int32)`
 
 SetVersionId sets VersionId field to given value.
+
+
+### GetWorkspaceSnapshotPermittedVisibility
+
+`func (o *TenantSettings) GetWorkspaceSnapshotPermittedVisibility() []string`
+
+GetWorkspaceSnapshotPermittedVisibility returns the WorkspaceSnapshotPermittedVisibility field if non-nil, zero value otherwise.
+
+### GetWorkspaceSnapshotPermittedVisibilityOk
+
+`func (o *TenantSettings) GetWorkspaceSnapshotPermittedVisibilityOk() (*[]string, bool)`
+
+GetWorkspaceSnapshotPermittedVisibilityOk returns a tuple with the WorkspaceSnapshotPermittedVisibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWorkspaceSnapshotPermittedVisibility
+
+`func (o *TenantSettings) SetWorkspaceSnapshotPermittedVisibility(v []string)`
+
+SetWorkspaceSnapshotPermittedVisibility sets WorkspaceSnapshotPermittedVisibility field to given value.
 
 
 

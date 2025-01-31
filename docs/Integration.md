@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **DeletedAt** | Pointer to **string** | The time the item was deleted in ISO 8601 UTC. | [optional] 
 **DeletedBy** | Pointer to [**User**](User.md) | User information for the user that performed the deletion. | [optional] 
 **DeletedById** | **string** | The ID of the user that performed the deletion. | 
-**GithubInstallationId** | **int32** | The GitHub installation ID for this integration. | 
+**GithubInstallationId** | Pointer to **int32** | The GitHub installation ID for this integration, only applicable when the integration type is &#x60;github&#x60;. | [optional] 
 **Handle** | **string** | The handle for the integration. | 
 **Id** | **string** | The unique identifier for the integration. | 
 **IdentityId** | Pointer to **string** | The unique identifier for an identity where this integration is created. | [optional] 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewIntegration
 
-`func NewIntegration(createdAt string, createdById string, deletedById string, githubInstallationId int32, handle string, id string, tenantId string, updatedById string, versionId int32, ) *Integration`
+`func NewIntegration(createdAt string, createdById string, deletedById string, handle string, id string, tenantId string, updatedById string, versionId int32, ) *Integration`
 
 NewIntegration instantiates a new Integration object
 This constructor will assign default values to properties that have it defined,
@@ -224,6 +224,11 @@ and a boolean to check if the value has been set.
 
 SetGithubInstallationId sets GithubInstallationId field to given value.
 
+### HasGithubInstallationId
+
+`func (o *Integration) HasGithubInstallationId() bool`
+
+HasGithubInstallationId returns a boolean if a field has been set.
 
 ### GetHandle
 

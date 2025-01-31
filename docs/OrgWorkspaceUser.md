@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
 **Id** | **string** | The unique identifier of the org member. | 
+**LastActivityAt** | Pointer to **string** | The time of the last activity for the member. | [optional] 
 **OrgId** | **string** | The identifier of an org. | 
 **Role** | Pointer to **string** | The role of the workspace user. | [optional] 
 **Scope** | Pointer to **string** | The scope of the role. Can be either of org / workspace | [optional] 
@@ -125,6 +126,31 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+
+### GetLastActivityAt
+
+`func (o *OrgWorkspaceUser) GetLastActivityAt() string`
+
+GetLastActivityAt returns the LastActivityAt field if non-nil, zero value otherwise.
+
+### GetLastActivityAtOk
+
+`func (o *OrgWorkspaceUser) GetLastActivityAtOk() (*string, bool)`
+
+GetLastActivityAtOk returns a tuple with the LastActivityAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastActivityAt
+
+`func (o *OrgWorkspaceUser) SetLastActivityAt(v string)`
+
+SetLastActivityAt sets LastActivityAt field to given value.
+
+### HasLastActivityAt
+
+`func (o *OrgWorkspaceUser) HasLastActivityAt() bool`
+
+HasLastActivityAt returns a boolean if a field has been set.
 
 ### GetOrgId
 

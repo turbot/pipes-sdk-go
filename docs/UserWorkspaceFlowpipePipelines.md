@@ -91,7 +91,7 @@ No authorization required
 
 ## Get
 
-> Pipeline Get(ctx, userHandle, workspaceHandle, pipelineId).Execute()
+> WorkspaceModPipeline Get(ctx, userHandle, workspaceHandle, pipelineId).Execute()
 
 Get user workspace pipeline
 
@@ -121,7 +121,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaceFlowpipePipelines.Get``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `Get`: Pipeline
+    // response from `Get`: WorkspaceModPipeline
     fmt.Fprintf(os.Stdout, "Response from `UserWorkspaceFlowpipePipelines.Get`: %v\n", resp)
 }
 ```
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Pipeline**](Pipeline.md)
+[**WorkspaceModPipeline**](WorkspaceModPipeline.md)
 
 ### Authorization
 

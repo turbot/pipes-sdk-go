@@ -24,6 +24,8 @@ type OrgWorkspaceUser struct {
 	CreatedById string `json:"created_by_id"`
 	// The unique identifier of the org member.
 	Id string `json:"id"`
+	// The time of the last activity for the member.
+	LastActivityAt *string `json:"last_activity_at,omitempty"`
 	// The identifier of an org.
 	OrgId string `json:"org_id"`
 	// The role of the workspace user.
@@ -182,6 +184,38 @@ func (o *OrgWorkspaceUser) GetIdOk() (*string, bool) {
 // SetId sets field value
 func (o *OrgWorkspaceUser) SetId(v string) {
 	o.Id = v
+}
+
+// GetLastActivityAt returns the LastActivityAt field value if set, zero value otherwise.
+func (o *OrgWorkspaceUser) GetLastActivityAt() string {
+	if o == nil || o.LastActivityAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastActivityAt
+}
+
+// GetLastActivityAtOk returns a tuple with the LastActivityAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrgWorkspaceUser) GetLastActivityAtOk() (*string, bool) {
+	if o == nil || o.LastActivityAt == nil {
+		return nil, false
+	}
+	return o.LastActivityAt, true
+}
+
+// HasLastActivityAt returns a boolean if a field has been set.
+func (o *OrgWorkspaceUser) HasLastActivityAt() bool {
+	if o != nil && o.LastActivityAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastActivityAt gets a reference to the given string and assigns it to the LastActivityAt field.
+func (o *OrgWorkspaceUser) SetLastActivityAt(v string) {
+	o.LastActivityAt = &v
 }
 
 // GetOrgId returns the OrgId field value
@@ -549,6 +583,9 @@ func (o OrgWorkspaceUser) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["id"] = o.Id
+	}
+	if o.LastActivityAt != nil {
+		toSerialize["last_activity_at"] = o.LastActivityAt
 	}
 	if true {
 		toSerialize["org_id"] = o.OrgId

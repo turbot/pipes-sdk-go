@@ -228,7 +228,7 @@ type OrgWorkspaceFlowpipePipelinesApiGetRequest struct {
 	pipelineId      string
 }
 
-func (r OrgWorkspaceFlowpipePipelinesApiGetRequest) Execute() (Pipeline, *_nethttp.Response, error) {
+func (r OrgWorkspaceFlowpipePipelinesApiGetRequest) Execute() (WorkspaceModPipeline, *_nethttp.Response, error) {
 	return r.ApiService.GetExecute(r)
 }
 
@@ -255,13 +255,13 @@ func (a *OrgWorkspaceFlowpipePipelinesService) Get(ctx _context.Context, orgHand
 
 // Execute executes the request
 //
-//	@return Pipeline
-func (a *OrgWorkspaceFlowpipePipelinesService) GetExecute(r OrgWorkspaceFlowpipePipelinesApiGetRequest) (Pipeline, *_nethttp.Response, error) {
+//	@return WorkspaceModPipeline
+func (a *OrgWorkspaceFlowpipePipelinesService) GetExecute(r OrgWorkspaceFlowpipePipelinesApiGetRequest) (WorkspaceModPipeline, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue Pipeline
+		localVarReturnValue WorkspaceModPipeline
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgWorkspaceFlowpipePipelinesService.Get")

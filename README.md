@@ -218,6 +218,8 @@ Class | Method | HTTP request | Description
 *OrgWorkspaceIntegrations* | [**List**](docs/OrgWorkspaceIntegrations.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration | List org workspace integrations
 *OrgWorkspaceIntegrations* | [**ListGithubRepositories**](docs/OrgWorkspaceIntegrations.md#listgithubrepositories) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle}/github/repository | List org workspace integration github respositories
 *OrgWorkspaceIntegrations* | [**ListGithubRepositoryHeads**](docs/OrgWorkspaceIntegrations.md#listgithubrepositoryheads) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle}/github/repository/{repository_owner}/{repository_name}/head | List org workspace integration github respository heads
+*OrgWorkspaceIntegrations* | [**ListGitlabProjectBranches**](docs/OrgWorkspaceIntegrations.md#listgitlabprojectbranches) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle}/gitlab/project/{project_id}/branch | List org workspace integration gitlab project branches
+*OrgWorkspaceIntegrations* | [**ListGitlabProjects**](docs/OrgWorkspaceIntegrations.md#listgitlabprojects) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle}/gitlab/project | List org workspace integration gitlab projects
 *OrgWorkspaceMembers* | [**Create**](docs/OrgWorkspaceMembers.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/member | Create Org Workspace Member
 *OrgWorkspaceMembers* | [**Delete**](docs/OrgWorkspaceMembers.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/member/{user_handle} | Delete Org Workspace Member
 *OrgWorkspaceMembers* | [**Get**](docs/OrgWorkspaceMembers.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/member/{user_handle} | Get Org Workspace Member
@@ -471,6 +473,8 @@ Class | Method | HTTP request | Description
 *UserWorkspaceIntegrations* | [**List**](docs/UserWorkspaceIntegrations.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/integration | List user workspace integrations
 *UserWorkspaceIntegrations* | [**ListGithubRepositories**](docs/UserWorkspaceIntegrations.md#listgithubrepositories) | **Get** /user/{user_handle}/workspace/{workspace_handle}/integration/{integration_handle}/github/repository | List user workspace integration github respositories
 *UserWorkspaceIntegrations* | [**ListGithubRepositoryHeads**](docs/UserWorkspaceIntegrations.md#listgithubrepositoryheads) | **Get** /user/{user_handle}/workspace/{workspace_handle}/integration/{integration_handle}/github/repository/{repository_owner}/{repository_name}/head | List user workspace integration github respository heads
+*UserWorkspaceIntegrations* | [**ListGitlabProjectBranches**](docs/UserWorkspaceIntegrations.md#listgitlabprojectbranches) | **Get** /user/{user_handle}/workspace/{workspace_handle}/integration/{integration_handle}/gitlab/project/{project_id}/branch | List user workspace integration gitlab project branches
+*UserWorkspaceIntegrations* | [**ListGitlabProjects**](docs/UserWorkspaceIntegrations.md#listgitlabprojects) | **Get** /user/{user_handle}/workspace/{workspace_handle}/integration/{integration_handle}/gitlab/project | List user workspace integration gitlab projects
 *UserWorkspaceModVariables* | [**CreateSetting**](docs/UserWorkspaceModVariables.md#createsetting) | **Post** /user/{user_handle}/workspace/{workspace_handle}/mod/{mod_alias}/variable | Create a setting for a mod variable in a user workspace
 *UserWorkspaceModVariables* | [**DeleteSetting**](docs/UserWorkspaceModVariables.md#deletesetting) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/mod/{mod_alias}/variable/{variable_name} | Delete setting for a mod variable in a user workspace
 *UserWorkspaceModVariables* | [**GetSetting**](docs/UserWorkspaceModVariables.md#getsetting) | **Get** /user/{user_handle}/workspace/{workspace_handle}/mod/{mod_alias}/variable/{variable_name} | Get setting for a mod variable in a user workspace
@@ -603,6 +607,8 @@ Class | Method | HTTP request | Description
  - [FlowpipeInputStepType](docs/FlowpipeInputStepType.md)
  - [GithubRepository](docs/GithubRepository.md)
  - [GithubRepositoryBranch](docs/GithubRepositoryBranch.md)
+ - [GitlabProject](docs/GitlabProject.md)
+ - [GitlabProjectBranch](docs/GitlabProjectBranch.md)
  - [Identity](docs/Identity.md)
  - [IdentityPlan](docs/IdentityPlan.md)
  - [IdentityUsageThresholdAction](docs/IdentityUsageThresholdAction.md)
@@ -627,6 +633,8 @@ Class | Method | HTTP request | Description
  - [ListFlowpipeTriggersResponse](docs/ListFlowpipeTriggersResponse.md)
  - [ListGithubRepositoriesResponse](docs/ListGithubRepositoriesResponse.md)
  - [ListGithubRepositoryBranchesResponse](docs/ListGithubRepositoryBranchesResponse.md)
+ - [ListGitlabProjectBranchesResponse](docs/ListGitlabProjectBranchesResponse.md)
+ - [ListGitlabProjectsResponse](docs/ListGitlabProjectsResponse.md)
  - [ListIdentitiesResponse](docs/ListIdentitiesResponse.md)
  - [ListIntegrationsResponse](docs/ListIntegrationsResponse.md)
  - [ListLogsResponse](docs/ListLogsResponse.md)
