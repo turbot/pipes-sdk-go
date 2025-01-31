@@ -1,5 +1,14 @@
 # Turbot Pipes Go SDK
 
+## 0.12.0 [TBD]
+
+_Enhancements_
+
+- Add support for management of `GitLab` integrations.
+- Add support for listing `GitLab` projects for a workspace integration and also list branches for a particular project.
+- Add support for returning `LastActivityAt` information for `Tenant`, `Organization` and `Workspace` Member APIs.
+- Add support for management of snapshot visibility settings for all workspaces in a custom tenant.
+
 ## 0.11.0 [2024-10-29]
 
 _Breaking changes_
