@@ -1,6 +1,6 @@
 # Turbot Pipes Go SDK
 
-## 0.12.0 [TBD]
+## 0.12.0 [2025-01-31]
 
 _Enhancements_
 
