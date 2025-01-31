@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**List**](OrgWorkspaceIntegrations.md#List) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration | List org workspace integrations
 [**ListGithubRepositories**](OrgWorkspaceIntegrations.md#ListGithubRepositories) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle}/github/repository | List org workspace integration github respositories
 [**ListGithubRepositoryHeads**](OrgWorkspaceIntegrations.md#ListGithubRepositoryHeads) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle}/github/repository/{repository_owner}/{repository_name}/head | List org workspace integration github respository heads
+[**ListGitlabProjectBranches**](OrgWorkspaceIntegrations.md#ListGitlabProjectBranches) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle}/gitlab/project/{project_id}/branch | List org workspace integration gitlab project branches
+[**ListGitlabProjects**](OrgWorkspaceIntegrations.md#ListGitlabProjects) | **Get** /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle}/gitlab/project | List org workspace integration gitlab projects
 
 
 
@@ -315,6 +317,169 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListGithubRepositoryBranchesResponse**](ListGithubRepositoryBranchesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListGitlabProjectBranches
+
+> ListGitlabProjectBranchesResponse ListGitlabProjectBranches(ctx, orgHandle, workspaceHandle, integrationHandle, projectId).Limit(limit).NextToken(nextToken).Execute()
+
+List org workspace integration gitlab project branches
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    orgHandle := "orgHandle_example" // string | The handle of the organization to which the workspace belongs to.
+    workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace for whom you want to list available integrations.
+    integrationHandle := "integrationHandle_example" // string | The handle of the integration for which heads will be listed.
+    projectId := "projectId_example" // string | The id of the project including the namespace and the name.
+    limit := int32(56) // int32 | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. (optional) (default to 25)
+    nextToken := "nextToken_example" // string | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.OrgWorkspaceIntegrations.ListGitlabProjectBranches(context.Background(), orgHandle, workspaceHandle, integrationHandle, projectId).Limit(limit).NextToken(nextToken).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceIntegrations.ListGitlabProjectBranches``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListGitlabProjectBranches`: ListGitlabProjectBranchesResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrgWorkspaceIntegrations.ListGitlabProjectBranches`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgHandle** | **string** | The handle of the organization to which the workspace belongs to. | 
+**workspaceHandle** | **string** | The handle of the workspace for whom you want to list available integrations. | 
+**integrationHandle** | **string** | The handle of the integration for which heads will be listed. | 
+**projectId** | **string** | The id of the project including the namespace and the name. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListGitlabProjectBranchesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+ **limit** | **int32** | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. | [default to 25]
+ **nextToken** | **string** | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. | 
+
+### Return type
+
+[**ListGitlabProjectBranchesResponse**](ListGitlabProjectBranchesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListGitlabProjects
+
+> ListGitlabProjectsResponse ListGitlabProjects(ctx, orgHandle, workspaceHandle, integrationHandle).Limit(limit).NextToken(nextToken).Execute()
+
+List org workspace integration gitlab projects
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    orgHandle := "orgHandle_example" // string | The handle of the organization to which the workspace belongs to.
+    workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace for whom you want to list available integrations.
+    integrationHandle := "integrationHandle_example" // string | The handle of the integration for which permitted repositories will be listed.
+    limit := int32(56) // int32 | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. (optional) (default to 25)
+    nextToken := "nextToken_example" // string | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.OrgWorkspaceIntegrations.ListGitlabProjects(context.Background(), orgHandle, workspaceHandle, integrationHandle).Limit(limit).NextToken(nextToken).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgWorkspaceIntegrations.ListGitlabProjects``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListGitlabProjects`: ListGitlabProjectsResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrgWorkspaceIntegrations.ListGitlabProjects`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgHandle** | **string** | The handle of the organization to which the workspace belongs to. | 
+**workspaceHandle** | **string** | The handle of the workspace for whom you want to list available integrations. | 
+**integrationHandle** | **string** | The handle of the integration for which permitted repositories will be listed. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListGitlabProjectsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **limit** | **int32** | The max number of items to fetch per page of data, subject to a min and max of 1 and 100 respectively. If not specified will default to 25. | [default to 25]
+ **nextToken** | **string** | When list results are truncated, next_token will be returned, which is a cursor to fetch the next page of data. Pass next_token to the subsequent list request to fetch the next page of data. | 
+
+### Return type
+
+[**ListGitlabProjectsResponse**](ListGitlabProjectsResponse.md)
 
 ### Authorization
 

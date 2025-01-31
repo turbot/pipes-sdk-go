@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CreatedById** | **string** | The ID of the user that created this. | 
 **Email** | **string** | The email of the user. | 
 **Id** | **string** | The unique identifier of the tenant member. | 
+**LastActivityAt** | Pointer to **string** | The time of the last activity for the member. | [optional] 
 **Role** | **string** | The role of the tenant user. | 
 **Status** | **string** | The status of the tenant member i.e invited or accepted. | 
 **Tenant** | Pointer to [**Tenant**](Tenant.md) | Readonly in DB | [optional] 
@@ -143,6 +144,31 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+
+### GetLastActivityAt
+
+`func (o *TenantUser) GetLastActivityAt() string`
+
+GetLastActivityAt returns the LastActivityAt field if non-nil, zero value otherwise.
+
+### GetLastActivityAtOk
+
+`func (o *TenantUser) GetLastActivityAtOk() (*string, bool)`
+
+GetLastActivityAtOk returns a tuple with the LastActivityAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastActivityAt
+
+`func (o *TenantUser) SetLastActivityAt(v string)`
+
+SetLastActivityAt sets LastActivityAt field to given value.
+
+### HasLastActivityAt
+
+`func (o *TenantUser) HasLastActivityAt() bool`
+
+HasLastActivityAt returns a boolean if a field has been set.
 
 ### GetRole
 

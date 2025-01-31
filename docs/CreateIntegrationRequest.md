@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Config** | Pointer to **map[string]interface{}** | The configuration for the integration. | [optional] 
 **Handle** | **string** | The handle for the integration. | 
-**Type** | [**IntegrationType**](IntegrationType.md) | The type of the integration, can be one of &#x60;aws&#x60;, &#x60;azure&#x60;, &#x60;gcp&#x60; or &#x60;github&#x60;. | 
+**Type** | [**IntegrationType**](IntegrationType.md) | The type of the integration, can be one of &#x60;aws&#x60;, &#x60;azure&#x60;, &#x60;gcp&#x60;, &#x60;gitlab&#x60; or &#x60;github&#x60;. | 
 
 ## Methods
 

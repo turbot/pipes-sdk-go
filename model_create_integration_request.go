@@ -20,7 +20,7 @@ type CreateIntegrationRequest struct {
 	Config *map[string]interface{} `json:"config,omitempty"`
 	// The handle for the integration.
 	Handle string `json:"handle"`
-	// The type of the integration, can be one of `aws`, `azure`, `gcp` or `github`.
+	// The type of the integration, can be one of `aws`, `azure`, `gcp`, `gitlab` or `github`.
 	Type IntegrationType `json:"type"`
 }
 

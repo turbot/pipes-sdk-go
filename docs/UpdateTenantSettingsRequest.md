@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **LoginSaml** | Pointer to [**UpdateTenantSamlLoginSettings**](UpdateTenantSamlLoginSettings.md) | LoginMicrosoft      *TenantLoginSettings     &#x60;json:\&quot;login_microsoft\&quot; binding:\&quot;omitempty\&quot;&#x60;                                  // Settings related to login via Microsoft. | [optional] 
 **UserProvisioning** | Pointer to **[]string** | The user provisioning settings for the tenant. | [optional] 
 **UserProvisioningPermittedDomains** | Pointer to **[]string** | The domains that new users are permitted to be provisioned from. | [optional] 
+**WorkspaceSnapshotPermittedVisibility** | Pointer to **[]string** | Settings related to visibility of snapshots in the tenant. | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetUserProvisioningPermittedDomains sets UserProvisioningPermittedDomains field 
 `func (o *UpdateTenantSettingsRequest) HasUserProvisioningPermittedDomains() bool`
 
 HasUserProvisioningPermittedDomains returns a boolean if a field has been set.
+
+### GetWorkspaceSnapshotPermittedVisibility
+
+`func (o *UpdateTenantSettingsRequest) GetWorkspaceSnapshotPermittedVisibility() []string`
+
+GetWorkspaceSnapshotPermittedVisibility returns the WorkspaceSnapshotPermittedVisibility field if non-nil, zero value otherwise.
+
+### GetWorkspaceSnapshotPermittedVisibilityOk
+
+`func (o *UpdateTenantSettingsRequest) GetWorkspaceSnapshotPermittedVisibilityOk() (*[]string, bool)`
+
+GetWorkspaceSnapshotPermittedVisibilityOk returns a tuple with the WorkspaceSnapshotPermittedVisibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWorkspaceSnapshotPermittedVisibility
+
+`func (o *UpdateTenantSettingsRequest) SetWorkspaceSnapshotPermittedVisibility(v []string)`
+
+SetWorkspaceSnapshotPermittedVisibility sets WorkspaceSnapshotPermittedVisibility field to given value.
+
+### HasWorkspaceSnapshotPermittedVisibility
+
+`func (o *UpdateTenantSettingsRequest) HasWorkspaceSnapshotPermittedVisibility() bool`
+
+HasWorkspaceSnapshotPermittedVisibility returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

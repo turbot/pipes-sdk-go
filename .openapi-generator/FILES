@@ -141,6 +141,8 @@ docs/FlowpipeInputState.md
 docs/FlowpipeInputStepType.md
 docs/GithubRepository.md
 docs/GithubRepositoryBranch.md
+docs/GitlabProject.md
+docs/GitlabProjectBranch.md
 docs/Identities.md
 docs/Identity.md
 docs/IdentityPlan.md
@@ -166,6 +168,8 @@ docs/ListFlowpipePipelinesResponse.md
 docs/ListFlowpipeTriggersResponse.md
 docs/ListGithubRepositoriesResponse.md
 docs/ListGithubRepositoryBranchesResponse.md
+docs/ListGitlabProjectBranchesResponse.md
+docs/ListGitlabProjectsResponse.md
 docs/ListIdentitiesResponse.md
 docs/ListIntegrationsResponse.md
 docs/ListLogsResponse.md
@@ -443,6 +447,8 @@ model_flowpipe_input_state.go
 model_flowpipe_input_step_type.go
 model_github_repository.go
 model_github_repository_branch.go
+model_gitlab_project.go
+model_gitlab_project_branch.go
 model_identity.go
 model_identity_plan.go
 model_identity_usage_threshold_action.go
@@ -467,6 +473,8 @@ model_list_flowpipe_pipelines_response.go
 model_list_flowpipe_triggers_response.go
 model_list_github_repositories_response.go
 model_list_github_repository_branches_response.go
+model_list_gitlab_project_branches_response.go
+model_list_gitlab_projects_response.go
 model_list_identities_response.go
 model_list_integrations_response.go
 model_list_logs_response.go

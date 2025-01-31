@@ -26,6 +26,8 @@ type TenantUser struct {
 	Email string `json:"email"`
 	// The unique identifier of the tenant member.
 	Id string `json:"id"`
+	// The time of the last activity for the member.
+	LastActivityAt *string `json:"last_activity_at,omitempty"`
 	// The role of the tenant user.
 	Role string `json:"role"`
 	// The status of the tenant member i.e invited or accepted.
@@ -201,6 +203,38 @@ func (o *TenantUser) GetIdOk() (*string, bool) {
 // SetId sets field value
 func (o *TenantUser) SetId(v string) {
 	o.Id = v
+}
+
+// GetLastActivityAt returns the LastActivityAt field value if set, zero value otherwise.
+func (o *TenantUser) GetLastActivityAt() string {
+	if o == nil || o.LastActivityAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastActivityAt
+}
+
+// GetLastActivityAtOk returns a tuple with the LastActivityAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TenantUser) GetLastActivityAtOk() (*string, bool) {
+	if o == nil || o.LastActivityAt == nil {
+		return nil, false
+	}
+	return o.LastActivityAt, true
+}
+
+// HasLastActivityAt returns a boolean if a field has been set.
+func (o *TenantUser) HasLastActivityAt() bool {
+	if o != nil && o.LastActivityAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastActivityAt gets a reference to the given string and assigns it to the LastActivityAt field.
+func (o *TenantUser) SetLastActivityAt(v string) {
+	o.LastActivityAt = &v
 }
 
 // GetRole returns the Role field value
@@ -491,6 +525,9 @@ func (o TenantUser) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["id"] = o.Id
+	}
+	if o.LastActivityAt != nil {
+		toSerialize["last_activity_at"] = o.LastActivityAt
 	}
 	if true {
 		toSerialize["role"] = o.Role

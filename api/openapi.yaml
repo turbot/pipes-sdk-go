@@ -15027,7 +15027,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Pipeline'
+                $ref: '#/components/schemas/WorkspaceModPipeline'
           description: OK
         "400":
           content:
@@ -15984,6 +15984,211 @@ paths:
                 $ref: '#/components/schemas/ErrorModel'
           description: Internal Server Error
       summary: List org workspace integration github respository heads
+      tags:
+      - OrgWorkspaceIntegrations
+  /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle}/gitlab/project:
+    get:
+      description: List projects that are given access to the integration available
+        for an organization workspace.
+      operationId: orgWorkspaceIntegration_listGitlabProjects
+      parameters:
+      - description: The handle of the organization to which the workspace belongs
+          to.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the workspace for whom you want to list available
+          integrations.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the integration for which permitted repositories
+          will be listed.
+        explode: false
+        in: path
+        name: integration_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned,
+          which is a cursor to fetch the next page of data. Pass next_token to the
+          subsequent list request to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGitlabProjectsResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List org workspace integration gitlab projects
+      tags:
+      - OrgWorkspaceIntegrations
+  /org/{org_handle}/workspace/{workspace_handle}/integration/{integration_handle}/gitlab/project/{project_id}/branch:
+    get:
+      description: List branches for a gitlab project of an integration available
+        for an organization workspace.
+      operationId: orgWorkspaceIntegration_listGitlabProjectBranches
+      parameters:
+      - description: The handle of the organization to which the workspace belongs
+          to.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the workspace for whom you want to list available
+          integrations.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the integration for which heads will be listed.
+        explode: false
+        in: path
+        name: integration_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The id of the project including the namespace and the name.
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned,
+          which is a cursor to fetch the next page of data. Pass next_token to the
+          subsequent list request to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGitlabProjectBranchesResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List org workspace integration gitlab project branches
       tags:
       - OrgWorkspaceIntegrations
   /org/{org_handle}/workspace/{workspace_handle}/member:
@@ -32723,7 +32928,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Pipeline'
+                $ref: '#/components/schemas/WorkspaceModPipeline'
           description: OK
         "400":
           content:
@@ -33676,6 +33881,209 @@ paths:
                 $ref: '#/components/schemas/ErrorModel'
           description: Internal Server Error
       summary: List user workspace integration github respository heads
+      tags:
+      - UserWorkspaceIntegrations
+  /user/{user_handle}/workspace/{workspace_handle}/integration/{integration_handle}/gitlab/project:
+    get:
+      description: List gitlab proejcts that are given access to the integration available
+        for a user workspace.
+      operationId: userWorkspaceIntegration_listGitlabProjects
+      parameters:
+      - description: The handle of the user to which the workspace belongs to.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the workspace for whom you want to list available
+          integrations.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the integration for which permitted repositories
+          will be listed.
+        explode: false
+        in: path
+        name: integration_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned,
+          which is a cursor to fetch the next page of data. Pass next_token to the
+          subsequent list request to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGitlabProjectsResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List user workspace integration gitlab projects
+      tags:
+      - UserWorkspaceIntegrations
+  /user/{user_handle}/workspace/{workspace_handle}/integration/{integration_handle}/gitlab/project/{project_id}/branch:
+    get:
+      description: List branches for a gitlab project of an integration available
+        for a user workspace.
+      operationId: userWorkspaceIntegration_listGitlabProjectBranches
+      parameters:
+      - description: The handle of the user to which the workspace belongs to.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the workspace for whom you want to list available
+          integrations.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the integration for which heads will be listed.
+        explode: false
+        in: path
+        name: integration_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The id of the project including the namespace and the name.
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned,
+          which is a cursor to fetch the next page of data. Pass next_token to the
+          subsequent list request to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGitlabProjectBranchesResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List user workspace integration gitlab project branches
       tags:
       - UserWorkspaceIntegrations
   /user/{user_handle}/workspace/{workspace_handle}/mod:
@@ -38748,7 +39156,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/IntegrationType'
           description: The type of the integration, can be one of `aws`, `azure`,
-            `gcp` or `github`.
+            `gcp`, `gitlab` or `github`.
           type: object
       required:
       - handle
@@ -40038,6 +40446,35 @@ components:
         protected:
           type: boolean
       type: object
+    GitlabProject:
+      example:
+        visibility: visibility
+        path_with_namespace: path_with_namespace
+        name: name
+        description: description
+        id: 0
+      properties:
+        description:
+          type: string
+        id:
+          type: integer
+        name:
+          type: string
+        path_with_namespace:
+          type: string
+        visibility:
+          type: string
+      type: object
+    GitlabProjectBranch:
+      example:
+        protected: true
+        name: name
+      properties:
+        name:
+          type: string
+        protected:
+          type: boolean
+      type: object
     Identity:
       example:
         tenant_id: tenant_id
@@ -40201,7 +40638,8 @@ components:
           format: ^u_[0-9a-v]{20}$
           type: string
         github_installation_id:
-          description: The GitHub installation ID for this integration.
+          description: The GitHub installation ID for this integration, only applicable
+            when the integration type is `github`.
           type: integer
         handle:
           description: The handle for the integration.
@@ -40262,7 +40700,6 @@ components:
       - created_at
       - created_by_id
       - deleted_by_id
-      - github_installation_id
       - handle
       - id
       - tenant_id
@@ -40307,6 +40744,7 @@ components:
       - gcp
       - github
       - slack
+      - gitlab
       type: string
       x-enum-varnames:
       - IntegrationTypeAWS
@@ -40315,6 +40753,7 @@ components:
       - IntegrationTypeGCP
       - IntegrationTypeGitHub
       - IntegrationTypeSlack
+      - IntegrationTypeGitlab
     InviteOrgUserRequest:
       example:
         role: role
@@ -41750,6 +42189,44 @@ components:
         next_token:
           type: string
       type: object
+    ListGitlabProjectBranchesResponse:
+      example:
+        next_token: next_token
+        items:
+        - protected: true
+          name: name
+        - protected: true
+          name: name
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/GitlabProjectBranch'
+          type: array
+        next_token:
+          type: string
+      type: object
+    ListGitlabProjectsResponse:
+      example:
+        next_token: next_token
+        items:
+        - visibility: visibility
+          path_with_namespace: path_with_namespace
+          name: name
+          description: description
+          id: 0
+        - visibility: visibility
+          path_with_namespace: path_with_namespace
+          name: name
+          description: description
+          id: 0
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/GitlabProject'
+          type: array
+        next_token:
+          type: string
+      type: object
     ListIdentitiesResponse:
       example:
         next_token: next_token
@@ -41930,6 +42407,7 @@ components:
           updated_at: updated_at
           user_id: user_id
           org_id: org_id
+          last_activity_at: last_activity_at
           scope: scope
           updated_by: '{}'
           updated_by_id: updated_by_id
@@ -41945,6 +42423,7 @@ components:
           updated_at: updated_at
           user_id: user_id
           org_id: org_id
+          last_activity_at: last_activity_at
           scope: scope
           updated_by: '{}'
           updated_by_id: updated_by_id
@@ -41973,6 +42452,7 @@ components:
           updated_at: updated_at
           user_id: user_id
           org_id: org_id
+          last_activity_at: last_activity_at
           scope: scope
           updated_by: '{}'
           updated_by_id: updated_by_id
@@ -41990,6 +42470,7 @@ components:
           updated_at: updated_at
           user_id: user_id
           org_id: org_id
+          last_activity_at: last_activity_at
           scope: scope
           updated_by: '{}'
           updated_by_id: updated_by_id
@@ -42303,6 +42784,7 @@ components:
           created_by: '{}'
           updated_at: updated_at
           user_id: user_id
+          last_activity_at: last_activity_at
           updated_by: '{}'
           updated_by_id: updated_by_id
           created_by_id: created_by_id
@@ -42318,6 +42800,7 @@ components:
           created_by: '{}'
           updated_at: updated_at
           user_id: user_id
+          last_activity_at: last_activity_at
           updated_by: '{}'
           updated_by_id: updated_by_id
           created_by_id: created_by_id
@@ -43628,6 +44111,7 @@ components:
         updated_at: updated_at
         user_id: user_id
         org_id: org_id
+        last_activity_at: last_activity_at
         scope: scope
         updated_by: '{}'
         updated_by_id: updated_by_id
@@ -43651,6 +44135,9 @@ components:
         id:
           description: The unique identifier of the org member.
           format: ^[a-z]_[0-9a-v]{20}$
+          type: string
+        last_activity_at:
+          description: The time of the last activity for the member.
           type: string
         org_id:
           description: The identifier of an org.
@@ -43718,6 +44205,7 @@ components:
         updated_at: updated_at
         user_id: user_id
         org_id: org_id
+        last_activity_at: last_activity_at
         scope: scope
         updated_by: '{}'
         updated_by_id: updated_by_id
@@ -43742,6 +44230,9 @@ components:
         id:
           description: The unique identifier of the org member.
           format: ^[a-z]_[0-9a-v]{20}$
+          type: string
+        last_activity_at:
+          description: The time of the last activity for the member.
           type: string
         org_id:
           description: The identifier of an org.
@@ -44636,6 +45127,9 @@ components:
         login_saml: '{}'
         updated_by: '{}'
         updated_by_id: updated_by_id
+        workspace_snapshot_permitted_visibility:
+        - workspace_snapshot_permitted_visibility
+        - workspace_snapshot_permitted_visibility
         created_by_id: created_by_id
       properties:
         created_at:
@@ -44696,6 +45190,11 @@ components:
         version_id:
           description: The current version of the user setting.
           type: integer
+        workspace_snapshot_permitted_visibility:
+          description: List of allowed visibility settings for snapshots.
+          items:
+            type: string
+          type: array
       required:
       - created_at
       - created_by_id
@@ -44707,6 +45206,7 @@ components:
       - user_provisioning
       - user_provisioning_permitted_domains
       - version_id
+      - workspace_snapshot_permitted_visibility
       type: object
     TenantUser:
       example:
@@ -44717,6 +45217,7 @@ components:
         created_by: '{}'
         updated_at: updated_at
         user_id: user_id
+        last_activity_at: last_activity_at
         updated_by: '{}'
         updated_by_id: updated_by_id
         created_by_id: created_by_id
@@ -44745,6 +45246,9 @@ components:
         id:
           description: The unique identifier of the tenant member.
           format: ^[a-z]_[0-9a-v]{20}$
+          type: string
+        last_activity_at:
+          description: The time of the last activity for the member.
           type: string
         role:
           description: The role of the tenant user.
@@ -45281,6 +45785,9 @@ components:
         user_provisioning_permitted_domains:
         - user_provisioning_permitted_domains
         - user_provisioning_permitted_domains
+        workspace_snapshot_permitted_visibility:
+        - workspace_snapshot_permitted_visibility
+        - workspace_snapshot_permitted_visibility
       properties:
         login_email:
           allOf:
@@ -45312,6 +45819,11 @@ components:
         user_provisioning_permitted_domains:
           description: The domains that new users are permitted to be provisioned
             from.
+          items:
+            type: string
+          type: array
+        workspace_snapshot_permitted_visibility:
+          description: Settings related to visibility of snapshots in the tenant.
           items:
             type: string
           type: array

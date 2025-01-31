@@ -30,8 +30,8 @@ type Integration struct {
 	DeletedBy *User `json:"deleted_by,omitempty"`
 	// The ID of the user that performed the deletion.
 	DeletedById string `json:"deleted_by_id"`
-	// The GitHub installation ID for this integration.
-	GithubInstallationId int32 `json:"github_installation_id"`
+	// The GitHub installation ID for this integration, only applicable when the integration type is `github`.
+	GithubInstallationId *int32 `json:"github_installation_id,omitempty"`
 	// The handle for the integration.
 	Handle string `json:"handle"`
 	// The unique identifier for the integration.
@@ -64,12 +64,11 @@ type Integration struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIntegration(createdAt string, createdById string, deletedById string, githubInstallationId int32, handle string, id string, tenantId string, updatedById string, versionId int32) *Integration {
+func NewIntegration(createdAt string, createdById string, deletedById string, handle string, id string, tenantId string, updatedById string, versionId int32) *Integration {
 	this := Integration{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
 	this.DeletedById = deletedById
-	this.GithubInstallationId = githubInstallationId
 	this.Handle = handle
 	this.Id = id
 	this.TenantId = tenantId
@@ -286,28 +285,36 @@ func (o *Integration) SetDeletedById(v string) {
 	o.DeletedById = v
 }
 
-// GetGithubInstallationId returns the GithubInstallationId field value
+// GetGithubInstallationId returns the GithubInstallationId field value if set, zero value otherwise.
 func (o *Integration) GetGithubInstallationId() int32 {
-	if o == nil {
+	if o == nil || o.GithubInstallationId == nil {
 		var ret int32
 		return ret
 	}
-
-	return o.GithubInstallationId
+	return *o.GithubInstallationId
 }
 
-// GetGithubInstallationIdOk returns a tuple with the GithubInstallationId field value
+// GetGithubInstallationIdOk returns a tuple with the GithubInstallationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Integration) GetGithubInstallationIdOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || o.GithubInstallationId == nil {
 		return nil, false
 	}
-	return &o.GithubInstallationId, true
+	return o.GithubInstallationId, true
 }
 
-// SetGithubInstallationId sets field value
+// HasGithubInstallationId returns a boolean if a field has been set.
+func (o *Integration) HasGithubInstallationId() bool {
+	if o != nil && o.GithubInstallationId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubInstallationId gets a reference to the given int32 and assigns it to the GithubInstallationId field.
 func (o *Integration) SetGithubInstallationId(v int32) {
-	o.GithubInstallationId = v
+	o.GithubInstallationId = &v
 }
 
 // GetHandle returns the Handle field value
@@ -709,7 +716,7 @@ func (o Integration) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["deleted_by_id"] = o.DeletedById
 	}
-	if true {
+	if o.GithubInstallationId != nil {
 		toSerialize["github_installation_id"] = o.GithubInstallationId
 	}
 	if true {

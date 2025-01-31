@@ -26,6 +26,7 @@ const (
 	IntegrationTypeGCP    IntegrationType = "gcp"
 	IntegrationTypeGitHub IntegrationType = "github"
 	IntegrationTypeSlack  IntegrationType = "slack"
+	IntegrationTypeGitlab IntegrationType = "gitlab"
 )
 
 // All allowed values of IntegrationType enum
@@ -36,6 +37,7 @@ var AllowedIntegrationTypeEnumValues = []IntegrationType{
 	"gcp",
 	"github",
 	"slack",
+	"gitlab",
 }
 
 func (v *IntegrationType) UnmarshalJSON(src []byte) error {
