@@ -1,5 +1,11 @@
 # Turbot Pipes Go SDK
 
+## 0.12.1 [2025-02-11]
+
+_Enhancements_
+
+- Updated `Go` version to `1.23.2`
+
 ## 0.12.0 [2025-01-31]
 
 _Enhancements_
