@@ -16,6 +16,8 @@ import (
 
 // WorkspaceSchema struct for WorkspaceSchema
 type WorkspaceSchema struct {
+	// The list of aggregators that are using this schema.
+	AggregatedBy *[]string `json:"aggregated_by,omitempty"`
 	// The details of the aggregator if the schema is of type 'aggregator'.
 	Aggregator *Aggregator `json:"aggregator,omitempty"`
 	// The id of the aggregator if the schema is of type 'aggregator'.
@@ -86,6 +88,38 @@ func NewWorkspaceSchema(createdAt string, createdById string, deletedById string
 func NewWorkspaceSchemaWithDefaults() *WorkspaceSchema {
 	this := WorkspaceSchema{}
 	return &this
+}
+
+// GetAggregatedBy returns the AggregatedBy field value if set, zero value otherwise.
+func (o *WorkspaceSchema) GetAggregatedBy() []string {
+	if o == nil || o.AggregatedBy == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AggregatedBy
+}
+
+// GetAggregatedByOk returns a tuple with the AggregatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceSchema) GetAggregatedByOk() (*[]string, bool) {
+	if o == nil || o.AggregatedBy == nil {
+		return nil, false
+	}
+	return o.AggregatedBy, true
+}
+
+// HasAggregatedBy returns a boolean if a field has been set.
+func (o *WorkspaceSchema) HasAggregatedBy() bool {
+	if o != nil && o.AggregatedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAggregatedBy gets a reference to the given []string and assigns it to the AggregatedBy field.
+func (o *WorkspaceSchema) SetAggregatedBy(v []string) {
+	o.AggregatedBy = &v
 }
 
 // GetAggregator returns the Aggregator field value if set, zero value otherwise.
@@ -722,6 +756,9 @@ func (o *WorkspaceSchema) SetWorkspaceId(v string) {
 
 func (o WorkspaceSchema) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AggregatedBy != nil {
+		toSerialize["aggregated_by"] = o.AggregatedBy
+	}
 	if o.Aggregator != nil {
 		toSerialize["aggregator"] = o.Aggregator
 	}

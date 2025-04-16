@@ -548,59 +548,63 @@ func (a *UserWorkspaceSchemasService) GetExecute(r UserWorkspaceSchemasApiGetReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UserWorkspaceSchemasApiGet_0Request struct {
+type UserWorkspaceSchemasApiGetTableRequest struct {
 	ctx             _context.Context
 	ApiService      *UserWorkspaceSchemasService
 	userHandle      string
 	workspaceHandle string
 	schemaName      string
+	tableName       string
 }
 
-func (r UserWorkspaceSchemasApiGet_0Request) Execute() (ListWorkspaceSchemaTableResponse, *_nethttp.Response, error) {
-	return r.ApiService.Get_1Execute(r)
+func (r UserWorkspaceSchemasApiGetTableRequest) Execute() (WorkspaceSchemaTable, *_nethttp.Response, error) {
+	return r.ApiService.GetTableExecute(r)
 }
 
 /*
-Get_0 List user workspace schema tables
+GetTable Get user workspace schema table
 
-List the tables for a user workspace schema.
+Get details about a specific table in a user workspace schema.
 
 	@param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param userHandle The handle of the user that the workspace belongs to.
 	@param workspaceHandle The handle of the workspace where the schema exists.
-	@param schemaName The name of the schema whose detail needs to be fetched.
-	@return UserWorkspaceSchemasApiGet_0Request
+	@param schemaName The name of the schema to which the table belongs.
+	@param tableName The name of the table whose detail needs to be fetched.
+	@return UserWorkspaceSchemasApiGetTableRequest
 */
-func (a *UserWorkspaceSchemasService) Get_1(ctx _context.Context, userHandle string, workspaceHandle string, schemaName string) UserWorkspaceSchemasApiGet_0Request {
-	return UserWorkspaceSchemasApiGet_0Request{
+func (a *UserWorkspaceSchemasService) GetTable(ctx _context.Context, userHandle string, workspaceHandle string, schemaName string, tableName string) UserWorkspaceSchemasApiGetTableRequest {
+	return UserWorkspaceSchemasApiGetTableRequest{
 		ApiService:      a,
 		ctx:             ctx,
 		userHandle:      userHandle,
 		workspaceHandle: workspaceHandle,
 		schemaName:      schemaName,
+		tableName:       tableName,
 	}
 }
 
 // Execute executes the request
 //
-//	@return ListWorkspaceSchemaTableResponse
-func (a *UserWorkspaceSchemasService) Get_1Execute(r UserWorkspaceSchemasApiGet_0Request) (ListWorkspaceSchemaTableResponse, *_nethttp.Response, error) {
+//	@return WorkspaceSchemaTable
+func (a *UserWorkspaceSchemasService) GetTableExecute(r UserWorkspaceSchemasApiGetTableRequest) (WorkspaceSchemaTable, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue ListWorkspaceSchemaTableResponse
+		localVarReturnValue WorkspaceSchemaTable
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserWorkspaceSchemasService.Get_1")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserWorkspaceSchemasService.GetTable")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/user/{user_handle}/workspace/{workspace_handle}/schema/{schema_name}/table"
+	localVarPath := localBasePath + "/user/{user_handle}/workspace/{workspace_handle}/schema/{schema_name}/table/{table_name}"
 	localVarPath = strings.Replace(localVarPath, "{"+"user_handle"+"}", _neturl.PathEscape(parameterToString(r.userHandle, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"workspace_handle"+"}", _neturl.PathEscape(parameterToString(r.workspaceHandle, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"schema_name"+"}", _neturl.PathEscape(parameterToString(r.schemaName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"table_name"+"}", _neturl.PathEscape(parameterToString(r.tableName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -873,6 +877,177 @@ func (a *UserWorkspaceSchemasService) ListExecute(r UserWorkspaceSchemasApiListR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UserWorkspaceSchemasApiListTablesRequest struct {
+	ctx             _context.Context
+	ApiService      *UserWorkspaceSchemasService
+	userHandle      string
+	workspaceHandle string
+	schemaName      string
+}
+
+func (r UserWorkspaceSchemasApiListTablesRequest) Execute() (ListWorkspaceSchemaTableResponse, *_nethttp.Response, error) {
+	return r.ApiService.ListTablesExecute(r)
+}
+
+/*
+ListTables List user workspace schema tables
+
+List the tables for a user workspace schema.
+
+	@param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param userHandle The handle of the user that the workspace belongs to.
+	@param workspaceHandle The handle of the workspace where the schema exists.
+	@param schemaName The name of the schema whose detail needs to be fetched.
+	@return UserWorkspaceSchemasApiListTablesRequest
+*/
+func (a *UserWorkspaceSchemasService) ListTables(ctx _context.Context, userHandle string, workspaceHandle string, schemaName string) UserWorkspaceSchemasApiListTablesRequest {
+	return UserWorkspaceSchemasApiListTablesRequest{
+		ApiService:      a,
+		ctx:             ctx,
+		userHandle:      userHandle,
+		workspaceHandle: workspaceHandle,
+		schemaName:      schemaName,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListWorkspaceSchemaTableResponse
+func (a *UserWorkspaceSchemasService) ListTablesExecute(r UserWorkspaceSchemasApiListTablesRequest) (ListWorkspaceSchemaTableResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ListWorkspaceSchemaTableResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserWorkspaceSchemasService.ListTables")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/user/{user_handle}/workspace/{workspace_handle}/schema/{schema_name}/table"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_handle"+"}", _neturl.PathEscape(parameterToString(r.userHandle, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workspace_handle"+"}", _neturl.PathEscape(parameterToString(r.workspaceHandle, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"schema_name"+"}", _neturl.PathEscape(parameterToString(r.schemaName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
 			var v ErrorModel
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

@@ -111,7 +111,7 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user who owns the workspace.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the mod will be installed.
-    request := *openapiclient.NewCreateWorkspaceModRequest("Path_example") // CreateWorkspaceModRequest | The request body to install a mod in the mentioned workspace for this user.
+    request := *openapiclient.NewCreateWorkspaceModRequest("Path_example") // CreateWorkspaceModRequest | The request body to install a mod in the mentioned workspace for this user. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -155,7 +155,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: application/json, multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -340,7 +340,7 @@ func main() {
     userHandle := "userHandle_example" // string | The handle of the user who owns the workspace.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the mod will be updated.
     modAlias := "modAlias_example" // string | The mod alias or mod ID to update.
-    request := *openapiclient.NewUpdateWorkspaceModRequest() // UpdateWorkspaceModRequest | The request body to update a mod for this workspace.
+    request := *openapiclient.NewUpdateWorkspaceModRequest() // UpdateWorkspaceModRequest | The request body to update a mod for this workspace. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -386,7 +386,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: application/json, multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

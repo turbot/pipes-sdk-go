@@ -35,6 +35,7 @@ type WorkspaceMod struct {
 	ModId            *string            `json:"mod_id,omitempty"`
 	Path             *string            `json:"path,omitempty"`
 	Pipe             *ModPipe           `json:"pipe,omitempty"`
+	SourceType       ModSourceType      `json:"source_type"`
 	State            *WorkspaceModState `json:"state,omitempty"`
 	StateReason      *string            `json:"state_reason,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
@@ -53,12 +54,13 @@ type WorkspaceMod struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkspaceMod(createdAt string, createdById string, id string, identityId string, updatedById string, versionId int32, workspaceId string) *WorkspaceMod {
+func NewWorkspaceMod(createdAt string, createdById string, id string, identityId string, sourceType ModSourceType, updatedById string, versionId int32, workspaceId string) *WorkspaceMod {
 	this := WorkspaceMod{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
 	this.Id = id
 	this.IdentityId = identityId
+	this.SourceType = sourceType
 	this.UpdatedById = updatedById
 	this.VersionId = versionId
 	this.WorkspaceId = workspaceId
@@ -521,6 +523,30 @@ func (o *WorkspaceMod) SetPipe(v ModPipe) {
 	o.Pipe = &v
 }
 
+// GetSourceType returns the SourceType field value
+func (o *WorkspaceMod) GetSourceType() ModSourceType {
+	if o == nil {
+		var ret ModSourceType
+		return ret
+	}
+
+	return o.SourceType
+}
+
+// GetSourceTypeOk returns a tuple with the SourceType field value
+// and a boolean to check if the value has been set.
+func (o *WorkspaceMod) GetSourceTypeOk() (*ModSourceType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SourceType, true
+}
+
+// SetSourceType sets field value
+func (o *WorkspaceMod) SetSourceType(v ModSourceType) {
+	o.SourceType = v
+}
+
 // GetState returns the State field value if set, zero value otherwise.
 func (o *WorkspaceMod) GetState() WorkspaceModState {
 	if o == nil || o.State == nil {
@@ -799,6 +825,9 @@ func (o WorkspaceMod) MarshalJSON() ([]byte, error) {
 	}
 	if o.Pipe != nil {
 		toSerialize["pipe"] = o.Pipe
+	}
+	if true {
+		toSerialize["source_type"] = o.SourceType
 	}
 	if o.State != nil {
 		toSerialize["state"] = o.State

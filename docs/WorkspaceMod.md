@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **ModId** | Pointer to **string** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
 **Pipe** | Pointer to [**ModPipe**](ModPipe.md) |  | [optional] 
+**SourceType** | [**ModSourceType**](ModSourceType.md) |  | 
 **State** | Pointer to [**WorkspaceModState**](WorkspaceModState.md) |  | [optional] 
 **StateReason** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
@@ -32,7 +33,7 @@ Name | Type | Description | Notes
 
 ### NewWorkspaceMod
 
-`func NewWorkspaceMod(createdAt string, createdById string, id string, identityId string, updatedById string, versionId int32, workspaceId string, ) *WorkspaceMod`
+`func NewWorkspaceMod(createdAt string, createdById string, id string, identityId string, sourceType ModSourceType, updatedById string, versionId int32, workspaceId string, ) *WorkspaceMod`
 
 NewWorkspaceMod instantiates a new WorkspaceMod object
 This constructor will assign default values to properties that have it defined,
@@ -401,6 +402,26 @@ SetPipe sets Pipe field to given value.
 `func (o *WorkspaceMod) HasPipe() bool`
 
 HasPipe returns a boolean if a field has been set.
+
+### GetSourceType
+
+`func (o *WorkspaceMod) GetSourceType() ModSourceType`
+
+GetSourceType returns the SourceType field if non-nil, zero value otherwise.
+
+### GetSourceTypeOk
+
+`func (o *WorkspaceMod) GetSourceTypeOk() (*ModSourceType, bool)`
+
+GetSourceTypeOk returns a tuple with the SourceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceType
+
+`func (o *WorkspaceMod) SetSourceType(v ModSourceType)`
+
+SetSourceType sets SourceType field to given value.
+
 
 ### GetState
 
