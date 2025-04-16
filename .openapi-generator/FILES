@@ -202,6 +202,7 @@ docs/ListWorkspaceSnapshotsResponse.md
 docs/ListWorkspacesResponse.md
 docs/LogRecord.md
 docs/ModPipe.md
+docs/ModSourceType.md
 docs/ModTriggerInfo.md
 docs/ModTriggerState.md
 docs/Notifier.md
@@ -507,6 +508,7 @@ model_list_workspace_snapshots_response.go
 model_list_workspaces_response.go
 model_log_record.go
 model_mod_pipe.go
+model_mod_source_type.go
 model_mod_trigger_info.go
 model_mod_trigger_state.go
 model_notifier.go

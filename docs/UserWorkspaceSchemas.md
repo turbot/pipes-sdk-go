@@ -7,8 +7,9 @@ Method | HTTP request | Description
 [**Attach**](UserWorkspaceSchemas.md#Attach) | **Post** /user/{user_handle}/workspace/{workspace_handle}/schema | Attach a schema to a user workspace
 [**Detach**](UserWorkspaceSchemas.md#Detach) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/schema/{schema_name} | Detach a schema from a user workspace
 [**Get**](UserWorkspaceSchemas.md#Get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/schema/{schema_name} | Get user workspace schema
-[**Get_0**](UserWorkspaceSchemas.md#Get_0) | **Get** /user/{user_handle}/workspace/{workspace_handle}/schema/{schema_name}/table | List user workspace schema tables
+[**GetTable**](UserWorkspaceSchemas.md#GetTable) | **Get** /user/{user_handle}/workspace/{workspace_handle}/schema/{schema_name}/table/{table_name} | Get user workspace schema table
 [**List**](UserWorkspaceSchemas.md#List) | **Get** /user/{user_handle}/workspace/{workspace_handle}/schema | List user workspace schemas
+[**ListTables**](UserWorkspaceSchemas.md#ListTables) | **Get** /user/{user_handle}/workspace/{workspace_handle}/schema/{schema_name}/table | List user workspace schema tables
 
 
 
@@ -239,11 +240,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## Get_0
+## GetTable
 
-> ListWorkspaceSchemaTableResponse Get_0(ctx, userHandle, workspaceHandle, schemaName).Execute()
+> WorkspaceSchemaTable GetTable(ctx, userHandle, workspaceHandle, schemaName, tableName).Execute()
 
-List user workspace schema tables
+Get user workspace schema table
 
 
 
@@ -262,17 +263,18 @@ import (
 func main() {
     userHandle := "userHandle_example" // string | The handle of the user that the workspace belongs to.
     workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the schema exists.
-    schemaName := "schemaName_example" // string | The name of the schema whose detail needs to be fetched.
+    schemaName := "schemaName_example" // string | The name of the schema to which the table belongs.
+    tableName := "tableName_example" // string | The name of the table whose detail needs to be fetched.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserWorkspaceSchemas.Get_0(context.Background(), userHandle, workspaceHandle, schemaName).Execute()
+    resp, r, err := api_client.UserWorkspaceSchemas.GetTable(context.Background(), userHandle, workspaceHandle, schemaName, tableName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaceSchemas.Get_0``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaceSchemas.GetTable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `Get_0`: ListWorkspaceSchemaTableResponse
-    fmt.Fprintf(os.Stdout, "Response from `UserWorkspaceSchemas.Get_0`: %v\n", resp)
+    // response from `GetTable`: WorkspaceSchemaTable
+    fmt.Fprintf(os.Stdout, "Response from `UserWorkspaceSchemas.GetTable`: %v\n", resp)
 }
 ```
 
@@ -284,11 +286,12 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **userHandle** | **string** | The handle of the user that the workspace belongs to. | 
 **workspaceHandle** | **string** | The handle of the workspace where the schema exists. | 
-**schemaName** | **string** | The name of the schema whose detail needs to be fetched. | 
+**schemaName** | **string** | The name of the schema to which the table belongs. | 
+**tableName** | **string** | The name of the table whose detail needs to be fetched. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGet_1Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetTableRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -297,9 +300,10 @@ Name | Type | Description  | Notes
 
 
 
+
 ### Return type
 
-[**ListWorkspaceSchemaTableResponse**](ListWorkspaceSchemaTableResponse.md)
+[**WorkspaceSchemaTable**](WorkspaceSchemaTable.md)
 
 ### Authorization
 
@@ -377,6 +381,82 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListWorkspaceSchemaResponse**](ListWorkspaceSchemaResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListTables
+
+> ListWorkspaceSchemaTableResponse ListTables(ctx, userHandle, workspaceHandle, schemaName).Execute()
+
+List user workspace schema tables
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userHandle := "userHandle_example" // string | The handle of the user that the workspace belongs to.
+    workspaceHandle := "workspaceHandle_example" // string | The handle of the workspace where the schema exists.
+    schemaName := "schemaName_example" // string | The name of the schema whose detail needs to be fetched.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.UserWorkspaceSchemas.ListTables(context.Background(), userHandle, workspaceHandle, schemaName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UserWorkspaceSchemas.ListTables``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListTables`: ListWorkspaceSchemaTableResponse
+    fmt.Fprintf(os.Stdout, "Response from `UserWorkspaceSchemas.ListTables`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userHandle** | **string** | The handle of the user that the workspace belongs to. | 
+**workspaceHandle** | **string** | The handle of the workspace where the schema exists. | 
+**schemaName** | **string** | The name of the schema whose detail needs to be fetched. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListTablesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**ListWorkspaceSchemaTableResponse**](ListWorkspaceSchemaTableResponse.md)
 
 ### Authorization
 

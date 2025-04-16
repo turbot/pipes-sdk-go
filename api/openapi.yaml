@@ -14126,9 +14126,19 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateWorkspaceModRequest'
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  description: The mod file to be uploaded.
+                  format: binary
+                  type: string
+              required:
+              - file
+              type: object
         description: The request body to install a mod in the mentioned workspace
           for this organization.
-        required: true
+        required: false
       responses:
         "201":
           content:
@@ -14379,8 +14389,18 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateWorkspaceModRequest'
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  description: The mod file to be uploaded.
+                  format: binary
+                  type: string
+              required:
+              - file
+              type: object
         description: The request body to update a mod for this workspace.
-        required: true
+        required: false
       responses:
         "200":
           content:
@@ -16710,9 +16730,19 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateWorkspaceModRequest'
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  description: The mod file to be uploaded.
+                  format: binary
+                  type: string
+              required:
+              - file
+              type: object
         description: The request body to install a mod in the mentioned workspace
           for this organization.
-        required: true
+        required: false
       responses:
         "201":
           content:
@@ -16963,8 +16993,18 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateWorkspaceModRequest'
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  description: The mod file to be uploaded.
+                  format: binary
+                  type: string
+              required:
+              - file
+              type: object
         description: The request body to update a mod for this workspace.
-        required: true
+        required: false
       responses:
         "200":
           content:
@@ -18929,6 +18969,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/WorkspaceQueryResult'
           description: OK
+        "206":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/markdown:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+          description: Partial Content
         "400":
           content:
             application/json:
@@ -19062,6 +19114,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/WorkspaceQueryResult'
           description: OK
+        "206":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/markdown:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+          description: Partial Content
         "400":
           content:
             application/json:
@@ -19201,6 +19265,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/WorkspaceQueryResult'
           description: OK
+        "206":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/markdown:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+          description: Partial Content
         "400":
           content:
             application/json:
@@ -19338,6 +19414,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/WorkspaceQueryResult'
           description: OK
+        "206":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/markdown:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+          description: Partial Content
         "400":
           content:
             application/json:
@@ -19744,7 +19832,7 @@ paths:
   /org/{org_handle}/workspace/{workspace_handle}/schema/{schema_name}/table:
     get:
       description: List the tables for an org workspace schema.
-      operationId: orgWorkspaceSchemaTable_get
+      operationId: orgWorkspaceSchema_listTables
       parameters:
       - description: The handle of the org that the workspace belongs to.
         explode: false
@@ -19817,6 +19905,91 @@ paths:
                 $ref: '#/components/schemas/ErrorModel'
           description: Internal Server Error
       summary: List org workspace schema tables
+      tags:
+      - OrgWorkspaceSchemas
+  /org/{org_handle}/workspace/{workspace_handle}/schema/{schema_name}/table/{table_name}:
+    get:
+      description: Get details about a specific table in a org workspace schema.
+      operationId: orgWorkspaceSchema_getTable
+      parameters:
+      - description: The handle of the org where the workspace belongs to.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]
+          type: string
+        style: simple
+      - description: The handle of the workspace where the schema exists.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The name of the schema to which the table belongs.
+        explode: false
+        in: path
+        name: schema_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the table whose detail needs to be fetched.
+        explode: false
+        in: path
+        name: table_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceSchemaTable'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get org workspace schema table
       tags:
       - OrgWorkspaceSchemas
   /org/{org_handle}/workspace/{workspace_handle}/snapshot:
@@ -32027,9 +32200,19 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateWorkspaceModRequest'
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  description: The mod file to be uploaded.
+                  format: binary
+                  type: string
+              required:
+              - file
+              type: object
         description: The request body to install a mod in the mentioned workspace
           for this user.
-        required: true
+        required: false
       responses:
         "201":
           content:
@@ -32280,8 +32463,18 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateWorkspaceModRequest'
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  description: The mod file to be uploaded.
+                  format: binary
+                  type: string
+              required:
+              - file
+              type: object
         description: The request body to update a mod for this workspace.
-        required: true
+        required: false
       responses:
         "200":
           content:
@@ -34205,9 +34398,19 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateWorkspaceModRequest'
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  description: The mod file to be uploaded.
+                  format: binary
+                  type: string
+              required:
+              - file
+              type: object
         description: The request body to install a mod in the mentioned workspace
           for this user.
-        required: true
+        required: false
       responses:
         "201":
           content:
@@ -34458,8 +34661,18 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateWorkspaceModRequest'
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  description: The mod file to be uploaded.
+                  format: binary
+                  type: string
+              required:
+              - file
+              type: object
         description: The request body to update a mod for this workspace.
-        required: true
+        required: false
       responses:
         "200":
           content:
@@ -36430,6 +36643,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/WorkspaceQueryResult'
           description: OK
+        "206":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/markdown:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+          description: Partial Content
         "400":
           content:
             application/json:
@@ -36563,6 +36788,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/WorkspaceQueryResult'
           description: OK
+        "206":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/markdown:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+          description: Partial Content
         "400":
           content:
             application/json:
@@ -36702,6 +36939,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/WorkspaceQueryResult'
           description: OK
+        "206":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/markdown:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+          description: Partial Content
         "400":
           content:
             application/json:
@@ -36839,6 +37088,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/WorkspaceQueryResult'
           description: OK
+        "206":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+            text/markdown:
+              schema:
+                $ref: '#/components/schemas/WorkspaceQueryResult'
+          description: Partial Content
         "400":
           content:
             application/json:
@@ -37245,7 +37506,7 @@ paths:
   /user/{user_handle}/workspace/{workspace_handle}/schema/{schema_name}/table:
     get:
       description: List the tables for a user workspace schema.
-      operationId: userWorkspaceSchemaTable_get
+      operationId: userWorkspaceSchema_listTables
       parameters:
       - description: The handle of the user that the workspace belongs to.
         explode: false
@@ -37318,6 +37579,91 @@ paths:
                 $ref: '#/components/schemas/ErrorModel'
           description: Internal Server Error
       summary: List user workspace schema tables
+      tags:
+      - UserWorkspaceSchemas
+  /user/{user_handle}/workspace/{workspace_handle}/schema/{schema_name}/table/{table_name}:
+    get:
+      description: Get details about a specific table in a user workspace schema.
+      operationId: userWorkspaceSchema_getTable
+      parameters:
+      - description: The handle of the user that the workspace belongs to.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]
+          type: string
+        style: simple
+      - description: The handle of the workspace where the schema exists.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The name of the schema to which the table belongs.
+        explode: false
+        in: path
+        name: schema_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the table whose detail needs to be fetched.
+        explode: false
+        in: path
+        name: table_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceSchemaTable'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get user workspace schema table
       tags:
       - UserWorkspaceSchemas
   /user/{user_handle}/workspace/{workspace_handle}/snapshot:
@@ -39811,6 +40157,9 @@ components:
           deleted_by: '{}'
           version_id: 6
           type: type
+          aggregated_by:
+          - aggregated_by
+          - aggregated_by
           created_by: '{}'
           deleted_at: deleted_at
           workspace_id: workspace_id
@@ -41321,6 +41670,9 @@ components:
             deleted_by: '{}'
             version_id: 6
             type: type
+            aggregated_by:
+            - aggregated_by
+            - aggregated_by
             created_by: '{}'
             deleted_at: deleted_at
             workspace_id: workspace_id
@@ -41580,6 +41932,9 @@ components:
             deleted_by: '{}'
             version_id: 6
             type: type
+            aggregated_by:
+            - aggregated_by
+            - aggregated_by
             created_by: '{}'
             deleted_at: deleted_at
             workspace_id: workspace_id
@@ -41883,6 +42238,7 @@ components:
             identity_id: identity_id
             installed_version: installed_version
             created_at: created_at
+            source_type: '{}'
             version_id: 0
             branch: branch
             created_by: '{}'
@@ -41923,6 +42279,7 @@ components:
             identity_id: identity_id
             installed_version: installed_version
             created_at: created_at
+            source_type: '{}'
             version_id: 0
             branch: branch
             created_by: '{}'
@@ -42030,6 +42387,7 @@ components:
             identity_id: identity_id
             installed_version: installed_version
             created_at: created_at
+            source_type: '{}'
             version_id: 0
             branch: branch
             created_by: '{}'
@@ -42124,6 +42482,7 @@ components:
             identity_id: identity_id
             installed_version: installed_version
             created_at: created_at
+            source_type: '{}'
             version_id: 0
             branch: branch
             created_by: '{}'
@@ -43438,6 +43797,7 @@ components:
           identity_id: identity_id
           installed_version: installed_version
           created_at: created_at
+          source_type: '{}'
           version_id: 0
           branch: branch
           created_by: '{}'
@@ -43459,6 +43819,7 @@ components:
           identity_id: identity_id
           installed_version: installed_version
           created_at: created_at
+          source_type: '{}'
           version_id: 0
           branch: branch
           created_by: '{}'
@@ -43496,6 +43857,9 @@ components:
           deleted_by: '{}'
           version_id: 6
           type: type
+          aggregated_by:
+          - aggregated_by
+          - aggregated_by
           created_by: '{}'
           deleted_at: deleted_at
           workspace_id: workspace_id
@@ -43518,6 +43882,9 @@ components:
           deleted_by: '{}'
           version_id: 6
           type: type
+          aggregated_by:
+          - aggregated_by
+          - aggregated_by
           created_by: '{}'
           deleted_at: deleted_at
           workspace_id: workspace_id
@@ -43763,6 +44130,14 @@ components:
       x-enum-varnames:
       - ModPipeFlowpipe
       - ModPipePowerpipe
+    ModSourceType:
+      enum:
+      - repository
+      - archive
+      type: string
+      x-enum-varnames:
+      - ModSourceTypeRepository
+      - ModSourceTypeArchive
     ModTriggerInfo:
       example:
         query: query
@@ -47156,6 +47531,7 @@ components:
         identity_id: identity_id
         installed_version: installed_version
         created_at: created_at
+        source_type: '{}'
         version_id: 0
         branch: branch
         created_by: '{}'
@@ -47216,6 +47592,10 @@ components:
           type: string
         pipe:
           $ref: '#/components/schemas/ModPipe'
+        source_type:
+          allOf:
+          - $ref: '#/components/schemas/ModSourceType'
+          type: object
         state:
           $ref: '#/components/schemas/WorkspaceModState'
         state_reason:
@@ -47246,6 +47626,7 @@ components:
       - created_by_id
       - id
       - identity_id
+      - source_type
       - updated_by_id
       - version_id
       - workspace_id
@@ -47274,6 +47655,7 @@ components:
           identity_id: identity_id
           installed_version: installed_version
           created_at: created_at
+          source_type: '{}'
           version_id: 0
           branch: branch
           created_by: '{}'
@@ -47451,6 +47833,7 @@ components:
           identity_id: identity_id
           installed_version: installed_version
           created_at: created_at
+          source_type: '{}'
           version_id: 0
           branch: branch
           created_by: '{}'
@@ -47732,6 +48115,7 @@ components:
       type: object
     WorkspaceQueryResult:
       example:
+        instance: instance
         columns:
         - original_name: original_name
           data_type: data_type
@@ -47741,15 +48125,29 @@ components:
           data_type: data_type
           name: name
           max_data_length: 0
+        detail: detail
         rows: '{}'
+        title: title
+        type: type
+        status: 6
       properties:
         columns:
           items:
             $ref: '#/components/schemas/WorkspaceQueryResultColumn'
           type: array
+        detail:
+          type: string
+        instance:
+          type: string
         rows:
           properties: {}
           type: object
+        status:
+          type: integer
+        title:
+          type: string
+        type:
+          type: string
       required:
       - columns
       - rows
@@ -47784,6 +48182,9 @@ components:
         deleted_by: '{}'
         version_id: 6
         type: type
+        aggregated_by:
+        - aggregated_by
+        - aggregated_by
         created_by: '{}'
         deleted_at: deleted_at
         workspace_id: workspace_id
@@ -47798,6 +48199,11 @@ components:
         id: id
         state: '{}'
       properties:
+        aggregated_by:
+          description: The list of aggregators that are using this schema.
+          items:
+            type: string
+          type: array
         aggregator:
           allOf:
           - $ref: '#/components/schemas/Aggregator'

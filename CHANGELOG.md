@@ -1,5 +1,23 @@
 # Turbot Pipes Go SDK
 
+## 0.13.0 [2025-03-16]
+
+_Breaking changes_
+
+- `Get_1` method in `UserWorkspaceSchemasService` used to list tables for a schema renamed to `ListTables` to denote its exact purpose.
+- `Get_1` method in `OrgWorkspaceSchemasService` used to list tables for a schema renamed to `ListTables` to denote its exact purpose.
+
+_What's new?_
+
+- Add support for `GetTable` method to `UserWorkspaceSchemasService` to get a specific table for a schema.
+- Add support for `GetTable` method to `OrgWorkspaceSchemasService` to get a specific table for a schema.
+
+_Enhancements_
+
+- `Install` and `Update` for both flowpipe and powerpipe mods now support archived mod upload via `multipart/form-data` request.
+- Add `SourceType` to model `WorkspaceMod` to denote the source of the mod i.e. `repository` or `archive`.
+- Add `AggregatedBy` to model `WorkspaceSchema` to store the list of aggregators that are using the schema. 
+
 ## 0.12.1 [2025-02-11]
 
 _Enhancements_

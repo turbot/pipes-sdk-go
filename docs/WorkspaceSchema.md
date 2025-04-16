@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AggregatedBy** | Pointer to **[]string** | The list of aggregators that are using this schema. | [optional] 
 **Aggregator** | Pointer to [**Aggregator**](Aggregator.md) | The details of the aggregator if the schema is of type &#39;aggregator&#39;. | [optional] 
 **AggregatorId** | Pointer to **string** | The id of the aggregator if the schema is of type &#39;aggregator&#39;. | [optional] 
 **Connection** | Pointer to [**Connection**](Connection.md) | The details of the connection if the schema is of type &#39;connection&#39;. | [optional] 
@@ -45,6 +46,31 @@ will change when the set of required properties is changed
 NewWorkspaceSchemaWithDefaults instantiates a new WorkspaceSchema object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAggregatedBy
+
+`func (o *WorkspaceSchema) GetAggregatedBy() []string`
+
+GetAggregatedBy returns the AggregatedBy field if non-nil, zero value otherwise.
+
+### GetAggregatedByOk
+
+`func (o *WorkspaceSchema) GetAggregatedByOk() (*[]string, bool)`
+
+GetAggregatedByOk returns a tuple with the AggregatedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregatedBy
+
+`func (o *WorkspaceSchema) SetAggregatedBy(v []string)`
+
+SetAggregatedBy sets AggregatedBy field to given value.
+
+### HasAggregatedBy
+
+`func (o *WorkspaceSchema) HasAggregatedBy() bool`
+
+HasAggregatedBy returns a boolean if a field has been set.
 
 ### GetAggregator
 

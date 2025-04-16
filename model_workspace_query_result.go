@@ -16,8 +16,13 @@ import (
 
 // WorkspaceQueryResult struct for WorkspaceQueryResult
 type WorkspaceQueryResult struct {
-	Columns []WorkspaceQueryResultColumn `json:"columns"`
-	Rows    map[string]interface{}       `json:"rows"`
+	Columns  []WorkspaceQueryResultColumn `json:"columns"`
+	Detail   *string                      `json:"detail,omitempty"`
+	Instance *string                      `json:"instance,omitempty"`
+	Rows     map[string]interface{}       `json:"rows"`
+	Status   *int32                       `json:"status,omitempty"`
+	Title    *string                      `json:"title,omitempty"`
+	Type     *string                      `json:"type,omitempty"`
 }
 
 // NewWorkspaceQueryResult instantiates a new WorkspaceQueryResult object
@@ -63,6 +68,70 @@ func (o *WorkspaceQueryResult) SetColumns(v []WorkspaceQueryResultColumn) {
 	o.Columns = v
 }
 
+// GetDetail returns the Detail field value if set, zero value otherwise.
+func (o *WorkspaceQueryResult) GetDetail() string {
+	if o == nil || o.Detail == nil {
+		var ret string
+		return ret
+	}
+	return *o.Detail
+}
+
+// GetDetailOk returns a tuple with the Detail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceQueryResult) GetDetailOk() (*string, bool) {
+	if o == nil || o.Detail == nil {
+		return nil, false
+	}
+	return o.Detail, true
+}
+
+// HasDetail returns a boolean if a field has been set.
+func (o *WorkspaceQueryResult) HasDetail() bool {
+	if o != nil && o.Detail != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDetail gets a reference to the given string and assigns it to the Detail field.
+func (o *WorkspaceQueryResult) SetDetail(v string) {
+	o.Detail = &v
+}
+
+// GetInstance returns the Instance field value if set, zero value otherwise.
+func (o *WorkspaceQueryResult) GetInstance() string {
+	if o == nil || o.Instance == nil {
+		var ret string
+		return ret
+	}
+	return *o.Instance
+}
+
+// GetInstanceOk returns a tuple with the Instance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceQueryResult) GetInstanceOk() (*string, bool) {
+	if o == nil || o.Instance == nil {
+		return nil, false
+	}
+	return o.Instance, true
+}
+
+// HasInstance returns a boolean if a field has been set.
+func (o *WorkspaceQueryResult) HasInstance() bool {
+	if o != nil && o.Instance != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInstance gets a reference to the given string and assigns it to the Instance field.
+func (o *WorkspaceQueryResult) SetInstance(v string) {
+	o.Instance = &v
+}
+
 // GetRows returns the Rows field value
 func (o *WorkspaceQueryResult) GetRows() map[string]interface{} {
 	if o == nil {
@@ -87,13 +156,124 @@ func (o *WorkspaceQueryResult) SetRows(v map[string]interface{}) {
 	o.Rows = v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *WorkspaceQueryResult) GetStatus() int32 {
+	if o == nil || o.Status == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceQueryResult) GetStatusOk() (*int32, bool) {
+	if o == nil || o.Status == nil {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *WorkspaceQueryResult) HasStatus() bool {
+	if o != nil && o.Status != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given int32 and assigns it to the Status field.
+func (o *WorkspaceQueryResult) SetStatus(v int32) {
+	o.Status = &v
+}
+
+// GetTitle returns the Title field value if set, zero value otherwise.
+func (o *WorkspaceQueryResult) GetTitle() string {
+	if o == nil || o.Title == nil {
+		var ret string
+		return ret
+	}
+	return *o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceQueryResult) GetTitleOk() (*string, bool) {
+	if o == nil || o.Title == nil {
+		return nil, false
+	}
+	return o.Title, true
+}
+
+// HasTitle returns a boolean if a field has been set.
+func (o *WorkspaceQueryResult) HasTitle() bool {
+	if o != nil && o.Title != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
+func (o *WorkspaceQueryResult) SetTitle(v string) {
+	o.Title = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *WorkspaceQueryResult) GetType() string {
+	if o == nil || o.Type == nil {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceQueryResult) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *WorkspaceQueryResult) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *WorkspaceQueryResult) SetType(v string) {
+	o.Type = &v
+}
+
 func (o WorkspaceQueryResult) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["columns"] = o.Columns
 	}
+	if o.Detail != nil {
+		toSerialize["detail"] = o.Detail
+	}
+	if o.Instance != nil {
+		toSerialize["instance"] = o.Instance
+	}
 	if true {
 		toSerialize["rows"] = o.Rows
+	}
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
+	}
+	if o.Title != nil {
+		toSerialize["title"] = o.Title
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

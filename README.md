@@ -254,8 +254,9 @@ Class | Method | HTTP request | Description
 *OrgWorkspaceSchemas* | [**Attach**](docs/OrgWorkspaceSchemas.md#attach) | **Post** /org/{org_handle}/workspace/{workspace_handle}/schema | Attach a schema to an org workspace
 *OrgWorkspaceSchemas* | [**Detach**](docs/OrgWorkspaceSchemas.md#detach) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/schema/{schema_name} | Detach a schema from an org workspace
 *OrgWorkspaceSchemas* | [**Get**](docs/OrgWorkspaceSchemas.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/schema/{schema_name} | Get org workspace schema
-*OrgWorkspaceSchemas* | [**Get_0**](docs/OrgWorkspaceSchemas.md#get_0) | **Get** /org/{org_handle}/workspace/{workspace_handle}/schema/{schema_name}/table | List org workspace schema tables
+*OrgWorkspaceSchemas* | [**GetTable**](docs/OrgWorkspaceSchemas.md#gettable) | **Get** /org/{org_handle}/workspace/{workspace_handle}/schema/{schema_name}/table/{table_name} | Get org workspace schema table
 *OrgWorkspaceSchemas* | [**List**](docs/OrgWorkspaceSchemas.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/schema | List org workspace schemas
+*OrgWorkspaceSchemas* | [**ListTables**](docs/OrgWorkspaceSchemas.md#listtables) | **Get** /org/{org_handle}/workspace/{workspace_handle}/schema/{schema_name}/table | List org workspace schema tables
 *OrgWorkspaceSnapshots* | [**Create**](docs/OrgWorkspaceSnapshots.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/snapshot | Create org workspace snapshot
 *OrgWorkspaceSnapshots* | [**Delete**](docs/OrgWorkspaceSnapshots.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/snapshot/{snapshot_id} | Delete org workspace snapshot
 *OrgWorkspaceSnapshots* | [**Download**](docs/OrgWorkspaceSnapshots.md#download) | **Get** /org/{org_handle}/workspace/{workspace_handle}/snapshot/{snapshot_id}.{content_type} | Download org workspace snapshot
@@ -504,8 +505,9 @@ Class | Method | HTTP request | Description
 *UserWorkspaceSchemas* | [**Attach**](docs/UserWorkspaceSchemas.md#attach) | **Post** /user/{user_handle}/workspace/{workspace_handle}/schema | Attach a schema to a user workspace
 *UserWorkspaceSchemas* | [**Detach**](docs/UserWorkspaceSchemas.md#detach) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/schema/{schema_name} | Detach a schema from a user workspace
 *UserWorkspaceSchemas* | [**Get**](docs/UserWorkspaceSchemas.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/schema/{schema_name} | Get user workspace schema
-*UserWorkspaceSchemas* | [**Get_0**](docs/UserWorkspaceSchemas.md#get_0) | **Get** /user/{user_handle}/workspace/{workspace_handle}/schema/{schema_name}/table | List user workspace schema tables
+*UserWorkspaceSchemas* | [**GetTable**](docs/UserWorkspaceSchemas.md#gettable) | **Get** /user/{user_handle}/workspace/{workspace_handle}/schema/{schema_name}/table/{table_name} | Get user workspace schema table
 *UserWorkspaceSchemas* | [**List**](docs/UserWorkspaceSchemas.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/schema | List user workspace schemas
+*UserWorkspaceSchemas* | [**ListTables**](docs/UserWorkspaceSchemas.md#listtables) | **Get** /user/{user_handle}/workspace/{workspace_handle}/schema/{schema_name}/table | List user workspace schema tables
 *UserWorkspaceSnapshots* | [**Create**](docs/UserWorkspaceSnapshots.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/snapshot | Create user workspace snapshot
 *UserWorkspaceSnapshots* | [**Delete**](docs/UserWorkspaceSnapshots.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/snapshot/{snapshot_id} | Delete user workspace snapshot
 *UserWorkspaceSnapshots* | [**Download**](docs/UserWorkspaceSnapshots.md#download) | **Get** /user/{user_handle}/workspace/{workspace_handle}/snapshot/{snapshot_id}.{content_type} | Download user workspace snapshot
@@ -667,6 +669,7 @@ Class | Method | HTTP request | Description
  - [ListWorkspacesResponse](docs/ListWorkspacesResponse.md)
  - [LogRecord](docs/LogRecord.md)
  - [ModPipe](docs/ModPipe.md)
+ - [ModSourceType](docs/ModSourceType.md)
  - [ModTriggerInfo](docs/ModTriggerInfo.md)
  - [ModTriggerState](docs/ModTriggerState.md)
  - [Notifier](docs/Notifier.md)
