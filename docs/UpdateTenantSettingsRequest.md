@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **LoginGithub** | Pointer to [**UpdateTenantLoginSettings**](UpdateTenantLoginSettings.md) | Settings related to login via Github. | [optional] 
 **LoginGoogle** | Pointer to [**UpdateTenantLoginSettings**](UpdateTenantLoginSettings.md) | Settings related to login via Google. | [optional] 
 **LoginSaml** | Pointer to [**UpdateTenantSamlLoginSettings**](UpdateTenantSamlLoginSettings.md) | LoginMicrosoft      *TenantLoginSettings     &#x60;json:\&quot;login_microsoft\&quot; binding:\&quot;omitempty\&quot;&#x60;                                  // Settings related to login via Microsoft. | [optional] 
+**PersonalWorkspaces** | Pointer to [**TenantPersonalWorkspaces**](TenantPersonalWorkspaces.md) | Settings related to user personal workspaces. | [optional] 
 **UserProvisioning** | Pointer to **[]string** | The user provisioning settings for the tenant. | [optional] 
 **UserProvisioningPermittedDomains** | Pointer to **[]string** | The domains that new users are permitted to be provisioned from. | [optional] 
 **WorkspaceSnapshotPermittedVisibility** | Pointer to **[]string** | Settings related to visibility of snapshots in the tenant. | [optional] 
@@ -130,6 +131,31 @@ SetLoginSaml sets LoginSaml field to given value.
 `func (o *UpdateTenantSettingsRequest) HasLoginSaml() bool`
 
 HasLoginSaml returns a boolean if a field has been set.
+
+### GetPersonalWorkspaces
+
+`func (o *UpdateTenantSettingsRequest) GetPersonalWorkspaces() TenantPersonalWorkspaces`
+
+GetPersonalWorkspaces returns the PersonalWorkspaces field if non-nil, zero value otherwise.
+
+### GetPersonalWorkspacesOk
+
+`func (o *UpdateTenantSettingsRequest) GetPersonalWorkspacesOk() (*TenantPersonalWorkspaces, bool)`
+
+GetPersonalWorkspacesOk returns a tuple with the PersonalWorkspaces field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPersonalWorkspaces
+
+`func (o *UpdateTenantSettingsRequest) SetPersonalWorkspaces(v TenantPersonalWorkspaces)`
+
+SetPersonalWorkspaces sets PersonalWorkspaces field to given value.
+
+### HasPersonalWorkspaces
+
+`func (o *UpdateTenantSettingsRequest) HasPersonalWorkspaces() bool`
+
+HasPersonalWorkspaces returns a boolean if a field has been set.
 
 ### GetUserProvisioning
 

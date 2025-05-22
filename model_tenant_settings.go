@@ -30,6 +30,8 @@ type TenantSettings struct {
 	LoginGoogle TenantLoginSettings `json:"login_google"`
 	// Settings related to login via Okta.
 	LoginSaml TenantSamlLoginSettings `json:"login_saml"`
+	// Settings related to user personal workspaces.
+	PersonalWorkspaces TenantPersonalWorkspaces `json:"personal_workspaces"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
 	// User information for the last user to update this.
@@ -50,7 +52,7 @@ type TenantSettings struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTenantSettings(createdAt string, createdById string, loginEmail TenantLoginSettings, loginGithub TenantLoginSettings, loginGoogle TenantLoginSettings, loginSaml TenantSamlLoginSettings, updatedById string, userProvisioning []string, userProvisioningPermittedDomains []string, versionId int32, workspaceSnapshotPermittedVisibility []string) *TenantSettings {
+func NewTenantSettings(createdAt string, createdById string, loginEmail TenantLoginSettings, loginGithub TenantLoginSettings, loginGoogle TenantLoginSettings, loginSaml TenantSamlLoginSettings, personalWorkspaces TenantPersonalWorkspaces, updatedById string, userProvisioning []string, userProvisioningPermittedDomains []string, versionId int32, workspaceSnapshotPermittedVisibility []string) *TenantSettings {
 	this := TenantSettings{}
 	this.CreatedAt = createdAt
 	this.CreatedById = createdById
@@ -58,6 +60,7 @@ func NewTenantSettings(createdAt string, createdById string, loginEmail TenantLo
 	this.LoginGithub = loginGithub
 	this.LoginGoogle = loginGoogle
 	this.LoginSaml = loginSaml
+	this.PersonalWorkspaces = personalWorkspaces
 	this.UpdatedById = updatedById
 	this.UserProvisioning = userProvisioning
 	this.UserProvisioningPermittedDomains = userProvisioningPermittedDomains
@@ -248,6 +251,30 @@ func (o *TenantSettings) GetLoginSamlOk() (*TenantSamlLoginSettings, bool) {
 // SetLoginSaml sets field value
 func (o *TenantSettings) SetLoginSaml(v TenantSamlLoginSettings) {
 	o.LoginSaml = v
+}
+
+// GetPersonalWorkspaces returns the PersonalWorkspaces field value
+func (o *TenantSettings) GetPersonalWorkspaces() TenantPersonalWorkspaces {
+	if o == nil {
+		var ret TenantPersonalWorkspaces
+		return ret
+	}
+
+	return o.PersonalWorkspaces
+}
+
+// GetPersonalWorkspacesOk returns a tuple with the PersonalWorkspaces field value
+// and a boolean to check if the value has been set.
+func (o *TenantSettings) GetPersonalWorkspacesOk() (*TenantPersonalWorkspaces, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PersonalWorkspaces, true
+}
+
+// SetPersonalWorkspaces sets field value
+func (o *TenantSettings) SetPersonalWorkspaces(v TenantPersonalWorkspaces) {
+	o.PersonalWorkspaces = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -456,6 +483,9 @@ func (o TenantSettings) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["login_saml"] = o.LoginSaml
+	}
+	if true {
+		toSerialize["personal_workspaces"] = o.PersonalWorkspaces
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updated_at"] = o.UpdatedAt

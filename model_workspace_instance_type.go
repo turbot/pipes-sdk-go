@@ -22,12 +22,14 @@ type WorkspaceInstanceType string
 const (
 	WorkspaceInstanceTypeDB1Shared WorkspaceInstanceType = "db1.shared"
 	WorkspaceInstanceTypeDB1Small  WorkspaceInstanceType = "db1.small"
+	WorkspaceInstanceTypeDB1Medium WorkspaceInstanceType = "db1.medium"
 )
 
 // All allowed values of WorkspaceInstanceType enum
 var AllowedWorkspaceInstanceTypeEnumValues = []WorkspaceInstanceType{
 	"db1.shared",
 	"db1.small",
+	"db1.medium",
 }
 
 func (v *WorkspaceInstanceType) UnmarshalJSON(src []byte) error {

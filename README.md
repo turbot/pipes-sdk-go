@@ -427,7 +427,7 @@ Class | Method | HTTP request | Description
 *UserWorkspaceConnectionFolders* | [**Update**](docs/UserWorkspaceConnectionFolders.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/connection_folder/{folder_id} | Update user workspace connection folder
 *UserWorkspaceConnectionTree* | [**List**](docs/UserWorkspaceConnectionTree.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/connection_tree | List user workspace connection tree
 *UserWorkspaceConnections* | [**Create**](docs/UserWorkspaceConnections.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/connection | Create a connection for a user workspace
-*UserWorkspaceConnections* | [**Delete**](docs/UserWorkspaceConnections.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Delete user workspace connection association
+*UserWorkspaceConnections* | [**Delete**](docs/UserWorkspaceConnections.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Delete user workspace connection
 *UserWorkspaceConnections* | [**Get**](docs/UserWorkspaceConnections.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Get user workspace connection association
 *UserWorkspaceConnections* | [**List**](docs/UserWorkspaceConnections.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/connection | List connections for a user workspace
 *UserWorkspaceConnections* | [**Test**](docs/UserWorkspaceConnections.md#test) | **Post** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle}/test | Test user workspace connection
@@ -697,6 +697,7 @@ Class | Method | HTTP request | Description
  - [TemporaryTokenRequestState](docs/TemporaryTokenRequestState.md)
  - [Tenant](docs/Tenant.md)
  - [TenantLoginSettings](docs/TenantLoginSettings.md)
+ - [TenantPersonalWorkspaces](docs/TenantPersonalWorkspaces.md)
  - [TenantPlan](docs/TenantPlan.md)
  - [TenantSamlLoginSettings](docs/TenantSamlLoginSettings.md)
  - [TenantSettings](docs/TenantSettings.md)

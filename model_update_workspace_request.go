@@ -20,7 +20,9 @@ type UpdateWorkspaceRequest struct {
 	// paused is not yet supported for Workspace
 	DesiredState *DesiredState `json:"desired_state,omitempty"`
 	Handle       *string       `json:"handle,omitempty"`
-	// InstanceType *WorkspaceInstanceType `json:\"instance_type,omitempty\" binding:\"omitempty,oneof=db1.shared db1.small\"`
+	// the updated instance type of the workspace
+	InstanceType *WorkspaceInstanceType `json:"instance_type,omitempty"`
+	// Optionally update the search path prefix for the Steampipe DB.
 	SearchPathPrefix *[]string `json:"search_path_prefix,omitempty"`
 }
 
@@ -137,6 +139,38 @@ func (o *UpdateWorkspaceRequest) SetHandle(v string) {
 	o.Handle = &v
 }
 
+// GetInstanceType returns the InstanceType field value if set, zero value otherwise.
+func (o *UpdateWorkspaceRequest) GetInstanceType() WorkspaceInstanceType {
+	if o == nil || o.InstanceType == nil {
+		var ret WorkspaceInstanceType
+		return ret
+	}
+	return *o.InstanceType
+}
+
+// GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateWorkspaceRequest) GetInstanceTypeOk() (*WorkspaceInstanceType, bool) {
+	if o == nil || o.InstanceType == nil {
+		return nil, false
+	}
+	return o.InstanceType, true
+}
+
+// HasInstanceType returns a boolean if a field has been set.
+func (o *UpdateWorkspaceRequest) HasInstanceType() bool {
+	if o != nil && o.InstanceType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceType gets a reference to the given WorkspaceInstanceType and assigns it to the InstanceType field.
+func (o *UpdateWorkspaceRequest) SetInstanceType(v WorkspaceInstanceType) {
+	o.InstanceType = &v
+}
+
 // GetSearchPathPrefix returns the SearchPathPrefix field value if set, zero value otherwise.
 func (o *UpdateWorkspaceRequest) GetSearchPathPrefix() []string {
 	if o == nil || o.SearchPathPrefix == nil {
@@ -179,6 +213,9 @@ func (o UpdateWorkspaceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Handle != nil {
 		toSerialize["handle"] = o.Handle
+	}
+	if o.InstanceType != nil {
+		toSerialize["instance_type"] = o.InstanceType
 	}
 	if o.SearchPathPrefix != nil {
 		toSerialize["search_path_prefix"] = o.SearchPathPrefix

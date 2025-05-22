@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **LoginGithub** | [**TenantLoginSettings**](TenantLoginSettings.md) | Settings related to login via Github. | 
 **LoginGoogle** | [**TenantLoginSettings**](TenantLoginSettings.md) | Settings related to login via Google. | 
 **LoginSaml** | [**TenantSamlLoginSettings**](TenantSamlLoginSettings.md) | Settings related to login via Okta. | 
+**PersonalWorkspaces** | [**TenantPersonalWorkspaces**](TenantPersonalWorkspaces.md) | Settings related to user personal workspaces. | 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
 **UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
@@ -23,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewTenantSettings
 
-`func NewTenantSettings(createdAt string, createdById string, loginEmail TenantLoginSettings, loginGithub TenantLoginSettings, loginGoogle TenantLoginSettings, loginSaml TenantSamlLoginSettings, updatedById string, userProvisioning []string, userProvisioningPermittedDomains []string, versionId int32, workspaceSnapshotPermittedVisibility []string, ) *TenantSettings`
+`func NewTenantSettings(createdAt string, createdById string, loginEmail TenantLoginSettings, loginGithub TenantLoginSettings, loginGoogle TenantLoginSettings, loginSaml TenantSamlLoginSettings, personalWorkspaces TenantPersonalWorkspaces, updatedById string, userProvisioning []string, userProvisioningPermittedDomains []string, versionId int32, workspaceSnapshotPermittedVisibility []string, ) *TenantSettings`
 
 NewTenantSettings instantiates a new TenantSettings object
 This constructor will assign default values to properties that have it defined,
@@ -181,6 +182,26 @@ and a boolean to check if the value has been set.
 `func (o *TenantSettings) SetLoginSaml(v TenantSamlLoginSettings)`
 
 SetLoginSaml sets LoginSaml field to given value.
+
+
+### GetPersonalWorkspaces
+
+`func (o *TenantSettings) GetPersonalWorkspaces() TenantPersonalWorkspaces`
+
+GetPersonalWorkspaces returns the PersonalWorkspaces field if non-nil, zero value otherwise.
+
+### GetPersonalWorkspacesOk
+
+`func (o *TenantSettings) GetPersonalWorkspacesOk() (*TenantPersonalWorkspaces, bool)`
+
+GetPersonalWorkspacesOk returns a tuple with the PersonalWorkspaces field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPersonalWorkspaces
+
+`func (o *TenantSettings) SetPersonalWorkspaces(v TenantPersonalWorkspaces)`
+
+SetPersonalWorkspaces sets PersonalWorkspaces field to given value.
 
 
 ### GetUpdatedAt
