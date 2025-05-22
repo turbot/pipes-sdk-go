@@ -5,7 +5,7 @@ All URIs are relative to *https://pipes.turbot.com/api/v0*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Create**](UserWorkspaceConnections.md#Create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/connection | Create a connection for a user workspace
-[**Delete**](UserWorkspaceConnections.md#Delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Delete user workspace connection association
+[**Delete**](UserWorkspaceConnections.md#Delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Delete user workspace connection
 [**Get**](UserWorkspaceConnections.md#Get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Get user workspace connection association
 [**List**](UserWorkspaceConnections.md#List) | **Get** /user/{user_handle}/workspace/{workspace_handle}/connection | List connections for a user workspace
 [**Test**](UserWorkspaceConnections.md#Test) | **Post** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle}/test | Test user workspace connection
@@ -92,7 +92,7 @@ No authorization required
 
 > WorkspaceConnection Delete(ctx, userHandle, workspaceHandle, connectionHandle).Execute()
 
-Delete user workspace connection association
+Delete user workspace connection
 
 
 

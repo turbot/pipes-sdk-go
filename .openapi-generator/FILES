@@ -270,6 +270,7 @@ docs/TenantIntegrations.md
 docs/TenantLoginSettings.md
 docs/TenantMembers.md
 docs/TenantNotifiers.md
+docs/TenantPersonalWorkspaces.md
 docs/TenantPlan.md
 docs/TenantSamlLoginSettings.md
 docs/TenantSettings.md
@@ -536,6 +537,7 @@ model_temporary_token_request.go
 model_temporary_token_request_state.go
 model_tenant.go
 model_tenant_login_settings.go
+model_tenant_personal_workspaces.go
 model_tenant_plan.go
 model_tenant_saml_login_settings.go
 model_tenant_settings.go

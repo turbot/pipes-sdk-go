@@ -229,7 +229,7 @@ func (r UserWorkspaceConnectionsApiDeleteRequest) Execute() (WorkspaceConnection
 }
 
 /*
-Delete Delete user workspace connection association
+Delete Delete user workspace connection
 
 Dissociates or delete the workspace and connection association.
 

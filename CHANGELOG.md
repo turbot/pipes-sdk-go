@@ -1,5 +1,12 @@
 # Turbot Pipes Go SDK
 
+## 0.14.0 [2025-05-22]
+
+_Enhancements_
+
+- Add `db1.medium` as a new supported workspace instance type.
+- Add `PersonalWorkspaces` as a new tenant setting to block / allow creation of personal workspaces in a custom tenant.
+
 ## 0.13.0 [2025-03-16]
 
 _Breaking changes_

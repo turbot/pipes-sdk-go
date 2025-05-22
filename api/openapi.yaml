@@ -29578,7 +29578,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorModel'
           description: Internal Server Error
-      summary: Delete user workspace connection association
+      summary: Delete user workspace connection
       tags:
       - UserWorkspaceConnections
     get:
@@ -45396,6 +45396,14 @@ components:
       - state
       - type
       type: object
+    TenantPersonalWorkspaces:
+      enum:
+      - enabled
+      - disabled
+      type: string
+      x-enum-varnames:
+      - TenantPersonalWorkspacesEnabled
+      - TenantPersonalWorkspacesDisabled
     TenantPlan:
       example:
         tenant_id: tenant_id
@@ -45495,6 +45503,7 @@ components:
         created_by: '{}'
         login_github: '{}'
         login_google: '{}'
+        personal_workspaces: '{}'
         updated_at: updated_at
         user_provisioning:
         - user_provisioning
@@ -45539,6 +45548,11 @@ components:
           - $ref: '#/components/schemas/TenantSamlLoginSettings'
           description: Settings related to login via Okta.
           type: object
+        personal_workspaces:
+          allOf:
+          - $ref: '#/components/schemas/TenantPersonalWorkspaces'
+          description: Settings related to user personal workspaces.
+          type: object
         updated_at:
           description: The time of the last update in ISO 8601 UTC.
           type: string
@@ -45577,6 +45591,7 @@ components:
       - login_github
       - login_google
       - login_saml
+      - personal_workspaces
       - updated_by_id
       - user_provisioning
       - user_provisioning_permitted_domains
@@ -46152,6 +46167,7 @@ components:
       example:
         login_github: '{}'
         login_google: '{}'
+        personal_workspaces: '{}'
         user_provisioning:
         - user_provisioning
         - user_provisioning
@@ -46185,6 +46201,11 @@ components:
           description: LoginMicrosoft      *TenantLoginSettings     `json:"login_microsoft"
             binding:"omitempty"`                                  // Settings related
             to login via Microsoft.
+          type: object
+        personal_workspaces:
+          allOf:
+          - $ref: '#/components/schemas/TenantPersonalWorkspaces'
+          description: Settings related to user personal workspaces.
           type: object
         user_provisioning:
           description: The user provisioning settings for the tenant.
@@ -46341,6 +46362,7 @@ components:
         desired_state: '{}'
         handle: handle
         db_volume_size_bytes: 0
+        instance_type: '{}'
       properties:
         db_volume_size_bytes:
           format: int64
@@ -46353,9 +46375,14 @@ components:
         handle:
           format: ^[a-z0-9]{1,23}$
           type: string
+        instance_type:
+          allOf:
+          - $ref: '#/components/schemas/WorkspaceInstanceType'
+          description: the updated instance type of the workspace
+          type: object
         search_path_prefix:
-          description: InstanceType *WorkspaceInstanceType `json:"instance_type,omitempty"
-            binding:"omitempty,oneof=db1.shared db1.small"`
+          description: Optionally update the search path prefix for the Steampipe
+            DB.
           items:
             type: string
           type: array
@@ -47520,10 +47547,12 @@ components:
       enum:
       - db1.shared
       - db1.small
+      - db1.medium
       type: string
       x-enum-varnames:
       - WorkspaceInstanceTypeDB1Shared
       - WorkspaceInstanceTypeDB1Small
+      - WorkspaceInstanceTypeDB1Medium
     WorkspaceMod:
       example:
         state_reason: state_reason

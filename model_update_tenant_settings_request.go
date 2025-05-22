@@ -24,6 +24,8 @@ type UpdateTenantSettingsRequest struct {
 	LoginGoogle *UpdateTenantLoginSettings `json:"login_google,omitempty"`
 	// LoginMicrosoft      *TenantLoginSettings     `json:\"login_microsoft\" binding:\"omitempty\"`                                  // Settings related to login via Microsoft.
 	LoginSaml *UpdateTenantSamlLoginSettings `json:"login_saml,omitempty"`
+	// Settings related to user personal workspaces.
+	PersonalWorkspaces *TenantPersonalWorkspaces `json:"personal_workspaces,omitempty"`
 	// The user provisioning settings for the tenant.
 	UserProvisioning *[]string `json:"user_provisioning,omitempty"`
 	// The domains that new users are permitted to be provisioned from.
@@ -177,6 +179,38 @@ func (o *UpdateTenantSettingsRequest) SetLoginSaml(v UpdateTenantSamlLoginSettin
 	o.LoginSaml = &v
 }
 
+// GetPersonalWorkspaces returns the PersonalWorkspaces field value if set, zero value otherwise.
+func (o *UpdateTenantSettingsRequest) GetPersonalWorkspaces() TenantPersonalWorkspaces {
+	if o == nil || o.PersonalWorkspaces == nil {
+		var ret TenantPersonalWorkspaces
+		return ret
+	}
+	return *o.PersonalWorkspaces
+}
+
+// GetPersonalWorkspacesOk returns a tuple with the PersonalWorkspaces field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateTenantSettingsRequest) GetPersonalWorkspacesOk() (*TenantPersonalWorkspaces, bool) {
+	if o == nil || o.PersonalWorkspaces == nil {
+		return nil, false
+	}
+	return o.PersonalWorkspaces, true
+}
+
+// HasPersonalWorkspaces returns a boolean if a field has been set.
+func (o *UpdateTenantSettingsRequest) HasPersonalWorkspaces() bool {
+	if o != nil && o.PersonalWorkspaces != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPersonalWorkspaces gets a reference to the given TenantPersonalWorkspaces and assigns it to the PersonalWorkspaces field.
+func (o *UpdateTenantSettingsRequest) SetPersonalWorkspaces(v TenantPersonalWorkspaces) {
+	o.PersonalWorkspaces = &v
+}
+
 // GetUserProvisioning returns the UserProvisioning field value if set, zero value otherwise.
 func (o *UpdateTenantSettingsRequest) GetUserProvisioning() []string {
 	if o == nil || o.UserProvisioning == nil {
@@ -286,6 +320,9 @@ func (o UpdateTenantSettingsRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.LoginSaml != nil {
 		toSerialize["login_saml"] = o.LoginSaml
+	}
+	if o.PersonalWorkspaces != nil {
+		toSerialize["personal_workspaces"] = o.PersonalWorkspaces
 	}
 	if o.UserProvisioning != nil {
 		toSerialize["user_provisioning"] = o.UserProvisioning

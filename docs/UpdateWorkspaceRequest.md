@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **DbVolumeSizeBytes** | Pointer to **int64** |  | [optional] 
 **DesiredState** | Pointer to [**DesiredState**](DesiredState.md) | paused is not yet supported for Workspace | [optional] 
 **Handle** | Pointer to **string** |  | [optional] 
-**SearchPathPrefix** | Pointer to **[]string** | InstanceType *WorkspaceInstanceType &#x60;json:\&quot;instance_type,omitempty\&quot; binding:\&quot;omitempty,oneof&#x3D;db1.shared db1.small\&quot;&#x60; | [optional] 
+**InstanceType** | Pointer to [**WorkspaceInstanceType**](WorkspaceInstanceType.md) | the updated instance type of the workspace | [optional] 
+**SearchPathPrefix** | Pointer to **[]string** | Optionally update the search path prefix for the Steampipe DB. | [optional] 
 
 ## Methods
 
@@ -102,6 +103,31 @@ SetHandle sets Handle field to given value.
 `func (o *UpdateWorkspaceRequest) HasHandle() bool`
 
 HasHandle returns a boolean if a field has been set.
+
+### GetInstanceType
+
+`func (o *UpdateWorkspaceRequest) GetInstanceType() WorkspaceInstanceType`
+
+GetInstanceType returns the InstanceType field if non-nil, zero value otherwise.
+
+### GetInstanceTypeOk
+
+`func (o *UpdateWorkspaceRequest) GetInstanceTypeOk() (*WorkspaceInstanceType, bool)`
+
+GetInstanceTypeOk returns a tuple with the InstanceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstanceType
+
+`func (o *UpdateWorkspaceRequest) SetInstanceType(v WorkspaceInstanceType)`
+
+SetInstanceType sets InstanceType field to given value.
+
+### HasInstanceType
+
+`func (o *UpdateWorkspaceRequest) HasInstanceType() bool`
+
+HasInstanceType returns a boolean if a field has been set.
 
 ### GetSearchPathPrefix
 
