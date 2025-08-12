@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CliSessionTimeout** | Pointer to **int32** | The CLI session timeout in hours.                                                                                             // The endpoint for the tenant&#39;s postgres database. | [optional] 
+**ConsoleSessionTimeout** | Pointer to **int32** | The console (browser) session timeout in hours. | [optional] 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
 **CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
@@ -11,7 +13,9 @@ Name | Type | Description | Notes
 **LoginGithub** | [**TenantLoginSettings**](TenantLoginSettings.md) | Settings related to login via Github. | 
 **LoginGoogle** | [**TenantLoginSettings**](TenantLoginSettings.md) | Settings related to login via Google. | 
 **LoginSaml** | [**TenantSamlLoginSettings**](TenantSamlLoginSettings.md) | Settings related to login via Okta. | 
+**MaxTokenExpiration** | **int32** | The maximum token expiration in hours. (Default: 0 indicates we allow non-expiring tokens) | 
 **PersonalWorkspaces** | [**TenantPersonalWorkspaces**](TenantPersonalWorkspaces.md) | Settings related to user personal workspaces. | 
+**PostgresEndpoint** | Pointer to [**PostgresEndpointState**](PostgresEndpointState.md) | The endpoint for the tenant&#39;s postgres database. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
 **UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
@@ -24,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewTenantSettings
 
-`func NewTenantSettings(createdAt string, createdById string, loginEmail TenantLoginSettings, loginGithub TenantLoginSettings, loginGoogle TenantLoginSettings, loginSaml TenantSamlLoginSettings, personalWorkspaces TenantPersonalWorkspaces, updatedById string, userProvisioning []string, userProvisioningPermittedDomains []string, versionId int32, workspaceSnapshotPermittedVisibility []string, ) *TenantSettings`
+`func NewTenantSettings(createdAt string, createdById string, loginEmail TenantLoginSettings, loginGithub TenantLoginSettings, loginGoogle TenantLoginSettings, loginSaml TenantSamlLoginSettings, maxTokenExpiration int32, personalWorkspaces TenantPersonalWorkspaces, updatedById string, userProvisioning []string, userProvisioningPermittedDomains []string, versionId int32, workspaceSnapshotPermittedVisibility []string, ) *TenantSettings`
 
 NewTenantSettings instantiates a new TenantSettings object
 This constructor will assign default values to properties that have it defined,
@@ -38,6 +42,56 @@ will change when the set of required properties is changed
 NewTenantSettingsWithDefaults instantiates a new TenantSettings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCliSessionTimeout
+
+`func (o *TenantSettings) GetCliSessionTimeout() int32`
+
+GetCliSessionTimeout returns the CliSessionTimeout field if non-nil, zero value otherwise.
+
+### GetCliSessionTimeoutOk
+
+`func (o *TenantSettings) GetCliSessionTimeoutOk() (*int32, bool)`
+
+GetCliSessionTimeoutOk returns a tuple with the CliSessionTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCliSessionTimeout
+
+`func (o *TenantSettings) SetCliSessionTimeout(v int32)`
+
+SetCliSessionTimeout sets CliSessionTimeout field to given value.
+
+### HasCliSessionTimeout
+
+`func (o *TenantSettings) HasCliSessionTimeout() bool`
+
+HasCliSessionTimeout returns a boolean if a field has been set.
+
+### GetConsoleSessionTimeout
+
+`func (o *TenantSettings) GetConsoleSessionTimeout() int32`
+
+GetConsoleSessionTimeout returns the ConsoleSessionTimeout field if non-nil, zero value otherwise.
+
+### GetConsoleSessionTimeoutOk
+
+`func (o *TenantSettings) GetConsoleSessionTimeoutOk() (*int32, bool)`
+
+GetConsoleSessionTimeoutOk returns a tuple with the ConsoleSessionTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConsoleSessionTimeout
+
+`func (o *TenantSettings) SetConsoleSessionTimeout(v int32)`
+
+SetConsoleSessionTimeout sets ConsoleSessionTimeout field to given value.
+
+### HasConsoleSessionTimeout
+
+`func (o *TenantSettings) HasConsoleSessionTimeout() bool`
+
+HasConsoleSessionTimeout returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -184,6 +238,26 @@ and a boolean to check if the value has been set.
 SetLoginSaml sets LoginSaml field to given value.
 
 
+### GetMaxTokenExpiration
+
+`func (o *TenantSettings) GetMaxTokenExpiration() int32`
+
+GetMaxTokenExpiration returns the MaxTokenExpiration field if non-nil, zero value otherwise.
+
+### GetMaxTokenExpirationOk
+
+`func (o *TenantSettings) GetMaxTokenExpirationOk() (*int32, bool)`
+
+GetMaxTokenExpirationOk returns a tuple with the MaxTokenExpiration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxTokenExpiration
+
+`func (o *TenantSettings) SetMaxTokenExpiration(v int32)`
+
+SetMaxTokenExpiration sets MaxTokenExpiration field to given value.
+
+
 ### GetPersonalWorkspaces
 
 `func (o *TenantSettings) GetPersonalWorkspaces() TenantPersonalWorkspaces`
@@ -203,6 +277,31 @@ and a boolean to check if the value has been set.
 
 SetPersonalWorkspaces sets PersonalWorkspaces field to given value.
 
+
+### GetPostgresEndpoint
+
+`func (o *TenantSettings) GetPostgresEndpoint() PostgresEndpointState`
+
+GetPostgresEndpoint returns the PostgresEndpoint field if non-nil, zero value otherwise.
+
+### GetPostgresEndpointOk
+
+`func (o *TenantSettings) GetPostgresEndpointOk() (*PostgresEndpointState, bool)`
+
+GetPostgresEndpointOk returns a tuple with the PostgresEndpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPostgresEndpoint
+
+`func (o *TenantSettings) SetPostgresEndpoint(v PostgresEndpointState)`
+
+SetPostgresEndpoint sets PostgresEndpoint field to given value.
+
+### HasPostgresEndpoint
+
+`func (o *TenantSettings) HasPostgresEndpoint() bool`
+
+HasPostgresEndpoint returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

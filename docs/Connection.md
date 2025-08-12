@@ -23,10 +23,17 @@ Name | Type | Description | Notes
 **IntegrationResourceName** | Pointer to **string** | A friendly resource name for the connection. Only populated if its a connection thats been doscovered by an integration. | [optional] 
 **IntegrationResourcePath** | Pointer to **string** | The source path for this connection. Only populated if its a connection thats been discovered by an integration. | [optional] 
 **IntegrationResourceType** | Pointer to **string** | The source type for this connection. Only populated if its a connection thats been discovered by an integration. | [optional] 
+**LastErrorAt** | Pointer to **string** |  | [optional] 
+**LastErrorProcessId** | Pointer to **string** |  | [optional] 
+**LastSuccessfulUpdateAt** | Pointer to **string** |  | [optional] 
+**LastSuccessfulUpdateProcessId** | Pointer to **string** |  | [optional] 
+**LastUpdateAttemptAt** | Pointer to **string** |  | [optional] 
+**LastUpdateAttemptProcessId** | Pointer to **string** |  | [optional] 
 **ManagedById** | Pointer to **string** | The ID of the aggregator that manages this connection. Only populated if this is a discovered connection. | [optional] 
 **ParentId** | **string** | The id of the entity where the connection is stored. Can be either tenant, identity, workspace or connection-folder. | 
 **Plugin** | Pointer to **string** | The plugin name for the connection. | [optional] 
 **PluginVersion** | Pointer to **string** | The plugin version for the connection. | [optional] 
+**Status** | Pointer to [**ConnectionStatus**](ConnectionStatus.md) | The status of the connection. | [optional] 
 **TenantId** | **string** | The unique identifier for the tenant where the connection has been created. | 
 **Title** | Pointer to **string** | The title of the connection. Only populated when the connection is of type connection folder. | [optional] 
 **Trunk** | Pointer to [**[]ConnectionTrunkItem**](ConnectionTrunkItem.md) | The trunk for the connection. | [optional] 
@@ -511,6 +518,156 @@ SetIntegrationResourceType sets IntegrationResourceType field to given value.
 
 HasIntegrationResourceType returns a boolean if a field has been set.
 
+### GetLastErrorAt
+
+`func (o *Connection) GetLastErrorAt() string`
+
+GetLastErrorAt returns the LastErrorAt field if non-nil, zero value otherwise.
+
+### GetLastErrorAtOk
+
+`func (o *Connection) GetLastErrorAtOk() (*string, bool)`
+
+GetLastErrorAtOk returns a tuple with the LastErrorAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastErrorAt
+
+`func (o *Connection) SetLastErrorAt(v string)`
+
+SetLastErrorAt sets LastErrorAt field to given value.
+
+### HasLastErrorAt
+
+`func (o *Connection) HasLastErrorAt() bool`
+
+HasLastErrorAt returns a boolean if a field has been set.
+
+### GetLastErrorProcessId
+
+`func (o *Connection) GetLastErrorProcessId() string`
+
+GetLastErrorProcessId returns the LastErrorProcessId field if non-nil, zero value otherwise.
+
+### GetLastErrorProcessIdOk
+
+`func (o *Connection) GetLastErrorProcessIdOk() (*string, bool)`
+
+GetLastErrorProcessIdOk returns a tuple with the LastErrorProcessId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastErrorProcessId
+
+`func (o *Connection) SetLastErrorProcessId(v string)`
+
+SetLastErrorProcessId sets LastErrorProcessId field to given value.
+
+### HasLastErrorProcessId
+
+`func (o *Connection) HasLastErrorProcessId() bool`
+
+HasLastErrorProcessId returns a boolean if a field has been set.
+
+### GetLastSuccessfulUpdateAt
+
+`func (o *Connection) GetLastSuccessfulUpdateAt() string`
+
+GetLastSuccessfulUpdateAt returns the LastSuccessfulUpdateAt field if non-nil, zero value otherwise.
+
+### GetLastSuccessfulUpdateAtOk
+
+`func (o *Connection) GetLastSuccessfulUpdateAtOk() (*string, bool)`
+
+GetLastSuccessfulUpdateAtOk returns a tuple with the LastSuccessfulUpdateAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastSuccessfulUpdateAt
+
+`func (o *Connection) SetLastSuccessfulUpdateAt(v string)`
+
+SetLastSuccessfulUpdateAt sets LastSuccessfulUpdateAt field to given value.
+
+### HasLastSuccessfulUpdateAt
+
+`func (o *Connection) HasLastSuccessfulUpdateAt() bool`
+
+HasLastSuccessfulUpdateAt returns a boolean if a field has been set.
+
+### GetLastSuccessfulUpdateProcessId
+
+`func (o *Connection) GetLastSuccessfulUpdateProcessId() string`
+
+GetLastSuccessfulUpdateProcessId returns the LastSuccessfulUpdateProcessId field if non-nil, zero value otherwise.
+
+### GetLastSuccessfulUpdateProcessIdOk
+
+`func (o *Connection) GetLastSuccessfulUpdateProcessIdOk() (*string, bool)`
+
+GetLastSuccessfulUpdateProcessIdOk returns a tuple with the LastSuccessfulUpdateProcessId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastSuccessfulUpdateProcessId
+
+`func (o *Connection) SetLastSuccessfulUpdateProcessId(v string)`
+
+SetLastSuccessfulUpdateProcessId sets LastSuccessfulUpdateProcessId field to given value.
+
+### HasLastSuccessfulUpdateProcessId
+
+`func (o *Connection) HasLastSuccessfulUpdateProcessId() bool`
+
+HasLastSuccessfulUpdateProcessId returns a boolean if a field has been set.
+
+### GetLastUpdateAttemptAt
+
+`func (o *Connection) GetLastUpdateAttemptAt() string`
+
+GetLastUpdateAttemptAt returns the LastUpdateAttemptAt field if non-nil, zero value otherwise.
+
+### GetLastUpdateAttemptAtOk
+
+`func (o *Connection) GetLastUpdateAttemptAtOk() (*string, bool)`
+
+GetLastUpdateAttemptAtOk returns a tuple with the LastUpdateAttemptAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUpdateAttemptAt
+
+`func (o *Connection) SetLastUpdateAttemptAt(v string)`
+
+SetLastUpdateAttemptAt sets LastUpdateAttemptAt field to given value.
+
+### HasLastUpdateAttemptAt
+
+`func (o *Connection) HasLastUpdateAttemptAt() bool`
+
+HasLastUpdateAttemptAt returns a boolean if a field has been set.
+
+### GetLastUpdateAttemptProcessId
+
+`func (o *Connection) GetLastUpdateAttemptProcessId() string`
+
+GetLastUpdateAttemptProcessId returns the LastUpdateAttemptProcessId field if non-nil, zero value otherwise.
+
+### GetLastUpdateAttemptProcessIdOk
+
+`func (o *Connection) GetLastUpdateAttemptProcessIdOk() (*string, bool)`
+
+GetLastUpdateAttemptProcessIdOk returns a tuple with the LastUpdateAttemptProcessId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUpdateAttemptProcessId
+
+`func (o *Connection) SetLastUpdateAttemptProcessId(v string)`
+
+SetLastUpdateAttemptProcessId sets LastUpdateAttemptProcessId field to given value.
+
+### HasLastUpdateAttemptProcessId
+
+`func (o *Connection) HasLastUpdateAttemptProcessId() bool`
+
+HasLastUpdateAttemptProcessId returns a boolean if a field has been set.
+
 ### GetManagedById
 
 `func (o *Connection) GetManagedById() string`
@@ -605,6 +762,31 @@ SetPluginVersion sets PluginVersion field to given value.
 `func (o *Connection) HasPluginVersion() bool`
 
 HasPluginVersion returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *Connection) GetStatus() ConnectionStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *Connection) GetStatusOk() (*ConnectionStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *Connection) SetStatus(v ConnectionStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *Connection) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 ### GetTenantId
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ConnectionId** | Pointer to **string** | The unique identifier of the connection for which the process is created. | [optional] 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
 **CreatedBy** | Pointer to [**User**](User.md) | User information for the user who created this. | [optional] 
 **CreatedById** | **string** | The ID of the user that created this. | 
@@ -15,6 +16,7 @@ Name | Type | Description | Notes
 **PipelineId** | Pointer to **string** | The unique identifier of the pipeline for which the process is created. | [optional] 
 **State** | Pointer to [**ProcessState**](ProcessState.md) | The state of the process. | [optional] 
 **StateReason** | Pointer to **string** | The optional reason why the process is in its current state. | [optional] 
+**TailpipePartitionId** | Pointer to **string** | The unique identifier of the tailpipe partition for which the process is created. | [optional] 
 **TenantId** | Pointer to **string** | The unique identifier of the tenant for which the process is created. | [optional] 
 **Trigger** | Pointer to [**WorkspaceModTrigger**](WorkspaceModTrigger.md) | The current details of the trigger for which the process is created. | [optional] 
 **TriggerId** | Pointer to **string** | The unique identifier of the trigger for which the process is created. | [optional] 
@@ -44,6 +46,31 @@ will change when the set of required properties is changed
 NewSpProcessWithDefaults instantiates a new SpProcess object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetConnectionId
+
+`func (o *SpProcess) GetConnectionId() string`
+
+GetConnectionId returns the ConnectionId field if non-nil, zero value otherwise.
+
+### GetConnectionIdOk
+
+`func (o *SpProcess) GetConnectionIdOk() (*string, bool)`
+
+GetConnectionIdOk returns a tuple with the ConnectionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectionId
+
+`func (o *SpProcess) SetConnectionId(v string)`
+
+SetConnectionId sets ConnectionId field to given value.
+
+### HasConnectionId
+
+`func (o *SpProcess) HasConnectionId() bool`
+
+HasConnectionId returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -299,6 +326,31 @@ SetStateReason sets StateReason field to given value.
 `func (o *SpProcess) HasStateReason() bool`
 
 HasStateReason returns a boolean if a field has been set.
+
+### GetTailpipePartitionId
+
+`func (o *SpProcess) GetTailpipePartitionId() string`
+
+GetTailpipePartitionId returns the TailpipePartitionId field if non-nil, zero value otherwise.
+
+### GetTailpipePartitionIdOk
+
+`func (o *SpProcess) GetTailpipePartitionIdOk() (*string, bool)`
+
+GetTailpipePartitionIdOk returns a tuple with the TailpipePartitionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTailpipePartitionId
+
+`func (o *SpProcess) SetTailpipePartitionId(v string)`
+
+SetTailpipePartitionId sets TailpipePartitionId field to given value.
+
+### HasTailpipePartitionId
+
+`func (o *SpProcess) HasTailpipePartitionId() bool`
+
+HasTailpipePartitionId returns a boolean if a field has been set.
 
 ### GetTenantId
 

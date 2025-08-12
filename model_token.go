@@ -16,24 +16,41 @@ import (
 
 // Token struct for Token
 type Token struct {
-	CreatedAt string  `json:"created_at"`
-	Id        string  `json:"id"`
-	Last4     *string `json:"last4,omitempty"`
-	Status    string  `json:"status"`
+	// The time of creation in ISO 8601 UTC.
+	CreatedAt string `json:"created_at"`
+	// User information for the user who created this.
+	CreatedBy *User `json:"created_by,omitempty"`
+	// The ID of the user that created this.
+	CreatedById string  `json:"created_by_id"`
+	Description *string `json:"description,omitempty"`
+	ExpiresAt   *string `json:"expires_at,omitempty"`
+	Id          string  `json:"id"`
+	Last4       *string `json:"last4,omitempty"`
+	Status      string  `json:"status"`
+	Title       *string `json:"title,omitempty"`
+	TokenType   *string `json:"token_type,omitempty"`
+	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	UserId    string  `json:"user_id"`
-	VersionId int32   `json:"version_id"`
+	// User information for the last user to update this.
+	UpdatedBy *User `json:"updated_by,omitempty"`
+	// The ID of the user that performed the last update.
+	UpdatedById string `json:"updated_by_id"`
+	UserId      string `json:"user_id"`
+	// The version ID of this item. Pass this version ID via an If-Match header when performing mutation operations on the item.
+	VersionId int32 `json:"version_id"`
 }
 
 // NewToken instantiates a new Token object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewToken(createdAt string, id string, status string, userId string, versionId int32) *Token {
+func NewToken(createdAt string, createdById string, id string, status string, updatedById string, userId string, versionId int32) *Token {
 	this := Token{}
 	this.CreatedAt = createdAt
+	this.CreatedById = createdById
 	this.Id = id
 	this.Status = status
+	this.UpdatedById = updatedById
 	this.UserId = userId
 	this.VersionId = versionId
 	return &this
@@ -69,6 +86,126 @@ func (o *Token) GetCreatedAtOk() (*string, bool) {
 // SetCreatedAt sets field value
 func (o *Token) SetCreatedAt(v string) {
 	o.CreatedAt = v
+}
+
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
+func (o *Token) GetCreatedBy() User {
+	if o == nil || o.CreatedBy == nil {
+		var ret User
+		return ret
+	}
+	return *o.CreatedBy
+}
+
+// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Token) GetCreatedByOk() (*User, bool) {
+	if o == nil || o.CreatedBy == nil {
+		return nil, false
+	}
+	return o.CreatedBy, true
+}
+
+// HasCreatedBy returns a boolean if a field has been set.
+func (o *Token) HasCreatedBy() bool {
+	if o != nil && o.CreatedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedBy gets a reference to the given User and assigns it to the CreatedBy field.
+func (o *Token) SetCreatedBy(v User) {
+	o.CreatedBy = &v
+}
+
+// GetCreatedById returns the CreatedById field value
+func (o *Token) GetCreatedById() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CreatedById
+}
+
+// GetCreatedByIdOk returns a tuple with the CreatedById field value
+// and a boolean to check if the value has been set.
+func (o *Token) GetCreatedByIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedById, true
+}
+
+// SetCreatedById sets field value
+func (o *Token) SetCreatedById(v string) {
+	o.CreatedById = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *Token) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Token) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *Token) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *Token) SetDescription(v string) {
+	o.Description = &v
+}
+
+// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
+func (o *Token) GetExpiresAt() string {
+	if o == nil || o.ExpiresAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExpiresAt
+}
+
+// GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Token) GetExpiresAtOk() (*string, bool) {
+	if o == nil || o.ExpiresAt == nil {
+		return nil, false
+	}
+	return o.ExpiresAt, true
+}
+
+// HasExpiresAt returns a boolean if a field has been set.
+func (o *Token) HasExpiresAt() bool {
+	if o != nil && o.ExpiresAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiresAt gets a reference to the given string and assigns it to the ExpiresAt field.
+func (o *Token) SetExpiresAt(v string) {
+	o.ExpiresAt = &v
 }
 
 // GetId returns the Id field value
@@ -151,6 +288,70 @@ func (o *Token) SetStatus(v string) {
 	o.Status = v
 }
 
+// GetTitle returns the Title field value if set, zero value otherwise.
+func (o *Token) GetTitle() string {
+	if o == nil || o.Title == nil {
+		var ret string
+		return ret
+	}
+	return *o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Token) GetTitleOk() (*string, bool) {
+	if o == nil || o.Title == nil {
+		return nil, false
+	}
+	return o.Title, true
+}
+
+// HasTitle returns a boolean if a field has been set.
+func (o *Token) HasTitle() bool {
+	if o != nil && o.Title != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
+func (o *Token) SetTitle(v string) {
+	o.Title = &v
+}
+
+// GetTokenType returns the TokenType field value if set, zero value otherwise.
+func (o *Token) GetTokenType() string {
+	if o == nil || o.TokenType == nil {
+		var ret string
+		return ret
+	}
+	return *o.TokenType
+}
+
+// GetTokenTypeOk returns a tuple with the TokenType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Token) GetTokenTypeOk() (*string, bool) {
+	if o == nil || o.TokenType == nil {
+		return nil, false
+	}
+	return o.TokenType, true
+}
+
+// HasTokenType returns a boolean if a field has been set.
+func (o *Token) HasTokenType() bool {
+	if o != nil && o.TokenType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenType gets a reference to the given string and assigns it to the TokenType field.
+func (o *Token) SetTokenType(v string) {
+	o.TokenType = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Token) GetUpdatedAt() string {
 	if o == nil || o.UpdatedAt == nil {
@@ -181,6 +382,62 @@ func (o *Token) HasUpdatedAt() bool {
 // SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
 func (o *Token) SetUpdatedAt(v string) {
 	o.UpdatedAt = &v
+}
+
+// GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise.
+func (o *Token) GetUpdatedBy() User {
+	if o == nil || o.UpdatedBy == nil {
+		var ret User
+		return ret
+	}
+	return *o.UpdatedBy
+}
+
+// GetUpdatedByOk returns a tuple with the UpdatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Token) GetUpdatedByOk() (*User, bool) {
+	if o == nil || o.UpdatedBy == nil {
+		return nil, false
+	}
+	return o.UpdatedBy, true
+}
+
+// HasUpdatedBy returns a boolean if a field has been set.
+func (o *Token) HasUpdatedBy() bool {
+	if o != nil && o.UpdatedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedBy gets a reference to the given User and assigns it to the UpdatedBy field.
+func (o *Token) SetUpdatedBy(v User) {
+	o.UpdatedBy = &v
+}
+
+// GetUpdatedById returns the UpdatedById field value
+func (o *Token) GetUpdatedById() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.UpdatedById
+}
+
+// GetUpdatedByIdOk returns a tuple with the UpdatedById field value
+// and a boolean to check if the value has been set.
+func (o *Token) GetUpdatedByIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UpdatedById, true
+}
+
+// SetUpdatedById sets field value
+func (o *Token) SetUpdatedById(v string) {
+	o.UpdatedById = v
 }
 
 // GetUserId returns the UserId field value
@@ -236,6 +493,18 @@ func (o Token) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["created_at"] = o.CreatedAt
 	}
+	if o.CreatedBy != nil {
+		toSerialize["created_by"] = o.CreatedBy
+	}
+	if true {
+		toSerialize["created_by_id"] = o.CreatedById
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
+	if o.ExpiresAt != nil {
+		toSerialize["expires_at"] = o.ExpiresAt
+	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -245,8 +514,20 @@ func (o Token) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["status"] = o.Status
 	}
+	if o.Title != nil {
+		toSerialize["title"] = o.Title
+	}
+	if o.TokenType != nil {
+		toSerialize["token_type"] = o.TokenType
+	}
 	if o.UpdatedAt != nil {
 		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if o.UpdatedBy != nil {
+		toSerialize["updated_by"] = o.UpdatedBy
+	}
+	if true {
+		toSerialize["updated_by_id"] = o.UpdatedById
 	}
 	if true {
 		toSerialize["user_id"] = o.UserId

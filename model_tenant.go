@@ -39,6 +39,8 @@ type Tenant struct {
 	Id string `json:"id"`
 	// The state of the tenant.
 	State *string `json:"state,omitempty"`
+	// The time which auth tokens must be issued after for this tenant.
+	TokenMinIssuedAt *string `json:"token_min_issued_at,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
 	UpdatedAt *string `json:"updated_at,omitempty"`
 	// User information for the last user to update this.
@@ -423,6 +425,38 @@ func (o *Tenant) SetState(v string) {
 	o.State = &v
 }
 
+// GetTokenMinIssuedAt returns the TokenMinIssuedAt field value if set, zero value otherwise.
+func (o *Tenant) GetTokenMinIssuedAt() string {
+	if o == nil || o.TokenMinIssuedAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.TokenMinIssuedAt
+}
+
+// GetTokenMinIssuedAtOk returns a tuple with the TokenMinIssuedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Tenant) GetTokenMinIssuedAtOk() (*string, bool) {
+	if o == nil || o.TokenMinIssuedAt == nil {
+		return nil, false
+	}
+	return o.TokenMinIssuedAt, true
+}
+
+// HasTokenMinIssuedAt returns a boolean if a field has been set.
+func (o *Tenant) HasTokenMinIssuedAt() bool {
+	if o != nil && o.TokenMinIssuedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenMinIssuedAt gets a reference to the given string and assigns it to the TokenMinIssuedAt field.
+func (o *Tenant) SetTokenMinIssuedAt(v string) {
+	o.TokenMinIssuedAt = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Tenant) GetUpdatedAt() string {
 	if o == nil || o.UpdatedAt == nil {
@@ -764,6 +798,9 @@ func (o Tenant) MarshalJSON() ([]byte, error) {
 	}
 	if o.State != nil {
 		toSerialize["state"] = o.State
+	}
+	if o.TokenMinIssuedAt != nil {
+		toSerialize["token_min_issued_at"] = o.TokenMinIssuedAt
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updated_at"] = o.UpdatedAt

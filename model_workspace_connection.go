@@ -55,7 +55,13 @@ type WorkspaceConnection struct {
 	// The source path for this connection. Only populated if its a connection thats been discovered by an integration.
 	IntegrationResourcePath *string `json:"integration_resource_path,omitempty"`
 	// The source type for this connection. Only populated if its a connection thats been discovered by an integration.
-	IntegrationResourceType *string `json:"integration_resource_type,omitempty"`
+	IntegrationResourceType       *string `json:"integration_resource_type,omitempty"`
+	LastErrorAt                   *string `json:"last_error_at,omitempty"`
+	LastErrorProcessId            *string `json:"last_error_process_id,omitempty"`
+	LastSuccessfulUpdateAt        *string `json:"last_successful_update_at,omitempty"`
+	LastSuccessfulUpdateProcessId *string `json:"last_successful_update_process_id,omitempty"`
+	LastUpdateAttemptAt           *string `json:"last_update_attempt_at,omitempty"`
+	LastUpdateAttemptProcessId    *string `json:"last_update_attempt_process_id,omitempty"`
 	// The ID of the aggregator that manages this connection. Only populated if this is a discovered connection.
 	ManagedById *string `json:"managed_by_id,omitempty"`
 	// The id of the entity where the connection is stored. Can be either tenant, identity, workspace or connection-folder.
@@ -64,6 +70,8 @@ type WorkspaceConnection struct {
 	Plugin *string `json:"plugin,omitempty"`
 	// The plugin version for the connection.
 	PluginVersion *string `json:"plugin_version,omitempty"`
+	// The status of the connection.
+	Status *ConnectionStatus `json:"status,omitempty"`
 	// The unique identifier for the tenant where the connection has been created.
 	TenantId string `json:"tenant_id"`
 	// The title of the connection. Only populated when the connection is of type connection folder.
@@ -717,6 +725,198 @@ func (o *WorkspaceConnection) SetIntegrationResourceType(v string) {
 	o.IntegrationResourceType = &v
 }
 
+// GetLastErrorAt returns the LastErrorAt field value if set, zero value otherwise.
+func (o *WorkspaceConnection) GetLastErrorAt() string {
+	if o == nil || o.LastErrorAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastErrorAt
+}
+
+// GetLastErrorAtOk returns a tuple with the LastErrorAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceConnection) GetLastErrorAtOk() (*string, bool) {
+	if o == nil || o.LastErrorAt == nil {
+		return nil, false
+	}
+	return o.LastErrorAt, true
+}
+
+// HasLastErrorAt returns a boolean if a field has been set.
+func (o *WorkspaceConnection) HasLastErrorAt() bool {
+	if o != nil && o.LastErrorAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastErrorAt gets a reference to the given string and assigns it to the LastErrorAt field.
+func (o *WorkspaceConnection) SetLastErrorAt(v string) {
+	o.LastErrorAt = &v
+}
+
+// GetLastErrorProcessId returns the LastErrorProcessId field value if set, zero value otherwise.
+func (o *WorkspaceConnection) GetLastErrorProcessId() string {
+	if o == nil || o.LastErrorProcessId == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastErrorProcessId
+}
+
+// GetLastErrorProcessIdOk returns a tuple with the LastErrorProcessId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceConnection) GetLastErrorProcessIdOk() (*string, bool) {
+	if o == nil || o.LastErrorProcessId == nil {
+		return nil, false
+	}
+	return o.LastErrorProcessId, true
+}
+
+// HasLastErrorProcessId returns a boolean if a field has been set.
+func (o *WorkspaceConnection) HasLastErrorProcessId() bool {
+	if o != nil && o.LastErrorProcessId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastErrorProcessId gets a reference to the given string and assigns it to the LastErrorProcessId field.
+func (o *WorkspaceConnection) SetLastErrorProcessId(v string) {
+	o.LastErrorProcessId = &v
+}
+
+// GetLastSuccessfulUpdateAt returns the LastSuccessfulUpdateAt field value if set, zero value otherwise.
+func (o *WorkspaceConnection) GetLastSuccessfulUpdateAt() string {
+	if o == nil || o.LastSuccessfulUpdateAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastSuccessfulUpdateAt
+}
+
+// GetLastSuccessfulUpdateAtOk returns a tuple with the LastSuccessfulUpdateAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceConnection) GetLastSuccessfulUpdateAtOk() (*string, bool) {
+	if o == nil || o.LastSuccessfulUpdateAt == nil {
+		return nil, false
+	}
+	return o.LastSuccessfulUpdateAt, true
+}
+
+// HasLastSuccessfulUpdateAt returns a boolean if a field has been set.
+func (o *WorkspaceConnection) HasLastSuccessfulUpdateAt() bool {
+	if o != nil && o.LastSuccessfulUpdateAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastSuccessfulUpdateAt gets a reference to the given string and assigns it to the LastSuccessfulUpdateAt field.
+func (o *WorkspaceConnection) SetLastSuccessfulUpdateAt(v string) {
+	o.LastSuccessfulUpdateAt = &v
+}
+
+// GetLastSuccessfulUpdateProcessId returns the LastSuccessfulUpdateProcessId field value if set, zero value otherwise.
+func (o *WorkspaceConnection) GetLastSuccessfulUpdateProcessId() string {
+	if o == nil || o.LastSuccessfulUpdateProcessId == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastSuccessfulUpdateProcessId
+}
+
+// GetLastSuccessfulUpdateProcessIdOk returns a tuple with the LastSuccessfulUpdateProcessId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceConnection) GetLastSuccessfulUpdateProcessIdOk() (*string, bool) {
+	if o == nil || o.LastSuccessfulUpdateProcessId == nil {
+		return nil, false
+	}
+	return o.LastSuccessfulUpdateProcessId, true
+}
+
+// HasLastSuccessfulUpdateProcessId returns a boolean if a field has been set.
+func (o *WorkspaceConnection) HasLastSuccessfulUpdateProcessId() bool {
+	if o != nil && o.LastSuccessfulUpdateProcessId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastSuccessfulUpdateProcessId gets a reference to the given string and assigns it to the LastSuccessfulUpdateProcessId field.
+func (o *WorkspaceConnection) SetLastSuccessfulUpdateProcessId(v string) {
+	o.LastSuccessfulUpdateProcessId = &v
+}
+
+// GetLastUpdateAttemptAt returns the LastUpdateAttemptAt field value if set, zero value otherwise.
+func (o *WorkspaceConnection) GetLastUpdateAttemptAt() string {
+	if o == nil || o.LastUpdateAttemptAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastUpdateAttemptAt
+}
+
+// GetLastUpdateAttemptAtOk returns a tuple with the LastUpdateAttemptAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceConnection) GetLastUpdateAttemptAtOk() (*string, bool) {
+	if o == nil || o.LastUpdateAttemptAt == nil {
+		return nil, false
+	}
+	return o.LastUpdateAttemptAt, true
+}
+
+// HasLastUpdateAttemptAt returns a boolean if a field has been set.
+func (o *WorkspaceConnection) HasLastUpdateAttemptAt() bool {
+	if o != nil && o.LastUpdateAttemptAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdateAttemptAt gets a reference to the given string and assigns it to the LastUpdateAttemptAt field.
+func (o *WorkspaceConnection) SetLastUpdateAttemptAt(v string) {
+	o.LastUpdateAttemptAt = &v
+}
+
+// GetLastUpdateAttemptProcessId returns the LastUpdateAttemptProcessId field value if set, zero value otherwise.
+func (o *WorkspaceConnection) GetLastUpdateAttemptProcessId() string {
+	if o == nil || o.LastUpdateAttemptProcessId == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastUpdateAttemptProcessId
+}
+
+// GetLastUpdateAttemptProcessIdOk returns a tuple with the LastUpdateAttemptProcessId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceConnection) GetLastUpdateAttemptProcessIdOk() (*string, bool) {
+	if o == nil || o.LastUpdateAttemptProcessId == nil {
+		return nil, false
+	}
+	return o.LastUpdateAttemptProcessId, true
+}
+
+// HasLastUpdateAttemptProcessId returns a boolean if a field has been set.
+func (o *WorkspaceConnection) HasLastUpdateAttemptProcessId() bool {
+	if o != nil && o.LastUpdateAttemptProcessId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdateAttemptProcessId gets a reference to the given string and assigns it to the LastUpdateAttemptProcessId field.
+func (o *WorkspaceConnection) SetLastUpdateAttemptProcessId(v string) {
+	o.LastUpdateAttemptProcessId = &v
+}
+
 // GetManagedById returns the ManagedById field value if set, zero value otherwise.
 func (o *WorkspaceConnection) GetManagedById() string {
 	if o == nil || o.ManagedById == nil {
@@ -835,6 +1035,38 @@ func (o *WorkspaceConnection) HasPluginVersion() bool {
 // SetPluginVersion gets a reference to the given string and assigns it to the PluginVersion field.
 func (o *WorkspaceConnection) SetPluginVersion(v string) {
 	o.PluginVersion = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *WorkspaceConnection) GetStatus() ConnectionStatus {
+	if o == nil || o.Status == nil {
+		var ret ConnectionStatus
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkspaceConnection) GetStatusOk() (*ConnectionStatus, bool) {
+	if o == nil || o.Status == nil {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *WorkspaceConnection) HasStatus() bool {
+	if o != nil && o.Status != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given ConnectionStatus and assigns it to the Status field.
+func (o *WorkspaceConnection) SetStatus(v ConnectionStatus) {
+	o.Status = &v
 }
 
 // GetTenantId returns the TenantId field value
@@ -1163,6 +1395,24 @@ func (o WorkspaceConnection) MarshalJSON() ([]byte, error) {
 	if o.IntegrationResourceType != nil {
 		toSerialize["integration_resource_type"] = o.IntegrationResourceType
 	}
+	if o.LastErrorAt != nil {
+		toSerialize["last_error_at"] = o.LastErrorAt
+	}
+	if o.LastErrorProcessId != nil {
+		toSerialize["last_error_process_id"] = o.LastErrorProcessId
+	}
+	if o.LastSuccessfulUpdateAt != nil {
+		toSerialize["last_successful_update_at"] = o.LastSuccessfulUpdateAt
+	}
+	if o.LastSuccessfulUpdateProcessId != nil {
+		toSerialize["last_successful_update_process_id"] = o.LastSuccessfulUpdateProcessId
+	}
+	if o.LastUpdateAttemptAt != nil {
+		toSerialize["last_update_attempt_at"] = o.LastUpdateAttemptAt
+	}
+	if o.LastUpdateAttemptProcessId != nil {
+		toSerialize["last_update_attempt_process_id"] = o.LastUpdateAttemptProcessId
+	}
 	if o.ManagedById != nil {
 		toSerialize["managed_by_id"] = o.ManagedById
 	}
@@ -1174,6 +1424,9 @@ func (o WorkspaceConnection) MarshalJSON() ([]byte, error) {
 	}
 	if o.PluginVersion != nil {
 		toSerialize["plugin_version"] = o.PluginVersion
+	}
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
 	}
 	if true {
 		toSerialize["tenant_id"] = o.TenantId

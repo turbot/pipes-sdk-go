@@ -16,7 +16,9 @@ import (
 
 // UpdateTokenRequest struct for UpdateTokenRequest
 type UpdateTokenRequest struct {
-	Status string `json:"status"`
+	Description *string `json:"description,omitempty"`
+	Status      string  `json:"status"`
+	Title       *string `json:"title,omitempty"`
 }
 
 // NewUpdateTokenRequest instantiates a new UpdateTokenRequest object
@@ -35,6 +37,38 @@ func NewUpdateTokenRequest(status string) *UpdateTokenRequest {
 func NewUpdateTokenRequestWithDefaults() *UpdateTokenRequest {
 	this := UpdateTokenRequest{}
 	return &this
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *UpdateTokenRequest) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateTokenRequest) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *UpdateTokenRequest) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *UpdateTokenRequest) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetStatus returns the Status field value
@@ -61,10 +95,48 @@ func (o *UpdateTokenRequest) SetStatus(v string) {
 	o.Status = v
 }
 
+// GetTitle returns the Title field value if set, zero value otherwise.
+func (o *UpdateTokenRequest) GetTitle() string {
+	if o == nil || o.Title == nil {
+		var ret string
+		return ret
+	}
+	return *o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateTokenRequest) GetTitleOk() (*string, bool) {
+	if o == nil || o.Title == nil {
+		return nil, false
+	}
+	return o.Title, true
+}
+
+// HasTitle returns a boolean if a field has been set.
+func (o *UpdateTokenRequest) HasTitle() bool {
+	if o != nil && o.Title != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
+func (o *UpdateTokenRequest) SetTitle(v string) {
+	o.Title = &v
+}
+
 func (o UpdateTokenRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
 	if true {
 		toSerialize["status"] = o.Status
+	}
+	if o.Title != nil {
+		toSerialize["title"] = o.Title
 	}
 	return json.Marshal(toSerialize)
 }

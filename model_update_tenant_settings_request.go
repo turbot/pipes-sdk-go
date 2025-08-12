@@ -16,6 +16,10 @@ import (
 
 // UpdateTenantSettingsRequest struct for UpdateTenantSettingsRequest
 type UpdateTenantSettingsRequest struct {
+	// The CLI session timeout in seconds.
+	CliSessionTimeout *int32 `json:"cli_session_timeout,omitempty"`
+	// The console (browser) session timeout in seconds.
+	ConsoleSessionTimeout *int32 `json:"console_session_timeout,omitempty"`
 	// Settings related to login via Email.
 	LoginEmail *UpdateTenantLoginSettings `json:"login_email,omitempty"`
 	// Settings related to login via Github.
@@ -24,8 +28,12 @@ type UpdateTenantSettingsRequest struct {
 	LoginGoogle *UpdateTenantLoginSettings `json:"login_google,omitempty"`
 	// LoginMicrosoft      *TenantLoginSettings     `json:\"login_microsoft\" binding:\"omitempty\"`                                  // Settings related to login via Microsoft.
 	LoginSaml *UpdateTenantSamlLoginSettings `json:"login_saml,omitempty"`
+	// The maximum token expiration in seconds. (Default: 0 indicates we allow non-expiring tokens)
+	MaxTokenExpiration *int32 `json:"max_token_expiration,omitempty"`
 	// Settings related to user personal workspaces.
 	PersonalWorkspaces *TenantPersonalWorkspaces `json:"personal_workspaces,omitempty"`
+	// Settings related to user personal workspaces.
+	PostgresEndpoint *PostgresEndpointState `json:"postgres_endpoint,omitempty"`
 	// The user provisioning settings for the tenant.
 	UserProvisioning *[]string `json:"user_provisioning,omitempty"`
 	// The domains that new users are permitted to be provisioned from.
@@ -49,6 +57,70 @@ func NewUpdateTenantSettingsRequest() *UpdateTenantSettingsRequest {
 func NewUpdateTenantSettingsRequestWithDefaults() *UpdateTenantSettingsRequest {
 	this := UpdateTenantSettingsRequest{}
 	return &this
+}
+
+// GetCliSessionTimeout returns the CliSessionTimeout field value if set, zero value otherwise.
+func (o *UpdateTenantSettingsRequest) GetCliSessionTimeout() int32 {
+	if o == nil || o.CliSessionTimeout == nil {
+		var ret int32
+		return ret
+	}
+	return *o.CliSessionTimeout
+}
+
+// GetCliSessionTimeoutOk returns a tuple with the CliSessionTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateTenantSettingsRequest) GetCliSessionTimeoutOk() (*int32, bool) {
+	if o == nil || o.CliSessionTimeout == nil {
+		return nil, false
+	}
+	return o.CliSessionTimeout, true
+}
+
+// HasCliSessionTimeout returns a boolean if a field has been set.
+func (o *UpdateTenantSettingsRequest) HasCliSessionTimeout() bool {
+	if o != nil && o.CliSessionTimeout != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCliSessionTimeout gets a reference to the given int32 and assigns it to the CliSessionTimeout field.
+func (o *UpdateTenantSettingsRequest) SetCliSessionTimeout(v int32) {
+	o.CliSessionTimeout = &v
+}
+
+// GetConsoleSessionTimeout returns the ConsoleSessionTimeout field value if set, zero value otherwise.
+func (o *UpdateTenantSettingsRequest) GetConsoleSessionTimeout() int32 {
+	if o == nil || o.ConsoleSessionTimeout == nil {
+		var ret int32
+		return ret
+	}
+	return *o.ConsoleSessionTimeout
+}
+
+// GetConsoleSessionTimeoutOk returns a tuple with the ConsoleSessionTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateTenantSettingsRequest) GetConsoleSessionTimeoutOk() (*int32, bool) {
+	if o == nil || o.ConsoleSessionTimeout == nil {
+		return nil, false
+	}
+	return o.ConsoleSessionTimeout, true
+}
+
+// HasConsoleSessionTimeout returns a boolean if a field has been set.
+func (o *UpdateTenantSettingsRequest) HasConsoleSessionTimeout() bool {
+	if o != nil && o.ConsoleSessionTimeout != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConsoleSessionTimeout gets a reference to the given int32 and assigns it to the ConsoleSessionTimeout field.
+func (o *UpdateTenantSettingsRequest) SetConsoleSessionTimeout(v int32) {
+	o.ConsoleSessionTimeout = &v
 }
 
 // GetLoginEmail returns the LoginEmail field value if set, zero value otherwise.
@@ -179,6 +251,38 @@ func (o *UpdateTenantSettingsRequest) SetLoginSaml(v UpdateTenantSamlLoginSettin
 	o.LoginSaml = &v
 }
 
+// GetMaxTokenExpiration returns the MaxTokenExpiration field value if set, zero value otherwise.
+func (o *UpdateTenantSettingsRequest) GetMaxTokenExpiration() int32 {
+	if o == nil || o.MaxTokenExpiration == nil {
+		var ret int32
+		return ret
+	}
+	return *o.MaxTokenExpiration
+}
+
+// GetMaxTokenExpirationOk returns a tuple with the MaxTokenExpiration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateTenantSettingsRequest) GetMaxTokenExpirationOk() (*int32, bool) {
+	if o == nil || o.MaxTokenExpiration == nil {
+		return nil, false
+	}
+	return o.MaxTokenExpiration, true
+}
+
+// HasMaxTokenExpiration returns a boolean if a field has been set.
+func (o *UpdateTenantSettingsRequest) HasMaxTokenExpiration() bool {
+	if o != nil && o.MaxTokenExpiration != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxTokenExpiration gets a reference to the given int32 and assigns it to the MaxTokenExpiration field.
+func (o *UpdateTenantSettingsRequest) SetMaxTokenExpiration(v int32) {
+	o.MaxTokenExpiration = &v
+}
+
 // GetPersonalWorkspaces returns the PersonalWorkspaces field value if set, zero value otherwise.
 func (o *UpdateTenantSettingsRequest) GetPersonalWorkspaces() TenantPersonalWorkspaces {
 	if o == nil || o.PersonalWorkspaces == nil {
@@ -209,6 +313,38 @@ func (o *UpdateTenantSettingsRequest) HasPersonalWorkspaces() bool {
 // SetPersonalWorkspaces gets a reference to the given TenantPersonalWorkspaces and assigns it to the PersonalWorkspaces field.
 func (o *UpdateTenantSettingsRequest) SetPersonalWorkspaces(v TenantPersonalWorkspaces) {
 	o.PersonalWorkspaces = &v
+}
+
+// GetPostgresEndpoint returns the PostgresEndpoint field value if set, zero value otherwise.
+func (o *UpdateTenantSettingsRequest) GetPostgresEndpoint() PostgresEndpointState {
+	if o == nil || o.PostgresEndpoint == nil {
+		var ret PostgresEndpointState
+		return ret
+	}
+	return *o.PostgresEndpoint
+}
+
+// GetPostgresEndpointOk returns a tuple with the PostgresEndpoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateTenantSettingsRequest) GetPostgresEndpointOk() (*PostgresEndpointState, bool) {
+	if o == nil || o.PostgresEndpoint == nil {
+		return nil, false
+	}
+	return o.PostgresEndpoint, true
+}
+
+// HasPostgresEndpoint returns a boolean if a field has been set.
+func (o *UpdateTenantSettingsRequest) HasPostgresEndpoint() bool {
+	if o != nil && o.PostgresEndpoint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPostgresEndpoint gets a reference to the given PostgresEndpointState and assigns it to the PostgresEndpoint field.
+func (o *UpdateTenantSettingsRequest) SetPostgresEndpoint(v PostgresEndpointState) {
+	o.PostgresEndpoint = &v
 }
 
 // GetUserProvisioning returns the UserProvisioning field value if set, zero value otherwise.
@@ -309,6 +445,12 @@ func (o *UpdateTenantSettingsRequest) SetWorkspaceSnapshotPermittedVisibility(v 
 
 func (o UpdateTenantSettingsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CliSessionTimeout != nil {
+		toSerialize["cli_session_timeout"] = o.CliSessionTimeout
+	}
+	if o.ConsoleSessionTimeout != nil {
+		toSerialize["console_session_timeout"] = o.ConsoleSessionTimeout
+	}
 	if o.LoginEmail != nil {
 		toSerialize["login_email"] = o.LoginEmail
 	}
@@ -321,8 +463,14 @@ func (o UpdateTenantSettingsRequest) MarshalJSON() ([]byte, error) {
 	if o.LoginSaml != nil {
 		toSerialize["login_saml"] = o.LoginSaml
 	}
+	if o.MaxTokenExpiration != nil {
+		toSerialize["max_token_expiration"] = o.MaxTokenExpiration
+	}
 	if o.PersonalWorkspaces != nil {
 		toSerialize["personal_workspaces"] = o.PersonalWorkspaces
+	}
+	if o.PostgresEndpoint != nil {
+		toSerialize["postgres_endpoint"] = o.PostgresEndpoint
 	}
 	if o.UserProvisioning != nil {
 		toSerialize["user_provisioning"] = o.UserProvisioning
