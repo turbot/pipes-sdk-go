@@ -4,8 +4,8 @@
 
 _Enhancements_
 
-- Added extra attributes to `Connection` to support `Status`, `LastErrorAt`, `LastErrorProcessId`, `LastSuccessfulUpdateAt`, `LastSuccessfulUpdateProcessId`, `LastUpdateAttemptedAt` and `LastUpdateAttemptedAtProcessId` to track the connection status and last update attempts.
-- Added extra attributes to `WorkspaceConnection` to support `Status`, `LastErrorAt`, `LastErrorProcessId`, `LastSuccessfulUpdateAt`, `LastSuccessfulUpdateProcessId`, `LastUpdateAttemptedAt` and `LastUpdateAttemptedAtProcessId` to track the connection status and last update attempts.
+- Added extra attributes to `Connection` to support `Status`, `LastErrorAt`, `LastErrorProcessId`, `LastSuccessfulUpdateAt`, `LastSuccessfulUpdateProcessId`, `LastUpdateAttemptAt` and `LastUpdateAttemptProcessId` to track the connection status and last update attempts.
+- Added extra attributes to `WorkspaceConnection` to support `Status`, `LastErrorAt`, `LastErrorProcessId`, `LastSuccessfulUpdateAt`, `LastSuccessfulUpdateProcessId`, `LastUpdateAttemptAt` and `LastUpdateAttemptProcessId` to track the connection status and last update attempts.
 - Added `ConnectionId` attribute to `SpProcess` to track the connection associated with a process.
 - Added `TokenMinIssuedAt` attribute to `Tenant` to determine the time after which tokens will be accepted for this tenant.
 - Added extra attributes to `TenantSettings` to support `MaxTokenExpiration`, `CliSessionTimeout`, `ConsoleSessionTimeout` and `PostgresEnabled` to manage tenant settings around timeouts, tokens and direct database access.
