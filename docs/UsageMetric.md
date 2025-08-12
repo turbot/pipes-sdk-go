@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BillingMode** | [**UsageBillingModeType**](UsageBillingModeType.md) | The billing mode for this usage metric record. | 
 **Dimension** | [**UsageDimensionType**](UsageDimensionType.md) | The dimension for this usage metric record. | 
 **IdentityId** | Pointer to **string** | The identity ID for this usage metric record | [optional] 
 **InstanceType** | Pointer to **string** | The instance type for the usage record.                                                                                                                                                       // The instance type for this usage metric record. Only populated if the usage is for a workspace. | [optional] 
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewUsageMetric
 
-`func NewUsageMetric(dimension UsageDimensionType, metric UsageMetricType, unit UsageUnitType, usageDate string, ) *UsageMetric`
+`func NewUsageMetric(billingMode UsageBillingModeType, dimension UsageDimensionType, metric UsageMetricType, unit UsageUnitType, usageDate string, ) *UsageMetric`
 
 NewUsageMetric instantiates a new UsageMetric object
 This constructor will assign default values to properties that have it defined,
@@ -35,6 +36,26 @@ will change when the set of required properties is changed
 NewUsageMetricWithDefaults instantiates a new UsageMetric object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBillingMode
+
+`func (o *UsageMetric) GetBillingMode() UsageBillingModeType`
+
+GetBillingMode returns the BillingMode field if non-nil, zero value otherwise.
+
+### GetBillingModeOk
+
+`func (o *UsageMetric) GetBillingModeOk() (*UsageBillingModeType, bool)`
+
+GetBillingModeOk returns a tuple with the BillingMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBillingMode
+
+`func (o *UsageMetric) SetBillingMode(v UsageBillingModeType)`
+
+SetBillingMode sets BillingMode field to given value.
+
 
 ### GetDimension
 

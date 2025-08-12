@@ -95,6 +95,7 @@ docs/Connection.md
 docs/ConnectionConfigSource.md
 docs/ConnectionCredentialSource.md
 docs/ConnectionHandleMode.md
+docs/ConnectionStatus.md
 docs/ConnectionTestResult.md
 docs/ConnectionTrunkItem.md
 docs/Constraint.md
@@ -254,6 +255,7 @@ docs/PipelineFrequency.md
 docs/PipelineInstanceType.md
 docs/PipelineState.md
 docs/Plan.md
+docs/PostgresEndpointState.md
 docs/ProcessState.md
 docs/SlackChannel.md
 docs/SnapshotState.md
@@ -313,6 +315,7 @@ docs/UpdateWorkspaceModRequest.md
 docs/UpdateWorkspaceModVariableSettingRequest.md
 docs/UpdateWorkspaceRequest.md
 docs/UpdateWorkspaceSnapshotRequest.md
+docs/UsageBillingModeType.md
 docs/UsageDimensionType.md
 docs/UsageMetric.md
 docs/UsageMetricType.md
@@ -403,6 +406,7 @@ model_connection.go
 model_connection_config_source.go
 model_connection_credential_source.go
 model_connection_handle_mode.go
+model_connection_status.go
 model_connection_test_result.go
 model_connection_trunk_item.go
 model_constraint.go
@@ -528,6 +532,7 @@ model_pipeline_frequency.go
 model_pipeline_instance_type.go
 model_pipeline_state.go
 model_plan.go
+model_postgres_endpoint_state.go
 model_process_state.go
 model_slack_channel.go
 model_snapshot_state.go
@@ -579,6 +584,7 @@ model_update_workspace_mod_variable_setting_request.go
 model_update_workspace_request.go
 model_update_workspace_snapshot_request.go
 model_us_bank_account.go
+model_usage_billing_mode_type.go
 model_usage_dimension_type.go
 model_usage_metric.go
 model_usage_metric_type.go

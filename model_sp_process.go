@@ -16,6 +16,8 @@ import (
 
 // SpProcess struct for SpProcess
 type SpProcess struct {
+	// The unique identifier of the connection for which the process is created.
+	ConnectionId *string `json:"connection_id,omitempty"`
 	// The time of creation in ISO 8601 UTC.
 	CreatedAt string `json:"created_at"`
 	// User information for the user who created this.
@@ -38,6 +40,8 @@ type SpProcess struct {
 	State *ProcessState `json:"state,omitempty"`
 	// The optional reason why the process is in its current state.
 	StateReason *string `json:"state_reason,omitempty"`
+	// The unique identifier of the tailpipe partition for which the process is created.
+	TailpipePartitionId *string `json:"tailpipe_partition_id,omitempty"`
 	// The unique identifier of the tenant for which the process is created.
 	TenantId *string `json:"tenant_id,omitempty"`
 	// The current details of the trigger for which the process is created.
@@ -83,6 +87,38 @@ func NewSpProcess(createdAt string, createdById string, id string, pipe string, 
 func NewSpProcessWithDefaults() *SpProcess {
 	this := SpProcess{}
 	return &this
+}
+
+// GetConnectionId returns the ConnectionId field value if set, zero value otherwise.
+func (o *SpProcess) GetConnectionId() string {
+	if o == nil || o.ConnectionId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ConnectionId
+}
+
+// GetConnectionIdOk returns a tuple with the ConnectionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpProcess) GetConnectionIdOk() (*string, bool) {
+	if o == nil || o.ConnectionId == nil {
+		return nil, false
+	}
+	return o.ConnectionId, true
+}
+
+// HasConnectionId returns a boolean if a field has been set.
+func (o *SpProcess) HasConnectionId() bool {
+	if o != nil && o.ConnectionId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionId gets a reference to the given string and assigns it to the ConnectionId field.
+func (o *SpProcess) SetConnectionId(v string) {
+	o.ConnectionId = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -405,6 +441,38 @@ func (o *SpProcess) SetStateReason(v string) {
 	o.StateReason = &v
 }
 
+// GetTailpipePartitionId returns the TailpipePartitionId field value if set, zero value otherwise.
+func (o *SpProcess) GetTailpipePartitionId() string {
+	if o == nil || o.TailpipePartitionId == nil {
+		var ret string
+		return ret
+	}
+	return *o.TailpipePartitionId
+}
+
+// GetTailpipePartitionIdOk returns a tuple with the TailpipePartitionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpProcess) GetTailpipePartitionIdOk() (*string, bool) {
+	if o == nil || o.TailpipePartitionId == nil {
+		return nil, false
+	}
+	return o.TailpipePartitionId, true
+}
+
+// HasTailpipePartitionId returns a boolean if a field has been set.
+func (o *SpProcess) HasTailpipePartitionId() bool {
+	if o != nil && o.TailpipePartitionId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTailpipePartitionId gets a reference to the given string and assigns it to the TailpipePartitionId field.
+func (o *SpProcess) SetTailpipePartitionId(v string) {
+	o.TailpipePartitionId = &v
+}
+
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *SpProcess) GetTenantId() string {
 	if o == nil || o.TenantId == nil {
@@ -695,6 +763,9 @@ func (o *SpProcess) SetWorkspaceId(v string) {
 
 func (o SpProcess) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ConnectionId != nil {
+		toSerialize["connection_id"] = o.ConnectionId
+	}
 	if true {
 		toSerialize["created_at"] = o.CreatedAt
 	}
@@ -727,6 +798,9 @@ func (o SpProcess) MarshalJSON() ([]byte, error) {
 	}
 	if o.StateReason != nil {
 		toSerialize["state_reason"] = o.StateReason
+	}
+	if o.TailpipePartitionId != nil {
+		toSerialize["tailpipe_partition_id"] = o.TailpipePartitionId
 	}
 	if o.TenantId != nil {
 		toSerialize["tenant_id"] = o.TenantId

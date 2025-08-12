@@ -38988,9 +38988,11 @@ components:
         tenant_id: tenant_id
         integration_resource_type: integration_resource_type
         plugin_version: plugin_version
+        last_successful_update_process_id: last_successful_update_process_id
         integration_resource_identifier: integration_resource_identifier
         created_at: created_at
         deleted_by: '{}'
+        last_error_process_id: last_error_process_id
         title: title
         type: type
         credential_source: '{}'
@@ -39002,6 +39004,7 @@ components:
         id: id
         config_source: '{}'
         identity_id: identity_id
+        last_error_at: last_error_at
         deleted_by_id: deleted_by_id
         handle: handle
         version_id: 0
@@ -39014,15 +39017,19 @@ components:
           type: type
         created_by: '{}'
         deleted_at: deleted_at
+        last_update_attempt_process_id: last_update_attempt_process_id
         integration_resource_name: integration_resource_name
         handle_dynamic: handle_dynamic
         plugin: plugin
+        last_update_attempt_at: last_update_attempt_at
         parent_id: parent_id
+        last_successful_update_at: last_successful_update_at
         integration: '{}'
         updated_by: '{}'
         updated_by_id: updated_by_id
         created_by_id: created_by_id
         config: '{}'
+        status: '{}'
       properties:
         config:
           description: The plugin or connection configuration.
@@ -39107,6 +39114,18 @@ components:
           description: The source type for this connection. Only populated if its
             a connection thats been discovered by an integration.
           type: string
+        last_error_at:
+          type: string
+        last_error_process_id:
+          type: string
+        last_successful_update_at:
+          type: string
+        last_successful_update_process_id:
+          type: string
+        last_update_attempt_at:
+          type: string
+        last_update_attempt_process_id:
+          type: string
         managed_by_id:
           description: The ID of the aggregator that manages this connection. Only
             populated if this is a discovered connection.
@@ -39121,6 +39140,11 @@ components:
         plugin_version:
           description: The plugin version for the connection.
           type: string
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ConnectionStatus'
+          description: The status of the connection.
+          type: object
         tenant_id:
           description: The unique identifier for the tenant where the connection has
             been created.
@@ -39195,6 +39219,14 @@ components:
       x-enum-varnames:
       - ConnectionHandleModeStatic
       - ConnectionHandleModeDynamic
+    ConnectionStatus:
+      enum:
+      - enabled
+      - disabled
+      type: string
+      x-enum-varnames:
+      - ConnectionStatusEnabled
+      - ConnectionStatusDisabled
     ConnectionTestResult:
       example:
         reason: reason
@@ -39933,6 +39965,7 @@ components:
           tenant_id: tenant_id
           state_reason: state_reason
           identity_id: identity_id
+          tailpipe_partition_id: tailpipe_partition_id
           trigger_id: trigger_id
           usage: '{}'
           created_at: created_at
@@ -39943,6 +39976,7 @@ components:
           pipeline: '{}'
           workspace_id: workspace_id
           updated_at: updated_at
+          connection_id: connection_id
           pipeline_id: pipeline_id
           updated_by: '{}'
           pipe: steampipe
@@ -40056,6 +40090,7 @@ components:
           tenant_id: tenant_id
           state_reason: state_reason
           identity_id: identity_id
+          tailpipe_partition_id: tailpipe_partition_id
           trigger_id: trigger_id
           usage: '{}'
           created_at: created_at
@@ -40066,6 +40101,7 @@ components:
           pipeline: '{}'
           workspace_id: workspace_id
           updated_at: updated_at
+          connection_id: connection_id
           pipeline_id: pipeline_id
           updated_by: '{}'
           pipe: steampipe
@@ -40078,6 +40114,7 @@ components:
           tenant_id: tenant_id
           state_reason: state_reason
           identity_id: identity_id
+          tailpipe_partition_id: tailpipe_partition_id
           trigger_id: trigger_id
           usage: '{}'
           created_at: created_at
@@ -40088,6 +40125,7 @@ components:
           pipeline: '{}'
           workspace_id: workspace_id
           updated_at: updated_at
+          connection_id: connection_id
           pipeline_id: pipeline_id
           updated_by: '{}'
           pipe: steampipe
@@ -40104,6 +40142,7 @@ components:
           tenant_id: tenant_id
           state_reason: state_reason
           identity_id: identity_id
+          tailpipe_partition_id: tailpipe_partition_id
           trigger_id: trigger_id
           usage: '{}'
           created_at: created_at
@@ -40114,6 +40153,7 @@ components:
           pipeline: '{}'
           workspace_id: workspace_id
           updated_at: updated_at
+          connection_id: connection_id
           pipeline_id: pipeline_id
           updated_by: '{}'
           pipe: steampipe
@@ -40129,6 +40169,7 @@ components:
           tenant_id: tenant_id
           state_reason: state_reason
           identity_id: identity_id
+          tailpipe_partition_id: tailpipe_partition_id
           trigger_id: trigger_id
           usage: '{}'
           created_at: created_at
@@ -40139,6 +40180,7 @@ components:
           pipeline: '{}'
           workspace_id: workspace_id
           updated_at: updated_at
+          connection_id: connection_id
           pipeline_id: pipeline_id
           updated_by: '{}'
           pipe: steampipe
@@ -41289,9 +41331,11 @@ components:
         - tenant_id: tenant_id
           integration_resource_type: integration_resource_type
           plugin_version: plugin_version
+          last_successful_update_process_id: last_successful_update_process_id
           integration_resource_identifier: integration_resource_identifier
           created_at: created_at
           deleted_by: '{}'
+          last_error_process_id: last_error_process_id
           title: title
           type: type
           credential_source: '{}'
@@ -41303,6 +41347,7 @@ components:
           id: id
           config_source: '{}'
           identity_id: identity_id
+          last_error_at: last_error_at
           deleted_by_id: deleted_by_id
           handle: handle
           version_id: 0
@@ -41315,21 +41360,27 @@ components:
             type: type
           created_by: '{}'
           deleted_at: deleted_at
+          last_update_attempt_process_id: last_update_attempt_process_id
           integration_resource_name: integration_resource_name
           handle_dynamic: handle_dynamic
           plugin: plugin
+          last_update_attempt_at: last_update_attempt_at
           parent_id: parent_id
+          last_successful_update_at: last_successful_update_at
           integration: '{}'
           updated_by: '{}'
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           config: '{}'
+          status: '{}'
         - tenant_id: tenant_id
           integration_resource_type: integration_resource_type
           plugin_version: plugin_version
+          last_successful_update_process_id: last_successful_update_process_id
           integration_resource_identifier: integration_resource_identifier
           created_at: created_at
           deleted_by: '{}'
+          last_error_process_id: last_error_process_id
           title: title
           type: type
           credential_source: '{}'
@@ -41341,6 +41392,7 @@ components:
           id: id
           config_source: '{}'
           identity_id: identity_id
+          last_error_at: last_error_at
           deleted_by_id: deleted_by_id
           handle: handle
           version_id: 0
@@ -41353,15 +41405,19 @@ components:
             type: type
           created_by: '{}'
           deleted_at: deleted_at
+          last_update_attempt_process_id: last_update_attempt_process_id
           integration_resource_name: integration_resource_name
           handle_dynamic: handle_dynamic
           plugin: plugin
+          last_update_attempt_at: last_update_attempt_at
           parent_id: parent_id
+          last_successful_update_at: last_successful_update_at
           integration: '{}'
           updated_by: '{}'
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           config: '{}'
+          status: '{}'
       properties:
         items:
           items:
@@ -41446,6 +41502,7 @@ components:
             tenant_id: tenant_id
             state_reason: state_reason
             identity_id: identity_id
+            tailpipe_partition_id: tailpipe_partition_id
             trigger_id: trigger_id
             usage: '{}'
             created_at: created_at
@@ -41456,6 +41513,7 @@ components:
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
+            connection_id: connection_id
             pipeline_id: pipeline_id
             updated_by: '{}'
             pipe: steampipe
@@ -41569,6 +41627,7 @@ components:
             tenant_id: tenant_id
             state_reason: state_reason
             identity_id: identity_id
+            tailpipe_partition_id: tailpipe_partition_id
             trigger_id: trigger_id
             usage: '{}'
             created_at: created_at
@@ -41579,6 +41638,7 @@ components:
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
+            connection_id: connection_id
             pipeline_id: pipeline_id
             updated_by: '{}'
             pipe: steampipe
@@ -41591,6 +41651,7 @@ components:
             tenant_id: tenant_id
             state_reason: state_reason
             identity_id: identity_id
+            tailpipe_partition_id: tailpipe_partition_id
             trigger_id: trigger_id
             usage: '{}'
             created_at: created_at
@@ -41601,6 +41662,7 @@ components:
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
+            connection_id: connection_id
             pipeline_id: pipeline_id
             updated_by: '{}'
             pipe: steampipe
@@ -41617,6 +41679,7 @@ components:
             tenant_id: tenant_id
             state_reason: state_reason
             identity_id: identity_id
+            tailpipe_partition_id: tailpipe_partition_id
             trigger_id: trigger_id
             usage: '{}'
             created_at: created_at
@@ -41627,6 +41690,7 @@ components:
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
+            connection_id: connection_id
             pipeline_id: pipeline_id
             updated_by: '{}'
             pipe: steampipe
@@ -41642,6 +41706,7 @@ components:
             tenant_id: tenant_id
             state_reason: state_reason
             identity_id: identity_id
+            tailpipe_partition_id: tailpipe_partition_id
             trigger_id: trigger_id
             usage: '{}'
             created_at: created_at
@@ -41652,6 +41717,7 @@ components:
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
+            connection_id: connection_id
             pipeline_id: pipeline_id
             updated_by: '{}'
             pipe: steampipe
@@ -41708,6 +41774,7 @@ components:
             tenant_id: tenant_id
             state_reason: state_reason
             identity_id: identity_id
+            tailpipe_partition_id: tailpipe_partition_id
             trigger_id: trigger_id
             usage: '{}'
             created_at: created_at
@@ -41718,6 +41785,7 @@ components:
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
+            connection_id: connection_id
             pipeline_id: pipeline_id
             updated_by: '{}'
             pipe: steampipe
@@ -41831,6 +41899,7 @@ components:
             tenant_id: tenant_id
             state_reason: state_reason
             identity_id: identity_id
+            tailpipe_partition_id: tailpipe_partition_id
             trigger_id: trigger_id
             usage: '{}'
             created_at: created_at
@@ -41841,6 +41910,7 @@ components:
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
+            connection_id: connection_id
             pipeline_id: pipeline_id
             updated_by: '{}'
             pipe: steampipe
@@ -41853,6 +41923,7 @@ components:
             tenant_id: tenant_id
             state_reason: state_reason
             identity_id: identity_id
+            tailpipe_partition_id: tailpipe_partition_id
             trigger_id: trigger_id
             usage: '{}'
             created_at: created_at
@@ -41863,6 +41934,7 @@ components:
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
+            connection_id: connection_id
             pipeline_id: pipeline_id
             updated_by: '{}'
             pipe: steampipe
@@ -41879,6 +41951,7 @@ components:
             tenant_id: tenant_id
             state_reason: state_reason
             identity_id: identity_id
+            tailpipe_partition_id: tailpipe_partition_id
             trigger_id: trigger_id
             usage: '{}'
             created_at: created_at
@@ -41889,6 +41962,7 @@ components:
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
+            connection_id: connection_id
             pipeline_id: pipeline_id
             updated_by: '{}'
             pipe: steampipe
@@ -41904,6 +41978,7 @@ components:
             tenant_id: tenant_id
             state_reason: state_reason
             identity_id: identity_id
+            tailpipe_partition_id: tailpipe_partition_id
             trigger_id: trigger_id
             usage: '{}'
             created_at: created_at
@@ -41914,6 +41989,7 @@ components:
             pipeline: '{}'
             workspace_id: workspace_id
             updated_at: updated_at
+            connection_id: connection_id
             pipeline_id: pipeline_id
             updated_by: '{}'
             pipe: steampipe
@@ -43015,6 +43091,7 @@ components:
         - tenant_id: tenant_id
           state_reason: state_reason
           identity_id: identity_id
+          tailpipe_partition_id: tailpipe_partition_id
           trigger_id: trigger_id
           usage: '{}'
           created_at: created_at
@@ -43025,6 +43102,7 @@ components:
           pipeline: '{}'
           workspace_id: workspace_id
           updated_at: updated_at
+          connection_id: connection_id
           pipeline_id: pipeline_id
           updated_by: '{}'
           pipe: steampipe
@@ -43036,6 +43114,7 @@ components:
         - tenant_id: tenant_id
           state_reason: state_reason
           identity_id: identity_id
+          tailpipe_partition_id: tailpipe_partition_id
           trigger_id: trigger_id
           usage: '{}'
           created_at: created_at
@@ -43046,6 +43125,7 @@ components:
           pipeline: '{}'
           workspace_id: workspace_id
           updated_at: updated_at
+          connection_id: connection_id
           pipeline_id: pipeline_id
           updated_by: '{}'
           pipe: steampipe
@@ -43194,6 +43274,7 @@ components:
           updated_at: updated_at
           usage_user_threshold: 1
           updated_by: '{}'
+          token_min_issued_at: token_min_issued_at
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           id: id
@@ -43213,6 +43294,7 @@ components:
           updated_at: updated_at
           usage_user_threshold: 1
           updated_by: '{}'
+          token_min_issued_at: token_min_issued_at
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           id: id
@@ -43231,18 +43313,34 @@ components:
         next_token: next_token
         items:
         - last4: last4
+          created_at: created_at
+          description: description
+          version_id: 0
+          title: title
+          token_type: token_type
+          created_by: '{}'
+          expires_at: expires_at
           updated_at: updated_at
           user_id: user_id
-          created_at: created_at
+          updated_by: '{}'
+          updated_by_id: updated_by_id
+          created_by_id: created_by_id
           id: id
-          version_id: 0
           status: status
         - last4: last4
+          created_at: created_at
+          description: description
+          version_id: 0
+          title: title
+          token_type: token_type
+          created_by: '{}'
+          expires_at: expires_at
           updated_at: updated_at
           user_id: user_id
-          created_at: created_at
+          updated_by: '{}'
+          updated_by_id: updated_by_id
+          created_by_id: created_by_id
           id: id
-          version_id: 0
           status: status
       properties:
         items:
@@ -43305,24 +43403,26 @@ components:
         next_token: next_token
         items:
         - tenant_id: tenant_id
-          workspace_id: workspace_id
-          unit: '{}'
+          billing_mode: '{}'
           value_weighted: 1
           identity_id: identity_id
-          metric: '{}'
           usage_date: usage_date
+          workspace_id: workspace_id
+          unit: '{}'
+          metric: '{}'
           pipe: pipe
           value_rounded: 6
           dimension: '{}'
           instance_type: instance_type
           value: 0
         - tenant_id: tenant_id
-          workspace_id: workspace_id
-          unit: '{}'
+          billing_mode: '{}'
           value_weighted: 1
           identity_id: identity_id
-          metric: '{}'
           usage_date: usage_date
+          workspace_id: workspace_id
+          unit: '{}'
+          metric: '{}'
           pipe: pipe
           value_rounded: 6
           dimension: '{}'
@@ -43595,10 +43695,12 @@ components:
         - tenant_id: tenant_id
           integration_resource_type: integration_resource_type
           plugin_version: plugin_version
+          last_successful_update_process_id: last_successful_update_process_id
           integration_resource_identifier: integration_resource_identifier
           association: '{}'
           created_at: created_at
           deleted_by: '{}'
+          last_error_process_id: last_error_process_id
           title: title
           type: type
           credential_source: '{}'
@@ -43610,6 +43712,7 @@ components:
           id: id
           config_source: '{}'
           identity_id: identity_id
+          last_error_at: last_error_at
           deleted_by_id: deleted_by_id
           handle: handle
           version_id: 0
@@ -43622,22 +43725,28 @@ components:
             type: type
           created_by: '{}'
           deleted_at: deleted_at
+          last_update_attempt_process_id: last_update_attempt_process_id
           integration_resource_name: integration_resource_name
           handle_dynamic: handle_dynamic
           plugin: plugin
+          last_update_attempt_at: last_update_attempt_at
           parent_id: parent_id
+          last_successful_update_at: last_successful_update_at
           integration: '{}'
           updated_by: '{}'
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           config: '{}'
+          status: '{}'
         - tenant_id: tenant_id
           integration_resource_type: integration_resource_type
           plugin_version: plugin_version
+          last_successful_update_process_id: last_successful_update_process_id
           integration_resource_identifier: integration_resource_identifier
           association: '{}'
           created_at: created_at
           deleted_by: '{}'
+          last_error_process_id: last_error_process_id
           title: title
           type: type
           credential_source: '{}'
@@ -43649,6 +43758,7 @@ components:
           id: id
           config_source: '{}'
           identity_id: identity_id
+          last_error_at: last_error_at
           deleted_by_id: deleted_by_id
           handle: handle
           version_id: 0
@@ -43661,15 +43771,19 @@ components:
             type: type
           created_by: '{}'
           deleted_at: deleted_at
+          last_update_attempt_process_id: last_update_attempt_process_id
           integration_resource_name: integration_resource_name
           handle_dynamic: handle_dynamic
           plugin: plugin
+          last_update_attempt_at: last_update_attempt_at
           parent_id: parent_id
+          last_successful_update_at: last_successful_update_at
           integration: '{}'
           updated_by: '{}'
           updated_by_id: updated_by_id
           created_by_id: created_by_id
           config: '{}'
+          status: '{}'
       properties:
         items:
           items:
@@ -45060,6 +45174,14 @@ components:
       - plan
       - version_id
       type: object
+    PostgresEndpointState:
+      enum:
+      - enabled
+      - disabled
+      type: string
+      x-enum-varnames:
+      - PostgresEndpointEnabled
+      - PostgresEndpointDisabled
     ProcessState:
       enum:
       - pending
@@ -45111,6 +45233,7 @@ components:
         tenant_id: tenant_id
         state_reason: state_reason
         identity_id: identity_id
+        tailpipe_partition_id: tailpipe_partition_id
         trigger_id: trigger_id
         usage: '{}'
         created_at: created_at
@@ -45121,6 +45244,7 @@ components:
         pipeline: '{}'
         workspace_id: workspace_id
         updated_at: updated_at
+        connection_id: connection_id
         pipeline_id: pipeline_id
         updated_by: '{}'
         pipe: steampipe
@@ -45130,6 +45254,11 @@ components:
         state: '{}'
         flowpipe_pipeline_id: flowpipe_pipeline_id
       properties:
+        connection_id:
+          description: The unique identifier of the connection for which the process
+            is created.
+          format: ^c_[0-9a-v]{20}$
+          type: string
         created_at:
           description: The time of creation in ISO 8601 UTC.
           type: string
@@ -45181,6 +45310,11 @@ components:
           type: object
         state_reason:
           description: The optional reason why the process is in its current state.
+          type: string
+        tailpipe_partition_id:
+          description: The unique identifier of the tailpipe partition for which the
+            process is created.
+          format: ^tp_[0-9a-v]{20}$
           type: string
         tenant_id:
           description: The unique identifier of the tenant for which the process is
@@ -45291,6 +45425,7 @@ components:
         updated_at: updated_at
         usage_user_threshold: 1
         updated_by: '{}'
+        token_min_issued_at: token_min_issued_at
         updated_by_id: updated_by_id
         created_by_id: created_by_id
         id: id
@@ -45339,6 +45474,9 @@ components:
           type: string
         state:
           description: The state of the tenant.
+          type: string
+        token_min_issued_at:
+          description: The time which auth tokens must be issued after for this tenant.
           type: string
         updated_at:
           description: The time of the last update in ISO 8601 UTC.
@@ -45494,12 +45632,13 @@ components:
       type: object
     TenantSettings:
       example:
+        postgres_endpoint: '{}'
         login_email: '{}'
         user_provisioning_permitted_domains:
         - user_provisioning_permitted_domains
         - user_provisioning_permitted_domains
         created_at: created_at
-        version_id: 0
+        version_id: 5
         created_by: '{}'
         login_github: '{}'
         login_google: '{}'
@@ -45510,12 +45649,22 @@ components:
         - user_provisioning
         login_saml: '{}'
         updated_by: '{}'
+        cli_session_timeout: 0
         updated_by_id: updated_by_id
         workspace_snapshot_permitted_visibility:
         - workspace_snapshot_permitted_visibility
         - workspace_snapshot_permitted_visibility
         created_by_id: created_by_id
+        max_token_expiration: 1
+        console_session_timeout: 6
       properties:
+        cli_session_timeout:
+          description: The CLI session timeout in hours.                                                                                             //
+            The endpoint for the tenant's postgres database.
+          type: integer
+        console_session_timeout:
+          description: The console (browser) session timeout in hours.
+          type: integer
         created_at:
           description: The time of creation in ISO 8601 UTC.
           type: string
@@ -45548,10 +45697,19 @@ components:
           - $ref: '#/components/schemas/TenantSamlLoginSettings'
           description: Settings related to login via Okta.
           type: object
+        max_token_expiration:
+          description: 'The maximum token expiration in hours. (Default: 0 indicates
+            we allow non-expiring tokens)'
+          type: integer
         personal_workspaces:
           allOf:
           - $ref: '#/components/schemas/TenantPersonalWorkspaces'
           description: Settings related to user personal workspaces.
+          type: object
+        postgres_endpoint:
+          allOf:
+          - $ref: '#/components/schemas/PostgresEndpointState'
+          description: The endpoint for the tenant's postgres database.
           type: object
         updated_at:
           description: The time of the last update in ISO 8601 UTC.
@@ -45591,6 +45749,7 @@ components:
       - login_github
       - login_google
       - login_saml
+      - max_token_expiration
       - personal_workspaces
       - updated_by_id
       - user_provisioning
@@ -45724,14 +45883,36 @@ components:
     Token:
       example:
         last4: last4
+        created_at: created_at
+        description: description
+        version_id: 0
+        title: title
+        token_type: token_type
+        created_by: '{}'
+        expires_at: expires_at
         updated_at: updated_at
         user_id: user_id
-        created_at: created_at
+        updated_by: '{}'
+        updated_by_id: updated_by_id
+        created_by_id: created_by_id
         id: id
-        version_id: 0
         status: status
       properties:
         created_at:
+          description: The time of creation in ISO 8601 UTC.
+          type: string
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          description: User information for the user who created this.
+          type: object
+        created_by_id:
+          description: The ID of the user that created this.
+          format: ^u_[0-9a-v]{20}$
+          type: string
+        description:
+          type: string
+        expires_at:
           type: string
         id:
           format: ^[a-z]_[0-9a-v]{20}$
@@ -45740,17 +45921,35 @@ components:
           type: string
         status:
           type: string
+        title:
+          type: string
+        token_type:
+          type: string
         updated_at:
+          description: The time of the last update in ISO 8601 UTC.
+          type: string
+        updated_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          description: User information for the last user to update this.
+          type: object
+        updated_by_id:
+          description: The ID of the user that performed the last update.
+          format: ^u_[0-9a-v]{20}$
           type: string
         user_id:
           format: ^[a-z]_[0-9a-v]{20}$
           type: string
         version_id:
+          description: The version ID of this item. Pass this version ID via an If-Match
+            header when performing mutation operations on the item.
           type: integer
       required:
       - created_at
+      - created_by_id
       - id
       - status
+      - updated_by_id
       - user_id
       - version_id
       type: object
@@ -46112,6 +46311,7 @@ components:
         usage_compute_action: '{}'
         usage_user_threshold: 1
         handle: handle
+        token_min_issued_at: token_min_issued_at
         usage_compute_threshold: 0
         display_name: display_name
         usage_storage_threshold: 6
@@ -46120,6 +46320,8 @@ components:
           type: string
         handle:
           format: ^[a-z0-9]{1,2}(?:[a-z0-9]{1,2}|-[a-z0-9]){0,18}[a-z0-9]?$
+          type: string
+        token_min_issued_at:
           type: string
         usage_compute_action:
           allOf:
@@ -46168,6 +46370,7 @@ components:
         login_github: '{}'
         login_google: '{}'
         personal_workspaces: '{}'
+        postgres_endpoint: '{}'
         user_provisioning:
         - user_provisioning
         - user_provisioning
@@ -46176,10 +46379,19 @@ components:
         user_provisioning_permitted_domains:
         - user_provisioning_permitted_domains
         - user_provisioning_permitted_domains
+        cli_session_timeout: 0
         workspace_snapshot_permitted_visibility:
         - workspace_snapshot_permitted_visibility
         - workspace_snapshot_permitted_visibility
+        max_token_expiration: 1
+        console_session_timeout: 6
       properties:
+        cli_session_timeout:
+          description: The CLI session timeout in seconds.
+          type: integer
+        console_session_timeout:
+          description: The console (browser) session timeout in seconds.
+          type: integer
         login_email:
           allOf:
           - $ref: '#/components/schemas/UpdateTenantLoginSettings'
@@ -46202,9 +46414,18 @@ components:
             binding:"omitempty"`                                  // Settings related
             to login via Microsoft.
           type: object
+        max_token_expiration:
+          description: 'The maximum token expiration in seconds. (Default: 0 indicates
+            we allow non-expiring tokens)'
+          type: integer
         personal_workspaces:
           allOf:
           - $ref: '#/components/schemas/TenantPersonalWorkspaces'
+          description: Settings related to user personal workspaces.
+          type: object
+        postgres_endpoint:
+          allOf:
+          - $ref: '#/components/schemas/PostgresEndpointState'
           description: Settings related to user personal workspaces.
           type: object
         user_provisioning:
@@ -46233,9 +46454,15 @@ components:
       type: object
     UpdateTokenRequest:
       example:
+        description: description
+        title: title
         status: status
       properties:
+        description:
+          type: string
         status:
+          type: string
+        title:
           type: string
       required:
       - status
@@ -46405,6 +46632,14 @@ components:
           description: The updated visibility for the snapshot.
           type: object
       type: object
+    UsageBillingModeType:
+      enum:
+      - billable
+      - non_billable
+      type: string
+      x-enum-varnames:
+      - UsageBillingModeTypeBillable
+      - UsageBillingModeTypeNonBillable
     UsageDimensionType:
       enum:
       - compute
@@ -46418,18 +46653,24 @@ components:
     UsageMetric:
       example:
         tenant_id: tenant_id
-        workspace_id: workspace_id
-        unit: '{}'
+        billing_mode: '{}'
         value_weighted: 1
         identity_id: identity_id
-        metric: '{}'
         usage_date: usage_date
+        workspace_id: workspace_id
+        unit: '{}'
+        metric: '{}'
         pipe: pipe
         value_rounded: 6
         dimension: '{}'
         instance_type: instance_type
         value: 0
       properties:
+        billing_mode:
+          allOf:
+          - $ref: '#/components/schemas/UsageBillingModeType'
+          description: The billing mode for this usage metric record.
+          type: object
         dimension:
           allOf:
           - $ref: '#/components/schemas/UsageDimensionType'
@@ -46481,6 +46722,7 @@ components:
             if the usage is for a workspace.
           type: string
       required:
+      - billing_mode
       - dimension
       - metric
       - unit
@@ -47282,10 +47524,12 @@ components:
         tenant_id: tenant_id
         integration_resource_type: integration_resource_type
         plugin_version: plugin_version
+        last_successful_update_process_id: last_successful_update_process_id
         integration_resource_identifier: integration_resource_identifier
         association: '{}'
         created_at: created_at
         deleted_by: '{}'
+        last_error_process_id: last_error_process_id
         title: title
         type: type
         credential_source: '{}'
@@ -47297,6 +47541,7 @@ components:
         id: id
         config_source: '{}'
         identity_id: identity_id
+        last_error_at: last_error_at
         deleted_by_id: deleted_by_id
         handle: handle
         version_id: 0
@@ -47309,15 +47554,19 @@ components:
           type: type
         created_by: '{}'
         deleted_at: deleted_at
+        last_update_attempt_process_id: last_update_attempt_process_id
         integration_resource_name: integration_resource_name
         handle_dynamic: handle_dynamic
         plugin: plugin
+        last_update_attempt_at: last_update_attempt_at
         parent_id: parent_id
+        last_successful_update_at: last_successful_update_at
         integration: '{}'
         updated_by: '{}'
         updated_by_id: updated_by_id
         created_by_id: created_by_id
         config: '{}'
+        status: '{}'
       properties:
         association:
           allOf:
@@ -47408,6 +47657,18 @@ components:
           description: The source type for this connection. Only populated if its
             a connection thats been discovered by an integration.
           type: string
+        last_error_at:
+          type: string
+        last_error_process_id:
+          type: string
+        last_successful_update_at:
+          type: string
+        last_successful_update_process_id:
+          type: string
+        last_update_attempt_at:
+          type: string
+        last_update_attempt_process_id:
+          type: string
         managed_by_id:
           description: The ID of the aggregator that manages this connection. Only
             populated if this is a discovered connection.
@@ -47422,6 +47683,11 @@ components:
         plugin_version:
           description: The plugin version for the connection.
           type: string
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ConnectionStatus'
+          description: The status of the connection.
+          type: object
         tenant_id:
           description: The unique identifier for the tenant where the connection has
             been created.

@@ -4,11 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CliSessionTimeout** | Pointer to **int32** | The CLI session timeout in seconds. | [optional] 
+**ConsoleSessionTimeout** | Pointer to **int32** | The console (browser) session timeout in seconds. | [optional] 
 **LoginEmail** | Pointer to [**UpdateTenantLoginSettings**](UpdateTenantLoginSettings.md) | Settings related to login via Email. | [optional] 
 **LoginGithub** | Pointer to [**UpdateTenantLoginSettings**](UpdateTenantLoginSettings.md) | Settings related to login via Github. | [optional] 
 **LoginGoogle** | Pointer to [**UpdateTenantLoginSettings**](UpdateTenantLoginSettings.md) | Settings related to login via Google. | [optional] 
 **LoginSaml** | Pointer to [**UpdateTenantSamlLoginSettings**](UpdateTenantSamlLoginSettings.md) | LoginMicrosoft      *TenantLoginSettings     &#x60;json:\&quot;login_microsoft\&quot; binding:\&quot;omitempty\&quot;&#x60;                                  // Settings related to login via Microsoft. | [optional] 
+**MaxTokenExpiration** | Pointer to **int32** | The maximum token expiration in seconds. (Default: 0 indicates we allow non-expiring tokens) | [optional] 
 **PersonalWorkspaces** | Pointer to [**TenantPersonalWorkspaces**](TenantPersonalWorkspaces.md) | Settings related to user personal workspaces. | [optional] 
+**PostgresEndpoint** | Pointer to [**PostgresEndpointState**](PostgresEndpointState.md) | Settings related to user personal workspaces. | [optional] 
 **UserProvisioning** | Pointer to **[]string** | The user provisioning settings for the tenant. | [optional] 
 **UserProvisioningPermittedDomains** | Pointer to **[]string** | The domains that new users are permitted to be provisioned from. | [optional] 
 **WorkspaceSnapshotPermittedVisibility** | Pointer to **[]string** | Settings related to visibility of snapshots in the tenant. | [optional] 
@@ -31,6 +35,56 @@ will change when the set of required properties is changed
 NewUpdateTenantSettingsRequestWithDefaults instantiates a new UpdateTenantSettingsRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCliSessionTimeout
+
+`func (o *UpdateTenantSettingsRequest) GetCliSessionTimeout() int32`
+
+GetCliSessionTimeout returns the CliSessionTimeout field if non-nil, zero value otherwise.
+
+### GetCliSessionTimeoutOk
+
+`func (o *UpdateTenantSettingsRequest) GetCliSessionTimeoutOk() (*int32, bool)`
+
+GetCliSessionTimeoutOk returns a tuple with the CliSessionTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCliSessionTimeout
+
+`func (o *UpdateTenantSettingsRequest) SetCliSessionTimeout(v int32)`
+
+SetCliSessionTimeout sets CliSessionTimeout field to given value.
+
+### HasCliSessionTimeout
+
+`func (o *UpdateTenantSettingsRequest) HasCliSessionTimeout() bool`
+
+HasCliSessionTimeout returns a boolean if a field has been set.
+
+### GetConsoleSessionTimeout
+
+`func (o *UpdateTenantSettingsRequest) GetConsoleSessionTimeout() int32`
+
+GetConsoleSessionTimeout returns the ConsoleSessionTimeout field if non-nil, zero value otherwise.
+
+### GetConsoleSessionTimeoutOk
+
+`func (o *UpdateTenantSettingsRequest) GetConsoleSessionTimeoutOk() (*int32, bool)`
+
+GetConsoleSessionTimeoutOk returns a tuple with the ConsoleSessionTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConsoleSessionTimeout
+
+`func (o *UpdateTenantSettingsRequest) SetConsoleSessionTimeout(v int32)`
+
+SetConsoleSessionTimeout sets ConsoleSessionTimeout field to given value.
+
+### HasConsoleSessionTimeout
+
+`func (o *UpdateTenantSettingsRequest) HasConsoleSessionTimeout() bool`
+
+HasConsoleSessionTimeout returns a boolean if a field has been set.
 
 ### GetLoginEmail
 
@@ -132,6 +186,31 @@ SetLoginSaml sets LoginSaml field to given value.
 
 HasLoginSaml returns a boolean if a field has been set.
 
+### GetMaxTokenExpiration
+
+`func (o *UpdateTenantSettingsRequest) GetMaxTokenExpiration() int32`
+
+GetMaxTokenExpiration returns the MaxTokenExpiration field if non-nil, zero value otherwise.
+
+### GetMaxTokenExpirationOk
+
+`func (o *UpdateTenantSettingsRequest) GetMaxTokenExpirationOk() (*int32, bool)`
+
+GetMaxTokenExpirationOk returns a tuple with the MaxTokenExpiration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxTokenExpiration
+
+`func (o *UpdateTenantSettingsRequest) SetMaxTokenExpiration(v int32)`
+
+SetMaxTokenExpiration sets MaxTokenExpiration field to given value.
+
+### HasMaxTokenExpiration
+
+`func (o *UpdateTenantSettingsRequest) HasMaxTokenExpiration() bool`
+
+HasMaxTokenExpiration returns a boolean if a field has been set.
+
 ### GetPersonalWorkspaces
 
 `func (o *UpdateTenantSettingsRequest) GetPersonalWorkspaces() TenantPersonalWorkspaces`
@@ -156,6 +235,31 @@ SetPersonalWorkspaces sets PersonalWorkspaces field to given value.
 `func (o *UpdateTenantSettingsRequest) HasPersonalWorkspaces() bool`
 
 HasPersonalWorkspaces returns a boolean if a field has been set.
+
+### GetPostgresEndpoint
+
+`func (o *UpdateTenantSettingsRequest) GetPostgresEndpoint() PostgresEndpointState`
+
+GetPostgresEndpoint returns the PostgresEndpoint field if non-nil, zero value otherwise.
+
+### GetPostgresEndpointOk
+
+`func (o *UpdateTenantSettingsRequest) GetPostgresEndpointOk() (*PostgresEndpointState, bool)`
+
+GetPostgresEndpointOk returns a tuple with the PostgresEndpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPostgresEndpoint
+
+`func (o *UpdateTenantSettingsRequest) SetPostgresEndpoint(v PostgresEndpointState)`
+
+SetPostgresEndpoint sets PostgresEndpoint field to given value.
+
+### HasPostgresEndpoint
+
+`func (o *UpdateTenantSettingsRequest) HasPostgresEndpoint() bool`
+
+HasPostgresEndpoint returns a boolean if a field has been set.
 
 ### GetUserProvisioning
 

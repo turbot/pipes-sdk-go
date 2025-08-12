@@ -16,6 +16,8 @@ import (
 
 // UsageMetric struct for UsageMetric
 type UsageMetric struct {
+	// The billing mode for this usage metric record.
+	BillingMode UsageBillingModeType `json:"billing_mode"`
 	// The dimension for this usage metric record.
 	Dimension UsageDimensionType `json:"dimension"`
 	// The identity ID for this usage metric record
@@ -46,8 +48,9 @@ type UsageMetric struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUsageMetric(dimension UsageDimensionType, metric UsageMetricType, unit UsageUnitType, usageDate string) *UsageMetric {
+func NewUsageMetric(billingMode UsageBillingModeType, dimension UsageDimensionType, metric UsageMetricType, unit UsageUnitType, usageDate string) *UsageMetric {
 	this := UsageMetric{}
+	this.BillingMode = billingMode
 	this.Dimension = dimension
 	this.Metric = metric
 	this.Unit = unit
@@ -61,6 +64,30 @@ func NewUsageMetric(dimension UsageDimensionType, metric UsageMetricType, unit U
 func NewUsageMetricWithDefaults() *UsageMetric {
 	this := UsageMetric{}
 	return &this
+}
+
+// GetBillingMode returns the BillingMode field value
+func (o *UsageMetric) GetBillingMode() UsageBillingModeType {
+	if o == nil {
+		var ret UsageBillingModeType
+		return ret
+	}
+
+	return o.BillingMode
+}
+
+// GetBillingModeOk returns a tuple with the BillingMode field value
+// and a boolean to check if the value has been set.
+func (o *UsageMetric) GetBillingModeOk() (*UsageBillingModeType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BillingMode, true
+}
+
+// SetBillingMode sets field value
+func (o *UsageMetric) SetBillingMode(v UsageBillingModeType) {
+	o.BillingMode = v
 }
 
 // GetDimension returns the Dimension field value
@@ -417,6 +444,9 @@ func (o *UsageMetric) SetWorkspaceId(v string) {
 
 func (o UsageMetric) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["billing_mode"] = o.BillingMode
+	}
 	if true {
 		toSerialize["dimension"] = o.Dimension
 	}

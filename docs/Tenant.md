@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Handle** | **string** | The handle name of the tenant. | 
 **Id** | **string** | The unique identifier of the tenant. | 
 **State** | Pointer to **string** | The state of the tenant. | [optional] 
+**TokenMinIssuedAt** | Pointer to **string** | The time which auth tokens must be issued after for this tenant. | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
 **UpdatedBy** | Pointer to [**User**](User.md) | User information for the last user to update this. | [optional] 
 **UpdatedById** | **string** | The ID of the user that performed the last update. | 
@@ -320,6 +321,31 @@ SetState sets State field to given value.
 `func (o *Tenant) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### GetTokenMinIssuedAt
+
+`func (o *Tenant) GetTokenMinIssuedAt() string`
+
+GetTokenMinIssuedAt returns the TokenMinIssuedAt field if non-nil, zero value otherwise.
+
+### GetTokenMinIssuedAtOk
+
+`func (o *Tenant) GetTokenMinIssuedAtOk() (*string, bool)`
+
+GetTokenMinIssuedAtOk returns a tuple with the TokenMinIssuedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenMinIssuedAt
+
+`func (o *Tenant) SetTokenMinIssuedAt(v string)`
+
+SetTokenMinIssuedAt sets TokenMinIssuedAt field to given value.
+
+### HasTokenMinIssuedAt
+
+`func (o *Tenant) HasTokenMinIssuedAt() bool`
+
+HasTokenMinIssuedAt returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

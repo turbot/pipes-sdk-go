@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayName** | Pointer to **string** |  | [optional] 
 **Handle** | Pointer to **string** |  | [optional] 
+**TokenMinIssuedAt** | Pointer to **string** |  | [optional] 
 **UsageComputeAction** | Pointer to [**IdentityUsageThresholdAction**](IdentityUsageThresholdAction.md) |  | [optional] 
 **UsageComputeThreshold** | Pointer to **int64** |  | [optional] 
 **UsageStorageAction** | Pointer to [**IdentityUsageThresholdAction**](IdentityUsageThresholdAction.md) |  | [optional] 
@@ -81,6 +82,31 @@ SetHandle sets Handle field to given value.
 `func (o *UpdateTenantRequest) HasHandle() bool`
 
 HasHandle returns a boolean if a field has been set.
+
+### GetTokenMinIssuedAt
+
+`func (o *UpdateTenantRequest) GetTokenMinIssuedAt() string`
+
+GetTokenMinIssuedAt returns the TokenMinIssuedAt field if non-nil, zero value otherwise.
+
+### GetTokenMinIssuedAtOk
+
+`func (o *UpdateTenantRequest) GetTokenMinIssuedAtOk() (*string, bool)`
+
+GetTokenMinIssuedAtOk returns a tuple with the TokenMinIssuedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenMinIssuedAt
+
+`func (o *UpdateTenantRequest) SetTokenMinIssuedAt(v string)`
+
+SetTokenMinIssuedAt sets TokenMinIssuedAt field to given value.
+
+### HasTokenMinIssuedAt
+
+`func (o *UpdateTenantRequest) HasTokenMinIssuedAt() bool`
+
+HasTokenMinIssuedAt returns a boolean if a field has been set.
 
 ### GetUsageComputeAction
 

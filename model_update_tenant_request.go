@@ -18,6 +18,7 @@ import (
 type UpdateTenantRequest struct {
 	DisplayName           *string                       `json:"display_name,omitempty"`
 	Handle                *string                       `json:"handle,omitempty"`
+	TokenMinIssuedAt      *string                       `json:"token_min_issued_at,omitempty"`
 	UsageComputeAction    *IdentityUsageThresholdAction `json:"usage_compute_action,omitempty"`
 	UsageComputeThreshold *int64                        `json:"usage_compute_threshold,omitempty"`
 	UsageStorageAction    *IdentityUsageThresholdAction `json:"usage_storage_action,omitempty"`
@@ -105,6 +106,38 @@ func (o *UpdateTenantRequest) HasHandle() bool {
 // SetHandle gets a reference to the given string and assigns it to the Handle field.
 func (o *UpdateTenantRequest) SetHandle(v string) {
 	o.Handle = &v
+}
+
+// GetTokenMinIssuedAt returns the TokenMinIssuedAt field value if set, zero value otherwise.
+func (o *UpdateTenantRequest) GetTokenMinIssuedAt() string {
+	if o == nil || o.TokenMinIssuedAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.TokenMinIssuedAt
+}
+
+// GetTokenMinIssuedAtOk returns a tuple with the TokenMinIssuedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateTenantRequest) GetTokenMinIssuedAtOk() (*string, bool) {
+	if o == nil || o.TokenMinIssuedAt == nil {
+		return nil, false
+	}
+	return o.TokenMinIssuedAt, true
+}
+
+// HasTokenMinIssuedAt returns a boolean if a field has been set.
+func (o *UpdateTenantRequest) HasTokenMinIssuedAt() bool {
+	if o != nil && o.TokenMinIssuedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenMinIssuedAt gets a reference to the given string and assigns it to the TokenMinIssuedAt field.
+func (o *UpdateTenantRequest) SetTokenMinIssuedAt(v string) {
+	o.TokenMinIssuedAt = &v
 }
 
 // GetUsageComputeAction returns the UsageComputeAction field value if set, zero value otherwise.
@@ -306,6 +339,9 @@ func (o UpdateTenantRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Handle != nil {
 		toSerialize["handle"] = o.Handle
+	}
+	if o.TokenMinIssuedAt != nil {
+		toSerialize["token_min_issued_at"] = o.TokenMinIssuedAt
 	}
 	if o.UsageComputeAction != nil {
 		toSerialize["usage_compute_action"] = o.UsageComputeAction
