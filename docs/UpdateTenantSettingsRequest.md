@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AiEnabled** | Pointer to [**ServiceState**](ServiceState.md) | Enable/disable AI features for the tenant. | [optional] 
 **CliSessionTimeout** | Pointer to **int32** | The CLI session timeout in seconds. | [optional] 
 **ConsoleSessionTimeout** | Pointer to **int32** | The console (browser) session timeout in seconds. | [optional] 
 **LoginEmail** | Pointer to [**UpdateTenantLoginSettings**](UpdateTenantLoginSettings.md) | Settings related to login via Email. | [optional] 
@@ -35,6 +36,31 @@ will change when the set of required properties is changed
 NewUpdateTenantSettingsRequestWithDefaults instantiates a new UpdateTenantSettingsRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAiEnabled
+
+`func (o *UpdateTenantSettingsRequest) GetAiEnabled() ServiceState`
+
+GetAiEnabled returns the AiEnabled field if non-nil, zero value otherwise.
+
+### GetAiEnabledOk
+
+`func (o *UpdateTenantSettingsRequest) GetAiEnabledOk() (*ServiceState, bool)`
+
+GetAiEnabledOk returns a tuple with the AiEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiEnabled
+
+`func (o *UpdateTenantSettingsRequest) SetAiEnabled(v ServiceState)`
+
+SetAiEnabled sets AiEnabled field to given value.
+
+### HasAiEnabled
+
+`func (o *UpdateTenantSettingsRequest) HasAiEnabled() bool`
+
+HasAiEnabled returns a boolean if a field has been set.
 
 ### GetCliSessionTimeout
 

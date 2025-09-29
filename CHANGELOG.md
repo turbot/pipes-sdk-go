@@ -1,5 +1,23 @@
 # Turbot Pipes Go SDK
 
+## 0.16.0 [2025-09-29]
+
+_What's new?_
+
+- AI Key Management APIs for `Tenants`, `Users` and `Organizations`.
+- Workspace Conversations, Conversation Messages and Conversation Artifacts APIs for `UserWorkspaces` and `OrgWorkspaces`.
+- Workspace AI Models APIs for `UserWorkspaces` and `OrgWorkspaces`.
+- Service Account APIs.
+- Added `ServiceState` enum to represent the state of a service.
+- Added `ModelState` enum to represent the state of an AI model.
+- Added `UserType` enum to classify users.
+
+_Enhancements_
+
+- Added `AiEnabled` attribute to `TenantSettings` to allow enabling / disabling AI features at a tenant level.
+- Added `Type` attribute to `User` (backed by `UserType`) to distinguish user types.
+- Added `TokenWithValue` and `CreateTokenRequest` models to improve token creation workflows.
+
 ## 0.15.0 [2025-08-12]
 
 _Enhancements_

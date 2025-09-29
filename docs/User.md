@@ -7,13 +7,17 @@ Name | Type | Description | Notes
 **AvatarUrl** | Pointer to **string** |  | [optional] 
 **Billing** | Pointer to [**BillingInfo**](BillingInfo.md) | Struct to store billing information | [optional] 
 **CreatedAt** | **string** | The user created time. | 
+**Description** | Pointer to **string** |  | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
 **Handle** | **string** | The handle name of a user. | 
 **Id** | **string** | The unique identifier of a user. | 
+**IdentityId** | Pointer to **string** | If set, the service account is restricted to an identity and its children. | [optional] 
 **PreviewAccessMode** | Pointer to **string** |  | [optional] 
 **Status** | **string** | The status of the user i.e accepted or pending. | 
 **TenantId** | **string** | The unique identifier of the tenant the user belongs to. | 
+**Title** | Pointer to **string** | The below should only be populated for service accounts | [optional] 
 **TokenMinIssuedAt** | Pointer to **string** | The time which user and temporary auth tokens must be issued after. | [optional] 
+**Type** | [**UserType**](UserType.md) | The type of user, either user or service_account. | 
 **UpdatedAt** | Pointer to **string** | The user updated time. | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
 **UsageComputeAction** | Pointer to [**IdentityUsageThresholdAction**](IdentityUsageThresholdAction.md) |  | [optional] 
@@ -26,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewUser
 
-`func NewUser(createdAt string, handle string, id string, status string, tenantId string, versionId int32, ) *User`
+`func NewUser(createdAt string, handle string, id string, status string, tenantId string, type_ UserType, versionId int32, ) *User`
 
 NewUser instantiates a new User object
 This constructor will assign default values to properties that have it defined,
@@ -111,6 +115,31 @@ and a boolean to check if the value has been set.
 SetCreatedAt sets CreatedAt field to given value.
 
 
+### GetDescription
+
+`func (o *User) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *User) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *User) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *User) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
 ### GetDisplayName
 
 `func (o *User) GetDisplayName() string`
@@ -175,6 +204,31 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+
+### GetIdentityId
+
+`func (o *User) GetIdentityId() string`
+
+GetIdentityId returns the IdentityId field if non-nil, zero value otherwise.
+
+### GetIdentityIdOk
+
+`func (o *User) GetIdentityIdOk() (*string, bool)`
+
+GetIdentityIdOk returns a tuple with the IdentityId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentityId
+
+`func (o *User) SetIdentityId(v string)`
+
+SetIdentityId sets IdentityId field to given value.
+
+### HasIdentityId
+
+`func (o *User) HasIdentityId() bool`
+
+HasIdentityId returns a boolean if a field has been set.
 
 ### GetPreviewAccessMode
 
@@ -241,6 +295,31 @@ and a boolean to check if the value has been set.
 SetTenantId sets TenantId field to given value.
 
 
+### GetTitle
+
+`func (o *User) GetTitle() string`
+
+GetTitle returns the Title field if non-nil, zero value otherwise.
+
+### GetTitleOk
+
+`func (o *User) GetTitleOk() (*string, bool)`
+
+GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTitle
+
+`func (o *User) SetTitle(v string)`
+
+SetTitle sets Title field to given value.
+
+### HasTitle
+
+`func (o *User) HasTitle() bool`
+
+HasTitle returns a boolean if a field has been set.
+
 ### GetTokenMinIssuedAt
 
 `func (o *User) GetTokenMinIssuedAt() string`
@@ -265,6 +344,26 @@ SetTokenMinIssuedAt sets TokenMinIssuedAt field to given value.
 `func (o *User) HasTokenMinIssuedAt() bool`
 
 HasTokenMinIssuedAt returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *User) GetType() UserType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *User) GetTypeOk() (*UserType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *User) SetType(v UserType)`
+
+SetType sets Type field to given value.
+
 
 ### GetUpdatedAt
 

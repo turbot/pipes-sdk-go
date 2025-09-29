@@ -49,6 +49,8 @@ type APIClient struct {
 
 	// API Services
 
+	AIKeys *AIKeysService
+
 	Actors *ActorsService
 
 	Auth *AuthService
@@ -71,7 +73,11 @@ type APIClient struct {
 
 	OrgProcesses *OrgProcessesService
 
+	OrgWorkspaceAIModels *OrgWorkspaceAIModelsService
+
 	OrgWorkspaceAggregators *OrgWorkspaceAggregatorsService
+
+	OrgWorkspaceArtifacts *OrgWorkspaceArtifactsService
 
 	OrgWorkspaceConnectionAssociations *OrgWorkspaceConnectionAssociationsService
 
@@ -80,6 +86,12 @@ type APIClient struct {
 	OrgWorkspaceConnectionTree *OrgWorkspaceConnectionTreeService
 
 	OrgWorkspaceConnections *OrgWorkspaceConnectionsService
+
+	OrgWorkspaceConversationArtifacts *OrgWorkspaceConversationArtifactsService
+
+	OrgWorkspaceConversationMessages *OrgWorkspaceConversationMessagesService
+
+	OrgWorkspaceConversations *OrgWorkspaceConversationsService
 
 	OrgWorkspaceDatatankParts *OrgWorkspaceDatatankPartsService
 
@@ -121,6 +133,8 @@ type APIClient struct {
 
 	Orgs *OrgsService
 
+	ServiceAccounts *ServiceAccountsService
+
 	TenantBilling *TenantBillingService
 
 	TenantConnectionFolders *TenantConnectionFoldersService
@@ -149,7 +163,11 @@ type APIClient struct {
 
 	UserTokens *UserTokensService
 
+	UserWorkspaceAIModels *UserWorkspaceAIModelsService
+
 	UserWorkspaceAggregators *UserWorkspaceAggregatorsService
+
+	UserWorkspaceArtifacts *UserWorkspaceArtifactsService
 
 	UserWorkspaceConnectionAssociations *UserWorkspaceConnectionAssociationsService
 
@@ -158,6 +176,12 @@ type APIClient struct {
 	UserWorkspaceConnectionTree *UserWorkspaceConnectionTreeService
 
 	UserWorkspaceConnections *UserWorkspaceConnectionsService
+
+	UserWorkspaceConversationArtifacts *UserWorkspaceConversationArtifactsService
+
+	UserWorkspaceConversationMessages *UserWorkspaceConversationMessagesService
+
+	UserWorkspaceConversations *UserWorkspaceConversationsService
 
 	UserWorkspaceDatatankParts *UserWorkspaceDatatankPartsService
 
@@ -214,6 +238,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.AIKeys = (*AIKeysService)(&c.common)
 	c.Actors = (*ActorsService)(&c.common)
 	c.Auth = (*AuthService)(&c.common)
 	c.Identities = (*IdentitiesService)(&c.common)
@@ -225,11 +250,16 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OrgMembers = (*OrgMembersService)(&c.common)
 	c.OrgNotifiers = (*OrgNotifiersService)(&c.common)
 	c.OrgProcesses = (*OrgProcessesService)(&c.common)
+	c.OrgWorkspaceAIModels = (*OrgWorkspaceAIModelsService)(&c.common)
 	c.OrgWorkspaceAggregators = (*OrgWorkspaceAggregatorsService)(&c.common)
+	c.OrgWorkspaceArtifacts = (*OrgWorkspaceArtifactsService)(&c.common)
 	c.OrgWorkspaceConnectionAssociations = (*OrgWorkspaceConnectionAssociationsService)(&c.common)
 	c.OrgWorkspaceConnectionFolders = (*OrgWorkspaceConnectionFoldersService)(&c.common)
 	c.OrgWorkspaceConnectionTree = (*OrgWorkspaceConnectionTreeService)(&c.common)
 	c.OrgWorkspaceConnections = (*OrgWorkspaceConnectionsService)(&c.common)
+	c.OrgWorkspaceConversationArtifacts = (*OrgWorkspaceConversationArtifactsService)(&c.common)
+	c.OrgWorkspaceConversationMessages = (*OrgWorkspaceConversationMessagesService)(&c.common)
+	c.OrgWorkspaceConversations = (*OrgWorkspaceConversationsService)(&c.common)
 	c.OrgWorkspaceDatatankParts = (*OrgWorkspaceDatatankPartsService)(&c.common)
 	c.OrgWorkspaceDatatankTables = (*OrgWorkspaceDatatankTablesService)(&c.common)
 	c.OrgWorkspaceDatatanks = (*OrgWorkspaceDatatanksService)(&c.common)
@@ -250,6 +280,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OrgWorkspaceUsages = (*OrgWorkspaceUsagesService)(&c.common)
 	c.OrgWorkspaces = (*OrgWorkspacesService)(&c.common)
 	c.Orgs = (*OrgsService)(&c.common)
+	c.ServiceAccounts = (*ServiceAccountsService)(&c.common)
 	c.TenantBilling = (*TenantBillingService)(&c.common)
 	c.TenantConnectionFolders = (*TenantConnectionFoldersService)(&c.common)
 	c.TenantConnectionTree = (*TenantConnectionTreeService)(&c.common)
@@ -264,11 +295,16 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.UserNotifiers = (*UserNotifiersService)(&c.common)
 	c.UserProcesses = (*UserProcessesService)(&c.common)
 	c.UserTokens = (*UserTokensService)(&c.common)
+	c.UserWorkspaceAIModels = (*UserWorkspaceAIModelsService)(&c.common)
 	c.UserWorkspaceAggregators = (*UserWorkspaceAggregatorsService)(&c.common)
+	c.UserWorkspaceArtifacts = (*UserWorkspaceArtifactsService)(&c.common)
 	c.UserWorkspaceConnectionAssociations = (*UserWorkspaceConnectionAssociationsService)(&c.common)
 	c.UserWorkspaceConnectionFolders = (*UserWorkspaceConnectionFoldersService)(&c.common)
 	c.UserWorkspaceConnectionTree = (*UserWorkspaceConnectionTreeService)(&c.common)
 	c.UserWorkspaceConnections = (*UserWorkspaceConnectionsService)(&c.common)
+	c.UserWorkspaceConversationArtifacts = (*UserWorkspaceConversationArtifactsService)(&c.common)
+	c.UserWorkspaceConversationMessages = (*UserWorkspaceConversationMessagesService)(&c.common)
+	c.UserWorkspaceConversations = (*UserWorkspaceConversationsService)(&c.common)
 	c.UserWorkspaceDatatankParts = (*UserWorkspaceDatatankPartsService)(&c.common)
 	c.UserWorkspaceDatatankTables = (*UserWorkspaceDatatankTablesService)(&c.common)
 	c.UserWorkspaceDatatanks = (*UserWorkspaceDatatanksService)(&c.common)

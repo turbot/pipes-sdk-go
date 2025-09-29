@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AiEnabled** | Pointer to [**ServiceState**](ServiceState.md) | The AI feature enable/disable state for the tenant. | [optional] 
 **CliSessionTimeout** | Pointer to **int32** | The CLI session timeout in hours.                                                                                             // The endpoint for the tenant&#39;s postgres database. | [optional] 
 **ConsoleSessionTimeout** | Pointer to **int32** | The console (browser) session timeout in hours. | [optional] 
 **CreatedAt** | **string** | The time of creation in ISO 8601 UTC. | 
@@ -42,6 +43,31 @@ will change when the set of required properties is changed
 NewTenantSettingsWithDefaults instantiates a new TenantSettings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAiEnabled
+
+`func (o *TenantSettings) GetAiEnabled() ServiceState`
+
+GetAiEnabled returns the AiEnabled field if non-nil, zero value otherwise.
+
+### GetAiEnabledOk
+
+`func (o *TenantSettings) GetAiEnabledOk() (*ServiceState, bool)`
+
+GetAiEnabledOk returns a tuple with the AiEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiEnabled
+
+`func (o *TenantSettings) SetAiEnabled(v ServiceState)`
+
+SetAiEnabled sets AiEnabled field to given value.
+
+### HasAiEnabled
+
+`func (o *TenantSettings) HasAiEnabled() bool`
+
+HasAiEnabled returns a boolean if a field has been set.
 
 ### GetCliSessionTimeout
 

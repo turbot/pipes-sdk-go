@@ -62,6 +62,24 @@ All URIs are relative to *https://pipes.turbot.com/api/v0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AIKeys* | [**OrgCreate**](docs/AIKeys.md#orgcreate) | **Post** /org/{org_handle}/ai/key | Create org AI key
+*AIKeys* | [**OrgDelete**](docs/AIKeys.md#orgdelete) | **Delete** /org/{org_handle}/ai/key/{provider} | Delete org AI key
+*AIKeys* | [**OrgGet**](docs/AIKeys.md#orgget) | **Get** /org/{org_handle}/ai/key/{provider} | Get org AI key
+*AIKeys* | [**OrgList**](docs/AIKeys.md#orglist) | **Get** /org/{org_handle}/ai/key | List org AI keys
+*AIKeys* | [**OrgTest**](docs/AIKeys.md#orgtest) | **Post** /org/{org_handle}/ai/key/{provider}/test | Test org AI key
+*AIKeys* | [**OrgUpdate**](docs/AIKeys.md#orgupdate) | **Patch** /org/{org_handle}/ai/key/{provider} | Update org AI key
+*AIKeys* | [**TenantCreate**](docs/AIKeys.md#tenantcreate) | **Post** /ai/key | Create tenant AI key
+*AIKeys* | [**TenantDelete**](docs/AIKeys.md#tenantdelete) | **Delete** /ai/key/{provider} | Delete tenant AI key
+*AIKeys* | [**TenantGet**](docs/AIKeys.md#tenantget) | **Get** /ai/key/{provider} | Get tenant AI key
+*AIKeys* | [**TenantList**](docs/AIKeys.md#tenantlist) | **Get** /ai/key | List tenant AI keys
+*AIKeys* | [**TenantTest**](docs/AIKeys.md#tenanttest) | **Post** /ai/key/{provider}/test | Test tenant AI key
+*AIKeys* | [**TenantUpdate**](docs/AIKeys.md#tenantupdate) | **Patch** /ai/key/{provider} | Update tenant AI key
+*AIKeys* | [**UserCreate**](docs/AIKeys.md#usercreate) | **Post** /user/{user_handle}/ai/key | Create user AI key
+*AIKeys* | [**UserDelete**](docs/AIKeys.md#userdelete) | **Delete** /user/{user_handle}/ai/key/{provider} | Delete user AI key
+*AIKeys* | [**UserGet**](docs/AIKeys.md#userget) | **Get** /user/{user_handle}/ai/key/{provider} | Get user AI key
+*AIKeys* | [**UserList**](docs/AIKeys.md#userlist) | **Get** /user/{user_handle}/ai/key | List user AI keys
+*AIKeys* | [**UserTest**](docs/AIKeys.md#usertest) | **Post** /user/{user_handle}/ai/key/{provider}/test | Test user AI key
+*AIKeys* | [**UserUpdate**](docs/AIKeys.md#userupdate) | **Patch** /user/{user_handle}/ai/key/{provider} | Update user AI key
 *Actors* | [**Get**](docs/Actors.md#get) | **Get** /actor | Actor information
 *Actors* | [**ListActivity**](docs/Actors.md#listactivity) | **Get** /actor/activity | List actor activity
 *Actors* | [**ListConnections**](docs/Actors.md#listconnections) | **Get** /actor/conn | List actor connections
@@ -153,6 +171,7 @@ Class | Method | HTTP request | Description
 *OrgProcesses* | [**Get**](docs/OrgProcesses.md#get) | **Get** /org/{org_handle}/process/{process_id} | Get Org process
 *OrgProcesses* | [**List**](docs/OrgProcesses.md#list) | **Get** /org/{org_handle}/process | List Org processes
 *OrgProcesses* | [**Log**](docs/OrgProcesses.md#log) | **Get** /org/{org_handle}/process/{process_id}/log/{log_file}.{content_type} | List Org process logs
+*OrgWorkspaceAIModels* | [**OrgList**](docs/OrgWorkspaceAIModels.md#orglist) | **Get** /org/{org_handle}/workspace/{workspace_handle}/ai/model | List org workspace AI models
 *OrgWorkspaceAggregators* | [**Create**](docs/OrgWorkspaceAggregators.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/aggregator | Create an aggregator for an org workspace
 *OrgWorkspaceAggregators* | [**Delete**](docs/OrgWorkspaceAggregators.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/aggregator/{aggregator_handle} | Delete an aggregator for a org workspace
 *OrgWorkspaceAggregators* | [**Get**](docs/OrgWorkspaceAggregators.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/aggregator/{aggregator_handle} | Get an aggregator for a org workspace
@@ -160,6 +179,7 @@ Class | Method | HTTP request | Description
 *OrgWorkspaceAggregators* | [**List**](docs/OrgWorkspaceAggregators.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/aggregator | List aggregators for an org workspace
 *OrgWorkspaceAggregators* | [**ListConnections**](docs/OrgWorkspaceAggregators.md#listconnections) | **Get** /org/{org_handle}/workspace/{workspace_handle}/aggregator/{aggregator_handle}/connection | List connections in the scope of an aggregator for a org workspace
 *OrgWorkspaceAggregators* | [**Update**](docs/OrgWorkspaceAggregators.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/aggregator/{aggregator_handle} | Update an aggregator for a org workspace
+*OrgWorkspaceArtifacts* | [**Download**](docs/OrgWorkspaceArtifacts.md#download) | **Get** /org/{org_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id}/artifact/{artifact_id}.{content_type} | Download org workspace artifact
 *OrgWorkspaceConnectionAssociations* | [**Create**](docs/OrgWorkspaceConnectionAssociations.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/conn | Create org workspace connection association
 *OrgWorkspaceConnectionAssociations* | [**Delete**](docs/OrgWorkspaceConnectionAssociations.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/conn/{conn_handle} | Delete org workspace connection association
 *OrgWorkspaceConnectionAssociations* | [**Get**](docs/OrgWorkspaceConnectionAssociations.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/conn/{conn_handle} | Get org workspace connection association
@@ -176,6 +196,13 @@ Class | Method | HTTP request | Description
 *OrgWorkspaceConnections* | [**List**](docs/OrgWorkspaceConnections.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/connection | List org workspace connection associations
 *OrgWorkspaceConnections* | [**Test**](docs/OrgWorkspaceConnections.md#test) | **Post** /org/{org_handle}/workspace/{workspace_handle}/connection/{connection_handle}/test | Test org workspace connection
 *OrgWorkspaceConnections* | [**Update**](docs/OrgWorkspaceConnections.md#update) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Update org workspace connection
+*OrgWorkspaceConversationArtifacts* | [**OrgGet**](docs/OrgWorkspaceConversationArtifacts.md#orgget) | **Get** /org/{org_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id}/artifact/{artifact_id} | Get org workspace conversation artifact metadata
+*OrgWorkspaceConversationMessages* | [**OrgList**](docs/OrgWorkspaceConversationMessages.md#orglist) | **Get** /org/{org_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id}/message | List org workspace conversation messages
+*OrgWorkspaceConversations* | [**OrgChat**](docs/OrgWorkspaceConversations.md#orgchat) | **Post** /org/{org_handle}/workspace/{workspace_handle}/ai/chat | Chat in org workspace
+*OrgWorkspaceConversations* | [**OrgDelete**](docs/OrgWorkspaceConversations.md#orgdelete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id} | Delete org workspace conversation
+*OrgWorkspaceConversations* | [**OrgGet**](docs/OrgWorkspaceConversations.md#orgget) | **Get** /org/{org_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id} | Get org workspace conversation
+*OrgWorkspaceConversations* | [**OrgList**](docs/OrgWorkspaceConversations.md#orglist) | **Get** /org/{org_handle}/workspace/{workspace_handle}/ai/conversation | List org workspace conversations
+*OrgWorkspaceConversations* | [**OrgUpdate**](docs/OrgWorkspaceConversations.md#orgupdate) | **Patch** /org/{org_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id} | Update org workspace conversation
 *OrgWorkspaceDatatankParts* | [**Command**](docs/OrgWorkspaceDatatankParts.md#command) | **Post** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/part/{datatank_part_id}/command | Run org workspace Datatank table partition command
 *OrgWorkspaceDatatankParts* | [**Get**](docs/OrgWorkspaceDatatankParts.md#get) | **Get** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/table/{datatank_part_id} | Get org workspace Datatank table partition
 *OrgWorkspaceDatatankParts* | [**List**](docs/OrgWorkspaceDatatankParts.md#list) | **Get** /org/{org_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/part | List org workspace Datatank partitions
@@ -287,6 +314,28 @@ Class | Method | HTTP request | Description
 *Orgs* | [**ListConstraints**](docs/Orgs.md#listconstraints) | **Get** /org/{org_handle}/constraint | List org constraints
 *Orgs* | [**ListUsage**](docs/Orgs.md#listusage) | **Get** /org/{org_handle}/usage | List org usage
 *Orgs* | [**Update**](docs/Orgs.md#update) | **Patch** /org/{org_handle} | Update org
+*ServiceAccounts* | [**Create**](docs/ServiceAccounts.md#create) | **Post** /org/{org_handle}/service_account | Create a service account at the organization level
+*ServiceAccounts* | [**Create_0**](docs/ServiceAccounts.md#create_0) | **Post** /service_account | Create a tenant service account
+*ServiceAccounts* | [**Delete**](docs/ServiceAccounts.md#delete) | **Delete** /org/{org_handle}/service_account/{service_account_identifier} | Delete an organization service account
+*ServiceAccounts* | [**Delete_0**](docs/ServiceAccounts.md#delete_0) | **Delete** /service_account/{service_account_identifier} | Delete a tenant service account
+*ServiceAccounts* | [**OrgCreate**](docs/ServiceAccounts.md#orgcreate) | **Post** /org/{org_handle}/service_account/{service_account_identifier}/token | Create an organization service account token
+*ServiceAccounts* | [**OrgDelete**](docs/ServiceAccounts.md#orgdelete) | **Delete** /org/{org_handle}/service_account/{service_account_identifier}/token/{token_id} | Delete an organization service account token
+*ServiceAccounts* | [**OrgGet**](docs/ServiceAccounts.md#orgget) | **Get** /org/{org_handle}/service_account/{service_account_identifier} | Get organization service account
+*ServiceAccounts* | [**OrgGet_0**](docs/ServiceAccounts.md#orgget_0) | **Get** /org/{org_handle}/service_account/{service_account_identifier}/token/{token_id} | Get an organization service account token
+*ServiceAccounts* | [**OrgList**](docs/ServiceAccounts.md#orglist) | **Get** /org/{org_handle}/service_account | List organization service accounts
+*ServiceAccounts* | [**OrgListAuditLogs**](docs/ServiceAccounts.md#orglistauditlogs) | **Get** /org/{org_handle}/service_account/{service_account_identifier}/audit_log | List audit logs for an org service account
+*ServiceAccounts* | [**OrgList_0**](docs/ServiceAccounts.md#orglist_0) | **Get** /org/{org_handle}/service_account/{service_account_identifier}/token | List organization service account tokens
+*ServiceAccounts* | [**OrgUpdate**](docs/ServiceAccounts.md#orgupdate) | **Patch** /org/{org_handle}/service_account/{service_account_identifier}/token/{token_id} | Update an organization service account token
+*ServiceAccounts* | [**TenantCreate**](docs/ServiceAccounts.md#tenantcreate) | **Post** /service_account/{service_account_identifier}/token | Create a tenant service account token
+*ServiceAccounts* | [**TenantDelete**](docs/ServiceAccounts.md#tenantdelete) | **Delete** /service_account/{service_account_identifier}/token/{token_id} | Delete a tenant service account token
+*ServiceAccounts* | [**TenantGet**](docs/ServiceAccounts.md#tenantget) | **Get** /service_account/{service_account_identifier} | Get tenant service account
+*ServiceAccounts* | [**TenantGet_0**](docs/ServiceAccounts.md#tenantget_0) | **Get** /service_account/{service_account_identifier}/token/{token_id} | Get a tenant service account token
+*ServiceAccounts* | [**TenantList**](docs/ServiceAccounts.md#tenantlist) | **Get** /service_account | List tenant service accounts
+*ServiceAccounts* | [**TenantListAuditLogs**](docs/ServiceAccounts.md#tenantlistauditlogs) | **Get** /service_account/{service_account_identifier}/audit_log | List audit logs for a tenant service account
+*ServiceAccounts* | [**TenantList_0**](docs/ServiceAccounts.md#tenantlist_0) | **Get** /service_account/{service_account_identifier}/token | List tenant service account tokens
+*ServiceAccounts* | [**TenantUpdate**](docs/ServiceAccounts.md#tenantupdate) | **Patch** /service_account/{service_account_identifier}/token/{token_id} | Update a tenant service account token
+*ServiceAccounts* | [**Update**](docs/ServiceAccounts.md#update) | **Patch** /org/{org_handle}/service_account/{service_account_identifier} | Update an organization service account
+*ServiceAccounts* | [**Update_0**](docs/ServiceAccounts.md#update_0) | **Patch** /service_account/{service_account_identifier} | Update a tenant service account
 *TenantBilling* | [**CreateBillingIntent**](docs/TenantBilling.md#createbillingintent) | **Post** /tenant/{tenant_handle}/billing/payment_method/intent | Create tenant Stripe billing intent
 *TenantBilling* | [**CreateTenantSubscription**](docs/TenantBilling.md#createtenantsubscription) | **Post** /tenant/{tenant_handle}/billing/subscription | Create a new subscription
 *TenantBilling* | [**DeleteTenantBillingPaymentMethod**](docs/TenantBilling.md#deletetenantbillingpaymentmethod) | **Delete** /tenant/{tenant_handle}/billing/payment_method/{payment_method_id} | Delete tenant billing payment method.
@@ -409,6 +458,7 @@ Class | Method | HTTP request | Description
 *UserTokens* | [**Get**](docs/UserTokens.md#get) | **Get** /user/{user_handle}/token/{token_id} | Get token
 *UserTokens* | [**List**](docs/UserTokens.md#list) | **Get** /user/{user_handle}/token | List tokens
 *UserTokens* | [**Update**](docs/UserTokens.md#update) | **Patch** /user/{user_handle}/token/{token_id} | Update token
+*UserWorkspaceAIModels* | [**UserList**](docs/UserWorkspaceAIModels.md#userlist) | **Get** /user/{user_handle}/workspace/{workspace_handle}/ai/model | List user workspace AI models
 *UserWorkspaceAggregators* | [**Create**](docs/UserWorkspaceAggregators.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/aggregator | Create an aggregator for a user workspace
 *UserWorkspaceAggregators* | [**Delete**](docs/UserWorkspaceAggregators.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/aggregator/{aggregator_handle} | Delete an aggregator for a user workspace
 *UserWorkspaceAggregators* | [**Get**](docs/UserWorkspaceAggregators.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/aggregator/{aggregator_handle} | Get an aggregator for a user workspace
@@ -416,6 +466,7 @@ Class | Method | HTTP request | Description
 *UserWorkspaceAggregators* | [**List**](docs/UserWorkspaceAggregators.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/aggregator | List aggregators for a user workspace
 *UserWorkspaceAggregators* | [**ListConnections**](docs/UserWorkspaceAggregators.md#listconnections) | **Get** /user/{user_handle}/workspace/{workspace_handle}/aggregator/{aggregator_handle}/connection | List connections in the scope of an aggregator for a user workspace
 *UserWorkspaceAggregators* | [**Update**](docs/UserWorkspaceAggregators.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/aggregator/{aggregator_handle} | Update an aggregator for a user workspace
+*UserWorkspaceArtifacts* | [**Download**](docs/UserWorkspaceArtifacts.md#download) | **Get** /user/{user_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id}/artifact/{artifact_id}.{content_type} | Download user workspace artifact
 *UserWorkspaceConnectionAssociations* | [**Create**](docs/UserWorkspaceConnectionAssociations.md#create) | **Post** /user/{user_handle}/workspace/{workspace_handle}/conn | Create user workspace connection association
 *UserWorkspaceConnectionAssociations* | [**Delete**](docs/UserWorkspaceConnectionAssociations.md#delete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/conn/{conn_handle} | Delete user workspace connection association
 *UserWorkspaceConnectionAssociations* | [**Get**](docs/UserWorkspaceConnectionAssociations.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/conn/{conn_handle} | Get user workspace connection association
@@ -432,6 +483,13 @@ Class | Method | HTTP request | Description
 *UserWorkspaceConnections* | [**List**](docs/UserWorkspaceConnections.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/connection | List connections for a user workspace
 *UserWorkspaceConnections* | [**Test**](docs/UserWorkspaceConnections.md#test) | **Post** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle}/test | Test user workspace connection
 *UserWorkspaceConnections* | [**Update**](docs/UserWorkspaceConnections.md#update) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/connection/{connection_handle} | Update user workspace connection
+*UserWorkspaceConversationArtifacts* | [**UserGet**](docs/UserWorkspaceConversationArtifacts.md#userget) | **Get** /user/{user_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id}/artifact/{artifact_id} | Get user workspace conversation artifact metadata
+*UserWorkspaceConversationMessages* | [**UserList**](docs/UserWorkspaceConversationMessages.md#userlist) | **Get** /user/{user_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id}/message | List user workspace conversation messages
+*UserWorkspaceConversations* | [**UserChat**](docs/UserWorkspaceConversations.md#userchat) | **Post** /user/{user_handle}/workspace/{workspace_handle}/ai/chat | Chat in user workspace
+*UserWorkspaceConversations* | [**UserDelete**](docs/UserWorkspaceConversations.md#userdelete) | **Delete** /user/{user_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id} | Delete user workspace conversation
+*UserWorkspaceConversations* | [**UserGet**](docs/UserWorkspaceConversations.md#userget) | **Get** /user/{user_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id} | Get user workspace conversation
+*UserWorkspaceConversations* | [**UserList**](docs/UserWorkspaceConversations.md#userlist) | **Get** /user/{user_handle}/workspace/{workspace_handle}/ai/conversation | List user workspace conversations
+*UserWorkspaceConversations* | [**UserUpdate**](docs/UserWorkspaceConversations.md#userupdate) | **Patch** /user/{user_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id} | Update user workspace conversation
 *UserWorkspaceDatatankParts* | [**Command**](docs/UserWorkspaceDatatankParts.md#command) | **Post** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/part/{datatank_part_id}/command | Run user workspace Datatank table partition command
 *UserWorkspaceDatatankParts* | [**Get**](docs/UserWorkspaceDatatankParts.md#get) | **Get** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/table/{datatank_part_id} | Get user workspace Datatank table partition
 *UserWorkspaceDatatankParts* | [**List**](docs/UserWorkspaceDatatankParts.md#list) | **Get** /user/{user_handle}/workspace/{workspace_handle}/datatank/{datatank_handle}/table/{datatank_table_name}/part | List user workspace Datatank partitions
@@ -548,6 +606,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AIKey](docs/AIKey.md)
+ - [AIKeyTestStatus](docs/AIKeyTestStatus.md)
+ - [AIProvider](docs/AIProvider.md)
  - [ActorWorkspace](docs/ActorWorkspace.md)
  - [Aggregator](docs/Aggregator.md)
  - [AttachWorkspaceSchemaRequest](docs/AttachWorkspaceSchemaRequest.md)
@@ -558,6 +619,7 @@ Class | Method | HTTP request | Description
  - [BillingSubscription](docs/BillingSubscription.md)
  - [BillingSubscriptionItem](docs/BillingSubscriptionItem.md)
  - [Card](docs/Card.md)
+ - [ChatRequest](docs/ChatRequest.md)
  - [CmdDatatankPartRequest](docs/CmdDatatankPartRequest.md)
  - [Connection](docs/Connection.md)
  - [ConnectionConfigSource](docs/ConnectionConfigSource.md)
@@ -569,6 +631,10 @@ Class | Method | HTTP request | Description
  - [Constraint](docs/Constraint.md)
  - [ConstraintOverrideRequest](docs/ConstraintOverrideRequest.md)
  - [ConstraintVisibility](docs/ConstraintVisibility.md)
+ - [Conversation](docs/Conversation.md)
+ - [ConversationArtifact](docs/ConversationArtifact.md)
+ - [ConversationMessage](docs/ConversationMessage.md)
+ - [CreateAIKeyRequest](docs/CreateAIKeyRequest.md)
  - [CreateAggregatorRequest](docs/CreateAggregatorRequest.md)
  - [CreateAvatarResponse](docs/CreateAvatarResponse.md)
  - [CreateConnectionFolderRequest](docs/CreateConnectionFolderRequest.md)
@@ -583,7 +649,9 @@ Class | Method | HTTP request | Description
  - [CreateOrgWorkspaceUserRequest](docs/CreateOrgWorkspaceUserRequest.md)
  - [CreatePermissionRequest](docs/CreatePermissionRequest.md)
  - [CreatePipelineRequest](docs/CreatePipelineRequest.md)
+ - [CreateServiceAccountUserRequest](docs/CreateServiceAccountUserRequest.md)
  - [CreateTenantRequest](docs/CreateTenantRequest.md)
+ - [CreateTokenRequest](docs/CreateTokenRequest.md)
  - [CreateTriggerRequest](docs/CreateTriggerRequest.md)
  - [CreateUserPasswordRequest](docs/CreateUserPasswordRequest.md)
  - [CreateUserRequest](docs/CreateUserRequest.md)
@@ -622,12 +690,15 @@ Class | Method | HTTP request | Description
  - [IntegrationType](docs/IntegrationType.md)
  - [InviteOrgUserRequest](docs/InviteOrgUserRequest.md)
  - [InviteTenantUserRequest](docs/InviteTenantUserRequest.md)
+ - [ListAIKeysResponse](docs/ListAIKeysResponse.md)
  - [ListActorWorkspacesResponse](docs/ListActorWorkspacesResponse.md)
  - [ListAuditLogsResponse](docs/ListAuditLogsResponse.md)
  - [ListBillingInvoicesResponse](docs/ListBillingInvoicesResponse.md)
  - [ListBillingPaymentMethodsResponse](docs/ListBillingPaymentMethodsResponse.md)
  - [ListConnectionsResponse](docs/ListConnectionsResponse.md)
  - [ListConstraintsResponse](docs/ListConstraintsResponse.md)
+ - [ListConversationMessagesResponse](docs/ListConversationMessagesResponse.md)
+ - [ListConversationsResponse](docs/ListConversationsResponse.md)
  - [ListDatatankPartResponse](docs/ListDatatankPartResponse.md)
  - [ListDatatankResponse](docs/ListDatatankResponse.md)
  - [ListDatatankTableResponse](docs/ListDatatankTableResponse.md)
@@ -641,6 +712,7 @@ Class | Method | HTTP request | Description
  - [ListIdentitiesResponse](docs/ListIdentitiesResponse.md)
  - [ListIntegrationsResponse](docs/ListIntegrationsResponse.md)
  - [ListLogsResponse](docs/ListLogsResponse.md)
+ - [ListModelsResponse](docs/ListModelsResponse.md)
  - [ListNotifiersResponse](docs/ListNotifiersResponse.md)
  - [ListOrgUsersResponse](docs/ListOrgUsersResponse.md)
  - [ListOrgWorkspaceUsersResponse](docs/ListOrgWorkspaceUsersResponse.md)
@@ -673,6 +745,8 @@ Class | Method | HTTP request | Description
  - [ModSourceType](docs/ModSourceType.md)
  - [ModTriggerInfo](docs/ModTriggerInfo.md)
  - [ModTriggerState](docs/ModTriggerState.md)
+ - [Model](docs/Model.md)
+ - [ModelState](docs/ModelState.md)
  - [Notifier](docs/Notifier.md)
  - [NotifierPrecedence](docs/NotifierPrecedence.md)
  - [NotifierState](docs/NotifierState.md)
@@ -691,6 +765,7 @@ Class | Method | HTTP request | Description
  - [Plan](docs/Plan.md)
  - [PostgresEndpointState](docs/PostgresEndpointState.md)
  - [ProcessState](docs/ProcessState.md)
+ - [ServiceState](docs/ServiceState.md)
  - [SlackChannel](docs/SlackChannel.md)
  - [SnapshotState](docs/SnapshotState.md)
  - [SnapshotVisibility](docs/SnapshotVisibility.md)
@@ -704,19 +779,24 @@ Class | Method | HTTP request | Description
  - [TenantSamlLoginSettings](docs/TenantSamlLoginSettings.md)
  - [TenantSettings](docs/TenantSettings.md)
  - [TenantUser](docs/TenantUser.md)
+ - [TestAIKeyRequest](docs/TestAIKeyRequest.md)
+ - [TestAIKeyResponse](docs/TestAIKeyResponse.md)
  - [TestConnectionRequest](docs/TestConnectionRequest.md)
  - [TestIntegrationRequest](docs/TestIntegrationRequest.md)
  - [Token](docs/Token.md)
+ - [TokenWithValue](docs/TokenWithValue.md)
  - [TriggerCommandAction](docs/TriggerCommandAction.md)
  - [TriggerCommandRequest](docs/TriggerCommandRequest.md)
  - [TriggerCommandResponse](docs/TriggerCommandResponse.md)
  - [TriggerState](docs/TriggerState.md)
  - [USBankAccount](docs/USBankAccount.md)
+ - [UpdateAIKeyRequest](docs/UpdateAIKeyRequest.md)
  - [UpdateAggregatorRequest](docs/UpdateAggregatorRequest.md)
  - [UpdateBillingPaymentMethodRequest](docs/UpdateBillingPaymentMethodRequest.md)
  - [UpdateBillingSubscriptionRequest](docs/UpdateBillingSubscriptionRequest.md)
  - [UpdateConnectionFolderRequest](docs/UpdateConnectionFolderRequest.md)
  - [UpdateConnectionRequest](docs/UpdateConnectionRequest.md)
+ - [UpdateConversationRequest](docs/UpdateConversationRequest.md)
  - [UpdateDatatankPartRequest](docs/UpdateDatatankPartRequest.md)
  - [UpdateDatatankRequest](docs/UpdateDatatankRequest.md)
  - [UpdateDatatankTableRequest](docs/UpdateDatatankTableRequest.md)
@@ -727,6 +807,7 @@ Class | Method | HTTP request | Description
  - [UpdateOrgWorkspaceUserRequest](docs/UpdateOrgWorkspaceUserRequest.md)
  - [UpdatePermissionRequest](docs/UpdatePermissionRequest.md)
  - [UpdatePipelineRequest](docs/UpdatePipelineRequest.md)
+ - [UpdateServiceAccountUserRequest](docs/UpdateServiceAccountUserRequest.md)
  - [UpdateTemporaryTokenRequest](docs/UpdateTemporaryTokenRequest.md)
  - [UpdateTenantLoginSettings](docs/UpdateTenantLoginSettings.md)
  - [UpdateTenantRequest](docs/UpdateTenantRequest.md)
@@ -753,6 +834,7 @@ Class | Method | HTTP request | Description
  - [UserOrg](docs/UserOrg.md)
  - [UserPreferences](docs/UserPreferences.md)
  - [UserSignupRequest](docs/UserSignupRequest.md)
+ - [UserType](docs/UserType.md)
  - [Workspace](docs/Workspace.md)
  - [WorkspaceAggregator](docs/WorkspaceAggregator.md)
  - [WorkspaceAggregatorAssociation](docs/WorkspaceAggregatorAssociation.md)
