@@ -21,18 +21,25 @@ type User struct {
 	Billing *BillingInfo `json:"billing,omitempty"`
 	// The user created time.
 	CreatedAt   string  `json:"created_at"`
+	Description *string `json:"description,omitempty"`
 	DisplayName *string `json:"display_name,omitempty"`
 	// The handle name of a user.
 	Handle string `json:"handle"`
 	// The unique identifier of a user.
-	Id                string  `json:"id"`
+	Id string `json:"id"`
+	// If set, the service account is restricted to an identity and its children.
+	IdentityId        *string `json:"identity_id,omitempty"`
 	PreviewAccessMode *string `json:"preview_access_mode,omitempty"`
 	// The status of the user i.e accepted or pending.
 	Status string `json:"status"`
 	// The unique identifier of the tenant the user belongs to.
 	TenantId string `json:"tenant_id"`
+	// The below should only be populated for service accounts
+	Title *string `json:"title,omitempty"`
 	// The time which user and temporary auth tokens must be issued after.
 	TokenMinIssuedAt *string `json:"token_min_issued_at,omitempty"`
+	// The type of user, either user or service_account.
+	Type UserType `json:"type"`
 	// The user updated time.
 	UpdatedAt             *string                       `json:"updated_at,omitempty"`
 	Url                   *string                       `json:"url,omitempty"`
@@ -48,13 +55,14 @@ type User struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUser(createdAt string, handle string, id string, status string, tenantId string, versionId int32) *User {
+func NewUser(createdAt string, handle string, id string, status string, tenantId string, type_ UserType, versionId int32) *User {
 	this := User{}
 	this.CreatedAt = createdAt
 	this.Handle = handle
 	this.Id = id
 	this.Status = status
 	this.TenantId = tenantId
+	this.Type = type_
 	this.VersionId = versionId
 	return &this
 }
@@ -155,6 +163,38 @@ func (o *User) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *User) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *User) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *User) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *User) SetDescription(v string) {
+	o.Description = &v
+}
+
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *User) GetDisplayName() string {
 	if o == nil || o.DisplayName == nil {
@@ -233,6 +273,38 @@ func (o *User) GetIdOk() (*string, bool) {
 // SetId sets field value
 func (o *User) SetId(v string) {
 	o.Id = v
+}
+
+// GetIdentityId returns the IdentityId field value if set, zero value otherwise.
+func (o *User) GetIdentityId() string {
+	if o == nil || o.IdentityId == nil {
+		var ret string
+		return ret
+	}
+	return *o.IdentityId
+}
+
+// GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *User) GetIdentityIdOk() (*string, bool) {
+	if o == nil || o.IdentityId == nil {
+		return nil, false
+	}
+	return o.IdentityId, true
+}
+
+// HasIdentityId returns a boolean if a field has been set.
+func (o *User) HasIdentityId() bool {
+	if o != nil && o.IdentityId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityId gets a reference to the given string and assigns it to the IdentityId field.
+func (o *User) SetIdentityId(v string) {
+	o.IdentityId = &v
 }
 
 // GetPreviewAccessMode returns the PreviewAccessMode field value if set, zero value otherwise.
@@ -315,6 +387,38 @@ func (o *User) SetTenantId(v string) {
 	o.TenantId = v
 }
 
+// GetTitle returns the Title field value if set, zero value otherwise.
+func (o *User) GetTitle() string {
+	if o == nil || o.Title == nil {
+		var ret string
+		return ret
+	}
+	return *o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *User) GetTitleOk() (*string, bool) {
+	if o == nil || o.Title == nil {
+		return nil, false
+	}
+	return o.Title, true
+}
+
+// HasTitle returns a boolean if a field has been set.
+func (o *User) HasTitle() bool {
+	if o != nil && o.Title != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
+func (o *User) SetTitle(v string) {
+	o.Title = &v
+}
+
 // GetTokenMinIssuedAt returns the TokenMinIssuedAt field value if set, zero value otherwise.
 func (o *User) GetTokenMinIssuedAt() string {
 	if o == nil || o.TokenMinIssuedAt == nil {
@@ -345,6 +449,30 @@ func (o *User) HasTokenMinIssuedAt() bool {
 // SetTokenMinIssuedAt gets a reference to the given string and assigns it to the TokenMinIssuedAt field.
 func (o *User) SetTokenMinIssuedAt(v string) {
 	o.TokenMinIssuedAt = &v
+}
+
+// GetType returns the Type field value
+func (o *User) GetType() UserType {
+	if o == nil {
+		var ret UserType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *User) GetTypeOk() (*UserType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *User) SetType(v UserType) {
+	o.Type = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -574,6 +702,9 @@ func (o User) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["created_at"] = o.CreatedAt
 	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
 	if o.DisplayName != nil {
 		toSerialize["display_name"] = o.DisplayName
 	}
@@ -582,6 +713,9 @@ func (o User) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["id"] = o.Id
+	}
+	if o.IdentityId != nil {
+		toSerialize["identity_id"] = o.IdentityId
 	}
 	if o.PreviewAccessMode != nil {
 		toSerialize["preview_access_mode"] = o.PreviewAccessMode
@@ -592,8 +726,14 @@ func (o User) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["tenant_id"] = o.TenantId
 	}
+	if o.Title != nil {
+		toSerialize["title"] = o.Title
+	}
 	if o.TokenMinIssuedAt != nil {
 		toSerialize["token_min_issued_at"] = o.TokenMinIssuedAt
+	}
+	if true {
+		toSerialize["type"] = o.Type
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updated_at"] = o.UpdatedAt

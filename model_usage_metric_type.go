@@ -27,6 +27,7 @@ const (
 	UsageMetricTypeProcessExecutionMs   UsageMetricType = "process_execution_ms"
 	UsageMetricTypeProcessLogBytes      UsageMetricType = "process_log_bytes"
 	UsageMetricTypeSnapshotStorageBytes UsageMetricType = "snapshot_storage_bytes"
+	UsageMetricTypeArtifactStorageBytes UsageMetricType = "artifact_storage_bytes"
 )
 
 // All allowed values of UsageMetricType enum
@@ -38,6 +39,7 @@ var AllowedUsageMetricTypeEnumValues = []UsageMetricType{
 	"process_execution_ms",
 	"process_log_bytes",
 	"snapshot_storage_bytes",
+	"artifact_storage_bytes",
 }
 
 func (v *UsageMetricType) UnmarshalJSON(src []byte) error {

@@ -16,6 +16,8 @@ import (
 
 // UpdateTenantSettingsRequest struct for UpdateTenantSettingsRequest
 type UpdateTenantSettingsRequest struct {
+	// Enable/disable AI features for the tenant.
+	AiEnabled *ServiceState `json:"ai_enabled,omitempty"`
 	// The CLI session timeout in seconds.
 	CliSessionTimeout *int32 `json:"cli_session_timeout,omitempty"`
 	// The console (browser) session timeout in seconds.
@@ -57,6 +59,38 @@ func NewUpdateTenantSettingsRequest() *UpdateTenantSettingsRequest {
 func NewUpdateTenantSettingsRequestWithDefaults() *UpdateTenantSettingsRequest {
 	this := UpdateTenantSettingsRequest{}
 	return &this
+}
+
+// GetAiEnabled returns the AiEnabled field value if set, zero value otherwise.
+func (o *UpdateTenantSettingsRequest) GetAiEnabled() ServiceState {
+	if o == nil || o.AiEnabled == nil {
+		var ret ServiceState
+		return ret
+	}
+	return *o.AiEnabled
+}
+
+// GetAiEnabledOk returns a tuple with the AiEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateTenantSettingsRequest) GetAiEnabledOk() (*ServiceState, bool) {
+	if o == nil || o.AiEnabled == nil {
+		return nil, false
+	}
+	return o.AiEnabled, true
+}
+
+// HasAiEnabled returns a boolean if a field has been set.
+func (o *UpdateTenantSettingsRequest) HasAiEnabled() bool {
+	if o != nil && o.AiEnabled != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAiEnabled gets a reference to the given ServiceState and assigns it to the AiEnabled field.
+func (o *UpdateTenantSettingsRequest) SetAiEnabled(v ServiceState) {
+	o.AiEnabled = &v
 }
 
 // GetCliSessionTimeout returns the CliSessionTimeout field value if set, zero value otherwise.
@@ -445,6 +479,9 @@ func (o *UpdateTenantSettingsRequest) SetWorkspaceSnapshotPermittedVisibility(v 
 
 func (o UpdateTenantSettingsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AiEnabled != nil {
+		toSerialize["ai_enabled"] = o.AiEnabled
+	}
 	if o.CliSessionTimeout != nil {
 		toSerialize["cli_session_timeout"] = o.CliSessionTimeout
 	}

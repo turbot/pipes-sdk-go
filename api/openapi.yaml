@@ -360,6 +360,371 @@ paths:
       summary: List actor workspaces
       tags:
       - Actors
+  /ai/key:
+    get:
+      description: Lists AI provider API keys configured at the tenant level.
+      operationId: aiKey_tenant_list
+      parameters:
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned.
+          Pass next_token to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAIKeysResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List tenant AI keys
+      tags:
+      - AIKeys
+    post:
+      description: Creates a new AI provider API key at the tenant level.
+      operationId: aiKey_tenant_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAIKeyRequest'
+        description: The request body containing the AI provider and API key to save.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKey'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Create tenant AI key
+      tags:
+      - AIKeys
+      x-codegen-request-body-name: body
+  /ai/key/{provider}:
+    delete:
+      description: Deletes an existing AI provider API key at the tenant level.
+      operationId: aiKey_tenant_delete
+      parameters:
+      - description: The AI provider for which to delete the key.
+        explode: false
+        in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKey'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Delete tenant AI key
+      tags:
+      - AIKeys
+    get:
+      description: Retrieves the AI provider API key metadata at the tenant level.
+      operationId: aiKey_tenant_get
+      parameters:
+      - description: The AI provider for which to retrieve the key.
+        explode: false
+        in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKey'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get tenant AI key
+      tags:
+      - AIKeys
+    patch:
+      description: Updates an existing AI provider API key at the tenant level.
+      operationId: aiKey_tenant_update
+      parameters:
+      - description: The AI provider for which to update the key.
+        explode: false
+        in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAIKeyRequest'
+        description: The request body containing the updated API key value.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKey'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update tenant AI key
+      tags:
+      - AIKeys
+      x-codegen-request-body-name: body
+  /ai/key/{provider}/test:
+    post:
+      description: Tests whether an AI provider API key is valid at the tenant level.
+        If a key is not provided in the body, the existing saved key for the provider
+        will be tested.
+      operationId: aiKey_tenant_test
+      parameters:
+      - description: The AI provider for which to test the key.
+        explode: false
+        in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TestAIKeyRequest'
+        description: Optional request body containing an API key to test instead of
+          the saved one.
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestAIKeyResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Test tenant AI key
+      tags:
+      - AIKeys
+      x-codegen-request-body-name: body
   /audit_log:
     get:
       description: Returns the audit logs for a custom tenant.
@@ -4068,6 +4433,434 @@ paths:
       tags:
       - Orgs
       x-codegen-request-body-name: request
+  /org/{org_handle}/ai/key:
+    get:
+      description: Lists AI provider API keys configured at the organization level.
+      operationId: aiKey_org_list
+      parameters:
+      - description: The handle of the organization for which to list AI keys.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned.
+          Pass next_token to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAIKeysResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List org AI keys
+      tags:
+      - AIKeys
+    post:
+      description: Creates a new AI provider API key at the organization level.
+      operationId: aiKey_org_create
+      parameters:
+      - description: The handle of the organization for which the AI key is being
+          created.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAIKeyRequest'
+        description: The request body containing the AI provider and API key to save.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKey'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Create org AI key
+      tags:
+      - AIKeys
+      x-codegen-request-body-name: body
+  /org/{org_handle}/ai/key/{provider}:
+    delete:
+      description: Deletes an existing AI provider API key at the organization level.
+      operationId: aiKey_org_delete
+      parameters:
+      - description: The handle of the organization that owns the AI key.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The AI provider for which to delete the key.
+        explode: false
+        in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKey'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Delete org AI key
+      tags:
+      - AIKeys
+    get:
+      description: Retrieves the AI provider API key metadata at the organization
+        level.
+      operationId: aiKey_org_get
+      parameters:
+      - description: The handle of the organization that owns the AI key.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The AI provider for which to retrieve the key.
+        explode: false
+        in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKey'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get org AI key
+      tags:
+      - AIKeys
+    patch:
+      description: Updates an existing AI provider API key at the organization level.
+      operationId: aiKey_org_update
+      parameters:
+      - description: The handle of the organization that owns the AI key.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The AI provider for which to update the key.
+        explode: false
+        in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAIKeyRequest'
+        description: The request body containing the updated API key value.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKey'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update org AI key
+      tags:
+      - AIKeys
+      x-codegen-request-body-name: body
+  /org/{org_handle}/ai/key/{provider}/test:
+    post:
+      description: Tests whether an AI provider API key is valid at the organization
+        level. If a key is not provided in the body, the existing saved key for the
+        provider will be tested.
+      operationId: aiKey_org_test
+      parameters:
+      - description: The handle of the organization that owns the AI key.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The AI provider for which to test the key.
+        explode: false
+        in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TestAIKeyRequest'
+        description: Optional request body containing an API key to test instead of
+          the saved one.
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestAIKeyResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Test org AI key
+      tags:
+      - AIKeys
+      x-codegen-request-body-name: body
   /org/{org_handle}/audit_log:
     get:
       description: Returns the audit logs for an org.
@@ -9709,6 +10502,839 @@ paths:
       summary: List Org process logs
       tags:
       - OrgProcesses
+  /org/{org_handle}/service_account:
+    get:
+      description: Lists service accounts at the organization level.
+      operationId: serviceAccount_org_list
+      parameters:
+      - description: The handle of the organization
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of items to return. Default 100. Max 1000.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned,
+          which is a cursor to fetch the next page of data. Pass next_token to the
+          subsequent list request to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListUsersResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List organization service accounts
+      tags:
+      - ServiceAccounts
+    post:
+      description: Create a new service account at the organization level.
+      operationId: serviceAccountOrg_create
+      parameters:
+      - description: The handle of the organization where the service account will
+          be created
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServiceAccountUserRequest'
+        description: The request body containing service account details
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Create a service account at the organization level
+      tags:
+      - ServiceAccounts
+      x-codegen-request-body-name: body
+  /org/{org_handle}/service_account/{service_account_identifier}:
+    delete:
+      description: Delete an existing service account at the organization level.
+      operationId: serviceAccountOrg_delete
+      parameters:
+      - description: The handle of the organization
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the service account to delete
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Delete an organization service account
+      tags:
+      - ServiceAccounts
+    get:
+      description: Retrieves a specific org-level service account.
+      operationId: serviceAccount_org_get
+      parameters:
+      - description: The handle of the organization
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the service account
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          format: ^[a-z]_[0-9a-v]{20}$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get organization service account
+      tags:
+      - ServiceAccounts
+    patch:
+      description: Update an existing service account at the organization level.
+      operationId: serviceAccountOrg_update
+      parameters:
+      - description: The handle of the organization
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the service account to update
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateServiceAccountUserRequest'
+        description: The request body containing the updated service account details
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update an organization service account
+      tags:
+      - ServiceAccounts
+      x-codegen-request-body-name: body
+  /org/{org_handle}/service_account/{service_account_identifier}/audit_log:
+    get:
+      description: Returns the audit logs where the service account is either the
+        actor or the identity (org-level service account).
+      operationId: serviceAccount_org_listAuditLogs
+      parameters:
+      - description: The handle of the organization
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the service account
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          format: ^[a-z]_[0-9a-v]{20}$
+          type: string
+        style: simple
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned,
+          which is a cursor to fetch the next page of data. Pass next_token to the
+          subsequent list request to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAuditLogsResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List audit logs for an org service account
+      tags:
+      - ServiceAccounts
+  /org/{org_handle}/service_account/{service_account_identifier}/token:
+    get:
+      description: Lists tokens for an organization-level service account.
+      operationId: serviceAccountToken_org_list
+      parameters:
+      - description: The handle of the organization
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the service account
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned,
+          which is a cursor to fetch the next page of data. Pass next_token to the
+          subsequent list request to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTokensResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List organization service account tokens
+      tags:
+      - ServiceAccounts
+    post:
+      description: Create a new token for an organization-level service account.
+      operationId: serviceAccountToken_org_create
+      parameters:
+      - description: The handle of the organization
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the service account
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTokenRequest'
+        description: The request body containing token details
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenWithValue'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Create an organization service account token
+      tags:
+      - ServiceAccounts
+      x-codegen-request-body-name: body
+  /org/{org_handle}/service_account/{service_account_identifier}/token/{token_id}:
+    delete:
+      description: Delete a token for an organization-level service account.
+      operationId: serviceAccountToken_org_delete
+      parameters:
+      - description: The handle of the organization
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the service account
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The identifier of the token
+        explode: false
+        in: path
+        name: token_id
+        required: true
+        schema:
+          format: ^[a-z]_[0-9a-v]{20}$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Delete an organization service account token
+      tags:
+      - ServiceAccounts
+    get:
+      description: Retrieves a specific token for an organization-level service account.
+      operationId: serviceAccountToken_org_get
+      parameters:
+      - description: The handle of the organization
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the service account
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The identifier of the token
+        explode: false
+        in: path
+        name: token_id
+        required: true
+        schema:
+          format: ^[a-z]_[0-9a-v]{20}$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get an organization service account token
+      tags:
+      - ServiceAccounts
+    patch:
+      description: Update an existing token for an organization-level service account.
+      operationId: serviceAccountToken_org_update
+      parameters:
+      - description: The handle of the organization
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the service account
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The identifier of the token
+        explode: false
+        in: path
+        name: token_id
+        required: true
+        schema:
+          format: ^[a-z]_[0-9a-v]{20}$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTokenRequest'
+        description: The request body containing the updated token details
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update an organization service account token
+      tags:
+      - ServiceAccounts
+      x-codegen-request-body-name: body
   /org/{org_handle}/usage:
     get:
       description: List all usage metrics for an org.
@@ -10770,6 +12396,747 @@ paths:
       summary: Get a connection in the scope of an aggregator for a org workspace
       tags:
       - OrgWorkspaceAggregators
+  /org/{org_handle}/workspace/{workspace_handle}/ai/chat:
+    post:
+      description: Sends a chat message to the AI agent in an org workspace. Creates
+        a new conversation if conversation_id is not provided.
+      operationId: conversation_org_chat
+      parameters:
+      - description: The handle of the organization that owns the workspace.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the org workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+        description: The chat request payload containing the message, model and optional
+          conversation_id.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Chat in org workspace
+      tags:
+      - OrgWorkspaceConversations
+      x-codegen-request-body-name: body
+  /org/{org_handle}/workspace/{workspace_handle}/ai/conversation:
+    get:
+      description: Lists AI conversations in an org workspace with optional filtering
+        and pagination.
+      operationId: conversation_org_list
+      parameters:
+      - description: The handle of the organization that owns the workspace.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the org workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: Optional filter expression for title.
+        explode: true
+        in: query
+        name: where
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned.
+          Pass next_token to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConversationsResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List org workspace conversations
+      tags:
+      - OrgWorkspaceConversations
+  /org/{org_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id}:
+    delete:
+      description: Deletes a specific org workspace conversation.
+      operationId: conversation_org_delete
+      parameters:
+      - description: The handle of the organization that owns the workspace.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the org workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The ID of the conversation to delete.
+        explode: false
+        in: path
+        name: conversation_id
+        required: true
+        schema:
+          format: ^conv_[0-9a-v]{20}$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Delete org workspace conversation
+      tags:
+      - OrgWorkspaceConversations
+    get:
+      description: Retrieves details for a specific org workspace conversation.
+      operationId: conversation_org_get
+      parameters:
+      - description: The handle of the organization that owns the workspace.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the org workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The ID of the conversation to retrieve.
+        explode: false
+        in: path
+        name: conversation_id
+        required: true
+        schema:
+          format: ^conv_[0-9a-v]{20}$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get org workspace conversation
+      tags:
+      - OrgWorkspaceConversations
+    patch:
+      description: Updates an org workspace conversation (e.g., title).
+      operationId: conversation_org_update
+      parameters:
+      - description: The handle of the organization that owns the workspace.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the org workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The ID of the conversation to update.
+        explode: false
+        in: path
+        name: conversation_id
+        required: true
+        schema:
+          format: ^conv_[0-9a-v]{20}$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateConversationRequest'
+        description: Fields to update on the conversation.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update org workspace conversation
+      tags:
+      - OrgWorkspaceConversations
+      x-codegen-request-body-name: body
+  /org/{org_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id}/artifact/{artifact_id}:
+    get:
+      description: Retrieves metadata for a specific artifact created by an org workspace
+        conversation.
+      operationId: conversationArtifact_org_get
+      parameters:
+      - description: The handle of the organization that owns the workspace.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the org workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The ID of the conversation that produced the artifact.
+        explode: false
+        in: path
+        name: conversation_id
+        required: true
+        schema:
+          format: ^conv_[0-9a-v]{20}$
+          type: string
+        style: simple
+      - description: The ID of the artifact to retrieve.
+        explode: false
+        in: path
+        name: artifact_id
+        required: true
+        schema:
+          format: ^art_[0-9a-v]{20}$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationArtifact'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get org workspace conversation artifact metadata
+      tags:
+      - OrgWorkspaceConversationArtifacts
+  /org/{org_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id}/artifact/{artifact_id}.{content_type}:
+    get:
+      description: Downloads an artifact file from an org workspace AI conversation.
+      operationId: orgWorkspaceArtifact_download
+      parameters:
+      - description: The handle of the organization that owns the workspace.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the org workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The ID of the conversation that produced the artifact.
+        explode: false
+        in: path
+        name: conversation_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the artifact to download.
+        explode: false
+        in: path
+        name: artifact_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The type/extension of the artifact to download.
+        explode: false
+        in: path
+        name: content_type
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Download org workspace artifact
+      tags:
+      - OrgWorkspaceArtifacts
+  /org/{org_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id}/message:
+    get:
+      description: Lists messages for a specific org workspace conversation with pagination.
+      operationId: conversationMessage_org_list
+      parameters:
+      - description: The handle of the organization that owns the workspace.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the org workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The ID of the conversation whose messages are being listed.
+        explode: false
+        in: path
+        name: conversation_id
+        required: true
+        schema:
+          format: ^conv_[0-9a-v]{20}$
+          type: string
+        style: simple
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned.
+          Pass next_token to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConversationMessagesResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List org workspace conversation messages
+      tags:
+      - OrgWorkspaceConversationMessages
+  /org/{org_handle}/workspace/{workspace_handle}/ai/model:
+    get:
+      description: Lists available AI models for an org workspace based on configured
+        AI keys.
+      operationId: model_org_list
+      parameters:
+      - description: The handle of the organization that owns the workspace.
+        explode: false
+        in: path
+        name: org_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the org workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListModelsResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List org workspace AI models
+      tags:
+      - OrgWorkspaceAIModels
   /org/{org_handle}/workspace/{workspace_handle}/audit_log:
     get:
       description: Returns the audit logs for an org workspace.
@@ -20769,6 +23136,743 @@ paths:
       summary: List org workspace usage
       tags:
       - OrgWorkspaceUsages
+  /service_account:
+    get:
+      description: Lists service accounts at the tenant level.
+      operationId: serviceAccount_tenant_list
+      parameters:
+      - description: Maximum number of items to return. Default 100. Max 1000.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned,
+          which is a cursor to fetch the next page of data. Pass next_token to the
+          subsequent list request to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListUsersResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List tenant service accounts
+      tags:
+      - ServiceAccounts
+    post:
+      description: Create a new service account at the tenant level.
+      operationId: serviceAccount_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServiceAccountUserRequest'
+        description: The request body containing service account details
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Create a tenant service account
+      tags:
+      - ServiceAccounts
+      x-codegen-request-body-name: body
+  /service_account/{service_account_identifier}:
+    delete:
+      description: Delete an existing service account at the tenant level.
+      operationId: serviceAccount_delete
+      parameters:
+      - description: The ID of the service account to delete
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Delete a tenant service account
+      tags:
+      - ServiceAccounts
+    get:
+      description: Retrieves a specific tenant-level service account.
+      operationId: serviceAccount_tenant_get
+      parameters:
+      - description: The ID of the service account
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          format: ^[a-z]_[0-9a-v]{20}$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get tenant service account
+      tags:
+      - ServiceAccounts
+    patch:
+      description: Update an existing service account at the tenant level.
+      operationId: serviceAccount_update
+      parameters:
+      - description: The ID of the service account to update
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateServiceAccountUserRequest'
+        description: The request body containing the updated service account details
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update a tenant service account
+      tags:
+      - ServiceAccounts
+      x-codegen-request-body-name: body
+  /service_account/{service_account_identifier}/audit_log:
+    get:
+      description: Returns the audit logs where the service account is either the
+        actor or the identity (tenant-level service account).
+      operationId: serviceAccount_tenant_listAuditLogs
+      parameters:
+      - description: The ID of the service account
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          format: ^[a-z]_[0-9a-v]{20}$
+          type: string
+        style: simple
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned,
+          which is a cursor to fetch the next page of data. Pass next_token to the
+          subsequent list request to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAuditLogsResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List audit logs for a tenant service account
+      tags:
+      - ServiceAccounts
+  /service_account/{service_account_identifier}/token:
+    get:
+      description: Lists tokens for a tenant-level service account.
+      operationId: serviceAccountToken_tenant_list
+      parameters:
+      - description: The ID of the service account
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned,
+          which is a cursor to fetch the next page of data. Pass next_token to the
+          subsequent list request to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTokensResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List tenant service account tokens
+      tags:
+      - ServiceAccounts
+    post:
+      description: Create a new token for a tenant-level service account.
+      operationId: serviceAccountToken_tenant_create
+      parameters:
+      - description: The ID of the service account
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTokenRequest'
+        description: The request body containing token details
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenWithValue'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Create a tenant service account token
+      tags:
+      - ServiceAccounts
+      x-codegen-request-body-name: body
+  /service_account/{service_account_identifier}/token/{token_id}:
+    delete:
+      description: Delete a token for a tenant-level service account.
+      operationId: serviceAccountToken_tenant_delete
+      parameters:
+      - description: The ID of the service account
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The identifier of the token
+        explode: false
+        in: path
+        name: token_id
+        required: true
+        schema:
+          format: ^[a-z]_[0-9a-v]{20}$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Delete a tenant service account token
+      tags:
+      - ServiceAccounts
+    get:
+      description: Retrieves a specific token for a tenant-level service account.
+      operationId: serviceAccountToken_tenant_get
+      parameters:
+      - description: The ID of the service account
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The identifier of the token
+        explode: false
+        in: path
+        name: token_id
+        required: true
+        schema:
+          format: ^[a-z]_[0-9a-v]{20}$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get a tenant service account token
+      tags:
+      - ServiceAccounts
+    patch:
+      description: Update an existing token for a tenant-level service account.
+      operationId: serviceAccountToken_tenant_update
+      parameters:
+      - description: The ID of the service account
+        explode: false
+        in: path
+        name: service_account_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The identifier of the token
+        explode: false
+        in: path
+        name: token_id
+        required: true
+        schema:
+          format: ^[a-z]_[0-9a-v]{20}$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTokenRequest'
+        description: The request body containing the updated token details
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update a tenant service account token
+      tags:
+      - ServiceAccounts
+      x-codegen-request-body-name: body
   /settings:
     get:
       description: Retrieves the tenant settings.
@@ -23404,6 +26508,432 @@ paths:
       tags:
       - Users
       x-codegen-request-body-name: request
+  /user/{user_handle}/ai/key:
+    get:
+      description: Lists AI provider API keys configured at the user level.
+      operationId: aiKey_user_list
+      parameters:
+      - description: The handle of the user for which to list AI keys.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned.
+          Pass next_token to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAIKeysResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List user AI keys
+      tags:
+      - AIKeys
+    post:
+      description: Creates a new AI provider API key at the user level.
+      operationId: aiKey_user_create
+      parameters:
+      - description: The handle of the user for which the AI key is being created.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAIKeyRequest'
+        description: The request body containing the AI provider and API key to save.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKey'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Create user AI key
+      tags:
+      - AIKeys
+      x-codegen-request-body-name: body
+  /user/{user_handle}/ai/key/{provider}:
+    delete:
+      description: Deletes an existing AI provider API key at the user level.
+      operationId: aiKey_user_delete
+      parameters:
+      - description: The handle of the user that owns the AI key.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The AI provider for which to delete the key.
+        explode: false
+        in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKey'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Delete user AI key
+      tags:
+      - AIKeys
+    get:
+      description: Retrieves the AI provider API key metadata at the user level.
+      operationId: aiKey_user_get
+      parameters:
+      - description: The handle of the user that owns the AI key.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The AI provider for which to retrieve the key.
+        explode: false
+        in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKey'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get user AI key
+      tags:
+      - AIKeys
+    patch:
+      description: Updates an existing AI provider API key at the user level.
+      operationId: aiKey_user_update
+      parameters:
+      - description: The handle of the user that owns the AI key.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The AI provider for which to update the key.
+        explode: false
+        in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAIKeyRequest'
+        description: The request body containing the updated API key value.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKey'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update user AI key
+      tags:
+      - AIKeys
+      x-codegen-request-body-name: body
+  /user/{user_handle}/ai/key/{provider}/test:
+    post:
+      description: Tests whether an AI provider API key is valid at the user level.
+        If a key is not provided in the body, the existing saved key for the provider
+        will be tested.
+      operationId: aiKey_user_test
+      parameters:
+      - description: The handle of the user that owns the AI key.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The AI provider for which to test the key.
+        explode: false
+        in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TestAIKeyRequest'
+        description: Optional request body containing an API key to test instead of
+          the saved one.
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestAIKeyResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Test user AI key
+      tags:
+      - AIKeys
+      x-codegen-request-body-name: body
   /user/{user_handle}/audit_log:
     get:
       description: Returns the audit logs for a user.
@@ -28847,6 +32377,748 @@ paths:
       summary: Get a connection in the scope of an aggregator for a user workspace
       tags:
       - UserWorkspaceAggregators
+  /user/{user_handle}/workspace/{workspace_handle}/ai/chat:
+    post:
+      description: Sends a chat message to the AI agent in a user workspace. Creates
+        a new conversation if conversation_id is not provided.
+      operationId: conversation_user_chat
+      parameters:
+      - description: The handle of the user that owns the workspace.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the user workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+        description: The chat request payload containing the message, model and optional
+          conversation_id.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Chat in user workspace
+      tags:
+      - UserWorkspaceConversations
+      x-codegen-request-body-name: body
+  /user/{user_handle}/workspace/{workspace_handle}/ai/conversation:
+    get:
+      description: Lists AI conversations in a user workspace with optional filtering
+        and pagination.
+      operationId: conversation_user_list
+      parameters:
+      - description: The handle of the user that owns the workspace.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the user workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: Optional filter expression for title.
+        explode: true
+        in: query
+        name: where
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned.
+          Pass next_token to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConversationsResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List user workspace conversations
+      tags:
+      - UserWorkspaceConversations
+  /user/{user_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id}:
+    delete:
+      description: Deletes a specific user workspace conversation.
+      operationId: conversation_user_delete
+      parameters:
+      - description: The handle of the user that owns the workspace.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the user workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The ID of the conversation to delete.
+        explode: false
+        in: path
+        name: conversation_id
+        required: true
+        schema:
+          format: ^conv_[0-9a-v]{20}$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Delete user workspace conversation
+      tags:
+      - UserWorkspaceConversations
+    get:
+      description: Retrieves details for a specific user workspace conversation.
+      operationId: conversation_user_get
+      parameters:
+      - description: The handle of the user that owns the workspace.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the user workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The ID of the conversation to retrieve.
+        explode: false
+        in: path
+        name: conversation_id
+        required: true
+        schema:
+          format: ^conv_[0-9a-v]{20}$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get user workspace conversation
+      tags:
+      - UserWorkspaceConversations
+    patch:
+      description: Updates a user workspace conversation (e.g., title).
+      operationId: conversation_user_update
+      parameters:
+      - description: The handle of the user that owns the workspace.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the user workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The ID of the conversation to update.
+        explode: false
+        in: path
+        name: conversation_id
+        required: true
+        schema:
+          format: ^conv_[0-9a-v]{20}$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateConversationRequest'
+        description: Fields to update on the conversation.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Update user workspace conversation
+      tags:
+      - UserWorkspaceConversations
+      x-codegen-request-body-name: body
+  /user/{user_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id}/artifact/{artifact_id}:
+    get:
+      description: Retrieves metadata for a specific artifact created by a user workspace
+        conversation.
+      operationId: conversationArtifact_user_get
+      parameters:
+      - description: The handle of the user that owns the workspace.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the user workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The ID of the conversation that produced the artifact.
+        explode: false
+        in: path
+        name: conversation_id
+        required: true
+        schema:
+          format: ^conv_[0-9a-v]{20}$
+          type: string
+        style: simple
+      - description: The ID of the artifact to retrieve.
+        explode: false
+        in: path
+        name: artifact_id
+        required: true
+        schema:
+          format: ^art_[0-9a-v]{20}$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationArtifact'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Get user workspace conversation artifact metadata
+      tags:
+      - UserWorkspaceConversationArtifacts
+  /user/{user_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id}/artifact/{artifact_id}.{content_type}:
+    get:
+      description: Downloads an artifact file from a user workspace AI conversation.
+      operationId: userWorkspaceArtifact_download
+      parameters:
+      - description: The handle of the user that owns the workspace.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the user workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The ID of the conversation that produced the artifact.
+        explode: false
+        in: path
+        name: conversation_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the artifact to download.
+        explode: false
+        in: path
+        name: artifact_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The type/extension of the artifact to download.
+        explode: false
+        in: path
+        name: content_type
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Download user workspace artifact
+      tags:
+      - UserWorkspaceArtifacts
+  /user/{user_handle}/workspace/{workspace_handle}/ai/conversation/{conversation_id}/message:
+    get:
+      description: Lists messages for a specific user workspace conversation with
+        pagination.
+      operationId: conversationMessage_user_list
+      parameters:
+      - description: The handle of the user that owns the workspace.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the user workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      - description: The ID of the conversation whose messages are being listed.
+        explode: false
+        in: path
+        name: conversation_id
+        required: true
+        schema:
+          format: ^conv_[0-9a-v]{20}$
+          type: string
+        style: simple
+      - description: The max number of items to fetch per page of data, subject to
+          a min and max of 1 and 100 respectively. If not specified will default to
+          25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: When list results are truncated, next_token will be returned.
+          Pass next_token to fetch the next page of data.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConversationMessagesResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List user workspace conversation messages
+      tags:
+      - UserWorkspaceConversationMessages
+  /user/{user_handle}/workspace/{workspace_handle}/ai/model:
+    get:
+      description: Lists available AI models for a user workspace based on configured
+        AI keys.
+      operationId: model_user_list
+      parameters:
+      - description: The handle of the user that owns the workspace.
+        explode: false
+        in: path
+        name: user_handle
+        required: true
+        schema:
+          format: ^[a-z0-9][a-z0-9-]{0,37}[a-z0-9]$
+          type: string
+        style: simple
+      - description: The handle of the user workspace.
+        explode: false
+        in: path
+        name: workspace_handle
+        required: true
+        schema:
+          format: ^[a-z0-9]{1,23}$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListModelsResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: List user workspace AI models
+      tags:
+      - UserWorkspaceAIModels
   /user/{user_handle}/workspace/{workspace_handle}/audit_log:
     get:
       description: Returns the audit logs for a user workspace.
@@ -38474,6 +42746,89 @@ components:
       - title
       - type
       type: object
+    AIKey:
+      example:
+        tenant_id: tenant_id
+        last4: last4
+        updated_at: updated_at
+        identity_id: identity_id
+        provider: '{}'
+        updated_by: '{}'
+        created_at: created_at
+        updated_by_id: updated_by_id
+        created_by_id: created_by_id
+        id: id
+        version_id: 0
+        created_by: '{}'
+      properties:
+        created_at:
+          description: The time of creation in ISO 8601 UTC.
+          type: string
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          description: User information for the user who created this.
+          type: object
+        created_by_id:
+          description: The ID of the user that created this.
+          format: ^u_[0-9a-v]{20}$
+          type: string
+        id:
+          format: ^aikey_[0-9a-v]{20}$
+          type: string
+        identity_id:
+          format: ^[uo]_[0-9a-v]{20}$
+          type: string
+        last4:
+          type: string
+        provider:
+          allOf:
+          - $ref: '#/components/schemas/AIProvider'
+          type: object
+        tenant_id:
+          format: ^t_[0-9a-v]{20}$
+          type: string
+        updated_at:
+          description: The time of the last update in ISO 8601 UTC.
+          type: string
+        updated_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          description: User information for the last user to update this.
+          type: object
+        updated_by_id:
+          description: The ID of the user that performed the last update.
+          format: ^u_[0-9a-v]{20}$
+          type: string
+        version_id:
+          description: The version ID of this item. Pass this version ID via an If-Match
+            header when performing mutation operations on the item.
+          type: integer
+      required:
+      - created_at
+      - created_by_id
+      - id
+      - provider
+      - tenant_id
+      - updated_by_id
+      - version_id
+      type: object
+    AIKeyTestStatus:
+      enum:
+      - ok
+      - error
+      type: string
+      x-enum-varnames:
+      - AIKeyTestStatusOK
+      - AIKeyTestStatusError
+    AIProvider:
+      enum:
+      - openai
+      - anthropic
+      type: string
+      x-enum-varnames:
+      - AIProviderOpenAI
+      - AIProviderAnthropic
     ActorWorkspace:
       example:
         workspace_id: workspace_id
@@ -38972,6 +43327,24 @@ components:
         last4:
           type: string
       type: object
+    ChatRequest:
+      example:
+        provider: provider
+        conversation_id: conversation_id
+        model: model
+        message: message
+      properties:
+        conversation_id:
+          format: ^conv[0-9a-v]{20}$
+          type: string
+        message:
+          type: string
+        model:
+          type: string
+        provider:
+          description: 'TODO: should provider be inferred from the model?'
+          type: string
+      type: object
     CmdDatatankPartRequest:
       example:
         command: '{}'
@@ -39345,6 +43718,227 @@ components:
       x-enum-varnames:
       - ConstraintVisibilityPublic
       - ConstraintVisibilityPrivate
+    Conversation:
+      example:
+        tenant_id: tenant_id
+        identity_id: identity_id
+        deleted_by_id: deleted_by_id
+        created_at: created_at
+        deleted_by: '{}'
+        version_id: 0
+        title: title
+        created_by: '{}'
+        deleted_at: deleted_at
+        workspace_id: workspace_id
+        last_model: last_model
+        updated_at: updated_at
+        provider: provider
+        updated_by: '{}'
+        updated_by_id: updated_by_id
+        created_by_id: created_by_id
+        id: id
+      properties:
+        created_at:
+          description: The time of creation in ISO 8601 UTC.
+          type: string
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          description: User information for the user who created this.
+          type: object
+        created_by_id:
+          description: The ID of the user that created this.
+          format: ^u_[0-9a-v]{20}$
+          type: string
+        deleted_at:
+          description: The time the item was deleted in ISO 8601 UTC.
+          type: string
+        deleted_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          description: User information for the user that performed the deletion.
+          type: object
+        deleted_by_id:
+          description: The ID of the user that performed the deletion.
+          format: ^u_[0-9a-v]{20}$
+          type: string
+        id:
+          type: string
+        identity_id:
+          format: ^[uo]_[0-9a-v]{20}$
+          type: string
+        last_model:
+          type: string
+        provider:
+          type: string
+        tenant_id:
+          format: ^t_[0-9a-v]{20}$
+          type: string
+        title:
+          type: string
+        updated_at:
+          description: The time of the last update in ISO 8601 UTC.
+          type: string
+        updated_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          description: User information for the last user to update this.
+          type: object
+        updated_by_id:
+          description: The ID of the user that performed the last update.
+          format: ^u_[0-9a-v]{20}$
+          type: string
+        version_id:
+          description: The version ID of this item. Pass this version ID via an If-Match
+            header when performing mutation operations on the item.
+          type: integer
+        workspace_id:
+          format: ^w_[0-9a-v]{20}$
+          type: string
+      required:
+      - created_at
+      - created_by_id
+      - deleted_by_id
+      - tenant_id
+      - updated_by_id
+      - version_id
+      - workspace_id
+      type: object
+    ConversationArtifact:
+      example:
+        kind: kind
+        created_at: created_at
+        language: language
+        usage_storage_bytes: 0
+        title: title
+        created_by: '{}'
+        sql: sql
+        updated_at: updated_at
+        conversation_id: conversation_id
+        updated_by: '{}'
+        updated_by_id: updated_by_id
+        created_by_id: created_by_id
+        id: id
+        canvas_id: canvas_id
+      properties:
+        canvas_id:
+          type: string
+        conversation_id:
+          format: ^conv_[0-9a-v]{20}$
+          type: string
+        created_at:
+          description: The time of creation in ISO 8601 UTC.
+          type: string
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          description: User information for the user who created this.
+          type: object
+        created_by_id:
+          description: The ID of the user that created this.
+          format: ^u_[0-9a-v]{20}$
+          type: string
+        id:
+          format: ^art_[0-9a-v]{20}$
+          type: string
+        kind:
+          type: string
+        language:
+          type: string
+        sql:
+          type: string
+        title:
+          type: string
+        updated_at:
+          description: The time of the last update in ISO 8601 UTC.
+          type: string
+        updated_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          description: User information for the last user to update this.
+          type: object
+        updated_by_id:
+          description: The ID of the user that performed the last update.
+          format: ^u_[0-9a-v]{20}$
+          type: string
+        usage_storage_bytes:
+          type: integer
+      required:
+      - conversation_id
+      - created_at
+      - created_by_id
+      - id
+      - kind
+      - updated_by_id
+      type: object
+    ConversationMessage:
+      example:
+        metadata: '{}'
+        artifact_type: artifact_type
+        role: role
+        thinking_id: thinking_id
+        created_at: created_at
+        message_type: message_type
+        artifact_id: artifact_id
+        content: '{}'
+        param: '{}'
+        conversation_id: conversation_id
+        tool_call_id: tool_call_id
+        created_by_id: created_by_id
+        id: id
+        canvas_id: canvas_id
+      properties:
+        artifact_id:
+          type: string
+        artifact_type:
+          type: string
+        canvas_id:
+          type: string
+        content:
+          properties: {}
+          type: object
+        conversation_id:
+          type: string
+        created_at:
+          type: string
+        created_by_id:
+          format: ^u_[0-9a-v]{20}$
+          type: string
+        id:
+          type: string
+        message_type:
+          type: string
+        metadata:
+          properties: {}
+          type: object
+        param:
+          properties: {}
+          type: object
+        role:
+          type: string
+        thinking_id:
+          type: string
+        tool_call_id:
+          type: string
+      required:
+      - created_at
+      - created_by_id
+      type: object
+    CreateAIKeyRequest:
+      example:
+        api_key: api_key
+        provider: '{}'
+      properties:
+        api_key:
+          type: string
+        provider:
+          allOf:
+          - $ref: '#/components/schemas/AIProvider'
+          type: object
+      required:
+      - api_key
+      - provider
+      type: object
     CreateAggregatorRequest:
       example:
         plugin: plugin
@@ -39665,6 +44259,18 @@ components:
       - pipeline
       - title
       type: object
+    CreateServiceAccountUserRequest:
+      example:
+        description: description
+        title: title
+      properties:
+        description:
+          description: The description of the service account user.
+          type: string
+        title:
+          description: The title of the service account user.
+          type: string
+      type: object
     CreateTenantRequest:
       example:
         handle: handle
@@ -39680,6 +44286,19 @@ components:
           type: string
       required:
       - handle
+      type: object
+    CreateTokenRequest:
+      example:
+        description: description
+        expiration: 0
+        title: title
+      properties:
+        description:
+          type: string
+        expiration:
+          type: integer
+        title:
+          type: string
       type: object
     CreateTriggerRequest:
       example:
@@ -41174,6 +45793,42 @@ components:
       - email
       - role
       type: object
+    ListAIKeysResponse:
+      example:
+        next_token: next_token
+        items:
+        - tenant_id: tenant_id
+          last4: last4
+          updated_at: updated_at
+          identity_id: identity_id
+          provider: '{}'
+          updated_by: '{}'
+          created_at: created_at
+          updated_by_id: updated_by_id
+          created_by_id: created_by_id
+          id: id
+          version_id: 0
+          created_by: '{}'
+        - tenant_id: tenant_id
+          last4: last4
+          updated_at: updated_at
+          identity_id: identity_id
+          provider: '{}'
+          updated_by: '{}'
+          created_at: created_at
+          updated_by_id: updated_by_id
+          created_by_id: created_by_id
+          id: id
+          version_id: 0
+          created_by: '{}'
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/AIKey'
+          type: array
+        next_token:
+          type: string
+      type: object
     ListActorWorkspacesResponse:
       example:
         next_token: next_token
@@ -41472,6 +46127,92 @@ components:
         items:
           items:
             $ref: '#/components/schemas/Constraint'
+          type: array
+        next_token:
+          type: string
+      type: object
+    ListConversationMessagesResponse:
+      example:
+        next_token: next_token
+        items:
+        - metadata: '{}'
+          artifact_type: artifact_type
+          role: role
+          thinking_id: thinking_id
+          created_at: created_at
+          message_type: message_type
+          artifact_id: artifact_id
+          content: '{}'
+          param: '{}'
+          conversation_id: conversation_id
+          tool_call_id: tool_call_id
+          created_by_id: created_by_id
+          id: id
+          canvas_id: canvas_id
+        - metadata: '{}'
+          artifact_type: artifact_type
+          role: role
+          thinking_id: thinking_id
+          created_at: created_at
+          message_type: message_type
+          artifact_id: artifact_id
+          content: '{}'
+          param: '{}'
+          conversation_id: conversation_id
+          tool_call_id: tool_call_id
+          created_by_id: created_by_id
+          id: id
+          canvas_id: canvas_id
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/ConversationMessage'
+          type: array
+        next_token:
+          type: string
+      type: object
+    ListConversationsResponse:
+      example:
+        next_token: next_token
+        items:
+        - tenant_id: tenant_id
+          identity_id: identity_id
+          deleted_by_id: deleted_by_id
+          created_at: created_at
+          deleted_by: '{}'
+          version_id: 0
+          title: title
+          created_by: '{}'
+          deleted_at: deleted_at
+          workspace_id: workspace_id
+          last_model: last_model
+          updated_at: updated_at
+          provider: provider
+          updated_by: '{}'
+          updated_by_id: updated_by_id
+          created_by_id: created_by_id
+          id: id
+        - tenant_id: tenant_id
+          identity_id: identity_id
+          deleted_by_id: deleted_by_id
+          created_at: created_at
+          deleted_by: '{}'
+          version_id: 0
+          title: title
+          created_by: '{}'
+          deleted_at: deleted_at
+          workspace_id: workspace_id
+          last_model: last_model
+          updated_at: updated_at
+          provider: provider
+          updated_by: '{}'
+          updated_by_id: updated_by_id
+          created_by_id: created_by_id
+          id: id
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Conversation'
           type: array
         next_token:
           type: string
@@ -42776,6 +47517,21 @@ components:
         next_token:
           type: string
       type: object
+    ListModelsResponse:
+      example:
+        items:
+        - name: name
+          description: description
+          id: id
+        - name: name
+          description: description
+          id: id
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Model'
+          type: array
+      type: object
     ListNotifiersResponse:
       example:
         next_token: next_token
@@ -43505,11 +48261,15 @@ components:
         next_token: next_token
         items:
         - tenant_id: tenant_id
+          identity_id: identity_id
           created_at: created_at
+          description: description
           handle: handle
           usage_compute_threshold: 0
           version_id: 1
           display_name: display_name
+          title: title
+          type: '{}'
           preview_access_mode: preview_access_mode
           url: url
           billing: '{}'
@@ -43520,11 +48280,15 @@ components:
           status: status
           usage_storage_threshold: 6
         - tenant_id: tenant_id
+          identity_id: identity_id
           created_at: created_at
+          description: description
           handle: handle
           usage_compute_threshold: 0
           version_id: 1
           display_name: display_name
+          title: title
+          type: '{}'
           preview_access_mode: preview_access_mode
           url: url
           billing: '{}'
@@ -43804,11 +48568,15 @@ components:
           type: type
           created_by:
             tenant_id: tenant_id
+            identity_id: identity_id
             created_at: created_at
+            description: description
             handle: handle
             usage_compute_threshold: 0
             version_id: 1
             display_name: display_name
+            title: title
+            type: '{}'
             preview_access_mode: preview_access_mode
             url: url
             billing: '{}'
@@ -43826,11 +48594,15 @@ components:
           name: name
           updated_by:
             tenant_id: tenant_id
+            identity_id: identity_id
             created_at: created_at
+            description: description
             handle: handle
             usage_compute_threshold: 0
             version_id: 1
             display_name: display_name
+            title: title
+            type: '{}'
             preview_access_mode: preview_access_mode
             url: url
             billing: '{}'
@@ -43853,11 +48625,15 @@ components:
           type: type
           created_by:
             tenant_id: tenant_id
+            identity_id: identity_id
             created_at: created_at
+            description: description
             handle: handle
             usage_compute_threshold: 0
             version_id: 1
             display_name: display_name
+            title: title
+            type: '{}'
             preview_access_mode: preview_access_mode
             url: url
             billing: '{}'
@@ -43875,11 +48651,15 @@ components:
           name: name
           updated_by:
             tenant_id: tenant_id
+            identity_id: identity_id
             created_at: created_at
+            description: description
             handle: handle
             usage_compute_threshold: 0
             version_id: 1
             display_name: display_name
+            title: title
+            type: '{}'
             preview_access_mode: preview_access_mode
             url: url
             billing: '{}'
@@ -44342,6 +49122,31 @@ components:
       x-enum-varnames:
       - ModTriggerStateEnabled
       - ModTriggerStateDisabled
+    Model:
+      example:
+        name: name
+        description: description
+        id: id
+      properties:
+        description:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        provider:
+          $ref: '#/components/schemas/AIProvider'
+        state:
+          $ref: '#/components/schemas/ModelState'
+      type: object
+    ModelState:
+      enum:
+      - enabled
+      - disabled
+      type: string
+      x-enum-varnames:
+      - ModelStateEnabled
+      - ModelStateDisabled
     Notifier:
       example:
         tenant_id: tenant_id
@@ -45202,6 +50007,14 @@ components:
       - ProcessCompleted
       - ProcessCanceled
       - ProcessTerminated
+    ServiceState:
+      enum:
+      - enabled
+      - disabled
+      type: string
+      x-enum-varnames:
+      - ServiceEnabled
+      - ServiceDisabled
     SlackChannel:
       example:
         name: name
@@ -45640,6 +50453,7 @@ components:
         created_at: created_at
         version_id: 5
         created_by: '{}'
+        ai_enabled: '{}'
         login_github: '{}'
         login_google: '{}'
         personal_workspaces: '{}'
@@ -45658,6 +50472,11 @@ components:
         max_token_expiration: 1
         console_session_timeout: 6
       properties:
+        ai_enabled:
+          allOf:
+          - $ref: '#/components/schemas/ServiceState'
+          description: The AI feature enable/disable state for the tenant.
+          type: object
         cli_session_timeout:
           description: The CLI session timeout in hours.                                                                                             //
             The endpoint for the tenant's postgres database.
@@ -45857,6 +50676,22 @@ components:
       - user_id
       - version_id
       type: object
+    TestAIKeyRequest:
+      example:
+        api_key: api_key
+      properties:
+        api_key:
+          type: string
+      type: object
+    TestAIKeyResponse:
+      example:
+        reason: reason
+      properties:
+        reason:
+          type: string
+        status:
+          $ref: '#/components/schemas/AIKeyTestStatus'
+      type: object
     TestConnectionRequest:
       example:
         plugin: plugin
@@ -45953,6 +50788,84 @@ components:
       - user_id
       - version_id
       type: object
+    TokenWithValue:
+      example:
+        last4: last4
+        created_at: created_at
+        description: description
+        version_id: 0
+        title: title
+        token_type: token_type
+        created_by: '{}'
+        token: token
+        expires_at: expires_at
+        updated_at: updated_at
+        user_id: user_id
+        updated_by: '{}'
+        updated_by_id: updated_by_id
+        created_by_id: created_by_id
+        id: id
+        status: status
+      properties:
+        created_at:
+          description: The time of creation in ISO 8601 UTC.
+          type: string
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          description: User information for the user who created this.
+          type: object
+        created_by_id:
+          description: The ID of the user that created this.
+          format: ^u_[0-9a-v]{20}$
+          type: string
+        description:
+          type: string
+        expires_at:
+          type: string
+        id:
+          format: ^[a-z]_[0-9a-v]{20}$
+          type: string
+        last4:
+          type: string
+        status:
+          type: string
+        title:
+          type: string
+        token:
+          description: Previously this was named "Token" and API expects "token" as
+            the key, but to enable embedding of Token struct renamed it to "Value".
+          type: string
+        token_type:
+          type: string
+        updated_at:
+          description: The time of the last update in ISO 8601 UTC.
+          type: string
+        updated_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          description: User information for the last user to update this.
+          type: object
+        updated_by_id:
+          description: The ID of the user that performed the last update.
+          format: ^u_[0-9a-v]{20}$
+          type: string
+        user_id:
+          format: ^[a-z]_[0-9a-v]{20}$
+          type: string
+        version_id:
+          description: The version ID of this item. Pass this version ID via an If-Match
+            header when performing mutation operations on the item.
+          type: integer
+      required:
+      - created_at
+      - created_by_id
+      - id
+      - status
+      - updated_by_id
+      - user_id
+      - version_id
+      type: object
     TriggerCommandAction:
       enum:
       - run
@@ -46008,6 +50921,15 @@ components:
           type: string
         last4:
           type: string
+      type: object
+    UpdateAIKeyRequest:
+      example:
+        api_key: api_key
+      properties:
+        api_key:
+          type: string
+      required:
+      - api_key
       type: object
     UpdateAggregatorRequest:
       example:
@@ -46079,6 +51001,13 @@ components:
           format: ^[a-z](?:[a-z0-9]|_(?=[a-z0-9])){0,38}$
           type: string
         parent_id:
+          type: string
+      type: object
+    UpdateConversationRequest:
+      example:
+        title: title
+      properties:
+        title:
           type: string
       type: object
     UpdateDatatankPartRequest:
@@ -46285,6 +51214,23 @@ components:
           minLength: 1
           type: string
       type: object
+    UpdateServiceAccountUserRequest:
+      example:
+        description: description
+        token_min_issued_at: token_min_issued_at
+        title: title
+      properties:
+        description:
+          description: The description of the service account user.
+          type: string
+        title:
+          description: The title of the service account user.
+          type: string
+        token_min_issued_at:
+          description: The time which user and temporary auth tokens must be issued
+            after.
+          type: string
+      type: object
     UpdateTemporaryTokenRequest:
       example: {}
       properties:
@@ -46367,18 +51313,19 @@ components:
       type: object
     UpdateTenantSettingsRequest:
       example:
-        login_github: '{}'
-        login_google: '{}'
-        personal_workspaces: '{}'
         postgres_endpoint: '{}'
-        user_provisioning:
-        - user_provisioning
-        - user_provisioning
         login_email: '{}'
-        login_saml: '{}'
         user_provisioning_permitted_domains:
         - user_provisioning_permitted_domains
         - user_provisioning_permitted_domains
+        ai_enabled: '{}'
+        login_github: '{}'
+        login_google: '{}'
+        personal_workspaces: '{}'
+        user_provisioning:
+        - user_provisioning
+        - user_provisioning
+        login_saml: '{}'
         cli_session_timeout: 0
         workspace_snapshot_permitted_visibility:
         - workspace_snapshot_permitted_visibility
@@ -46386,6 +51333,11 @@ components:
         max_token_expiration: 1
         console_session_timeout: 6
       properties:
+        ai_enabled:
+          allOf:
+          - $ref: '#/components/schemas/ServiceState'
+          description: Enable/disable AI features for the tenant.
+          type: object
         cli_session_timeout:
           description: The CLI session timeout in seconds.
           type: integer
@@ -46737,6 +51689,7 @@ components:
       - process_execution_ms
       - process_log_bytes
       - snapshot_storage_bytes
+      - artifact_storage_bytes
       type: string
       x-enum-varnames:
       - UsageMetricTypeUserCount
@@ -46746,6 +51699,7 @@ components:
       - UsageMetricTypeProcessExecutionMs
       - UsageMetricTypeProcessLogBytes
       - UsageMetricTypeSnapshotStorageBytes
+      - UsageMetricTypeArtifactStorageBytes
     UsageUnitType:
       enum:
       - byte
@@ -46759,11 +51713,15 @@ components:
     User:
       example:
         tenant_id: tenant_id
+        identity_id: identity_id
         created_at: created_at
+        description: description
         handle: handle
         usage_compute_threshold: 0
         version_id: 1
         display_name: display_name
+        title: title
+        type: '{}'
         preview_access_mode: preview_access_mode
         url: url
         billing: '{}'
@@ -46784,6 +51742,8 @@ components:
         created_at:
           description: The user created time.
           type: string
+        description:
+          type: string
         display_name:
           type: string
         handle:
@@ -46792,6 +51752,11 @@ components:
         id:
           description: The unique identifier of a user.
           format: ^u_[0-9a-v]{20}$
+          type: string
+        identity_id:
+          description: If set, the service account is restricted to an identity and
+            its children.
+          format: ^[a-z]{1,3}_[0-9a-v]{20}$
           type: string
         preview_access_mode:
           type: string
@@ -46802,10 +51767,18 @@ components:
           description: The unique identifier of the tenant the user belongs to.
           format: ^t_[0-9a-v]{20}$
           type: string
+        title:
+          description: The below should only be populated for service accounts
+          type: string
         token_min_issued_at:
           description: The time which user and temporary auth tokens must be issued
             after.
           type: string
+        type:
+          allOf:
+          - $ref: '#/components/schemas/UserType'
+          description: The type of user, either user or service_account.
+          type: object
         updated_at:
           description: The user updated time.
           type: string
@@ -46830,6 +51803,7 @@ components:
       - id
       - status
       - tenant_id
+      - type
       - version_id
       type: object
     UserDatabasePassword:
@@ -47034,6 +52008,14 @@ components:
       required:
       - email
       type: object
+    UserType:
+      enum:
+      - user
+      - service_account
+      type: string
+      x-enum-varnames:
+      - UserTypeUser
+      - UserTypeServiceAccount
     Workspace:
       example:
         hive: hive
@@ -48262,11 +53244,15 @@ components:
         type: type
         created_by:
           tenant_id: tenant_id
+          identity_id: identity_id
           created_at: created_at
+          description: description
           handle: handle
           usage_compute_threshold: 0
           version_id: 1
           display_name: display_name
+          title: title
+          type: '{}'
           preview_access_mode: preview_access_mode
           url: url
           billing: '{}'
@@ -48284,11 +53270,15 @@ components:
         name: name
         updated_by:
           tenant_id: tenant_id
+          identity_id: identity_id
           created_at: created_at
+          description: description
           handle: handle
           usage_compute_threshold: 0
           version_id: 1
           display_name: display_name
+          title: title
+          type: '{}'
           preview_access_mode: preview_access_mode
           url: url
           billing: '{}'
