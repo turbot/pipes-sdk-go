@@ -27,6 +27,7 @@ type ConversationArtifact struct {
 	Id          string  `json:"id"`
 	Kind        string  `json:"kind"`
 	Language    *string `json:"language,omitempty"`
+	RowCount    *int32  `json:"row_count,omitempty"`
 	Sql         *string `json:"sql,omitempty"`
 	Title       *string `json:"title,omitempty"`
 	// The time of the last update in ISO 8601 UTC.
@@ -277,6 +278,38 @@ func (o *ConversationArtifact) SetLanguage(v string) {
 	o.Language = &v
 }
 
+// GetRowCount returns the RowCount field value if set, zero value otherwise.
+func (o *ConversationArtifact) GetRowCount() int32 {
+	if o == nil || o.RowCount == nil {
+		var ret int32
+		return ret
+	}
+	return *o.RowCount
+}
+
+// GetRowCountOk returns a tuple with the RowCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConversationArtifact) GetRowCountOk() (*int32, bool) {
+	if o == nil || o.RowCount == nil {
+		return nil, false
+	}
+	return o.RowCount, true
+}
+
+// HasRowCount returns a boolean if a field has been set.
+func (o *ConversationArtifact) HasRowCount() bool {
+	if o != nil && o.RowCount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRowCount gets a reference to the given int32 and assigns it to the RowCount field.
+func (o *ConversationArtifact) SetRowCount(v int32) {
+	o.RowCount = &v
+}
+
 // GetSql returns the Sql field value if set, zero value otherwise.
 func (o *ConversationArtifact) GetSql() string {
 	if o == nil || o.Sql == nil {
@@ -486,6 +519,9 @@ func (o ConversationArtifact) MarshalJSON() ([]byte, error) {
 	}
 	if o.Language != nil {
 		toSerialize["language"] = o.Language
+	}
+	if o.RowCount != nil {
+		toSerialize["row_count"] = o.RowCount
 	}
 	if o.Sql != nil {
 		toSerialize["sql"] = o.Sql

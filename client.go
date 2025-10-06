@@ -73,6 +73,12 @@ type APIClient struct {
 
 	OrgProcesses *OrgProcessesService
 
+	OrgServiceAccountAuditLogs *OrgServiceAccountAuditLogsService
+
+	OrgServiceAccountTokens *OrgServiceAccountTokensService
+
+	OrgServiceAccounts *OrgServiceAccountsService
+
 	OrgWorkspaceAIModels *OrgWorkspaceAIModelsService
 
 	OrgWorkspaceAggregators *OrgWorkspaceAggregatorsService
@@ -133,8 +139,6 @@ type APIClient struct {
 
 	Orgs *OrgsService
 
-	ServiceAccounts *ServiceAccountsService
-
 	TenantBilling *TenantBillingService
 
 	TenantConnectionFolders *TenantConnectionFoldersService
@@ -148,6 +152,12 @@ type APIClient struct {
 	TenantMembers *TenantMembersService
 
 	TenantNotifiers *TenantNotifiersService
+
+	TenantServiceAccountAuditLogs *TenantServiceAccountAuditLogsService
+
+	TenantServiceAccountTokens *TenantServiceAccountTokensService
+
+	TenantServiceAccounts *TenantServiceAccountsService
 
 	Tenants *TenantsService
 
@@ -250,6 +260,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OrgMembers = (*OrgMembersService)(&c.common)
 	c.OrgNotifiers = (*OrgNotifiersService)(&c.common)
 	c.OrgProcesses = (*OrgProcessesService)(&c.common)
+	c.OrgServiceAccountAuditLogs = (*OrgServiceAccountAuditLogsService)(&c.common)
+	c.OrgServiceAccountTokens = (*OrgServiceAccountTokensService)(&c.common)
+	c.OrgServiceAccounts = (*OrgServiceAccountsService)(&c.common)
 	c.OrgWorkspaceAIModels = (*OrgWorkspaceAIModelsService)(&c.common)
 	c.OrgWorkspaceAggregators = (*OrgWorkspaceAggregatorsService)(&c.common)
 	c.OrgWorkspaceArtifacts = (*OrgWorkspaceArtifactsService)(&c.common)
@@ -280,7 +293,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OrgWorkspaceUsages = (*OrgWorkspaceUsagesService)(&c.common)
 	c.OrgWorkspaces = (*OrgWorkspacesService)(&c.common)
 	c.Orgs = (*OrgsService)(&c.common)
-	c.ServiceAccounts = (*ServiceAccountsService)(&c.common)
 	c.TenantBilling = (*TenantBillingService)(&c.common)
 	c.TenantConnectionFolders = (*TenantConnectionFoldersService)(&c.common)
 	c.TenantConnectionTree = (*TenantConnectionTreeService)(&c.common)
@@ -288,6 +300,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.TenantIntegrations = (*TenantIntegrationsService)(&c.common)
 	c.TenantMembers = (*TenantMembersService)(&c.common)
 	c.TenantNotifiers = (*TenantNotifiersService)(&c.common)
+	c.TenantServiceAccountAuditLogs = (*TenantServiceAccountAuditLogsService)(&c.common)
+	c.TenantServiceAccountTokens = (*TenantServiceAccountTokensService)(&c.common)
+	c.TenantServiceAccounts = (*TenantServiceAccountsService)(&c.common)
 	c.Tenants = (*TenantsService)(&c.common)
 	c.UserBilling = (*UserBillingService)(&c.common)
 	c.UserConnections = (*UserConnectionsService)(&c.common)

@@ -16,14 +16,13 @@ import (
 
 // UpdateDatatankTableRequest struct for UpdateDatatankTableRequest
 type UpdateDatatankTableRequest struct {
-	Description  *string            `json:"description,omitempty"`
-	DesiredState *DesiredState      `json:"desired_state,omitempty"`
-	Frequency    *PipelineFrequency `json:"frequency,omitempty"`
-	Name         *string            `json:"name,omitempty"`
-	PartPer      *string            `json:"part_per,omitempty"`
-	SourceQuery  *string            `json:"source_query,omitempty"`
-	SourceSchema *string            `json:"source_schema,omitempty"`
-	SourceTable  *string            `json:"source_table,omitempty"`
+	Description        *string            `json:"description,omitempty"`
+	DesiredState       *DesiredState      `json:"desired_state,omitempty"`
+	Frequency          *PipelineFrequency `json:"frequency,omitempty"`
+	Name               *string            `json:"name,omitempty"`
+	SkipInitialRefresh *bool              `json:"skip_initial_refresh,omitempty"`
+	SourceQuery        *string            `json:"source_query,omitempty"`
+	SourceSchema       *string            `json:"source_schema,omitempty"`
 }
 
 // NewUpdateDatatankTableRequest instantiates a new UpdateDatatankTableRequest object
@@ -171,36 +170,36 @@ func (o *UpdateDatatankTableRequest) SetName(v string) {
 	o.Name = &v
 }
 
-// GetPartPer returns the PartPer field value if set, zero value otherwise.
-func (o *UpdateDatatankTableRequest) GetPartPer() string {
-	if o == nil || o.PartPer == nil {
-		var ret string
+// GetSkipInitialRefresh returns the SkipInitialRefresh field value if set, zero value otherwise.
+func (o *UpdateDatatankTableRequest) GetSkipInitialRefresh() bool {
+	if o == nil || o.SkipInitialRefresh == nil {
+		var ret bool
 		return ret
 	}
-	return *o.PartPer
+	return *o.SkipInitialRefresh
 }
 
-// GetPartPerOk returns a tuple with the PartPer field value if set, nil otherwise
+// GetSkipInitialRefreshOk returns a tuple with the SkipInitialRefresh field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateDatatankTableRequest) GetPartPerOk() (*string, bool) {
-	if o == nil || o.PartPer == nil {
+func (o *UpdateDatatankTableRequest) GetSkipInitialRefreshOk() (*bool, bool) {
+	if o == nil || o.SkipInitialRefresh == nil {
 		return nil, false
 	}
-	return o.PartPer, true
+	return o.SkipInitialRefresh, true
 }
 
-// HasPartPer returns a boolean if a field has been set.
-func (o *UpdateDatatankTableRequest) HasPartPer() bool {
-	if o != nil && o.PartPer != nil {
+// HasSkipInitialRefresh returns a boolean if a field has been set.
+func (o *UpdateDatatankTableRequest) HasSkipInitialRefresh() bool {
+	if o != nil && o.SkipInitialRefresh != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPartPer gets a reference to the given string and assigns it to the PartPer field.
-func (o *UpdateDatatankTableRequest) SetPartPer(v string) {
-	o.PartPer = &v
+// SetSkipInitialRefresh gets a reference to the given bool and assigns it to the SkipInitialRefresh field.
+func (o *UpdateDatatankTableRequest) SetSkipInitialRefresh(v bool) {
+	o.SkipInitialRefresh = &v
 }
 
 // GetSourceQuery returns the SourceQuery field value if set, zero value otherwise.
@@ -267,38 +266,6 @@ func (o *UpdateDatatankTableRequest) SetSourceSchema(v string) {
 	o.SourceSchema = &v
 }
 
-// GetSourceTable returns the SourceTable field value if set, zero value otherwise.
-func (o *UpdateDatatankTableRequest) GetSourceTable() string {
-	if o == nil || o.SourceTable == nil {
-		var ret string
-		return ret
-	}
-	return *o.SourceTable
-}
-
-// GetSourceTableOk returns a tuple with the SourceTable field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateDatatankTableRequest) GetSourceTableOk() (*string, bool) {
-	if o == nil || o.SourceTable == nil {
-		return nil, false
-	}
-	return o.SourceTable, true
-}
-
-// HasSourceTable returns a boolean if a field has been set.
-func (o *UpdateDatatankTableRequest) HasSourceTable() bool {
-	if o != nil && o.SourceTable != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSourceTable gets a reference to the given string and assigns it to the SourceTable field.
-func (o *UpdateDatatankTableRequest) SetSourceTable(v string) {
-	o.SourceTable = &v
-}
-
 func (o UpdateDatatankTableRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Description != nil {
@@ -313,17 +280,14 @@ func (o UpdateDatatankTableRequest) MarshalJSON() ([]byte, error) {
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.PartPer != nil {
-		toSerialize["part_per"] = o.PartPer
+	if o.SkipInitialRefresh != nil {
+		toSerialize["skip_initial_refresh"] = o.SkipInitialRefresh
 	}
 	if o.SourceQuery != nil {
 		toSerialize["source_query"] = o.SourceQuery
 	}
 	if o.SourceSchema != nil {
 		toSerialize["source_schema"] = o.SourceSchema
-	}
-	if o.SourceTable != nil {
-		toSerialize["source_table"] = o.SourceTable
 	}
 	return json.Marshal(toSerialize)
 }

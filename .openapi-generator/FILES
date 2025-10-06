@@ -14,6 +14,9 @@ api_org_integrations.go
 api_org_members.go
 api_org_notifiers.go
 api_org_processes.go
+api_org_service_account_audit_logs.go
+api_org_service_account_tokens.go
+api_org_service_accounts.go
 api_org_workspace_aggregators.go
 api_org_workspace_ai_models.go
 api_org_workspace_artifacts.go
@@ -44,7 +47,6 @@ api_org_workspace_snapshots.go
 api_org_workspace_usages.go
 api_org_workspaces.go
 api_orgs.go
-api_service_accounts.go
 api_tenant_billing.go
 api_tenant_connection_folders.go
 api_tenant_connection_tree.go
@@ -52,6 +54,9 @@ api_tenant_connections.go
 api_tenant_integrations.go
 api_tenant_members.go
 api_tenant_notifiers.go
+api_tenant_service_account_audit_logs.go
+api_tenant_service_account_tokens.go
+api_tenant_service_accounts.go
 api_tenants.go
 api_user_billing.go
 api_user_connections.go
@@ -247,6 +252,9 @@ docs/OrgIntegrations.md
 docs/OrgMembers.md
 docs/OrgNotifiers.md
 docs/OrgProcesses.md
+docs/OrgServiceAccountAuditLogs.md
+docs/OrgServiceAccountTokens.md
+docs/OrgServiceAccounts.md
 docs/OrgUser.md
 docs/OrgWorkspaceAIModels.md
 docs/OrgWorkspaceAggregators.md
@@ -291,7 +299,6 @@ docs/PipelineState.md
 docs/Plan.md
 docs/PostgresEndpointState.md
 docs/ProcessState.md
-docs/ServiceAccounts.md
 docs/ServiceState.md
 docs/SlackChannel.md
 docs/SnapshotState.md
@@ -311,6 +318,9 @@ docs/TenantNotifiers.md
 docs/TenantPersonalWorkspaces.md
 docs/TenantPlan.md
 docs/TenantSamlLoginSettings.md
+docs/TenantServiceAccountAuditLogs.md
+docs/TenantServiceAccountTokens.md
+docs/TenantServiceAccounts.md
 docs/TenantSettings.md
 docs/TenantUser.md
 docs/Tenants.md

@@ -8,10 +8,9 @@ Name | Type | Description | Notes
 **DesiredState** | Pointer to [**DesiredState**](DesiredState.md) |  | [optional] 
 **Frequency** | Pointer to [**PipelineFrequency**](PipelineFrequency.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**PartPer** | Pointer to **string** |  | [optional] 
+**SkipInitialRefresh** | Pointer to **bool** |  | [optional] 
 **SourceQuery** | Pointer to **string** |  | [optional] 
 **SourceSchema** | Pointer to **string** |  | [optional] 
-**SourceTable** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -132,30 +131,30 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### GetPartPer
+### GetSkipInitialRefresh
 
-`func (o *UpdateDatatankTableRequest) GetPartPer() string`
+`func (o *UpdateDatatankTableRequest) GetSkipInitialRefresh() bool`
 
-GetPartPer returns the PartPer field if non-nil, zero value otherwise.
+GetSkipInitialRefresh returns the SkipInitialRefresh field if non-nil, zero value otherwise.
 
-### GetPartPerOk
+### GetSkipInitialRefreshOk
 
-`func (o *UpdateDatatankTableRequest) GetPartPerOk() (*string, bool)`
+`func (o *UpdateDatatankTableRequest) GetSkipInitialRefreshOk() (*bool, bool)`
 
-GetPartPerOk returns a tuple with the PartPer field if it's non-nil, zero value otherwise
+GetSkipInitialRefreshOk returns a tuple with the SkipInitialRefresh field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPartPer
+### SetSkipInitialRefresh
 
-`func (o *UpdateDatatankTableRequest) SetPartPer(v string)`
+`func (o *UpdateDatatankTableRequest) SetSkipInitialRefresh(v bool)`
 
-SetPartPer sets PartPer field to given value.
+SetSkipInitialRefresh sets SkipInitialRefresh field to given value.
 
-### HasPartPer
+### HasSkipInitialRefresh
 
-`func (o *UpdateDatatankTableRequest) HasPartPer() bool`
+`func (o *UpdateDatatankTableRequest) HasSkipInitialRefresh() bool`
 
-HasPartPer returns a boolean if a field has been set.
+HasSkipInitialRefresh returns a boolean if a field has been set.
 
 ### GetSourceQuery
 
@@ -206,31 +205,6 @@ SetSourceSchema sets SourceSchema field to given value.
 `func (o *UpdateDatatankTableRequest) HasSourceSchema() bool`
 
 HasSourceSchema returns a boolean if a field has been set.
-
-### GetSourceTable
-
-`func (o *UpdateDatatankTableRequest) GetSourceTable() string`
-
-GetSourceTable returns the SourceTable field if non-nil, zero value otherwise.
-
-### GetSourceTableOk
-
-`func (o *UpdateDatatankTableRequest) GetSourceTableOk() (*string, bool)`
-
-GetSourceTableOk returns a tuple with the SourceTable field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSourceTable
-
-`func (o *UpdateDatatankTableRequest) SetSourceTable(v string)`
-
-SetSourceTable sets SourceTable field to given value.
-
-### HasSourceTable
-
-`func (o *UpdateDatatankTableRequest) HasSourceTable() bool`
-
-HasSourceTable returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

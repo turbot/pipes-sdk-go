@@ -171,6 +171,17 @@ Class | Method | HTTP request | Description
 *OrgProcesses* | [**Get**](docs/OrgProcesses.md#get) | **Get** /org/{org_handle}/process/{process_id} | Get Org process
 *OrgProcesses* | [**List**](docs/OrgProcesses.md#list) | **Get** /org/{org_handle}/process | List Org processes
 *OrgProcesses* | [**Log**](docs/OrgProcesses.md#log) | **Get** /org/{org_handle}/process/{process_id}/log/{log_file}.{content_type} | List Org process logs
+*OrgServiceAccountAuditLogs* | [**List**](docs/OrgServiceAccountAuditLogs.md#list) | **Get** /org/{org_handle}/service_account/{service_account_identifier}/audit_log | List audit logs for an org service account
+*OrgServiceAccountTokens* | [**Create**](docs/OrgServiceAccountTokens.md#create) | **Post** /org/{org_handle}/service_account/{service_account_identifier}/token | Create an organization service account token
+*OrgServiceAccountTokens* | [**Delete**](docs/OrgServiceAccountTokens.md#delete) | **Delete** /org/{org_handle}/service_account/{service_account_identifier}/token/{token_id} | Delete an organization service account token
+*OrgServiceAccountTokens* | [**Get**](docs/OrgServiceAccountTokens.md#get) | **Get** /org/{org_handle}/service_account/{service_account_identifier}/token/{token_id} | Get an organization service account token
+*OrgServiceAccountTokens* | [**List**](docs/OrgServiceAccountTokens.md#list) | **Get** /org/{org_handle}/service_account/{service_account_identifier}/token | List organization service account tokens
+*OrgServiceAccountTokens* | [**Update**](docs/OrgServiceAccountTokens.md#update) | **Patch** /org/{org_handle}/service_account/{service_account_identifier}/token/{token_id} | Update an organization service account token
+*OrgServiceAccounts* | [**Create**](docs/OrgServiceAccounts.md#create) | **Post** /org/{org_handle}/service_account | Create a service account at the organization level
+*OrgServiceAccounts* | [**Delete**](docs/OrgServiceAccounts.md#delete) | **Delete** /org/{org_handle}/service_account/{service_account_identifier} | Delete an organization service account
+*OrgServiceAccounts* | [**Get**](docs/OrgServiceAccounts.md#get) | **Get** /org/{org_handle}/service_account/{service_account_identifier} | Get organization service account
+*OrgServiceAccounts* | [**List**](docs/OrgServiceAccounts.md#list) | **Get** /org/{org_handle}/service_account | List organization service accounts
+*OrgServiceAccounts* | [**Update**](docs/OrgServiceAccounts.md#update) | **Patch** /org/{org_handle}/service_account/{service_account_identifier} | Update an organization service account
 *OrgWorkspaceAIModels* | [**OrgList**](docs/OrgWorkspaceAIModels.md#orglist) | **Get** /org/{org_handle}/workspace/{workspace_handle}/ai/model | List org workspace AI models
 *OrgWorkspaceAggregators* | [**Create**](docs/OrgWorkspaceAggregators.md#create) | **Post** /org/{org_handle}/workspace/{workspace_handle}/aggregator | Create an aggregator for an org workspace
 *OrgWorkspaceAggregators* | [**Delete**](docs/OrgWorkspaceAggregators.md#delete) | **Delete** /org/{org_handle}/workspace/{workspace_handle}/aggregator/{aggregator_handle} | Delete an aggregator for a org workspace
@@ -314,28 +325,6 @@ Class | Method | HTTP request | Description
 *Orgs* | [**ListConstraints**](docs/Orgs.md#listconstraints) | **Get** /org/{org_handle}/constraint | List org constraints
 *Orgs* | [**ListUsage**](docs/Orgs.md#listusage) | **Get** /org/{org_handle}/usage | List org usage
 *Orgs* | [**Update**](docs/Orgs.md#update) | **Patch** /org/{org_handle} | Update org
-*ServiceAccounts* | [**Create**](docs/ServiceAccounts.md#create) | **Post** /org/{org_handle}/service_account | Create a service account at the organization level
-*ServiceAccounts* | [**Create_0**](docs/ServiceAccounts.md#create_0) | **Post** /service_account | Create a tenant service account
-*ServiceAccounts* | [**Delete**](docs/ServiceAccounts.md#delete) | **Delete** /org/{org_handle}/service_account/{service_account_identifier} | Delete an organization service account
-*ServiceAccounts* | [**Delete_0**](docs/ServiceAccounts.md#delete_0) | **Delete** /service_account/{service_account_identifier} | Delete a tenant service account
-*ServiceAccounts* | [**OrgCreate**](docs/ServiceAccounts.md#orgcreate) | **Post** /org/{org_handle}/service_account/{service_account_identifier}/token | Create an organization service account token
-*ServiceAccounts* | [**OrgDelete**](docs/ServiceAccounts.md#orgdelete) | **Delete** /org/{org_handle}/service_account/{service_account_identifier}/token/{token_id} | Delete an organization service account token
-*ServiceAccounts* | [**OrgGet**](docs/ServiceAccounts.md#orgget) | **Get** /org/{org_handle}/service_account/{service_account_identifier} | Get organization service account
-*ServiceAccounts* | [**OrgGet_0**](docs/ServiceAccounts.md#orgget_0) | **Get** /org/{org_handle}/service_account/{service_account_identifier}/token/{token_id} | Get an organization service account token
-*ServiceAccounts* | [**OrgList**](docs/ServiceAccounts.md#orglist) | **Get** /org/{org_handle}/service_account | List organization service accounts
-*ServiceAccounts* | [**OrgListAuditLogs**](docs/ServiceAccounts.md#orglistauditlogs) | **Get** /org/{org_handle}/service_account/{service_account_identifier}/audit_log | List audit logs for an org service account
-*ServiceAccounts* | [**OrgList_0**](docs/ServiceAccounts.md#orglist_0) | **Get** /org/{org_handle}/service_account/{service_account_identifier}/token | List organization service account tokens
-*ServiceAccounts* | [**OrgUpdate**](docs/ServiceAccounts.md#orgupdate) | **Patch** /org/{org_handle}/service_account/{service_account_identifier}/token/{token_id} | Update an organization service account token
-*ServiceAccounts* | [**TenantCreate**](docs/ServiceAccounts.md#tenantcreate) | **Post** /service_account/{service_account_identifier}/token | Create a tenant service account token
-*ServiceAccounts* | [**TenantDelete**](docs/ServiceAccounts.md#tenantdelete) | **Delete** /service_account/{service_account_identifier}/token/{token_id} | Delete a tenant service account token
-*ServiceAccounts* | [**TenantGet**](docs/ServiceAccounts.md#tenantget) | **Get** /service_account/{service_account_identifier} | Get tenant service account
-*ServiceAccounts* | [**TenantGet_0**](docs/ServiceAccounts.md#tenantget_0) | **Get** /service_account/{service_account_identifier}/token/{token_id} | Get a tenant service account token
-*ServiceAccounts* | [**TenantList**](docs/ServiceAccounts.md#tenantlist) | **Get** /service_account | List tenant service accounts
-*ServiceAccounts* | [**TenantListAuditLogs**](docs/ServiceAccounts.md#tenantlistauditlogs) | **Get** /service_account/{service_account_identifier}/audit_log | List audit logs for a tenant service account
-*ServiceAccounts* | [**TenantList_0**](docs/ServiceAccounts.md#tenantlist_0) | **Get** /service_account/{service_account_identifier}/token | List tenant service account tokens
-*ServiceAccounts* | [**TenantUpdate**](docs/ServiceAccounts.md#tenantupdate) | **Patch** /service_account/{service_account_identifier}/token/{token_id} | Update a tenant service account token
-*ServiceAccounts* | [**Update**](docs/ServiceAccounts.md#update) | **Patch** /org/{org_handle}/service_account/{service_account_identifier} | Update an organization service account
-*ServiceAccounts* | [**Update_0**](docs/ServiceAccounts.md#update_0) | **Patch** /service_account/{service_account_identifier} | Update a tenant service account
 *TenantBilling* | [**CreateBillingIntent**](docs/TenantBilling.md#createbillingintent) | **Post** /tenant/{tenant_handle}/billing/payment_method/intent | Create tenant Stripe billing intent
 *TenantBilling* | [**CreateTenantSubscription**](docs/TenantBilling.md#createtenantsubscription) | **Post** /tenant/{tenant_handle}/billing/subscription | Create a new subscription
 *TenantBilling* | [**DeleteTenantBillingPaymentMethod**](docs/TenantBilling.md#deletetenantbillingpaymentmethod) | **Delete** /tenant/{tenant_handle}/billing/payment_method/{payment_method_id} | Delete tenant billing payment method.
@@ -396,6 +385,17 @@ Class | Method | HTTP request | Description
 *TenantNotifiers* | [**Get**](docs/TenantNotifiers.md#get) | **Get** /notifier/{notifier_name} | Get tenant notifier
 *TenantNotifiers* | [**List**](docs/TenantNotifiers.md#list) | **Get** /notifier | List tenant notifiers
 *TenantNotifiers* | [**Update**](docs/TenantNotifiers.md#update) | **Patch** /notifier/{notifier_name} | Update tenant notifier
+*TenantServiceAccountAuditLogs* | [**List**](docs/TenantServiceAccountAuditLogs.md#list) | **Get** /service_account/{service_account_identifier}/audit_log | List audit logs for a tenant service account
+*TenantServiceAccountTokens* | [**Create**](docs/TenantServiceAccountTokens.md#create) | **Post** /service_account/{service_account_identifier}/token | Create a tenant service account token
+*TenantServiceAccountTokens* | [**Delete**](docs/TenantServiceAccountTokens.md#delete) | **Delete** /service_account/{service_account_identifier}/token/{token_id} | Delete a tenant service account token
+*TenantServiceAccountTokens* | [**Get**](docs/TenantServiceAccountTokens.md#get) | **Get** /service_account/{service_account_identifier}/token/{token_id} | Get a tenant service account token
+*TenantServiceAccountTokens* | [**List**](docs/TenantServiceAccountTokens.md#list) | **Get** /service_account/{service_account_identifier}/token | List tenant service account tokens
+*TenantServiceAccountTokens* | [**Update**](docs/TenantServiceAccountTokens.md#update) | **Patch** /service_account/{service_account_identifier}/token/{token_id} | Update a tenant service account token
+*TenantServiceAccounts* | [**Create**](docs/TenantServiceAccounts.md#create) | **Post** /service_account | Create a tenant service account
+*TenantServiceAccounts* | [**Delete**](docs/TenantServiceAccounts.md#delete) | **Delete** /service_account/{service_account_identifier} | Delete a tenant service account
+*TenantServiceAccounts* | [**Get**](docs/TenantServiceAccounts.md#get) | **Get** /service_account/{service_account_identifier} | Get tenant service account
+*TenantServiceAccounts* | [**List**](docs/TenantServiceAccounts.md#list) | **Get** /service_account | List tenant service accounts
+*TenantServiceAccounts* | [**Update**](docs/TenantServiceAccounts.md#update) | **Patch** /service_account/{service_account_identifier} | Update a tenant service account
 *Tenants* | [**Create**](docs/Tenants.md#create) | **Post** /tenant | Create tenant
 *Tenants* | [**CreateAvatar**](docs/Tenants.md#createavatar) | **Post** /tenant/{tenant_handle}/avatar | Create tenant avatar
 *Tenants* | [**Delete**](docs/Tenants.md#delete) | **Delete** /tenant/{tenant_handle} | Delete tenant
