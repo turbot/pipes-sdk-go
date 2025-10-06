@@ -1,5 +1,11 @@
 # Turbot Pipes Go SDK
 
+## 0.16.1 [2025-10-06]
+
+_Enhancements_
+
+- Correctly split out `Tenant` and `Org` Service Account APIs int separate services.
+
 ## 0.16.0 [2025-09-30]
 
 _What's new?_

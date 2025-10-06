@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Frequency** | Pointer to [**PipelineFrequency**](PipelineFrequency.md) |  | [optional] 
 **Name** | **string** |  | 
 **PartPer** | Pointer to **string** |  | [optional] 
+**SkipInitialRefresh** | Pointer to **bool** |  | [optional] 
 **SourceQuery** | Pointer to **string** |  | [optional] 
 **SourceSchema** | Pointer to **string** |  | [optional] 
 **SourceTable** | Pointer to **string** |  | [optional] 
@@ -152,6 +153,31 @@ SetPartPer sets PartPer field to given value.
 `func (o *CreateDatatankTableRequest) HasPartPer() bool`
 
 HasPartPer returns a boolean if a field has been set.
+
+### GetSkipInitialRefresh
+
+`func (o *CreateDatatankTableRequest) GetSkipInitialRefresh() bool`
+
+GetSkipInitialRefresh returns the SkipInitialRefresh field if non-nil, zero value otherwise.
+
+### GetSkipInitialRefreshOk
+
+`func (o *CreateDatatankTableRequest) GetSkipInitialRefreshOk() (*bool, bool)`
+
+GetSkipInitialRefreshOk returns a tuple with the SkipInitialRefresh field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipInitialRefresh
+
+`func (o *CreateDatatankTableRequest) SetSkipInitialRefresh(v bool)`
+
+SetSkipInitialRefresh sets SkipInitialRefresh field to given value.
+
+### HasSkipInitialRefresh
+
+`func (o *CreateDatatankTableRequest) HasSkipInitialRefresh() bool`
+
+HasSkipInitialRefresh returns a boolean if a field has been set.
 
 ### GetSourceQuery
 

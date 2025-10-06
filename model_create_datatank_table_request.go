@@ -16,15 +16,16 @@ import (
 
 // CreateDatatankTableRequest struct for CreateDatatankTableRequest
 type CreateDatatankTableRequest struct {
-	Description  *string            `json:"description,omitempty"`
-	DesiredState *DesiredState      `json:"desired_state,omitempty"`
-	Frequency    *PipelineFrequency `json:"frequency,omitempty"`
-	Name         string             `json:"name"`
-	PartPer      *string            `json:"part_per,omitempty"`
-	SourceQuery  *string            `json:"source_query,omitempty"`
-	SourceSchema *string            `json:"source_schema,omitempty"`
-	SourceTable  *string            `json:"source_table,omitempty"`
-	Type         string             `json:"type"`
+	Description        *string            `json:"description,omitempty"`
+	DesiredState       *DesiredState      `json:"desired_state,omitempty"`
+	Frequency          *PipelineFrequency `json:"frequency,omitempty"`
+	Name               string             `json:"name"`
+	PartPer            *string            `json:"part_per,omitempty"`
+	SkipInitialRefresh *bool              `json:"skip_initial_refresh,omitempty"`
+	SourceQuery        *string            `json:"source_query,omitempty"`
+	SourceSchema       *string            `json:"source_schema,omitempty"`
+	SourceTable        *string            `json:"source_table,omitempty"`
+	Type               string             `json:"type"`
 }
 
 // NewCreateDatatankTableRequest instantiates a new CreateDatatankTableRequest object
@@ -198,6 +199,38 @@ func (o *CreateDatatankTableRequest) SetPartPer(v string) {
 	o.PartPer = &v
 }
 
+// GetSkipInitialRefresh returns the SkipInitialRefresh field value if set, zero value otherwise.
+func (o *CreateDatatankTableRequest) GetSkipInitialRefresh() bool {
+	if o == nil || o.SkipInitialRefresh == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SkipInitialRefresh
+}
+
+// GetSkipInitialRefreshOk returns a tuple with the SkipInitialRefresh field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDatatankTableRequest) GetSkipInitialRefreshOk() (*bool, bool) {
+	if o == nil || o.SkipInitialRefresh == nil {
+		return nil, false
+	}
+	return o.SkipInitialRefresh, true
+}
+
+// HasSkipInitialRefresh returns a boolean if a field has been set.
+func (o *CreateDatatankTableRequest) HasSkipInitialRefresh() bool {
+	if o != nil && o.SkipInitialRefresh != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipInitialRefresh gets a reference to the given bool and assigns it to the SkipInitialRefresh field.
+func (o *CreateDatatankTableRequest) SetSkipInitialRefresh(v bool) {
+	o.SkipInitialRefresh = &v
+}
+
 // GetSourceQuery returns the SourceQuery field value if set, zero value otherwise.
 func (o *CreateDatatankTableRequest) GetSourceQuery() string {
 	if o == nil || o.SourceQuery == nil {
@@ -334,6 +367,9 @@ func (o CreateDatatankTableRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.PartPer != nil {
 		toSerialize["part_per"] = o.PartPer
+	}
+	if o.SkipInitialRefresh != nil {
+		toSerialize["skip_initial_refresh"] = o.SkipInitialRefresh
 	}
 	if o.SourceQuery != nil {
 		toSerialize["source_query"] = o.SourceQuery

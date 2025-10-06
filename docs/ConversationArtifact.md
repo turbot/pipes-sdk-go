@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **Kind** | **string** |  | 
 **Language** | Pointer to **string** |  | [optional] 
+**RowCount** | Pointer to **int32** |  | [optional] 
 **Sql** | Pointer to **string** |  | [optional] 
 **Title** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** | The time of the last update in ISO 8601 UTC. | [optional] 
@@ -212,6 +213,31 @@ SetLanguage sets Language field to given value.
 `func (o *ConversationArtifact) HasLanguage() bool`
 
 HasLanguage returns a boolean if a field has been set.
+
+### GetRowCount
+
+`func (o *ConversationArtifact) GetRowCount() int32`
+
+GetRowCount returns the RowCount field if non-nil, zero value otherwise.
+
+### GetRowCountOk
+
+`func (o *ConversationArtifact) GetRowCountOk() (*int32, bool)`
+
+GetRowCountOk returns a tuple with the RowCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRowCount
+
+`func (o *ConversationArtifact) SetRowCount(v int32)`
+
+SetRowCount sets RowCount field to given value.
+
+### HasRowCount
+
+`func (o *ConversationArtifact) HasRowCount() bool`
+
+HasRowCount returns a boolean if a field has been set.
 
 ### GetSql
 

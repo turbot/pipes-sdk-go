@@ -10505,7 +10505,7 @@ paths:
   /org/{org_handle}/service_account:
     get:
       description: Lists service accounts at the organization level.
-      operationId: serviceAccount_org_list
+      operationId: orgServiceAccount_list
       parameters:
       - description: The handle of the organization
         explode: false
@@ -10578,10 +10578,10 @@ paths:
           description: Internal Server Error
       summary: List organization service accounts
       tags:
-      - ServiceAccounts
+      - OrgServiceAccounts
     post:
       description: Create a new service account at the organization level.
-      operationId: serviceAccountOrg_create
+      operationId: orgServiceAccount_create
       parameters:
       - description: The handle of the organization where the service account will
           be created
@@ -10638,12 +10638,12 @@ paths:
           description: Internal Server Error
       summary: Create a service account at the organization level
       tags:
-      - ServiceAccounts
+      - OrgServiceAccounts
       x-codegen-request-body-name: body
   /org/{org_handle}/service_account/{service_account_identifier}:
     delete:
       description: Delete an existing service account at the organization level.
-      operationId: serviceAccountOrg_delete
+      operationId: orgServiceAccount_delete
       parameters:
       - description: The handle of the organization
         explode: false
@@ -10703,10 +10703,10 @@ paths:
           description: Internal Server Error
       summary: Delete an organization service account
       tags:
-      - ServiceAccounts
+      - OrgServiceAccounts
     get:
       description: Retrieves a specific org-level service account.
-      operationId: serviceAccount_org_get
+      operationId: orgServiceAccount_get
       parameters:
       - description: The handle of the organization
         explode: false
@@ -10770,10 +10770,10 @@ paths:
           description: Internal Server Error
       summary: Get organization service account
       tags:
-      - ServiceAccounts
+      - OrgServiceAccounts
     patch:
       description: Update an existing service account at the organization level.
-      operationId: serviceAccountOrg_update
+      operationId: orgServiceAccount_update
       parameters:
       - description: The handle of the organization
         explode: false
@@ -10843,13 +10843,13 @@ paths:
           description: Internal Server Error
       summary: Update an organization service account
       tags:
-      - ServiceAccounts
+      - OrgServiceAccounts
       x-codegen-request-body-name: body
   /org/{org_handle}/service_account/{service_account_identifier}/audit_log:
     get:
       description: Returns the audit logs where the service account is either the
         actor or the identity (org-level service account).
-      operationId: serviceAccount_org_listAuditLogs
+      operationId: orgServiceAccountAudit_list
       parameters:
       - description: The handle of the organization
         explode: false
@@ -10936,11 +10936,11 @@ paths:
           description: Internal Server Error
       summary: List audit logs for an org service account
       tags:
-      - ServiceAccounts
+      - OrgServiceAccountAuditLogs
   /org/{org_handle}/service_account/{service_account_identifier}/token:
     get:
       description: Lists tokens for an organization-level service account.
-      operationId: serviceAccountToken_org_list
+      operationId: orgServiceAccountToken_list
       parameters:
       - description: The handle of the organization
         explode: false
@@ -11026,10 +11026,10 @@ paths:
           description: Internal Server Error
       summary: List organization service account tokens
       tags:
-      - ServiceAccounts
+      - OrgServiceAccountTokens
     post:
       description: Create a new token for an organization-level service account.
-      operationId: serviceAccountToken_org_create
+      operationId: orgServiceAccountToken_create
       parameters:
       - description: The handle of the organization
         explode: false
@@ -11099,12 +11099,12 @@ paths:
           description: Internal Server Error
       summary: Create an organization service account token
       tags:
-      - ServiceAccounts
+      - OrgServiceAccountTokens
       x-codegen-request-body-name: body
   /org/{org_handle}/service_account/{service_account_identifier}/token/{token_id}:
     delete:
       description: Delete a token for an organization-level service account.
-      operationId: serviceAccountToken_org_delete
+      operationId: orgServiceAccountToken_delete
       parameters:
       - description: The handle of the organization
         explode: false
@@ -11176,10 +11176,10 @@ paths:
           description: Internal Server Error
       summary: Delete an organization service account token
       tags:
-      - ServiceAccounts
+      - OrgServiceAccountTokens
     get:
       description: Retrieves a specific token for an organization-level service account.
-      operationId: serviceAccountToken_org_get
+      operationId: orgServiceAccountToken_get
       parameters:
       - description: The handle of the organization
         explode: false
@@ -11251,10 +11251,10 @@ paths:
           description: Internal Server Error
       summary: Get an organization service account token
       tags:
-      - ServiceAccounts
+      - OrgServiceAccountTokens
     patch:
       description: Update an existing token for an organization-level service account.
-      operationId: serviceAccountToken_org_update
+      operationId: orgServiceAccountToken_update
       parameters:
       - description: The handle of the organization
         explode: false
@@ -11333,7 +11333,7 @@ paths:
           description: Internal Server Error
       summary: Update an organization service account token
       tags:
-      - ServiceAccounts
+      - OrgServiceAccountTokens
       x-codegen-request-body-name: body
   /org/{org_handle}/usage:
     get:
@@ -23139,7 +23139,7 @@ paths:
   /service_account:
     get:
       description: Lists service accounts at the tenant level.
-      operationId: serviceAccount_tenant_list
+      operationId: tenantServiceAccount_list
       parameters:
       - description: Maximum number of items to return. Default 100. Max 1000.
         explode: true
@@ -23198,10 +23198,10 @@ paths:
           description: Internal Server Error
       summary: List tenant service accounts
       tags:
-      - ServiceAccounts
+      - TenantServiceAccounts
     post:
       description: Create a new service account at the tenant level.
-      operationId: serviceAccount_create
+      operationId: tenantServiceAccount_create
       requestBody:
         content:
           application/json:
@@ -23248,12 +23248,12 @@ paths:
           description: Internal Server Error
       summary: Create a tenant service account
       tags:
-      - ServiceAccounts
+      - TenantServiceAccounts
       x-codegen-request-body-name: body
   /service_account/{service_account_identifier}:
     delete:
       description: Delete an existing service account at the tenant level.
-      operationId: serviceAccount_delete
+      operationId: tenantServiceAccount_delete
       parameters:
       - description: The ID of the service account to delete
         explode: false
@@ -23305,10 +23305,10 @@ paths:
           description: Internal Server Error
       summary: Delete a tenant service account
       tags:
-      - ServiceAccounts
+      - TenantServiceAccounts
     get:
       description: Retrieves a specific tenant-level service account.
-      operationId: serviceAccount_tenant_get
+      operationId: tenantServiceAccount_get
       parameters:
       - description: The ID of the service account
         explode: false
@@ -23364,10 +23364,10 @@ paths:
           description: Internal Server Error
       summary: Get tenant service account
       tags:
-      - ServiceAccounts
+      - TenantServiceAccounts
     patch:
       description: Update an existing service account at the tenant level.
-      operationId: serviceAccount_update
+      operationId: tenantServiceAccount_update
       parameters:
       - description: The ID of the service account to update
         explode: false
@@ -23429,13 +23429,13 @@ paths:
           description: Internal Server Error
       summary: Update a tenant service account
       tags:
-      - ServiceAccounts
+      - TenantServiceAccounts
       x-codegen-request-body-name: body
   /service_account/{service_account_identifier}/audit_log:
     get:
       description: Returns the audit logs where the service account is either the
         actor or the identity (tenant-level service account).
-      operationId: serviceAccount_tenant_listAuditLogs
+      operationId: tenantServiceAccountAudit_list
       parameters:
       - description: The ID of the service account
         explode: false
@@ -23514,11 +23514,11 @@ paths:
           description: Internal Server Error
       summary: List audit logs for a tenant service account
       tags:
-      - ServiceAccounts
+      - TenantServiceAccountAuditLogs
   /service_account/{service_account_identifier}/token:
     get:
       description: Lists tokens for a tenant-level service account.
-      operationId: serviceAccountToken_tenant_list
+      operationId: tenantServiceAccountToken_list
       parameters:
       - description: The ID of the service account
         explode: false
@@ -23596,10 +23596,10 @@ paths:
           description: Internal Server Error
       summary: List tenant service account tokens
       tags:
-      - ServiceAccounts
+      - TenantServiceAccountTokens
     post:
       description: Create a new token for a tenant-level service account.
-      operationId: serviceAccountToken_tenant_create
+      operationId: tenantServiceAccountToken_create
       parameters:
       - description: The ID of the service account
         explode: false
@@ -23661,12 +23661,12 @@ paths:
           description: Internal Server Error
       summary: Create a tenant service account token
       tags:
-      - ServiceAccounts
+      - TenantServiceAccountTokens
       x-codegen-request-body-name: body
   /service_account/{service_account_identifier}/token/{token_id}:
     delete:
       description: Delete a token for a tenant-level service account.
-      operationId: serviceAccountToken_tenant_delete
+      operationId: tenantServiceAccountToken_delete
       parameters:
       - description: The ID of the service account
         explode: false
@@ -23730,10 +23730,10 @@ paths:
           description: Internal Server Error
       summary: Delete a tenant service account token
       tags:
-      - ServiceAccounts
+      - TenantServiceAccountTokens
     get:
       description: Retrieves a specific token for a tenant-level service account.
-      operationId: serviceAccountToken_tenant_get
+      operationId: tenantServiceAccountToken_get
       parameters:
       - description: The ID of the service account
         explode: false
@@ -23797,10 +23797,10 @@ paths:
           description: Internal Server Error
       summary: Get a tenant service account token
       tags:
-      - ServiceAccounts
+      - TenantServiceAccountTokens
     patch:
       description: Update an existing token for a tenant-level service account.
-      operationId: serviceAccountToken_tenant_update
+      operationId: tenantServiceAccountToken_update
       parameters:
       - description: The ID of the service account
         explode: false
@@ -23871,7 +23871,7 @@ paths:
           description: Internal Server Error
       summary: Update a tenant service account token
       tags:
-      - ServiceAccounts
+      - TenantServiceAccountTokens
       x-codegen-request-body-name: body
   /settings:
     get:
@@ -43809,9 +43809,10 @@ components:
         kind: kind
         created_at: created_at
         language: language
-        usage_storage_bytes: 0
+        usage_storage_bytes: 6
         title: title
         created_by: '{}'
+        row_count: 0
         sql: sql
         updated_at: updated_at
         conversation_id: conversation_id
@@ -43845,6 +43846,8 @@ components:
           type: string
         language:
           type: string
+        row_count:
+          type: integer
         sql:
           type: string
         title:
@@ -44034,6 +44037,7 @@ components:
         description: description
         part_per: connection
         desired_state: '{}'
+        skip_initial_refresh: true
         type: table
         source_table: source_table
         source_schema: source_schema
@@ -44056,6 +44060,8 @@ components:
           enum:
           - connection
           type: string
+        skip_initial_refresh:
+          type: boolean
         source_query:
           type: string
         source_schema:
@@ -51038,9 +51044,8 @@ components:
         source_query: source_query
         name: name
         description: description
-        part_per: connection
         desired_state: '{}'
-        source_table: source_table
+        skip_initial_refresh: true
         source_schema: source_schema
         frequency:
           schedule: schedule
@@ -51056,15 +51061,11 @@ components:
           $ref: '#/components/schemas/PipelineFrequency'
         name:
           type: string
-        part_per:
-          enum:
-          - connection
-          type: string
+        skip_initial_refresh:
+          type: boolean
         source_query:
           type: string
         source_schema:
-          type: string
-        source_table:
           type: string
       type: object
     UpdateIntegrationRequest:
